@@ -10,4 +10,4 @@ class drawImprint extends Pages_template{
         this.background = new drawBackground3D(document.body, "back", "medium");
         this.background.div.before(this.mainElement);
     }
-}
+} 
