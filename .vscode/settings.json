@@ -1,0 +1,290 @@
+{
+    "editor.largeFileOptimizations" : false,
+    "git.autofetch": true,
+    "workbench.colorCustomizations": {
+    
+    },
+    "editor.bracketPairColorization.enabled": false,
+    "git.confirmSync": false,
+    "intelephense.stubs": [
+        "apache",
+        "bcmath",
+        "bz2",
+        "calendar",
+        "com_dotnet",
+        "Core",
+        "ctype",
+        "curl",
+        "date",
+        "dba",
+        "dom",
+        "enchant",
+        "exif",
+        "FFI",
+        "fileinfo",
+        "filter",
+        "fpm",
+        "ftp",
+        "gd",
+        "gettext",
+        "gmp",
+        "hash",
+        "iconv",
+        "imap",
+        "intl",
+        "json",
+        "ldap",
+        "libxml",
+        "mbstring",
+        "meta",
+        "mysqli",
+        "oci8",
+        "odbc",
+        "openssl",
+        "pcntl",
+        "pcre",
+        "PDO",
+        "pdo_ibm",
+        "pdo_mysql",
+        "pdo_pgsql",
+        "pdo_sqlite",
+        "pgsql",
+        "Phar",
+        "posix",
+        "pspell",
+        "readline",
+        "Reflection",
+        "session",
+        "shmop",
+        "SimpleXML",
+        "snmp",
+        "soap",
+        "sockets",
+        "sodium",
+        "SPL",
+        "sqlite3",
+        "standard",
+        "superglobals",
+        "sysvmsg",
+        "sysvsem",
+        "sysvshm",
+        "tidy",
+        "tokenizer",
+        "xml",
+        "xmlreader",
+        "xmlrpc",
+        "xmlwriter",
+        "xsl",
+        "Zend OPcache",
+        "zip",
+        "zlib",
+        "imagick",
+        "gd"
+    ],
+	"security.workspace.trust.enabled": false,
+    "[javascript]": {
+        "editor.insertSpaces": true,
+        "editor.defaultFormatter": "vscode.typescript-language-features",
+        "editor.tabSize" : 4
+    },
+    "editor.detectIndentation": false,
+    "editor.tabSize": 4,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
+    "php-cs-fixer.lastDownload": 1661641847938,
+    "[json]": {
+        "editor.insertSpaces": true,
+        "editor.defaultFormatter": "vscode.json-language-features",
+        "editor.tabSize" : 4
+    },
+    "luna.defaultTool": "colorPicker",
+    "luna.defaultImageSize": {
+    
+    },
+    "explorer.confirmDelete": false,
+    "workbench.editorAssociations": {
+        "*.png": "imagePreview.previewEditor"
+    },
+    "diffEditor.ignoreTrimWhitespace": false,
+    "sass.disableAutoIndent": false,
+    "Scss2css.output": "expanded",
+    "[php]": {
+        "editor.defaultFormatter": "junstyle.php-cs-fixer",
+        "editor.tabSize" : 4
+    },
+    "[html]" : {
+        "editor.insertSpaces": true,
+        "editor.tabSize" : 4
+    },
+    "Scss2css.exclude": "_",
+    "explorer.confirmDragAndDrop": false,
+    "http.proxyStrictSSL": false,
+    "js/ts.implicitProjectConfig.strictNullChecks": false,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "liveServer.settings.port": 0,
+    "liveServer.settings.mount": [
+    
+    ],
+    "tabnine.experimentalAutoImports": true,
+    "open-php-html-js-in-browser.selectedBrowser": "Chrome",
+    "workbench.iconTheme": "vs-seti",
+    "workbench.editor.untitled.hint": "hidden",
+    "sass.andStared": [
+
+        "active",
+        "focus",
+        "hover",
+        "nth-child"
+    ],
+    "liveSassCompile.settings.formats":[
+
+        // You can add more
+        {
+            "format": "expanded",//"expanded",
+            "extensionName": ".css",
+            "savePath": "/resources/css/Output"
+            // "savePath": "~/../Output"
+            // "savePath": "/Splint/SplintExample/css"
+        }
+    ],
+    "liveSassCompile.settings.autoprefix": null,
+    "liveSassCompile.settings.generateMap": true,
+    "logViewer.watch": [
+        {
+            "title": "test",
+            "pattern": "C:/xampp/htdocs/fd/resources/php/PHP_error_log.log"
+        }
+    ],
+    "logViewer.options": {
+    
+    },
+    "jsannotations.enabled": false,
+    "html-css-class-completion.remoteStyleSheets": [
+    
+    ],
+    "window.zoomLevel": 1,
+    "php.validate.executablePath": "C:/xampp/php/php.exe",
+    "vscodeGitCommit.variables": {
+        "prefix": "keke"
+    },
+    "editor.cursorBlinking": "expand",
+    // "liveSassCompile.settings.forceBaseDirectory": "",
+    "emulator.emulatorPathWindows": "C:\\Users\\Marius\\AppData\\Local\\Android\\Sdk\\emulator",
+    "liveSassCompile.settings.showOutputWindowOn": "Error",
+    // "liveSassCompile.settings.rootIsWorkspace": null,
+    "liveSassCompile.settings.useNewCompiler": true,
+    "intelephense.environment.includePaths": [
+        "C:\\xampp\\htdocs"
+    ],
+	"typescript.validate.enable": true,
+    "json.schemas": [
+        { 
+          "$schema": "https://json.schemastore.org/jsconfig" 
+        }
+      ],
+      "files.exclude": {
+        "**/.git": false
+},
+"explorer.compactFolders": false,
+"workbench.editor.showTabs": true,
+"workbench.activityBar.visible": true,
+"workbench.editor.enablePreviewFromCodeNavigation": true,
+"workbench.editor.untitled.labelFormat": "content",
+"workbench.editor.splitInGroupLayout": "horizontal",
+"workbench.editor.revealIfOpen": true,
+"explorer.fileNesting.enabled": false,
+"workbench.editor.autoLockGroups": {
+    "default": true,
+    "jsProfileVisualizer.cpuprofile.table": true
+},
+"workbench.editor.enablePreviewFromQuickOpen": true,
+"explorer.fileNesting.expand": false,
+"explorer.sortOrder": "default",
+"explorer.sortOrderLexicographicOptions": "default",
+"intelephense.completion.fullyQualifyGlobalConstantsAndFunctions": true,
+"intelephense.environment.documentRoot": "C:/xampp/htdocs",
+"vsintellicode.features.python.deepLearning": "enabled",
+"npm-intellisense.scanDevDependencies": true,
+"typescript.experimental.tsserver.web.enableProjectWideIntellisense": true,
+"workbench.editor.pinnedTabSizing": "normal",
+"workbench.editor.tabSizing": "fit",
+"workbench.editor.titleScrollbarSizing": "default",
+"workbench.editor.wrapTabs": true,
+"scm.alwaysShowRepositories": true,
+"task.problemMatchers.neverPrompt": false,
+"problems.showCurrentInStatus": false,
+"CodeGPT.query.language": "German",
+"css.lint.boxModel": "warning",
+"workbench.tree.renderIndentGuides": "onHover",
+"workbench.view.alwaysShowHeaderActions": false,
+"breadcrumbs.enabled": true,
+"workbench.editor.highlightModifiedTabs": false,
+"workbench.editor.labelFormat": "short",
+"workbench.editor.navigationScope": "default",
+"workbench.editor.tabCloseButton": "left",
+"diffEditor.codeLens": true,
+"editor.minimap.enabled": true,
+"editor.minimap.autohide": false,
+"editor.minimap.scale": 1,
+"editor.minimap.size": "proportional",
+"explorer.openEditors.sortOrder": "editorOrder",
+
+// "editor.tokenColorCustomizations": {
+//     // "support.class": "#ffffff"
+//     // "numbers": "#2247EB",
+//     // "comments": "#6D929C",
+//     // "functions": "#0D7C28"
+// },
+// "editor.semanticTokenColorCustomizations": {
+//     "rules": {
+//         "class": {
+//             "keyword.SPLINT" : {
+
+//                 "foreground": "#ff0000",
+//                 "fontStyle": "underline"
+//             }
+//         }
+//     }
+// },    
+"editor.semanticHighlighting.enabled": true, // not necessary, just make sure it is not disabled
+"contributes": {
+    "semanticTokenTypes": [ // not necessary if you use own parsing with "DocumentSemanticTokensProvider"
+        {
+            "id": "myToken",
+            "superType": "myToken",
+            "description": "myToken"
+        }
+    ],
+    "configurationDefaults": {
+        "editor.semanticTokenColorCustomizations": {
+            "rules": {
+                "comment": "#969896",
+                "string": "#B5BD68",
+                "myToken": "#323232" // custom
+            }
+        }
+    }
+},
+"editor.suggest.localityBonus": true,
+"javascript.referencesCodeLens.enabled": false,
+"js/ts.implicitProjectConfig.module": "ESNext",
+"javascript.suggest.completeFunctionCalls": true,
+"javascript.referencesCodeLens.showOnAllFunctions": true,
+"javascript.preferGoToSourceDefinition": true,
+"js/ts.implicitProjectConfig.checkJs": true,
+"js/ts.implicitProjectConfig.experimentalDecorators": true,
+"npm.enableRunFromFolder": true,
+"npm-intellisense.packageSubfoldersIntellisense": true,
+"npm-intellisense.showBuildInLibs": true,
+"workbench.editor.scrollToSwitchTabs": false,
+"workbench.editor.splitSizing": "distribute",
+"regex-previewer.enableCodeLens": false,
+"editor.stickyScroll.defaultModel": "outlineModel",
+"notebook.outline.showCodeCells": false,
+"outline.collapseItems": "alwaysCollapse",
+"liveSassCompile.settings.excludeList": [
+    "/**/node_modules/**",
+    "/.vscode/**",
+    "/fd/resources/css/PUBLIC/profile/**"
+]
+}
