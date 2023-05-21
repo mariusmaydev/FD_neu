@@ -1,0 +1,625 @@
+@import '../../general/main.scss';
+@import '../../general/buttons.scss';
+@import '../ADMIN.scss';
+// @import '../../general/NavigationBar/NavigationBar.scss';
+// @import '../../designs/designs.scss';
+
+.I_expander {
+    border-left: 1px solid black;
+    // border-bottom: 1px solid black;
+    box-sizing: border-box;
+    position: relative;
+    // left: 0.5rem;
+    padding-left: 0.5rem;
+    width: calc(100% - 0em);
+    // background-color: red;
+    // @include border();
+        background-color: white;
+    &[state *= 'active'] {
+        background-color: $color-primary-light;
+        > .I_headBody {
+            > .I_header{
+                padding-right: 2.5rem;
+                width: 150%;
+            }
+        }
+    }
+    &[connected *= 'true']{
+        background-color: blue;
+    }
+    .I_headBody {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-size: 1rem;
+        height: 1.6em;
+        > .I_inputBody{
+            position: relative;
+            left: 1em;
+            height: 1.2em;
+            background-color: $color-devider;
+            // width: 5rem;
+            font-size: 1em;
+            >.n_inputDiv {
+                margin: 0;
+                height: 1.2em;
+                >.inputBody{
+                    height: 100%;
+                    >input {
+                        font-size: 0.8em;
+                        padding: 0em;
+                        padding-left: 0.2em;
+                        &:valid, &:focus {
+                            outline: 0;
+                            // border-bottom-color: $c-active;
+                            +label span {
+                                // color: $c-active;
+                                visibility: hidden;
+                                // font-size: 0.8em;
+                                transform: none;
+                
+                            }
+                        }
+                    }
+                    > label {
+                        font-size: 0.8em;
+                        left: 0.2em;
+                        top: 0.15em;
+                        color: black;
+                        > span {
+                            color: black;
+
+                        }
+                    }
+                }
+            }
+        }
+        > .I_header {
+            &::before{
+            content:"";
+            transform: translateY(calc(-50% - 6px)) translateX(-50% );
+                width:4px;
+                height:4px;
+                border-radius:50%;
+                background: black;
+                display:inline-block;
+                margin-right: 0.1em;
+            }
+            transition: width 1s, padding-right 0.5s;
+            padding-right: 0.5rem;
+            // @include SPLINT-border-inset(black, 1px, false, false, true, false);
+            border-bottom: 1px solid black;;
+            min-width: fit-content;
+            height: 100%;
+            max-width: 80%;
+            width: 20%;
+            display: flex;
+            align-items: end;
+            &[state *= 'active']{
+                + .I_headButtons {
+                    display: none;
+                }
+                > span {
+                    height: 0;
+                    width: 0;
+                    font-size: 0;
+                    display: none;
+                }
+            }
+            > span {
+                cursor: pointer;
+            }
+            > .I_editInputDiv{
+                box-sizing: border-box;
+                width: 100%;
+                margin: 0;
+                height: 1.2em;
+                >.inputBody{
+                    height: 100%;
+                    >input {
+                        font-size: 0.8em;
+                        padding: 0em;
+                        padding-left: 0.2em;
+                        &:valid, &:focus {
+                            outline: 0;
+                            // border-bottom-color: $c-active;
+                            +label span {
+                                // color: $c-active;
+                                visibility: hidden;
+                                // font-size: 0.8em;
+                                transform: none;
+                
+                            }
+                        }
+                    }
+                    > label {
+                        font-size: 0.8em;
+                        left: 0.2em;
+                        top: 0.15em;
+                        color: black;
+                        > span {
+                            color: black;
+
+                        }
+                    }
+                }
+            }
+        }
+        > .I_headButtons {
+            position: absolute;
+            visibility: hidden;
+            height: min-content;
+            box-sizing: border-box;
+            // @include SPLINT-border-inset();
+            right: 30%;
+            width: 0;
+            z-index: 1;
+            // right: 50%;
+            display: flex;
+            > button {
+                display: block;
+                > span {
+                    font-size: 1.1em;
+
+                }
+            }
+        }
+    }
+}
+
+body {
+    width: 100%;
+    > .subWindow_MAIN {
+        &.window_Tags {
+            > .background {
+
+            }
+            > .content {
+                width: 80%;
+                height: 80%;
+                >.button_close{
+
+                }
+                >.inputBody {
+                    >.newTag {
+                        max-width: 20rem;
+                        >.inputBody {
+                            > button {
+                                position: sticky;
+                                padding-right: 3rem;
+                            }
+                        }
+                    }
+                }
+                >.tagsBody {
+
+                }
+            }
+        }
+    }
+}
+
+.ADMIN_designs_main {
+    position: absolute;
+    background-color: $color-primary-light;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    // flex-flow: column nowrap;
+    align-items: stretch;
+    overflow: hidden;
+    > .CategoryMenuMain {
+        box-sizing: content-box;
+        @include T_container();
+        // padding: 0;
+        top: 1rem;
+        margin-left: 0.5rem;
+        width: 15rem;
+        position: relative;
+        // background-color: red;
+        height: 100%;
+    }
+    > .TableMain {
+        width: 100%;
+        background-color: $color-primary-light;
+        position: relative;
+        padding: 0;
+        overflow: hidden;
+        box-sizing: border-box;
+        margin: 0;
+        // display: flex;
+        > .ListMain {
+            width: 100%;
+            height: 100%;
+            background-color: $color-primary-light;
+            top: 0;
+            overflow: auto;
+            display: block;
+            // flex-direction: column;
+            // flex-wrap: nowrap;
+            // box-sizing: border-box;
+            > .ListElement {
+                overflow: hidden;
+                position: relative;
+                height: 20rem;
+                width: calc(100% - 2rem);
+                @include T_container();
+                padding: 1rem;
+                margin: 1rem;;
+                box-sizing: border-box;
+                &.First {
+                    position: sticky;
+                    z-index: 10;
+                    box-sizing: border-box;
+                    left: 1rem;
+                    top: 1rem;
+                    margin: 0rem;
+                    margin-bottom: 2rem;
+                    padding: 0.25rem;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: left;
+                    gap: 0rem;
+                    height: max-content;
+                    // background-color: transparent;
+                    // box-shadow: none;
+                    overflow: visible;
+                    > Button {
+                        // @include T_container();
+                        &:not(:first-child){
+                            border-left: 1px solid gray;
+                        }
+                        padding: 0.5rem;
+                        padding-inline: 2rem;
+                        margin-inline: 0rem;
+                        > span {
+                            text-align: center;
+
+                        }
+                    }
+                    > div {
+                        &.typeSwitchButton{
+                            // background-color: red;
+                            > .inner {
+                                display: flex;
+                                flex-direction: row;
+                                height: 100%;;
+                                > div {
+                                    border-left: 1px solid gray;
+                                    cursor: pointer;
+                                    >.inputBody {
+                                        min-width: 0px;
+                                        width: 0px ;
+                                        height: 0em;
+                                        margin: 0;
+                                        > span {
+                                            display: none;
+                                            &::after {
+                                            }
+                                        }
+                                    }
+                                    >.labelDiv {
+                                        padding: 0.5rem;
+                                        padding-inline: 2rem;
+                                        margin-inline: 0rem;
+                                        &[state*='active']{
+                                            > div {
+                                                > span {
+                                                    text-decoration: underline;
+                                                }
+                                            }
+                                        }
+
+                                    }
+                                }
+                                > hr {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+                &:not(.First){
+                    display: flex;
+                    // > .bodyLighter {
+                    //     position: relative;
+                    //     box-sizing: border-box;
+                    //     width: max-content;
+                        // box-sizing: border-box;
+                        // heigh
+                    font-size: 1.5rem;
+                        > .Lighter3D {
+                            position: relative;
+                            box-sizing: border-box;
+                            
+                            aspect-ratio: $LIGHTER-ratio;
+                            width: 15%;
+                            min-width: max-content;
+                            transform: translateY(-10%);
+                            > canvas {
+                                transform: scale(1.2);
+                                position: relative;
+                                height: 100%;
+                                width: 100%;
+                            }
+                        }
+                    // }
+                    > .content {
+                        position: relative;
+                        border-left: 1px solid gray;
+                        width: 100%;
+                        height: calc(100% - 1rem);
+                        overflow: hidden;
+                        box-sizing: content-box;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: stretch;
+                        align-items: stretch;
+                        > .buttonDiv {
+                            position: relative;
+                            height: max-content;
+                            width: 100%;
+                            > button {
+                                > span {
+
+                                }
+                            }
+                        }
+                        > .hashtagDiv {
+                            position: relative;
+                            height: 100%;
+                            width: 20vw;
+                            overflow: hidden;
+                            @include border();
+                            > .viewBody {
+                                position: relative;
+                                height: 100%;
+                                width: 100%;
+                                @include border();
+                                overflow: auto;
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    > .DesignNavBarMain {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        > div {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: row; 
+            border-bottom: 1px solid black;; 
+            padding: 0.1em;
+            > button {
+                background-color: $color-primary;
+                margin: 0.1em;
+                margin-inline: 0.5em;
+                padding: 0.2em;
+                padding-inline: 0.5em;
+                text-decoration: none;
+            } 
+        }
+    }
+}
+.ImageMenuList {
+    border: 1px solid black;
+    position: relative;
+    display: block;
+    width: 98%;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    > div {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        justify-content: space-around;
+        > .column {
+            position: relative;
+            width: 33%;
+            height: max-content;
+            flex-direction: column;
+            overflow: hidden;
+            > .DesignListImageElement{
+                position: relative;
+                > img {
+                    position: relative;
+                     width: 100%;
+                }
+                > .hoverDiv{
+                    position: relative;
+                    top:0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+
+.DesignMenuMain {
+
+}
+
+.DesignFilterMain {
+    @include border();
+    > div {
+        > div {
+            border: none;
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            gap: 0;
+            > div[id*="radioButtonDiv"] {
+                border-radius: $border-radius;
+                overflow: hidden;
+                text-align: center;
+                > input {
+                    width: 0;
+                    margin: 0;
+                    padding: 0;
+                    border: none;
+                    &:checked ~ div {
+                        background-color: $color-primary;
+                    }
+                }
+                > div {
+                    padding: 0.1em;
+                    position: relative;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.DesignListMain {
+    flex-grow: 1;
+    @include border();
+    $color-block: rgb(255, 70, 70);
+    $color-open: rgb(19, 160, 0);
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    > div {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        > .ListElement {
+            padding: 0.1em;
+            background-color: $color-devider;
+            position: relative;
+            width: 14em;
+            height: max-content;
+            margin: 0.5em;
+            > div {
+                position: relative;
+                width: 100%;
+                > img {
+                    position: relative;
+                    width: 100%;
+                }
+            }        
+            .StatusDiv {
+                margin-top: 1%;
+                border: none;
+                > div {
+                    position: relative;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    gap: 0;
+                    border: none;
+                    > div[id*="radioButtonDiv"] {
+                        text-align: center;
+                        > input {
+                            width: 0;
+                            margin: 0;
+                            padding: 0;
+                            border: none;
+                            &:checked ~ div[id*="_1"] {
+                                background-color: $color-open;
+                            }
+                            &:checked ~ div[id*="_0"] {
+                                background-color: $color-block;
+                            }
+                        }
+                        > div {
+                            padding: 0.1em;
+                            position: relative;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.HashtagMenuMain {
+    @include border();
+
+    > div {
+        max-height: 5em;
+        overflow-x: hidden;
+        overflow-y: auto;
+        > .list {
+            position: relative;
+            width: 100%;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            > button {
+                padding: 0.1em;
+                margin: 0.1em;
+                border-radius: $border-radius !important;
+            }
+            > .showDiv {
+                padding: 0.1em;
+                position: relative;
+                background-color: red;
+                width: max-content;
+                border-radius: $border-radius;
+                margin: 0.1em;
+                vertical-align: middle;
+                > span {
+    
+                }
+                > button {
+                    display: inline;
+                    &:hover {
+                        > span {
+                            animation-name: unset !important;
+                        }
+                    }
+                    > span {
+                        position: relative;
+                        vertical-align: middle;
+                        text-decoration: none !important;
+                        font-size: 1em;
+                        margin-bottom: 0.1em;
+                    }
+                }
+            }
+        }
+        .submitDiv {
+            position: relative;
+            width: 100%;
+            overflow: hidden !important;
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+            > div {
+                width: 10em;
+                > input {
+                }
+            }
+            > button {
+                margin-left: 0.5em;
+            }
+        }
+    }
+}
+
+.snap-button {
+    background-color: $color-primary-light;
+    &.button-active {
+        background-color: $color-primary;
+    }
+}
+
+

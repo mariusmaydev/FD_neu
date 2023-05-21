@@ -1,0 +1,177 @@
+
+@mixin conv_floatingDiv_aligned() {
+    >.converter-bottomBar-floatingDiv.aligned {
+        pointer-events: none;
+        bottom: 1em;
+        left: 0;
+        height: auto;
+        width: 100%;
+        overflow: visible;
+        box-sizing: content-box;
+
+        position: relative;
+        > div {            
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -100%);
+            height: max-content;
+            width: max-content;
+            box-sizing: content-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: visible;
+            > * {
+                position: relative;
+                pointer-events: all;
+                height: max-content;
+                width: 100%;
+                background-color: white;
+                @include box-shadow();
+                padding: 1%;
+                margin: auto;
+                margin-top: 5%;
+                margin-bottom: 5%;
+                box-sizing: content-box;
+            }
+            > input {
+                display: none;
+            }
+            > button {
+                aspect-ratio: 1/1;
+                span {
+                    font-size: 10vw;  
+                    > * { 
+                        font-size: 1em !important;  
+                    }
+                }
+            }
+            
+        }
+        &[name*='buttons_Text']{
+            > div {
+                > button {
+                    > span {
+                        font-size: 3vw;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@mixin conv_floatingDiv_block() {
+    >.converter-bottomBar-floatingDiv.block {
+        pointer-events: none;
+        bottom: 100%;
+        left: 0;
+        height: max-content;
+        width: 96%;
+        overflow: visible;
+        box-sizing: border-box;
+        position: absolute;
+        > div {            
+            position: relative;
+            height: max-content;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: visible;
+            > * {
+                position: relative;
+                pointer-events: all;
+                user-select: none;
+                height: max-content;
+                width: 100%;
+                @include box-shadow();
+                background-color: white;
+                // padding: 1%;
+                margin-bottom: 2%;
+                box-sizing: border-box;
+                border-radius: $border-radius;
+                > label {
+                    font-size: 0.75em;
+                }
+                > div {
+                    display: flex;
+                    justify-content: stretch;
+                    > input {
+                        cursor: pointer;
+                        width: 100%;
+                    }
+                }
+            }
+            > button {
+                span {
+                    font-size: 10vw;
+                }
+            }
+        
+        }
+        &[name*='textAlignSlider']{
+            > div {
+                flex-direction: row;
+            }
+        }
+        &[name*='fontFamilySlideShow']{
+            height: 5em;
+            overflow: visible;
+            width: 100vw;
+            left: -2%;
+            background-color: transparent;
+            > div {
+                height: 5em;
+                // height: 100%;
+                background-color: transparent;
+                > div {
+                    box-shadow: none;
+                    scrollbar-width: 0;
+                    background-color: transparent;
+                    &::-webkit-scrollbar {
+                        display: none;
+                        width: 0;
+                    }
+                    ::-webkit-scrollbar {
+                        display: none;
+                        width: 0;
+                    }
+                    &:-webkit-scrollbar {
+                        display: none;
+                        width: 0;
+                    }
+                    height: 100%;
+                    > div {
+                        > div {
+                            cursor: pointer;
+                            user-select: none;
+                            &[state*='active']{
+                                background-color: orange;
+                            }
+                            &[state*='passive']{
+
+                            }
+                            > div {
+                                > span {
+                                    &[id*='Arial']{
+                                        font-family: Arial;
+                                    }
+                                    &[id*='Impact']{
+                                        font-family: Impact;
+                                    }
+                                    &[id*='Roboto']{
+                                        font-family: G-Roboto;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

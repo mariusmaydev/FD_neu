@@ -1,0 +1,90 @@
+
+
+@mixin conv_RightBar(){
+    > .Conv_RightBar {
+        order: 3;
+        flex-grow: 0;
+        flex-shrink: 5;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: stretch;
+        height: 100%;
+        width: 30%;
+        
+        box-sizing: content-box;
+        @include ToolBar_Main();
+        > .ToolBar_Main {
+            box-sizing: content-box;
+            user-select: none;
+            overflow-x:visible;
+            overflow-y:hidden;
+            margin: 0em;
+            padding: 0;
+            flex-grow: 1;
+            display: flex;
+            height: 100%;
+            position: relative;
+            width: 100%;
+        }
+
+        > .ConverterMainButtons {
+            user-select: none;
+            flex-grow: 1;
+            position: relative;
+            height: max-content;
+            display: flex;
+            justify-content: stretch;
+            > .content {
+                position: relative;
+                display: flex;
+                width: 100%;
+                height: max-content;
+                box-sizing: border-box;
+                > button {
+                    position: relative;
+                    cursor: pointer;
+                    @include T_container();
+                    border: none;
+                    padding: 2rem;
+                    margin: 0.5rem;
+                    user-select: auto;
+                    pointer-events: auto;
+                    > span {
+                        user-select: auto;
+                        pointer-events: auto;
+                        font-size: 2rem;
+                    }
+                    &.buy {
+    
+                        transform: translateX(0px);
+                        &:not([loaded*='true']){
+                            visibility: hidden;
+                            transform: translateX(40rem);
+                        }
+                        transition: transform 0.4s ease-out;
+                        visibility: visible;
+
+                        width: 100%;
+                        user-select: auto;
+                        pointer-events: auto;
+                        background-color: $color-primary;
+                        &:hover {
+                            background-color: $color-primary-Dark;
+                        }
+                    }
+                    &.cart {
+                        transform: translateY(0px);
+                        &:not([loaded*='true']){
+                            visibility: hidden;
+                            transform: translateY(20rem);
+                        }
+                        transition: transform 0.4s ease-out;
+                        visibility: visible;
+                    }
+                }
+            }
+            // display: none;
+        }
+    }
+}

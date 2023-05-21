@@ -1,0 +1,157 @@
+
+@mixin Checkout_rightPart {
+    > .CheckoutRightMain{
+        @include forMediaBreakpoint(mobile-small){
+            display: none !important;
+        }
+        background-color: rgb(236, 236, 236);
+        position: relative;
+        margin-right: 0%;
+        padding-left: 1%;
+        width: 40%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        justify-content: start;
+        > .listMain {
+            position: relative;
+            width: 80%;
+            margin-top: 10vh;
+            height: max-content;
+            overflow: auto;
+            padding: 0.1em;
+            box-sizing: border-box;
+            > .listElement {
+                position: relative;
+                margin-top: 0.5em;
+                max-height: 20em;
+                height: max-content;
+                @include T_container();
+                overflow: hidden;
+                gap: 1em;
+                display: flex;
+                align-items: stretch;
+                padding: 0.5em;
+                padding-top: -0.5em;
+                box-sizing: border-box;
+                > .Lighter3D {
+                    aspect-ratio: $LIGHTER-ratio;
+                    position: relative;
+                    height: 100%;
+                    box-sizing: content-box !important;
+                    height: 20vh;
+                    // transform: translateY(-15%);
+                    > canvas {
+                        transform: scale(1.2);
+                        box-sizing: content-box !important;
+                    }
+                    > div { 
+                        position: absolute;
+                        background-color: $color-primary;
+                        font-size: 150%;
+                        top: 10%;
+                        left: 80%;
+                        border-radius: 25% 25%;
+                        width: 1.2em;
+                        height: 1.2em;
+                        overflow: hidden;
+                        text-align: center;
+                        vertical-align: middle;
+                        transition: transform 0.3s;
+                        > span {
+                            user-select: none;
+                            position: relative;
+                        }
+                        &:hover {
+                            transition: transform 0.2s;
+                            transform: rotate(10deg);;
+                        }
+                    }
+                }
+                > .informationDiv {
+                    user-select: none;
+                    flex-grow: 1;
+                    position: relative;
+                    width: auto;
+                    display: flex;
+                    flex-direction: column;
+
+                    > div {
+                        &.name {
+                            margin-top: 1em;
+                            order: 2;
+                            font-size: 1em;
+                        }
+                        &.price {
+                            margin: 0.25em;
+                            float: right;
+                            justify-content: right;
+                            font-size: 2.5em;
+                            order: 1;
+                            >.PriceDiv {
+                                float: right;
+                            }
+                        }
+                    }
+                }
+            }
+            // > .RightDivConclusion {
+            //     position: relative;
+            //     display: contents;
+            //     width: 100%;
+            //     > .PriceDiv {
+            //         display: contents;
+            //         flex-direction: row;
+            //         width: 100%;
+            //         > .Full {
+            //             position: relative;
+            //             margin-top: 0.1em;;
+            //             font-size: 1.5em;
+            //         }
+            //         > .hint {
+            //             position: relative;
+            //             top: -0.5em;
+            //             left: 0.1em;
+            //             vertical-align: text-top;
+            //         }
+            //         > div {
+            //             position: relative;
+            //             display: inline;
+            //             float: right;
+            //             margin-left: auto;
+            //             margin-right: 5%;
+            //             font-weight: bold;
+            //             &.Full {
+            //                 font-size: 1.5em;
+            //             }
+            //             > span {
+            //                 position: relative;
+            //             }
+            //         }
+            //     } 
+            // } 
+        }
+        > .conclusionMain {
+            @include T_container();
+            margin: 0.1em;
+            margin-top: 0.5em;
+            width: calc(80% - 0.2em);
+            padding: 0;
+            box-sizing: border-box;
+            > div {
+
+            }
+            > button {
+                background-color: $color-primary;
+                > span {
+                    
+                }
+                &:hover {
+                    background-color: $color-primary-Dark;
+                }
+            }
+        }
+ 
+    } 
+}

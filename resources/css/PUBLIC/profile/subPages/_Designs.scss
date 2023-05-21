@@ -1,0 +1,23 @@
+@import '../../publicMain.scss';
+@import '../../../projects/projects.scss';
+
+.ProjectListMain {
+    box-shadow: none;
+    background-color: white;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    // margin: 1%;
+    gap: 1%;
+    justify-content: left;
+    align-items: stretch;
+    height: max-content;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    // margin-left: 10%;
+    // border-radius: 5px;
+    // @include ProjectListElement();
+
+}

@@ -1,0 +1,23 @@
+{
+    "paths": {
+        "textures": {
+            "lighter_body_bumpMap"   : "data/3Dmodels/Lighter/textures/bumpMap_Body.png",
+            "lighter_inner_envMap" : "data/3Dmodels/Lighter/textures/envMap_Inner.png",
+            "lighter_inner_texture" : "data/3Dmodels/Lighter/textures/texture_chrome_new.png",
+            "lighter_engraving_thumbnail" : "data/3Dmodels/Lighter/textures/thumbnail.png",
+            "lighter_engraving_thumbnail_chrome" : "data/3Dmodels/Lighter/textures/thumbnail_Chrome.png",
+            "lighter_engraving_normalMap" : "data/3Dmodels/Lighter/textures/normalMap_Engraving.png",
+            "lighter_engraving_specularMap" : "data/3Dmodels/Lighter/textures/specularMap_Engraving.png",
+            "lighter_engraving_displacementMap" : "data/3Dmodels/Lighter/textures/displacementMap_Engraving.png",
+            "lighter_engraving_bumpMap" : "data/3Dmodels/Lighter/textures/bumpMap_Engraving.png"
+            },
+        "models" : {
+            "lighter_glb"   : "data/3Dmodels/Lighter/Feuerzeug.glb"
+        },
+        "SVGs" : {
+            "lighter_engraving_thumbnail" : "data/3Dmodels/Lighter/textures/thumbnail_svg.svg",
+            "lighter_engraving_thumbnail_body" : "data/3Dmodels/Lighter/textures/thumbnail_svg_body.svg",
+            "lighter_engraving_thumbnail_head" : "data/3Dmodels/Lighter/textures/thumbnail_svg_head.svg"
+        }
+    }
+}

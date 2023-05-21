@@ -1,0 +1,157 @@
+
+@mixin CheckoutMobileProductOverview {
+    > .C_MobileProductOverviewMain {
+        // background-color: rgb(236, 236, 236);
+        position: relative;
+        margin-right: 0%;
+        // padding-left: 1%;
+        padding: 1%;
+        padding-top: 0.1em;
+        // padding-top: 0;
+        // margin-top: -1%;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        justify-content: space-between;
+        // background-color: red;
+        > .listMain {
+            position: relative;
+            width: 100%;
+            // margin-top: 10vh;
+            height: max-content;
+            overflow: auto;
+            padding: 0.1em;
+            padding-right: 0;
+            // margin-right: 0.1em;
+            box-sizing: border-box;
+            > .listElement {
+                position: relative;
+                margin-top: 0.2em;
+                max-height: 20em;
+                height: max-content;
+                // @include T_container();
+                overflow: hidden;
+                gap: 1em;
+                display: flex;
+                align-items: stretch;
+                padding: 0.5em;
+                margin-right: 0.3em;
+                padding-top: -0.5em;
+                box-sizing: border-box;
+                &:not(:last-child){
+                    margin-bottom: 0.5em;
+                }
+                &:not(:only-child) {
+                    &:after{
+                        position: absolute;
+                        left: 0;
+                        top: 0em;
+                        content: "";
+                        width: 100%;
+                        height: 0px;
+                        background-color: black;
+                        border-bottom: 1px solid $color-devider;
+                    
+                    }
+                }
+                &:first-child {
+                    &:after {
+                        display: none;
+                    }
+                }
+                > .Lighter3D {
+                    aspect-ratio: $LIGHTER-ratio;
+                    position: relative;
+                    height: 100%;
+                    box-sizing: content-box !important;
+                    height: 20vh;
+                    > canvas {
+                        box-sizing: content-box !important;
+                    }
+                    > div { 
+                        cursor: pointer;
+                        position: absolute;
+                        background-color: $color-primary;
+                        font-size: 150%;
+                        top: 10%;
+                        left: 80%;
+                        border-radius: 25% 25%;
+                        width: 1.2em;
+                        height: 1.2em;
+                        overflow: hidden;
+                        text-align: center;
+                        vertical-align: middle;
+                        transition: transform 0.3s;
+                        > span {
+                            user-select: none;
+                            position: relative;
+                        }
+                        &:hover {
+                            transition: transform 0.2s;
+                            transform: rotate(10deg);;
+                        }
+                    }
+                }
+                > .informationDiv {
+                    user-select: none;
+                    flex-grow: 1;
+                    position: relative;
+                    width: auto;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: stretch;
+                    align-items: stretch;
+
+                    > div {
+                        &.name {
+                            margin-top: 1em;
+                            order: 1;
+                            font-size: 1em;
+                            width: 100%;
+                        }
+                        &.price {
+                            width: max-content;
+                            margin: 0.25em;
+                            font-size: 2.5em;
+                            order: 2;
+                            >.PriceDiv {
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        > .conclusionMain {
+            // align-self: baseline;
+            // @include T_container();
+            margin: 0.1em;
+            margin-top: 0.1em;
+            width: 100%;
+            padding: 0;
+            box-sizing: border-box;
+            &:before{
+                position: absolute;
+                content: "";
+                width: calc(98% - 0.2em);
+                height: 0px;
+                background-color: black;
+                border-top: 1px solid $color-devider;
+            }
+            > div {
+                margin-top: 0;
+            }
+            > button {
+                background-color: $color-primary;
+                > span {
+                    
+                }
+                &:hover {
+                    background-color: $color-primary-Dark;
+                }
+            }
+        }
+    }
+}

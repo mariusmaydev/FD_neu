@@ -1,0 +1,337 @@
+
+@use "sass:math";
+// @use "tools";
+// @use 'SplintStyling';
+// @use "../../../splint.config/config.style.scss";
+@import "../../../splint.config/config.style.scss";
+@import "_mediaQueries.scss";
+@import "cursor.scss";
+// @import "scrollbar.scss";
+@import "../themes/theme1/_main.scss";
+// @import "3D.scss";
+
+
+body { 
+    position: relative;
+    width: 100vw;
+    overflow: hidden;
+    box-sizing: content-box;
+    top: 6vh; 
+    height: 94vh;
+    @include forMediaBreakpoint(mobile-small){
+        font-size: 1em;
+    }
+    @include forMediaBreakpoint(mobile){
+        font-size: 1em; 
+    }
+    @include forMediaBreakpoint(desktop){
+        font-size: 1em;
+    }
+}
+// @mixin T_container() {
+//     @include box-shadow();
+//     border-radius: 5px 5px;
+//     background-color: white;
+//     padding: 0.5em;
+// }
+@mixin box-shadow($type: 0, $color: black, $alpha: 1){
+    @if($type == 0){
+        box-shadow: transparentize($color, calc($alpha -  0.15)) 0px 0px 3px, transparentize($color, calc($alpha - 0.11)) 0px 0px 3px;
+    } @else if($type == 1){
+        box-shadow: transparentize($color, calc($alpha - 0.01)) 0px 0px 5px 0px, transparentize($color, calc($alpha - 0.01)) 0px 0px 1px 0px;
+    }
+}
+
+@mixin drop-shadow($a, $b, $c, $d){
+    filter: drop-shadow($a $b $c $d);
+}
+
+@mixin border ($px: null){ 
+    @if($px == null){
+        border: 1px solid black;
+    } @else {
+        border: $px solid black;
+    }
+}
+
+.Table {
+    @include border();
+    position: relative;
+    width: 50%;
+    > div{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        > label {
+            position: relative;
+            overflow: hidden;
+        }
+        > span {
+            position: relative;
+            overflow: hidden;
+        }
+    }
+}
+
+.bold {
+    font-weight: bold;
+}
+
+@mixin centerDiv ($width, $height){
+    width: $width;
+    height: $height;
+    top: 50%;
+    left: 50%;
+    margin-left: -(calc($width / 2));
+    margin-top: -(calc($height / 2));
+}
+
+.LoadBar {
+    z-index: 3;
+    border-radius: $border-radius;
+    position: relative !important;
+    background-color: red!important;
+    width: 100%!important;
+    height: 2em!important;
+    overflow: hidden;
+    .LoadBar-progress {
+        position: relative;
+        height: 100%;
+        background-color: green !important;
+    }
+}
+
+.LineDiv {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    flex: auto;
+    overflow: hidden;
+    height: 100%;
+    border: none;
+    hr {
+        display: block;
+        position: relative;
+        color: orange;
+        background-color: orange;
+        opacity: 1;
+        width: 0%;
+        margin: 0;
+        top: 50%;
+        visibility: visible;
+        animation-duration: 0.8s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out;
+    }
+}
+
+@keyframes NavBarLine {
+    0%   {width: 0%;}
+    100% {width: 100%;}
+}
+
+
+.Text-primary {
+    color: $color-primary-text;
+}
+
+.Text-secondary {
+    color: $color-secondary-text;
+}
+
+.Text-small {
+    font-size: 0.75em;
+}
+
+
+.SliderDivMain {
+    @include border();
+}
+
+
+
+.TextInputDiv {
+    position: relative;
+    background-color: $color-background;
+    border-radius: $border-radius;
+    margin: 0.5em;
+    margin-bottom: 1.5em;
+    font-size: inherit;
+    height: 10em;
+    textarea {
+        position: relative;
+        outline: 0;
+        resize: none;      
+        border: none;
+        width: 100%;
+        height: 100%;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        padding-left: 0.5em;
+        word-break: normal;
+        border: 1px solid black;
+        border-radius: $border-radius !important;
+        &.inputFilled {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          vertical-align: bottom;
+          padding-top: 1.1em;
+          padding-bottom: 0.1em;
+          padding-left: 0.5em;
+        }
+        &::-webkit-input-placeholder {
+            text-indent: 0.2em !important;
+        }
+    }
+    label {
+        user-select: none;
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        background-color: $color-background;
+        font-weight: inherit;
+        font-style: normal;
+        font-size: 0.5em;
+        visibility: hidden;
+        margin-left: 1em;
+        margin-top: 0.11em;
+        padding-top: 0.39em;
+        padding-bottom: 0.13em;
+        border-top-right-radius: 5px 5px;
+    }
+    .horizontalLine {
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+        top: 0.89em;
+        height: 0px;
+        left: 0;
+        margin-block: 0px;
+        margin-inline: 0.5em;
+    }
+}
+
+.InputDivMain {
+    position: relative;
+    background-color: $color-background;
+    // border-radius: 5px;
+    margin: 0.5em;
+    // font-size: inherit;
+    height: min-content;
+    display: inline-flex;
+    button {
+        @include border();
+        border-left: none;
+        margin: 0;
+        background-color: transparent;
+        border-top-right-radius: 5px !important;
+        border-bottom-right-radius: 5px !important;
+        padding-inline: 0.5em;
+        // box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        > span {
+            position: relative;
+            // box-sizing: content-box;
+            font-size: 1.3em;
+        }
+        
+        &[state*='active'] {
+            background-color: $color-primary-Dark;
+        }
+        &[state*='passive'] {
+            background-color: transparent;
+            &:hover {
+                background-color: $color-primary;
+            }
+        }
+    }
+    label {
+      position: absolute;
+      z-index: 1;
+      font-weight: inherit;
+      font-style: normal;
+      font-size: 0.5em;
+      visibility: hidden;
+      margin-left: 1em;
+      margin-top: 0.5em;
+    }
+    input {
+        position: relative;
+      border: none;
+      width: 100%;
+      height: 100%;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      padding-left: 0.5em;
+      word-break: normal;
+      border: 1px solid black;
+      font-size: inherit; 
+      border-radius: $border-radius !important;
+      outline: none;
+      &.inputFilled {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        vertical-align: bottom;
+        padding-top: 0.9em;
+        padding-bottom: 0.1em;
+        padding-left: 0.5em;
+      }
+      &.button { 
+        border-top-right-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+      }
+      &::-webkit-input-placeholder {
+          text-indent: 0.2em !important;
+      }
+    }
+    .invalidInput{
+        color: red;
+        background-color: $color-primary-light;
+    }
+}
+
+// .DropDownInputMain {    
+//     position: relative;
+//     background-color: $color-background;
+//     border-radius: 5px;
+//     margin: 0.5em;
+//     font-size: inherit;
+//     select {
+//         width: 100%;
+//         height: 100%;
+//         padding-top: 0.5em;
+//         padding-bottom: 0.5em;
+//         padding-left: 0.25em;
+//         word-break: normal;
+//         border: 1px solid black;
+//         border-radius: 5px 5px !important;
+//         &.inputFilled {
+//             position: relative;
+//             width: 100%;
+//             height: 100%;
+//             vertical-align: bottom;
+//             padding-top: 0.9em;
+//             padding-bottom: 0.1em;
+//             padding-left: 0.25em;
+//           }
+//     }
+//     label {
+//         position: absolute;
+//         z-index: 1;
+//         font-weight: inherit;
+//         font-style: normal;
+//         font-size: 0.5em;
+//         visibility: hidden;
+//         margin-left: 1em;
+//         margin-top: 0.5em;
+//     }
+//     .invalidInput{
+//         color: red;
+//         background-color: $color-primary-light;
+//     }
+// }
+
+

@@ -1,0 +1,145 @@
+
+@mixin conv_LeftBar(){
+    > .leftBar {
+        transform: translateX(0px);
+        &:not([loaded*='true']){
+            visibility: hidden;
+            transform: translateX(-30rem);
+        }
+        transition: transform 0.4s ease-out;
+        visibility: visible;
+        
+        position: relative;
+        user-select: none;
+        order: 1;
+        width: 3%;
+        top: calc(1vh + 1em);
+        margin-right: 4rem;
+        > .content {
+            @include T_container();
+            // @include border();
+            min-width: min-content;
+            max-width: fit-content;
+            max-height: max-content;
+            // background-color: $color-primary;
+            position: relative;
+            // z-index: 2;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            // justify-content: center;
+            // align-items: center;
+            padding: 0.5em;
+            gap: 2vh;
+            height: max-content;
+            // background-color: var(--HeaderBackgroundColor);
+            > button {
+                // @include border();
+                position: relative;
+                text-align: center;
+                display: block;
+                // width: 4em;
+                // height: 4em;
+                // margin-left: auto;
+                // margin-right: auto;
+                > span { 
+                    font-size: 3em;
+                }
+                // margin-bottom: 2vh;
+                &[state*='active']{
+                    > span {
+                        color: $color-primary-Dark;
+                    }
+                }
+                .dropdown {
+                    margin-left: 30%;
+                    > div {
+                        .n_RadioButton {
+                            // @include border() ;
+                            border: none;
+                            position: relative;
+                            border-radius: $border-radius;
+                            overflow: hidden;
+                            > .inner {
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: left;
+                                align-items: flex-start;
+                                // margin: 0.2em;
+                                > hr {
+                                    display: none;
+                                }
+                                > div {
+                                    font-size: 1.2rem;
+                                    @include T_container();
+                                    box-sizing: border-box;
+                                    // background-color: white;
+                                    height: calc(100% - 1.4rem);
+                                    margin-bottom: 0.2rem;
+                                    &:hover {
+                                        background-color: $color-primary;
+                                    }
+                                    > .inputBody {
+
+                                        width: 0;
+                                        padding: 0;
+                                        margin: 0;
+                                        position: absolute;
+                                        // display: ;
+                                        > input {
+                                            
+                                        }
+                                        > span {
+                                            display: none;
+                                        }
+                                        // font-size: 1rem;
+                                        // position: relative;
+                                        // display: flex;
+                                        // flex-direction: row;
+                                        // justify-content: start;
+                                        // width: 100%;
+                                        // &:hover {
+                                        //     background-color: $color-primary-light;
+                                        // }
+                                        // > div{
+                                        //     padding: 0.5em 0.4em;
+                                        //     // padding-left: 0.8em;
+                                        //     text-align: left;
+                                        //     position: relative;
+                                        //     width: 100%;
+                                        //     &[state='active']{
+                                        //         color: white;
+                                        //         background-color: $color-primary;
+                                        //     }
+                                        // }
+                                        // > input{
+                                        //     display: none;
+                                        //     position: relative;
+                                        //     left: 0;
+                                        // }
+                                    }
+                                    > .labelDiv {
+                                        > .name {
+                                            > span {
+
+                                            }
+                                        }
+                                        > .displayDiv {
+
+                                        }
+                                    }
+                                    
+                                }
+                
+                            }
+                        }
+                    }
+                }
+            }
+            > input {
+                display: none;
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,96 @@
+// @import '../../general/main.scss';
+// @import '../../general/buttons.scss';
+// @import '../../general/NavigationBar.scss';
+// @import '../../shoppingCart/shoppingCart.scss';
+
+@mixin checkoutAddressMenu() {
+    > .AddressMenuNew_Body {
+        > div {
+            > [id*='head'] {
+                > span {
+
+                }
+            }
+            > button {
+                display: none;
+                > span {
+
+                }
+            }
+            > [id*='menuElement'] {
+                @include AddressInputMenu();
+            }
+        }
+    }
+}
+
+@mixin AddressInputMenu {
+    > .AddressInput {
+        * {
+            // border: none;
+        }
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        row-gap: 0.5em;
+        grid-template-areas: 
+            "fN fN fN fN fN fN lN lN lN lN"
+            "plz plz plz ct ct ct ct cy cy cy"
+            "st st st st st hn hn hn hn hn"
+            "ema ema ema ema ema ph ph ph ph ph";
+        > div {
+            background-color: transparent;
+            box-sizing: border-box;
+            &.S_InputDiv {
+                padding-bottom: -0.5em;
+                > label {
+
+                }
+                // > 
+            }
+            &[id*='title']{
+                display: none;
+            }
+            &[id*='salutation']{
+                display: none;
+                // grid-area: st;
+            }
+            &[id*='firstName']{
+                grid-area: fN;
+            }
+            &[id*='lastName']{
+                grid-area: lN;
+            }
+            &[id*='postcode']{
+                grid-area: plz;
+            }
+            &[id*='city']{
+                grid-area: ct;
+            }
+            &[id*='country']{
+                grid-area: cy;
+            }
+            &[id*='street']{
+                grid-area: st;
+            }
+            &[id*='housenumber']{
+                grid-area: hn;
+            }
+            &[id*='email']{
+                grid-area: ema;
+            }
+            &[id*='phone']{
+                grid-area: ph;
+            }
+            // &[id*='title'],[id*='firstName'],[id*='street'],[id*='salutation']{
+            //     &:after{
+            //         content: "\00a0";
+            //     }
+            // }
+            // &[id*='city']{
+            //     &:after {
+            //         content: ",\00a0";
+            //     }
+            // }
+        }
+    }
+}

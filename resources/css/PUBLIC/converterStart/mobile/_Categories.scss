@@ -1,0 +1,262 @@
+
+@mixin ProjectCategoryMenu-mobile(){
+    .ProjectCategoryMenu {
+        position: relative;
+        height: auto;
+        max-height: max-content;
+        padding-top: 0.4rem !important;
+        padding-bottom: 0.4rem !important;
+        overflow: hidden;
+        transition: all 0.2s ease-in;
+        width: 100%;
+        box-sizing: border-box;
+        // margin: 0.5rem;
+        @include T_container();
+        &[isHidden*='true']{
+            max-height: 0px;
+            height: 0;
+            margin-inline: 0;
+            padding: 0;
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+        }
+        .S-Nesting {
+            .I_expander {
+                // border-left: 1px solid black;
+                // border-bottom: 1px solid black;
+                box-sizing: border-box;
+                position: relative;
+                // left: 0.5rem;
+                padding-left: 1rem;
+                width: calc(100% - 0em);
+                // background-color: red;
+                // @include border();
+                    background-color: transparent;
+                &[state *= 'passive'] {
+                    > .I_expander {
+                        display: none;
+                    }
+                }
+                &[state *= 'active']{
+                    &.extensible {
+                        > .I_headBody{
+                            > .I_header {
+                                &::before {
+                                    transform: translate(-50%, calc(-50% - 6px)) rotate(225deg);
+                                }
+                            }
+                        }
+                    }
+                }
+                &[connected *= 'true']{
+                    > .I_headBody {
+                        > .I_header{
+                            // border-bottom-color: black;
+                            // padding-right: 2.5rem;
+                            // width: 150%;
+                        }
+                    }
+                    // background-color: $color-primary;
+                }
+                &.extensible {
+                    > .I_headBody {
+                        > .I_header {
+                            &::before{
+                                content: '';
+                                // position: absolute;
+                                right: 0;
+                                top: 50%;
+                                display: block;
+                                border-left: 2px solid gray;
+                                border-top: 2px solid gray;
+                                width: 4px;
+                                height: 4px;
+                                float: right;
+                                transform: translate(-50%, calc(-50% - 6px)) rotate(135deg);
+                                transition: transform 0.1s ease-in-out;
+                                margin-right: 0.3em;
+                            }
+                        }
+                    }
+                }
+                &:not(.extensible) {
+                    > .I_headBody {
+                        > .I_header {
+                            &::before{
+                                content: '';
+                                // position: absolute;
+                                right: 0;
+                                top: 50%;
+                                display: block;
+                                border: 1px solid transparent;
+                                border-radius: 50%;
+                                width: 4px;
+                                height: 4px;
+                                float: right;
+                                background-color: gray;
+                                // box-sizing: border-box;
+                                transform: translate(-50%, calc(-50% - 6px)) rotate(135deg);
+                                transition: transform 0.1s ease-in-out;
+                                margin-right: 0.3em;
+                            }
+                        }
+                    }
+                }
+
+                .I_headBody {
+                    &:hover {
+                        > .I_header{
+                            // font-weight: bold;
+                            padding-right: 2.5rem;
+                            width: 150%;
+                            @include SPLINT-border-inset(rgba(0, 0, 0, 0.174), 1px, false, false, true, false);
+                        }
+                    }
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    font-size: 1.2rem;
+                    height: 1.4em;
+                    cursor: pointer;
+                    > .I_inputBody{
+                        position: relative;
+                        left: 1em;
+                        height: 1.2em;
+                        background-color: $color-devider;
+                        // width: 5rem;
+                        font-size: 1em;
+                        >.n_inputDiv {
+                            margin: 0;
+                            height: 1.2em;
+                            >.inputBody{
+                                height: 100%;
+                                >input {
+                                    font-size: 0.8em;
+                                    padding: 0em;
+                                    padding-left: 0.2em;
+                                    &:valid, &:focus {
+                                        outline: 0;
+                                        // border-bottom-color: $c-active;
+                                        +label span {
+                                            // color: $c-active;
+                                            visibility: hidden;
+                                            // font-size: 0.8em;
+                                            transform: none;
+                            
+                                        }
+                                    }
+                                }
+                                > label {
+                                    font-size: 0.8em;
+                                    left: 0.2em;
+                                    top: 0.15em;
+                                    color: black;
+                                    > span {
+                                        color: black;
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    > .I_header {
+                        transition: width 0.8s, padding-right 0.2s, box-shadow 0.1s;
+                        padding-right: 0.5rem;
+                        // @include SPLINT-border-inset(black, 1px, false, false, true, false);
+                            @include SPLINT-border-inset(rgba(0, 0, 0, 0), 1px, false, false, true, false);
+                        min-width: fit-content;
+                        height: 100%;
+                        max-width: 80%;
+                        width: 20%;
+                        display: flex;
+                        align-items: end;
+                        &[state *= 'active']{
+                            + .I_headButtons {
+                                display: none;
+                            }
+                            > span {
+                                height: 0;
+                                width: 0;
+                                font-size: 0;
+                                display: none;
+                            }
+                        }
+                        > span {
+                            cursor: pointer;
+                        }
+                        > .I_editInputDiv{
+                            box-sizing: border-box;
+                            width: 100%;
+                            margin: 0;
+                            height: 1.2em;
+                            >.inputBody{
+                                height: 100%;
+                                >input {
+                                    font-size: 0.8em;
+                                    padding: 0em;
+                                    padding-left: 0.2em;
+                                    &:valid, &:focus {
+                                        outline: 0;
+                                        // border-bottom-color: $c-active;
+                                        +label span {
+                                            // color: $c-active;
+                                            visibility: hidden;
+                                            // font-size: 0.8em;
+                                            transform: none;
+                            
+                                        }
+                                    }
+                                }
+                                > label {
+                                    font-size: 0.8em;
+                                    left: 0.2em;
+                                    top: 0.15em;
+                                    color: black;
+                                    > span {
+                                        color: black;
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    > .I_headButtons {
+                        position: absolute;
+                        visibility: hidden;
+                        height: min-content;
+                        box-sizing: border-box;
+                        // @include SPLINT-border-inset();
+                        right: 30%;
+                        width: 0;
+                        z-index: 1;
+                        // right: 50%;
+                        display: flex;
+                        > button {
+                            display: block;
+                            > span {
+                                font-size: 1.1em;
+
+                            }
+                        }
+                    }
+                }
+                > .sign {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    font-size: 0.8rem;
+                    height: 1.6rem;
+                    width: 0.8rem;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    display: flex;
+                    align-items: end;
+                }
+            }
+            > .I_expander{
+                padding-left: 0.4rem;
+            }
+        }
+    }
+}

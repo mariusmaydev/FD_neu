@@ -1,0 +1,21 @@
+{
+    "lighter": {
+        "body" : {
+            "bumpMap"   : "data/3Dmodels/Lighter/textures/bumpMap_Body.png",
+            "normalMap" : "data/3Dmodels/Lighter/textures/normalMap_Lighter.png"
+        },
+        "inner" : {
+            "texture" : "data/3Dmodels/Lighter/textures/texture_chrome.png"
+            
+        },
+        "engraving" : {
+            "thumbnail" : "data/3Dmodels/Lighter/textures/thumbnail.png",
+            "thumbnail_add" : "data/3Dmodels/Lighter/textures/thumbnail_add.png",
+            "normalMap" : "data/3Dmodels/Lighter/textures/normalMap_Engraving.png"
+        },
+        "models" : {
+            "gltf"  : "data/3Dmodels/Lighter/Feuerzeug.gltf",
+            "glb"   : "data/3Dmodels/Lighter/Feuerzeug.glb"
+        }
+    }
+}

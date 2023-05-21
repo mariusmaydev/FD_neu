@@ -1,0 +1,201 @@
+@import '../../general/main.scss';
+@import '../../general/buttons.scss';
+@import '../../general/NavigationBar/NavigationBar.scss';
+// @import '../designs/designs.scss';
+@import 'toolBar/converterToolBar.scss';
+@import 'elements/_EditorFrame.scss';
+@import 'elements/_EditorFrameMobile.scss';
+@import 'elements/_RightBar.scss';
+@import 'elements/_LeftBar.scss';
+@import 'toolBar/bottomBar/_BottomBar.scss';
+@import '../../general/mediaQueries';
+@import 'DOMConverter/DOMConverterMAIN.scss';
+@import '../../productInformation/productInformation';
+ 
+//
+.Converter3D {
+    position: absolute;
+    background-color: white;
+    width: 500px;
+    height: 750px;
+    left: 100px;
+    top: 100px; 
+    @include border();   
+} 
+body {
+    position: absolute; 
+    margin: 0 !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 0;
+    overflow: hidden;
+    @include forMediaBreakpoint(mobile){
+        // background-color: red;
+    }
+    > .Background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $color-background-subWindow;
+    }
+  
+}
+
+@include forMediaBreakpoint(mobile-small){
+    .editText_mobile {
+        > .background {
+            background-color: $color-background-subWindow;
+        }
+        > .content {
+            background-color: transparent;
+            box-shadow: none;
+            box-sizing: border-box;
+            padding: 0;
+            > .TextInputDiv {
+                box-sizing: border-box;
+                width: 90vw;
+                height: 50vh;
+                margin: 0;
+                background-color: transparent;
+                > label {
+                    display: none;
+                }
+                > textarea {
+                    padding: 0;
+                    background-color: transparent;
+                    box-sizing: border-box;
+                    overflow: auto;
+                    user-select: text !important;
+                    pointer-events: all !important;
+                    border: none;
+                    text-align: center;
+                }
+                hr {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+// canvas {
+// //   image-rendering: -moz-crisp-edges;
+// //   image-rendering: -webkit-crisp-edges;
+// //   image-rendering: pixelated;
+//   image-rendering: crisp-edges;
+// }
+@include forMediaBreakpoint(desktop mobile){
+    .Background3D {
+        // z-index: 1000;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%; 
+        pointer-events: all;
+        background-color: transparent;
+
+        > canvas { 
+            background-color: transparent;
+        }
+    }
+    .Conv_MAIN {
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: transparent;
+        // align-content: center;
+        // gap: 1%;
+        // align-items: stretch;
+        flex-direction: row; 
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 2vh;
+        // width: 100%;
+        top: 6vh;
+        height: 94vh;
+        box-sizing: border-box;
+        overflow: hidden !important;
+        > div {
+            margin-inline: 1%;
+            overflow-x: visible;
+        }
+        @include conv_LeftBar();
+        @include conv_EditorFrame();
+        @include conv_RightBar();
+    
+      }
+}
+
+@include forMediaBreakpoint(mobile-small){
+    .Background3D {
+        // z-index: 1000;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%; 
+        pointer-events: all;
+        background-color: transparent;
+
+        > canvas { 
+            background-color: transparent;
+        }
+    }
+    .Conv_MAIN {
+        position: relative;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        // align-content: center;
+        // gap: 1%;
+        box-sizing: border-box;
+        // align-items: stretch;
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+        // width: 100%;
+        top: 6%;
+        height: calc(100vh - 6vh);
+        overflow: hidden !important;
+
+
+
+        @include conv_EditorFrame_mobile();
+        > .Conv_RightBar {
+            display: none !important;
+        }
+        > .leftBar {
+            display: none !important;
+        } 
+        @include conv_BottomBar();
+      }
+}
+
+.SubWindow_FontFamily {
+
+    > .content {
+        > .TableMain {
+            > .ListMain {
+                display: flex;
+                flex-direction: column;
+                > .ListElement {
+                    &:hover {
+                        background-color: $color-primary-light;
+                    }
+                    &[state*='active']{
+                        background-color: $color-primary;
+                    }
+                    // &[state*='passive']{
+
+                    // }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,319 @@
+@import '../../general/main.scss';
+// @import '../../general/buttons.scss';
+@import '../../general/NavigationBar/NavigationBar.scss';
+// @import '../../shoppingCart/shoppingCart.scss';NavigationBar/NavigationBar
+
+@import 'subPages/_Payment.scss';
+@import 'subPages/_Address.scss';
+@import 'subPages/_Overview.scss';
+@import 'subPages/_Sending.scss';
+@import '_rightPart.scss';
+@import '_mobileProductOverview.scss';
+
+.NavigationBar{
+    height: 0;
+}
+
+body {
+    position: absolute;
+    margin: 0 !important;
+    // margin-top: 1em !important;
+    top: 0 !important;
+    padding: 0;
+    width: 100%;
+    height: 100vh !important;
+    overflow: hidden;
+    background-color: $color-background;
+    display: flex;
+    flex-direction: row;
+    
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.MainButton{
+    position: relative;
+    float: right;
+    right: 5%;
+    font-size: 2em;
+}
+
+.SavedInformationMain {
+    position: relative;
+    @include T_container();
+    background-color: white;
+    margin: 0.5em;
+    box-sizing: border-box;
+    overflow:hidden;
+    > .element{
+        position: relative;
+        // box-sizing: border-box;
+        // left: 1%;  
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        padding-inline: 0.5em;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        > div {
+            position: relative;
+            // box-sizing: border-box;
+            display: flex;
+            flex-wrap: wrap;
+            width: 60%;
+        }
+        > button {
+            right: 0;
+            margin-left: auto;
+            position: relative;
+        }
+        > label {
+            position: relative;
+            width: 25%;
+        }
+    }
+}
+.CheckoutMain{
+    // font-size: 1.5em;
+    position: relative;
+    // margin-left: 10vw;
+    width: 100em;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    > .CheckoutLeftMain {
+        padding-left: 10%;
+        overflow: visible;
+        position: relative;
+        border-right: 1px solid $color-devider;
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        @include forMediaBreakpoint(mobile-small){
+            padding-left: 5%;
+            width: 90%;
+            border: none;
+        }
+        height: 100%;
+        > .CheckoutHead {
+            position: relative;
+            width: 100%;
+            height: 20%;
+            box-sizing: border-box;
+            > img {
+                position: relative;
+                top: 10%;
+                // width: 5%;
+                height: 50%;
+                margin: 0;
+            }
+            > .progressDivMain{
+                position: relative;
+                top: 22.5%;
+                height: 15%;
+                width: calc(100% - 1em);
+                // padding-inline: 0.5em;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: row;
+                // padding-inline: 1%;
+                > .Field {
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    height: 100% !important;
+                    cursor: pointer;
+                    span {
+                        padding-inline: 1em;
+                    }
+                }
+            }
+        }
+        
+        > .SendingMain{
+            width: 98%;
+            left: 1%;
+            .sendingChoiceDiv {
+                > .RadioButton {
+                    border: none;
+                    background-color: white;
+                    @include box-shadow();
+                    > div {
+                        > div {
+                            display: flex;
+                            width: 100%;
+                            align-items: center;
+                            > input {
+                                margin: 2%;
+                            }
+                            > div[id*='Label']{
+                            }
+                            > div[id*='Price']{
+                                position: relative;
+                                right: 0;
+                                align-items: center;
+                                margin-left: auto;
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+            @include checkout_Sending();
+            @include checkout_Payment();
+            @include checkout_Address();
+        > div {
+            position: relative;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            > * {
+                margin: 0.5em;
+                margin-right: 0.5em;
+                margin-top: 0.5em;
+            }
+            
+            > .productOverviewBody {
+                @include T_container();
+                position: relative;
+                display: none;
+                height: min-content;
+                @include forMediaBreakpoint(mobile-small){
+                    display: block;
+                }
+                padding: 0;
+                box-sizing: content-box;
+                > .buttonBody {
+                    > * {
+                        cursor: pointer;
+                    }
+                    cursor: pointer;
+                    // padding-inline: 0.5em;
+                    padding: 0;
+                    display: flex;
+                    height: max-content;
+                    justify-content: stretch;
+                    // width: 100%;
+                    // height: 100%;
+                    transition: box-shadow 0.3s;
+                    &:hover {
+                        @include box-shadow(0, black, 0.95);
+                    }
+                    > button {
+                        &.switchButton {
+                            padding: 1rem;
+
+                        }
+                        &.namedButton {
+                            width: 100%;
+                            border: none;
+                            box-shadow: none;
+                            padding: 1rem;
+                            padding-left: 0.5rem;
+                            margin: 0;
+                            justify-content: left;
+                            text-align: left;
+                            background-color: transparent;
+                            > span {
+                                font-size: 1.5em;;
+                            }
+                            &:hover {
+                                background-color: transparent;
+                            }
+                        }
+                    }
+                    > div {
+                        user-select: none;
+                        height: 100%;
+                        margin-top: auto;
+                        margin-bottom: auto;
+                        margin-right: 1rem;
+                        font-size: 1em;
+                    }
+                }
+                > .expander {
+                    position: absolute;
+                    @include T_container();
+                    overflow: hidden;
+                    top: 100%;
+                    z-index: 1000;
+                    width: 100%;
+                    height: 0;
+                    padding: 0;
+                    // background-color: red;
+                    &[state*='active']{
+                        height: 70vh;
+                        padding: 0em;
+                    }
+                    &[state*='passive']{
+                        height: 0;
+                        padding: 0;
+                    }
+                    @include CheckoutMobileProductOverview();
+
+                }
+            }
+            > .button_submit {
+                position: relative;
+                float: right;
+                cursor: pointer;
+                // margin: 1em
+                @include T_container();
+                border: none;
+                box-sizing: border-box;
+                > span {
+                    box-sizing: border-box;
+                    position: relative;
+                    margin: 2em;
+                    font-size: 1.5em;
+                }
+                &:hover {
+                    background-color: $color-primary;
+                }
+            }
+        }
+        // }
+    }
+    @include Checkout_rightPart();
+}
+
+
+.fastCheckout {
+    border: none !important;
+    // box-shadow: none!important;
+    // margin: 0!important;
+    box-sizing: border-box;
+    // padding: 0!important;
+    padding: 1em;
+    @include T_container();
+    > div {
+        display: flex!important;
+        justify-content: center;
+        > div {
+
+        }
+    }
+}
+
+
+@keyframes AddressList-expand {
+    0%      { height: 2em  };
+    100%    { height: 20em };
+}
+
+@keyframes AddressList-implode {
+    0%      { height: 2em; };
+    100%    { height: 20em };
+}
+
+@keyframes rotateF {
+    0%      { 
+        transform: rotate(0deg) translate(50%, 50%); 
+    };
+    100%      { 
+        transform: translate(50%, 50%) rotate(9deg); 
+    };
+}

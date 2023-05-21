@@ -1,0 +1,166 @@
+@import "vars.scss";
+
+@mixin T_button_4(){
+    box-shadow: none ;
+
+    border-radius: 0px;
+    background-color: darkgray;
+    color: white;
+    padding: 0.5em;
+    border: none;
+    cursor: pointer;
+    box-sizing: content-box;
+    margin: 0.5em;
+    overflow: hidden;
+    > span {
+        box-sizing: border-box;
+    }
+    &[state*='active'] {
+        background-color: $color-button-active;
+    }
+    &[state*='passive'] {
+        background-color: $color-button-passive;
+    }
+    &:hover {
+        background-color: gray;
+    }
+    &:active:hover {
+        background-color: orange;
+    }
+}
+
+@mixin T_button_5(){
+    box-shadow: none ;
+    background-color: $color-primary;
+    transition: box-shadow ease-in 0.1s;
+    > span {
+        box-sizing: border-box;
+    }
+    &[state*='active'] {
+        background-color: $color-button-active;
+    }
+    &[state*='passive'] {
+        background-color: $color-button-passive;
+    }
+    &:hover {
+        @include box-shadow(1, $color-primary, 0.5);
+        // background-color: gray;
+    }
+    &:active:hover {
+        background-color: orange;
+    }
+}
+
+
+.button_Default {    
+    user-select: none;
+    box-shadow: transparentize(black, calc(1 -  0.15)) 0px 0px 3px, transparentize(black, calc(1 - 0.11)) 0px 0px 3px;
+
+    border-radius: $border-radius;
+    background-color: white;
+    padding: 0.5em;
+    border: none;
+    cursor: pointer;
+    box-sizing: content-box;
+    margin: 0.5em;
+    overflow: hidden;
+    > span {
+        box-sizing: border-box;
+    }
+    &[state*='active'] {
+        background-color: $color-button-active;
+    }
+    &[state*='passive'] {
+        background-color: $color-button-passive;
+    }
+    &:hover {
+        background-color: $color-button-hover;
+    }
+}
+
+
+.button_General {
+    user-select: none;
+    background-color: transparent;
+    border: none;
+    color: $color-primary-text;
+
+    display: inline-block;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 0px;
+    > span {
+        display: block;
+        position: relative;
+        text-align: center;
+        &:not(.material-symbols-outlined){
+            text-decoration: underline;
+        }
+    }
+    > .dropdown {
+      position: absolute;
+      // @include border();
+      // background-color: red;
+      left: 100%;
+      margin-left: 10%;
+      top: 0;
+      width: fit-content;
+      height: max-content;
+      overflow: hidden;
+    }
+    &:hover {
+        > span {
+            &:not(.material-symbols-outlined){
+                text-decoration-color: $color-button-hover;
+                animation-duration: 100ms;
+                animation-timing-function: ease-in-out;
+                animation-fill-mode: both;
+                animation-name: buttonAnimation;
+            }
+            &.material-symbols-outlined {
+                color: $color-primary-Dark !important;
+                animation-duration: 100ms;
+                animation-timing-function: ease-in-out;
+                animation-fill-mode: both;
+                animation-name: buttonIconAnimation;
+                &.rotate90{
+                    animation-name: buttonIconAnimation90;
+                }
+            }
+            // color: $color-secondary-text;
+        }
+        &:after {
+            > span {
+                &:not(.material-symbols-outlined){
+                    text-decoration-color: $color-button-hover;
+                    animation-duration: 100ms;
+                    animation-timing-function: ease-out;
+                    animation-fill-mode: backwards;
+                    animation-direction: reverse;
+                    animation-name: buttonAnimationB;
+                }
+                &.material-symbols-outlined {
+                    color: $color-primary-Dark !important;
+                    // animation-duration: 100ms;
+                    // animation-timing-function: ease-in;
+                    // animation-fill-mode: forwards;
+                    // animation-name: buttonIconAnimation;
+                    // &.rotate90{
+                    //     animation-name: buttonIconAnimation90;
+                    // }
+                }
+                color: white;
+            }
+        }
+    }
+    &.simple {
+        background-color: transparent;
+        border: none;
+        text-decoration: underline;
+        // &.middle {
+        //     position: absolute;
+        //     right: 3%;
+        //     top: 1.1em;
+        // }
+    }
+}

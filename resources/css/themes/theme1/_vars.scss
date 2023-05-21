@@ -1,0 +1,40 @@
+
+$--IMPORTANT            : "!important";
+$size__site_content_width: 1024px;
+
+$LIGHTER-ratio          : 0.6609; // 38/57.5;
+$LIGHTER-ratio2         : 1.5131;
+
+$font-family-main       : "Arial";
+
+$color-header           : white;
+
+
+$color-primary          : #FFAD5B;
+$color-primary-Dark     : #ffa228;
+$color-primary-light    : #fff1de;
+$color-background-orange: #fefefe;
+$color-primary-text     : #000000;
+$color-secondary-text   : #BCBCBC;
+$color-background       : #fff8f1;//#fdfdfd;
+$color-devider          : #d9d9d9;
+$color-accent           : #019FAB;
+$color-gold             : rgb(255, 215, 0);
+$color-chrome           : rgb(239, 248, 255);
+$color-tooltip          : rgb(192, 192, 192);
+$color-shadow           : rgb(192, 192, 192);
+$color-lighter          : rgb(24, 24, 24);
+$color-background-subWindow : rgba(54, 54, 54, 0.379);
+
+//button
+$color-button-active    : $color-primary;
+$color-button-passive   : $color-primary-light;
+$color-button-hover     : $color-primary-Dark;
+$color-button-disabled  : lightgrey;
+
+//scrollbar
+$scrollbar-thumb-color          : rgb(189, 189, 189);
+$scrollbar-track-color          : transparent;
+$scrollbar-thumb-hover-color    : gray;
+
+$border-radius          : 0px;

@@ -1,0 +1,307 @@
+@import '../ADMIN.scss';
+
+body {
+    >.popup_removeProduct {
+        > .content {
+            > .button_close {
+                position: sticky;
+                float: right;
+            }
+            > div {
+                margin: 0.5rem;
+                > span {
+
+                }
+            }
+            > button {
+                &.break {
+                    background-color: $color-primary;
+                    &:hover {
+                        background-color: $color-primary-Dark;
+                    }
+                }  
+                &.submit {
+                    border: 1px solid red;
+                }
+            }
+        }
+    }
+    > .head {
+        display: flex;
+    }
+    > .main {
+        margin-top: 1rem !important;
+        height: calc(100% - 1.5rem);
+        max-width:70rem;
+        margin-left:auto;
+        margin-right: auto;
+        box-sizing: border-box;
+        > .newProductBody{
+            box-sizing: border-box;
+            height: max-content;
+            padding: 0.5rem;
+            width: 100%;
+            @include SPLINT-border-inset(gray, 1px);
+            > .head {
+                @include SPLINT-border-inset(gray, 0.5px, false, false, true, false);
+                > span {
+                    font-size: 1.5em;
+                }
+            }
+            > .infoBody{
+                width: 100%;
+                display: flex;
+                justify-content: stretch;
+                align-items: stretch;
+                > s-input {
+                    width: 50%;
+                    margin: 0.5rem;
+                }
+            }
+            > .sizeBody {
+                width: 100%;
+                display: flex;
+                > s-input {
+                    width: 50%;
+                    margin: 0.5rem;
+
+                }
+            }
+            > button {
+                // box-sizing: border-box;
+                position: relative;
+                display: block;
+                // float: right;
+                // right: -100%;
+                margin: 0.5rem;
+                margin-left: auto;
+                // margin-right: 0;
+                background-color: $color-primary;
+                &:hover {
+                    background-color: $color-primary-Dark;
+                }
+            }
+            > .s-DynamicInput {
+                // @include SPLINT-border-inset();
+                // @include SPLINT-border-inset(rgb(0, 0, 0), 1px, false, false, true, false);
+                margin-top: 1em;
+                margin-bottom: 1em;
+                padding-top: 1em;
+                padding-bottom: 1em;
+                > .headlineContainer {
+                    margin-left: 0.5em;
+                    @include SPLINT-border-inset(gray, 0.5px, false, false, true, false);
+
+                    > .headline {
+                        > span {
+                            // font-weight: bold;
+                            font-size: 1.25em;
+                        }
+
+                    }
+                    > hr {
+                        display: none;
+                    }
+                }
+                > .content {
+                    > .listElement {
+                        display: flex;
+                        > .content {
+                            width: 100%;
+                            display: flex;
+                            justify-content: stretch;
+                            align-items: stretch;
+                            > div {
+                                width: 100%;
+
+                            }
+                        }
+                        > .buttons {
+                            width: min-content;
+                            box-sizing: border-box;
+                            overflow: hidden;
+                            padding: 0.5em;
+                            > button {
+                                margin: 0;
+                                &:not(:last-child){
+                                    margin-bottom: 0.5em;
+                                }
+                                box-sizing: border-box;
+                                padding: 0;
+                                width: 100%;
+                                > span {
+                                    font-size: 2em;
+                                }
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }
+        > .ProductsList {
+            width: 100%;
+            > .headline {
+                width: 100%;
+                @include SPLINT-border-inset(gray, 0.5px, false, false, true, false);
+                // margin-bottom: 0.5rem;
+                margin-top: 1rem;
+                padding-left: 0.5rem;
+                > span {
+                    font-size: 1.5em;
+                }
+            }
+            > .Table2D {
+                width: 100%;
+                > table {
+                    table-layout: auto;
+                    width: 100%;
+                    > tr {
+                        // &.Table2DHead {
+                            @include SPLINT-border-inset(gray, 0.5px, false, false, true, false);
+                        // }
+                        > th {
+                            text-align: left;
+                            > div {
+                                > span {
+
+                                }
+                            }
+                        }
+                        > td {
+                            width: 5% !important;
+                            // @include SPLINT-border-inset(gray, 0.5px, false, true, false, false);
+                            padding: 0.5rem;
+                            vertical-align: top;
+                            &:not(:first-child){
+                                border-left: 1px solid gray;
+                            }
+                            &[col='3']{
+                                max-width: min-content;
+                                > div {
+                                    // width:50%;
+                                    margin-inline: 0;
+                                    display: grid;
+                                    grid-template-columns: 1fr 1fr;
+                                    > * {
+                                        padding-bottom: 0.25rem;
+                                        padding-top: 0.25rem;
+                                        margin: 0;
+                                        margin-bottom: 0.25rem;
+                                        margin-top: 0.25rem;
+                                        // padding-inline: 0.5rem;
+                                        // margin-inline: 0;
+                                        &:not(:last-of-type){
+                                            border-bottom: 1px solid gray;
+
+                                        }
+                                    }
+                                    > label {
+                                        
+                                        grid-column: 1/1;
+                                        // order: 1
+                                    }
+                                    > div {
+                                        grid-column: 2/2;
+                                        > span {
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } 
+    }
+}
+// .ProductsMainElement {
+//     position: relative;
+//     // box-sizing: content-box;
+//     left: 1%;
+//     width: 98%;
+//     height: 100%;
+
+//     // margin: 0 !important;
+//     overflow-y: scroll;
+//     overflow-x: hidden;
+
+//     &[type*='new']{
+//         .priceInput {
+//             color: transparent;
+//             &::selection {
+//                 background-color: transparent;
+//             }
+//         }
+//         .sizeDiv {
+//             display: flex;
+//         }
+//     }
+//     &[type*='list']{
+//         .listElement {
+//             position: relative;
+//             height: 10em;
+//             display: flex;
+//             background-color: $color-secondary-text;
+//             padding: 1%;
+//             margin: 1%;
+//             > img {
+//                 height: 100%;
+//             }
+//             > div {
+//                 position: relative;
+//                 // height: 100%;
+//                 margin-left: 1%;
+//                 display: flex;
+//                 flex-direction: column;
+//                 align-items:flex-start;
+//                 .Table {
+//                     flex-grow: 1;
+//                     position: relative;
+//                     border: none;
+//                     height: fit-content;
+//                     width: 100%;
+//                 }
+//                 .buttonsDiv {
+//                     flex-grow: 1;
+//                     margin-top: 1em;
+//                     height: fit-content;
+//                     position: relative;
+//                     display: flex;
+//                     justify-content: left;
+//                     gap: 1%;
+//                     width: 66%;
+//                     > button {
+//                         > span {
+//                             font-size: 2em;
+//                         }
+//                     }
+
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// .head {
+//     position: relative;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: max-content;
+//     padding: 1%;
+// }
+
+// .priceElement {
+//     position: absolute;
+//     text-align: left;
+//     user-select: all;
+//     pointer-events: none;
+//     font-size: inherit;
+//     font-weight: 400;
+//     top: 0.55em; 
+//     left: 0.56em; 
+//     bottom: 0; 
+//     right: 0;
+// }

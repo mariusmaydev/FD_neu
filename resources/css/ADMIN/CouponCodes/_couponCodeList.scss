@@ -1,0 +1,38 @@
+
+@mixin couponCodeList(){
+    >.listCodeBody {
+        @include T_container();
+        > .Table2D {
+            > table {
+                width: 100%;
+                > tr {
+                    &:nth-child(even){
+                        background-color: $color-devider;
+                    }
+                    &.Table2DHead {
+                        > th {
+                            width: 33%;
+                            border-bottom: 1px solid black;
+                            > div {
+                                > span {
+
+                                }
+                            }
+                        }
+                    }
+                    &.Table2DRow {
+                        > td {
+                            text-align: center;
+                            > div {
+                                > span {
+
+                                }
+                            }
+                        }
+                    }
+                } 
+
+            }
+        }
+    }
+}

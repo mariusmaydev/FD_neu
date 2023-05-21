@@ -1,0 +1,33 @@
+.CursorMain {
+    display: all;
+    backface-visibility: hidden;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    z-index: 999;
+    // transform: translate3d(var(--mouse-x),var(--mouse-y),0);
+}
+
+.customCursor {
+    position: absolute;
+    box-sizing: content-box;
+    will-change: transform;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    // transform: translateX(-50%)translateY(-50%);
+    pointer-events: none;
+    user-select: none;
+    display: auto;
+    z-index: 1000;
+    &.red {
+        background-color: red;
+    }
+    &.orange {
+        color: orange !important;
+    }
+}

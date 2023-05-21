@@ -1,0 +1,27 @@
+
+@import  "main.scss";
+
+.Lighter3D {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    // z-index: 1001;
+
+    &[render*='CONVERTER']{
+        @include border();
+        background-color: red;
+    }
+    > canvas {
+        // display: none; 
+        box-sizing: border-box;
+        background-color: transparent;
+        left: 0;
+        top: 0;
+        position: relative;
+        width: 100%; 
+        height: 100%;
+        overflow: hidden;
+    }
+}

@@ -1,0 +1,129 @@
+
+$settings: (
+    'font': (
+        'color-1': rgb(30, 30, 30),
+        'color-2': rgb(55, 55, 55)
+    )
+);
+@keyframes testA {
+    to {opacity: 1;}
+    from {opacity: 0;}
+  }
+
+
+@function getV($keys...){
+    $map: $settings;
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+    @return $map;
+}
+@mixin indexOverlay {
+    > .indexOverlayMain {
+        // z-index: 100;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+        user-select: none;
+        background-color: rgba(255, 255, 255, 0.534);
+        // @include SPLINT-border-inset(10px);
+        > .indexOverlayContent {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            overflow-y: scroll;
+            // scroll-snap-type: y mandatory;
+            > .part {
+                width: 100%;
+                height: 100%;
+                // scroll-snap-align: start;
+                // @include SPLINT-border-inset();
+                > .content {
+                    width: 100%;
+                    height: 100%;
+                    overflow: hidden;
+                    > .textBody {
+                        position: sticky;
+                        z-index: 1;
+                        width: 45%;
+                        height: max-content;
+                        top: 40%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: start;
+                        margin-left: 5%;
+
+                        > p {
+                            &.headline {
+                                font-size: 2.5rem;
+                                color: getV('font', 'color-1');
+                            }
+                            &.content {
+                                font-size: 1.5rem;
+                                color: getV('font', 'color-2');
+                            }
+                        }
+                        &.part1_1{
+                            top: 20%;
+                        }
+                        &.part3_1 {
+                            top: 10%;
+                            width: 35%;
+                        }
+                        &.part3_2 {
+                            top: 70%;
+                        }
+                        &.part4_1 {
+                            top: 50%;
+                        }
+                        // @include SPLINT-border-inset(blue);
+                        > p, .textContent {
+                            // @include SPLINT-border-inset(green);
+
+                        }
+                    }
+                    > button {
+                        pointer-events: all;
+                        position: sticky;
+                        z-index: 2;
+                        top: 80%;
+                        left: 10%;
+                        @include T_button_4();
+                        background-color: $color-primary-Dark;
+                        > span {
+                            font-size: 3rem;
+
+                        }
+                    }
+                }
+                > .NavigatorBottomContainer {
+                    pointer-events: all;
+                    position: sticky;
+                    width: 100%;
+                    height: max-content;
+                    bottom: 0;
+                    background-color: transparent;
+                    z-index: 1;
+                    justify-content: center;
+                    overflow: hidden;
+                    transition: opacity 0.3s;
+                    > button {
+                        pointer-events: all;
+                        z-index: 1;
+                        width: 100%;
+                        cursor: pointer;
+                        > span {
+                            display: inline-block;
+                            width: max-content;
+                            font-size: 4rem;;
+                            transform:rotate(-90deg);
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

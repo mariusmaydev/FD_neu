@@ -1,0 +1,65 @@
+@import '../../publicMain.scss';
+
+@mixin profile_ImageMenu(){
+    > .headline {
+        margin-left: 1.3% !important;
+    }
+    .horizontalLine {
+        position: relative;
+        // top: 0;
+        margin-inline: 0;
+        left: 0.5%;
+        width: 99%;
+        margin-bottom: 0;
+        // height: 1px;
+        // border: none;
+        // border-top: 1px solid $color-devider;
+    }
+    .ImageMenu_MAIN {
+        position: relative;
+        user-select: none;
+        pointer-events: all;
+        border: none;
+        // @include border();
+        background-color: transparent;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        margin-top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: stretch;
+        overflow-y: auto;
+        padding-left: 0.5%;
+        .ImageMenuFilter {
+            display: none;
+            margin-top: 0;
+            user-select: none;
+            height: max-content;
+            width: 100%;
+        }
+        .ImageMenuList {
+            position: relative;
+            background-color: transparent;
+            user-select: none;
+            margin-top: 1%;
+            overflow: visible;
+            padding-top: 0;
+            padding-top: 0;
+            width: 100%;
+            // box-sizing: border-box;
+            // padding: 0;
+            > div {
+                > div {
+                    overflow: visible;
+                    > .DesignListImageElement {
+                        @include box-shadow(0, black, 0.8);
+                    }
+                }
+            }
+            
+        }
+    }
+}

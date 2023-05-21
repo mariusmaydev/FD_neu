@@ -1,0 +1,187 @@
+@import '../general/buttons.scss';
+// @import '../general/NavigationBar.scss';
+@import '../general/main.scss';
+// @import '../ADMIN/designs/designs.scss';
+
+$color-image-hover         : rgba(64, 64, 64, 0.553);
+
+@mixin imageMenuDesktop(){
+    .ImageMenu_MAIN {
+        position: absolute;
+        border: none;
+        background-color: transparent;
+        user-select: all;
+        pointer-events: all;
+        z-index: 1000;
+        top: calc(7vh - 0.25rem);
+        left: 5%;
+        width: 90%;
+        height: calc(100% - 7vh + 0.25rem);
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: stretch;
+        align-items: center;
+        overflow: visible;
+        > .ImageMenuFilter {
+            @include T_container();
+            order: 1;
+            flex-grow: 0;
+            flex-shrink: 3;
+            position: relative;
+            width: 100%;
+            margin: 0;
+            margin-top: 5%;
+            margin-bottom: 0;
+            height: 90%;
+            .ModeSwitch {
+                position: relative;
+                display: inline-block;
+                width: 98%;
+                height: max-content;
+                margin: 1%;
+                margin-top: 1em;
+                overflow: hidden;
+                > div {
+                    display: flex;
+                    justify-content: stretch;
+                    align-items: stretch;
+                    padding: 0.2em;
+                    gap: 1%;
+                    button {
+                        @include box-shadow();
+                        width: 100%;
+                        // padding: 0.2em;
+                        // margin-inline: 1em;
+                        border-radius: $border-radius;
+                        border: none;
+                        position: relative;
+                        &:hover{
+                            background-color: $color-primary;
+                        }
+                    }
+                }
+            }
+            .InputDivMain {
+                > button {
+                    &:hover {
+                        background-color: $color-primary;
+                    }
+                }
+        
+            } 
+        }
+        @include SPLINT-AdaptiveTableStyle($border-radius);
+        >.AdaptiveTableMain {
+            > .ListMain {
+                > .column {
+                    > .ListElement {
+                        padding: 0.3rem;
+                        > img {
+                            @include box-shadow(0, rgba(255, 255, 255, 0.705), 0.4);
+                            border-radius: $border-radius;
+                        }
+                        > .hoverDiv {
+                            margin: 0.3rem;
+                            width: calc(100% - 0.6rem);
+                            height: calc(100% - 0.6rem);
+                        }
+                    }
+                }
+            }
+        }
+        > .AdaptiveTableMain {
+            &::-webkit-scrollbar {
+                display: none;
+            }
+              
+            /* Track */
+            &::-webkit-scrollbar-track {
+                display: none;
+            }
+            
+            /* Handle */
+            &::-webkit-scrollbar-thumb {
+                display: none;
+            }
+             
+            /* Handle on hover */
+            &::-webkit-scrollbar-thumb:hover {
+                display: none;
+            }
+            // > .ListMain {
+
+            // }
+        }
+    }
+    // > .Background {
+    //     position: absolute;
+    //     user-select: all;
+    //     pointer-events: all;
+    //     top: 0;
+    //     left: 0;
+    //     width: 100%;
+    //     height: 100%;
+    //     background-color: rgba(43, 43, 43, 0.651);
+    //     background-color: rgba(225, 225, 225, 0.479);
+    // }
+
+    .HashtagListMenu {
+        position: relative;
+        margin: 1%;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        height: max-content;
+        font-size: 1em;
+        > div {
+            @include box-shadow(1);
+            background-color: $color-primary-light;
+            $map: (
+                background-color    : $color-primary,
+                border              : 0px solid yellow
+                );
+            @include onActive($map);
+            border-radius: $border-radius;
+            padding: 0.2em;
+            margin: 0.15em;
+            transition: background-color 0.2s;
+            transition: transform 0.2s;
+            &:hover {
+                background-color: $color-primary-Dark;
+                transform: translateY(-10%);
+            }
+            > button {
+                position: relative;
+                padding: 0;
+                margin: 0;
+                vertical-align: sub;
+                font-size: 1em;
+                box-sizing: content-box;
+                display: inline;
+                > span {
+                    position: relative;
+                    display: contents;
+                    box-sizing: border-box;
+                }
+            }
+        }
+    }
+
+
+
+    .divider {
+        display: none;
+        order: 2;
+        flex-grow: 0;
+        flex-shrink: 1;
+        position: relative;
+        margin-inline: 1%;
+        top: 3%;
+        height: 94%;
+        width: 1px;
+        border: none;
+        border-left: 1px solid black;
+    }
+}

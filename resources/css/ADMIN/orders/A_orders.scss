@@ -1,0 +1,425 @@
+@import '../../general/main.scss';
+@import '../../general/buttons.scss';
+// @import '../../general/NavigationBar.scss';
+@import '../ADMIN.scss';
+// @import '../../addresses/address.scss';
+
+.head {
+    display: flex;
+    > .n_RadioButton { 
+        border: none;
+        > .inner {
+            height: 100%;
+            display: flex;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            margin: 0rem;
+            > hr {
+                display: none;
+            }
+            > div {
+                @include T_container();
+                margin: 0.2rem;
+                height: calc(100% - 1.4rem);
+                cursor: pointer;
+                &:hover {
+                    background-color: $color-primary;
+                }
+                // margin-inline: 1rem;
+                // margin-inline: 1em;
+                display: flex;
+                // height: fit-content;
+                > .labelDiv {
+                    > .name {
+                        > span {
+                            white-space:nowrap;
+                            word-wrap: normal;
+                        }
+                    }
+                }
+                > .inputBody {
+                    display: none;
+                    > input{
+                        display: none;
+                        position: relative;
+                        left: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+.orderListMain {
+    margin-top: 1rem;
+    // margin: 1%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 100%;
+    > .listElement {
+        margin: 0.5rem;
+        @include T_container();
+        // @include border();
+        display: flex;
+        box-sizing: border-box;
+        width: calc(100% - 1rem);
+        justify-content: stretch;
+        height: 10em;
+        &[state*='active']{
+            border: 1px solid green;
+            // background-color: rgba(70, 201, 70, 0.145);
+        }
+
+        > .AddressListElement {  
+            width: 60%;       
+            display: flex;
+            flex-direction: row;
+            justify-content: stretch;
+            >.information {
+                width: 30%;
+                position: relative;
+                div {
+                    display: flex;
+                    div {
+                        &[id*='title'],[id*='firstName'],[id*='street'],[id*='salutation']{
+                            &:after{
+                                content: "\00a0";
+                            }
+                        }
+                        &[id*='city']{
+                            &:after {
+                                content: ",\00a0";
+                            }
+                        }
+                    }  
+                }
+                
+            }     
+            > .Table {
+                width: fit-content;
+                position: relative;
+                border: none;
+                span {
+                    margin-left: 0.5em;
+                }
+            }
+            > .buttonsDiv {
+                width: 20%;
+                position: relative;
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-end;
+            }
+        }
+        > .projectTable {
+            margin-right: 0.5em;;
+            width: max-content;
+            > .Table2DMain {
+                border-collapse: collapse;
+                td, th {
+                    box-sizing: border-box;
+                    padding: 0.25em;
+                    > div {
+                        text-align: center;
+                    }
+                }
+                >.Table2DHead {
+                    > th {
+                        border-right: 1px solid gray;
+                        border-bottom: 1px solid gray;
+                        &:last-child {
+                            border-right: none;
+                        }
+                    }
+                }
+                >.Table2DRow {
+                    
+                    &[state*='active']{
+                        background-color: rgba(0, 255, 0, 0.568);
+                    }
+                    > td {
+                        border-right: 1px solid gray;
+                        &:last-child {
+                            border: none;
+                        }
+                    }
+                }
+            }
+        }
+        > .infoTable {
+            margin-right: 1em;
+            margin-left: 0.5em;
+            width: max-content;
+            > .Table2DMain {
+                border-collapse: collapse;
+                td, th {
+                    box-sizing: border-box;
+                    padding: 0.25em;
+                    > div {
+                        text-align: center;
+                    }
+                }
+                >.Table2DRow {
+                    border-bottom: 1px solid gray;
+                    &:last-child {
+                        border: none;
+                    }
+                    > td {
+                        &:first-child{
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.ADMIN_orderMain {
+    top: 0;
+    margin-top: 1rem;
+    position: relative;
+    height: calc(100% - 1.5rem);
+    box-sizing: border-box;
+    > .orderOverview {
+        position: relative;
+        box-sizing: border-box;
+        // @include border();
+            height: 100%;
+            width: 100%;
+        display: flex;
+        > .content {
+            position: relative;
+            width: 100%;
+            // @include border();
+            height: 100%;
+            display: flex;
+            box-sizing: border-box;
+            flex-direction: column;
+            > .projectsDiv {
+                box-sizing: border-box;
+                position: relative;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: row;
+                flex-basis: 50%;
+                justify-content: stretch;
+                align-items: stretch;
+                flex-wrap: wrap;
+                // @include border();
+                // height: 100%;
+                height: max-content;
+                width: 100%;
+                > .listElement {
+                    flex-grow: 1;
+                    margin-inline: 0.5rem;
+                    margin: 0.5em;
+                    background-color: white;
+                    @include box-shadow();
+                    height: 20em;
+                    display: flex;
+                    &[state*='active']{
+                        background-color: rgb(236, 255, 236);
+                    }
+                    
+                    > .Lighter3D {
+                        position: relative;
+                        box-sizing: border-box;
+                        margin-inline: 1rem;
+                        aspect-ratio: $LIGHTER-ratio;
+                        transform: translateY(-2%);
+                        width: 15%;
+                        min-width: max-content;
+                        > canvas {
+                            transform: scale(1.3);
+                            position: relative;
+                            height: 100%;
+                            width: 100%;
+                        }
+                    }
+                    > .informationDiv {
+                        width: 100%;
+                        display: flex;
+                        justify-content: stretch;
+                        align-items: stretch;
+                        > div {
+                            width: auto;
+                            margin: 0.2em;
+                            padding: 0.4em;
+                            border-right: 1px solid lightgray;
+                            border-left: 1px solid lightgray;
+                        }
+                        > .laserDiv {
+                            display: flex;
+                            flex-direction: column;
+                            // justify-content: center;
+                            align-items: center;
+                            &[state*='active']{
+                                background-color: rgb(236, 255, 236);
+                            }
+                            >.laser_head {
+                                font-size: 1.5em;
+                                margin-bottom: 0.5em;
+                            }
+                            > .AmountDiv {
+                                width: max-content;
+                                > div {
+                                    width: 4em;
+                                }
+                            }
+                            > button {
+                                background-color: $color-primary;
+                                margin-top: auto;
+                                top: 90%;   
+                                 user-select: none;
+                                border: none;
+                                color: $color-primary-text;
+                            
+                                display: inline-block;
+                                font-size: 1em;
+                                cursor: pointer;
+                                border-radius: 0px;
+                                padding: 0.2em;
+                                @include box-shadow();
+                                &:hover {
+                                    background-color: $color-primary-Dark;
+                                }
+                                > span {
+                                    white-space: nowrap;
+                                    display: block;
+                                    position: relative;
+                                    text-align: center;
+                                }
+                                // bottom: 0;
+                            }
+
+                        }
+                        > .EPDiv {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            &[state*='active']{
+                                background-color: rgb(236, 255, 236);
+                            }
+                            >.EP_head {
+                                font-size: 1.5em;
+                                margin-bottom: 0.5em;
+                            }
+                            >.EPColor{
+                                display: flex;
+                                height: 100%;
+                                box-sizing: border-box;
+                                justify-content: center;
+                                align-items: center;
+                                > span {
+                                    border: 1px solid lightgray;
+                                    padding: 1.5em;
+                                    font-size: 1.3em;
+                                    &[type*='GOLD']{
+                                        background-color: gold;
+                                    }
+                                    &[type*='CHROME']{
+                                        background-color: silver;
+                                    }
+                                }
+                            }
+                            > .AmountDiv {
+                                width: max-content;
+                                > div {
+                                    width: 4em;
+                                }
+                            }
+
+                        }
+                    }
+                    > .indexDiv {
+                        width: max-content;
+                        > div {
+                            margin-right: 1em;
+                            > span {
+                                font-size: 4em;
+                            }
+                        }
+                    }
+                }
+                
+            }
+            > .addressDiv {
+                margin: 0.5em;
+                position: relative;
+                height: max-content;
+                .AddressListElement {  
+                    @include T_container();  
+                    margin-top: 0.5em;     
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: stretch;
+                    >.information {
+                        width: 30%;
+                        position: relative;
+                        div {
+                            display: flex;
+                            div {
+                                &[id*='title']{
+                                    display: none;
+                                }
+                                [id*='firstName'],[id*='street'],[id*='salutation']{
+                                    &:after{
+                                        content: "\00a0";
+                                    }
+                                }
+                                &[id*='city']{
+                                    &:after {
+                                        content: ",\00a0";
+                                    }
+                                }
+                            }  
+                        }
+                        
+                    }     
+                    > .Table {
+                        width: fit-content;
+                        position: relative;
+                        border: none;
+                        span {
+                            margin-left: 0.5em;
+                        }
+                    }
+                    > .buttonsDiv {
+                        width: 10%;
+                        position: relative;
+                        display: flex;
+                        align-items: flex-start;
+                        justify-content: flex-end;
+                    }
+                    // &:hover {
+                    //     background-color: $color-primary;
+                    // }
+                }
+            }
+            > .PDFDiv {
+                // height: 20rem;
+                // > iframe {
+                //     // width:calc(50% - 18px)!important;
+                //     height: 100%;
+                //     aspect-ratio:8.5/11; 
+                //     overflow: hidden !important;
+                //     display: block;
+                //     // pointer-events: none;
+                // }
+            }
+        }
+        > .rightBar {
+            box-sizing: border-box;
+            position: fixed;
+            height: calc(100% - 6rem);
+            right: 1rem;
+            width: 20%;
+            // margin: 0.5em;
+            @include T_container();
+            margin: 0.5rem;
+            padding: 0;
+        }
+    }
+}

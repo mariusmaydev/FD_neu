@@ -1,0 +1,398 @@
+
+@import '../_publicMain.scss';
+@import 'desktop/_projects.scss';
+// @import 'desktop/_projects-mobile.scss';
+@import '../../general/NavigationBar/NavigationBar.scss';
+@import 'projectDetails';
+@import 'desktop/_Categories.scss';
+@import 'mobile/_Categories.scss';
+@import 'desktop/projectList.scss';
+@import 'mobile/projectList.scss';
+@import 'projectList.scss';
+$color-CS-divider : rgb(199, 199, 199);
+
+body {
+    // @include converterStart_projectDetails;
+    box-sizing: border-box;
+    >.Background3D {
+        // z-index: 1000;
+        position: fixed; 
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;  
+        pointer-events: all;
+        background-color: transparent;
+ 
+        > canvas {  
+            background-color: transparent;
+        }
+    }
+}
+.Pages_MAIN {
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    @include forMediaBreakpoint(desktop mobile){    
+        &[loaded*='true']{
+            > .ProjectContainer {
+                > .buttons {
+                    transform: translateX(0rem);
+                }
+            }
+        }
+        >.ProjectContainer {
+            // @include SPLINT-border-inset();
+            box-sizing: content-box;
+            max-width: min(100rem, 100%);
+            // max-width: ;
+            width: max(max-content, 100rem);
+            min-width: 60rem;
+            position: relative;
+            display: grid;
+            // grid-template-columns: minmax(4rem, 14rem) minmax(40rem, 1fr) fit-content(14rem);
+            grid-auto-columns: minmax(10rem, 14rem) minmax(52rem, 78rem) minmax(0rem, 14rem);
+            grid-auto-flow: column;
+            grid-template-rows: 100%;
+                justify-content: space-evenly;
+                justify-items: center;
+                align-content: start;
+                // align-items: start;
+            gap: 0rem;
+            overflow: hidden;
+            margin-top: 0;
+            margin-bottom: 1vh;
+            position: relative;
+            height: 100%;
+
+
+            overflow: hidden; 
+            // margin-left: 14%;
+            // display: flex;
+            // flex-direction: column;
+            box-sizing: border-box;
+            // @include ProjectList(); 
+            margin-left: auto;
+            margin-right: auto;
+            // @include SPLINT-border-inset(red, 1px);
+            // @include T_container();
+            >.buttons {
+                transform: translateX(-14rem);
+                transition: transform 0.3s ease-out;
+                position: relative;
+                box-sizing: content-box;
+                width: 100%;//fit-content;
+                min-width: 10rem;
+                max-width: 14rem;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                // justify-self: right;
+                justify-self: center;
+                top: 0;
+                // max-width: 10%;
+                // grid-row: 1;
+                grid-column: 1;
+                margin-top: 0.5rem;
+                > .buttonsContent {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    > div {
+                        position: relative;
+                        box-sizing: border-box;
+                        @include T_container();
+                        background-color: transparent;
+                        box-shadow: none;
+                        padding: 0;
+                        margin: 0.5em;
+                        margin-bottom: 0.5rem;
+                        // overflow: hidden;
+                        // height: 10px;
+                        // transition: height 0.5s ease-in;
+                        // &:has(button[state*='active']){
+                        //     height: max-content;
+                        // }
+                        > button {
+                            position: relative;
+                            box-sizing: border-box;
+                            margin: 0;
+
+                            // padding: 0;
+                            width: 100%;
+                            height: 100%;
+                            > span {
+                                font-size: 1.5em;
+                            }
+                        }
+                        > div {
+                            @include T_container();
+                            padding: 0.4rem;
+                            // padding-top: 0;
+                            margin-top: 0.3rem;
+                            width: calc(100% - 0.8rem);
+                        }
+                        @include ProjectCategoryMenu-desktop();
+                    }
+                }
+            }
+            >.ProjectListBody {
+                box-sizing: content-box;
+                // width: fit-content;
+                min-width: 52rem;
+                width: 100%;
+                max-width: 100%;
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                // max-width: 90%;
+                justify-self: center;
+                overflow: hidden;
+                position: relative;
+                grid-column: 2;
+                @include ProjectList(); 
+            }
+            >.headline {
+                position: relative;
+                box-sizing: border-box;
+                max-width: 14rem;
+                width: 100%;
+                min-width: 0rem;
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                // width: 100%;
+                justify-self: stretch;
+                grid-column: 3;
+                // display: none;
+                > span {
+                    visibility: hidden;
+                }
+            }
+        }
+    }
+    @include forMediaBreakpoint(mobile-small){   
+        &[loaded*='true']{
+            > .ProjectContainer {
+                > .buttons {
+                    transform: translateX(0rem);
+                }
+            }
+        }
+        >.ProjectContainer {
+            position: relative;
+            // @include SPLINT-border-inset();
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            // max-width: min(100rem, 100%);
+            // max-width: ;
+            // width: max(max-content, 100rem);
+            // min-width: 60rem;
+            // position: relative;
+            // display: grid;
+            // grid-template-columns: minmax(4rem, 14rem) minmax(40rem, 1fr) fit-content(14rem);
+            // grid-auto-columns: minmax(10rem, 14rem) minmax(52rem, 78rem) minmax(0rem, 14rem);
+            // grid-auto-flow: column;
+            // grid-template-rows: 100%;
+                // justify-content: space-evenly;
+                // justify-items: center;
+                // align-content: start;
+                // align-items: start;
+            // gap: 0rem;
+            // overflow: hidden;
+            // margin-top: 0;
+            // margin-bottom: 1vh;
+            // position: relative;
+            // height: 100%;
+
+
+            overflow: hidden; 
+            // margin-left: 14%;
+            // display: flex;
+            // flex-direction: column;
+            box-sizing: border-box;
+            // @include ProjectList(); 
+            // margin-left: auto;
+            // margin-right: auto;
+            // @include SPLINT-border-inset(red, 1px);
+            // @include T_container();
+            >.buttons { 
+                order: 1;
+                transform: translateX(-14rem);
+                transition: transform 0.3s ease-out;
+                position: relative;
+                box-sizing: content-box;
+                display: flex;
+                flex-direction: column;
+                width: calc(100% - 2rem);//fit-content;
+                // width: 100%;
+                // min-width: 10rem;
+                // max-width: 14rem;
+                // height: 100%;
+                margin: 0.5rem;
+                padding: 0;
+                // justify-self: right;
+                justify-self: center;
+                top: 0;
+                margin-bottom: 0;
+                // max-width: 10%;
+                // grid-row: 1;
+                // grid-column: 1;
+                // margin-top: 0.5rem;
+                > .buttonsContent {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    @include T_container();
+                    > div {
+                        position: relative;
+                        box-sizing: border-box;
+                        @include T_container();
+                        background-color: transparent;
+                        box-shadow: none;
+                        padding: 0;
+                        margin: 0;
+                        &:not(:first-child){
+                            margin-left: 0.5rem;
+                        }
+                        // overflow: hidden;
+                        // height: 10px;
+                        // transition: height 0.5s ease-in;
+                        // &:has(button[state*='active']){
+                        //     height: max-content;
+                        // }
+                        > button {
+                            position: relative;
+                            box-sizing: border-box;
+                            margin: 0;
+
+                            // padding: 0;
+                            width: 100%;
+                            height: max-content;
+                            > span {
+                                font-size: 1.5em;
+                            }
+                        }
+                        > div {
+                            position: sticky;
+                            @include T_container();
+                            left: 0;
+                            padding: 0.4rem;
+                            // padding-top: 0;
+                            margin-top: 0.3rem;
+                            width: calc(100% - 0.8rem);
+                        }
+                    }
+                }
+                > .buttonsCategoryContainer {
+                    position: relative;
+                    box-sizing: content-box;
+                    width: calc(100% + 1rem);
+                    height: 100%;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    flex-direction: column;
+                    // @include T_container();
+                    @include ProjectCategoryMenu-mobile();
+
+                }
+            }
+            >.ProjectListBody {
+                order: 2;
+                box-sizing: content-box;
+                // width: fit-content;
+                // min-width: 52rem;
+                width: 100%;
+                // max-width: 100%;
+
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                // max-width: 90%;
+                justify-self: center;
+                overflow: hidden;
+                position: relative;
+                // grid-column: 2;
+                @include ProjectList-mobile(); 
+            }
+            >.headline {
+                position: relative;
+                box-sizing: border-box;
+                max-width: 14rem;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                height: 0;
+                // width: 100%;
+                justify-self: stretch;
+                grid-column: 3;
+                // display: none;
+                > span {
+                    visibility: hidden;
+                }
+            }
+        } 
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: stretch;
+        // .ProjectChoiceMenuMain {
+        //     // @include T_container();
+        //     padding-top: 1vh;
+        //     padding-bottom: 1vh;
+        //     position: relative;
+        //     width: 100%;
+        //     display: flex;
+        //     flex-direction: row;
+        //     align-items: flex-start;
+        //     height: max-content;
+        //     box-sizing: content-box;
+        //     gap: 1vw;
+        //     > div {
+        //         box-sizing: border-box;
+        //         margin: 0;
+        //         width: max-content;
+        //         height: max-content;
+        //         > button {
+        //             > span {
+        //                 font-size: 2em;
+        //             }
+        //         }
+        //     }
+        // }
+        // >.ProjectListBody {
+        //     position: relative;
+        //     height: 100%;
+        //     width: 100%; 
+        //     overflow: hidden; 
+        //     display: flex;
+        //     flex-direction: column;
+        //     box-sizing: border-box;
+        //     @include ProjectList-mobile();
+        //     // > .ProjectListMain { 
+        //     //     &[id*='CART']{
+        //     //     } 
+        //     //     &[id*='ORDER']{
+        //     //     }
+        //     //     &[id*='NORMAL']{
+        //     //     }  
+        //     //     >.TableMain { 
+        //     //         > .ListMain {
+        //     //             justify-content: center;
+        //     //             > .ListElement {
+
+        //     //             }
+        //     //         }
+        //     //     }
+        //     // }
+        // }
+    }
+}
+
+

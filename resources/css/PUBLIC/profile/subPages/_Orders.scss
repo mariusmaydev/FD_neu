@@ -1,0 +1,15 @@
+@import '../../publicMain.scss';
+
+@mixin profile_OrderMenu(){
+    .OrderMenuMain {
+        > .listElement {
+            > .orderListImgElement{
+                display: flex;
+                > img {
+                    height: 10em;
+                    
+                }
+            }
+        }
+    }
+}

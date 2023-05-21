@@ -1,0 +1,92 @@
+@import '../publicMain.scss';
+
+.Pages_MAIN {
+    overflow: visible;
+    @include box-shadow();
+    position: relative;
+    top: 6%;
+    width: 50em;
+    margin: auto;
+    height: max-content;
+    .LoginMain {
+        // @include border();   
+        background-color: white;
+        padding: 1%;
+        display: flex;
+        flex-direction: column;
+        > .buttonDiv {
+            display: flex;
+            justify-content: space-evenly;
+            > button {
+                border-radius: $border-radius;
+                @include box-shadow(0);
+                overflow: visible;
+                border: none;
+                margin-inline: 0.5em;
+                position: relative;
+                width: 100%;
+                background-color: $color-primary;
+                &:hover{
+                    background-color: $color-primary-Dark;
+                    @include box-shadow(0, black, 0.9);
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+.LoginForgotPassword {
+    position: relative;
+    top: -0.5em;
+    margin: 0;
+    padding: 0;
+    margin-left: 0.5em;
+    span {
+        font-size: 0.8em;
+        cursor: pointer;
+        color: $color-primary-text;
+        &:hover {
+            color: $color-accent;
+        }
+    }
+}
+
+.CreateAccountMain {
+    @include border();   
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5em;
+}
+
+.verifyAccountMain{
+    display: flex;
+    flex-direction: column;
+    > div {
+        display: flex;
+        flex-direction: row;
+        &.description {
+            display: flex;
+            flex-direction: column;
+            > div {
+                &.headline { 
+                    color: $color-primary-text
+                }
+                &.text {
+                    color: $color-secondary-text
+                }
+            }
+        }
+    }
+    input {
+        position: relative;
+        text-align: center;
+        &:focus {
+            outline: none;
+        }
+    }
+}

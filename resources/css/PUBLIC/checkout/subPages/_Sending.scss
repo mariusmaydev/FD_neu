@@ -1,0 +1,66 @@
+@import '../../../general/main.scss';
+@import '../../../general/buttons.scss';
+
+@mixin checkout_Sending(){
+
+    >.SendingMain {
+        > .n_RadioButton {
+            @include T_container();
+            border: none;
+            > .inner {
+                > hr {
+                    display: none;
+                }
+                > div {
+                    > .inputBody {
+                        > input {
+
+                        }
+                        > span {
+
+                        }
+                    }
+                    > .labelDiv {
+                        > .name {
+                            > span {
+
+                            }
+                        }
+                    }
+                    > [id*='PriceDiv']{
+                        margin-left: auto;
+                        margin-right: 0.5rem;
+                    }
+                }
+            }
+            // > div {
+            //     position: relative;
+            //     > hr {
+            //         display: none;
+            //     }
+            //     > div {
+            //         position: relative;
+            //         width: 100%;
+            //         display: flex;
+            //         align-items: center;
+            //         > input {
+            //             margin-inline: 0.5em;
+            //             margin-right: 1em;
+            //         }
+            //         > div {
+            //             width: 100%;
+            //             &[id*='Price']{
+            //                 margin-inline: 1em;
+            //                 > span {
+            //                     white-space: nowrap;
+            //                 }
+            //                 height: min-content;
+            //                 width: max-content;
+            //                 display: inline;
+            //             }
+            //         }
+            //     }
+            // }
+        }
+    }
+}

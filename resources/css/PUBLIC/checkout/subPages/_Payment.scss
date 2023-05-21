@@ -1,0 +1,102 @@
+// @import '../../../general/main.scss';
+// @import '../../../general/buttons.scss';
+// @import '../../../PUBLIC/profile/subPages/Adresses.scss';
+
+@mixin checkout_Payment(){
+    > .PaymentMain {
+        width: 98%;
+        left: 1%;
+        > div {
+            margin-bottom: 0.5em;
+            @include T_container();
+            border: none;
+        }
+        > .n_RadioButton:not(.InvoiceMethodMain) {
+            > div {
+                
+                display: flex;
+                flex-direction: column;
+                &.radio_headline {
+                    height: 2em;
+                    box-sizing: border-box;
+                    text-align: center;
+
+                    > span {
+                        font-size: 1.1em;
+                        margin-top: auto;
+                        margin-bottom: auto;
+                        // vertical-align: bottom;
+
+                    }
+
+                }
+                &.inner {
+                    > hr {
+
+                    }
+                    > div {
+                        > div {
+                            &.inputBody{
+                                > input {
+
+                                }
+                                > span {
+
+                                }
+                            }
+                            &:not(.inputBody){
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        > .InvoiceMethodMain {
+            > div {
+                display: flex;
+                flex-direction: column;
+                &.radio_headline {
+                    height: 2em;
+                    box-sizing: border-box;
+                    text-align: center;
+
+                    > span {
+                        font-size: 1.1em;
+                        margin-top: auto;
+                        margin-bottom: auto;
+                        // vertical-align: bottom;
+
+                    }
+                }
+                &.inner {
+                    > hr {
+
+                    }
+                    > div {
+                        > .inputBody {
+                            > input {
+
+                            }
+                            > span {
+
+                            }
+                        }
+                        > .labelDiv {
+                            > .name {
+                                > span {
+
+                                }
+                            }
+                            > .displayDiv {
+                                > div {
+                                    // display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }                    
+        }
+    }
+}

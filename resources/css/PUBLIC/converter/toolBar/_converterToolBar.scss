@@ -1,0 +1,28 @@
+@import '../../../general/main.scss';
+@import '../../../general/buttons.scss';
+// @import '../../../general/NavigationBar.scss';
+
+@import '_converterToolBar_Text.scss';
+@import '_converterToolBar_Image.scss';
+@import '_converterToolBarHelper.scss';
+
+@mixin ToolBar_Main() {
+    > .ToolBar_Main {
+        box-sizing: content-box;
+        position: relative;
+        overflow-x: visible;
+        width: 100%;
+        top: 1vh;
+        > div {
+            position: relative;
+            width: 50%;
+            height: 100%;
+            box-sizing: border-box;
+            overflow: visible;
+            overflow-y: auto;
+            overflow-x: visible;
+        }
+        @include ToolBar_Text_Main();
+        @include ToolBar_Image_Main();
+    }
+}

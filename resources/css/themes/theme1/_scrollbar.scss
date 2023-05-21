@@ -1,0 +1,26 @@
+@import "vars.scss";
+/* width */
+::-webkit-scrollbar {
+    margin-inline: 2px;
+    width: 5px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    width: 2px;
+    transform: scale(2);
+  background: $scrollbar-track-color;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    width: 5px;
+    transform: scale(2);
+  background: $scrollbar-thumb-color;
+  border-radius: $border-radius;
+}
+ 
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $scrollbar-thumb-hover-color;
+}

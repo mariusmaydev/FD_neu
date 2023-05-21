@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES6",
+    "allowJs": true,
+    "checkJs": false,
+    "baseUrl": "./",
+    "paths": {
+      "SPLINT": [
+        "../Splint/js/modules/ThreeJS/CORE.js"
+      ],
+      "splint": [
+        "../Splint/js/modules/ThreeJS/CORE.js"
+      ],
+      "three": [
+        "../Splint/lib/threeJS/build/three.module.js"
+      ],
+      "threeJS": [
+        "../Splint/lib/threeJS/build/three.module.js"
+      ],
+      "@THREE_ROOT_DIR/*": [
+        "../Splint/lib/threeJS/*"
+      ],
+      "@THREE_MODULES_DIR/*": [
+        "../Splint/lib/threeJS/examples/jsm/*"
+      ],
+      "@SPLINT_MODULES_DIR/*": [
+        "../Splint/js/modules/*"
+      ],
+      "@SPLINT_THREE_DIR/*": [
+        "../Splint/js/modules/ThreeJS/*"
+      ]
+    }
+  },
+  "include": ["resources/js/**/*", "../Splint/js/**/*"]
+}

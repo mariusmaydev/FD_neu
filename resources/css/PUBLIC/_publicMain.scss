@@ -1,0 +1,18 @@
+@import '../general/_main.scss';
+@import '../general/buttons.scss';
+// @import '../general/NavigationBar.scss';
+
+body {
+    position: relative !important;
+    width: 100vw !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    top: 7vh !important;
+    height: calc(93vh) !important;
+}
+
+.Pages_MAIN {
+    box-sizing: border-box;
+    margin-inline: 1%;
+    height: 100%;
+}

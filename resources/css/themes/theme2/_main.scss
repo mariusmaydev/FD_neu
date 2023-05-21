@@ -1,0 +1,74 @@
+@import "_buttons.scss";
+@import "_scrollbar.scss";
+@import "_vars.scss";
+
+body {
+    background-color: $color-background;
+    * {
+        font-family: $font-family-main;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@mixin T_container(){
+    box-shadow: transparentize(black, calc(1 -  0.15)) 0px 0px 3px, transparentize(black, calc(1 - 0.11)) 0px 0px 3px;
+    border-radius: $border-radius;
+    background-color: white;
+    padding: 0.5em;
+
+}
+
+.Slider_main {
+    > .Slider_inputBody {
+        $size : var(--size);
+        input {
+            &[type=range]{
+                appearance: none; 
+                background: transparent; 
+                width: 100%;
+        
+                &::-webkit-slider-thumb {
+                    position: relative;
+                    appearance: none;
+                    width: 9px;
+                    height: 20px;
+                    background-color: $color-primary;
+                    transform: translateY(-40%);
+                    border-radius: 2px 2px;
+                    z-index: 20;
+                }
+                &::-webkit-slider-runnable-track {
+                    position: relative;
+                    cursor: pointer;
+                    border-radius: 2px 2px;
+                    // margin-top: 10%;
+                    height: 20%;
+                    z-index: 19;
+                    /* Hides the slider so custom styles can be added */
+                    background-color: $color-primary-text;
+                }
+                &:hover {
+        
+                }
+            }
+        }
+
+        > hr {
+            position: absolute;
+            margin-left: calc(calc(calc(100% - calc(2.1em + 6px)) / calc($size)) * var(--index));
+            z-index: 1;
+            left: 5px;
+            // transform: rotateX(90deg);
+            background-color: darkgray;
+            width: 0.5px;
+            top: 25%;
+            height: 50%;
+            margin-top: 0;
+            &:nth-child(even){
+                top: 12.5%;
+                height: 75%;
+            }
+        }
+    }
+}

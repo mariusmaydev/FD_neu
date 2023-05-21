@@ -1,0 +1,4 @@
+Header set Access-Control-Allow-Origin *
+Header set Referrer-Policy no-referrer-when-downgrade
+php_value max_input_vars 10000
+php_value memory_limit 12G

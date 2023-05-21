@@ -1,0 +1,39 @@
+@import '../general/main.scss';
+@import '../general/buttons.scss';
+@import 'Navigation.scss';
+
+body {
+    padding: 0 !important;
+    font-size: 1em;
+    margin: 0;
+    top: calc(5vh + 0.5rem);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 96vh !important;
+    > .head {
+        position: fixed;
+        background-color: lightsalmon;
+        top: 0;
+        height: 5vh;
+        width: 100%;
+        overflow: hidden;
+        z-index: 20;
+        
+        margin: 0.5rem;
+        width: calc(100% - 1rem);
+        > .back {
+            @include T_container();
+            margin: 0.2rem;
+            // border-radius: 50%;
+        }
+    }
+    > .main {
+        margin-inline: 1rem;
+        width: calc(100% - 2rem);
+        // overflow: hidden;
+        // top: 
+    }
+}
+

@@ -1,0 +1,292 @@
+@import '../publicMain.scss';
+@import '../../general/3D.scss';
+@import '../../general/NavigationBar/NavigationBar.scss';
+@import 'overlay.scss';
+
+
+.n_inputDiv {
+    position: relative;
+    margin: 0.5em;
+    $c-active : gray;
+    $c-passive : gray;
+    $c-border : black;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    // border: 0;
+    > .inputBody {
+        display: flex;
+        flex-direction: row;;
+        > input {
+            background-color: transparent;
+            border: 0;
+            border-bottom: 2px $c-border solid;
+            display: block;
+            width: 100%;
+            padding: 0.5em 0;
+            padding-top: 1.5em;
+            font-size: 1em;
+            // color: #0a0a0a;
+            &:valid, &:focus {
+                outline: 0;
+                border-bottom-color: $c-active;
+                +label span {
+                    color: $c-active;
+                    font-size: 0.8em;
+                    transform: translateY(-1.5em);
+    
+                }
+            }
+        }
+        > label {
+            position: absolute;
+            top: 1.5em;
+            left: 0;
+            pointer-events: none;
+            > span {
+                display: inline-block;
+                font-size: 1em;
+                min-width: 3px;
+                color: $c-passive;
+                transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            }
+        }
+        > button {
+            background-color: transparent;
+            > span {
+    
+            }
+        }
+    }
+    > .response {
+        > span {
+            color: red;
+
+        }
+    }
+
+}
+
+s-exinput {
+    position: absolute;
+    z-index: 2001;
+    position: relative;
+    margin: 0.5em;
+    $c-active : gray;
+    $c-passive : gray;
+    $c-border : black;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    &::part(inputContainer) {
+        display: flex;
+        flex-direction: row;;
+    }
+    &::part(input){
+        background-color: transparent;
+        border: 0;
+        border-bottom: 2px $c-border solid;
+        display: block;
+        width: 100%;
+        padding: 0.5em 0;
+        padding-top: 1.5em;
+        font-size: 1em;
+    }
+    &::part(input){
+        &:focus {
+            outline: 0;
+            border-bottom-color: $c-active;
+            +label span {
+                color: $c-active;
+                font-size: 0.8em;
+                transform: translateY(-1.5em);
+
+            }
+        }
+    }
+    &::part(label){
+        position: absolute;
+        top: 1.5em;
+        left: 0;
+        pointer-events: none;
+        > span {
+            display: inline-block;
+            font-size: 1em;
+            min-width: 3px;
+            color: $c-passive;
+            transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+    }
+    &::part(responseContainer){
+
+    }
+    &::part(responseSpan){
+        color: red;
+
+    }
+    // #shadow-root {
+        // div {
+        //     background-color: yellow !important;
+        // }
+        // .inputBody {
+        //     background-color: blue !important;
+        //     &::part(canvas){
+        //         position: absolute !important;
+        //         z-index: 1001;
+        //         background-color: red !important;
+        //     }
+        // }
+    // }
+}
+.Pages_MAIN {
+    display: flex;
+    overflow: visible;
+    position: relative;
+    left: 0;
+    // width: 100%;
+    // height: 50%;
+    margin-left: 0;
+    margin-right: 0;
+    display: flex;
+    align-items: flex-start;
+    pointer-events: all;
+    
+    // > .S_SVGElement_BODY {
+    //     position: absolute;
+    //     top: 0rem;
+    //     right: 2rem;
+    //     height: 100%;
+    //     z-index: 2;
+    //     > svg {
+    //         margin-top: auto;
+    //         margin-bottom: auto;
+    //         position: relative;
+    //         top: 2%;
+    //         left: 0;
+    //         height: 92%;
+    //         width: 0.5rem;
+
+    //         > path {
+    //             stroke-dasharray: 11 !important;
+    //             stroke-dashoffset: 11 !important;
+    //             // animation: index_SVG 1s linear both infinite;
+    //         }
+    //     }
+    // }
+    .linkImprint {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        box-shadow: none;
+        padding: 0;
+        // margin: 0;
+        color: gray;
+        &:hover {
+            color: $color-primary
+        }
+    }
+    .Lighter3D {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%; 
+        pointer-events: all;
+        background-color: transparent;
+
+        > canvas { 
+            background-color: transparent;
+        }
+    }
+    @include indexOverlay;
+    .interactiveDiv {
+        position: relative;
+        width: 80%;
+        // > div {
+            
+        //     position: absolute;
+        //     // box-sizing: border-box;
+        //     // width: 100%;
+        //     width: max-content;
+        //     height: max-content;
+        //     aspect-ratio: 1/1;
+        //     overflow: visible;
+        //     @include border();
+        // }
+        // > img {
+        //     position: relative;
+        //     box-sizing: border-box;
+        //     padding: 1%;
+        //     width: 100%;
+        //     height: 100%;
+        // }
+        > .point {
+            display: none;
+            position: absolute;
+            background-color: $color-primary;
+            width: 10%;
+            aspect-ratio: 1/1;
+            border-radius: 50% 50%;
+            &.engraving {
+                left: 50%;
+                top: 50%;
+            }
+            &.surface {
+                left: 25%;
+                top: 25%;
+            }
+            .Tooltip {
+                div {
+                    max-width: 20em;
+                }
+            }
+            &:hover {
+                background-color: $color-primary-Dark;
+            }
+        }
+    }
+}
+
+    // .informationDiv {
+    //     // display: none;
+    //     @include box-shadow();
+    //     position: relative;
+    //     left: 0;
+    //     top: 0;
+    //     width: 60%;
+    //     height: 100%;
+    //     > .headline {
+    //         position: relative;
+    //         font-size: 4em;
+    //     }
+    //     > .text {
+
+    //     }
+    //     @include forMediaBreakpoint(desktop){
+    //             // display: none !important;
+    //             // visibility: hidden !important;
+    //             @include border();
+    //     }
+    //     > .buttonDiv {
+    //         > button {
+    //             pointer-events: all;
+    //             border: none;
+    //             border-radius: $border-radius;
+    //             padding: 1em;
+    //             font-size: 2em;
+    //             cursor: pointer;
+    //             @include box-shadow();
+    //             &.create {
+    //                 background-color: $color-primary-Dark;
+    //             }
+    //             &:hover {
+    //                 background-color: $color-primary;
+    //                 @include box-shadow(0, black, 0.9);
+    //             }
+    //         }
+    //     }
+    // }

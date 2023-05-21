@@ -1,0 +1,27 @@
+{
+    "paths": {
+        "error_log"     : "/fd/resources/php/",
+        "project_root"  : "/fd/resources/",
+        "css_root"      : "/fd/resources/css/Output/",
+        "DataBase"      : {
+            "config"    : "/fd/resources/php"
+        }
+    },
+    "loader": {
+        "cachePath" : "/fd/splintCache/"
+    },
+    "projectName"   : "fd",
+    "SSL"           : "http",
+    "host"          : "localhost",
+    "host1"         : "192.168.178.67",
+    "port"          : "80",
+    "settings"      : {
+        "debugging" : {
+            "error" : true,
+            "warn"  : false,
+            "log"   : false
+        },
+        "cacheResources" : false
+    }
+
+}

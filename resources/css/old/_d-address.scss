@@ -1,0 +1,124 @@
+@import '../general/main.scss';
+@import '../general/buttons.scss';
+// @import '../general/NavigationBar/NavigationBar.scss';
+
+@mixin AddressElement(){
+    // .AddressListElement {  
+    //     @include T_container();  
+    //     margin-top: 0.5em;     
+    //     display: flex;
+    //     flex-direction: row;
+    //     justify-content: stretch;
+    //     >.information {
+    //         width: 30%;
+    //         position: relative;
+    //         div {
+    //             display: flex;
+    //             div {
+    //                 &[id*='title'],[id*='firstName'],[id*='street'],[id*='salutation']{
+    //                     &:after{
+    //                         content: "\00a0";
+    //                     }
+    //                 }
+    //                 &[id*='city']{
+    //                     &:after {
+    //                         content: ",\00a0";
+    //                     }
+    //                 }
+    //             }  
+    //         }
+            
+    //     }     
+    //     > .Table {
+    //         width: fit-content;
+    //         position: relative;
+    //         border: none;
+    //         span {
+    //             margin-left: 0.5em;
+    //         }
+    //     }
+    //     > .buttonsDiv {
+    //         width: 10%;
+    //         position: relative;
+    //         display: flex;
+    //         align-items: flex-start;
+    //         justify-content: flex-end;
+    //     }
+    //     // &:hover {
+    //     //     background-color: $color-primary;
+    //     // }
+    // }
+}
+
+//Gesammtmenu
+@mixin AddressMenu(){
+    > .AddressMenuMain {
+        @include AddressMenuNew();
+        @include AddressMenuList();
+    }
+}
+//Liste der Adressen
+@mixin AddressMenuList(){
+    // > .addressMenuListMain {
+    //     > div {
+    //         display: flex;
+    //         flex-direction: row;
+    //         justify-content: start;
+    //         align-items: center;
+    //         > button {
+    //             display: inline;
+    //         }
+    //         > label {
+    //             display: inline;
+    //         }
+    //     }
+    //     > .AddressListMain {
+    //         > hr {
+    //             display: none;
+    //         }
+    //         @include AddressElement();
+    //     }
+    // }
+}
+
+//Addresse hinzufügen
+@mixin AddressMenuNew(){
+    > .addressMenuNewMain {
+        @include T_container();
+        > button {
+
+        }
+        // > div {
+        //     > .AddressInput {
+        //             &.title_input{
+        //                 width: 10%;
+        //             }
+        //             &.firstName_input{
+        //                 width: 42%;
+        //             }
+        //             &.lastName_input{
+        //                 width: 42%;
+        //             }
+        //             &.dropdown_salutation {
+
+        //             }
+        //             &.dropdown_country {
+
+        //             }
+        //             &.street_input {
+
+        //             }
+        //             &.city_input {
+
+        //             }
+        //             &.postcode_input {
+
+        //             }
+        //             &.housenumber_input {
+
+                    
+        //         }
+        //     }
+        // }
+    }
+}

@@ -1,0 +1,73 @@
+@import '../../publicMain.scss';
+
+@mixin profile_AccountInformation(){
+    .AccountInformationMain {
+        position: relative;
+        @include T_container();
+        // display: flex;
+        // justify-content: space-between;
+        > .userDataDiv{
+            border: none;
+            position: relative;
+            width: max-content;
+            > div {
+                margin-bottom: 0.3em;
+                margin-top: 0.3em;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                > label {
+                    position: relative;
+                }
+                > span {
+                    position: relative;
+                    > .salutationDiv {
+                        > div {
+                            border: none;
+                            > div {
+                                cursor: default;
+                                display: flex;
+                                gap: 1em;
+                                // justify-content: left;
+                                > hr {
+                                    display: none !important;
+                                }
+                                > div {
+                                    position: relative;
+                                    cursor: pointer;
+                                    display: flex;
+                                    gap: 0.1em;
+                                    > input{
+                                        cursor: pointer;
+                                        // accent-color: red;
+                                        // background: red;
+                                    }
+                                    &:hover {
+                                        > input {
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                > button {
+                    width: max-content;
+                }
+            }
+        }
+        .mainButtonDiv {
+
+            position: absolute;
+            box-sizing: border-box;
+            right: 0;
+            top: 0;
+            padding: 0.5rem;
+            > button {
+                > span {
+                    font-size: 3rem;
+                }
+            }
+
+        }
+    }
+}

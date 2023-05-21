@@ -1,0 +1,22 @@
+@import '../../general/main.scss';
+@import '../../general/buttons.scss';
+// @import '../../general/NavigationBar.scss';
+@import '../ADMIN.scss';
+
+.logo-icon {
+    position: relative;
+    margin: 1%;
+    width: 20em;
+}
+
+.head {
+    display: none;
+}
+
+body {
+    >.main {
+        > img {
+            
+        }
+    }
+}

@@ -1,0 +1,24 @@
+
+.NavigationMenu {
+    position: relative;
+    // @include border();
+    display: flex;
+    top: 2em;
+    left: 5%;
+    height: max-content;
+    flex-direction: column;
+    width: max-content;
+    > button {
+        text-align: left;
+        > span {
+            text-align: left;
+        }
+    }
+    * {
+        text-align: left;
+        font-size: 2em;
+    }
+    > .active {
+        display: none;
+    }
+}

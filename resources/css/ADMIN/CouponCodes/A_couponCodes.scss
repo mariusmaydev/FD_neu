@@ -1,0 +1,59 @@
+@import '../ADMIN.scss';
+@import 'couponCodeList.scss';
+
+body {
+    > .head {
+
+    }
+    > .main {
+        margin: 0.5em;
+        box-sizing: border-box;
+        position: relative;
+        // @include border();
+        width: calc(100% - 1em);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1vh;
+        > .newBody {
+            @include T_container();
+            box-sizing: border-box;
+            position: relative;
+            width: 100%;
+            height: max-content;
+            > .valueInputBody {
+                display: flex;
+                align-items: end;
+                > .n_inputDiv {
+
+                }
+                > .toggleButton {
+                    margin: 0.5em;
+                    padding: 0;
+                    display: flex;
+                    justify-content: space-around;
+                    width: max-content;
+                    height: max-content;
+                    overflow: hidden;
+                    > button {
+                        width: 100%;
+                        padding: 0.5rem;
+                        background-color: transparent;
+                        border: none;
+                        cursor: pointer;
+                        &:hover {
+                            background-color: $color-primary;
+                        }
+                        &[state*='active']{
+                            background-color: $color-primary-Dark;
+                        }
+                        > span {
+                
+                        }
+                    }
+                }
+            }
+        }
+        @include couponCodeList();
+    }
+}

@@ -1,0 +1,31 @@
+// @import '../../general/main.scss';
+@import '../ADMIN.scss';
+@import '../../general/buttons.scss';
+// @import '../../general/NavigationBar/NavigationBar.scss';
+// @import '../../designs/designs.scss';
+
+body {
+    > div {
+        @include border();
+        overflow-y: scroll;
+        overflow-x: hidden;
+        > .menuElementMain {
+            @include border();
+            margin-left: 1em;
+            > .DBelement {
+                @include border();
+                margin-left: 1em;
+                &[state*='active']{
+                    > .TBelement {
+                        display: block;
+                    }
+                }
+                > .TBelement {
+                    @include border();
+                    margin-left: 1em;
+                    display: none;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,137 @@
+@import '../publicMain.scss';
+@import 'subPages/Images.scss';
+@import 'subPages/Adresses.scss';
+@import 'subPages/Orders.scss';
+@import 'subPages/AccountInformation.scss';
+@import 'subPages/Sparks.scss';
+@import 'subPages/Designs.scss';
+// @import 'address.scss';
+
+// body {
+//     position: absolute;
+//     margin: 0 !important;
+//     width: 100%;
+//     height: 100%;
+//     padding-top: 0;
+//     overflow: hidden;
+// }
+
+
+.Pages_MAIN {
+    // display: flex;
+    overflow: visible;
+
+    > .ProfileBarMain {        
+        position: fixed;
+        width: 10%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        > button {
+            width: 100%;
+        }
+    }
+    > .ProfileWindowMain {
+        > .headline {
+            display: none;
+        }
+        @include ProjectList();
+        @include profile_AccountInformation();
+        margin-left: 14%;
+        
+    }
+}
+
+// .ProfileMain {
+//     left: 3%;
+//     width: 90%;
+//     top: 8%;
+//     height: 90%;
+//     // @include border(); 
+//     position: relative;
+//     display: flex;
+//     // box-sizing: border-box;
+//     flex-direction: row;
+//     align-content: stretch;
+//     > .ProfileBarMain {
+//         background-color: transparent;
+//         margin-right: 3%;
+//         position: relative;
+//         width: 18%;
+//         height: max-content;
+//         display: flex;
+//         flex-direction: column;
+//         // box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+//         // box-shadow: $color-shadow 0px 1px 4px;
+//         border-radius: 5px;
+        
+//         > button {
+//             cursor: pointer;
+//             @include T_container();
+//             border: none;
+//             margin-top: 0.2em;
+//             margin-bottom: 0.2em;
+//             font-size: 1em;
+//             position: relative;
+//             text-align: left;
+//             display: inline;
+//             background-color: transparent;
+//             font-weight: bold;
+//             width: 100%;
+//             padding: 0.3em;
+//             &:hover {
+//                 background-color: $color-primary-light;
+//                 @include box-shadow(0, black, 0.95);
+//                 // > span:before {
+//                 //     border: 5px solid black;
+//                 //     border-radius: 50%;
+//                 //     aspect-ratio: 1/1;
+//                 //     content: "";
+//                 // }
+//                 // font-size: 1.5em;
+//                 // font-weight: bold;
+//                 // background: red;
+//             }
+//         }
+//     }
+//     > .ProfileWindowMain {
+//         padding: 0;
+//         // background-color: white;
+//         // @include box-shadow();
+//         position: relative;
+//         box-sizing: border-box;
+//         width: 100%;
+//         height: 100%;
+//         // @include border();
+//         overflow: visible;
+//         > .headline {
+//             font-size: 1.5em;
+//             margin-bottom: 0.5em;
+//         }
+//         @include profile_AccountInformation();
+//         @include profile_ImageMenu();
+//         @include profile_AddressMenu();
+//         @include profile_OrderMenu();
+//         @include ProjectList();
+
+//     }
+// }
+
+.subWindowChangePassword {
+    > .background {
+    }
+    > .content {
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,99 @@
+
+
+/* Media Queries */ //Not necessarily correct, edit these at will 
+// $media_queries : (
+//     'mobile'                : unquote("only screen and (max-width: 672px)"),
+//     'mobile-portrait'       : unquote("screen and (max-width: 672px) and (orientation:portrait)"),
+//     'mobile-landscape'      : unquote("screen and (max-width: 672px) and (orientation:landscape)"),
+
+//     'tablet'                : unquote("screen and (min-width: 672px) and (max-width: 990px)"),
+//     'tablet-portrait'       : unquote("screen and (min-width: 672px) and (max-width: 990px) and (orientation:portrait)"),
+//     'tablet-landscape'      : unquote("screen and (min-width: 672px) and (max-width: 990px) and (orientation:landscape)"),
+    
+//     'desktop-small'         : unquote("screen and (min-width: 990px) and (max-width: 1296px)"),
+//     'desktop'               : unquote("only screen and (min-width: 1296px)"),
+//     // 'retina2'   : unquote("screen and (-webkit-min-pixel-ratio: 2) and (min-resolution: 192dpi)"),
+//     // 'retina3'   : unquote("screen and (-webkit-min-pixel-ratio: 3) and (min-resolution: 288dpi)"),
+//     'landscape' : unquote("screen and (orientation:landscape) "),    
+//     'portrait'  : unquote("screen and (orientation:portrait) ")
+// );
+
+$media_queries : (
+    'mobile-small'          : unquote("only screen and (max-width: 980px)"),
+    'mobile'                : unquote("only screen and (min-width: 981px) and (max-width: 1199px)"),
+    // 'mobile-portrait'       : unquote("screen and (max-width: 672px) and (orientation:portrait)"),
+    // 'mobile-landscape'      : unquote("screen and (max-width: 672px) and (orientation:landscape)"),
+
+    // 'tablet'                : unquote("screen and (min-width: 600px) and (max-width: 767px)"),
+    // 'tablet-portrait'       : unquote("screen and (min-width: 672px) and (max-width: 990px) and (orientation:portrait)"),
+    // 'tablet-landscape'      : unquote("screen and (min-width: 672px) and (max-width: 990px) and (orientation:landscape)"),
+    
+    // 'desktop-small'         : unquote("screen and (min-width: 990px) and (max-width: 1296px)"),
+    'desktop'               : unquote("only screen and (min-width: 1200px)"),
+    // 'retina2'   : unquote("screen and (-webkit-min-pixel-ratio: 2) and (min-resolution: 192dpi)"),
+    // 'retina3'   : unquote("screen and (-webkit-min-pixel-ratio: 3) and (min-resolution: 288dpi)"),
+    'landscape' : unquote("screen and (orientation:landscape) "),    
+    'portrait'  : unquote("screen and (orientation:portrait) ")
+);
+
+
+
+
+
+
+@mixin forMediaBreakpoint($breakpoints) {
+    $conditions : ();
+    @each $breakpoint in $breakpoints {
+        // If the key exists in the map
+        $conditions: append(
+            $conditions,
+            #{inspect(map-get($media_queries, $breakpoint))},
+            comma
+        );
+    }
+
+    @media #{$conditions} {
+        @content;
+    }
+
+}
+
+
+
+/* ------- */
+/* Desktop */
+/* ------- */
+
+// @media 
+// screen and (min-width: 1296px) {
+    
+// }
+
+// /* ------------- */
+// /* Desktop Small */
+// /* ------------- */
+
+// @media 
+// (min-width: 990px) 
+// and (max-width: 1296px) {
+
+// }
+
+// /* ------ */
+// /* Tablet */
+// /* ------ */
+
+// @media 
+// (min-width: 672px) 
+// and (max-width: 990px) {
+
+// }
+
+// /* ----- */
+// /* Mobil */
+// /* ----- */
+
+// @media 
+// screen and (max-width: 672px) {
+
+// }

@@ -1,0 +1,68 @@
+@import '../../publicMain.scss';
+// @import '../../../addresses/address.scss';
+
+@mixin profile_AddressMenu(){  
+    // @include AddressMenu();
+    // @include Add      
+    // .AddressMenuMain {
+    //     border: none;
+    //     position: relative;
+    //     height: 100%;
+    //     .AddressListMain {
+    //         overflow-y: auto;
+    //         overflow-x: visible;
+    //         box-shadow: none;
+    //         position: relative;
+    //         border: none;
+    //         > .horizontalLine {
+    //             display: none;
+    //             margin-top: 0.5em;
+    //             margin-bottom: 0.5em;
+    //         }
+    //         > div {        
+    //             background-color: red !important;
+    //             @include T_container();
+    //             display: flex;
+    //             justify-content: stretch;
+    //             >.information {
+    //                 width: 30%;
+    //                 position: relative;
+    //                 div {
+    //                     display: flex;
+    //                     div {
+    //                         &[id*='title'],[id*='firstName'],[id*='street'],[id*='salutation']{
+    //                             &:after{
+    //                                 content: "\00a0";
+    //                             }
+    //                         }
+    //                         &[id*='city']{
+    //                             &:after {
+    //                                 content: ",\00a0";
+    //                             }
+    //                         }
+    //                     }  
+    //                 }
+                    
+    //             }     
+    //             > .Table {
+    //                 width: fit-content;
+    //                 position: relative;
+    //                 border: none;
+    //                 span {
+    //                     margin-left: 0.5em;
+    //                 }
+    //             }
+    //             > .buttonsDiv {
+    //                 width: 10%;
+    //                 position: relative;
+    //                 display: flex;
+    //                 align-items: flex-start;
+    //                 justify-content: flex-end;
+    //             }
+    //             // &:hover {
+    //             //     background-color: $color-primary;
+    //             // }
+    //         }
+    //     }
+    // }
+}

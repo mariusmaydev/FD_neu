@@ -1,0 +1,85 @@
+@import '../../../general/main.scss';
+@import '../../../general/buttons.scss';
+@import '../../../PUBLIC/profile/subPages/Adresses.scss';
+
+@mixin checkout_Address(){
+    > .AddressMain {
+        // @include AddressMenuList();
+        > div {
+            @include T_container();
+        }
+        > .addressMenuListMain {
+        }   
+        > .addressMenuNewMain {
+            @include T_container();        
+            > [id*='head'] {
+                display: none;
+            }
+            > div {
+                > .AddressInput {
+                    display: grid;
+                    grid-template-columns: repeat(10, 1fr);
+                    row-gap: 0.5em;
+                    grid-template-areas: 
+                        "fN fN fN fN fN fN lN lN lN lN"
+                        "plz plz plz ct ct ct ct cy cy cy"
+                        "st st st st st hn hn hn hn hn"
+                        "ema ema ema ema ema ph ph ph ph ph";
+                    > div {
+                        background-color: transparent;
+                        box-sizing: border-box;
+                        &.S_InputDiv {
+                            padding-bottom: -0.5em;
+                            > label {
+
+                            }
+                        }
+                        &[id*='title']{
+                            display: none;
+                        }
+                        &[id*='salutation']{
+                            display: none;
+                            grid-area: none;
+                        }
+                        &[id*='firstName']{
+                            grid-area: fN;
+                        }
+                        &[id*='lastName']{
+                            grid-area: lN;
+                        }
+                        &[id*='postcode']{
+                            grid-area: plz;
+                        }
+                        &[id*='city']{
+                            grid-area: ct;
+                        }
+                        &[id*='country']{
+                            grid-area: cy;
+                        }
+                        &[id*='street']{
+                            grid-area: st;
+                        }
+                        &[id*='housenumber']{
+                            grid-area: hn;
+                        }
+                        &[id*='email']{
+                            grid-area: ema;
+                        }
+                        &[id*='phone']{
+                            grid-area: ph;
+                        }
+                    }
+                }
+            }
+            > button {
+                display: none;
+            }
+        }
+        > .buttonDiv {
+            > button {
+
+            }
+        }
+    }
+
+}

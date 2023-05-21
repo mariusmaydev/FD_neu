@@ -1,0 +1,109 @@
+@import 'mobile/projectDetails';
+@import 'desktop/projectDetails';
+
+@keyframes translateProjectDetails {
+    0% {
+        transform: translateX(-50%) translateY(100rem);
+    }
+    100% {
+        transform: translateX(-50%) translateY(-50%);
+    }
+}
+@keyframes translateProjectDetails_close {
+    100% {
+        transform: translateX(-50%) translateY(100rem);
+    }
+    0% {
+        transform: translateX(-50%) translateY(-50%);
+    }
+}
+@keyframes translateProjectDetailsBackground {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes translateProjectDetailsBackground_close {
+    100% {
+        opacity: 0;
+    }
+    0% {
+        opacity: 1;
+    }
+}
+body {
+    @include forMediaBreakpoint(desktop mobile){
+        @include projectDetails-desktop();
+    }
+    @include forMediaBreakpoint(mobile-small){
+        @include projectDetails-mobile();
+    }
+
+}
+
+// @mixin converterStart_projectDetails {
+//     > .subWindow_MAIN {
+//         > .background {
+
+//         }
+//         > .content {
+//             position: relative;
+//             width: 80vw;
+//             height: 80vh;
+//             margin: 0;
+//             > .button_close {
+//                 > span {
+
+//                 }
+//             }
+//             > .container {
+//                 position: relative;
+//                 width: 100%;
+//                 height: 100%;
+//                 cursor: pointer;
+//                 box-sizing: border-box !important;
+//                 >.Lighter3D {
+//                     cursor: pointer;
+//                     // box-sizing: border-box;
+//                     position: relative;
+//                     width: 100%;
+//                     height: 100%;
+//                     overflow: visible;
+//                     box-sizing: content-box !important;
+//                     transform: translateY(-5%);
+//                     > canvas {
+//                         transform: scale(1.05);
+//                         cursor: pointer;
+//                         box-sizing: content-box !important;
+//                         overflow: visible;
+//                     }
+//                 }
+//             }
+//             > .buttonDiv {
+//                 > button {
+//                     > span {
+
+//                     }
+//                 }
+//             }
+//             > .informationDiv {
+//                 background-color: red;
+//                 > .informationTable {
+//                     > table {
+//                         > .tr {
+//                             > .td {
+//                                 > div {
+//                                     > span {
+                                        
+//                                     }
+//                                 }
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }

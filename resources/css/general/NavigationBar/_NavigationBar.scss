@@ -1,0 +1,172 @@
+@import '../main.scss';
+@import '../_mediaQueries.scss';
+// @import 'mobile.scss';
+// @import 'desktop.scss';
+
+
+.NavigationBar {
+    // box-shadow: 0 4px 4px -2px gray;
+    
+    transform: translateY(0px);
+    &:not([loaded*='true']){
+        visibility: hidden;
+        transform: translateY(-10rem);
+    }
+    transition: transform 0.2s ease-out;
+    visibility: visible;
+
+    position: fixed;
+    z-index: 1001;
+    // background-color: $color-header;
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    height: 7vh;
+    padding: 0%;
+    box-sizing: border-box;
+    width: 100vw;
+    >.content {
+        background-color: transparent;
+        // @include T_container();
+        // @include box-shadow(1, rgb(26, 26, 26), 0.52);
+        position: relative;
+        margin: 0.5rem;
+        margin-bottom: 0;
+        width: calc(100% - 1rem);
+        height: calc(7vh - 0.5rem);
+        box-sizing: border-box;
+        display: grid;
+    
+        grid-template-areas: "Logo Design shoppingCart"; 
+        grid-template-columns: [Logo] 3fr [Design] minmax(min-content, max-content) [shoppingCart] minmax(min-content, max-content);
+        grid-template-rows: 100%;
+        grid-auto-flow: dense;
+        align-content: stretch;
+        gap: 0.5rem;
+        // justify-items: center;
+        // justify-content: safe;
+        align-items: stretch;
+        padding: 0;
+        div {
+            @include T_container();
+            @include box-shadow(1, rgb(26, 26, 26), 0.52);
+            box-sizing: border-box;
+            position: relative;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            // justify-content: ;
+            > button {
+                position: relative;
+                // top: 0.4em;
+            }
+            &.Logo {
+                position: relative;
+                grid-area: Logo;
+                left: 0;
+                // top: -1%;
+                height: 100%;
+                width: auto;
+                > div {
+                    box-shadow: none;
+                    height: 100%;
+                    width: max-content;
+                    left: 0.5rem;
+                    padding: 0.5rem;
+                    img {
+                        position: relative;
+                        height: 100%;
+                        transform: scale(1.2);
+                        cursor: pointer;
+                    }
+                }
+            }
+            &.Cart {
+                position: relative;
+                grid-area: shoppingCart;
+                height: 100%;
+                aspect-ratio: 1/1;
+                // width: max-content;  
+                padding: 0rem;  
+                > button {
+                    width: 100%;
+                    height: 100%;
+
+                    > span {
+                        
+                        font-size: 2rem;
+                    }
+                }
+                > .cartPoint {
+                    cursor: pointer;
+                    position: absolute;
+                    z-index: 1;
+                    left: 50%;
+                    top: 60%;
+                    background-color: $color-primary;
+                    border-radius: 50%;
+                    width: 1em;
+                    height: 1em;
+                    aspect-ratio: 1/1;
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+            &.Design {
+                // @include T_container();
+                // @include box-shadow(1, rgb(26, 26, 26), 0.52);
+                position: relative;
+                grid-area: Design;
+                box-sizing: border-box;
+                height: 100%;
+                width: max-content;
+                // background-color: $color-primary-light;
+                // margin-right: 1em;
+                margin: 0;
+                padding: 0rem;
+                > button {
+                    margin: 0;
+                    width: 100%;
+                    height: 100%;
+                    padding: 0;
+                    padding-inline: 1.5rem;
+                    background-color: $color-primary;
+                    transition: background-color 0.05s linear;
+                    > span {
+                        color: black;
+                        font-size: 1.4rem;
+
+                    }
+                    &:hover {
+                        background-color: $color-primary-Dark;
+                    }
+                }
+            }
+            &.Profile {
+                display: none;
+            }
+            &.Sparks {
+                display: none;
+            }
+        }
+    }
+    
+    
+    
+    // @include NavBar_desktop();
+    
+    // @include forMediaBreakpoint(desktop){
+    //     @include NavBar_desktop();
+    // }
+    // @include forMediaBreakpoint(mobile-small){
+    //     @include NavBar_mobile();
+    // }
+    
+    // @include forMediaBreakpoint(desktop){
+    //     @include NavBar_desktop();
+        
+    // } 
+
+}
+

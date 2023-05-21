@@ -1,0 +1,88 @@
+@import '../../../../general/main.scss';
+@import '../../../../general/buttons.scss';
+// @import '../../../../general/NavigationBar.scss';
+
+@import '../_converterToolBarHelper.scss';
+@import '_floatingDiv.scss';
+@import '_image.scss';
+@import '_text.scss';
+
+
+@mixin conv_BottomBar(){
+    
+    > .converter-bottom-bar {
+
+        position: relative;
+        margin: 0;
+        margin: 2%;
+        width: 96%;
+        height: max-content;
+        max-height: 10%;
+        // left: 2%;
+        overflow: visible;
+        box-sizing: content-box;
+        order: 2;
+        > .conv_BottomBar_Main {
+            width: 100%;
+            box-sizing: content-box;
+            height: max-content;
+            // overflow: hidden;
+            > .conv_bottom_bar_std {
+                position: relative;
+                height: max-content;
+                display: flex;
+                padding: 0.5em;
+                background-color: white;
+                border-radius: $border-radius;
+                @include box-shadow();
+                justify-content: space-around;
+                box-sizing: border-box;
+                > input {
+                    display: none;
+                }
+                > button {
+                    overflow: visible;
+                    box-sizing: border-box;
+                    padding: 0.2em;
+                    aspect-ratio: 1/1;
+                    height: 100%;
+                    > span {
+                        font-size: 10vw;  
+                    }
+                    &.buy {
+                        display: none;
+                        position: relative;
+                        cursor: pointer;
+                        @include T_container();
+                        border: none;
+                        margin: 1em;
+                        user-select: auto;
+                        pointer-events: auto;
+                        > span {
+                            user-select: auto;
+                            pointer-events: auto;
+                            font-size: 2em;
+                        }
+                    }
+                    display: block;
+                    @include conv_floatingDiv_aligned();
+                }
+            }        
+            &[name*='image']{
+                background-color: transparent;
+                border-radius: 0px 0px;
+                box-shadow: none;
+                box-sizing: border-box;
+                @include conv_bottomBar_image();
+            }   
+            &[name*='text']{
+                background-color: transparent;
+                border-radius: 0px 0px;
+                box-shadow: none;
+                box-sizing: border-box;
+                @include conv_bottomBar_text();
+            }
+
+        }
+    }
+}

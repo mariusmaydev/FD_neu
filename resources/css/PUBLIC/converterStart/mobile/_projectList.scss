@@ -1,0 +1,227 @@
+
+// @import '../general/NavigationBar.scss';
+
+$color-project-hover         : rgba(64, 64, 64, 0.219);
+
+@mixin ProjectList-mobile(){
+    > .ProjectListMain {        
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        // box-sizing: co-box;
+        overflow: hidden;
+        &[id*='CART']{
+            height: max-content;
+            > .TableMain{
+                > .ListMain {
+                    overflow: hidden;
+                    overflow-x: auto;
+                }
+            }
+        }
+        > .TableMain {
+            position: relative;
+            width: 100%;
+            // height: 100%;
+            overflow: visible;
+            margin-inline: 0;
+            box-sizing: border-box;
+            >.ListMain {
+                box-sizing: content-box;
+                width: 100%;
+                position: relative;
+                display: grid;
+                grid-auto-flow: row dense;
+                grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+                    justify-content: center;
+                    align-content: start;
+
+                overflow: auto;
+
+
+                @include ProjectListElement();
+
+                // &::-webkit-scrollbar {
+                //     display: none;
+                // }
+                  
+                // /* Track */
+                // &::-webkit-scrollbar-track {
+                //     display: none;
+                // }
+                
+                // /* Handle */
+                // &::-webkit-scrollbar-thumb {
+                //     display: none;
+                // }
+                 
+                // /* Handle on hover */
+                // &::-webkit-scrollbar-thumb:hover {
+                //     display: none;
+                // }
+            }
+        }
+        > [id*='head'] {
+            position: relative;
+            display: none;
+            > div {
+                position: relative;
+                left: calc(0.6em + 1%);
+                > span {
+
+                }
+            }
+            > hr {
+                margin: 0;
+            }
+        }
+    }
+}
+
+@mixin ProjectListElement(){
+    >.ListElement {
+        position: relative;
+        // background-color: white;
+        aspect-ratio: $LIGHTER-ratio;
+        // width: 100%;
+        // max-width: 30%;
+        // min-width: 8em;
+        // flex: 1 1 20%;
+        @include T_container();
+        padding:    0.5em;
+        margin:     1em;
+        height: max-content;
+        background-color: transparent;
+        box-shadow: none;
+        overflow: visible;
+        cursor: pointer;
+        box-sizing: border-box;
+        // &[showDetails='true']{
+        //     > .container{
+        //         > .Lighter3D {
+        //             position: absolute;
+        //             width: 100vw;
+        //             left: 0vw;
+        //             > canvas {
+        //                 position: fixed;
+        //                 left: 0;
+        //                 // transform: translateX();
+        //             }
+        //         }
+        //     }
+        // }
+        // transition: box-shadow 0.5s ease-out;//, background-color 0.1s ease-in;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        &[loaded='true']{
+            opacity: 1;
+        }
+        > .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            box-sizing: border-box !important;
+            >.Lighter3D {
+                cursor: pointer;
+                // box-sizing: border-box;
+                position: relative;
+                width: 100%;
+                height: 100%;
+                overflow: visible;
+                box-sizing: content-box !important;
+                transform: translateY(-10%);
+                user-select: none;
+                pointer-events: none;
+                > canvas {
+                    position: relative;
+                    user-select: none;
+                    pointer-events: none;
+                    transform: scale(1.1);
+                    cursor: pointer;
+                    box-sizing: content-box !important;
+                    overflow: visible;
+                }
+            }
+            > .buttonDiv {
+                position: absolute;
+                // background-color: red;
+                bottom: 0;
+                width: 100%;
+                height: max-content;
+                display: flex;
+                justify-content: space-around;
+                gap: 0.5rem;
+                align-items: center;
+                opacity: 0;
+                transition: opacity 0.2s;
+                > button {
+                    width: 100%;
+                    background-color: $color-header;
+                    padding: 0.3rem;
+                    > span {
+                        font-size: 2rem;
+                    }
+                    &:hover {
+                        // @include box-shadow();
+                        // background-color: $color-primary-Dark;
+                    }
+                }
+            }
+        }
+        &.First {
+            // flex-grow: 1;
+            aspect-ratio: $LIGHTER-ratio;
+            position: relative;
+            // height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            > button {
+                width: 100%;
+                height: 100%;
+                > span {
+                    font-size: 10vmin;
+                } 
+            }
+        }
+        &:hover {
+            @include box-shadow(1, rgb(14, 13, 13), 0.7);
+            // box-shadow:inset 0px 0px 0px 1px rgb(0, 0, 0);
+            // background-color: white;
+            // background-color: rgba(255, 255, 255, 0.066);
+            > .container {
+                > .buttonDiv {
+                    opacity: 1;
+                }
+                > .Lighter3D {
+                    transform: translateY(-10%);
+                }
+            }
+        }
+        >.ListElementHover {
+            height: 0 !important;
+            display: none !important;
+            background-color: $color-project-hover;
+            opacity: 0;
+            transition: opacity 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 4em;
+            > button {
+
+                > span {
+                    font-size: 4em;
+                }
+            }
+        }
+        // &[state*='active']{
+        //     background-color: red;
+        //     transform: translateX(50vw);
+        // }
+    }  
+}
