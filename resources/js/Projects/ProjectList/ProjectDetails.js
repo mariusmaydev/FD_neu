@@ -35,7 +35,7 @@ class ProjectDetails {
             this.mainElement.close();
         }
     }
-    drawInformation(){
+    drawInformation(){ 
         this.informationDiv = new SPLINT.DOMElement(this.id + "informationDiv", "div", this.contentElement);
         this.informationDiv.Class("informationDiv");
             let content = new SPLINT.DOMElement(this.id + "informationContent", "div", this.informationDiv);

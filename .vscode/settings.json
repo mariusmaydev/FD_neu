@@ -285,6 +285,6 @@
 "liveSassCompile.settings.excludeList": [
     "/**/node_modules/**",
     "/.vscode/**",
-    "/fd/resources/css/PUBLIC/profile/**"
+    "/resources/css/PUBLIC/profile/**"
 ]
 }

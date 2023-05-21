@@ -87,7 +87,7 @@ class ADMIN_order_view {
                                     let res = ConverterHelper.createData(this.data.UserID, project.ProjectID);
                                 }.bind(this);
                                 
-                                if(S_FileTools.doesFileExist(projectPATH + "/Full.nc")){
+                                if(SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc", true)){
                                     button_render.span.innerHTML = "Model erneut erstellen";
                                 }
                         }
@@ -96,7 +96,7 @@ class ADMIN_order_view {
                         let button_download_NC = new SPLINT.DOMElement.Button(laserDiv, "downloadNC", "Model herunterladen");
                             button_download_NC.setStyleTemplate(S_Button.STYLE_NONE);
                             button_download_NC.button.onclick = function(){
-                                if(S_FileTools.doesFileExist(projectPATH + "/Full.nc")){
+                                if(SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc", true)){
                                     download_S.download(projectPATH + "/Full.nc", this.orderID + "_" + (parseInt(index) + 1) + "_Model.nc");
                                 } else {
                                     ConverterHelper.createData(this.data.UserID, project.ProjectID);
