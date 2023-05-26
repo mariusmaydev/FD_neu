@@ -56,7 +56,9 @@ class ImageMenu {
                 let hoverDiv = new SPLINT.DOMElement("hoverDiv_" + index, "div", listElement);
                     hoverDiv.Class("hoverDiv");
                     // console.log(data);
-                    let buttonUse = new SPLINT.DOMElement.Button(hoverDiv, "use");
+                    let buttonDiv = new SPLINT.DOMElement("buttonDiv_" + index, "div", hoverDiv);
+                        buttonDiv.Class("buttonDiv");
+                    let buttonUse = new SPLINT.DOMElement.Button(buttonDiv, "use");
                         buttonUse.bindIcon("done");
                         buttonUse.button.onclick = function(){
                           unsplash.download(data);

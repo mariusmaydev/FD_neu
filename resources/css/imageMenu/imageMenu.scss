@@ -11,6 +11,6 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
     @include imageMenuDesktop();
 }
 
-@include forMediaBreakpoint(mobile){
+@include forMediaBreakpoint(mobile mobile-small){
     @include imageMenuMobile();
 }

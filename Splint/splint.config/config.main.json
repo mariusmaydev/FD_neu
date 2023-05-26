@@ -1,27 +1,26 @@
 {
-    "paths": {
-        "error_log"     : "/fd/resources/php/",
-        "project_root"  : "/fd/resources/",
-        "css_root"      : "/fd/resources/css/Output/",
-        "DataBase"      : {
-            "config"    : "/fd/resources/php"
-        }
-    },
-    "loader": {
-        "cachePath" : "/fd/Splint/splintCache/"
-    },
-    "projectName"   : "fd",
-    "SSL"           : "http",
-    "host"          : "localhost",
-    "host1"         : "192.168.178.67",
-    "port"          : "80",
-    "settings"      : {
-        "debugging" : {
-            "error" : true,
-            "warn"  : false,
-            "log"   : false
-        },
-        "cacheResources" : false
-    }
-
+	"projectName": "fd",
+	"SSL": "http",
+	"host": "localhost",
+	"host1": "192.168.178.67",
+	"port": "80",
+	"loader": {
+		"cachePath": "/fd/Splint/splintCache/"
+	},
+	"paths": {
+		"error_log": "/fd/resources/php/",
+		"project_root": "/fd/resources/",
+		"css_root": "/fd/resources/css/Output/",
+		"DataBase": {
+			"config": ""
+		}
+	},
+	"settings": {
+		"cacheResources": false,
+		"debugging": {
+			"error": false,
+			"warn": false,
+			"log": false
+		}
+	}
 }

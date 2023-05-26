@@ -1,7 +1,4 @@
 <?php
-    if(!defined('PROJECT_NAME')){
-        define('PROJECT_NAME', "fd");
-    }
     $rootpath = realpath($_SERVER["DOCUMENT_ROOT"]);
     require_once $rootpath.'/Splint/php/CORE.php';
     require_once 'Paths.php';
@@ -9,7 +6,7 @@
     require_once $rootpath.'/fd/resources/php/FolderSyS/FolderSySCore.php';
     require_once $rootpath.'/fd/resources/php/security/security.php';
     //PHP Core
-
+    Debugger::log("test");
 
 
     function mergeObject(&$dst, $obj) : object {

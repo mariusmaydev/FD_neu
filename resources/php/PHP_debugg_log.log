@@ -1,557 +1,946 @@
-
-     fd
-[21-05 08:17][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:17][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\Communication\AccessSplint.php(5)
-
-
-     fd
-[21-05 08:17][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:17][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\Communication\AccessSplint.php(5)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\Communication\AccessSplint.php(5)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\Communication\AccessSplint.php(5)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\project\project.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\project\projectAccess.php(2)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\product\product.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\product\productAccess.php(3)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\text\text.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\text\textAccess.php(2)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\project\project.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\project\projectAccess.php(2)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\image\image.php(4)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\image\imageAccess.php(2)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\image\image.php(4)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\image\imageAccess.php(2)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\text\text.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\text\textAccess.php(2)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\project\project.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\project\projectAccess.php(2)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\image\image.php(4)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\image\imageAccess.php(2)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\text\text.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\text\textAccess.php(2)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\project\project.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\project\projectAccess.php(2)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\image\image.php(4)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\image\imageAccess.php(2)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\project\project.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\project\projectAccess.php(2)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\image\image.php(4)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\image\imageAccess.php(2)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\project\project.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\project\projectAccess.php(2)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\image\image.php(4)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\image\imageAccess.php(2)
-
-
-     fd
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\project\project.php(6)
-[21-05 08:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\project\projectAccess.php(2)
-
-
-     fd
-[21-05 08:23][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:23][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\Communication\AccessSplint.php(5)
-
-
-     fd
-[21-05 08:24][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:24][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\Communication\AccessSplint.php(5)
-
-
-     fd
-[21-05 08:25][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:25][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\Communication\AccessSplint.php(5)
-
-
-     fd
-[21-05 08:32][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:32][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\Communication\AccessSplint.php(5)
-
-
-     fd
-[21-05 08:32][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:32][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\Communication\AccessSplint.php(5)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\Communication\AccessSplint.php(5)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\image\image.php(4)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\image\imageAccess.php(2)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\text\text.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\text\textAccess.php(2)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\text\text.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\text\textAccess.php(2)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\project\project.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\project\projectAccess.php(2)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\image\image.php(4)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\image\imageAccess.php(2)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\image\image.php(4)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\image\imageAccess.php(2)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\text\text.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\text\textAccess.php(2)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\project\project.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\project\projectAccess.php(2)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\image\image.php(4)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\image\imageAccess.php(2)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\text\text.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\text\textAccess.php(2)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\project\project.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\project\projectAccess.php(2)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\text\text.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\text\textAccess.php(2)
-
-)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\image\image.php(4)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\image\imageAccess.php(2)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\project\project.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\project\projectAccess.php(2)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\text\text.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\converter\text\textAccess.php(2)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
-
-
-     fd
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:34][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:35][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:35][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:35][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
-[21-05 08:35][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
-
-
-     fd
-[21-05 08:35][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:35][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:35][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:35][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:35][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:35][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:35][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:35][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(6)
-[21-05 08:35][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
-[21-05 08:35][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
-
-
-     fd
-[21-05 08:35][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:35][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessions.php(2)
-[21-05 08:35][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php(3)
-
-
-     fd
-[21-05 08:35][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\CORE.php(25)
-[21-05 08:35][DEBUG][NOTICE] at C:\xampp\htdocs\Splint\php\Communication\AccessSplint.php(5)
-
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:05][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:09][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:09][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:09][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:09][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:09][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:09][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:09][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:09][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:09][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:09][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:09][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:09][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:09][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:09][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:09][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:09][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:09][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:09][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:10][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:10][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:10][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:10][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:10][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:10][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:10][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:10][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:10][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:10][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:10][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:10][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:11][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:12][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:12][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:12][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:12][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:12][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:12][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:13][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:14][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:15][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:15][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:15][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:15][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:15][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:15][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:16][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:16][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:16][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:16][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:16][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:16][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:16][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:16][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:16][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:16][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:16][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:16][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:17][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:17][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:17][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:17][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:17][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:17][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:17][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:17][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:17][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:17][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:17][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:17][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:17][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:17][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:17][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:17][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:17][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:17][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:18][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:19][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:20][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:20][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdata.php(3)
+[24-05 17:20][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php(2)
+</S-trace>
+</S-error>
+<S-error>
+<S-msg>
+     
+     test
+</S-msg>
+<S-trace>
+[24-05 17:20][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\CORE.php(9)
+[24-05 17:20][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\login.php(7)
+[24-05 17:20][DEBUG][NOTICE] at C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php(2)
+</S-trace>
+</S-error>

@@ -12,6 +12,11 @@ class ImageMenuFilter {
   }
   draw(){
     // this.drawModeSwitch();
+    let buttonClose = new SPLINT.DOMElement.Button(this.mainElement, this.id + "close");
+        buttonClose.bindIcon("close");
+        buttonClose.onclick = function(){
+            this.ImageMenuInstance.close();
+        }.bind(this);
     this.searchBar = new SPLINT.DOMElement.InputDiv(this.mainElement, "searchBar", "suche");
     this.searchBar.type = "search";
       let bt = this.searchBar.drawToggleButton();

@@ -174,7 +174,6 @@
             return $NewProjectID;
         }
         static function new($projectName, $Product, $UserID = null, $NewProjectID = null, $setSessions = true, $Original = false){
-            Debugg::log($_POST);
             $Design = new stdClass();
             $Design -> Tags = [];
             $Design -> Categories = [];

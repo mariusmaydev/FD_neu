@@ -68,8 +68,13 @@ export class draw {
         // this.setup.controls();
     }
     setupCamera(){
-        this.camera     = new THREE.PerspectiveCamera(10, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
-        this.camera.position.set(-0.15, 0.35, 3.5);
+        if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
+            this.camera     = new THREE.PerspectiveCamera(420, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
+            this.camera.position.set(-0.05, 0.35, 1);
+        } else {
+            this.camera     = new THREE.PerspectiveCamera(10, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
+            this.camera.position.set(-0.15, 0.35, 3.5);
+        }
         this.camera.rotation.set(-0.05, 0, 0);
         this.camera.zoom = 1.2;
         this.camera.filmGauge = 20000;

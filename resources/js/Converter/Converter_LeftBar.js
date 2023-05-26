@@ -21,6 +21,7 @@ class Converter_LeftBar {
     this.button_ImageMenu.button.onclick = function(){
       ConverterHelper.openImageMenu();
         }
+        ConverterHelper.openImageMenu();
   }
   buttonImageUpload(){
     this.button_upload = new FileUploadButton(this.contentElement, "ImageUploadInput", "image/*", FileUpload.CONVERTER_IMG);

@@ -24,22 +24,31 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
         align-items: center;
         overflow: visible;
         > .ImageMenuFilter {
-            @include T_container();
             // pointer-events: none;
             // user-select: none;
+            @include T_container();
+            display: flex;
+            border-radius: 5px;
             order: 1;
             flex-grow: 0;
             flex-shrink: 3;
             position: relative;
             width: 96%;
             margin: 0;
-            margin-top: 4.5em;
-            padding-bottom: 0em;
+            margin-top: calc(7vh + 0.5rem);
+            padding: 0em;
+
             box-sizing: border-box;
             height: min-content;
             box-shadow: 0 0 50px 2px rgba(1, 1, 1, 0.6);
-
+            > button {
+                height: 100%;
+                margin-left: 0.5rem;
+                aspect-ratio: 1/1.5;
+            }
             > .n_inputDiv {
+                width: 100%;
+                margin-top: 0;
                 > .inputBody {
                     > input.search {
 
@@ -50,6 +59,10 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
                         }
                     }
                     >button {
+                        height: 100%;
+                        margin-top: 0.25rem;
+                        margin-left: 0.5rem;
+                        aspect-ratio: 1/1.5;
                         > span {
                             
                         }
@@ -126,16 +139,32 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
                             margin: 1vw;
                             width: calc(100% - 2vw);
                             height: calc(100% - 2vw);
-                            > button {
-                                > span {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            > .buttonDiv {
+                                margin-top: auto;
+                                display: flex;
 
+                                align-self: flex-end;
+                                width: 100%;
+                                height: max-content;
+                                > button {
+                                    align-self: flex-end;
+                                    position: relative;
+                                    bottom: 0;
+                                    margin-left: auto;
+                                    right: 0;
+                                    > span {
+    
+                                    }
                                 }
                             }
                             > .informationDiv {
 
                             }
                             >.tagsDiv{
-
+                                display: none;
                             }
                         }
                     }
@@ -157,6 +186,7 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
     }
 
     .HashtagListMenu {
+        display: none !important;
         position: relative;
         margin: 1%;
         padding: 0;

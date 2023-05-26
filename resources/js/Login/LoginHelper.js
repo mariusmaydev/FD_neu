@@ -151,12 +151,21 @@ class login {
     // }
     static async Login(){
         return new Promise(async function(resolve){
-            let call = new SPLINT.CallPHP(login.PATH, login.nLOGIN_GUEST);
-                call.data.UserID = Cookie.get(login.COOKIE_GUEST);
-            let res = SPLINT.Tools.parse.toJSON((await call.send()));
-            resolve(res);
-            return res;
+            if(S_Location.getHashes().includes("ADMIN")){
+                resolve("ADMIN");
+                return "ADMIN";
+            } else {
+                let call = new SPLINT.CallPHP(login.PATH, login.nLOGIN_GUEST);
+                    call.data.UserID = Cookie.get(login.COOKIE_GUEST);
+                let res = SPLINT.Tools.parse.toJSON((await call.send()));
+                resolve(res);
+                return res;
+            }
         }).then(function(data){
+            console.log(data)
+            if(data == "ADMIN"){
+                return data;
+            }
             Cookie.set(login.COOKIE_GUEST, data.UserID);
             return data;
         });
