@@ -77,12 +77,19 @@ class ConverterHelper {
     let call = new SPLINT.CallPHP(ConverterHelper.PATH, ConverterHelper.FILTER);
         call.data.Storage  = imgData;
         call.onBeforeSend = function(){
-          CONVERTER_STORAGE.toolBar.imageBar.blockElement(imgID);
+            if(CONVERTER_STORAGE.toolBar.imageBar == undefined){
+                // CONVERTER_STORAGE.toolBar.drawBar.blockElement(imgID);
+            } else {
+                CONVERTER_STORAGE.toolBar.imageBar.blockElement(imgID);
+            }
         }
         call.onFinish = function(data){
               DSImage.get(index).images.view = data.ImageViewPath + "?v=" + S_Time.getTime();
               CONVERTER_STORAGE.canvasNEW.refreshData();
-              CONVERTER_STORAGE.toolBar.imageBar.unBlockElement(imgID);
+              
+                if(CONVERTER_STORAGE.toolBar.imageBar != undefined){
+                    CONVERTER_STORAGE.toolBar.imageBar.unBlockElement(imgID);
+                }
         }.bind(this)
         call.send();
   }

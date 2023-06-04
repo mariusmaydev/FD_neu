@@ -72,7 +72,7 @@ export default class Model {
         Model.getFlame(instance, instance.setup.getLighterGroupe(instance.scene, name));
 
         // if(FLAG_sceneLoaded >= loaderCount){
-            instance.onFinishLoading(name);
+            // instance.onFinishLoading(name);
         // }
         return true;
         

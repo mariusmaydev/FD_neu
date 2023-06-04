@@ -12,7 +12,7 @@
             padding: 1em;
         }
         > .buttonsDiv {
-            margin-left: 1em;
+            margin-left: 0.3em;
             padding: 0.5em;
             background-color: white;
             border-radius: $border-radius;
@@ -40,6 +40,7 @@
             box-sizing: border-box;
             top: 0;
             left: 0;
+            padding-inline: 0;
             > span {
                 font-size: 10vw;
             }

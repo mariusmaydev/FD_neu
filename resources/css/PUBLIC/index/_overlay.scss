@@ -40,6 +40,30 @@ $settings: (
                 height: 100%;
                 // scroll-snap-align: start;
                 // @include SPLINT-border-inset();
+                &[index*='start']{
+                    > .content {
+                        // > .buttons {
+                        //     position: sticky;
+                        //     z-index: 2;
+                        //     top: 85%;
+                        //     right: 10%;
+                            > button {
+                                pointer-events: all;
+                                position: sticky;
+                                z-index: 2;
+                                top: 85%;
+                                left: 40%;
+                                @include T_button_4();
+                                background-color: $color-primary-Dark;
+                                > span {
+                                    font-size: 3rem;
+        
+                                }
+                            }
+                        // }
+                    }
+
+                }
                 > .content {
                     width: 100%;
                     height: 100%;
@@ -66,7 +90,8 @@ $settings: (
                             }
                         }
                         &.part1_1{
-                            top: 20%;
+                            top: 3%;
+                            width: 70%;
                         }
                         &.part3_1 {
                             top: 10%;
@@ -81,19 +106,6 @@ $settings: (
                         // @include SPLINT-border-inset(blue);
                         > p, .textContent {
                             // @include SPLINT-border-inset(green);
-
-                        }
-                    }
-                    > button {
-                        pointer-events: all;
-                        position: sticky;
-                        z-index: 2;
-                        top: 80%;
-                        left: 10%;
-                        @include T_button_4();
-                        background-color: $color-primary-Dark;
-                        > span {
-                            font-size: 3rem;
 
                         }
                     }

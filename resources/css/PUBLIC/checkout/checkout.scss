@@ -45,6 +45,11 @@ body {
     margin: 0.5em;
     box-sizing: border-box;
     overflow:hidden;
+    > hr {
+        // &:first-of-type {
+        //     display: none;
+        // }
+    }
     > .element{
         position: relative;
         // box-sizing: border-box;
@@ -56,6 +61,9 @@ body {
         display: flex;
         flex-direction: row;
         width: 100%;
+        // &:not(:first-child){
+        //     @include SPLINT-border-inset(lightgray, 1px, true, false, false, false);
+        // }
         > div {
             position: relative;
             // box-sizing: border-box;
@@ -202,6 +210,7 @@ body {
                     &:hover {
                         @include box-shadow(0, black, 0.95);
                     }
+                    @include SPLINT-border-inset(lightgray, 1px, false, false, true, false);
                     > button {
                         &.switchButton {
                             padding: 1rem;
@@ -235,17 +244,18 @@ body {
                     }
                 }
                 > .expander {
-                    position: absolute;
-                    @include T_container();
+                    position: relative;
+                    // @include T_container();
                     overflow: hidden;
                     top: 100%;
                     z-index: 1000;
                     width: 100%;
                     height: 0;
                     padding: 0;
+
                     // background-color: red;
                     &[state*='active']{
-                        height: 70vh;
+                        height: max-content;
                         padding: 0em;
                     }
                     &[state*='passive']{
@@ -293,7 +303,8 @@ body {
         display: flex!important;
         justify-content: center;
         > div {
-
+            width: 100% !important;
+            max-width: 750px !important;
         }
     }
 }

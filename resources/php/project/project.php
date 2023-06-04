@@ -343,6 +343,7 @@
             $DataSet -> newEntry(ProjectArchiveDB::FIRST_TIME,     $data[ProjectDB::FIRST_TIME]);
             $DataSet -> newEntry(ProjectArchiveDB::LAST_TIME,      $data[ProjectDB::LAST_TIME]);
             $DataSet -> TBName($UserID);
+            Debugger::log($DataSet);
             ProjectArchiveDB::add($DataSet);
         }
     }

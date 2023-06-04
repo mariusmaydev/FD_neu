@@ -35,6 +35,14 @@ class managerCallPHP {
             call.data.TimeEnd = null;
         return call.send();
     }
+    static async editUserPATH(UserID, path){
+        let call = new SPLINT.CallPHP(PATH.php.manager, "USER.EDIT.PATH");
+            call.data.UserID = UserID;
+            call.data.Path = JSON.stringify(path);
+            // call.data.TimeStart = null;
+            // call.data.TimeEnd = null;
+        return call.send();
+    }
     static async editIP(UserID, data){
         let call = new SPLINT.CallPHP(PATH.php.manager, "IP.WRITE");
             call.data = data;

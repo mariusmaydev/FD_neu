@@ -74,11 +74,9 @@ class ADMIN_order_list {
                 project = await ProjectHelper.get(projectID, this.orderData[0].UserID);
             }
             console.log(project)
-            if(project.EPType == "GOLD"){
-                fullPrice = S_Math.add(fullPrice, S_Math.multiply(productHelper.LIST.lighter.gold.price, item.amount));
-            } else {
-                fullPrice = S_Math.add(fullPrice, S_Math.multiply(productHelper.LIST.lighter.chrome.price, item.amount));
-            }
+            let productData = await productHelper.getByName(project.Product);
+            console.dir(productData);
+                fullPrice = S_Math.add(fullPrice, S_Math.multiply(productData.price, item.amount));
             fullAmount += parseInt(item.amount);
         }
         let main = new SPLINT.DOMElement(parent.id + "_information", "div", parent);
@@ -168,15 +166,20 @@ class ADMIN_order_list {
                 let project;
                 if(this.fromArchive){
                     project = await ProjectHelper.getFromArchive(projectID, this.orderData[0].UserID, this.orderData[0].OrderID);
+                    console.log(projectID, this.orderData[0].UserID, this.orderData[0].OrderID)
                 } else {
                     project = await ProjectHelper.get(projectID, this.orderData[0].UserID);
                 }
                 new SPLINT.DOMElement.SpanDiv(tableElement.getData(index, 0), "", project.EPType);
-                if(project.EPType == "GOLD"){
-                    new SPLINT.DOMElement.SpanDiv(tableElement.getData(index, 1), "", productHelper.LIST.lighter.gold.price);
-                } else {
-                    new SPLINT.DOMElement.SpanDiv(tableElement.getData(index, 1), "", productHelper.LIST.lighter.chrome.price);
-                }
+                // LIGHTER_GOLD
+                // console.log(project)
+                let productData = await productHelper.getByName(project.Product);
+                console.log(productData)
+                // if(project.EPType == "GOLD"){
+                    new SPLINT.DOMElement.SpanDiv(tableElement.getData(index, 1), "", productData.price);
+                // } else {
+                    // new SPLINT.DOMElement.SpanDiv(tableElement.getData(index, 1), "", productHelper.LIST.lighter.chrome.price);
+                // }
                 if(item.amountFinishLaser != undefined){
                     new SPLINT.DOMElement.SpanDiv(tableElement.getData(index, 2), "", item.amountFinishLaser + "/" + item.amount);
                 } else {

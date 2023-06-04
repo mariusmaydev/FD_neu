@@ -6,7 +6,6 @@
     require_once $rootpath.'/fd/resources/php/FolderSyS/FolderSySCore.php';
     require_once $rootpath.'/fd/resources/php/security/security.php';
     //PHP Core
-    Debugger::log("test");
 
 
     function mergeObject(&$dst, $obj) : object {

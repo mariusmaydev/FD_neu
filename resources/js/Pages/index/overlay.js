@@ -49,6 +49,14 @@ class indexOverlay {
         // this.part1.text = "Einzigartig. Stilvoll. Zuverflässig. ";
 
 
+        // this.part1_buttons = new SPLINT.DOMElement(this.id  + "part1_buttonsContainer", "div", this.part1.contentElement);
+        // this.part1_buttons.Class("buttons");
+
+        // let button_test = new SPLINT.DOMElement.Button(this.part1_buttons, "create", "jetzt entwerfen");
+        //     button_test.onclick = function(){                
+        //         this.call3D_toggle(this.calls.smoothTurn);
+        //     }.bind(this);
+
             
         let button_test = new SPLINT.DOMElement.Button(this.part1.contentElement, "create", "jetzt entwerfen");
             button_test.onclick = function(){                

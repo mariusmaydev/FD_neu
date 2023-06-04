@@ -68,7 +68,7 @@
         bottom: 100%;
         left: 0;
         height: max-content;
-        width: 96%;
+        width: 100%;
         overflow: visible;
         box-sizing: border-box;
         position: absolute;
@@ -82,6 +82,28 @@
             align-items: center;
             justify-content: center;
             overflow: visible;
+            > .S-SliderMain {
+                text-align: center;
+                > .label {
+                    width: max-content;
+                    margin-left: auto;
+                    margin-right: auto;
+                    > span {
+
+                    }
+                }
+                > .contentBody {
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: 90%;
+                    > .sliderBody {
+                        width: 100%;
+                    }
+                    > .valueOutput {
+                        width: max-content;
+                    }
+                }
+            }
             > * {
                 position: relative;
                 pointer-events: all;

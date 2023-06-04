@@ -49,6 +49,7 @@
         <s-part src="/js/Orders/Order.js"></s-part>
         <s-part src="/js/Payment/Paypal.js"></s-part>
         <s-part src="/js/Checkout/"></s-part>
+        <s-part src="/js/Checkout/"></s-part>
 
         <s-part src="/js/NavigationBar.js"></s-part>
         <s-loader src="/js/Eventhandler.js"></s-loader>

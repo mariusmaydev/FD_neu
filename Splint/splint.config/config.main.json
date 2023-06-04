@@ -8,7 +8,7 @@
 		"cachePath": "/fd/Splint/splintCache/"
 	},
 	"paths": {
-		"error_log": "/fd/resources/php/",
+		"error_log": "/fd/Splint/logs/",
 		"project_root": "/fd/resources/",
 		"css_root": "/fd/resources/css/Output/",
 		"DataBase": {
@@ -16,7 +16,19 @@
 		}
 	},
 	"settings": {
-		"cacheResources": false,
+		"cacheResources": {
+			"cdn": false,
+			"splint": {
+				"js": false,
+				"css": false,
+				"fileTree": false
+			},
+			"project": {
+				"js": false,
+				"css": false,
+				"fileTree": false
+			}
+		},
 		"debugging": {
 			"error": false,
 			"warn": false,

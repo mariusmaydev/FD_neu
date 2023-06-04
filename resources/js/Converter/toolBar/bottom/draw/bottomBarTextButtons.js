@@ -19,18 +19,16 @@ class BottomBar_Text_Button_FontSize {
     }
     drawSlider(){
         this.floatingDiv = new Converter_BottomBar_floatingDiv_block("fontSizeSlider");
-            let sl = new Slider_S(this.floatingDiv.content, "sl_fontSize_" + this.floatingDiv.content.id);
+            let sl = new Slider(this.floatingDiv.content, "sl_fontSize_" + this.floatingDiv.content.id, "Schriftgröße");
                 sl.min    = 100;
                 sl.max    = 1000;
                 sl.step   = 100;
                 sl.value  = this.data.FontSize;
-                sl.draw();
                 
                 sl.oninput = function(e){
                     this.data.FontSize = sl.value;
                     CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt");
                 }.bind(this);
-                sl.setLabel("Schriftgröße");
     }
 }
 
@@ -54,18 +52,16 @@ class BottomBar_Text_Button_FontWeight {
     drawSlider(){
         this.floatingDiv = new Converter_BottomBar_floatingDiv_block("fontWeightSlider");
 
-        let sl_fontWeight = new Slider_S(this.floatingDiv.content, "sl_fontWeight_" + this.floatingDiv.content.id);
+        let sl_fontWeight = new Slider(this.floatingDiv.content, "sl_fontWeight_" + this.floatingDiv.content.id, "Schriftstärke");
             sl_fontWeight.min    = 100;
             sl_fontWeight.max    = 1000;
             sl_fontWeight.step   = 100;
             sl_fontWeight.value  = this.data.FontWeight;
-            sl_fontWeight.draw();
             
             sl_fontWeight.oninput = function(e){
                 this.data.FontWeight = sl_fontWeight.value;
                 CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt");
             }.bind(this);
-            sl_fontWeight.setLabel("Schriftstärke");
 
     }
 }

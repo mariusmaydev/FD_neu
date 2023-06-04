@@ -362,6 +362,36 @@
   background-color: red;
 }
 
+.s-button_basic {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_basic > span {
+  display: block;
+}
+
+.s-button_link {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_link > span {
+  text-decoration: underline;
+  color: blue;
+  display: block;
+}
+
+.s-button_link:hover > span {
+  color: rgb(34, 34, 255);
+}
+
 .DropDownInputMain {
   position: relative;
   background-color: #ffd7af;
@@ -2362,6 +2392,36 @@ body {
   background-color: red;
 }
 
+.s-button_basic {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_basic > span {
+  display: block;
+}
+
+.s-button_link {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_link > span {
+  text-decoration: underline;
+  color: blue;
+  display: block;
+}
+
+.s-button_link:hover > span {
+  color: rgb(34, 34, 255);
+}
+
 .DropDownInputMain {
   position: relative;
   background-color: #ffd7af;
@@ -4224,6 +4284,36 @@ body {
 
 .button_Default:hover {
   background-color: red;
+}
+
+.s-button_basic {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_basic > span {
+  display: block;
+}
+
+.s-button_link {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_link > span {
+  text-decoration: underline;
+  color: blue;
+  display: block;
+}
+
+.s-button_link:hover > span {
+  color: rgb(34, 34, 255);
 }
 
 .DropDownInputMain {
@@ -6162,6 +6252,36 @@ body {
   background-color: red;
 }
 
+.s-button_basic {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_basic > span {
+  display: block;
+}
+
+.s-button_link {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_link > span {
+  text-decoration: underline;
+  color: blue;
+  display: block;
+}
+
+.s-button_link:hover > span {
+  color: rgb(34, 34, 255);
+}
+
 .DropDownInputMain {
   position: relative;
   background-color: #ffd7af;
@@ -8162,6 +8282,36 @@ body {
   background-color: red;
 }
 
+.s-button_basic {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_basic > span {
+  display: block;
+}
+
+.s-button_link {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_link > span {
+  text-decoration: underline;
+  color: blue;
+  display: block;
+}
+
+.s-button_link:hover > span {
+  color: rgb(34, 34, 255);
+}
+
 .DropDownInputMain {
   position: relative;
   background-color: #ffd7af;
@@ -10024,6 +10174,36 @@ body {
 
 .button_Default:hover {
   background-color: red;
+}
+
+.s-button_basic {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_basic > span {
+  display: block;
+}
+
+.s-button_link {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_link > span {
+  text-decoration: underline;
+  color: blue;
+  display: block;
+}
+
+.s-button_link:hover > span {
+  color: rgb(34, 34, 255);
 }
 
 .DropDownInputMain {

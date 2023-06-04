@@ -156,7 +156,14 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
                                     margin-left: auto;
                                     right: 0;
                                     > span {
-    
+                                        color: $color-primary-Dark;
+                                        font-size: 2em;
+                                    }
+                                    &:hover {
+                                        color: white;
+                                        > span {
+                                            color: white !important;
+                                        }
                                     }
                                 }
                             }
@@ -165,6 +172,27 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
                             }
                             >.tagsDiv{
                                 display: none;
+                            }
+                        }
+                        > .bottomDiv {
+                            display: none !important;
+                            position: relative;
+                            @include T_container();
+                            z-index: 2000;
+                            width: 100%;
+                            height: 20px;
+                            margin: 1vw;
+                            margin-bottom: 0;
+                            width: calc(100% - 2vw);
+                            display: flex;
+                            justify-content: center;
+                            // height: calc(100% - 2vw);
+                            // bottom: -20px;
+                            // background-color: red;
+                            > button {
+                                margin-left: auto;
+                                margin-right: auto;
+                                width: max-content;
                             }
                         }
                     }

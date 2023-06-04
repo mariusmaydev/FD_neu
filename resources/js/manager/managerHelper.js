@@ -7,6 +7,7 @@ class ManagerHelper {
     static PAGE;
     static STORAGE = new SPLINT.autoObject();
     static {
+            console.log("okokoko")
         SPLINT.Events.onInitComplete = function(){
             this.#getPage();
             this.STORAGE.TimeStart = new Date();
@@ -30,6 +31,10 @@ class ManagerHelper {
     }
     static async #saveIP(){
         let res = await SPLINT.API.IPinfo.get();
+        let q = new Object();
+            q.a = "b";
+            let res3 = await managerCallPHP.editUser(null, res.ip);
+        let res1 = await managerCallPHP.editUserPATH(null, q);
         let res2 = await managerCallPHP.editIP(null, res);
         console.log(res2)
 

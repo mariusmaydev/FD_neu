@@ -53,8 +53,6 @@ export class draw {
     }
     async onFinishLoading(name){
         if(this.scene != null){
-            this.Animations.lighter_close.start(false, 0, name);
-            this.Animations.lever_close.start(true, 0, name);
             this.animate();        
             SPLINT.Events.onLoadingComplete.dispatch();
         }
@@ -109,18 +107,25 @@ export class draw {
         // }
         return new Promise(async function(resolve){
             await MODEL.init(this, "lighter");
+            this.Animations.lighter_close.start(false, 0, "lighter");
+            this.Animations.lever_close.start(true, 0, "lighter");
             await MODEL.init(this, "lighter2");
+            this.Animations.lighter_close.start(false, 0, "lighter2");
+            this.Animations.lever_close.start(true, 0, "lighter2");
             let lighterGroupe1 = this.setup.getLighterGroupe(this.scene);
                 lighterGroupe1.rotation.z = 10 * (Math.PI / 180);
+                lighterGroupe1.rotationBase = lighterGroupe1.rotation.clone();
 
                 resolve('resolved');
             let lighterGroupe2 = this.setup.getLighterGroupe(this.scene, 'lighter2');
                 lighterGroupe2.rotation.z = 10 * (Math.PI / 180);
                 lighterGroupe2.position.x = 0.08;
                 lighterGroupe2.position.z = -0.07;
-                // this.loaded = true;
-            // console.log();
+                lighterGroupe2.rotationBase = lighterGroupe2.rotation.clone();
+            
             resolve("ok");
+            this.onFinishLoading();
+            
             return true;
         }.bind(this));
     }

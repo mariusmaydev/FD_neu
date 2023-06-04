@@ -149,7 +149,9 @@
             self::checkNull($projectID, self::$ProjectID);
 
             self::$FileName = self::getFileName($type, $imgID, $ext);
-            return self::buildPath(self::$base, $GLOBALS['folder'], "data", "Users",  $userID,  "projects", $projectID) . self::folder($type) . self::$FileName;
+            $f = self::buildPath(self::$base, $GLOBALS['folder'], "data", "Users",  $userID,  "projects", $projectID) . self::folder($type) . self::$FileName;
+            Debugger::log($f);
+            return $f;
         }
     }
 

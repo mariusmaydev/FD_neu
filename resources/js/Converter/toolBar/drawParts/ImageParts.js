@@ -30,39 +30,30 @@ class ToolBar_ImageElement_parts {
             }.bind(this);
         return button;
     } 
-    SL_contrast(parent = this.parent, value){ 
-        let sl1 = new Slider("sl_contrast_" + parent.id, parent, "Kontrast", 0, 10, value);
-            sl1.draw();
-        // let sl = new Slider_S(parent, "sl_contrast_" + parent.id);
-        //     sl.min      = 0;
-        //     sl.max      = 10;
-        //     sl.step     = 1;
-        //     sl.value    = value;
-        //     sl.draw();
-
-        //     sl.setLabel("Kontrast");
-        return sl1.get();
+    SL_contrast(parent = this.parent, value = null){             
+        let sl_contrast = new Slider(parent, "contrast_" + parent.id, "Kontrast");
+            sl_contrast.drawTickMarks = false;
+            sl_contrast.min    = 0;
+            sl_contrast.max    = 10;
+            sl_contrast.value  = value;
+        return sl_contrast;
     } 
-    SL_antialiasing(parent = this.parent, value){ 
-        let sl = new Slider_S(parent, "sl_antialiasing_" + parent.id);
-            sl.min    = 0;
-            sl.max    = 10;
-            sl.step   = 1;
+    SL_antialiasing(parent = this.parent, value){              
+        let sl = new Slider(parent, "antialiasing_" + parent.id, "Glättung");
+            sl.drawTickMarks = false;
+            sl.min      = 0;
+            sl.max      = 10;
+            sl.step     = 1;
             sl.value    = value;
-            sl.draw();
-
-            sl.setLabel("Glättung");
         return sl;
     } 
-    SL_sharpness(parent = this.parent, value){ 
-        let sl = new Slider_S(parent, "sl_sharpness_" + parent.id);
-            sl.min    = 0;
-            sl.max    = 10;
-            sl.step   = 1;
+    SL_sharpness(parent = this.parent, value){          
+        let sl = new Slider(parent, "sharpness_" + parent.id, "Schärfe");
+            sl.drawTickMarks = false;
+            sl.min      = 0;
+            sl.max      = 10;
+            sl.step     = 1;
             sl.value    = value;
-            sl.draw();
-
-            sl.setLabel("Schärfe");
         return sl;
     } 
 }

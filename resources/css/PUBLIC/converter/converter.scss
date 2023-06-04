@@ -48,18 +48,26 @@ body {
 @include forMediaBreakpoint(mobile-small){
     .editText_mobile {
         > .background {
-            background-color: $color-background-subWindow;
+            background-color: rgba(28, 28, 28, 0.379);
         }
         > .content {
             background-color: transparent;
             box-shadow: none;
             box-sizing: border-box;
             padding: 0;
+            // @include SPLINT-border-inset();
+            > button {
+                > span {
+                    font-size: 4em;
+                    color: white;
+                }
+            }
             > .TextInputDiv {
                 box-sizing: border-box;
                 width: 90vw;
                 height: 50vh;
                 margin: 0;
+                margin-top: 10vh;
                 background-color: transparent;
                 > label {
                     display: none;
@@ -73,6 +81,8 @@ body {
                     pointer-events: all !important;
                     border: none;
                     text-align: center;
+                    font-size: 4em;
+                    color: white;
                 }
                 hr {
                     display: none;

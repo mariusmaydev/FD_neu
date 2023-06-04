@@ -116,6 +116,7 @@ export class draw {
                 // lighterGroupe2.visible = false;
             // console.log();
             resolve("ok");
+            this.onFinishLoading();
         }.bind(this));
     }
     events(){

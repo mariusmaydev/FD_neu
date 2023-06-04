@@ -45,7 +45,8 @@ class productHelper {
             call.data.price      = price;
             call.data.name       = name;
         return new Promise(async function(resolve){
-            let res = await call.send()
+            let res = await call.send();
+            console.log(call, res)
                 for(const e of res){
                     this.LIST[e.name] = e;
                     delete e.name;

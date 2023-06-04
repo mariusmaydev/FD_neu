@@ -63,19 +63,27 @@ class drawCartList {
                 let info_buttons = infoDivInner.newDiv("/ID/info_buttons", "buttons");
 
             let itemPriceDivInner = itemPriceDiv.newDiv("/ID/item_price_inner", "inner");
-            let priceDivItem = new PriceDiv_S(itemPriceDivInner, index, productData.price);
-
+            console.dir(productData);
+            productData.then(function(data){
+                console.log(parseInt(data.price))
+                // let priceDivItem = new PriceDiv_S(itemPriceDivInner, index, "25.55");
+            });
+            let priceDiv
             let amountDivInner = amountEle.newDiv("/ID/amount_inner", "inner");
             let amountDiv = new SPLINT.DOMElement.InputAmount(amountDivInner, amountDivInner.id, item.amount, "");
+            productData.then(function(data){
                 amountDiv.oninput = function(amount){
                     ShoppingCart.setAmount(index, amount);
-                    priceDiv.setPrice(S_Math.multiply(productData.price, amount));
+                    priceDiv.setPrice(S_Math.multiply(data.price, amount));
                     ShoppingCart.drawPrices();
                 }.bind(this);
+            }.bind(this));
 
                 
             let PriceDivInner = priceEle.newDiv("/ID/full_price_inner", "inner");
-            let priceDiv = new PriceDiv_S(PriceDivInner, index, S_Math.multiply(productData.price, item.amount));
+            productData.then(function(data){
+                priceDiv = new PriceDiv_S(PriceDivInner, index, S_Math.multiply(data.price, item.amount));
+            });
 
             let ButtonsInner = buttonsEle.newDiv("/ID/buttons_inner", "inner");
                 // let bt_edit = new Button(ButtonsInner, "edit");

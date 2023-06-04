@@ -362,6 +362,36 @@
   background-color: red;
 }
 
+.s-button_basic {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_basic > span {
+  display: block;
+}
+
+.s-button_link {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_link > span {
+  text-decoration: underline;
+  color: blue;
+  display: block;
+}
+
+.s-button_link:hover > span {
+  color: rgb(34, 34, 255);
+}
+
 .DropDownInputMain {
   position: relative;
   background-color: #ffd7af;
@@ -2224,6 +2254,36 @@ body {
 
 .button_Default:hover {
   background-color: red;
+}
+
+.s-button_basic {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_basic > span {
+  display: block;
+}
+
+.s-button_link {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_link > span {
+  text-decoration: underline;
+  color: blue;
+  display: block;
+}
+
+.s-button_link:hover > span {
+  color: rgb(34, 34, 255);
 }
 
 .DropDownInputMain {
@@ -4226,6 +4286,36 @@ body {
   background-color: red;
 }
 
+.s-button_basic {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_basic > span {
+  display: block;
+}
+
+.s-button_link {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_link > span {
+  text-decoration: underline;
+  color: blue;
+  display: block;
+}
+
+.s-button_link:hover > span {
+  color: rgb(34, 34, 255);
+}
+
 .DropDownInputMain {
   position: relative;
   background-color: #ffd7af;
@@ -6088,6 +6178,36 @@ body {
 
 .button_Default:hover {
   background-color: red;
+}
+
+.s-button_basic {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_basic > span {
+  display: block;
+}
+
+.s-button_link {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_link > span {
+  text-decoration: underline;
+  color: blue;
+  display: block;
+}
+
+.s-button_link:hover > span {
+  color: rgb(34, 34, 255);
 }
 
 .DropDownInputMain {
@@ -8011,6 +8131,36 @@ body {
   background-color: red;
 }
 
+.s-button_basic {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_basic > span {
+  display: block;
+}
+
+.s-button_link {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_link > span {
+  text-decoration: underline;
+  color: blue;
+  display: block;
+}
+
+.s-button_link:hover > span {
+  color: rgb(34, 34, 255);
+}
+
 .DropDownInputMain {
   position: relative;
   background-color: #ffd7af;
@@ -9873,6 +10023,36 @@ body {
 
 .button_Default:hover {
   background-color: red;
+}
+
+.s-button_basic {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_basic > span {
+  display: block;
+}
+
+.s-button_link {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_link > span {
+  text-decoration: underline;
+  color: blue;
+  display: block;
+}
+
+.s-button_link:hover > span {
+  color: rgb(34, 34, 255);
 }
 
 .DropDownInputMain {
@@ -11811,6 +11991,36 @@ body {
   background-color: red;
 }
 
+.s-button_basic {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_basic > span {
+  display: block;
+}
+
+.s-button_link {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_link > span {
+  text-decoration: underline;
+  color: blue;
+  display: block;
+}
+
+.s-button_link:hover > span {
+  color: rgb(34, 34, 255);
+}
+
 .DropDownInputMain {
   position: relative;
   background-color: #ffd7af;
@@ -13673,6 +13883,36 @@ body {
 
 .button_Default:hover {
   background-color: red;
+}
+
+.s-button_basic {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_basic > span {
+  display: block;
+}
+
+.s-button_link {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_link > span {
+  text-decoration: underline;
+  color: blue;
+  display: block;
+}
+
+.s-button_link:hover > span {
+  color: rgb(34, 34, 255);
 }
 
 .DropDownInputMain {
@@ -15596,6 +15836,36 @@ body {
   background-color: red;
 }
 
+.s-button_basic {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_basic > span {
+  display: block;
+}
+
+.s-button_link {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_link > span {
+  text-decoration: underline;
+  color: blue;
+  display: block;
+}
+
+.s-button_link:hover > span {
+  color: rgb(34, 34, 255);
+}
+
 .DropDownInputMain {
   position: relative;
   background-color: #ffd7af;
@@ -17458,6 +17728,36 @@ body {
 
 .button_Default:hover {
   background-color: red;
+}
+
+.s-button_basic {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_basic > span {
+  display: block;
+}
+
+.s-button_link {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.s-button_link > span {
+  text-decoration: underline;
+  color: blue;
+  display: block;
+}
+
+.s-button_link:hover > span {
+  color: rgb(34, 34, 255);
 }
 
 .DropDownInputMain {
@@ -19312,6 +19612,7 @@ body {
   height: max-content;
   justify-content: stretch;
   transition: box-shadow 0.3s;
+  box-shadow: 0px 0px 0px 0px white, 0px 0px 0px 0px white, 0px 0px 0px 0px white, inset 0px -1px 0px 0px lightgray;
 }
 .CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .buttonBody > * {
   cursor: pointer;
@@ -19348,11 +19649,7 @@ body {
   font-size: 1em;
 }
 .CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander {
-  position: absolute;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 3px, rgba(0, 0, 0, 0.11) 0px 0px 3px;
-  border-radius: 0px;
-  background-color: white;
-  padding: 0.5em;
+  position: relative;
   overflow: hidden;
   top: 100%;
   z-index: 1000;
@@ -19361,7 +19658,7 @@ body {
   padding: 0;
 }
 .CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander[state*=active] {
-  height: 70vh;
+  height: max-content;
   padding: 0em;
 }
 .CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander[state*=passive] {
@@ -19373,6 +19670,8 @@ body {
   margin-right: 0%;
   padding: 1%;
   padding-top: 0.1em;
+  margin: 0;
+  padding: 0;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
@@ -19380,6 +19679,151 @@ body {
   flex-direction: column;
   overflow: hidden;
   justify-content: space-between;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain {
+  position: relative;
+  margin-right: 0%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  box-sizing: border-box;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .listMain {
+  position: relative;
+  width: 100%;
+  margin-top: 0;
+  height: max-content;
+  padding: 0.5em;
+  padding-top: 0;
+  box-sizing: border-box;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .listMain > .listElement {
+  position: relative;
+  margin-top: 0;
+  max-height: 20em;
+  height: max-content;
+  overflow: hidden;
+  gap: 1em;
+  display: flex;
+  align-items: stretch;
+  padding: 0;
+  padding-inline: 0.5em;
+  box-sizing: border-box;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .listMain > .listElement:not(:last-child) {
+  box-shadow: 0px 0px 0px 0px white, 0px 0px 0px 0px white, 0px 0px 0px 0px white, inset 0px -1px 0px 0px lightgray;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .listMain > .listElement > .Lighter3D {
+  aspect-ratio: 0.6609;
+  position: relative;
+  height: 100%;
+  box-sizing: content-box !important;
+  height: 20vh;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .listMain > .listElement > .Lighter3D > canvas {
+  transform: scale(1.2);
+  box-sizing: content-box !important;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .listMain > .listElement > .Lighter3D > div {
+  position: absolute;
+  background-color: #FFAD5B;
+  font-size: 150%;
+  top: 10%;
+  left: 80%;
+  border-radius: 25% 25%;
+  width: 1.2em;
+  height: 1.2em;
+  overflow: hidden;
+  text-align: center;
+  vertical-align: middle;
+  transition: transform 0.3s;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .listMain > .listElement > .Lighter3D > div > span {
+  user-select: none;
+  position: relative;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .listMain > .listElement > .Lighter3D > div:hover {
+  transition: transform 0.2s;
+  transform: rotate(10deg);
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .listMain > .listElement > .informationDiv {
+  user-select: none;
+  flex-grow: 1;
+  position: relative;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .listMain > .listElement > .informationDiv > div.name {
+  margin-top: 1em;
+  order: 2;
+  font-size: 1em;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .listMain > .listElement > .informationDiv > div.price {
+  margin: 0.25em;
+  float: right;
+  justify-content: right;
+  font-size: 2.5em;
+  order: 1;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .listMain > .listElement > .informationDiv > div.price > .PriceDiv {
+  float: right;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .conclusionMain {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  width: calc(100% - 0.2em);
+  padding: 0;
+  padding-inline: 0.5em;
+  box-sizing: border-box;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .conclusionMain > .couponCodeContainer {
+  box-shadow: 0px 0px 0px 0px white, 0px 0px 0px 0px white, inset 0px 1px 0px 0px gray, 0px 0px 0px 0px white;
+  display: flex;
+  justify-content: stretch;
+  padding: 0;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .conclusionMain > .couponCodeContainer > div {
+  flex-grow: 1;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .conclusionMain > .couponCodeContainer > button {
+  width: max-content;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  background-color: #FFAD5B;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .conclusionMain > .couponCodeContainer > button > span {
+  word-wrap: none;
+  white-space: nowrap;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .conclusionMain > .couponCodeContainer > button:hover {
+  background-color: #ffa228;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .conclusionMain > .priceContainer {
+  box-shadow: 0px 0px 0px 0px white, 0px 0px 0px 0px white, inset 0px 1px 0px 0px gray, 0px 0px 0px 0px white;
+  padding-top: 0.5em;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .conclusionMain > .priceContainer > .Table2D {
+  margin-inline: 0.5em;
+  width: 100%;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .conclusionMain > .priceContainer > .Table2D > table {
+  width: 100%;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .conclusionMain > .priceContainer > .Table2D > table > tr {
+  width: 100%;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .conclusionMain > .priceContainer > .Table2D > table > tr > td {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .conclusionMain > .priceContainer > .Table2D > table > tr > td[col*="0"] {
+  width: 50%;
+}
+.CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .CheckoutRightMain > .conclusionMain > .priceContainer > .Table2D > table > tr:not(:last-child) {
+  padding-bottom: 0.25em;
 }
 .CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .listMain {
   position: relative;
@@ -19485,7 +19929,7 @@ body {
 .CheckoutMain > .CheckoutLeftMain > div > .productOverviewBody > .expander > .C_MobileProductOverviewMain > .conclusionMain:before {
   position: absolute;
   content: "";
-  width: calc(98% - 0.2em);
+  width: calc(98% - 0.4em);
   height: 0px;
   background-color: black;
   border-top: 1px solid #d9d9d9;
@@ -19539,7 +19983,7 @@ body {
 .CheckoutMain > .CheckoutRightMain > .listMain {
   position: relative;
   width: 80%;
-  margin-top: 10vh;
+  margin-top: 6vh;
   height: max-content;
   overflow: auto;
   padding: 0.1em;
@@ -19547,7 +19991,6 @@ body {
 }
 .CheckoutMain > .CheckoutRightMain > .listMain > .listElement {
   position: relative;
-  margin-top: 0.5em;
   max-height: 20em;
   height: max-content;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 3px, rgba(0, 0, 0, 0.11) 0px 0px 3px;
@@ -19558,9 +20001,13 @@ body {
   gap: 1em;
   display: flex;
   align-items: stretch;
-  padding: 0.5em;
+  padding: 0em;
+  padding-inline: 0.5em;
   padding-top: -0.5em;
   box-sizing: border-box;
+}
+.CheckoutMain > .CheckoutRightMain > .listMain > .listElement:not(:first-child) {
+  margin-top: 0.5em;
 }
 .CheckoutMain > .CheckoutRightMain > .listMain > .listElement > .Lighter3D {
   aspect-ratio: 0.6609;
@@ -19619,21 +20066,60 @@ body {
   float: right;
 }
 .CheckoutMain > .CheckoutRightMain > .conclusionMain {
+  margin: 0.1em;
+  margin-top: 0.5em;
+  margin-bottom: 6vh;
+  width: calc(80% - 0.4em);
+  padding: 0;
+  box-sizing: border-box;
+}
+.CheckoutMain > .CheckoutRightMain > .conclusionMain > .couponCodeContainer {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 3px, rgba(0, 0, 0, 0.11) 0px 0px 3px;
   border-radius: 0px;
   background-color: white;
   padding: 0.5em;
-  margin: 0.1em;
-  margin-top: 0.5em;
-  width: calc(80% - 0.2em);
+  display: flex;
+  justify-content: stretch;
   padding: 0;
-  box-sizing: border-box;
 }
-.CheckoutMain > .CheckoutRightMain > .conclusionMain > button {
+.CheckoutMain > .CheckoutRightMain > .conclusionMain > .couponCodeContainer > div {
+  flex-grow: 1;
+}
+.CheckoutMain > .CheckoutRightMain > .conclusionMain > .couponCodeContainer > button {
+  width: max-content;
+  margin-top: 1em;
+  margin-bottom: 1em;
   background-color: #FFAD5B;
 }
-.CheckoutMain > .CheckoutRightMain > .conclusionMain > button:hover {
+.CheckoutMain > .CheckoutRightMain > .conclusionMain > .couponCodeContainer > button > span {
+  word-wrap: none;
+  white-space: nowrap;
+}
+.CheckoutMain > .CheckoutRightMain > .conclusionMain > .couponCodeContainer > button:hover {
   background-color: #ffa228;
+}
+.CheckoutMain > .CheckoutRightMain > .conclusionMain > .priceContainer {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 3px, rgba(0, 0, 0, 0.11) 0px 0px 3px;
+  border-radius: 0px;
+  background-color: white;
+  padding: 0.5em;
+  margin-top: 0.5em;
+}
+.CheckoutMain > .CheckoutRightMain > .conclusionMain > .priceContainer > .Table2D {
+  width: 100%;
+}
+.CheckoutMain > .CheckoutRightMain > .conclusionMain > .priceContainer > .Table2D > table {
+  width: 100%;
+}
+.CheckoutMain > .CheckoutRightMain > .conclusionMain > .priceContainer > .Table2D > table > tr {
+  width: 100%;
+}
+.CheckoutMain > .CheckoutRightMain > .conclusionMain > .priceContainer > .Table2D > table > tr > td {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+}
+.CheckoutMain > .CheckoutRightMain > .conclusionMain > .priceContainer > .Table2D > table > tr:not(:last-child) {
+  box-shadow: 0px 0px 0px 0px white, 0px 0px 0px 0px white, 0px 0px 0px 0px white, inset 0px -1px 0px 0px rgba(211, 211, 211, 0.39);
 }
 
 .fastCheckout {
@@ -19649,6 +20135,11 @@ body {
   display: flex !important;
   justify-content: center;
 }
+.fastCheckout > div > div {
+  width: 100% !important;
+  max-width: 750px !important;
+}
+
 @keyframes AddressList-expand {
   0% {
     height: 2em;

@@ -20,7 +20,7 @@
             &::-webkit-scrollbar {
                 display: none;
             }
-            margin-left: 0.3em;
+            // margin-left: 0.3em;
             background-color: white;
             border-radius: $border-radius;
             // @include box-shadow();
@@ -32,7 +32,7 @@
             height: 100%;
             > button {
                 box-sizing: border-box;
-                padding: 0.2em;
+                padding-inline: 0.1em;
                 aspect-ratio: 1/1;
                 height: 100%;
                 > span {
@@ -54,6 +54,10 @@
             // box-sizing: border-box;
             top: 0;
             left: 0;
+            padding-inline: 0;
+            > span {
+                font-size: 10vw;
+            }
         }
     }
     @include conv_floatingDiv_block();

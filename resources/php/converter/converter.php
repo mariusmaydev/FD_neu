@@ -31,14 +31,23 @@
         public static function filter(){
             $ImageData  = $_POST["Storage"];
             // debugg($ImageData);
+            TIMER -> start();
             $Filter     = $ImageData[ImageDB::IMAGE_FILTER]; 
+            TIMER -> print();
             $SessionObj = new Sessions();
+            TIMER -> print();
             $Sessions = $SessionObj -> save();
+            TIMER -> print();
             $imgScale = getSingleProjectImage($Sessions[Sessions::USER_ID], $Sessions[Sessions::PROJECT_ID], $ImageData[ImageDB::IMAGE_ID], PATH_Project::IMG_SCALE);
             
+            TIMER -> print();
             Filter::createImage($imgScale, $Filter);
+            TIMER -> print();
             $response[ImageDB::IMAGE_VIEW_PATH] = saveSingleProjectImage($ImageData[ImageDB::IMAGE_ID], PATH_Project::IMG_VIEW, $imgScale, $Sessions[Sessions::USER_ID], $Sessions[Sessions::PROJECT_ID]);
+            
+            TIMER -> print();
             $SessionObj -> unsave();
+            TIMER -> end();
             Communication::sendBack($response);
         }
         public static function flip(){

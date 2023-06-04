@@ -1,0 +1,661 @@
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/bc1cc718c2/projects/ac9dd7f75a/texts/Text_f5e9e...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php)
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)
+</S-trace>
+<S-time>2023-06-04 10:11:03</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/bc1cc718c2/projects/ac9dd7f75a/texts/Text_f5e9e...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\userdata\userdata.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\userdata\userdata.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php)
+</S-trace>
+<S-time>2023-06-04 10:11:03</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)
+</S-trace>
+<S-time>2023-06-04 10:44:58</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)
+</S-trace>
+<S-time>2023-06-04 10:44:58</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)
+</S-trace>
+<S-time>2023-06-04 10:45:02</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)
+</S-trace>
+<S-time>2023-06-04 10:52:34</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)
+</S-trace>
+<S-time>2023-06-04 10:52:34</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)
+</S-trace>
+<S-time>2023-06-04 10:52:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)
+</S-trace>
+<S-time>2023-06-04 10:53:45</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)
+</S-trace>
+<S-time>2023-06-04 10:54:13</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)
+</S-trace>
+<S-time>2023-06-04 10:59:26</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)20
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)85
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)346
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)80
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
+</S-trace>
+<S-time>2023-06-04 11:05:50</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)20
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)73
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)11
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)13
+</S-trace>
+<S-time>2023-06-04 11:06:04</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)20
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)73
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)11
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)13
+</S-trace>
+<S-time>2023-06-04 11:08:16</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)20
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)73
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)11
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)13
+</S-trace>
+<S-time>2023-06-04 11:08:58</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)20
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)73
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)11
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)13
+</S-trace>
+<S-time>2023-06-04 11:08:59</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)20
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)85
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)347
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)80
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
+</S-trace>
+<S-time>2023-06-04 11:09:49</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)20
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)73
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)11
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)13
+</S-trace>
+<S-time>2023-06-04 11:10:06</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)20
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)85
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)347
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)81
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
+</S-trace>
+<S-time>2023-06-04 11:17:24</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)20
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)85
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)347
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)81
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
+</S-trace>
+<S-time>2023-06-04 11:24:45</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)20
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)85
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)347
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)81
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
+</S-trace>
+<S-time>2023-06-04 11:26:41</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)20
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)85
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)347
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)81
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
+</S-trace>
+<S-time>2023-06-04 11:31:35</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)20
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)85
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)347
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)81
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
+</S-trace>
+<S-time>2023-06-04 11:34:23</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli Object
+     (
+         [affected_rows] => -1
+         [client_info] => mysqlnd 8.1.6
+         [client_version] => 80106
+         [connect_errno] => 0
+         [connect_error] => 
+         [errno] => 1064
+         [error] => You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+         [error_list] => Array
+             (
+                 [0] => Array
+                     (
+                         [errno] => 1064
+                         [sqlstate] => 42000
+                         [error] => You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+                     )
+     
+             )
+     
+         [field_count] => 0
+         [host_info] => 127.0.0.1 via TCP/IP
+         [info] => 
+         [insert_id] => 0
+         [server_info] => 10.4.24-MariaDB
+         [server_version] => 100424
+         [sqlstate] => 42000
+         [protocol_version] => 10
+         [thread_id] => 6311
+         [warning_count] => 1
+     )
+     
+</S-msg>
+<S-trace>
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)86
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\project\project.php)347
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\order\order.php)81
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
+</S-trace>
+<S-time>2023-06-04 11:34:23</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)20
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)85
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)347
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)81
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
+</S-trace>
+<S-time>2023-06-04 11:37:32</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli Object
+     (
+         [affected_rows] => -1
+         [client_info] => mysqlnd 8.1.6
+         [client_version] => 80106
+         [connect_errno] => 0
+         [connect_error] => 
+         [errno] => 1064
+         [error] => You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+         [error_list] => Array
+             (
+                 [0] => Array
+                     (
+                         [errno] => 1064
+                         [sqlstate] => 42000
+                         [error] => You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+                     )
+     
+             )
+     
+         [field_count] => 0
+         [host_info] => 127.0.0.1 via TCP/IP
+         [info] => 
+         [insert_id] => 0
+         [server_info] => 10.4.24-MariaDB
+         [server_version] => 100424
+         [sqlstate] => 42000
+         [protocol_version] => 10
+         [thread_id] => 6344
+         [warning_count] => 1
+     )
+     
+</S-msg>
+<S-trace>
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)86
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\project\project.php)347
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\order\order.php)81
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
+</S-trace>
+<S-time>2023-06-04 11:37:32</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)20
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)86
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)347
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)81
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
+</S-trace>
+<S-time>2023-06-04 11:38:34</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli Object
+     (
+         [affected_rows] => -1
+         [client_info] => mysqlnd 8.1.6
+         [client_version] => 80106
+         [connect_errno] => 0
+         [connect_error] => 
+         [errno] => 1064
+         [error] => You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+         [error_list] => Array
+             (
+                 [0] => Array
+                     (
+                         [errno] => 1064
+                         [sqlstate] => 42000
+                         [error] => You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT CURRENT_TIMESTAMP, Last_Time DATETI...' at line 1
+                     )
+     
+             )
+     
+         [field_count] => 0
+         [host_info] => 127.0.0.1 via TCP/IP
+         [info] => 
+         [insert_id] => 0
+         [server_info] => 10.4.24-MariaDB
+         [server_version] => 100424
+         [sqlstate] => 42000
+         [protocol_version] => 10
+         [thread_id] => 6365
+         [warning_count] => 1
+     )
+     
+</S-msg>
+<S-trace>
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)87
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\project\project.php)347
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\order\order.php)81
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
+</S-trace>
+<S-time>2023-06-04 11:38:34</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT , Last_Time DATETIME DEFAULT , PRIM...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)20
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)86
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)347
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)81
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
+</S-trace>
+<S-time>2023-06-04 11:41:11</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli Object
+     (
+         [affected_rows] => -1
+         [client_info] => mysqlnd 8.1.6
+         [client_version] => 80106
+         [connect_errno] => 0
+         [connect_error] => 
+         [errno] => 1064
+         [error] => You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT , Last_Time DATETIME DEFAULT , PRIM...' at line 1
+         [error_list] => Array
+             (
+                 [0] => Array
+                     (
+                         [errno] => 1064
+                         [sqlstate] => 42000
+                         [error] => You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT , Last_Time DATETIME DEFAULT , PRIM...' at line 1
+                     )
+     
+             )
+     
+         [field_count] => 0
+         [host_info] => 127.0.0.1 via TCP/IP
+         [info] => 
+         [insert_id] => 0
+         [server_info] => 10.4.24-MariaDB
+         [server_version] => 100424
+         [sqlstate] => 42000
+         [protocol_version] => 10
+         [thread_id] => 6387
+         [warning_count] => 1
+     )
+     
+</S-msg>
+<S-trace>
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)87
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\project\project.php)347
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\order\order.php)81
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
+</S-trace>
+<S-time>2023-06-04 11:41:11</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT , Last_Time DATETIME DEFAULT , PRIM...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)20
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)86
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)347
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)81
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
+</S-trace>
+<S-time>2023-06-04 11:42:17</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli Object
+     (
+         [affected_rows] => -1
+         [client_info] => mysqlnd 8.1.6
+         [client_version] => 80106
+         [connect_errno] => 0
+         [connect_error] => 
+         [errno] => 1064
+         [error] => You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT , Last_Time DATETIME DEFAULT , PRIM...' at line 1
+         [error_list] => Array
+             (
+                 [0] => Array
+                     (
+                         [errno] => 1064
+                         [sqlstate] => 42000
+                         [error] => You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT , Last_Time DATETIME DEFAULT , PRIM...' at line 1
+                     )
+     
+             )
+     
+         [field_count] => 0
+         [host_info] => 127.0.0.1 via TCP/IP
+         [info] => 
+         [insert_id] => 0
+         [server_info] => 10.4.24-MariaDB
+         [server_version] => 100424
+         [sqlstate] => 42000
+         [protocol_version] => 10
+         [thread_id] => 6412
+         [warning_count] => 1
+     )
+     
+</S-msg>
+<S-trace>
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)87
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\project\project.php)347
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\order\order.php)81
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
+</S-trace>
+<S-time>2023-06-04 11:42:17</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '@ error/png.c/ReadPNGImage/4298 in C:\xampp\htdocs\fd\resources\php\converter...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)103
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php)30
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php)57
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)119
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)11
+</S-trace>
+<S-time>2023-06-04 15:33:22</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '@ error/png.c/ReadPNGImage/4298 in C:\\xampp\\htdocs\\fd\\resources\\php\\con...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)103
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\userdata\userdata.php)303
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\userdata\userdata.php)49
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php)11
+</S-trace>
+<S-time>2023-06-04 15:33:22</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(UserID VARCHAR(40), TimeStart DATETIME, TimeEnd DATETIME, IP VARCHAR(40), Pa...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)20
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php)24
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php)30
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php)57
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\collector\collectorUserData.php)69
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\collector\collectorAccess.php)13
+</S-trace>
+<S-time>2023-06-04 17:41:24</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SET Path = '{&quot;a&quot;:&quot;b&quot;}' WHERE UserID = 'fd4edc9d19'' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)103
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php)30
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php)57
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\collector\collectorUserData.php)69
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\collector\collectorAccess.php)13
+</S-trace>
+<S-time>2023-06-04 17:41:24</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(UserID VARCHAR(40), TimeStart DATETIME, TimeEnd DATETIME, IP VARCHAR(40), Pa...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)20
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php)24
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php)30
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php)57
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\collector\collectorUserData.php)69
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\collector\collectorAccess.php)13
+</S-trace>
+<S-time>2023-06-04 17:41:38</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SET Path = '{&quot;a&quot;:&quot;b&quot;}' WHERE UserID = 'fd4edc9d19'' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)103
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php)30
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php)57
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\collector\collectorUserData.php)69
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\collector\collectorAccess.php)13
+</S-trace>
+<S-time>2023-06-04 17:41:38</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(UserID VARCHAR(40), TimeStart DATETIME, TimeEnd DATETIME, IP VARCHAR(40), Pa...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)20
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php)24
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php)30
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php)57
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\collector\collectorUserData.php)69
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\collector\collectorAccess.php)13
+</S-trace>
+<S-time>2023-06-04 17:41:46</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SET Path = '{&quot;a&quot;:&quot;b&quot;}' WHERE UserID = 'fd4edc9d19'' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)103
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php)30
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php)57
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\collector\collectorUserData.php)69
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\collector\collectorAccess.php)13
+</S-trace>
+<S-time>2023-06-04 17:41:46</S-time></S-error>

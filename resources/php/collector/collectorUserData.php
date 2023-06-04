@@ -3,6 +3,7 @@ use accessDB;
 use Communication;
 use DataSet;
 use DataBase;
+use Debugger;
 use Sessions;
 
     $rootpath = realpath($_SERVER["DOCUMENT_ROOT"]);
@@ -21,6 +22,7 @@ use Sessions;
         const TIME_START                = "TimeStart";
         const TIME_END                  = "TimeEnd";
         const IP                        = "IP";
+        const PATH                      = "Path";
 
         public static function getStruct(){
             $DS2 = new DataSet();
@@ -29,6 +31,7 @@ use Sessions;
             $DS2 -> newEntry(self::TIME_START,      "DATETIME"); 
             $DS2 -> newEntry(self::TIME_END,        "DATETIME");
             $DS2 -> newEntry(self::IP,              "VARCHAR(40)");
+            $DS2 -> newEntry(self::PATH,            "TEXT");
             $DS2 -> primaryKey(self::USER_ID);
             $DS2 -> DBName("collector_UserData");
             return $DS2;
@@ -49,9 +52,25 @@ use Sessions;
             $dataset -> newEntry(self::USER_ID,     $UserID);
             $dataset -> newEntry(self::TIME_START,  $TimeStart);
             $dataset -> newEntry(self::TIME_END,    $TimeEnd);
+            $dataset -> newEntry(self::PATH,        "");
             $dataset -> newEntry(self::IP,          $IP);
-            $dataset -> TBName($UserID);
+            $dataset -> TBName("paths");
             $res = AccessDB::add(self::getStruct(), $dataset);
+            Communication::sendBack($res);
+        }
+        public static function edit(){
+            $UserID     = $_POST[self::USER_ID];
+            if($UserID == null){
+                $UserID = Sessions::get(Sessions::USER_ID);
+            }
+            $path = $_POST[self::PATH];
+
+            $dataset = new DataSet();
+            // Debugger::log($UserID);
+            $dataset -> newKey(self::USER_ID,   $UserID);
+            $dataset -> newEntry(self::PATH,    $path);
+            $dataset -> TBName("paths");
+            $res = AccessDB::edit(self::getStruct(), $dataset);
             Communication::sendBack($res);
         }
         public static function get(){

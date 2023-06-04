@@ -44,6 +44,8 @@ class BottomBar_Text {
                     let SubWindow = new S_popupWindow("editText", true);
                         SubWindow.Class("editText_mobile");
                         let textInput = new TextInputDiv(SubWindow.content, "editTextInputDiv", "test");
+                            // console.log(this.data)    
+                            textInput.setValue(this.data.TextValue);
                             textInput.oninput = function(){
                                 this.TOOLS.setValue(textInput.Value);
                             }.bind(this);

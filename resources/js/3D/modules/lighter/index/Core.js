@@ -37,14 +37,13 @@ export class draw {
 
     }
     onResize(){
-        
         let a = this.canvas.parentNode.clientWidth;
         let b = this.canvas.parentNode.clientHeight;
         this.canvas.width = a * 2 ;
         this.canvas.height = b * 2 ;
         this.canvas.style.width = a + "px";
         this.canvas.style.height = b + "px";
-        this.renderer.setPixelRatio( window.devicePixelRatio * 1.5);
+        this.renderer.setPixelRatio( window.devicePixelRatio * 1);
         this.renderer.setSize( this.canvas.parentNode.clientWidth * 2, this.canvas.parentNode.clientHeight * 2);
         this.camera.aspect = this.canvas.parentNode.clientWidth / this.canvas.parentNode.clientHeight;
         this.camera.updateProjectionMatrix();
@@ -69,15 +68,19 @@ export class draw {
     }
     setupCamera(){
         if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
-            this.camera     = new THREE.PerspectiveCamera(420, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
-            this.camera.position.set(-0.05, 0.35, 1);
+            this.camera     = new THREE.PerspectiveCamera(50, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
+            // this.camera.position.set(0, 0.4, 4);
+            this.camera.position.set(0, 0.18, 0.7);
         } else {
             this.camera     = new THREE.PerspectiveCamera(10, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
             this.camera.position.set(-0.15, 0.35, 3.5);
         }
+        this.camera.name = "camera";
         this.camera.rotation.set(-0.05, 0, 0);
         this.camera.zoom = 1.2;
         this.camera.filmGauge = 20000;
+        this.camera.positionBase = this.camera.position.clone();
+        this.camera.FOVBase = this.camera.fov;
         this.camera.updateProjectionMatrix();
     }
     async loadThumbnail(name, GoldFlag){
@@ -94,10 +97,15 @@ export class draw {
         this.setupRaycaster();
 
         SPLINT.Utils.sleep(1000).then(function() {
-            this.compressedAnimations.flameIgnite(function(){}, 1000);
-            this.compressedAnimations.wheel(0.5, 500);
-            this.compressedAnimations.open();
-            this.compressedAnimations.smoothTurnStart();
+            if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
+
+            } else {
+                this.compressedAnimations.flameIgnite(function(){}, 1000);
+                this.compressedAnimations.wheel(0.5, 500);
+                this.compressedAnimations.open();
+                this.compressedAnimations.smoothTurnStart();
+            }
+            SPLINT.ViewPort.getSize().log();
         }.bind(this));
         SPLINT.Events.onLoadingComplete.dispatch();
 
@@ -142,6 +150,7 @@ export class draw {
             await MODEL.init(this, "lighter2", 2, false);
             let lighterGroupe1 = this.setup.getLighterGroupe(this.scene);
                 lighterGroupe1.rotation.z = 0.2618;
+                lighterGroupe1.rotationBase = lighterGroupe1.rotation.clone();
                 resolve('resolved');
 
             let lighterGroupe2 = this.setup.getLighterGroupe(this.scene, 'lighter2');
@@ -150,6 +159,7 @@ export class draw {
                 lighterGroupe2.position.z = -0.17;
                 lighterGroupe2.children[14].rotation.y = (-106.5 +  1) * Math.PI / 180;
                 lighterGroupe2.children[0].children[0].rotation.z = (-133.7648) * Math.PI / 180;
+                lighterGroupe2.rotationBase = lighterGroupe2.rotation.clone();
 
             this.onFinishLoading();
                 // lighterGroupe2.visible = false;
@@ -172,6 +182,13 @@ export class draw {
         this.raycaster.onMouseClick = function(element, name){
             switch(name){
                 case "oberes_teil1" : {
+                    // if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
+                    //     let translation = new THREE.Vector3(-0.08, -0.15, -3);
+                    //     this.compressedAnimations.toggleCameraTo(0.3, 0, translation, true);
+                    //     this.compressedAnimations.toggleCameraToFOV(0.3, 0, 40, true);
+                    //     let rot = new THREE.Vector3(0, 0, 10);
+                    //     this.compressedAnimations.toggleLighterRotate(0.3, 0, rot, true);
+                    // }
                     this.compressedAnimations.wheel(0.5);
                     this.compressedAnimations.toggleOpen();
                 } break;

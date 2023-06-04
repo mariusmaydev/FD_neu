@@ -73,8 +73,9 @@
             $DataSet -> newEntry(OrderArchiveDB::ADDRESS,  json_encode($address));
             $DataSet -> newEntry(OrderArchiveDB::STATE,    OrderArchiveDB::STATE_OPEN);
             OrderArchiveDB::Add($DataSet);
-            self::remove($orderID);
+            // self::remove($orderID);
             foreach($data as $item){
+                Debugger::log($item);
                 Image::copy2Archive($item['ProjectID'], $userID);
                 Text::copy2Archive($item['ProjectID'], $userID);
                 Project::copy2Archive($item['ProjectID'], $userID);
@@ -86,7 +87,7 @@
                 FileTools::copyDirectory($PATH2, str_replace("Orders", "Archive/Orders/", $PATH2));
                 FileTools::DataRemove($PATH2);
 
-                Project::remove($item['ProjectID']);
+                // Project::remove($item['ProjectID']);
             }
             //Communication::sendBack($orderID, false);
             //return $orderID;

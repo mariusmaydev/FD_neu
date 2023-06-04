@@ -58,11 +58,17 @@ class ImageMenu {
                     // console.log(data);
                     let buttonDiv = new SPLINT.DOMElement("buttonDiv_" + index, "div", hoverDiv);
                         buttonDiv.Class("buttonDiv");
-                    let buttonUse = new SPLINT.DOMElement.Button(buttonDiv, "use");
-                        buttonUse.bindIcon("done");
+                    let buttonUse = new SPLINT.DOMElement.Button(buttonDiv, "use", "verwenden");
+                        // buttonUse.bindIcon("done");
                         buttonUse.button.onclick = function(){
                           unsplash.download(data);
                           this.close();
+                        }.bind(this);
+                    let buttonView = new SPLINT.DOMElement.Button(buttonDiv, "view");
+                        buttonView.bindIcon("search");
+                        buttonView.onclick = function(){
+                        //   unsplash.download(data);
+                        //   this.close();
                         }.bind(this);
                     let informationDiv = new SPLINT.DOMElement("informationDiv_" + index, "div", hoverDiv);
                         informationDiv.Class("informationDiv");
@@ -80,7 +86,23 @@ class ImageMenu {
                             // console.log(img);
                           }
                         }
-          }.bind(this);
+                    let bottomDiv = new SPLINT.DOMElement("bottomDiv_" + index, "div", listElement);
+                        bottomDiv.Class("bottomDiv");
+                        let bt_use = new SPLINT.DOMElement.Button(bottomDiv, "use", "verwenden");
+                            bt_use.onclick = function(){
+
+                            }
+                    
+                    hoverDiv.onmouseenter = function(){
+                        bottomDiv.SPLINT.state.setActive();
+                        listElement.SPLINT.state.setActive();
+                    }.bind(this);
+                    hoverDiv.onmouseleave = function(){
+                        bottomDiv.SPLINT.state.setPassive();
+                        listElement.SPLINT.state.setPassive();
+                    }.bind(this);
+                }.bind(this);
+
           table.draw();
           table.mainElement.addEventListener("scroll", function(e){
             if(table.mainElement.getScrollHeight() == 1){

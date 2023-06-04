@@ -115,7 +115,7 @@ class ShoppingCart {
     let fullPrice = 0;
     if(cartObject != null){
         for(const item of cartObject){
-        let productData     = productHelper.getByName(item.ProductName);
+        let productData     = await productHelper.getByName(item.ProductName);
         fullPrice = S_Math.add(S_Math.multiply(productData.price, item.amount), fullPrice);
         }
     }

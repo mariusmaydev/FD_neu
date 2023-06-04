@@ -14,10 +14,10 @@ export default class setup {
             let canvas = this.inst.canvas;
             let a = this.inst.canvas.parentNode.clientWidth;
             let b = this.inst.canvas.parentNode.clientHeight;
-            this.inst.canvas.width = a*2 ;
-            this.inst.canvas.height = b*2 ;
-            this.inst.canvas.style.width = a + "px";
-            this.inst.canvas.style.height = b + "px";
+            this.inst.canvas.width = a * 2;
+            this.inst.canvas.height = b * 2;
+            this.inst.canvas.style.width = (a) + "px";
+            this.inst.canvas.style.height = (b) + "px";
         if(setup.RENDERER == null || newFlag){
             this.inst.renderer   = new THREE.WebGLRenderer({antialias: true, alpha: true});
             this.inst.renderer.shadowMap.enabled = true
@@ -26,7 +26,7 @@ export default class setup {
             this.inst.renderer.shadowMap.needsUpdate = true;
             // this.inst.renderer.gammaFactor = 0.5;
             // this.inst.renderer.outputEncoding = THREE.sRGBEncoding;
-            this.inst.renderer.setPixelRatio( window.devicePixelRatio * 1.5);
+            this.inst.renderer.setPixelRatio( window.devicePixelRatio * 1);
             this.inst.renderer.setSize( this.inst.canvas.parentNode.clientWidth * 2, this.inst.canvas.parentNode.clientHeight * 2);
 
             this.inst.renderer.gammaOutput = false;
@@ -69,6 +69,7 @@ export default class setup {
         return new Promise(async function(resolve){
             await MODEL.init(this.inst);
             resolve('resolved');
+            this.inst.onFinishLoading();
         }.bind(this));
     }
     getLighterGroupe(scene = this.inst.scene, name = 'lighter'){

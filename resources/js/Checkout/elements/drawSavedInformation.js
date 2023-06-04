@@ -92,11 +92,11 @@ class drawSavedInformation{
                   }
     }
   
-    static payment(parent){
-      return;
+    static async payment(parent){
+    //   return;
       let main = drawSavedInformation.createMainDiv(parent);
       new SPLINT.DOMElement.HorizontalLine(main);
-          let paymentMethod = SPLINT.SessionsPHP.get(Checkout.sessions.paymentType);
+          let paymentMethod = await SPLINT.SessionsPHP.get(Checkout.sessions.paymentType);
           let invoiceAddress = SPLINT.SessionsPHP.get(Checkout.sessions.invoiceAddress);
           
           let paymentDiv = new SPLINT.DOMElement("CheckoutPaymentConditionsDiv", "div", main);
@@ -106,7 +106,7 @@ class drawSavedInformation{
                   contentDiv.Class("contentDiv");
                   let label = new Label(paymentDiv, contentDiv, "Zahlung");
                       label.before();
-  
+            console.log(paymentMethod)
                   let methodSpan = new SPLINT.DOMElement.SpanDiv(contentDiv, "method", paymentMethod);
               let buttonChangePaymentMethod = new SPLINT.DOMElement.Button(paymentDiv, "change", "ändern");
                   buttonChangePaymentMethod.button.Class("simple");

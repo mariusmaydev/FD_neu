@@ -62,10 +62,11 @@
           $dataset -> newEntry(self::PRODUCT,       "VARCHAR(40)");
           $dataset -> newEntry(self::DESIGN,        "VARCHAR(255");
           $dataset -> newEntry(self::SQUARE,        "TEXT");
-          $dataset -> newEntry(self::FIRST_TIME,    "DATETIME DEFAULT CURRENT_TIMESTAMP");
-          $dataset -> newEntry(self::LAST_TIME,     "DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP");
+          $dataset -> newEntry(self::FIRST_TIME,    "DATETIME DEFAULT ");
+          $dataset -> newEntry(self::LAST_TIME,     "DATETIME DEFAULT ");
           $dataset -> primaryKey(self::PROJECT_ID);
           $dataset -> TBName($TBName);
+          $dataset -> DBName("projects_archive");
           return $dataset;
         }
         public static function get(DataSet $DataSet, $param = null){
@@ -83,6 +84,7 @@
         public static function Add(DataSet $DataSet){
             $TBName = self::$TBName . $DataSet -> TBName();
             $con = self::accessDB(self::$DBName, self::generateSQL(self::getStructure($TBName)));
+            Debugger::log($con);
             $DataSet -> TBName($TBName);
             self::AddData($DataSet, $con);
         }

@@ -1,4 +1,5 @@
 import SPLINT from 'SPLINT';
+import * as THREE from 'threeJS';
 
 
 export default class LighterAnimations {
@@ -12,6 +13,84 @@ export default class LighterAnimations {
         this.instance.AnimationMixer = new SPLINT.AnimationMixer(this.instance);
     }
     define(){
+        this.lighterRotate = this.#getAnimation(0.5);
+        this.lighterRotate.onStart = function(model, name = 'lighter'){
+            // console.dir(model);
+            let groupe = this.#getGroupe(model, name);
+            groupe.rotationLast = groupe.rotation.clone();
+            groupe.rotation_range = new THREE.Vector3();
+            groupe.rotation_range.x = parseFloat(groupe.rotationBase.x) - parseFloat(groupe.rotationLast.x);
+            groupe.rotation_range.y = parseFloat(groupe.rotationBase.y) - parseFloat(groupe.rotationLast.y);
+            groupe.rotation_range.z = parseFloat(groupe.rotationBase.z) - parseFloat(groupe.rotationLast.z);
+            return groupe;
+        }.bind(this);
+        this.lighterRotate.onTick = function(model, progress, groupe, rot = null, offset = false){
+            // console.log(arguments);
+            let f = SPLINT.AnimationFX.ease(progress, 2, "in-out");
+            let d = (f / 100);
+                if(rot != null){
+                    if(offset){
+                        groupe.rotation.x = groupe.rotationLast.x + (rot.x * d) * (Math.PI / 180);;
+                        groupe.rotation.y = groupe.rotationLast.y + (rot.y * d) * (Math.PI / 180);;
+                        groupe.rotation.z = groupe.rotationLast.z + (rot.z * d) * (Math.PI / 180);;
+                    } else {
+                        groupe.rotation.x = groupe.rotationLast.x + (groupe.rotation_range.x * d);
+                        groupe.rotation.y = groupe.rotationLast.y + (groupe.rotation_range.y * d);
+                        groupe.rotation.z = groupe.rotationLast.z + (groupe.rotation_range.z * d);
+                    }
+                }
+            }
+        this.cameraToFOV = this.#getAnimation(0.5);
+        this.cameraToFOV.onStart = function(model, name = 'lighter'){
+            // console.dir(model);
+            let groupe = this.#getGroupe(model, "camera");
+            console.dir(groupe)
+            groupe.FOVLast = groupe.fov;
+            groupe.FOV_range = parseFloat(groupe.FOVBase) - parseFloat(groupe.FOVLast);
+            return groupe;
+        }.bind(this);
+        this.cameraToFOV.onTick = function(model, progress, groupe, value = null, offset = false){
+            // console.log(arguments);
+            let f = SPLINT.AnimationFX.ease(progress, 2, "in-out");
+            let d = (f / 100);
+                if(value != null){
+                    if(offset){
+                        groupe.fov = groupe.FOVLast + (value * d)
+                    } else {
+                        groupe.fov = groupe.FOVLast + (groupe.FOV_range * d)
+                    }
+                }
+                groupe.updateProjectionMatrix();
+            }
+
+        this.cameraTo = this.#getAnimation(0.5);
+        this.cameraTo.onStart = function(model, name = 'lighter'){
+            // console.dir(model);
+            let groupe = this.#getGroupe(model, "camera");
+            groupe.positionLast = groupe.position.clone();
+            groupe.position_range = new THREE.Vector3();
+            groupe.position_range.x = parseFloat(groupe.positionBase.x) - parseFloat(groupe.positionLast.x);
+            groupe.position_range.y = parseFloat(groupe.positionBase.y) - parseFloat(groupe.positionLast.y);
+            groupe.position_range.z = parseFloat(groupe.positionBase.z) - parseFloat(groupe.positionLast.z);
+            return groupe;
+        }.bind(this);
+        this.cameraTo.onTick = function(model, progress, groupe, trans = null, offset = false){
+            // console.log(arguments);
+            let f = SPLINT.AnimationFX.ease(progress, 2, "in-out");
+            let d = (f / 100);
+                if(trans != null){
+                    if(offset){
+                        groupe.position.x = groupe.positionLast.x + (trans.x * d);
+                        groupe.position.y = groupe.positionLast.y + (trans.y * d);
+                        groupe.position.z = groupe.positionLast.z + (trans.z * d);
+                    } else {
+                        groupe.position.x = groupe.positionLast.x + (groupe.position_range.x * d);
+                        groupe.position.y = groupe.positionLast.y + (groupe.position_range.y * d);
+                        groupe.position.z = groupe.positionLast.z + (groupe.position_range.z * d);
+                    }
+                }
+            }
+
         this.lighter_color_double_close = this.#getAnimation(0.4);
         this.lighter_color_double_close.onStart = function(model){
             let obj = [];
@@ -110,6 +189,30 @@ export default class LighterAnimations {
             this.instance.camera.updateProjectionMatrix();
         }.bind(this);
 
+        this.lighter_engraving_mobile = this.#getAnimation(0.3);
+        this.lighter_engraving_mobile.onStart = function(model, name = 'lighter'){
+            return this.#getGroupe(model, name);
+        }.bind(this);
+        this.lighter_engraving_mobile.onTick = function(model, progress, groupe){
+            // groupe.rotation.z = (10 * (progress / 100)) * (Math.PI / 180);
+            let f = SPLINT.AnimationFX.ease(progress, 2, "in-out");
+            let d = (f / 100);
+            // this.instance.camera.fov = 10 + (5 * (d));
+            groupe.rotation.y = (25 * d) * (Math.PI / 180);
+            groupe.rotation.x = Math.PI / 2 - (40 * d) * (Math.PI / 180);
+            groupe.position.y = (0.04 * d);
+            groupe.position.z = (0.4 * d);
+            groupe.position.x = (0.1 * d);
+            // console.log(10 + (60 * d))
+            // this.instance.camera.fov = 10 + (50 * d);
+            // this.instance.camera.zoom = 1.2 + (0.5 * d);
+            // this.instance.camera.position.z = 4 - (3.75 * d);
+            // this.instance.camera.position.y = 0.4 - (0.15 * d);
+            // this.instance.camera.rotation.x = -0.05 - (0.1 * d);
+            // this.instance.camera.position.y = 0.35 + (0.17 * d);
+            this.instance.camera.updateProjectionMatrix();
+        }.bind(this);
+
 
         this.lighter_explosion_split = this.#getAnimation(0.2);
         this.lighter_explosion_split.onStart = function(model, name = 'lighter'){
@@ -193,6 +296,57 @@ export default class LighterAnimations {
             this.instance.camera.position.y = 0.35 + (0.25 * d);
             this.instance.camera.rotation.x = -0.05 - (0.01 * d);
             this.instance.camera.updateProjectionMatrix();
+        }.bind(this);
+
+        // this.lighter_explosion_turn_mobile = this.#getAnimation(0.2);
+        // this.lighter_explosion_turn_mobile.onStart = function(model, name = 'lighter'){
+        //     return this.#getGroupe(model, name);
+        // }.bind(this);
+        // this.lighter_explosion_turn_mobile.onTick = function(model, progress, groupe){
+        //     // groupe.rotation.z = (10 * (progress / 100)) * (Math.PI / 180);
+        //     let f = SPLINT.AnimationFX.ease(progress, 2, "in-out");
+        //     let d = (f / 100);
+        //     groupe.rotation.y = (25 * d) * (Math.PI / 180);
+        //     groupe.rotation.x = Math.PI / 2 - (20 * d) * (Math.PI / 180);
+        //     groupe.rotation.z = 0.2618 - (30 * d) * (Math.PI / 180);
+        //     groupe.position.y = (0.15 * d);
+        //     // groupe.position.z = -(0.4 * d);
+        //     groupe.position.x = (0.125 * d);
+        //     this.instance.camera.zoom = 1.4;
+        //     // this.instance.camera.fov = 10 + (10 * d);
+        //     this.instance.camera.position.z = 3.5 + (2.5 * d);
+        //     this.instance.camera.position.y = 0.35 + (0.5 * d);
+        //     this.instance.camera.rotation.x = -0.05 - (0.02 * d);
+        //     this.instance.camera.updateProjectionMatrix();
+        // }.bind(this);
+        this.lighter_explosion_turn_mobile = this.#getAnimation(0.2);
+        this.lighter_explosion_turn_mobile.onStart = function(model, name = 'lighter'){
+            let groupe = this.#getGroupe(model, name);
+            // this.instance.camera.positionLast = this.instance.camera.position.clone();
+            // this.instance.camera.position_range = new THREE.Vector3();
+            // this.instance.camera.position_range.x = parseFloat(this.instance.camera.positionBase.x) - parseFloat(this.instance.camera.positionLast.x);
+            // this.instance.camera.position_range.y = parseFloat(this.instance.camera.positionBase.y) - parseFloat(this.instance.camera.positionLast.y);
+            // this.instance.camera.position_range.z = parseFloat(this.instance.camera.positionBase.z) - parseFloat(this.instance.camera.positionLast.z);
+            return groupe;
+        }.bind(this);
+        this.lighter_explosion_turn_mobile.onTick = function(model, progress, groupe){
+            // groupe.rotation.z = (10 * (progress / 100)) * (Math.PI / 180);
+            let f = SPLINT.AnimationFX.ease(progress, 2, "in-out");
+            let d = (f / 100);
+            groupe.rotation.y = (25 * d) * (Math.PI / 180);
+            groupe.rotation.x = Math.PI / 2 - (20 * d) * (Math.PI / 180);
+            groupe.rotation.z = 0.2618 - (20 * d) * (Math.PI / 180);
+            groupe.position.y = (0.13 * d);
+            // groupe.position.z = -(0.4 * d);
+            groupe.position.x = (0.125 * d);
+            // this.instance.camera.zoom = 1.5
+            // this.instance.camera.fov = 10 + (5 * d);
+            // this.instance.camera.position.z = 4 - (3 * d);
+            // this.instance.camera.position.y = 0.4 - (0.1 * d);
+            // let h = this.instance.camera;
+            // this.instance.camera.position.x = h.positionLast.x + ((h.position_range.x) * d);
+            // // this.instance.camera.rotation.x = -0.05 + (0.1 * d);
+            // this.instance.camera.updateProjectionMatrix();
         }.bind(this);
 
 
@@ -282,9 +436,14 @@ export default class LighterAnimations {
         this.instance.AnimationMixer.add(this.lighter_explosion_turn);
         this.instance.AnimationMixer.add(this.lighter_explosion_split);
         this.instance.AnimationMixer.add(this.lighter_engraving);
+        this.instance.AnimationMixer.add(this.lighter_engraving_mobile);
         this.instance.AnimationMixer.add(this.lighter_color);
         this.instance.AnimationMixer.add(this.lighter_color_double_start);
         this.instance.AnimationMixer.add(this.lighter_color_double_close);
+        this.instance.AnimationMixer.add(this.lighterRotate);
+        this.instance.AnimationMixer.add(this.cameraTo);
+        this.instance.AnimationMixer.add(this.cameraToFOV);
+        this.instance.AnimationMixer.add(this.lighter_explosion_turn_mobile);
         this.instance.AnimationMixer.add(this.lighter_flame);
         this.instance.AnimationMixer.add(this.lighter_smooth_turn);
     }

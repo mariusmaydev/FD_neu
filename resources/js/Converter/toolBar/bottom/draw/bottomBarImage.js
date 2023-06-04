@@ -45,6 +45,7 @@ class BottomBar_Image {
 
         let sl_contrast = this.PARTS.SL_contrast(this.floatingDiv.content, this.data.ImageFilter.contrast);
             sl_contrast.oninput = function(e){
+                console.log(this.data)
                 this.data.ImageFilter.contrast = sl_contrast.value;
                 ConverterHelper.filter(DSImage.getIndex(this.data.ImageID));
             }.bind(this);

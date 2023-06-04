@@ -17,8 +17,8 @@ class CheckoutHead {
       this.progressDiv.Class("progressDivMain");
         let addressDiv  = new SPLINT.DOMElement.SpanDiv(this.progressDiv, "addressDiv", "Adresse");
             addressDiv.div.Class("Field");
-            addressDiv.div.onclick = function(){
-              if(CheckoutHelper.progress(CheckoutHelper.ADDRESS)){
+            addressDiv.div.onclick = async function(){
+              if((await CheckoutHelper.progress(CheckoutHelper.ADDRESS))){
                 CheckoutHelper.goto(CheckoutHelper.ADDRESS);
               }
             }
@@ -26,8 +26,8 @@ class CheckoutHead {
   
         let sendingDiv  = new SPLINT.DOMElement.SpanDiv(this.progressDiv, "sendingDiv", "Versand");
             sendingDiv.div.Class("Field");
-            sendingDiv.div.onclick = function(){
-              if(CheckoutHelper.progress(CheckoutHelper.SENDING)){
+            sendingDiv.div.onclick = async function(){
+              if((await CheckoutHelper.progress(CheckoutHelper.SENDING))){
                 CheckoutHelper.goto(CheckoutHelper.SENDING);
               }
             }
@@ -35,8 +35,8 @@ class CheckoutHead {
   
         let paymentDiv  = new SPLINT.DOMElement.SpanDiv(this.progressDiv, "paymentDiv", "Zahlung");
             paymentDiv.div.Class("Field");
-            paymentDiv.div.onclick = function(){
-              if(CheckoutHelper.progress(CheckoutHelper.PAYMENT)){
+            paymentDiv.div.onclick = async function(){
+              if((await CheckoutHelper.progress(CheckoutHelper.PAYMENT))){
                 CheckoutHelper.goto(CheckoutHelper.PAYMENT);
               }
             }
@@ -44,8 +44,8 @@ class CheckoutHead {
   
         let overviewDiv = new SPLINT.DOMElement.SpanDiv(this.progressDiv, "overviewDiv", "Übersicht");
             overviewDiv.div.Class("Field");
-            overviewDiv.div.onclick = function(){
-              if(CheckoutHelper.progress(CheckoutHelper.CHECKORDER)){
+            overviewDiv.div.onclick = async function(){
+              if((await CheckoutHelper.progress(CheckoutHelper.CHECKORDER))){
                 CheckoutHelper.goto(CheckoutHelper.CHECKORDER);
               }
             }

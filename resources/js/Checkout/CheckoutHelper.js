@@ -11,9 +11,9 @@ class CheckoutHelper {
   static PAYMENT          = "payment";
   static CHECKORDER       = "checkOrder";
 
-  static progress(name = null){
+  static async progress(name = null){
     if(name != null){
-      return (new obj()).get().includes(name);
+      return  (await(new obj()).get()).includes(name);
     }
     function obj(){
       this.get = async function(){
@@ -47,8 +47,8 @@ class CheckoutHelper {
     }
     return new obj();
   }
-  static goto(site){
-    CheckoutHelper.progress().add();
+  static async goto(site){
+    (await CheckoutHelper.progress()).add();
     window.location.hash = site;
   }
 }

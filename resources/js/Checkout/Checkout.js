@@ -14,7 +14,9 @@ class Checkout {
     this.mainElement.Class("CheckoutMain");
     this.mainElementLeft = new SPLINT.DOMElement(this.id + "mainLeft", "div", this.mainElement);
     this.mainElementLeft.Class("CheckoutLeftMain");
-    this.rightBar = new CheckoutRightBar(this.mainElement);
+    if(SPLINT.ViewPort.getSize() != "mobile-small" && SPLINT.ViewPort.getSize() != "mobile"){
+        this.rightBar = new CheckoutRightBar(this.mainElement);
+    }
     // this.mainElementRight = new SPLINT.DOMElement(this.id + "mainRight", "div", this.mainElement);
     // this.mainElementRight.Class("CheckoutRightMain");
     // this.drawRight();
@@ -35,69 +37,72 @@ class Checkout {
       default : this.drawAddressMenu(); break;
     }
   }
-  async drawRight(){
-    let checkoutRight = new CheckoutRightBar(this.mainElementRight);
-    let contentDiv = new SPLINT.DOMElement(this.id + "right_content", "div", this.mainElementRight);
-        contentDiv.Class("ContentDiv");
-        // main.classList.add("ShoppingCart");
-        let cartData = (await ShoppingCart.get()).shoppingCart;
-        let ItemListMain = new SPLINT.DOMElement(this.id + "itemListMain", "div", contentDiv);
-            ItemListMain.Class("ItemList");
-            for(const index in cartData){
-              let itemData = cartData[index];
-              let projectData = (await ProjectHelper.get(itemData.ProjectID));
-              let listElement = new SPLINT.DOMElement(this.id + "right_listElement_" + index, "div", ItemListMain);
-                  let lighter = new drawLighter3D(listElement, "lighter_right_" + index, drawLighter3D.PROJECT, projectData.Thumbnail)
-            }
+//   async drawRight(){
+//     let checkoutRight = new CheckoutRightBar(this.mainElementRight);
+//     let contentDiv = new SPLINT.DOMElement(this.id + "right_content", "div", this.mainElementRight);
+//         contentDiv.Class("ContentDiv");
+//         // main.classList.add("ShoppingCart");
+//         let cartData = (await ShoppingCart.get()).shoppingCart;
+//         let ItemListMain = new SPLINT.DOMElement(this.id + "itemListMain", "div", contentDiv);
+//             ItemListMain.Class("ItemList");
+//             for(const index in cartData){
+//               let itemData = cartData[index];
+//               let projectData = (await ProjectHelper.get(itemData.ProjectID));
+//               let listElement = new SPLINT.DOMElement(this.id + "right_listElement_" + index, "div", ItemListMain);
+//                   let lighter = new drawLighter3D(listElement, "lighter_right_" + index, drawLighter3D.PROJECT, projectData.Thumbnail)
+//             }
         
-        let conclusionDiv = getElement("CheckoutRightConclusionDiv", "div", contentDiv.id);
-            conclusionDiv.Class("RightDivConclusion");
-            drawFullPrice(conclusionDiv);
-        // drawCartCouponCode(conclusionDiv);
+//         let conclusionDiv = getElement("CheckoutRightConclusionDiv", "div", contentDiv.id);
+//             conclusionDiv.Class("RightDivConclusion");
+//             drawFullPrice(conclusionDiv);
+//         // drawCartCouponCode(conclusionDiv);
 
-        async function drawFullPrice(parent){
-          new SPLINT.DOMElement.HorizontalLine(parent);
-          let main = getElement("CheckoutPriceDivMain", "div", parent.id);
-              main.Class("PriceDiv");
-              let cartData = await ShoppingCart.get();
-              let price = 0;
-              for(let i = 0; i < cartData.length; i++){
+//         async function drawFullPrice(parent){
+//           new SPLINT.DOMElement.HorizontalLine(parent);
+//           let main = getElement("CheckoutPriceDivMain", "div", parent.id);
+//               main.Class("PriceDiv");
+//               let cartData = await ShoppingCart.get();
+//               let price = 0;
+//               for(let i = 0; i < cartData.length; i++){
 
-                let productData = productHelper.getByName(cartData[i].ProductName);
-                price += S_Math.multiply(cartData[i].amount, productData.price);
-              }
-              let priceElement = new priceDiv(main, price);
-              let priceLabel = new Label(main, priceElement.main, "Zwischensumme");
-                  priceLabel.before();
+//                 let productData = productHelper.getByName(cartData[i].ProductName);
+//                 price += S_Math.multiply(cartData[i].amount, productData.price);
+//               }
+//               let priceElement = new priceDiv(main, price);
+//               let priceLabel = new Label(main, priceElement.main, "Zwischensumme");
+//                   priceLabel.before();
 
-          // breakHTML(main);
-      // let shippingCosts = PHP_sessions_S.checkout().sending().get();
-      // let shippingCostsDiv = new priceDiv(main, shippingCosts.price, "ShippingPrice");
-      //     let shippingCostsLabel = new Label(main, shippingCostsDiv.main, "Versand");
-      //         shippingCostsLabel.before();
+//           // breakHTML(main);
+//       // let shippingCosts = PHP_sessions_S.checkout().sending().get();
+//       // let shippingCostsDiv = new priceDiv(main, shippingCosts.price, "ShippingPrice");
+//       //     let shippingCostsLabel = new Label(main, shippingCostsDiv.main, "Versand");
+//       //         shippingCostsLabel.before();
 
-      // breakHTML(main);
-      // getHorizontalLine(main);
-      let FullPriceDiv = new priceDiv(main, price, "FullPrice");
-          FullPriceDiv.main.Class("Full");
-          let FullPriceLabel = new Label(main, FullPriceDiv.main, "Gesamt");
-              FullPriceLabel.element.Class("Full");
-              FullPriceLabel.before();
+//       // breakHTML(main);
+//       // getHorizontalLine(main);
+//       let FullPriceDiv = new priceDiv(main, price, "FullPrice");
+//           FullPriceDiv.main.Class("Full");
+//           let FullPriceLabel = new Label(main, FullPriceDiv.main, "Gesamt");
+//               FullPriceLabel.element.Class("Full");
+//               FullPriceLabel.before();
       
-      // breakHTML(main);
-      let tax = S_Math.multiply(price, 0.19);
-      let MwStLabel = new Label(main, "", "inkl. ");
-          MwStLabel.element.Class("Text-small_hint");
-          new PriceDiv_S(MwStLabel.element, "tax",tax);
-          MwStLabel.element.innerHTML += " MwSt.";
-          new SPLINT.DOMElement.HorizontalLine(main);
-    }
-  } 
+//       // breakHTML(main);
+//       let tax = S_Math.multiply(price, 0.19);
+//       let MwStLabel = new Label(main, "", "inkl. ");
+//           MwStLabel.element.Class("Text-small_hint");
+//           new PriceDiv_S(MwStLabel.element, "tax",tax);
+//           MwStLabel.element.innerHTML += " MwSt.";
+//           new SPLINT.DOMElement.HorizontalLine(main);
+//     }
+//   } 
   async drawAddressMenu(){
     this.addressMenuMainElement = new SPLINT.DOMElement(this.id + "addressMenuMain", "div", this.mainElementLeft);
     this.addressMenuMainElement.Class("AddressMain");
           
-    new CheckoutMobileProductOverview(this.addressMenuMainElement);
+    if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
+        let mobileProductOverview = new CheckoutMobileProductOverview(this.addressMenuMainElement);
+        this.rightBar = new CheckoutRightBar(mobileProductOverview.contentElement, mobileProductOverview);
+    }
 
     new SPLINT.API.Paypal.draw.fastCheckout(this.addressMenuMainElement);
     // if((await login.isLoggedIn())){
@@ -124,15 +129,18 @@ class Checkout {
         buttonSubmit.setStyleTemplate(S_Button.STYLE_NONE);
         buttonSubmit.onclick = async function(){
           await SPLINT.SessionsPHP.set(Checkout.sessions.addresses, addressMenuNew.getValues());
-          CheckoutHelper.progress().add(CheckoutHelper.ADDRESS);
+          (await CheckoutHelper.progress()).add(CheckoutHelper.ADDRESS);
           CheckoutHelper.goto(CheckoutHelper.SENDING);
         }
     
   }
   drawSendingMenu(){
     this.sendingMenuMainElement = new SPLINT.DOMElement(this.id + "sendingMenuMain", "div", this.mainElementLeft);
-    this.sendingMenuMainElement.Class("SendingMain");
-    new CheckoutMobileProductOverview(this.sendingMenuMainElement);
+    this.sendingMenuMainElement.Class("SendingMain");    
+    if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
+        let mobileProductOverview = new CheckoutMobileProductOverview(this.sendingMenuMainElement);
+        this.rightBar = new CheckoutRightBar(mobileProductOverview.contentElement, mobileProductOverview);
+    }
     drawSavedInformation.address(this.sendingMenuMainElement);
 
     // DrawSendingChoiceMenu(this.sendingMenuMainElement);
@@ -171,7 +179,10 @@ class Checkout {
   async drawPaymentMenu(){
     this.paymentMenuMainElement = new SPLINT.DOMElement(this.id + "paymentMenuMain", "div", this.mainElementLeft);
     this.paymentMenuMainElement.Class("PaymentMain");
-    new CheckoutMobileProductOverview(this.paymentMenuMainElement);
+    if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
+        let mobileProductOverview = new CheckoutMobileProductOverview(this.paymentMenuMainElement);
+        this.rightBar = new CheckoutRightBar(mobileProductOverview.contentElement,mobileProductOverview);
+    }
 
     drawSavedInformation.address(this.paymentMenuMainElement);
     drawSavedInformation.sending(this.paymentMenuMainElement);
@@ -232,7 +243,10 @@ class Checkout {
   async drawOverview(){
     this.overviewMenuMainElement = new SPLINT.DOMElement(this.id + "overviewMenuMain", "div", this.mainElementLeft);
     this.overviewMenuMainElement.Class("CheckOrderMain");
-    new CheckoutMobileProductOverview(this.overviewMenuMainElement);
+    if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
+        let mobileProductOverview = new CheckoutMobileProductOverview(this.overviewMenuMainElement);
+        this.rightBar = new CheckoutRightBar(mobileProductOverview.contentElement, mobileProductOverview);
+    }
         drawSavedInformation.address(this.overviewMenuMainElement);
         drawSavedInformation.sending(this.overviewMenuMainElement);
         drawSavedInformation.payment(this.overviewMenuMainElement);

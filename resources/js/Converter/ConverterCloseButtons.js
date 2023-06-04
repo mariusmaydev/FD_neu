@@ -30,6 +30,7 @@ class Converter_closeButtons {
     }
     drawButtonSave(){
         let button_save = new SPLINT.DOMElement.Button(this.contentElement, "save", "speichern");
+            button_save.Class("save");
             button_save.setStyleTemplate(S_Button.STYLE_NONE);
             button_save.onclick = function(){
                 CONVERTER_STORAGE.canvasNEW.createTextData();
@@ -39,6 +40,7 @@ class Converter_closeButtons {
     }
     drawButtonToCart(){
         let button_toCart = new SPLINT.DOMElement.Button(this.contentElement, "toCart");
+            button_toCart.Class("toCart");
             button_toCart.bindIcon("add_shopping_cart");
             button_toCart.Class("cart");
             button_toCart.button.onclick = function(){
@@ -49,7 +51,8 @@ class Converter_closeButtons {
             };
     }
     drawButtonBuy(){
-        let button_finish = new SPLINT.DOMElement.Button(this.contentElement, "finish", "jetzt Kaufen");
+        let button_finish = new SPLINT.DOMElement.Button(this.contentElement, "finish", "Kaufen");
+            button_finish.Class("buy")
             button_finish.button.Class("buy");
             // button_finish.setStyleTemplate(Button.STYLE_NONE);
             button_finish.button.onclick = function(){
