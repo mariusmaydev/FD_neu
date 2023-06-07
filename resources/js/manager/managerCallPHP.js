@@ -27,12 +27,34 @@ class managerCallPHP {
             call.data.Page      = Page;
             return call.send();
     }
-    static async editUser(UserID, IP = null){
-        let call = new SPLINT.CallPHP(PATH.php.manager, "USER.NEW");
+    static async getUserData(UserID){
+        return new Promise(async function(resolve){
+        let call = new SPLINT.CallPHP(PATH.php.manager, "USER.GET");
             call.data.UserID = UserID;
-            call.data.IP = IP;
-            call.data.TimeStart = null;
-            call.data.TimeEnd = null;
+            let res = (await call.send());
+                // if(res != false){
+                //     res.Path = SPLINT.Tools.parse.toJSON(res.Path);
+                // }
+                resolve(res);
+                return res;
+        });
+    }
+    static async editUser(UserID, IP = null, TimeStart, TimeEnd, path){
+        let call = new SPLINT.CallPHP(PATH.php.manager, "USER.EDIT");
+            call.data.UserID    = UserID;
+            call.data.IP        = IP;
+            call.data.TimeStart = TimeStart;
+            call.data.TimeEnd   = TimeEnd;
+            call.data.Path      = path;
+        return call.send();
+    }
+    static async createUser(UserID, IP, TimeStart, TimeEnd, path){
+        let call = new SPLINT.CallPHP(PATH.php.manager, "USER.CREATE");
+            call.data.UserID    = UserID;
+            call.data.IP        = IP;
+            call.data.TimeStart = TimeStart;
+            call.data.TimeEnd   = TimeEnd;
+            call.data.Path      = path;
         return call.send();
     }
     static async editUserPATH(UserID, path){

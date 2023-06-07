@@ -140,7 +140,7 @@
 
         // You can add more
         {
-            "format": "expanded",//"expanded",
+            "format": "compressed",//"expanded",
             "extensionName": ".css",
             "savePath": "/resources/css/Output"
             // "savePath": "~/../Output"

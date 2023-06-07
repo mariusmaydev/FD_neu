@@ -1,4 +1,4 @@
-SPLINT.require('@PROJECT_ROOT/ADMIN/testspace/test_chartJS.js');
+// SPLINT.require('@PROJECT_ROOT/ADMIN/testspace/test_m.js');
 class ADMIN_testSpace {
     constructor(parent = document.body){
         this.parent = parent;
@@ -6,9 +6,24 @@ class ADMIN_testSpace {
         this.mainElement = new SPLINT.DOMElement(this.id + "main", "div", this.parent);
         this.mainElement.Class("ADMIN_testSpace_Main");
         this.draw();
-        this.chart = new test_chartJS(this.mainElement);
+        // this.chart = new test_chartJS(this.mainElement);
     }
     draw(){
+        let bt = new SPLINT.DOMElement.Button(this.mainElement, "upload", "upload File");
+            bt.onclick = async function(){
+                let code = (await SPLINT.API.Moonraker.loadGCode("http://localhost/fd/data/test.nc"));
+                moonraker.uploadGCode(code, "test");
+            }
+            let bt1 = new SPLINT.DOMElement.Button(this.mainElement, "test", "test");
+                bt1.onclick = async function(){
+                    let f = (await SPLINT.API.Moonraker.startPrint("test"));
+
+                    // let f = moonraker.startPrint("name");
+                    console.dir(f);
+                }
+
+    }
+    draw1(){
         console.dir(navigator)
         // new ADMIN_test_Nesting(this.mainElement);
         let button = new SPLINT.DOMElement.Button(this.mainElement, "user", "user");

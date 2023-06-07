@@ -67,6 +67,36 @@ body {
 
                 }
             }
+            > .descriptionBody {
+                > .headlineContainer {
+                    margin-left: 0.5em;
+                    @include SPLINT-border-inset(gray, 0.5px, false, false, true, false);
+
+                    > .headline {
+                        > span {
+                            // font-weight: bold;
+                            font-size: 1.25em;
+                        }
+
+                    }
+                    > hr {
+                        display: none;
+                    }
+                }
+                > .descriptionInput {
+                    > label {
+
+                    }
+                    > textarea {
+                        &.inputFilled {
+                            height: 100%;
+                        }
+                    }
+                    hr {
+
+                    }
+                }
+            }
             > button {
                 // box-sizing: border-box;
                 position: relative;

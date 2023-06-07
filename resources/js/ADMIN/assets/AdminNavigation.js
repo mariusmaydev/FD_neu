@@ -14,7 +14,7 @@ class ADMIN_NavigationMenu {
       // this.createSubElement("couponCodes", "Gutscheincodes");
       this.createSubElement("orders", "Bestellungen");
       this.createSubElement("statistics", "Statistiken");
-      // this.createSubElement("balance", "Bilanz");
+      this.createSubElement("engraving", "Fräsen");
       this.createSubElement("index", "Startseite");
       this.createSubElement("designs", "Designs");
       this.createSubElement("testSpace", "TestSpace");

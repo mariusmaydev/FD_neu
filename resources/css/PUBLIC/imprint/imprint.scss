@@ -19,17 +19,43 @@ body {
         }
     }
     >.Pages_MAIN {
-    
+        
         display: flex;
-        overflow: visible;
+        overflow: auto;
         position: relative;
         left: 0;
         // width: 100%;
         // height: 50%;
         margin-left: 0;
         margin-right: 0;
+        margin-top: 1vh;
         display: flex;
         align-items: flex-start;
+        justify-content: center;
         pointer-events: all;
+        > .containerMain {
+            height: max-content;
+            width: calc(100% - 1em);
+
+            max-width: 60rem;
+            > div {
+                @include T_container();
+                &.headline {
+                    > span {
+                        font-size: 2em;
+                    }
+                }
+            }
+            > .textContainer {
+                margin-top: 0.5em;
+                > .headline {
+                    margin-bottom: 0.5em;
+                    > span {
+                        font-size: 1.5em;
+                    }
+                }
+                // display: none;
+            }
+        }
     }
 }

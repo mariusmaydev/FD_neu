@@ -13,6 +13,7 @@ PATH_A.location.index            = SSL + "//" + domain + "/" + folder + "/resour
 PATH_A.location.testSpace        = SSL + "//" + domain + "/" + folder + "/resources/HTML/ADMIN/testSpace.php";
 PATH_A.location.dataBase         = SSL + "//" + domain + "/" + folder + "/resources/HTML/ADMIN/dataBase.php";
 PATH_A.location.management       = SSL + "//" + domain + "/" + folder + "/resources/HTML/ADMIN/management.php";
+PATH_A.location.engraving        = SSL + "//" + domain + "/" + folder + "/resources/HTML/ADMIN/engraving.php";
 
 
 PATH_A.php = new Object();

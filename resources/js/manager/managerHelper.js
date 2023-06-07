@@ -9,6 +9,11 @@ class ManagerHelper {
     static {
             console.log("okokoko")
         SPLINT.Events.onInitComplete = function(){
+            if(location.href.includes("/HTML/ADMIN/")){
+                return;
+            }
+            let f = new managerObject();
+            console.log(f)
             this.#getPage();
             this.STORAGE.TimeStart = new Date();
             document.addEventListener("visibilitychange", function(e){
@@ -33,8 +38,8 @@ class ManagerHelper {
         let res = await SPLINT.API.IPinfo.get();
         let q = new Object();
             q.a = "b";
-            let res3 = await managerCallPHP.editUser(null, res.ip);
-        let res1 = await managerCallPHP.editUserPATH(null, q);
+        //     let res3 = await managerCallPHP.editUser(null, res.ip);
+        // let res1 = await managerCallPHP.editUserPATH(null, q);
         let res2 = await managerCallPHP.editIP(null, res);
         console.log(res2)
 
@@ -54,6 +59,7 @@ class ManagerHelper {
         let tEnd    = S_DateTime.parseToMySqlDateTime(this.STORAGE.TimeEnd);
         managerCallPHP.add(tStart, tEnd, this.PAGE);
     }
+    
 }
 // SPLINT.require('@PROJECT_ROOT/manager/managerCallPHP.js');
 // SPLINT.require('@PROJECT_ROOT/manager/manager.js');

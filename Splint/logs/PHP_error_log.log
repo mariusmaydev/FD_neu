@@ -1,245 +1,868 @@
-<S-error>
-<S-msg>
-     
-     mysqli::query(): (42S02/1146): Table 'projects_archive.projects_fd4edc9d19' doesn't exist
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)56
- at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)87
- at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)347
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)81
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
-</S-trace>
-<S-time>2023-06-04 11:26:41</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     copy(C:/xampp/htdocs/fd/data/Orders/66a40a4978): Failed to open stream: No such file or directory
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\Splint\php\Tools\FileTools.php)94
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)87
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
-</S-trace>
-<S-time>2023-06-04 11:26:41</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     mysqli::query(): (42S02/1146): Table 'projects_archive.projects_fd4edc9d19' doesn't exist
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)56
- at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)87
- at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)347
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)81
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
-</S-trace>
-<S-time>2023-06-04 11:31:35</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     copy(C:/xampp/htdocs/fd/data/Orders/66a40a4978): Failed to open stream: No such file or directory
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\Splint\php\Tools\FileTools.php)94
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)87
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
-</S-trace>
-<S-time>2023-06-04 11:31:35</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     mysqli::query(): (42S02/1146): Table 'projects_archive.projects_fd4edc9d19' doesn't exist
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)56
- at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)88
- at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)347
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)81
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
-</S-trace>
-<S-time>2023-06-04 11:34:23</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     copy(C:/xampp/htdocs/fd/data/Orders/66a40a4978): Failed to open stream: No such file or directory
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\Splint\php\Tools\FileTools.php)94
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)87
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
-</S-trace>
-<S-time>2023-06-04 11:34:23</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     mysqli::query(): (42S02/1146): Table 'projects_archive.projects_fd4edc9d19' doesn't exist
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)56
- at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)88
- at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)347
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)81
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
-</S-trace>
-<S-time>2023-06-04 11:37:32</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     copy(C:/xampp/htdocs/fd/data/Orders/66a40a4978): Failed to open stream: No such file or directory
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\Splint\php\Tools\FileTools.php)94
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)87
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
-</S-trace>
-<S-time>2023-06-04 11:37:32</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     mysqli::query(): (42S02/1146): Table 'projects_archive.projects_fd4edc9d19' doesn't exist
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)56
- at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)89
- at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)347
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)81
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
-</S-trace>
-<S-time>2023-06-04 11:38:34</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     copy(C:/xampp/htdocs/fd/data/Orders/66a40a4978): Failed to open stream: No such file or directory
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\Splint\php\Tools\FileTools.php)94
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)87
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
-</S-trace>
-<S-time>2023-06-04 11:38:34</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     mysqli::query(): (42S02/1146): Table 'projects_archive.projects_fd4edc9d19' doesn't exist
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)56
- at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)89
- at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)347
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)81
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
-</S-trace>
-<S-time>2023-06-04 11:41:11</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     copy(C:/xampp/htdocs/fd/data/Orders/66a40a4978): Failed to open stream: No such file or directory
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\Splint\php\Tools\FileTools.php)94
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)87
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
-</S-trace>
-<S-time>2023-06-04 11:41:11</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     mysqli::query(): (42S02/1146): Table 'projects_archive.projects_fd4edc9d19' doesn't exist
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)56
- at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)89
- at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)347
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)81
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
-</S-trace>
-<S-time>2023-06-04 11:42:17</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     copy(C:/xampp/htdocs/fd/data/Orders/66a40a4978): Failed to open stream: No such file or directory
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\Splint\php\Tools\FileTools.php)94
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)87
- at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
-</S-trace>
-<S-time>2023-06-04 11:42:18</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "value"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php)7
-</S-trace>
-<S-time>2023-06-04 13:04:59</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "value"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php)7
-</S-trace>
-<S-time>2023-06-04 13:05:16</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "value"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php)7
-</S-trace>
-<S-time>2023-06-04 13:05:43</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     copy(C:/xampp/htdocs/fd/data/Users/fd4edc9d19/projects/d11280e796/thumbnail.png): Failed to open stream: No such file or directory
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\Splint\php\Tools\Path.php)197
- at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)165
- at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)12
-</S-trace>
-<S-time>2023-06-04 13:40:54</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     copy(C:/xampp/htdocs/fd/data/Users/fd4edc9d19/projects/0b0d5ea5cd/thumbnail.png): Failed to open stream: No such file or directory
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\Splint\php\Tools\Path.php)197
- at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)165
- at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)12
-</S-trace>
-<S-time>2023-06-04 13:41:06</S-time></S-error>
-[04-Jun-2023 15:33:22 Europe/Berlin] PHP Fatal error:  Uncaught ImagickException: ImproperImageHeader `C:/xampp/htdocs/fd/data/Users/fd4edc9d19/projects/4c00e068a8/texts/Text_f66f0e2f2b.png' @ error/png.c/ReadPNGImage/4298 in C:\xampp\htdocs\fd\resources\php\converter\text\text.php:116
+[06-Jun-2023 23:40:44 Europe/Berlin] finish
+[06-Jun-2023 23:41:12 Europe/Berlin] finish
+[06-Jun-2023 23:41:45 Europe/Berlin] finish
+[06-Jun-2023 23:42:44 Europe/Berlin] finish
+[06-Jun-2023 23:43:13 Europe/Berlin] finish
+[06-Jun-2023 23:44:16 Europe/Berlin] finish
+[06-Jun-2023 23:44:56 Europe/Berlin] finish
+[06-Jun-2023 23:45:52 Europe/Berlin] finish
+[06-Jun-2023 23:46:21 Europe/Berlin] finish
+[06-Jun-2023 23:49:47 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: moonraker\moonraker::get(): Argument #3 ($id) must be of type int, string given, called in C:\xampp\htdocs\fd\resources\php\moonraker\moonraker.php on line 9 and defined in C:\xampp\htdocs\fd\resources\php\moonraker\moonraker.php:18
 Stack trace:
-#0 C:\xampp\htdocs\fd\resources\php\converter\text\text.php(116): Imagick->readImage('C:/xampp/htdocs...')
-#1 C:\xampp\htdocs\fd\resources\php\project\project.php(170): Text::getTextImg('f66f0e2f2b', '4c00e068a8', 'fd4edc9d19')
-#2 C:\xampp\htdocs\fd\resources\php\project\projectAccess.php(12): Project::copy('4c00e068a8', 'fd4edc9d19', '48110d259f', 'fd4edc9d19')
+#0 C:\xampp\htdocs\fd\resources\php\moonraker\moonraker.php(9): moonraker\moonraker::get('GET', '/server/info', 'server.info', 9546)
+#1 C:\xampp\htdocs\fd\resources\php\moonraker\moonrakerAccess.php(9): moonraker\moonraker::printStart()
+#2 {main}
+  thrown in C:\xampp\htdocs\fd\resources\php\moonraker\moonraker.php on line 18
+[07-Jun-2023 01:08:57 Europe/Berlin] finish
+[07-Jun-2023 01:15:20 Europe/Berlin] finish
+<S-error>
+<S-msg>
+     
+     Array to string conversion
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\SQL.php)61
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)55
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php)33
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php)53
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\collector\collectorUserData.php)79
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\collector\collectorAccess.php)17
+</S-trace>
+<S-time>2023-06-07 02:22:23</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array to string conversion
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)88
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php)30
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php)57
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\collector\collectorUserData.php)100
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\collector\collectorAccess.php)16
+</S-trace>
+<S-time>2023-06-07 02:22:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Trying to access array offset on value of type null
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\product.php)41
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\productAccess.php)10
+</S-trace>
+<S-time>2023-06-07 04:11:15</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     json_decode(): Passing null to parameter #1 ($json) of type string is deprecated
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\product.php)41
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\productAccess.php)10
+</S-trace>
+<S-time>2023-06-07 04:11:15</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "attrs"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\product.php)42
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\productAccess.php)10
+</S-trace>
+<S-time>2023-06-07 04:11:15</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     json_decode(): Passing null to parameter #1 ($json) of type string is deprecated
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\product.php)42
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\productAccess.php)10
+</S-trace>
+<S-time>2023-06-07 04:11:15</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Trying to access array offset on value of type bool
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)219
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)6
+</S-trace>
+<S-time>2023-06-07 04:23:13</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "value"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php)7
+</S-trace>
+<S-time>2023-06-07 04:57:51</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Trying to access array offset on value of type null
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\product.php)41
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\productAccess.php)10
+</S-trace>
+<S-time>2023-06-07 04:57:57</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     json_decode(): Passing null to parameter #1 ($json) of type string is deprecated
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\product.php)41
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\productAccess.php)10
+</S-trace>
+<S-time>2023-06-07 04:57:57</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "attrs"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\product.php)42
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\productAccess.php)10
+</S-trace>
+<S-time>2023-06-07 04:57:57</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     json_decode(): Passing null to parameter #1 ($json) of type string is deprecated
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\product.php)42
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\productAccess.php)10
+</S-trace>
+<S-time>2023-06-07 04:57:57</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "value"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php)7
+</S-trace>
+<S-time>2023-06-07 04:58:10</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "value"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php)7
+</S-trace>
+<S-time>2023-06-07 05:00:40</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "value"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php)7
+</S-trace>
+<S-time>2023-06-07 05:01:56</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Trying to access array offset on value of type null
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\product.php)41
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\productAccess.php)10
+</S-trace>
+<S-time>2023-06-07 05:02:09</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     json_decode(): Passing null to parameter #1 ($json) of type string is deprecated
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\product.php)41
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\productAccess.php)10
+</S-trace>
+<S-time>2023-06-07 05:02:09</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "attrs"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\product.php)42
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\productAccess.php)10
+</S-trace>
+<S-time>2023-06-07 05:02:09</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     json_decode(): Passing null to parameter #1 ($json) of type string is deprecated
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\product.php)42
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\productAccess.php)10
+</S-trace>
+<S-time>2023-06-07 05:02:09</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "value"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php)7
+</S-trace>
+<S-time>2023-06-07 05:02:12</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)113
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)11
+</S-trace>
+<S-time>2023-06-07 05:05:35</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     copy(C:/xampp/htdocs/fd/data/Users/1fe6d3c067/projects/7f7f9b1e58/thumbnail.png): Failed to open stream: No such file or directory
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\Tools\Path.php)197
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)165
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)12
+</S-trace>
+<S-time>2023-06-07 05:05:35</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     copy(C:/xampp/htdocs/fd/data/Users/1fe6d3c067/projects/5a589267d5/thumbnail.png): Failed to open stream: No such file or directory
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\Tools\Path.php)197
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)165
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)12
+</S-trace>
+<S-time>2023-06-07 05:05:42</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 05:05:44</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)6
+</S-trace>
+<S-time>2023-06-07 05:05:49</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Trying to access array offset on value of type bool
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)219
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)6
+</S-trace>
+<S-time>2023-06-07 05:05:49</S-time></S-error>
+[07-Jun-2023 05:05:49 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: PATHS::buildPath(): Argument #7 must be of type string, null given, called in C:\xampp\htdocs\fd\resources\php\Paths.php on line 152 and defined in C:\xampp\htdocs\fd\resources\php\Paths.php:41
+Stack trace:
+#0 C:\xampp\htdocs\fd\resources\php\Paths.php(152): PATHS::buildPath('C:/xampp/htdocs', 'fd', 'data', 'Users', '1fe6d3c067', 'projects', NULL)
+#1 C:\xampp\htdocs\fd\resources\php\project\project.php(224): PATH_Project::get('NONE', NULL, '1fe6d3c067')
+#2 C:\xampp\htdocs\fd\resources\php\project\projectAccess.php(6): Project::remove(NULL)
 #3 {main}
-  thrown in C:\xampp\htdocs\fd\resources\php\converter\text\text.php on line 116
-[04-Jun-2023 15:33:22 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: PATHS::buildPath(): Argument #7 must be of type string, null given, called in C:\xampp\htdocs\fd\resources\php\Paths.php on line 152 and defined in C:\xampp\htdocs\fd\resources\php\Paths.php:41
-Stack trace:
-#0 C:\xampp\htdocs\fd\resources\php\Paths.php(152): PATHS::buildPath('C:/xampp/htdocs', 'fd', 'data', 'Users', 'fd4edc9d19', 'projects', NULL)
-#1 C:\xampp\htdocs\fd\resources\php\converter\text\text.php(95): PATH_Project::get('Text_N', NULL, 'fd4edc9d19', 'f66f0e2f2b')
-#2 C:\xampp\htdocs\fd\resources\php\converter\text\text.php(131): Text::saveTextImg('data:,', 'f66f0e2f2b', false, 'fd4edc9d19')
-#3 C:\xampp\htdocs\fd\resources\php\converter\text\textAccess.php(6): Text::edit()
-#4 {main}
   thrown in C:\xampp\htdocs\fd\resources\php\Paths.php on line 41
-[04-Jun-2023 16:49:49 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: PATHS::buildPath(): Argument #7 must be of type string, null given, called in C:\xampp\htdocs\fd\resources\php\Paths.php on line 152 and defined in C:\xampp\htdocs\fd\resources\php\Paths.php:41
+<S-error>
+<S-msg>
+     
+     copy(C:/xampp/htdocs/fd/data/Users/1fe6d3c067/projects/7f7f9b1e58/thumbnail.png): Failed to open stream: No such file or directory
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\Tools\Path.php)197
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)165
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)12
+</S-trace>
+<S-time>2023-06-07 05:05:55</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 05:05:57</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)6
+</S-trace>
+<S-time>2023-06-07 05:06:04</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Trying to access array offset on value of type bool
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)219
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)6
+</S-trace>
+<S-time>2023-06-07 05:06:04</S-time></S-error>
+[07-Jun-2023 05:06:04 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: PATHS::buildPath(): Argument #7 must be of type string, null given, called in C:\xampp\htdocs\fd\resources\php\Paths.php on line 152 and defined in C:\xampp\htdocs\fd\resources\php\Paths.php:41
 Stack trace:
-#0 C:\xampp\htdocs\fd\resources\php\Paths.php(152): PATHS::buildPath('C:/xampp/htdocs', 'fd', 'data', 'Users', 'fd4edc9d19', 'projects', NULL)
-#1 C:\xampp\htdocs\fd\resources\php\converter\image\image.php(176): PATH_Project::get(NULL, NULL, 'fd4edc9d19', 'fd55a6edf5')
-#2 C:\xampp\htdocs\fd\resources\php\upload\upload.php(35): saveSingleProjectImage('fd55a6edf5', 'Image_Scale', Object(Imagick))
-#3 C:\xampp\htdocs\fd\resources\php\upload\uploadAccess.php(5): Upload::Unsplash_img()
-#4 {main}
+#0 C:\xampp\htdocs\fd\resources\php\Paths.php(152): PATHS::buildPath('C:/xampp/htdocs', 'fd', 'data', 'Users', '1fe6d3c067', 'projects', NULL)
+#1 C:\xampp\htdocs\fd\resources\php\project\project.php(224): PATH_Project::get('NONE', NULL, '1fe6d3c067')
+#2 C:\xampp\htdocs\fd\resources\php\project\projectAccess.php(6): Project::remove(NULL)
+#3 {main}
   thrown in C:\xampp\htdocs\fd\resources\php\Paths.php on line 41
-[04-Jun-2023 17:46:27 Europe/Berlin] PHP Fatal error:  Uncaught Error: Class "collector\Debugger" not found in C:\xampp\htdocs\fd\resources\php\collector\collectorUserData.php:68
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 05:06:07</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)6
+</S-trace>
+<S-time>2023-06-07 05:06:09</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Trying to access array offset on value of type bool
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)219
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)6
+</S-trace>
+<S-time>2023-06-07 05:06:09</S-time></S-error>
+[07-Jun-2023 05:06:09 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: PATHS::buildPath(): Argument #7 must be of type string, null given, called in C:\xampp\htdocs\fd\resources\php\Paths.php on line 152 and defined in C:\xampp\htdocs\fd\resources\php\Paths.php:41
 Stack trace:
-#0 C:\xampp\htdocs\fd\resources\php\collector\collectorAccess.php(13): collector\collectorUserData::edit()
-#1 {main}
-  thrown in C:\xampp\htdocs\fd\resources\php\collector\collectorUserData.php on line 68
+#0 C:\xampp\htdocs\fd\resources\php\Paths.php(152): PATHS::buildPath('C:/xampp/htdocs', 'fd', 'data', 'Users', '1fe6d3c067', 'projects', NULL)
+#1 C:\xampp\htdocs\fd\resources\php\project\project.php(224): PATH_Project::get('NONE', NULL, '1fe6d3c067')
+#2 C:\xampp\htdocs\fd\resources\php\project\projectAccess.php(6): Project::remove(NULL)
+#3 {main}
+  thrown in C:\xampp\htdocs\fd\resources\php\Paths.php on line 41
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 05:06:10</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)113
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)11
+</S-trace>
+<S-time>2023-06-07 05:07:16</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     copy(C:/xampp/htdocs/fd/data/Users/1fe6d3c067/projects/16e812802b/thumbnail.png): Failed to open stream: No such file or directory
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\Tools\Path.php)197
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)165
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)12
+</S-trace>
+<S-time>2023-06-07 05:07:16</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 05:07:23</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 05:07:23</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 05:07:24</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 05:07:24</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Trying to access array offset on value of type null
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\userdata\userdata.php)190
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\upload\upload.php)38
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\upload\uploadAccess.php)5
+</S-trace>
+<S-time>2023-06-07 05:09:09</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     json_decode(): Passing null to parameter #1 ($json) of type string is deprecated
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\userdata\userdata.php)190
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\upload\upload.php)38
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\upload\uploadAccess.php)5
+</S-trace>
+<S-time>2023-06-07 05:09:09</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 05:11:20</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 05:11:20</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     copy(C:/xampp/htdocs/fd/data/Users/1fe6d3c067/projects/0e46582ec7/thumbnail.png): Failed to open stream: No such file or directory
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\Tools\Path.php)197
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)165
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)12
+</S-trace>
+<S-time>2023-06-07 06:02:48</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Trying to access array offset on value of type null
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\product.php)41
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\productAccess.php)10
+</S-trace>
+<S-time>2023-06-07 06:14:51</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     json_decode(): Passing null to parameter #1 ($json) of type string is deprecated
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\product.php)41
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\productAccess.php)10
+</S-trace>
+<S-time>2023-06-07 06:14:51</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "attrs"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\product.php)42
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\productAccess.php)10
+</S-trace>
+<S-time>2023-06-07 06:14:51</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     json_decode(): Passing null to parameter #1 ($json) of type string is deprecated
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\product.php)42
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\product\productAccess.php)10
+</S-trace>
+<S-time>2023-06-07 06:14:51</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Trying to access array offset on value of type bool
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)219
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)6
+</S-trace>
+<S-time>2023-06-07 06:18:53</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Trying to access array offset on value of type bool
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)219
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)6
+</S-trace>
+<S-time>2023-06-07 06:18:53</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:20:46</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:20:46</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:23:38</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:23:38</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:23:51</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:23:51</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:25:01</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:25:01</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:26:09</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:26:09</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:27:25</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:27:25</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:27:48</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:27:48</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:29:27</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:29:27</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:30:49</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:30:49</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:31:07</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:31:07</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:31:18</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:31:18</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:31:22</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:31:22</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:31:41</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:31:41</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:32:03</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:32:03</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:32:17</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:32:17</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:34:36</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:34:36</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:35:23</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:35:23</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:35:28</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "ProjectID"
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectAccess.php)8
+</S-trace>
+<S-time>2023-06-07 06:37:24</S-time></S-error>

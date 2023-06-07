@@ -31,30 +31,30 @@ class manager extends SPLINT.autoObject {
 }
 // let a = document.getElementById("elementId")
 //     a.onclick
-Object.defineProperty(HTMLElement.prototype, "_onclick", {
-    value : function(event){}
-})
-Object.defineProperty(HTMLElement.prototype, "onclick", {
-    set : function(func){
-        this._onclick = func;
-        this.addEventListener('click', function(event) {
-            // if (/* your disabled check here */) {
-              // Kill the event
-              event.preventDefault();
-              event.stopPropagation();
-            // }
-            manager.registerClick(event.target, event.x, event.y);
-            func(event);
+// Object.defineProperty(HTMLElement.prototype, "_onclick", {
+//     value : function(event){}
+// })
+// Object.defineProperty(HTMLElement.prototype, "onclick", {
+//     set : function(func){
+//         this._onclick = func;
+//         this.addEventListener('click', function(event) {
+//             // if (/* your disabled check here */) {
+//               // Kill the event
+//               event.preventDefault();
+//               event.stopPropagation();
+//             // }
+//             manager.registerClick(event.target, event.x, event.y);
+//             func(event);
         
-            // Doing nothing in this method lets the event proceed as normal
-          },
-          true  // Enable event capturing!
-        );
-    },
-    get : function(){
-        return this._onclick;
-    }
-})
+//             // Doing nothing in this method lets the event proceed as normal
+//           },
+//           true  // Enable event capturing!
+//         );
+//     },
+//     get : function(){
+//         return this._onclick;
+//     }
+// })
 
         // SPLINT.require('@PROJECT_ROOT/manager/managerCallPHP.js');
         // SPLINT.require('@PROJECT_ROOT/manager/managerHelper.js');

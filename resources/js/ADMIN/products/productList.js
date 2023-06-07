@@ -29,7 +29,10 @@ class AdminProductList {
         let index = 0;
         for(const entry in dataIn){
                 let data = dataIn[entry];
-                gen(this.table.getData(index, 1), "name", entry);
+                let nameDiv = new SPLINT.DOMElement(this.table.getData(index, 1).id + "nameBody", "div", this.table.getData(index, 1));
+                    nameDiv.Class("nameContainer");
+                    gen(nameDiv, "nameView", data.viewName);
+                    gen(nameDiv, "name", entry);
                 gen(this.table.getData(index, 2), "price", data.price + "€");
                 let sizeBody = new SPLINT.DOMElement(this.table.getData(index, 3).id + "sizeBody", "div", this.table.getData(index, 3));
                     let sizeHeight = new SPLINT.DOMElement.SpanDiv(sizeBody, "size_height", data.size.height);

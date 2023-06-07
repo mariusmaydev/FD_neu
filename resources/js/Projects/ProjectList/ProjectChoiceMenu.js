@@ -36,11 +36,11 @@ class drawProjectChoiceMenu {
               this.bt_private.button.state().unsetActive();
               S_Location.setHash("originals");
             }.bind(this);
-        // if(Location_S.getHashes() == "originals"){
+        // if(SPLINT.Tools.Location.getHashes().includes("originals")){
         //   this.CategoryMenu = new ProjectCategoryMenu(div_originals, true);
-        //   this.CategoryMenu.callBack = function(data){
-        //     this.public(true, data);
-        //   }.bind(this);
+          this.CategoryMenu_originals.callBack = function(data){
+            this.public(true, data);
+          }.bind(this);
         // }
 
       let div_public = buttonContentDiv.newDiv("div_public", "public");
@@ -59,11 +59,11 @@ class drawProjectChoiceMenu {
               S_Location.setHash("public");
             }.bind(this);
             // this.CategoryMenu_public.hide = true;
-        // if(Location_S.getHashes() == "public"){
+        // if(SPLINT.Tools.Location.getHashes().includes("public")){
         //   this.CategoryMenu = new ProjectCategoryMenu(div_public, false);
-        //   this.CategoryMenu.callBack = function(data){
-        //     this.public(false, data);
-        //   }.bind(this);
+          this.CategoryMenu_public.callBack = function(data){
+            this.public(false, data);
+          }.bind(this);
         // }
       
       let div_private = buttonContentDiv.newDiv("div_private", "private");

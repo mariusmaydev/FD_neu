@@ -14,6 +14,33 @@
             padding-bottom: 0px !important;
         }
         .S-Nesting {
+            // &.S-DOMComponent {
+            //     &[ivalue="start"]{
+            //         > div {
+            //             margin-left: 0;
+            //             padding-left: 0;
+            //             > div.I_headBody{
+            //                 display: none;
+            //             }
+            //         }
+            //     }
+
+            // }
+                // background-color: red !important;
+                // >[ivalue$="start."]{
+                //     background-color: blue !important;
+                //         >.I_headBody {
+                //         }
+                
+                // }
+                // > .I_expander {
+                //     > .sign {
+                //         display: none;
+
+                //     }
+                // }
+                // display: none;
+            
             .I_expander {
                 // border-left: 1px solid black;
                 // border-bottom: 1px solid black;

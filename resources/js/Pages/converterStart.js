@@ -9,6 +9,13 @@ class drawConverterStart extends Pages_template {
         this.choiceMenu     = new drawProjectChoiceMenu(this.mainElement);
         // this.projectList    = new drawProjectList(this.mainElement, "converterStart", false);
         // this.projectList1    = new drawProjectList(this.mainElement, "converterStart1", false);
+        
+        this.linkImprint = new SPLINT.DOMElement.Button(this.mainElement, "imprint", "Impressum");
+        this.linkImprint.Class("linkImprint");
+        this.linkImprint.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_DEFAULT);
+        this.linkImprint.onclick = function(){
+            S_Location.goto(PATH.location.imprint).call();
+        }
         SPLINT.Events.onLoadingComplete = function(){
             this.mainElement.setAttribute("loaded", true);
         }.bind(this);

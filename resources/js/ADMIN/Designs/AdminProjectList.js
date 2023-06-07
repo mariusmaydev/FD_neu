@@ -44,7 +44,7 @@ class drawProjectList_ADMIN {
                       await SPLINT.SessionsPHP.set("USER_NAME", "ADMIN", false);
                       await SPLINT.SessionsPHP.set("ADMIN", true, false);
                       await SPLINT.SessionsPHP.set("GUEST", false, false);
-                      ProjectHelper.new('ADMIN', 'TEST', true, false).then(S_Location.goto(PATH.location.converter).setHash("ADMIN").call());
+                      ProjectHelper.new('ADMIN', "Lighter_Gold_custom", true, false).then(S_Location.goto(PATH.location.converter).setHash("ADMIN").call());
                   };
               let button_new_original = new SPLINT.DOMElement.Button(listElement, "addProject_original", "orginal erstellen");
                   // button_new_original.bindIcon("add");
@@ -53,7 +53,7 @@ class drawProjectList_ADMIN {
                       await SPLINT.SessionsPHP.set("USER_NAME", "ADMIN", false);
                       await SPLINT.SessionsPHP.set("ADMIN", true, false);
                       await SPLINT.SessionsPHP.set("GUEST", false, false);
-                      ProjectHelper.new('ADMIN', 'TEST', true, true).then(S_Location.goto(PATH.location.converter).setHash("ADMIN").call());
+                      ProjectHelper.new('ADMIN', "Lighter_Gold_custom", true, true).then(S_Location.goto(PATH.location.converter).setHash("ADMIN").call());
                   };
                 let typeSwitchButton = new S_radioButton(listElement, "typeSwitch");
                     typeSwitchButton.Class("typeSwitchButton");

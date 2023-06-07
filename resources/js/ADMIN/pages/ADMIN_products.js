@@ -28,6 +28,17 @@ class ADMIN_products extends ADMIN_DrawTemplate {
                 let sizeDeep = new SPLINT.EX.DOMElement.Input(sizeBody, "Tiefe");
                     sizeDeep.onEnter = function(){buttonSubmit.click()};
 
+            let descriptionBody = new SPLINT.DOMElement("newProductDescription", "div", this.newProductMain);
+                descriptionBody.Class("descriptionBody");
+                let headlineContainer = new SPLINT.DOMElement("newProductDescriptionHeadlineContainer", "div", descriptionBody);
+                    headlineContainer.Class("headlineContainer");
+                    let headlineDesc = new SPLINT.DOMElement.SpanDiv(headlineContainer, "headline", "Beschreibung");
+                        headlineDesc.Class("headline");
+                    let hr = new SPLINT.DOMElement.HorizontalLine(headlineContainer);
+                let descriptionInput = new SPLINT.DOMElement.InputText(descriptionBody, "description", "");
+                    descriptionInput.Class("descriptionInput");
+                    // descriptionInput.setLabel("Beschreibung");
+
             let l1 = new SPLINT.DOMElement.InputDynamic(this.newProductMain, "moreAttrs");
                 l1.headline = "weitere Attribute";
                 l1.template = function(contentElement, listElement, index, id){

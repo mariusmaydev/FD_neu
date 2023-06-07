@@ -16,8 +16,8 @@ class managerListener {
         manager.STORAGE.TimeStart = new Date();
         document.addEventListener("visibilitychange", function(e){
             if (document.visibilityState === 'hidden') {
-                this.STORAGE.Page.TimeEnd = new Date();
-                this.save();
+                // this.STORAGE.Page.TimeEnd = new Date();
+                // this.save();
             }
             // console.dir(window.location)
             // console.dir(e.target.referrer)

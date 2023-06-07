@@ -16,10 +16,13 @@
         <s-part src="/js/ADMIN/assets/AdminNavigation.js"></s-part>
         <s-part src="/js/ADMIN/assets/AdminChartTemplate.js"></s-part>
         <s-part src="/js/ADMIN/pages/ADMIN_statistics.js"></s-part>
+        <s-part src="/js/ADMIN/statistics/"></s-part>
         <s-part src="/js/Designs/CategoryHelper.js"></s-part>    
 
         <s-part src="/js/GLOBAL/Paths.js"></s-part>
         <s-part src="/js/3D/3DHelper.js"></s-part>
+        <s-part src="/js/manager/"></s-part>
+        <s-part src="/js/Orders/"></s-part>
         <s-module src="/js/3D/modules/module_3D_init.js"></s-module>
 
         <s-part src="/js/manager/manager.js"></s-part>

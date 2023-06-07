@@ -26,9 +26,13 @@ class ProjectCategoryMenu {
                         sign.Class("sign");
                     let entries = Object.entries(obj[key]); 
                     let hasAttr = Object.hasOwn(obj[key], "attr");
+                    // console.log(key)
                     if((hasAttr && entries.length > 1) || (!hasAttr && entries.length > 0)){
                         ele.state().unsetActive();
                         ele.classList.add("extensible");
+                    }
+                    if(key == "main"){
+                        ele.state().setActive();
                     }
                 } else {
                     let sign = new SPLINT.DOMElement.SpanDiv(ele, "sign", 0);

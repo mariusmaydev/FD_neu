@@ -53,10 +53,13 @@ class drawProjectList {
                   buttonDiv.Class("buttonDiv");
                   let button_edit = new SPLINT.DOMElement.Button(buttonDiv, index + "_edit");
                   button_edit.bindIcon("edit");
-                  button_edit.button.onclick = function(e){
+                  button_edit.button.onclick = async function(e){
                     e.stopPropagation();
                     if(this.isAdmin){
-                      let pID = ProjectHelper.copy(data.ProjectID, "ADMIN");
+                      let pID = await ProjectHelper.copy(data.ProjectID, "admin");
+                      console.log(pID)
+                    //   return;
+
                       if(data.State == ProjectHelper.STATE_CART){
                         ProjectHelper.CONVERTER_startProject(pID, true);
                       } else {

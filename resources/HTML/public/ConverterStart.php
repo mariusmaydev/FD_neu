@@ -40,7 +40,7 @@
         <s-part src="/js/assets/product/"></s-part>
         <s-part src="/js/Pages/converterStart.js"></s-part>
         <s-part src="/js/assets/functionsProduct.js"></s-part>
-        <s-part src="/js/manager/manager.js"></s-part>
+        <s-part src="/js/manager/"></s-part>
         <s-part src="/js/NavigationBar.js"></s-part>
 
     <?php 

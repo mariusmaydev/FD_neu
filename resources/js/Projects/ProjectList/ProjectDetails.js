@@ -95,6 +95,7 @@ class ProjectDetails {
                   buttonDiv.Class("buttonDiv");
                   let button_edit = new SPLINT.DOMElement.Button(buttonDiv, this.id + "_edit");
                   button_edit.bindIcon("edit");
+                  button_edit.setTooltip("bearbeiten", "top");
                   button_edit.button.onclick = function(e){
                     e.stopPropagation();
                     if(this.isAdmin){
@@ -115,6 +116,7 @@ class ProjectDetails {
               if(await SPLINT.SessionsPHP.get("ADMIN", false)){
                 let button_remove = new SPLINT.DOMElement.Button(buttonDiv, this.id + "_remove");
                     button_remove.bindIcon("delete");
+                    button_remove.setTooltip("löschen", "top");
                     button_remove.onclick = function(e){
                       e.stopPropagation();
                       ProjectHelper.remove(this.data.ProjectID);
@@ -127,6 +129,7 @@ class ProjectDetails {
               }
               let button_toCart = new SPLINT.DOMElement.Button(buttonDiv, this.id + "_toCart");
                   button_toCart.bindIcon("add_shopping_cart");
+                  button_toCart.setTooltip("zur Auswahl hinzufügen", "top");
                   button_toCart.button.onclick = async function(e){
                       e.stopPropagation();
                       let projectID = this.data.ProjectID;
@@ -142,6 +145,7 @@ class ProjectDetails {
                   }.bind(this);
               let button_remove = new SPLINT.DOMElement.Button(buttonDiv, this.id + "_remove");
                   button_remove.bindIcon("delete");
+                  button_remove.setTooltip("löschen", "top");
                   button_remove.onclick = function(e){
                     e.stopPropagation();
                     ProjectHelper.remove(this.data.ProjectID);

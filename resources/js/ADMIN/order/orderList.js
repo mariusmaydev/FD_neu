@@ -169,12 +169,12 @@ class ADMIN_order_list {
                     console.log(projectID, this.orderData[0].UserID, this.orderData[0].OrderID)
                 } else {
                     project = await ProjectHelper.get(projectID, this.orderData[0].UserID);
+                    console.log(project)
                 }
                 new SPLINT.DOMElement.SpanDiv(tableElement.getData(index, 0), "", project.EPType);
                 // LIGHTER_GOLD
                 // console.log(project)
                 let productData = await productHelper.getByName(project.Product);
-                console.log(productData)
                 // if(project.EPType == "GOLD"){
                     new SPLINT.DOMElement.SpanDiv(tableElement.getData(index, 1), "", productData.price);
                 // } else {

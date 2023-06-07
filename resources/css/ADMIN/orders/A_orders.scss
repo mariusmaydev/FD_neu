@@ -267,30 +267,46 @@
                                     width: 4em;
                                 }
                             }
-                            > button {
-                                background-color: $color-primary;
-                                margin-top: auto;
-                                top: 90%;   
-                                 user-select: none;
-                                border: none;
-                                color: $color-primary-text;
-                            
-                                display: inline-block;
-                                font-size: 1em;
-                                cursor: pointer;
-                                border-radius: 0px;
-                                padding: 0.2em;
-                                @include box-shadow();
-                                &:hover {
-                                    background-color: $color-primary-Dark;
+                            > .buttons {
+                                margin-top: 1em;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: flex-start;
+                                justify-content: flex-start;
+                                height: 100%;
+                                > button {
+                                    margin-top: 0.5em;
+                                    background-color: $color-primary;
+                                    // margin-top: auto;
+                                    // top: 90%;   
+                                     user-select: none;
+                                    border: none;
+                                    color: $color-primary-text;
+                                
+                                    // display: inline-block;
+                                    font-size: 1em;
+                                    cursor: pointer;
+                                    border-radius: 0px;
+                                    padding: 0.2em;
+                                    @include box-shadow();
+                                    &:hover {
+                                        background-color: $color-primary-Dark;
+                                    }
+                                    > span {
+                                        white-space: nowrap;
+                                        display: block;
+                                        position: relative;
+                                        text-align: center;
+                                    }
+                                    &:disabled {
+                                        background-color: lightgrey;
+                                        &:hover {
+                                            background-color: lightgrey;
+                                        }
+                                    }
+                                    // bottom: 0;
                                 }
-                                > span {
-                                    white-space: nowrap;
-                                    display: block;
-                                    position: relative;
-                                    text-align: center;
-                                }
-                                // bottom: 0;
+
                             }
 
                         }

@@ -19,6 +19,7 @@ class ADMIN_chartTamplate {
         //     dataset2.type = "bar";
             dataset1.type = "bar";
         let chartObj1 = new S_chartObject('line', dataset1);
+        
         return new SPLINT.API.ChartJS.Container(name, parent, chartObj1);
     }
 

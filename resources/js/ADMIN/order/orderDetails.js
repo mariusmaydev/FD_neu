@@ -79,30 +79,60 @@ class ADMIN_order_view {
                                 }
                             }.bind(this);
                         
-                        if(!this.fromArchive){
-                            let button_render = new SPLINT.DOMElement.Button(laserDiv, "render", "Model erstellen");
-                                button_render.setStyleTemplate(S_Button.STYLE_NONE);
-                                button_render.button.onclick = function(){
-                                    console.log(this.data.UserID, project.ProjectID);
-                                    let res = ConverterHelper.createData(this.data.UserID, project.ProjectID);
-                                }.bind(this);
-                                
-                                if(SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc", true)){
-                                    button_render.span.innerHTML = "Model erneut erstellen";
-                                }
-                        }
+                        let buttonsContainer = new SPLINT.DOMElement("projectListElement_laser_Div_buttons" + index, "div", laserDiv);
+                            buttonsContainer.Class("buttons");
+                            if(!this.fromArchive){
+
+                                    let button_render = new SPLINT.DOMElement.Button(buttonsContainer, "render", "Model erstellen");
+                                        button_render.setStyleTemplate(S_Button.STYLE_NONE);
+                                        button_render.button.onclick = async function(){
+                                            let sp = new Spinner1(button_render.button, "test");
+                                                // sp.
+                                            console.log(this.data.UserID, project.ProjectID);
+                                            let res = (await ConverterHelper.createData(this.data.UserID, project.ProjectID));
+                                            sp.remove();
+                                            button_download_NC.button.disabled = false;
+                                            button_startEngraving.button.disabled = false;
+                                        }.bind(this);
+                                        
+                                        if(SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc", true)){
+                                            button_render.span.innerHTML = "Model erneut erstellen";
+                                        }
+                            }
 
 
-                        let button_download_NC = new SPLINT.DOMElement.Button(laserDiv, "downloadNC", "Model herunterladen");
-                            button_download_NC.setStyleTemplate(S_Button.STYLE_NONE);
-                            button_download_NC.button.onclick = function(){
-                                if(SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc", true)){
-                                    download_S.download(projectPATH + "/Full.nc", this.orderID + "_" + (parseInt(index) + 1) + "_Model.nc");
-                                } else {
-                                    ConverterHelper.createData(this.data.UserID, project.ProjectID);
-                                    download_S.download(projectPATH + "/Full.nc", this.orderID + "_" + (parseInt(index) + 1) + "_Model.nc");
-                                }
-                            }.bind(this);
+                                let button_download_NC = new SPLINT.DOMElement.Button(buttonsContainer, "downloadNC", "Model herunterladen");
+                                    button_download_NC.setStyleTemplate(S_Button.STYLE_NONE);
+                                    button_download_NC.button.onclick = function(){
+                                        if(SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc", true)){
+                                            download_S.download(projectPATH + "/Full.nc", this.orderID + "_" + (parseInt(index) + 1) + "_Model.nc");
+                                        } else {
+                                            ConverterHelper.createData(this.data.UserID, project.ProjectID);
+                                            download_S.download(projectPATH + "/Full.nc", this.orderID + "_" + (parseInt(index) + 1) + "_Model.nc");
+                                        }
+                                    }.bind(this);
+                                    if(!SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc", true)){
+                                        button_download_NC.button.disabled  = true;
+                                    } else {
+                                        button_download_NC.button.disabled  = false;
+                                    }
+
+                                let button_startEngraving = new SPLINT.DOMElement.Button(buttonsContainer, "startEngraving", "Model Fräsen");
+                                    button_startEngraving.setStyleTemplate(S_Button.STYLE_NONE);
+                                    button_startEngraving.button.onclick = async function(){
+                                        if(SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc", true)){
+                                            let name = this.orderID + "_" + (parseInt(index) + 1) + "_Model";
+                                            let code = (await SPLINT.API.Moonraker.loadGCode(projectPATH + "/Full.nc"));
+                                            await SPLINT.API.Moonraker.uploadGCode(code, name);
+                                            let g = SPLINT.API.Moonraker.startPrint(name);
+                                            console.log(g);
+                                        }
+                                    }.bind(this);
+                                    if(!SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc", true)){
+                                        button_startEngraving.button.disabled  = true;
+                                    } else {
+                                        button_startEngraving.button.disabled  = false;
+                                    }
 
                     let EP_div = new SPLINT.DOMElement("EPTypeDiv_" + index, "div", informationDiv);
                         EP_div.Class("EPDiv");

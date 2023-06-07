@@ -11,9 +11,25 @@ class Startup {
     static TESTSPACE    = "Body_ADMIN_testSpace";
     static COUPONCODES  = "Body_ADMIN_couponCodes";
     static STATISTICS   = "Body_ADMIN_statistics";
+    static ENGRAVING    = "Body_ADMIN_engraving";
     // static DATABASE     = "Body_ADMIN_dataBase";
     // static MANAGEMENT   = "Body_ADMIN_management";
+    static {
+        
+        // document.addEventListener("visibilitychange", async function(e){
+        //     if (document.visibilityState === 'hidden') {
+        //         SPLINT.SessionsPHP.set("ADMIN", false, false);
+        //         SPLINT.SessionsPHP.set("GUEST", true, false);
+        //         SPLINT.SessionsPHP.set("USER_ID", (await Cookie.get("COOKIE_GUEST")), false);
+        //     } else {
+        //         SPLINT.SessionsPHP.set("ADMIN", true, false);
+        //         SPLINT.SessionsPHP.set("GUEST", false, false);
+        //         SPLINT.SessionsPHP.set("USER_ID", 0, false);
+        //     }
+            SPLINT.SessionsPHP.showAll();
 
+        // });
+    }
     static check(){
         let body = document.getElementsByTagName("body")[0];   
             switch(body.id){
@@ -29,6 +45,7 @@ class Startup {
                 // case Startup.BALANCE        : load_Images(); break;
                 case Startup.ORDERS         : new ADMIN_orders(); break;
                 case Startup.TESTSPACE      : new ADMIN_testSpace(); break;
+                case Startup.ENGRAVING      : new ADMIN_engraving(); break;
                 // case Startup.DATABASE       : new ADMIN_dataBase(); break;
                 // case Startup.MANAGEMENT     : new ADMIN_management(); break;
             }

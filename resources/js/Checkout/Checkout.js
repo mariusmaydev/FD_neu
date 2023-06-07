@@ -14,6 +14,12 @@ class Checkout {
     this.mainElement.Class("CheckoutMain");
     this.mainElementLeft = new SPLINT.DOMElement(this.id + "mainLeft", "div", this.mainElement);
     this.mainElementLeft.Class("CheckoutLeftMain");
+        this.linkImprint = new SPLINT.DOMElement.Button(this.mainElementLeft, "imprint", "Impressum");
+        this.linkImprint.Class("linkImprint");
+        this.linkImprint.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_DEFAULT);
+        this.linkImprint.onclick = function(){
+            S_Location.goto(PATH.location.imprint).call();
+        }
     if(SPLINT.ViewPort.getSize() != "mobile-small" && SPLINT.ViewPort.getSize() != "mobile"){
         this.rightBar = new CheckoutRightBar(this.mainElement);
     }

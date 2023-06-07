@@ -29,6 +29,8 @@ PATH.php = new Object();
 PATH.php.manager                        = SSL + "//" + domain + "/" + folder + "/resources/" + php + "/collector/collectorAccess.php";
 PATH.php.address                        = SSL + "//" + domain + "/" + folder + "/resources/" + php + "/userdata/adress/addressAccess.php";
 
+PATH.php.moonraker                      = SSL + "//" + domain + "/" + folder + "/resources/" + php + "/moonraker/moonrakerAccess.php";
+
 PATH.php.project                        = SSL + "//" + domain + "/" + folder + "/resources/" + php + "/project/projectAccess.php";
 PATH.php.text                           = SSL + "//" + domain + "/" + folder + "/resources/" + php + "/converter/text/textAccess.php";
 

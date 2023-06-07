@@ -4,6 +4,10 @@
 	"host": "localhost",
 	"host1": "192.168.178.67",
 	"port": "80",
+    "moonraker" : {
+        "host" : "192.168.178.82",
+        "SSL" : "http"
+    },
 	"loader": {
 		"cachePath": "/fd/Splint/splintCache/"
 	},

@@ -35,7 +35,26 @@ body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    @include forMediaBreakpoint(desktop mobile){    
+    // > .linkImprint {
+    //     display: none;
+    // }
+    > .linkImprint {
+        position: absolute;
+        bottom: 0;
+        // right: 0;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        box-shadow: none;
+        padding: 0;
+        // margin: 0;
+        color: gray;
+        display: block;
+        &:hover {
+            color: $color-primary
+        }
+    } 
+    @include forMediaBreakpoint(desktop mobile){   
         &[loaded*='true']{
             > .ProjectContainer {
                 > .buttons {
