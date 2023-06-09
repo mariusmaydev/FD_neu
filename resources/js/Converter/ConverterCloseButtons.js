@@ -19,9 +19,11 @@ class Converter_closeButtons {
         return;
     }
     async draw(){
-        if(S_Location.getHashes() == "ADMIN"){
+        let hashes = SPLINT.Tools.Location.getHashes();
+        let params = SPLINT.Tools.Location.getParams();
+        if(hashes.includes("ADMIN")){
             this.drawButtonSave();
-        } else if(await SPLINT.SessionsPHP.get(SPLINT.SessionsPHP.CONVERTER_MODE, false) == SPLINT.SessionsPHP.MODE_EDIT_CART){
+        } else if(params.mode == "edit_cart"){
             this.drawButtonSave_editCartItem();
         } else {
             this.drawButtonToCart();
@@ -49,6 +51,9 @@ class Converter_closeButtons {
             SPLINT.Events.onLoadingComplete = function(){
               button_toCart.button.setAttribute("loaded", true);
             };
+            if(SPLINT.Events.onLoadingComplete.dispatched){
+                button_toCart.button.setAttribute("loaded", true);
+            }
     }
     drawButtonBuy(){
         let button_finish = new SPLINT.DOMElement.Button(this.contentElement, "finish", "Kaufen");
@@ -61,15 +66,25 @@ class Converter_closeButtons {
                 Converter_CloseOperations.Buy();
             }
             SPLINT.Events.onLoadingComplete = function(){
-              button_finish.button.setAttribute("loaded", true);
+                button_finish.button.setAttribute("loaded", true);
             };
+            if(SPLINT.Events.onLoadingComplete.dispatched){
+                button_finish.button.setAttribute("loaded", true);
+            }
     }
     drawButtonSave_editCartItem(){
         let button_finish = new SPLINT.DOMElement.Button(this.contentElement, "finish", "speichern");
-            button_finish.button.Class("buy");
+            button_finish.Class("buy");
             button_finish.setStyleTemplate(S_Button.STYLE_NONE);
-            button_finish.button.onclick = function(){
+            button_finish.onclick = function(){
             Converter_CloseOperations.save();
+        }
+        
+        SPLINT.Events.onLoadingComplete = function(){
+            button_finish.button.setAttribute("loaded", true);
+        };
+        if(SPLINT.Events.onLoadingComplete.dispatched){
+            button_finish.button.setAttribute("loaded", true);
         }
     }
 }
@@ -86,7 +101,6 @@ class Converter_CloseOperations {
         projectID = await ProjectHelper.copy(DSProject.Storage.ProjectID);
         await ProjectHelper.changeState(projectID, ProjectHelper.STATE_CART);
       }
-      console.log(projectID);
       if(DSProject.Storage.EPType == "GOLD"){
         ShoppingCart.addItem(projectID, productHelper.LIGHTER_GOLD, 1);
       } else {
@@ -96,10 +110,10 @@ class Converter_CloseOperations {
     static async Buy(){
       let projectID = DSProject.Storage.ProjectID;
       CONVERTER_STORAGE.canvasNEW.createTextData();
-      DSText.save();
+      await DSText.save();
       if(DSProject.get().State != ProjectHelper.STATE_CART){
         SPLINT.SessionsPHP.showAll();
-        projectID = await ProjectHelper.copy(DSProject.Storage.ProjectID);
+        projectID = (await ProjectHelper.copy(DSProject.Storage.ProjectID));
         await ProjectHelper.changeState(projectID, ProjectHelper.STATE_CART);
       }
       if(DSProject.Storage.EPType == "GOLD"){

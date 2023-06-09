@@ -104,27 +104,58 @@
             }
             return $response;
         }
-        public static function edit(){
-            if(isset($_POST["Storage"])){
-                $Storage = $_POST["Storage"];
-                if(count($Storage) > 0){
-                    for($i = 0; $i < count($Storage); $i++){
-                        $DataSet = new DataSet();
-                        $IMG_DATA = $Storage[$i];
-                        $DataSet -> newKey(ImageDB::IMAGE_ID,       $IMG_DATA[ImageDB::IMAGE_ID]);
-                        $DataSet -> newEntry(ImageDB::IMAGE_NAME,   $IMG_DATA[ImageDB::IMAGE_NAME]);
-                        $DataSet -> newEntry(ImageDB::IMAGE_POS_X,  $IMG_DATA[ImageDB::IMAGE_POS_X]);
-                        $DataSet -> newEntry(ImageDB::IMAGE_POS_Y,  $IMG_DATA[ImageDB::IMAGE_POS_Y]);
-                        $DataSet -> newEntry(ImageDB::IMAGE_WIDTH,  $IMG_DATA[ImageDB::IMAGE_WIDTH]);
-                        $DataSet -> newEntry(ImageDB::IMAGE_HEIGHT, $IMG_DATA[ImageDB::IMAGE_HEIGHT]);
-                        $DataSet -> newEntry(ImageDB::IMAGE_FILTER, json_encode($IMG_DATA[ImageDB::IMAGE_FILTER]));
-                        $DataSet -> newEntry(ImageDB::IMAGE_CROP,   $IMG_DATA[ImageDB::IMAGE_CROP]);
-                        $DataSet -> newEntry(ImageDB::IMAGE_ALIGN,  $IMG_DATA[ImageDB::IMAGE_ALIGN]);
-                        $DataSet -> TBName(self::getCompressedID());
-                        ImageDB::Edit($DataSet);
-                    }
+        public static function edit($Storage = null, bool $print = true){
+            if($Storage == null){
+                if(isset($_POST["Storage"])){
+                    $Storage = $_POST["Storage"];
+                } else {
+                    Communication::sendBack(null, true, $print);
+                    return null;
                 }
             }
+            if(count($Storage) > 0){
+                for($i = 0; $i < count($Storage); $i++){
+                    $DataSet = new DataSet();
+                    $IMG_DATA = $Storage[$i];
+                    $DataSet -> newKey(ImageDB::IMAGE_ID,       $IMG_DATA[ImageDB::IMAGE_ID]);
+                    $DataSet -> newEntry(ImageDB::IMAGE_NAME,   $IMG_DATA[ImageDB::IMAGE_NAME]);
+                    $DataSet -> newEntry(ImageDB::IMAGE_POS_X,  $IMG_DATA[ImageDB::IMAGE_POS_X]);
+                    $DataSet -> newEntry(ImageDB::IMAGE_POS_Y,  $IMG_DATA[ImageDB::IMAGE_POS_Y]);
+                    $DataSet -> newEntry(ImageDB::IMAGE_WIDTH,  $IMG_DATA[ImageDB::IMAGE_WIDTH]);
+                    $DataSet -> newEntry(ImageDB::IMAGE_HEIGHT, $IMG_DATA[ImageDB::IMAGE_HEIGHT]);
+                    $DataSet -> newEntry(ImageDB::IMAGE_FILTER, json_encode($IMG_DATA[ImageDB::IMAGE_FILTER]));
+                    $DataSet -> newEntry(ImageDB::IMAGE_CROP,   $IMG_DATA[ImageDB::IMAGE_CROP]);
+                    $DataSet -> newEntry(ImageDB::IMAGE_ALIGN,  $IMG_DATA[ImageDB::IMAGE_ALIGN]);
+                    $DataSet -> TBName(self::getCompressedID());
+                    ImageDB::Edit($DataSet);
+                }
+                
+                Communication::sendBack(true, true, $print);
+                return true;
+            } 
+            Communication::sendBack(null, true, $print);
+            return null;
+
+            // if(isset($_POST["Storage"])){
+            //     $Storage = $_POST["Storage"];
+            //     if(count($Storage) > 0){
+            //         for($i = 0; $i < count($Storage); $i++){
+            //             $DataSet = new DataSet();
+            //             $IMG_DATA = $Storage[$i];
+            //             $DataSet -> newKey(ImageDB::IMAGE_ID,       $IMG_DATA[ImageDB::IMAGE_ID]);
+            //             $DataSet -> newEntry(ImageDB::IMAGE_NAME,   $IMG_DATA[ImageDB::IMAGE_NAME]);
+            //             $DataSet -> newEntry(ImageDB::IMAGE_POS_X,  $IMG_DATA[ImageDB::IMAGE_POS_X]);
+            //             $DataSet -> newEntry(ImageDB::IMAGE_POS_Y,  $IMG_DATA[ImageDB::IMAGE_POS_Y]);
+            //             $DataSet -> newEntry(ImageDB::IMAGE_WIDTH,  $IMG_DATA[ImageDB::IMAGE_WIDTH]);
+            //             $DataSet -> newEntry(ImageDB::IMAGE_HEIGHT, $IMG_DATA[ImageDB::IMAGE_HEIGHT]);
+            //             $DataSet -> newEntry(ImageDB::IMAGE_FILTER, json_encode($IMG_DATA[ImageDB::IMAGE_FILTER]));
+            //             $DataSet -> newEntry(ImageDB::IMAGE_CROP,   $IMG_DATA[ImageDB::IMAGE_CROP]);
+            //             $DataSet -> newEntry(ImageDB::IMAGE_ALIGN,  $IMG_DATA[ImageDB::IMAGE_ALIGN]);
+            //             $DataSet -> TBName(self::getCompressedID());
+            //             ImageDB::Edit($DataSet);
+            //         }
+            //     }
+            // }
         }
         public static function remove(){
             $DataSet = new DataSet();

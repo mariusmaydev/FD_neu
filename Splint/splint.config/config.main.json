@@ -1,13 +1,13 @@
 {
 	"projectName": "fd",
 	"SSL": "http",
-	"host": "localhost",
+    "host"          : "192.168.178.81",
 	"host1": "192.168.178.67",
 	"port": "80",
-    "moonraker" : {
-        "host" : "192.168.178.82",
-        "SSL" : "http"
-    },
+	"moonraker": {
+		"host": "192.168.178.82",
+		"SSL": "http"
+	},
 	"loader": {
 		"cachePath": "/fd/Splint/splintCache/"
 	},

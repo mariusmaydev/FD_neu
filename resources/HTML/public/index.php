@@ -29,22 +29,23 @@
         <!-- End Google Tag Manager (noscript) -->
         <div class="NavigationBar" id="NavigationBar" ></div>
 
-        <s-part pre src="/js/GLOBAL/Paths.js"></s-part>
-        <s-part pre src="/js/GLOBAL/global_Helper.js"></s-part>
-        <s-part pre src="/js/assets/functionsShoppingCart.js"></s-part>
+        <s-part first src="/js/GLOBAL/Paths.js"></s-part>
+        <s-part src="/js/GLOBAL/global_Helper.js"></s-part>
+        <s-part src="/js/assets/functionsShoppingCart.js"></s-part>
 
         <s-part src="/js/manager/"></s-part>
         <s-part src="/js/3D/Element3D.js"></s-part>
         <s-module src="/js/3D/modules/module_3D_init.js"></s-module>
         
         <s-part src="/js/GLOBAL/global_Helper_elements.js"></s-part>
-        <s-part src="/js/GLOBAL/UserData.js"></s-part>
+        <s-part src="/js/assets/UserData.js"></s-part>
 
         <s-part src="/js/Login/LoginHelper.js"></s-part>
         <s-part src="/js/3D/3DHelper.js"></s-part>
         <s-part src="/js/3D/commonJS/drawDOMElement_3D.js"></s-part>
-        <s-part src="/js/Pages/pagesHelper.js"></s-part>
-        <s-part src="/js/Pages/index/"></s-part>
+        <s-part first src="/js/Pages/pagesHelper.js"></s-part>
+        <s-part src="/js/Pages/index/index.js"></s-part>
+        <s-part src="/js/Pages/index/overlay.js"></s-part>
         <s-part src="/js/Projects/Projects.js"></s-part>
         <s-part src="/js/Projects/ProjectsHelper.js"></s-part>
 

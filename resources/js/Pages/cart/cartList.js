@@ -10,6 +10,9 @@ class drawCartList {
     async draw(){
         this.data = (await ShoppingCart.get()).shoppingCart;
         console.log(this.data);
+        if(this.data.length == 0){
+            SPLINT.Events.onLoadingComplete.dispatch();
+        }
         this.listHead = new SPLINT.DOMElement(this.id + "ItemListHead", "div", this.listBody);
         this.listHead.Class("itemListHead");
         SPLINT.Events.onLoadingComplete = function(){
@@ -72,9 +75,9 @@ class drawCartList {
             let amountDivInner = amountEle.newDiv("/ID/amount_inner", "inner");
             let amountDiv = new SPLINT.DOMElement.InputAmount(amountDivInner, amountDivInner.id, item.amount, "");
             productData.then(function(data){
-                amountDiv.oninput = function(amount){
-                    ShoppingCart.setAmount(index, amount);
+                amountDiv.oninput = async function(amount){
                     priceDiv.setPrice(S_Math.multiply(data.price, amount));
+                    await ShoppingCart.setAmount(index, amount);
                     ShoppingCart.drawPrices();
                 }.bind(this);
             }.bind(this));

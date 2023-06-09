@@ -3,6 +3,7 @@
 class ADMIN_couponCodes extends ADMIN_DrawTemplate {
     constructor(){
         super("couponCodes");
+        ADMIN_loginFuncs.check_redirect();
         this.mainElement.Class("main");
         // this.draw();
     }

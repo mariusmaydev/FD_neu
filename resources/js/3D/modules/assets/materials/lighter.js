@@ -2,7 +2,7 @@
 import * as THREE from 'threeJS';
 import SPLINT from 'SPLINT';
 import SRC from '../Helper.js';
-import S_materials from '@SPLINT_MODULES_DIR/ThreeJS/materials/M_materials.js';
+// import S_materials from '@SPLINT_MODULES_DIR/ThreeJS/materials/M_materials.js';
 import MaterialHelper from '@SPLINT_MODULES_DIR/ThreeJS/materials/MaterialHelper.js';
 
 export class Lighter {

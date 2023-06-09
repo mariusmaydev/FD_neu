@@ -14,23 +14,23 @@ class ManagerHelper {
             }
             let f = new managerObject();
             console.log(f)
-            this.#getPage();
-            this.STORAGE.TimeStart = new Date();
-            document.addEventListener("visibilitychange", function(e){
-                if (document.visibilityState === 'hidden') {
-                    this.STORAGE.TimeEnd = new Date();
-                    this.#save();
-                }
-                // console.dir(window.location)
-                // console.dir(e.target.referrer)
-                // console.dir(e);
+            // this.#getPage();
+            // this.STORAGE.TimeStart = new Date();
+            // document.addEventListener("visibilitychange", function(e){
+            //     if (document.visibilityState === 'hidden') {
+            //         this.STORAGE.TimeEnd = new Date();
+            //         this.#save();
+            //     }
+            //     // console.dir(window.location)
+            //     // console.dir(e.target.referrer)
+            //     // console.dir(e);
     
-                // // let newOrigin = S_URI.getOrigin(e.target.referrer);
-                // // if(location.href == e.target.referrer){
+            //     // // let newOrigin = S_URI.getOrigin(e.target.referrer);
+            //     // // if(location.href == e.target.referrer){
     
-                // // }
-            }.bind(this));
-            this.#saveIP();
+            //     // // }
+            // }.bind(this));
+            // this.#saveIP();
         }.bind(this);
 
     }

@@ -24,10 +24,10 @@
         <s-part src="/js/3D/3DHelper.js"></s-part>
         <s-module src="/js/3D/modules/module_3D_init.js"></s-module>
 
-        <s-part src="/js/Pages/pagesHelper.js"></s-part>
-        <s-part pre src="/js/GLOBAL/Paths.js"></s-part>
-        <s-part pre src="/js/GLOBAL/global_Helper.js"></s-part>
-        <s-part pre src="/js/Login/LoginHelper.js"></s-part>
+        <s-part first src="/js/Pages/pagesHelper.js"></s-part>
+        <s-part first src="/js/GLOBAL/Paths.js"></s-part>
+        <s-part src="/js/GLOBAL/global_Helper.js"></s-part>
+        <s-part src="/js/Login/LoginHelper.js"></s-part>
         <s-part src="/js/assets/functionsShoppingCart.js"></s-part>
         <s-part src="/js/Projects/Projects.js"></s-part>
         <s-part src="/js/Projects/ProjectsHelper.js"></s-part>
@@ -43,9 +43,6 @@
         <s-part src="/js/manager/"></s-part>
         <s-part src="/js/NavigationBar.js"></s-part>
 
-    <?php 
-    //   Sessions::unset(Sessions::PROJECT_ID);
-    ?>
     </body>
         <script type="text/javascript" src="../../../../Splint/js/Splint.js" onload="SPLINT.start()"></script>
 </html>

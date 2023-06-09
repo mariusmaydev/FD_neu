@@ -1,0 +1,101 @@
+@import '../../general/main.scss';
+@import '../../general/buttons.scss';
+// @import '../../general/NavigationBar.scss';
+@import '../ADMIN.scss';
+// @import '../../addresses/address.scss';
+
+body {
+    // > .head {
+
+    // }
+    > .main {
+        > .containerNew {
+            > .headline {
+                margin-top: 1em;
+                padding-left: 0.5em;
+                padding-bottom: 0.25em;
+                width: 100%;
+                @include SPLINT-border-inset(gray, 1px, false, false, true, false);
+                > span {
+                    font-size: 1.5em;
+
+                }
+            }
+            > .inputContainer {
+                display: inline-flex;
+                > .n_inputDiv {
+                    margin-top: 0;
+                }
+            }
+            > button {
+                > span {
+
+                }
+            }
+        }
+        > .container {
+            > .container_new {
+                > .headline {
+                    margin-top: 1em;
+                    padding-left: 0.5em;
+                    padding-bottom: 0.25em;
+                    width: 100%;
+                    @include SPLINT-border-inset(gray, 1px, false, false, true, false);
+                    > span {
+                        font-size: 1.5em;
+                    }
+                }
+                > .inputContainer {
+                    display: inline-flex;
+                    > .n_inputDiv {
+                        margin-top: 0;
+                    }
+                }
+                > button {
+                    > span {
+    
+                    }
+                }
+
+            }
+            > .labelLoginList {
+                margin-top: 1.5em;
+                padding-left: 0.5em;
+                padding-bottom: 0.25em;
+                margin-bottom: 0.5em;
+                width: 100%;
+                @include SPLINT-border-inset(gray, 1px, false, false, true, false);
+                > span {
+                    font-size: 1.5em;
+
+                }
+            }
+            > .Table2D {
+                margin-left: 0.5em;
+                > table {
+                    > tr {
+                        > th {
+                            > div {
+                                > span {
+
+                                }
+                            }
+                        }
+                        > td {
+                            > div {
+                                > span {
+
+                                }
+                                > button {
+                                    > span {
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

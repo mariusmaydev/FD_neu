@@ -5,18 +5,45 @@
 
 .logo-icon {
     position: relative;
-    margin: 1%;
-    width: 20em;
+    margin: 1em;
+    // width: 20em;
+    height: 8em;
 }
 
 .head {
-    display: none;
+    display: none !important;
 }
 
 body {
     >.main {
         > img {
+            display: inline-flex;
             
+        }
+        > .loginContainer {
+            position: absolute;
+            display: inline-flex;
+            margin-left: auto;
+            top: 4.5em;
+            right: 3em;
+            align-items: center;
+
+            width: max-content;
+            > div {
+                margin-right: 1em;
+                padding-right: 1em;
+                @include SPLINT-border-inset(gray, 1px, false, false, false, true);
+                > span {
+                    font-size: 2em;
+                }
+            }
+            > button {
+                font-size: 1em;
+                > span {
+                    font-size: 2em;
+
+                }
+            }
         }
     }
 }

@@ -1,0 +1,112 @@
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT , Last_Time DATETIME DEFAULT , PRIM...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)20
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)86
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)347
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)82
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
+</S-trace>
+<S-time>2023-06-09 02:06:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli Object
+     (
+         [affected_rows] => -1
+         [client_info] => mysqlnd 8.1.6
+         [client_version] => 80106
+         [connect_errno] => 0
+         [connect_error] => 
+         [errno] => 1064
+         [error] => You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT , Last_Time DATETIME DEFAULT , PRIM...' at line 1
+         [error_list] => Array
+             (
+                 [0] => Array
+                     (
+                         [errno] => 1064
+                         [sqlstate] => 42000
+                         [error] => You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT , Last_Time DATETIME DEFAULT , PRIM...' at line 1
+                     )
+     
+             )
+     
+         [field_count] => 0
+         [host_info] => 127.0.0.1 via TCP/IP
+         [info] => 
+         [insert_id] => 0
+         [server_info] => 10.4.24-MariaDB
+         [server_version] => 100424
+         [sqlstate] => 42000
+         [protocol_version] => 10
+         [thread_id] => 2438
+         [warning_count] => 1
+     )
+     
+</S-msg>
+<S-trace>
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)87
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\project\project.php)347
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\order\order.php)82
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
+</S-trace>
+<S-time>2023-06-09 02:06:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT , Last_Time DATETIME DEFAULT , PRIM...' at line 1
+</S-msg>
+<S-trace>
+ at [ERROR](C:\xampp\htdocs\Splint\php\DataBase\DataBase.php)20
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)86
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\project\project.php)347
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\order.php)82
+ at [ERROR](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
+</S-trace>
+<S-time>2023-06-09 02:07:01</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli Object
+     (
+         [affected_rows] => -1
+         [client_info] => mysqlnd 8.1.6
+         [client_version] => 80106
+         [connect_errno] => 0
+         [connect_error] => 
+         [errno] => 1064
+         [error] => You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT , Last_Time DATETIME DEFAULT , PRIM...' at line 1
+         [error_list] => Array
+             (
+                 [0] => Array
+                     (
+                         [errno] => 1064
+                         [sqlstate] => 42000
+                         [error] => You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' Square TEXT, First_Time DATETIME DEFAULT , Last_Time DATETIME DEFAULT , PRIM...' at line 1
+                     )
+     
+             )
+     
+         [field_count] => 0
+         [host_info] => 127.0.0.1 via TCP/IP
+         [info] => 
+         [insert_id] => 0
+         [server_info] => 10.4.24-MariaDB
+         [server_version] => 100424
+         [sqlstate] => 42000
+         [protocol_version] => 10
+         [thread_id] => 2451
+         [warning_count] => 1
+     )
+     
+</S-msg>
+<S-trace>
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\project\projectArchive.php)87
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\project\project.php)347
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\order\order.php)82
+ at [DEBUG][NOTICE](C:\xampp\htdocs\fd\resources\php\order\orderAccess.php)11
+</S-trace>
+<S-time>2023-06-09 02:07:01</S-time></S-error>

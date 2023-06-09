@@ -32,7 +32,7 @@
             $DataSet -> newKey(UserDataDB::USER_ID, $UserID);
             $shoppingCart = UserDataDB::get($DataSet);
             if($print){
-                print_r(json_encode($shoppingCart));
+                Communication::sendBack($shoppingCart);
             } else {
                 return $shoppingCart;
             }

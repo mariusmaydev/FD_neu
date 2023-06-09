@@ -5,7 +5,6 @@ import LIGHT from './light.js';
 import LighterAnimations from '../animations.js';
 import SETUP from '../setup.js';
 import MODEL from '../model.js';
-import SRC from '../../assets/Helper.js';
 
 export class draw {
     static get(canvas){
@@ -73,28 +72,18 @@ export class draw {
         this.camera.rotation.set(0, 0, 0);
     }
     async loadThumbnail(name, GoldFlag){
-        if(this.loadedTexture == true){
+        if(this.loadedTexture == false){
+            this.loadedTexture = true;
             return;
         }
-        this.loadedTexture = true;
-        this.thumbnailSRC = "fd/" + SRC().lighter.engraving.thumbnail_add
-        if(this.thumbnailSRC != null){
-            this.thumbnailSRC = SPLINT.texture.loadFromRoot(this.thumbnailSRC);
-            this.thumbnailSRC.then(async function(tex){
+                let tex = SPLINT.resources.textures.lighter_engraving_thumbnail_add;
                 if(this.scene != null){
                     MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, 'lighter'), this, tex, "gold", 0xe8b000, !GoldFlag);
                     MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, 'lighter2'), this, tex, "chrome", 0xc0c0c0, !GoldFlag);
                 }
-                this.thumbnailSRC = null;
-                return true;
-            }.bind(this)).then(async function(){
                 this.canvas.parentElement.parentElement.parentElement.setAttribute("loaded", true);
                 this.render();
-            }.bind(this)).catch(function(){});
-            this.thumbnailSRC.catch(function(){
-                this.canvas.parentElement.parentElement.parentElement.setAttribute("loaded", true);
-            }.bind(this));
-        }
+        
         return true;
     }
     async draw(){

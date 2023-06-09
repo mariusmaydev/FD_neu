@@ -116,9 +116,15 @@ use Shopify\Auth\Session;
             $img -> readImage($path);
             return $img;
         }
-        public static function edit(){
-            if(isset($_POST["Storage"])){
-                $Storage = $_POST["Storage"];
+        public static function edit($Storage = null, bool $print = true){
+            if($Storage == null){
+                if(isset($_POST["Storage"])){
+                    $Storage = $_POST["Storage"];
+                } else {
+                    Communication::sendBack(null, true, $print);
+                    return null;
+                }
+            }
                 // error_log(json_encode($Storage));
                 if(count($Storage) > 0){
                     for($i = 0; $i < count($Storage); $i++){
@@ -149,8 +155,13 @@ use Shopify\Auth\Session;
                         $DataSet -> TBName(self::getCompressedID());
                         TextDB::Edit($DataSet);
                     }
-                }
-            }
+                
+                    Communication::sendBack(true, true, $print);
+                    return true;
+                } 
+                Communication::sendBack(null, true, $print);
+                return null;
+            
         }
         public static function remove(){
             $DataSet = new DataSet();

@@ -10,15 +10,13 @@
     <body id="Body_ADMIN_statistics">
         <s-part src="/js/ADMIN/assets/AdminNavigation.js"></s-part>
 
-        <s-part pre src="/js/GLOBAL/Paths.js"></s-part>
-        <s-part src="/js/ADMIN/assets/AdminTemplate.js"></s-part>
-        <s-part src="/js/ADMIN/assets/AdminPaths.js"></s-part>
-        <s-part src="/js/ADMIN/assets/AdminNavigation.js"></s-part>
-        <s-part src="/js/ADMIN/assets/AdminChartTemplate.js"></s-part>
+        <s-part first src="/js/GLOBAL/Paths.js"></s-part>
+        <s-part src="/js/ADMIN/assets/"></s-part>
         <s-part src="/js/ADMIN/pages/ADMIN_statistics.js"></s-part>
         <s-part src="/js/ADMIN/statistics/"></s-part>
         <s-part src="/js/Designs/CategoryHelper.js"></s-part>    
 
+        <s-part first src="/js/ADMIN/assets/AdminTemplate.js"></s-part>
         <s-part src="/js/GLOBAL/Paths.js"></s-part>
         <s-part src="/js/3D/3DHelper.js"></s-part>
         <s-part src="/js/manager/"></s-part>

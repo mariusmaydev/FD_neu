@@ -11,7 +11,6 @@ class ADMIN_NavigationMenu {
     draw(){
       //this.createSubElement("inventory", "Inventar");
       this.createSubElement("products", "Produkte");
-      // this.createSubElement("couponCodes", "Gutscheincodes");
       this.createSubElement("orders", "Bestellungen");
       this.createSubElement("statistics", "Statistiken");
       this.createSubElement("engraving", "Fräsen");
@@ -19,6 +18,7 @@ class ADMIN_NavigationMenu {
       this.createSubElement("designs", "Designs");
       this.createSubElement("testSpace", "TestSpace");
       this.createSubElement("couponCodes", "Rabattcodes");
+      this.createSubElement("login", "Administratorkonten");
       // this.createSubElement("dataBase", "Datenbanken");
       // this.createSubElement("management", "Verwaltung");
     }

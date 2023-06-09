@@ -1,6 +1,7 @@
 class ADMIN_designs extends ADMIN_DrawTemplate {
     constructor(){
         super("designs");
+        ADMIN_loginFuncs.check_redirect();
         // this.draw();
         this.mainElement.Class("ADMIN_designs_main");
         // this.navBar = new ADMIN_DesignNavBar(this.mainElement);

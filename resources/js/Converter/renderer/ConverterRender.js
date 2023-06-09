@@ -110,7 +110,7 @@ class CanvasElement_C {
         }
       });
       
-      return await canvas.toDataURL("image/png", 1);
+      return canvas.toDataURL("image/png", 1);
   }
   createTextData(scale = 8){
     for(const element of this.stack){
@@ -549,9 +549,11 @@ class CanvasElement_C {
   dragStop(){
     this.dragElement = null;
     this.activeElement = null;
-      DSImage.saveAsync();
-      DSText.saveAsync();
-      DSProject.saveAsync();
+    
+    DSController.saveAll();
+    //   DSImage.saveAsync();
+    //   DSText.saveAsync();
+    //   DSProject.saveAsync();
   }
   clearLine(full = false){
     this.lines.ctx.clearRect(0, 0, this.lines.canvas.width, this.lines.canvas.height);

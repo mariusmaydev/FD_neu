@@ -18,15 +18,17 @@
         <s-part src="/js/3D/Element3D.js"></s-part>
         <s-module src="/js/3D/modules/module_3D_init.js"></s-module>
 
-        <s-part src="/js/Pages/pagesHelper.js"></s-part>
+        <s-part pre src="/js/Pages/pagesHelper.js"></s-part>
         <s-part src="/js/GLOBAL/global_Helper_elements.js"></s-part>
-        <s-part src="/js/GLOBAL/UserData.js"></s-part>
+        <s-part src="/js/assets/UserData.js"></s-part>
 
         <s-part src="/js/Login/LoginHelper.js"></s-part>
 
         <s-part src="/js/3D/3DHelper.js"></s-part>
         <s-part src="/js/3D/commonJS/drawDOMElement_3D.js"></s-part>
-        <s-part src="/js/Pages/cart/"></s-part>
+        <s-part src="/js/Pages/cart/cart.js"></s-part>
+        <s-part src="/js/Pages/cart/cartList.js"></s-part>
+        <s-part src="/js/Pages/cart/cartRight.js"></s-part>
         <s-part src="/js/assets/product/"></s-part>
         <s-part src="/js/assets/functionsCouponCode.js"></s-part>
         <s-part src="/js/Projects/Projects.js"></s-part>

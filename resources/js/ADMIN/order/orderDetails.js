@@ -36,7 +36,12 @@ class ADMIN_order_view {
         this.projectDiv.Class("projectsDiv");
         for(const index in this.items){
             let projectID = this.items[index].ProjectID;
-            let project = await ProjectHelper.get(projectID, this.data.UserID);
+            let project;
+            if(this.fromArchive){
+                project = await ProjectHelper.getFromArchive(projectID, this.data.UserID, this.data.OrderID);
+            } else {
+                project = await ProjectHelper.get(projectID, this.data.UserID);
+            }
             let projectPATH;
             if(this.fromArchive){
                 projectPATH = ProjectHelper.getPath2ProjectArchive(this.data.UserID, project.ProjectID, this.data.OrderID);

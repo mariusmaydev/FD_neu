@@ -30,8 +30,9 @@ class drawCartRight {
             let buttonBuy = new SPLINT.DOMElement.Button(conclusionDiv, "buy", "jetzt kaufen");
                 buttonBuy.setStyleTemplate(S_Button.STYLE_DEFAULT);
                 buttonBuy.onclick = function(){
-                    
-                    S_Location.goto(PATH.location.checkout).call();
+                    SPLINT.Tools.Location.URL = PATH.location.checkout;
+                    SPLINT.Tools.Location.addHash("address").call();
+                    // S_Location.goto(PATH.location.checkout).call();
                 }
 
         let codeDiv = this.rightBody.newDiv("code", "code");

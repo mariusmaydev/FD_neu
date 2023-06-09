@@ -6,15 +6,13 @@
 
     </head>
     <body id="Body_ADMIN_engraving">
-        <s-part pre src="/js/GLOBAL/Paths.js"></s-part>
-        <s-part src="/js/ADMIN/assets/AdminTemplate.js"></s-part>
-        <s-part src="/js/ADMIN/assets/AdminPaths.js"></s-part>
-        <s-part src="/js/ADMIN/assets/AdminNavigation.js"></s-part>
-        <s-part src="/js/ADMIN/assets/AdminChartTemplate.js"></s-part>
+        <s-part first src="/js/GLOBAL/Paths.js"></s-part>
+        <s-part src="/js/ADMIN/assets/"></s-part>
         <s-part src="/js/manager/manager.js"></s-part>
         <s-part src="/js/ADMIN/pages/ADMIN_engraving.js"></s-part>
         <s-loader src="/js/ADMIN/Eventhandler.js"></s-loader>
 
+        <s-part first src="/js/ADMIN/assets/AdminTemplate.js"></s-part>
         <script async type="text/javascript" src="../../../../Splint/js/Splint.js" onload="SPLINT.start()"></script>
     </body>
 

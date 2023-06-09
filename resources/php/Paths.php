@@ -150,7 +150,6 @@
 
             self::$FileName = self::getFileName($type, $imgID, $ext);
             $f = self::buildPath(self::$base, $GLOBALS['folder'], "data", "Users",  $userID,  "projects", $projectID) . self::folder($type) . self::$FileName;
-            Debugger::log($f);
             return $f;
         }
     }

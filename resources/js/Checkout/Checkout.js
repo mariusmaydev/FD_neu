@@ -26,11 +26,12 @@ class Checkout {
     // this.mainElementRight = new SPLINT.DOMElement(this.id + "mainRight", "div", this.mainElement);
     // this.mainElementRight.Class("CheckoutRightMain");
     // this.drawRight();
-    window.location.hash = CheckoutHelper.ADDRESS;
-    this.#checkHashes();
+    // window.location.hash = CheckoutHelper.ADDRESS;
+    
     window.addEventListener("hashchange", function(){
       this.#checkHashes();
     }.bind(this));
+    this.#checkHashes();
   }
   #checkHashes(){
     this.mainElementLeft.innerHTML = "";
@@ -109,32 +110,58 @@ class Checkout {
         let mobileProductOverview = new CheckoutMobileProductOverview(this.addressMenuMainElement);
         this.rightBar = new CheckoutRightBar(mobileProductOverview.contentElement, mobileProductOverview);
     }
-
     new SPLINT.API.Paypal.draw.fastCheckout(this.addressMenuMainElement);
-    // if((await login.isLoggedIn())){
-    //   let adressList = new drawAddressMenu_LIST(this.addressMenuMainElement);
-    //       let label = new Label(adressList.switch.parent, adressList.switch.button, "bestehende Adresse wählen")
-    //           label.after();
-    //       adressList.drawSwitch();
-    //       adressList.iconActive = "expand_more";
-    //       adressList.iconPassive = "chevron_right";
-    //       adressList.unsetActive();
-    //       adressList.switch.onchange = function(){
-    //       }
-    // }
-    let addressMenuNew = new drawAddressMenu_NEW(this.addressMenuMainElement);
-        addressMenuNew.drawSubmit = false;
-
+    
+        let addressInput = new SPLINT.DOMElement.InputAddress(this.addressMenuMainElement, "newAddress");
+            addressInput.onsubmit = function(){
+                let flag = false;
+                if(addressInput.firstName_input.isEmpty()){
+                    flag = true;
+                    addressInput.firstName_input.invalid();
+                }
+                if(addressInput.lastName_input.isEmpty()){
+                    flag = true;
+                    addressInput.lastName_input.invalid();
+                }
+                if(addressInput.postcode_input.isEmpty()){
+                    flag = true;
+                    addressInput.postcode_input.invalid();
+                }
+                if(addressInput.city_input.isEmpty()){
+                    flag = true;
+                    addressInput.city_input.invalid();
+                }
+                if(addressInput.street_input.isEmpty()){
+                    flag = true;
+                    addressInput.street_input.invalid();
+                }
+                if(addressInput.housenumber_input.isEmpty()){
+                    flag = true;
+                    addressInput.housenumber_input.invalid();
+                }
+                if(addressInput.email_input.isEmpty()){
+                    flag = true;
+                    addressInput.email_input.invalid();
+                }
+                if(flag){
+                    return false;
+                }
+                return true;
+            }
         if(await SPLINT.SessionsPHP.get("address") != false){
-          addressMenuNew.setValues(await SPLINT.SessionsPHP.get("address"));
+            addressInput.value = (await SPLINT.SessionsPHP.get("address"));
+        } else {
+            addressInput.value = (new S_AddressObject(false));
         }
-        addressMenuNew.draw();
 
     let buttonSubmit = new SPLINT.DOMElement.Button(this.addressMenuMainElement, "submit", "weiter");
         buttonSubmit.button.Class("button_submit");
         buttonSubmit.setStyleTemplate(S_Button.STYLE_NONE);
         buttonSubmit.onclick = async function(){
-          await SPLINT.SessionsPHP.set(Checkout.sessions.addresses, addressMenuNew.getValues());
+            if(!addressInput.submit()){
+                return;
+            }
+          await SPLINT.SessionsPHP.set(Checkout.sessions.addresses, addressInput.value);
           (await CheckoutHelper.progress()).add(CheckoutHelper.ADDRESS);
           CheckoutHelper.goto(CheckoutHelper.SENDING);
         }
@@ -219,10 +246,48 @@ class Checkout {
           let displayDiv = radioInvoiceMethod.getDisplayDiv("different");
           if(radioInvoiceMethod.Value == "different"){
             await SPLINT.SessionsPHP.set(Checkout.sessions.invoiceType, "different");
-            this.invoiceAddressMenu = new drawAddressMenu_NEW(displayDiv, "invoiceAddress");
-            this.invoiceAddressMenu.directSave = false;
-            this.invoiceAddressMenu.setValues(await SPLINT.SessionsPHP.get(Checkout.sessions.invoiceAddress));
-            this.invoiceAddressMenu.DrawSubmit(false);
+
+            this.invoiceAddressMenu = new SPLINT.DOMElement.InputAddress(displayDiv, "invoiceAddress");
+            this.invoiceAddressMenu.onsubmit = function(){
+                    let flag = false;
+                    if(this.invoiceAddressMenu.firstName_input.isEmpty()){
+                        flag = true;
+                        this.invoiceAddressMenu.firstName_input.invalid();
+                    }
+                    if(this.invoiceAddressMenu.lastName_input.isEmpty()){
+                        flag = true;
+                        this.invoiceAddressMenu.lastName_input.invalid();
+                    }
+                    if(this.invoiceAddressMenu.postcode_input.isEmpty()){
+                        flag = true;
+                        this.invoiceAddressMenu.postcode_input.invalid();
+                    }
+                    if(this.invoiceAddressMenu.city_input.isEmpty()){
+                        flag = true;
+                        this.invoiceAddressMenu.city_input.invalid();
+                    }
+                    if(this.invoiceAddressMenu.street_input.isEmpty()){
+                        flag = true;
+                        this.invoiceAddressMenu.street_input.invalid();
+                    }
+                    if(this.invoiceAddressMenu.housenumber_input.isEmpty()){
+                        flag = true;
+                        this.invoiceAddressMenu.housenumber_input.invalid();
+                    }
+                    if(this.invoiceAddressMenu.email_input.isEmpty()){
+                        flag = true;
+                        this.invoiceAddressMenu.email_input.invalid();
+                    }
+                    if(flag){
+                        return false;
+                    }
+                    return true;
+                }.bind(this);
+                if(await SPLINT.SessionsPHP.get(Checkout.sessions.invoiceAddress) != false){
+                    this.invoiceAddressMenu.value = (await SPLINT.SessionsPHP.get(Checkout.sessions.invoiceAddress));
+                } else {
+                    this.invoiceAddressMenu.value = (new S_AddressObject(false));
+                }
           } else {
             await SPLINT.SessionsPHP.set(Checkout.sessions.invoiceType, "identical");
             await SPLINT.SessionsPHP.set(Checkout.sessions.invoiceAddress, await SPLINT.SessionsPHP.get(Checkout.sessions.addresses));
@@ -237,13 +302,16 @@ class Checkout {
         buttonSubmit.button.Class("button_submit");
         buttonSubmit.setStyleTemplate(S_Button.STYLE_NONE);
         buttonSubmit.button.onclick = async function(){
-          if(this.invoiceAddressMenu != undefined){
-            await SPLINT.SessionsPHP.set(Checkout.sessions.invoiceAddress, this.invoiceAddressMenu.getValues());
-          } else {
-            await SPLINT.SessionsPHP.set(Checkout.sessions.invoiceAddress, await SPLINT.SessionsPHP.get(Checkout.sessions.addresses));
-          }
-          await SPLINT.SessionsPHP.set(Checkout.sessions.paymentType, radioPaymentMethod.Value);
-          CheckoutHelper.goto(CheckoutHelper.CHECKORDER);
+            if(await SPLINT.SessionsPHP.get(Checkout.sessions.invoiceType) == "different"){
+                if(!this.invoiceAddressMenu.submit()){
+                    return;
+                }
+                await SPLINT.SessionsPHP.set(Checkout.sessions.invoiceAddress, this.invoiceAddressMenu.value);
+            } else {
+                await SPLINT.SessionsPHP.set(Checkout.sessions.invoiceAddress, await SPLINT.SessionsPHP.get(Checkout.sessions.addresses));
+            }
+            await SPLINT.SessionsPHP.set(Checkout.sessions.paymentType, radioPaymentMethod.Value);
+            CheckoutHelper.goto(CheckoutHelper.CHECKORDER);
         }.bind(this);
   }
   async drawOverview(){
@@ -267,7 +335,14 @@ class Checkout {
             buttonBuy.setStyleTemplate(S_Button.STYLE_NONE);
             buttonBuy.button.onclick = async function(){
               let Items = (await ShoppingCart.get()).shoppingCart;
+              if(Items.length == 0){
+                return;
+              }
               for(const index in Items){
+                let newProjectID = (await ProjectHelper.copy(Items[index].ProjectID));
+                // ProjectHelper.remove(Items[index].ProjectID)
+                // ShoppingCart.removeItem(Items[index].ProjectID);
+                Items[index].ProjectID = newProjectID;
                 await ProjectHelper.changeState(Items[index].ProjectID, ProjectHelper.STATE_ORDER);
               }
 
@@ -279,11 +354,12 @@ class Checkout {
                   orderObj.UserID         = await SPLINT.SessionsPHP.get(SPLINT.SessionsPHP.USER_ID, false);
                   orderObj.couponCode     = await SPLINT.SessionsPHP.get(Checkout.sessions.couponCode);
                   let orderID = order.new(orderObj.get());
-                //   let res = lexOffice.newInvoice(orderObj.get(), orderID);
-                //   console.log(res);
-                //   let res1 = lexOffice.newDeliveryNote(orderObj.get(), orderID);
-                //   console.log(res1);
-                let orderobj = await preparePaypal();
+                  let res = lexOffice.newInvoice(orderObj.get(), orderID);
+                  console.log(res);
+                  let res1 = lexOffice.newDeliveryNote(orderObj.get(), orderID);
+                  console.log(res1);
+                  ShoppingCart.clear();
+                // let orderobj = await preparePaypal();
                 console.dir(orderobj)
 
             }

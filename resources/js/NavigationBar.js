@@ -4,12 +4,13 @@ class NavigationBar {
     constructor() {
         this.mainElement = document.getElementById("NavigationBar");
         this.mainElement.Class("NavigationBar");
-        SPLINT.Events.onLoadingComplete = function(){
-            this.mainElement.setAttribute("loaded", true);
-        }.bind(this);
         this.contentElement = new SPLINT.DOMElement("NavigationBar_content", "div", this.mainElement);
         this.contentElement.Class("content");
         this.cart = new Object();
+        SPLINT.Events.onLoadingComplete = async function(){
+            await this.drawCart();
+            this.mainElement.setAttribute("loaded", true);
+        }.bind(this);
         this.draw();
     }
     hide(){
@@ -18,7 +19,6 @@ class NavigationBar {
     draw(){
         this.drawLogo();
         this.drawNewProject();
-        this.drawCart();
     }
     drawNewProject(){
         this.design = new Object();
@@ -48,7 +48,7 @@ class NavigationBar {
         this.cart.div = new SPLINT.DOMElement("NavBar_CartDiv", "div", this.contentElement);
         this.cart.div.Class("Cart");
         return new Promise(async function(resolve){
-            let cartData = await ShoppingCart.get();
+            let cartData = (await ShoppingCart.get()).shoppingCart;
             if(cartData != null && cartData.length > 0){
                 this.cart.point = new SPLINT.DOMElement.SpanDiv(this.cart.div, "point", cartData.length);
                 this.cart.point.div.Class("cartPoint");
@@ -67,6 +67,12 @@ class NavigationBar {
             resolve();
         }.bind(this));
 
+    }
+    async updateCart(cartData = null){
+        if(cartData == null){
+            cartData = (await ShoppingCart.get()).shoppingCart;
+        }
+        this.cart.point.value = cartData.length;
     }
     static update(){
         new NavigationBar();

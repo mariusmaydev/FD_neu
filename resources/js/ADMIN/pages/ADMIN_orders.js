@@ -3,6 +3,7 @@ class ADMIN_orders extends ADMIN_DrawTemplate {
     static VIEW = "view";
     constructor(){
         super("orders");
+        ADMIN_loginFuncs.check_redirect();
         // this.draw();
         this.mainElement.Class("ADMIN_orderMain");
     }

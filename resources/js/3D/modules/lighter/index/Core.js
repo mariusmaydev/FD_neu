@@ -5,7 +5,6 @@ import LIGHT from './light.js';
 import CompressedAnimations from './animations.js';
 import LighterAnimations from '../animations.js';
 import SETUP from '../setup.js';
-import SRC from '../../assets/Helper.js';
 import MODEL from '../model.js';
 import Communication from './communication.js';
 
@@ -21,6 +20,7 @@ export class draw {
         this.setup = new SETUP(this);
         this.loaded = null;
         this.animationTime = 0;
+        this.loadedTexture = false;
         SPLINT.R_promise.then(function(){
             this.init();
             this.events();
@@ -160,7 +160,10 @@ export class draw {
                 lighterGroupe2.children[14].rotation.y = (-106.5 +  1) * Math.PI / 180;
                 lighterGroupe2.children[0].children[0].rotation.z = (-133.7648) * Math.PI / 180;
                 lighterGroupe2.rotationBase = lighterGroupe2.rotation.clone();
-
+            
+//             setTimeout(async function(){
+//                 this.start();
+//             }.bind(this), 1000)
             this.onFinishLoading();
                 // lighterGroupe2.visible = false;
             // console.log();

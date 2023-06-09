@@ -160,12 +160,12 @@ class drawProjectList_ADMIN {
               button_edit.bindIcon("edit");
               button_edit.onclick = async function(){
                   await SPLINT.SessionsPHP.set(SPLINT.SessionsPHP.PROJECT_ID, data.ProjectID, false);
-                  await SPLINT.SessionsPHP.set(SPLINT.SessionsPHP.CONVERTER_MODE, "EDIT_PROJECT", false);
                   await SPLINT.SessionsPHP.set("USER_ID", "ADMIN", false);
                   await SPLINT.SessionsPHP.set("USER_NAME", "ADMIN", false);
                   await SPLINT.SessionsPHP.set("ADMIN", true, false);
                   await SPLINT.SessionsPHP.set("GUEST", false, false);
-                  S_Location.goto(PATH.location.converter).setHash("ADMIN").call();
+                  SPLINT.Tools.Location.URL = PATH.location.converter;
+                  SPLINT.Tools.Location.addParams({"mode": "edit_project"}).setHash("ADMIN").call();
               }
             let button_remove = new SPLINT.DOMElement.Button(buttonDiv, index + "_remove");
                 button_remove.bindIcon("delete");

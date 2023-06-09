@@ -82,7 +82,7 @@ class ProjectHelper extends SPLINT.CallPHP.Manager {
           call.data.OrderID   = orderID;
       return call.send();
     }
-    static new(ProjectName = 'unbenannt', Product = 'Test', isAdmin = false, isOriginal = false){
+    static async new(ProjectName = 'unbenannt', Product = 'Test', isAdmin = false, isOriginal = false){
       let call = this.callPHP(this.NEW);
           call.data.Original     = isOriginal;
           call.data.ProjectName  = ProjectName;
@@ -96,7 +96,7 @@ class ProjectHelper extends SPLINT.CallPHP.Manager {
           call.data.UserID    = UserID;
       return call.send();
     }
-    static getAll(state = null){
+    static async getAll(state = null){
       let call = this.callPHP(this.GET_ALL);
           call.data.State = state;
       return call.send();
@@ -150,19 +150,20 @@ class ProjectHelper extends SPLINT.CallPHP.Manager {
     }
     static async CONVERTER_startProject(projectID, editCart = false){
       await SPLINT.SessionsPHP.set(SPLINT.SessionsPHP.PROJECT_ID, projectID, false);
+      SPLINT.Tools.Location.URL = PATH.location.converter;
       if(editCart){
-        await SPLINT.SessionsPHP.set(SPLINT.SessionsPHP.CONVERTER_MODE, "EDIT_CART", false);
+        SPLINT.Tools.Location.addParams({"mode": "edit_cart"}).call();
       } else {
-        await SPLINT.SessionsPHP.set(SPLINT.SessionsPHP.CONVERTER_MODE, "EDIT_PROJECT", false);
+        SPLINT.Tools.Location.addParams({"mode": "edit_project"}).call();
       }
-      S_Location.goto(PATH.location.converter).call();
+    //   S_Location.goto(PATH.location.converter).call();
     }
     static async CONVERTER_closeProject(){
       DSImage.save();
       DSText.save();
       DSProject.save();
-      await SPLINT.SessionsPHP.remove(SPLINT.SessionsPHP.CONVERTER_MODE, false);
-      await SPLINT.SessionsPHP.remove(SPLINT.SessionsPHP.PROJECT_ID, false);
+    //   await SPLINT.SessionsPHP.remove(SPLINT.SessionsPHP.CONVERTER_MODE, false);
+    //   await SPLINT.SessionsPHP.remove(SPLINT.SessionsPHP.PROJECT_ID, false);
       await SPLINT.SessionsPHP.remove(SPLINT.SessionsPHP.PROJECT_NAME, false);
     }
     static getDesignObj(){

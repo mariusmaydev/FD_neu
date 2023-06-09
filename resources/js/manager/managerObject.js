@@ -7,7 +7,6 @@ class managerObject {
         this.init();
     }
     async init(){
-        SPLINT.SessionsPHP.showAll();
         await this.get();
         await this.push();
         this.events();

@@ -14,6 +14,7 @@
         <s-part src="/js/3D/3DHelper.js"></s-part>
         <s-module src="/js/3D/modules/module_3D_init.js"></s-module>
 
+        <s-part pre src="/js/ADMIN/assets/AdminTemplate.js"></s-part>
         <s-part src="/js/ADMIN/assets/"></s-part>
         <s-part src="/js/manager/manager.js"></s-part>
         <s-part src="/js/ADMIN/pages/ADMIN_orders.js"></s-part>

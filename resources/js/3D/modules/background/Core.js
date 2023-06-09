@@ -5,7 +5,6 @@ import LIGHT_Dark from './light_dark.js';
 import LIGHT_Bright from './light_bright.js';
 import LIGHT_Medium from './light_medium.js';
 import SETUP from '../lighter/setup.js';
-import SRC from '../assets/Helper.js';
 
 export class draw {
     static get(canvas){

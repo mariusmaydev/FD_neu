@@ -4,9 +4,9 @@ import SPLINT from 'SPLINT';
 import * as MATERIALS from '../assets/materials/materials.js';
 import S_MATERIALS from '@SPLINT_THREE_DIR/materials/M_materials.js';
 import SETUP from './setup.js';
-import * as TEXTURES from '../assets/materials/textures.js';
-import { SVGLoader } from '@THREE_MODULES_DIR/loaders/SVGLoader.js';
-import { TWEEN } from '@THREE_MODULES_DIR/libs/tween.module.min.js'
+// import * as TEXTURES from '../assets/materials/textures.js';
+// import { SVGLoader } from '@THREE_MODULES_DIR/loaders/SVGLoader.js';
+// import { TWEEN } from '@THREE_MODULES_DIR/libs/tween.module.min.js'
 
 
 var FLAG_sceneLoaded = 0;
@@ -64,7 +64,7 @@ export default class Model {
             SRCscene.name = name;
             SRCscene.rotation.x = Math.PI / 2;
             instance.scene.add(SRCscene);
-            instance.loadThumbnail(name, GoldFlag);    
+            await instance.loadThumbnail(name, GoldFlag);    
 
             // SPLINT.resources.models.lighter_glb.scene = instance.scene.clone();
             // FLAG_sceneLoaded = parseInt(FLAG_sceneLoaded) + 1;

@@ -4,7 +4,7 @@ SPLINT.require_now('@PROJECT_ROOT/Converter/DataStorage/C_Image.js');
 SPLINT.require_now('@PROJECT_ROOT/Converter/DataStorage/DSText.js');
 SPLINT.require_now('@PROJECT_ROOT/Converter/DataStorage/C_Text.js');
 SPLINT.require_now('@PROJECT_ROOT/Converter/DataStorage/DSProject.js');
-SPLINT.require_now('@PROJECT_ROOT/Converter/renderer/ConverterRender.js');
+// SPLINT.require_now('@PROJECT_ROOT/Converter/renderer/ConverterRender.js');
   //Feuerzeugdaten
  //      Champ Xentai
  const LighterWidth  = 38;    //in mm 38,5  38,3
@@ -30,17 +30,18 @@ class Converter {
     this.start();
   }
   async start(){
-    let promiseText = Text_C.get();
-    let promiseImage = Image_C.get();
+    await DSController.getAll();
+    // let promiseText = Text_C.get();
+    // let promiseImage = Image_C.get();
     let promiseProject = ProjectHelper.get();
-    Promise.all([promiseText, promiseImage, promiseProject]).then(async function(response){
-        console.log(arguments)
-        DSProject.add(response[2]);
+    console.dir(promiseProject)
+    // Promise.all([promiseText, promiseImage, promiseProject]).then(async function(response){
+    //     DSProject.add(response[2]);
         this.draw();
         this.init();
         this.initEvents();
         CONVERTER_STORAGE.canvasNEW.refreshData();
-    }.bind(this));
+    // }.bind(this));
 
   }
   draw(){
@@ -90,20 +91,10 @@ class Converter {
   }
   initEvents(){
     ViewPort.onViewPortChanged = function(size, lastSize){
-        console.log(size)
-      // this.draw();
       if(size != 'mobile-small'){
         converter_drawDesktop.draw();
-        // // if(CONVERTER_STORAGE.toolBar != undefined && CONVERTER_STORAGE.toolBar.type == "bottom"){
-        // //   CONVERTER_STORAGE.toolBar.mainElement.remove();
-        // //   // document.getElementById("ConverterToolBar_main").before(document.getElementById("ConverterCloseButtons__main"))
-        // // }
-        // Converter_ToolBar.init();
       } else {
         converter_drawMobile.draw();
-        // Converter_ToolBar.init();
-        // CONVERTER_STORAGE.toolBar.update();
-        // CONVERTER_STORAGE.toolBar.blurAll();
       }
       Converter_ToolBar.update();
     }.bind(this);
@@ -146,8 +137,10 @@ function AdjustSquareBorder(){
       // Box.Y = getAbsoluteHeight(SquareBorder) - parseInt(border) * 2;
             
   CONVERTER_STORAGE.canvasNEW.setSize();
+  
+  DSController.saveAll();
   DSProject.saveAsync();
-  DSImage.saveAsync();
-  DSText.saveAsync();
+//   DSImage.saveAsync();
+//   DSText.saveAsync();
 }
 

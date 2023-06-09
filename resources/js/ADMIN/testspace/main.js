@@ -8,19 +8,44 @@ class ADMIN_testSpace {
         this.draw();
         // this.chart = new test_chartJS(this.mainElement);
     }
-    draw(){
-        let bt = new SPLINT.DOMElement.Button(this.mainElement, "upload", "upload File");
-            bt.onclick = async function(){
-                let code = (await SPLINT.API.Moonraker.loadGCode("http://localhost/fd/data/test.nc"));
-                moonraker.uploadGCode(code, "test");
+    async draw(){
+        let g = new S_SideBarMobile(this.mainElement, "test");
+            
+        // let c_serverContainer = new SPLINT.DOMElement(this.id + "c_serverContainer", "div", this.rightContent);
+        let data = await CategoryHelper.get_Originals()
+        let pg = new drawProjectChoiceMenu(g.contentElement);
+        // console.dir(data)
+        // let obje = new SPLINT.DOMElement.ObjectEditor(g.contentElement, "test", data, false);
+        //     obje.patterns = ["attr", "data"];
+        //     obje.onPattern = function(Obj, pObj, pObjName){
+        //         console.log(obje.getPart(pObjName));
+        //         console.dir(arguments)
+        //     }
+        //     obje.onedit = function(obj, val){
+        //         // SP_inspectProjects.saveConfig(obj, this.data.uri);
+        //     }.bind(this);
+        //     obje.draw();
+        let bt = new SPLINT.DOMElement.Button(this.mainElement, "test", "open");
+            bt.onclick = function(){
+                g.open();
             }
-            let bt1 = new SPLINT.DOMElement.Button(this.mainElement, "test", "test");
-                bt1.onclick = async function(){
-                    let f = (await SPLINT.API.Moonraker.startPrint("test"));
+        // let g = new S_ChoiceButton(this.mainElement, "test");
+        //     g.add(1, "value")
+        //     g.add(2, "value2")
+        //     g.add(3, "value3")
+        //     g.add(4, "value4")
+        // let bt = new SPLINT.DOMElement.Button(this.mainElement, "upload", "upload File");
+        //     bt.onclick = async function(){
+        //         let code = (await SPLINT.API.Moonraker.loadGCode("http://localhost/fd/data/test.nc"));
+        //         moonraker.uploadGCode(code, "test");
+        //     }
+        //     let bt1 = new SPLINT.DOMElement.Button(this.mainElement, "test", "test");
+        //         bt1.onclick = async function(){
+        //             let f = (await SPLINT.API.Moonraker.startPrint("test"));
 
-                    // let f = moonraker.startPrint("name");
-                    console.dir(f);
-                }
+        //             // let f = moonraker.startPrint("name");
+        //             console.dir(f);
+        //         }
 
     }
     draw1(){

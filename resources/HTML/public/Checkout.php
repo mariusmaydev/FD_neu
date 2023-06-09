@@ -1,6 +1,6 @@
 <?php
-        header("Access-Control-Allow-Origin: http://localhost:8012");
-    require '../HTML_Core.php';
+    //     header("Access-Control-Allow-Origin: http://localhost:8012");
+    // require '../HTML_Core.php';
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -29,7 +29,7 @@
         <s-part pre src="/js/GLOBAL/Paths.js"></s-part>
         <s-part pre src="/js/GLOBAL/global_Helper.js"></s-part>
         <s-part src="/js/GLOBAL/global_Helper_elements.js"></s-part>
-        <s-part src="/js/GLOBAL/UserData.js"></s-part>
+        <s-part src="/js/assets/UserData.js"></s-part>
 
         <s-part src="/js/Login/LoginHelper.js"></s-part>
         <s-part src="/js/assets/functionsShoppingCart.js"></s-part>

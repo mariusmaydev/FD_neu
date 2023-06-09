@@ -3,6 +3,7 @@
 class ADMIN_statistics extends ADMIN_DrawTemplate {
     constructor(){
         super("statistics");
+        ADMIN_loginFuncs.check_redirect();
     }
     async getData(){
         // let a = await ManagerHelper.g

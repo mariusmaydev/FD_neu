@@ -12,7 +12,7 @@ class Startup {
     static COUPONCODES  = "Body_ADMIN_couponCodes";
     static STATISTICS   = "Body_ADMIN_statistics";
     static ENGRAVING    = "Body_ADMIN_engraving";
-    // static DATABASE     = "Body_ADMIN_dataBase";
+    static LOGIN        = "Body_ADMIN_login";
     // static MANAGEMENT   = "Body_ADMIN_management";
     static {
         
@@ -26,7 +26,6 @@ class Startup {
         //         SPLINT.SessionsPHP.set("GUEST", false, false);
         //         SPLINT.SessionsPHP.set("USER_ID", 0, false);
         //     }
-            SPLINT.SessionsPHP.showAll();
 
         // });
     }
@@ -38,7 +37,7 @@ class Startup {
                 case Startup.COUPONCODES    : new ADMIN_couponCodes(); break;
                 case Startup.TESTSPACE      : new ADMIN_testSpace(); break;
                 case Startup.STATISTICS     : new ADMIN_statistics(); break;
-                // case Startup.INVENTORY      : load_Images(); break;
+                case Startup.LOGIN          : new ADMIN_login(); break;
                 case Startup.PRODUCTS       : new ADMIN_products(); break;
                 // case Startup.COUPONCODES    : new ADMIN_couponCodes(); break;
                 // case Startup.STATISTICS     : load_Images(); break;

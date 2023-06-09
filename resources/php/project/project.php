@@ -275,6 +275,8 @@
             $DataSet = new DataSet();
             if($isOriginal == 'true'){
                 $DataSet -> newKey(ProjectDB::ORIGINAL, $isOriginal);
+            } else if($isOriginal == 'false'){
+                $DataSet -> newKey(ProjectDB::ORIGINAL, $isOriginal);
             }
             $DataSet -> TBName(strtolower($UserID));
             $ProjectData = AccessDB::get(ProjectDB::getStruct(), $DataSet, DataBase::FORCE_ORDERED);
@@ -338,13 +340,13 @@
             $DataSet -> newEntry(ProjectArchiveDB::PROJECT_NAME,   $data[ProjectDB::PROJECT_NAME]);
             $DataSet -> newEntry(ProjectArchiveDB::STATE,          ProjectDB::STATE_NORMAL);
             $DataSet -> newEntry(ProjectArchiveDB::EPTYPE,         $data[ProjectDB::EPTYPE]);
+            $DataSet -> newEntry(ProjectArchiveDB::ORIGINAL,       $data[ProjectDB::ORIGINAL]);
             $DataSet -> newEntry(ProjectArchiveDB::PRODUCT,        $data[ProjectDB::PRODUCT]);
             $DataSet -> newEntry(ProjectArchiveDB::SQUARE,         json_encode($data[ProjectDB::SQUARE]));
             $DataSet -> newEntry(ProjectArchiveDB::FIRST_TIME,     $data[ProjectDB::FIRST_TIME]);
             $DataSet -> newEntry(ProjectArchiveDB::LAST_TIME,      $data[ProjectDB::LAST_TIME]);
             $DataSet -> TBName($UserID);
-            Debugger::log($DataSet);
-            ProjectArchiveDB::add($DataSet);
+            AccessDB::add(ProjectArchiveDB::getStruct(), $DataSet);
         }
     }
 

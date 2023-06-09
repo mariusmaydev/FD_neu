@@ -29,126 +29,19 @@ class login {
     static call(data){
         return CallPHP_S.call(login.PATH, data);
     }
-    // static verifyData(UserID, password){
-    //     let data = this.callPHP(login.VERIFY_DATA);
-    //         data.UserID     = UserID;
-    //         data.Password   = password;
-    //     return login.call(data).toObject();
-    // }
-    // static checkData(email, userName){
-    //     if(email == null && userName == null){
-    //         function obj(){
-    //             this.existEmail = function(Email){
-    //                 let response = login.checkData(Email, "dsf");
-    //                 return response.Email;
-    //             }
-    //             this.existUserName = function(Username){
-    //                 let response = login.checkData("ddf", Username);
-    //                 return response.UserName;
-    //             }
-    //         }
-    //         return new obj();
-    //     } else {
-    //         let data = this.callPHP(login.CHECK_DATA);
-    //             data.Email      = email;
-    //             data.UserName   = userName;
-    //         return login.call(data).toObject();
-    //     }
-    // }
-    // static getUserID(email = null, userName = null){
-    //     let call = this.callPHP(login.GET_USERID);
-    //         call.data.Email = email;
-    //         call.data.UserName = userName;
+
+    // static newAccount_ADMIN(email, userName, password){
+    //     let call = this.callPHP(login.NEW_USER_ADMIN);
+    //         call.data.Email      = email;
+    //         call.data.UserName   = userName;
+    //         call.data.Password   = password;
     //     return call.send();
     // }
-    // static newAccount_Google(email, userName){
-    //     let call = this.callPHP(login.NEW_USER_GOOGLE);
-    //         call.data.Email = email;
-    //         call.data.UserName = userName;
-    //     return call.send();
-    // }
-    // static newAccount_FD(email, userName, password){
-    //     let call = this.callPHP(login.NEW_USER_FD);
-    //         call.data.Email = email;
-    //         call.data.UserName = userName;
-    //         call.data.Password = password;
-    //     return call.send();
-    // }
-    static newAccount_ADMIN(email, userName, password){
-        let call = this.callPHP(login.NEW_USER_ADMIN);
-            call.data.Email      = email;
-            call.data.UserName   = userName;
-            call.data.Password   = password;
-        return call.send();
-    }
-    // static login(UserID){
-    //     let call = this.callPHP(login.LOGIN);
-    //         call.data.UserID = UserID;
-    //         return call.send();
-    // }
-    // // static logout(){
-    // //     let call = this.callPHP(login.LOGOUT);
-    // //     return call.send();
-    // // }
     static async getData(UserID = null){
         let call = this.callPHP(login.GET_DATA);
             call.data.UserID = UserID;
         return call.send();
     }
-    // static editData(UserName = null, Email = null, Password = null){
-    //     let call = this.callPHP(login.EDIT_DATA);
-    //         call.data.UserName   = UserName;
-    //         call.data.Email      = Email;
-    //         call.data.Password   = Password;
-    //     return call.send();	
-    // }
-    // static isLoggedIn(){
-    //     let call = this.callPHP(login.LOGGEDIN);
-    //     return call.send();
-    // }
-    // static removeAccount(UserID){
-    //     let call = this.callPHP(login.REMOVE_ACCOUNT);
-    //         call.data.UserID = UserID;
-    //     return call.send();
-    // }
-    // // static checkCode(){
-    // //     let call = this.callPHP(login.CHECK_CODE);
-    // //     return call.send();
-    // // }
-    // // static verifyAccount(UserID){
-    // //     let call = this.callPHP(login.VERIFY_ACCOUNT);
-    // //         call.data.UserID = UserID;
-    // //     return call.send();
-    // // }
-
-    // static async isGuest(){
-    //     if(await SPLINT.SessionsPHP.get(SPLINT.SessionsPHP.GUEST, false) == "true" || await SPLINT.SessionsPHP.get(SPLINT.SessionsPHP.GUEST, false) == true){
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
-    // static async loginGuest(){
-    //     return new Promise(async function(resolve){
-    //         let cookieGuest = Cookie.get(login.COOKIE_GUEST);
-    //         if((await login.getData(cookieGuest)) != null){
-    //             if(cookieGuest != undefined){
-    //                 let call = new SPLINT.CallPHP(login.PATH, login.LOGIN_GUEST);
-    //                     call.data.UserID = cookieGuest;
-    //                 resolve((call.send()));
-    //             }
-    //         }
-    //         resolve(false)
-    //     }.bind(this))
-    // }
-    // static async newAccount_Guest(){
-    //     return new Promise(async function(resolve){
-    //         let call    = this.callPHP(login.NEW_GUEST);
-    //         let UserID  = await call.send();
-    //         Cookie.set(login.COOKIE_GUEST, UserID, 10);
-    //         resolve(UserID);
-    //     }.bind(this));
-    // }
     static async Login(){
         return new Promise(async function(resolve){
             if(S_Location.getHashes().includes("ADMIN")){

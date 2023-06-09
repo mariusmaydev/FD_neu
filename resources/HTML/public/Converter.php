@@ -17,10 +17,10 @@
         </div>
         <div class="NavigationBar" id="NavigationBar"></div>
 
-        <s-part pre src="/js/GLOBAL/Paths.js"></s-part>
+        <s-part first src="/js/GLOBAL/Paths.js"></s-part>
 
         <s-part src="/js/Pages/pagesHelper.js"></s-part>
-        <s-part pre src="/js/GLOBAL/global_Helper.js"></s-part>
+        <s-part src="/js/GLOBAL/global_Helper.js"></s-part>
         <s-part src="/js/GLOBAL/global_Helper_elements.js"></s-part>
         <s-part src="/js/Login/LoginHelper.js"></s-part>
         <s-part src="/js/assets/functionsShoppingCart.js"></s-part>
@@ -28,19 +28,19 @@
         <s-part src="/js/3D/3DHelper.js"></s-part>
         <s-part src="/js/Projects/Projects.js"></s-part>
         <s-part src="/js/Projects/ProjectsHelper.js"></s-part>
-        <s-part src="/js/Projects/ProjectList/ProjectCategoryMenu.js"></s-part>
-        <s-part src="/js/Projects/ProjectList/ProjectChoiceMenu.js"></s-part>
-        <s-part src="/js/Projects/ProjectList/ProjectList.js"></s-part>
-        <s-part src="/js/Projects/ProjectList/ProjectDetails.js"></s-part>
-        <s-part pre src="/js/Converter/DataStorage/C_Image.js"></s-part>
-        <s-part pre src="/js/Converter/DataStorage/C_Text.js"></s-part>
-        <s-part pre src="/js/Converter/DataStorage/DSImage.js"></s-part>
-        <s-part pre src="/js/Converter/DataStorage/DSText.js"></s-part>
-        <s-part pre src="/js/Converter/DataStorage/DSProject.js"></s-part>
+        <!-- <s-part src="/js/Projects/ProjectList/ProjectCategoryMenu.js"></s-part> -->
+        <!-- <s-part src="/js/Projects/ProjectList/ProjectChoiceMenu.js"></s-part> -->
+        <!-- <s-part src="/js/Projects/ProjectList/ProjectList.js"></s-part> -->
+        <!-- <s-part src="/js/Projects/ProjectList/ProjectDetails.js"></s-part> -->
+        <s-part first src="/js/Converter/DataStorage/C_Image.js"></s-part>
+        <s-part first src="/js/Converter/DataStorage/C_Text.js"></s-part>
+        <s-part first src="/js/Converter/DataStorage/DSImage.js"></s-part>
+        <s-part first src="/js/Converter/DataStorage/DSText.js"></s-part>
+        <s-part first src="/js/Converter/DataStorage/DSProject.js"></s-part>
         <s-part src="/js/assets/functionsProduct.js"></s-part>
         <s-part src="/js/assets/product/productHelper.js"></s-part>
         <s-part src="/js/assets/product/drawProductInformation.js"></s-part>
-        <s-part src="/js/Converter/Upload.js"></s-part>
+        <!-- <s-part src="/js/Converter/Upload.js"></s-part> -->
         <!-- <s-part src="/js/Converter/renderer/ConverterRender"></s-part> -->
         <s-part src="/js/Converter/Converter.js"></s-part>
         <s-part src="/js/Designs/"></s-part>
@@ -60,7 +60,7 @@
         <s-part src="/js/Converter/drawElements/drawMobile.js"></s-part>
         <!-- <s-part src="/js/manager/manager.js"></s-part> -->
         <s-part src="/js/3D/Element3D.js"></s-part>
-        <s-part src="/js/Converter/ConverterDOM.js"></s-part>
+        <!-- <s-part src="/js/Converter/ConverterDOM.js"></s-part> -->
 
         <s-part src="/js/Designs/Hashtags/Hashtags.js"></s-part>
         <s-part src="/js/Designs/CategoryHelper.js"></s-part>

@@ -5,7 +5,7 @@ class ShoppingCart {
   static GET          = "SHOPPINGCART_GET";
   static COPY_PROJECT = "SHOPPINGCART_COPY_PROJECT";
   static REMOVE       = "REMOVE";
-  static PATH = PATH.php.userData;
+  static PATH           = PATH.php.userData;
   static MANAGER;
 
   static {
@@ -18,6 +18,20 @@ class ShoppingCart {
   }
   static {
     SPLINT.CallPHP.Manager.bind2class(this.PATH, this);
+  }
+  static async clear(){
+    async function f(cart){
+        for(const e of cart){
+            ProjectHelper.remove(e.ProjectID);
+        }
+    }
+    return new Promise(async function(resolve){
+        let cart = (await this.get()).shoppingCart;
+            f(cart);
+        await ShoppingCart.set(JSON.stringify([]));
+        NavBar.updateCart([]);
+        resolve(true);
+    }.bind(this));
   }
   static get(){
     return new Promise(async function(resolve){
@@ -66,6 +80,7 @@ class ShoppingCart {
           itemObj.amount      = amount;
       cartData.push(itemObj);
     }
+    NavBar.updateCart(cartData);
     return ShoppingCart.set(JSON.stringify(cartData));
   }
   static async changeAmount(index, value){
@@ -75,10 +90,12 @@ class ShoppingCart {
     return cart;
   }
   static async setAmount(index, value){
-    let cart = (await ShoppingCart.get()).shoppingCart;
-        cart[index].amount = value;
-        ShoppingCart.set(JSON.stringify(cart));
-    return cart;
+    return new Promise(async function(resolve){
+        let cart = (await ShoppingCart.get()).shoppingCart;
+            cart[index].amount = value;
+            await ShoppingCart.set(JSON.stringify(cart));
+        resolve(cart);
+    });
   }
   static async editItem(projectID, productName, amount = null){
     let cartData = (await ShoppingCart.get()).shoppingCart;
@@ -94,6 +111,7 @@ class ShoppingCart {
         cartData[index].ProductName = productName;
       }
     }
+    NavBar.updateCart(cartData);
     ShoppingCart.set(JSON.stringify(cartData));
     return cartData;
   }
@@ -108,6 +126,7 @@ class ShoppingCart {
         cartData.splice(index, 1);
       }
     }
+    NavBar.updateCart(cartData);
     ShoppingCart.set(JSON.stringify(cartData));
     ProjectHelper.remove(projectID);
   }
@@ -121,14 +140,16 @@ class ShoppingCart {
     }
     return fullPrice;
   }
-  static async drawPrices(){
-    let cartData = (await ShoppingCart.get()).shoppingCart;
-      let fullPrice   = await ShoppingCart.getFullPrice(cartData);
-      let endPrice    = functionsCouponCodes.calcPrice(fullPrice);
-      let priceCoupon = S_Math.add(fullPrice, -endPrice);
-      PriceDiv_S.setValue("fullPrice", fullPrice);
-      PriceDiv_S.setValue("fullPrice_coupon", -priceCoupon);
-      PriceDiv_S.setValue("fullPrice_end", endPrice);
-      return true;
-  }
+    static async drawPrices(cartData = null){
+        if(cartData == null){
+            cartData = (await ShoppingCart.get()).shoppingCart;
+        }
+        let fullPrice   = await ShoppingCart.getFullPrice(cartData);
+        let endPrice    = functionsCouponCodes.calcPrice(fullPrice);
+        let priceCoupon = S_Math.add(fullPrice, -endPrice);
+        PriceDiv_S.setValue("fullPrice", fullPrice);
+        PriceDiv_S.setValue("fullPrice_coupon", -priceCoupon);
+        PriceDiv_S.setValue("fullPrice_end", endPrice);
+        return true;
+    }
 }

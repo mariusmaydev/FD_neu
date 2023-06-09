@@ -132,10 +132,11 @@ class ADMIN_order_list {
                             let confirmText1 = new SPLINT.DOMElement.SpanDiv(confirmWindow.element, "confirmWindow1", "Bestellung archivieren bestätigen");
                             let confirmText2 = new SPLINT.DOMElement.SpanDiv(confirmWindow.element, "confirmWindow2", "Dies kann nicht rückgängig gemacht werden!");
                             let buttonEnter = new SPLINT.DOMElement.Button(confirmWindow.element, "subwindow_enter", "bestätigen");
-                                buttonEnter.button.onclick = function(){
-                                    order.finish(data);
+                                buttonEnter.onclick = async function(){
+                                    let r = await order.finish(data);
+                                    console.dir(r);
                                     confirmWindow.close();
-                                    parent.remove();
+                                    // parent.remove();
                                 }
                             let buttonReject = new SPLINT.DOMElement.Button(confirmWindow.element, "subwindow_reject", "abbrechen");
                                 buttonReject.button.onclick = function(){

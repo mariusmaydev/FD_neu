@@ -14,6 +14,7 @@ class drawProjectChoiceMenu {
     draw(){
       let headlineDiv = new SPLINT.DOMElement.SpanDiv(this.mainElement, "headline", "Entwürfe");
           headlineDiv.div.Class("headline");
+          
       let buttonDiv = new SPLINT.DOMElement(this.id + "buttonDiv", "div", this.mainElement);
           buttonDiv.Class("buttons");
             let buttonContentDiv = new SPLINT.DOMElement(this.id + "buttonContentDiv", "div", buttonDiv);
@@ -53,9 +54,9 @@ class drawProjectChoiceMenu {
         this.bt_public.button.onclick = function(){
               // this.CategoryMenu_originals.hide = true;
               // this.CategoryMenu_public.hide = false;
-              this.bt_public.button.state().setActive();
-              this.bt_originals.button.state().unsetActive();
-              this.bt_private.button.state().unsetActive();
+            //   this.bt_public.button.state().setActive();
+            //   this.bt_originals.button.state().unsetActive();
+            //   this.bt_private.button.state().unsetActive();
               S_Location.setHash("public");
             }.bind(this);
             // this.CategoryMenu_public.hide = true;
@@ -70,12 +71,12 @@ class drawProjectChoiceMenu {
           this.bt_private = new SPLINT.DOMElement.Button(div_private, "project_private", "deine Designs");
           this.bt_private.setStyleTemplate(S_Button.STYLE_DEFAULT);
           this.bt_private.button.state().unsetActive();
-          this.bt_private.button.onclick = function(){
-            this.CategoryMenu_originals.hide = true;
-            this.CategoryMenu_public.hide = true;
-            this.bt_private.button.state().setActive();
-            this.bt_originals.button.state().unsetActive();
-            this.bt_public.button.state().unsetActive();
+          this.bt_private.onclick = function(){
+            // this.CategoryMenu_originals.hide = true;
+            // this.CategoryMenu_public.hide = true;
+            // this.bt_originals.button.state().unsetActive();
+            // this.bt_public.button.state().unsetActive();
+            // this.bt_private.button.state().setActive();
                 S_Location.setHash("private_storage");
               }.bind(this);
 
@@ -117,9 +118,9 @@ class drawProjectChoiceMenu {
     async private(isCart = false){
       this.CategoryMenu_originals.hide = true;
       this.CategoryMenu_public.hide = true;
-      this.bt_private.button.state().setActive();
       this.bt_originals.button.state().unsetActive();
       this.bt_public.button.state().unsetActive();
+      this.bt_private.button.state().setActive();
       if(this.list_public != undefined){
         this.list_public.remove();
       }
@@ -140,12 +141,13 @@ class drawProjectChoiceMenu {
         if(this.list_original != undefined){
           this.list_original.remove();
         }
-        let data = await ProjectHelper.getAll("NORMAL");
-        this.list_private_NORMAL = new drawProjectList(this.listBody, "NORMAL", data, false, true);
-            let head_N = new SPLINT.DOMElement("NORMAL_head", "div", this.list_private_NORMAL.mainElement);
-                head_N.before(this.list_private_NORMAL.table.mainElement);
-                let text_N = new SPLINT.DOMElement.SpanDiv(head_N, "NORMAL_head_span", "deine Designs");
-                let hr_N = new SPLINT.DOMElement.HorizontalLine(head_N);
+            let data = await ProjectHelper.getAll("NORMAL");
+            this.list_private_NORMAL = new drawProjectList(this.listBody, "NORMAL", data, false, true);
+                let head_N = new SPLINT.DOMElement("NORMAL_head", "div", this.list_private_NORMAL.mainElement);
+                    head_N.before(this.list_private_NORMAL.table.mainElement);
+                    let text_N = new SPLINT.DOMElement.SpanDiv(head_N, "NORMAL_head_span", "deine Designs");
+                    let hr_N = new SPLINT.DOMElement.HorizontalLine(head_N);
+
       }
       
     }
@@ -182,7 +184,7 @@ class drawProjectChoiceMenu {
           this.list_original.remove();
         }
         if(data == null){
-          data = await ProjectHelper.getAllAdmin();
+          data = await ProjectHelper.getAllAdmin(false);
         }
         this.list_public = new drawProjectList(this.listBody, "PUBLIC", data, true);
           let head = new SPLINT.DOMElement("PUBLIC_head", "div", this.list_public.mainElement);
