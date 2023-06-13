@@ -1,303 +1,44 @@
-[09-Jun-2023 14:28:03 Europe/Berlin] _POST
-[09-Jun-2023 14:29:46 Europe/Berlin] _POST
-[09-Jun-2023 14:30:52 Europe/Berlin] _POST
-<S-error>
+	<S-error>
 <S-msg>
      
      Undefined array key "img"
 </S-msg>
+<S-type>ERROR</S-type>
 <S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)11
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
 </S-trace>
-<S-time>2023-06-09 15:38:03</S-time></S-error>
+<S-time>2023-06-13 02:40:02</S-time></S-error>
 <S-error>
 <S-msg>
      
      Undefined array key "txt"
 </S-msg>
+<S-type>ERROR</S-type>
 <S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)12
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:12
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
 </S-trace>
-<S-time>2023-06-09 15:38:03</S-time></S-error>
+<S-time>2023-06-13 02:40:02</S-time></S-error>
 <S-error>
 <S-msg>
      
      Undefined array key "img"
 </S-msg>
+<S-type>ERROR</S-type>
 <S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)11
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
 </S-trace>
-<S-time>2023-06-09 15:38:04</S-time></S-error>
+<S-time>2023-06-13 02:40:03</S-time></S-error>
 <S-error>
 <S-msg>
      
      Undefined array key "txt"
 </S-msg>
+<S-type>ERROR</S-type>
 <S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)12
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:12
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
 </S-trace>
-<S-time>2023-06-09 15:38:04</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "img"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)11
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:38:12</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "txt"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)12
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:38:12</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "img"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)11
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:38:13</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "txt"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)12
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:38:13</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "img"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)11
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:45:45</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "txt"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)12
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:45:45</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "img"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)11
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:49:30</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "txt"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)12
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:49:30</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "img"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)11
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:49:32</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "txt"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)12
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:49:32</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "img"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)11
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:51:37</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "txt"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)12
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:51:37</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "img"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)11
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:51:39</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "txt"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)12
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:51:39</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "img"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)11
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:51:50</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "txt"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)12
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:51:50</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "img"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)11
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:52:17</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "txt"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)12
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:52:17</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "img"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)11
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:52:59</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "txt"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)12
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:52:59</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "img"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)11
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:53:02</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "txt"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)12
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:53:02</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "img"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)11
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:53:04</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "txt"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)12
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:53:04</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "img"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)11
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:53:05</S-time></S-error>
-<S-error>
-<S-msg>
-     
-     Undefined array key "txt"
-</S-msg>
-<S-trace>
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\DSController.php)12
- at [ERROR](C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php)10
-</S-trace>
-<S-time>2023-06-09 15:53:05</S-time></S-error>
+<S-time>2023-06-13 02:40:03</S-time></S-error>
