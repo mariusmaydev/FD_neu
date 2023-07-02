@@ -196,6 +196,10 @@
     function getSingleProjectImage($UserID, $ProjectID, $imgID, $imgType) : Imagick | false {
         return new \Imagick(PATH_Project::get($imgType, $ProjectID, $UserID, $imgID, ".png"));
     }
+    function getSingleProjectImage_std($UserID, $ProjectID, $imgID, $imgType) : GdImage | false {
+        $im = imagecreatefrompng(PATH_Project::get($imgType, $ProjectID, $UserID, $imgID, ".png"));
+        return $im;
+    }
 
     function saveSingleProjectImage($imgID, $imgType, Imagick $ImageData, $UserID = null, $ProjectID = null){
         if($UserID == null){

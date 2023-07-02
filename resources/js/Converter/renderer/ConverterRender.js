@@ -49,7 +49,7 @@ class CanvasElement_C {
     // window.addEventListener("touchend", ConverterTouchHandler.touchEnd.bind(this));
 
     window.addEventListener("mousedown", ConverterMouseHandler.mouseDown.bind(this));
-    window.addEventListener("mousemove", ConverterMouseHandler.mouseMove.bind(this), false);
+    window.addEventListener("mousemove", ConverterMouseHandler.mouseMove.bind(this));
     window.addEventListener("mouseup", ConverterMouseHandler.mouseUp.bind(this));
     // console.log(window)
     // window.addEventListener("resize", function(e){
@@ -152,7 +152,7 @@ class CanvasElement_C {
             ele = element;
             ele.dragEdge = i;
           }
-          element.ctx_S.clearRect(0, 0, element.canvas.width, element.canvas.height);
+        //   element.ctx_S.clearRect(0, 0, element.canvas.width, element.canvas.height);
         }
         // this.draw(element);
       } else if(element.type == "txt"){
@@ -168,7 +168,7 @@ class CanvasElement_C {
         //   ele = element;
         //   ele.dragEdge = 2;
         // }
-        // element.ctx_S.clearRect(0, 0, element.canvas.width, element.canvas.height);
+        element.ctx_S.clearRect(0, 0, element.canvas.width, element.canvas.height);
         
         CanvasHelper.Text().edge(element, true, 8);
         if(this.#check(element.ctx_S)){

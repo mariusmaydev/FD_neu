@@ -126,11 +126,12 @@ class ADMIN_order_view {
                                     button_startEngraving.setStyleTemplate(S_Button.STYLE_NONE);
                                     button_startEngraving.button.onclick = async function(){
                                         if(SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc", true)){
-                                            let name = this.orderID + "_" + (parseInt(index) + 1) + "_Model";
-                                            let code = (await SPLINT.API.Moonraker.loadGCode(projectPATH + "/Full.nc"));
-                                            await SPLINT.API.Moonraker.uploadGCode(code, name);
-                                            let g = SPLINT.API.Moonraker.startPrint(name);
-                                            console.log(g);
+                                            let res = await SPLINT.API.Moonraker.printFile(projectPATH + "/Full.nc");
+                                            // let name = this.orderID + "_" + (parseInt(index) + 1) + "_Model";
+                                            // let code = (await SPLINT.API.Moonraker.loadGCode(projectPATH + "/Full.nc"));
+                                            // await SPLINT.API.Moonraker.uploadGCode(code, name);
+                                            // let g = SPLINT.API.Moonraker.startPrint(name);
+                                            // console.log(code);
                                         }
                                     }.bind(this);
                                     if(!SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc", true)){

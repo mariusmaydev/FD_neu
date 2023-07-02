@@ -1,5 +1,5 @@
 
-import * as THREE from 'threeJS';
+import * as THREE from 'three';
 import SPLINT from 'SPLINT';
 import * as MATERIALS from '../assets/materials/materials.js';
 import S_MATERIALS from '@SPLINT_THREE_DIR/materials/M_materials.js';

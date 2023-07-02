@@ -3,6 +3,7 @@
     require_once $rootpath.'/fd/resources/php/CORE.php';
     require_once $rootpath.'/fd/resources/php/converter/image/filter/filterCore.php';
     require_once $rootpath.'/fd/resources/php/converter/image/image.php'; 
+    require_once $rootpath.'/fd/resources/php/converter/converterConfig.php'; 
     require_once $rootpath.'/fd/resources/php/converter/create/creator.php';
     require_once $rootpath.'/fd/resources/php/converter/SVG/StartGeneratingSVG.php';
     require_once $rootpath.'/fd/resources/php/converter/SVG/generateLaserData.php';
@@ -80,6 +81,7 @@
         }
         public static function create($UserID, $ProjectID){
             global $rootpath;
+            $g = ConverterConfig::get(false);
             // $Storage = [];
             // $Storage["IMG"] = $_POST["StorageImg"];
             // $Storage["TXT"] = $_POST["StorageText"];
@@ -90,7 +92,7 @@
             // $vase -> getNC();
             // start_3mf();
             $ProjectData = Project::get($ProjectID, $UserID, false);
-            Debugg::log($UserID);
+            
             $ImageData = Image::get(null, $ProjectID, $UserID, false);
             $TextData = Text::get(null, $UserID, $ProjectID, false);
             // Communication::sendBack($TextData);

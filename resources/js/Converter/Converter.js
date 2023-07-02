@@ -33,10 +33,13 @@ class Converter {
     await DSController.getAll();
     // let promiseText = Text_C.get();
     // let promiseImage = Image_C.get();
-    let promiseProject = ProjectHelper.get();
-    console.dir(promiseProject)
+    // let promiseProject = ProjectHelper.get();
+    // console.dir(promiseProject)
     // Promise.all([promiseText, promiseImage, promiseProject]).then(async function(response){
     //     DSProject.add(response[2]);
+    console.dir(DSImage)
+    console.dir(DSText)
+    console.dir(DSProject)
         this.draw();
         this.init();
         this.initEvents();

@@ -1,4 +1,4 @@
-import * as THREE from 'threeJS';
+import * as THREE from 'three';
 import SPLINT from 'SPLINT';
 import * as MATERIALS from '../../assets/materials/materials.js';
 import LIGHT from './light.js';
@@ -144,6 +144,7 @@ export class draw {
             this.drawBackground();
             this.light();
             this.scene.add( this.camera );
+            console.dir(this.scene)
         // }
         return new Promise(async function(resolve){
             await MODEL.init(this, "lighter", 2);

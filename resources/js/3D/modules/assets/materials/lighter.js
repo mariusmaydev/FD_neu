@@ -1,5 +1,5 @@
 
-import * as THREE from 'threeJS';
+import * as THREE from 'three';
 import SPLINT from 'SPLINT';
 import SRC from '../Helper.js';
 // import S_materials from '@SPLINT_MODULES_DIR/ThreeJS/materials/M_materials.js';
@@ -131,7 +131,7 @@ export class Lighter {
           texture.magFilter = THREE.NearestFilter;
           texture.minFilter = THREE.LinearMipmapLinearFilter;
           texture.anisotropy = 16;
-          texture.premultiplyAlpha = true;
+          texture.premultiplyAlpha = false;
           texture.needsUpdate = true;
 
       // let bumpTexture = MaterialHelper.getTexture(SPLINT.resources.textures.lighter_engraving_bumpMap);
@@ -150,7 +150,7 @@ export class Lighter {
           bumpTexture.magFilter = THREE.NearestFilter;
           bumpTexture.minFilter = THREE.LinearMipmapLinearFilter;
           bumpTexture.anisotropy = 16;
-          bumpTexture.premultiplyAlpha = true;
+          bumpTexture.premultiplyAlpha = false;
           bumpTexture.needsUpdate = true;
 
           material = new THREE.MeshPhysicalMaterial( {
@@ -180,8 +180,8 @@ export class Lighter {
             sheen: 0.2,
             ior: 0,
             transmission: 0,
-            dithering: false
-            } );
+            dithering: false,
+            });
             material.bumpMap.needsUpdate = true;
             material.color.convertSRGBToLinear();
         HELPER.material = material.clone();

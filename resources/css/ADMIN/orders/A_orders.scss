@@ -143,6 +143,39 @@
                         &:last-child {
                             border: none;
                         }
+                        > button {
+                            width: 100%;
+                            .Spinner1 {
+                                display: inline-block;
+                                position: relative;
+                                width: 1.5em;
+                                height: 1.5em;
+                                &[state*='passive']{
+                                    visibility: hidden;
+                                }
+                                > div {
+                                    box-sizing: border-box;
+                                    display: block;
+                                    position: absolute;
+                                    width: 80%;
+                                    height: 80%;
+                                    margin: 10%;
+                                    border: 0.15em solid #ff0000;
+                                    border-radius: 50%;
+                                    animation: Spinner1 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+                                    border-color: #160909 transparent transparent transparent;
+                                    &:nth-child(1){
+                                        animation-delay: -0.45s;
+                                    }
+                                    &:nth-child(2){
+                                        animation-delay: -0.3s;
+                                    }
+                                    &:nth-child(3){
+                                        animation-delay: -0.15s;
+                                    }
+                                }                  
+                            }
+                        }
                     }
                 }
             }

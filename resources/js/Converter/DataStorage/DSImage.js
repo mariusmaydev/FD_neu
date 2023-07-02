@@ -8,16 +8,21 @@ class DataStorageImage_C {
           obj.ImageID     = data.ImageID;
           obj.ImageName   = data.ImageName;
           if(data.width == undefined || data.height == undefined){
-            obj.ImageHeight = data.ImageHeight;
-            obj.ImageWidth  = data.ImageWidth;
+            obj.ImageHeight = parseInt(data.ImageHeight);
+            obj.ImageWidth  = parseInt(data.ImageWidth);
           } else {
-            obj.ImageHeight = data.height;
-            obj.ImageWidth  = data.width;
+            obj.ImageHeight = parseInt(data.height);
+            obj.ImageWidth  = parseInt(data.width);
           }
           obj.ImageCrop   = data.ImageCrop;
           obj.ImageAlign  = data.ImageAlign;
-          obj.ImagePosX   = data.ImagePosX;
-          obj.ImagePosY   = data.ImagePosY;
+          if(data.ImagePosY == undefined || data.ImagePosX == undefined){
+            obj.ImagePosX   = data.ImagePosX;
+            obj.ImagePosY   = data.ImagePosY;
+          } else {
+            obj.ImagePosX   = parseInt(data.ImagePosX);
+            obj.ImagePosY   = parseInt(data.ImagePosY);
+          }
           obj.images      = new Object();
           obj.images.view     = data.ImageViewPath + "?v=" + S_Time.getTime();
           obj.images.scale    = data.ImageScalePath + "?v=" + S_Time.getTime();

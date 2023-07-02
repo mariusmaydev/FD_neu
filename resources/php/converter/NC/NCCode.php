@@ -1,6 +1,7 @@
 <?php
     $rootpath = realpath($_SERVER["DOCUMENT_ROOT"]);
     require_once $rootpath.'/fd/resources/php/converter/converterCore.php';
+    require_once $rootpath.'/fd/resources/php/converter/converterConfig.php';
     require_once $rootpath.'/fd/resources/php/project/project.php';
 
     trait genNCCodeHelper {
@@ -40,7 +41,7 @@
         public $CodeString = "";
         public $PathObject;
 
-        public $digits      = 3;
+        public $digits      = 2;
         public $xNull       = 0;
         public $yNull       = 0;
         public $scale       = 1;
@@ -56,34 +57,64 @@
             return (new self($pathObject)) -> get();
         }
         public function save(string $path){
+            // file_put_contents($path, $this -> get());
             writeToFile($path, $this -> get());
         }
         public function get(){
+            $this -> getStart();
             $pathElements = $this -> PathObject -> getElements();
 
-            $this -> add_G(0, Coords::get(null, null, 0));
+            // $this -> add_G(0, Coords::get(null, null, null));
             foreach($pathElements as $pathElement){
                 $this -> newElement($pathElement);
             }
+            $this -> CodeString .= $this -> getEnd();
             return $this -> CodeString;
         }    
         private function newElement(PathElement2D &$pathElement){
+            $cfg = ConverterConfig::get();
             $steps = $pathElement -> getSteps();
             foreach($steps as $key => $step){
                 $this -> scale($step);
                 if($key == 0){
-                    $this -> add_G(0, Coords::get(null, null, 1), 3000);
-                    $this -> add_G(0, Coords::get($step['x'], -$step['y']), 3000);
-                    $this -> add_G(0, Coords::get(null, null, 0.1));
-                    $this -> add_G(0, null, 100);
+                    // $this -> CodeString .= "\r\nM220 S200\r\n";
+                    $this -> CodeString .= "M400\r\n";
+                    $this -> add_G(1, Coords::get(null, null, $cfg -> fastTravel -> height), $cfg -> fastTravel -> F);
+                    $this -> CodeString .= "M400\r\n";
+                    $this -> add_G(1, Coords::get($step['x'], $step['y']), $cfg -> fastTravel -> F);
+                    $this -> CodeString .= "M400\r\n";
+                    // $this -> CodeString .= "M220 S100\r\n";
+                    $this -> add_G(1, Coords::get(null, null,  $cfg -> workTravel -> height), $cfg -> workTravel -> F);
+                    $this -> CodeString .= "M400\r\n";
+                    // $this -> add_G(1, null, 1500);
+                    // $this -> CodeString .= "M400\r\n";
+                    // $this -> CodeString .= "M220 S100\r\n";
                 }
-                $this -> add_G(1, Coords::get($step['x'], -$step['y']));
+                $this -> add_G(1, Coords::get($step['x'], $step['y']), $cfg -> workTravel -> F);
             }
-            $this -> CodeString .= "\r\n";
+            // $this -> CodeString .= "\r\nM220 S100";
+            // $this -> CodeString .= "\r\nM400\r\n\r\n";
         }
         private function scale(array &$step){            
             $step['x'] = round(($step['x'] + $this -> xNull) * $this -> scale, $this -> digits) * $this -> XMultiply;
             $step['y'] = round(($step['y'] + $this -> yNull) * $this -> scale, $this -> digits) * $this -> YMultiply;
+        }
+        private function getStart(){
+            $cfg = ConverterConfig::get();
+            $this -> CodeString = "G90\r\nG28\r\n";
+            $this -> add_G(0, Coords::get(round((800 + $this -> xNull) * $this -> scale, $this -> digits), round( (800 + $this -> yNull) * $this -> scale, $this -> digits), 0.5), $cfg -> fastTravel -> F);
+            // $this -> CodeString .= "M220 S500\r\n";
+            // $this -> CodeString .= "\r\nM400\r\n";
+            // $this -> CodeString .= "M220 S100\r\n\r\n";
+            // $this -> add_G(1, Coords::get(70, 120, 75), 3000);
+        }
+        private function getEnd(){
+            $cfg = ConverterConfig::get();
+            $this -> add_G(1, Coords::get(null, null, 0.1), $cfg -> fastTravel -> F);
+            $this -> CodeString .= "\r\nM400\r\n";
+            $this -> add_G(1, Coords::get(0.1, 0.1, 0.1), $cfg -> fastTravel -> F);
+            $str = "\r\nM400\r\nG28\r\nG18";
+            return $str;
         }
         // public static function getFromPathObject(PathObject $pathObject){
         //     $pathElements = $pathObject -> getElements();

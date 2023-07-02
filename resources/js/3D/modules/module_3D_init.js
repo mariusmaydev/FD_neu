@@ -3,11 +3,6 @@
 import SPLINT from 'SPLINT';
 // import test from '@SPLINT_MODULES_DIR/ThreeJS/loader/models.js';
 
-import * as converter from "./lighter/converter/Core.js";
-import * as index from "./lighter/index/Core.js";
-import * as project from "./lighter/project/Core.js";
-import * as projectNew from "./lighter/projectNew/Core.js";
-import * as background from "./background/Core.js";
 
 SPLINT.threeJS.scenes = new SPLINT.SArray();
 
@@ -45,11 +40,31 @@ function init3D(){
             });
             let element = record.target;
             switch(element.getAttribute("render")){
-                case '3D_Lighter_INDEX' :       SPLINT.threeJS.scenes.push(index.draw.get(element.firstChild)); break;
-                case '3D_Lighter_CONVERTER' :   SPLINT.threeJS.scenes.push(converter.draw.get(element.firstChild)); break;
-                case '3D_Lighter_PROJECT' :     SPLINT.threeJS.scenes.push(project.draw.get(element.firstChild)); break;
-                case '3D_Lighter_PROJECT_NEW' : SPLINT.threeJS.scenes.push(projectNew.draw.get(element.firstChild)); break;
-                case '3D_Background' :          SPLINT.threeJS.scenes.push(background.draw.get(element.firstChild)); break;
+                case '3D_Lighter_INDEX' :       {
+                    import("./lighter/index/Core.js").then(function(res){
+                        SPLINT.threeJS.scenes.push(res.draw.get(element.firstChild));
+                    })
+                 } break;
+                case '3D_Lighter_CONVERTER' :       {
+                    import("./lighter/converter/Core.js").then(function(res){
+                        SPLINT.threeJS.scenes.push(res.draw.get(element.firstChild));
+                    })
+                 } break;
+                case '3D_Lighter_PROJECT' :       {
+                    import("./lighter/project/Core.js").then(function(res){
+                        SPLINT.threeJS.scenes.push(res.draw.get(element.firstChild));
+                    })
+                 } break;
+                case '3D_Lighter_PROJECT_NEW' :       {
+                    import("./lighter/projectNew/Core.js").then(function(res){
+                        SPLINT.threeJS.scenes.push(res.draw.get(element.firstChild));
+                    })
+                 } break;
+                case '3D_Background' :       {
+                    import("./background/Core.js").then(function(res){
+                        SPLINT.threeJS.scenes.push(res.draw.get(element.firstChild));
+                    })
+                 } break;
             }
         });
       }

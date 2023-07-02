@@ -1,5 +1,5 @@
 
-import * as THREE from 'threeJS';
+import * as THREE from 'three';
 import SPLINT from 'SPLINT';
 
 export class other {

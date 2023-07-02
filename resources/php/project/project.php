@@ -374,7 +374,7 @@
 
         const LIGHTER_WIDTH         = 38;
         const LIGHTER_HEIGHT        = 57.5;
-        const SCALE                 = 50;
+        const SCALE                 = 61.29;
 
         public static function getStruct(){
             $DS2 = new DataSet();

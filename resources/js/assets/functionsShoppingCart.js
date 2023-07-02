@@ -14,6 +14,7 @@ class ShoppingCart {
   static async set(obj){
     let call = this.MANAGER.call(ShoppingCart.SET);
         call.data.ShoppingCart = obj;
+        call.keepalive = true;
     return call.send();
   }
   static {
@@ -60,28 +61,31 @@ class ShoppingCart {
     S_Location.goto(PATH.location.cart).call();
   }  
   static async addItem(projectID, productName, amount){
-
-    let cartData = (await ShoppingCart.get()).shoppingCart;
-    if(cartData == null){
-      cartData = [];
-    }
-    let flag = true;
-    for(const index in cartData){
-      let item = cartData[index];
-      if(item.ProjectID == projectID){
-        	cartData[index].amount += amount;
-          flag = false;
-      }
-    }
-    if(flag){
-      let itemObj = new Object();
-          itemObj.ProjectID   = projectID;
-          itemObj.ProductName = productName;
-          itemObj.amount      = amount;
-      cartData.push(itemObj);
-    }
-    NavBar.updateCart(cartData);
-    return ShoppingCart.set(JSON.stringify(cartData));
+    return new Promise(async function(resolve){
+        let cartData = (await ShoppingCart.get()).shoppingCart;
+        if(cartData == null){
+        cartData = [];
+        }
+        let flag = true;
+        for(const index in cartData){
+        let item = cartData[index];
+        if(item.ProjectID == projectID){
+                cartData[index].amount += amount;
+            flag = false;
+        }
+        }
+        if(flag){
+        let itemObj = new Object();
+            itemObj.ProjectID   = projectID;
+            itemObj.ProductName = productName;
+            itemObj.amount      = amount;
+        cartData.push(itemObj);
+        }
+        NavBar.updateCart(cartData);
+        resolve(cartData);
+    }).then(function(cartData){
+        return ShoppingCart.set(JSON.stringify(cartData));
+    });
   }
   static async changeAmount(index, value){
     let cart = (await ShoppingCart.get()).shoppingCart;

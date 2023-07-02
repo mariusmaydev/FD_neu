@@ -34,7 +34,11 @@ class ADMIN_orders extends ADMIN_DrawTemplate {
         }
         switch(hashtag){
             case 'view' : new ADMIN_order_view(this.mainElement, hashtags[1], hashtags[2]); this.radioButtonType.mainElement.style.display = "none"; break;
-            default : new ADMIN_order_list(this.mainElement, hashtags); /*this.radioButtonType.mainElement.style.display = "block"*/; break;
+            default : {
+                
+                new ADMIN_order_list(this.mainElement, hashtags); /*this.radioButtonType.mainElement.style.display = "block"*/;
+
+             } break;
         }
     }
 }

@@ -271,7 +271,7 @@
         }
         public static function getPixelColor(Imagick $img, int $x, int $y) : array|bool {
             if($x >= 0 && $y >= 0 && $x < $img -> getImageWidth() && $y < $img -> getImageHeight()){
-                return $img -> getImagePixelColor($x, $y) -> getColor(1);
+                return $img -> getImagePixelColor($x, $y) -> getColor(true);
             }
             return false;
         }

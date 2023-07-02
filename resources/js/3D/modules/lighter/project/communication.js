@@ -1,4 +1,4 @@
-import * as THREE from 'threeJS';
+import * as THREE from 'three';
 import { TextGeometry } from '@THREE_MODULES_DIR/geometries/TextGeometry.js';
 import { FontLoader } from '@THREE_MODULES_DIR/loaders/FontLoader.js';
 export default class projectCommunication {

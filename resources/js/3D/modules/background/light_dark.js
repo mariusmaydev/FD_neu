@@ -1,4 +1,4 @@
-import * as THREE from 'threeJS';
+
 import * as SPLINT from 'SPLINT';
 
 export default function light(scene){

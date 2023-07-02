@@ -61,7 +61,7 @@ class Converter_closeButtons {
             button_finish.button.Class("buy");
             // button_finish.setStyleTemplate(Button.STYLE_NONE);
             button_finish.button.onclick = function(){
-                SPLINT.SessionsPHP.showAll();
+                // SPLINT.SessionsPHP.showAll();
                 // ConverterHelper.createData(PHP_sessions_S.get(PHP_sessions_S.USER_ID, false), PHP_sessions_S.get(PHP_sessions_S.PROJECT_ID, false));
                 Converter_CloseOperations.Buy();
             }
@@ -112,15 +112,15 @@ class Converter_CloseOperations {
       CONVERTER_STORAGE.canvasNEW.createTextData();
       await DSText.save();
       if(DSProject.get().State != ProjectHelper.STATE_CART){
-        SPLINT.SessionsPHP.showAll();
         projectID = (await ProjectHelper.copy(DSProject.Storage.ProjectID));
         await ProjectHelper.changeState(projectID, ProjectHelper.STATE_CART);
       }
       if(DSProject.Storage.EPType == "GOLD"){
-        await ShoppingCart.addItem(projectID, productHelper.LIGHTER_GOLD, 1);
+        ShoppingCart.addItem(projectID, productHelper.LIGHTER_GOLD, 1);
       } else {
-        await ShoppingCart.addItem(projectID, productHelper.LIGHTER_CHROME, 1);
+        ShoppingCart.addItem(projectID, productHelper.LIGHTER_CHROME, 1);
       }
+    //   console.dir(ShoppingCart.get());
       ShoppingCart.callLocation();
   
     }

@@ -6,6 +6,10 @@ class ConverterEvents {
         } else {
             ConverterTouchHandler.calcOffset.call(this, e);
         }
+        // for(const ele of this.stack){
+            
+        //     ConverterCanvasHelper.computeEdges(ele, this);
+        // }
 
         if(this.dragElement != null){
           if(this.dragElement.dragEdge != -1){
@@ -16,7 +20,8 @@ class ConverterEvents {
           }
         } else {
           if(e.target.offsetParent == null || e.target.offsetParent.id != ConverterHelper.ELE_SQUARE_BORDER_DIV){
-            cursorHandler.unsetCursor();
+            // cursorHandler.unsetCursor();
+            S_CursorHandler.unsetCursor();
             return;
           }
           this.getElementForCoords();
@@ -31,29 +36,37 @@ class ConverterEvents {
               }
               if(isMouse){
                 if(edge == 0 || edge == 4){
-                  cursorHandler.setCursor("doubleArrow", rotation + 90);
+                //   cursorHandler.setCursor("doubleArrow", rotation + 90);
+            S_CursorHandler.setCursor("doubleArrow", rotation + 90);
                 } else if(edge == 2 || edge == 6){
-                  cursorHandler.setCursor("doubleArrow", rotation);
+                //   cursorHandler.setCursor("doubleArrow", rotation);
+            S_CursorHandler.setCursor("doubleArrow", rotation);
                 } else if(edge == 1 || edge == 5){
-                  cursorHandler.setCursor("doubleArrow", rotation - 45);
+                //   cursorHandler.setCursor("doubleArrow", rotation - 45);
+            S_CursorHandler.setCursor("doubleArrow", rotation - 45);
                 } else if(edge == 8){
-                  cursorHandler.unsetCursor();
+                //   cursorHandler.unsetCursor();
                   //cursorHandler.setCursor("rotate", rotation);
+            S_CursorHandler.setCursor("rotate", rotation );
                 } else {
-                  cursorHandler.setCursor("doubleArrow", rotation + 45);
+                //   cursorHandler.setCursor("doubleArrow", rotation + 45);
+            S_CursorHandler.setCursor("doubleArrow", rotation + 45);
                 }
               }
             } else {
                 if(isMouse){
                     if(this.hoverElement.type == "img"){
-                      cursorHandler.setCursor("crossArrow", 0, "orange");
+                    //   cursorHandler.setCursor("crossArrow", 0, "orange");
+            S_CursorHandler.setCursor("crossArrow", 0);
                     } else if(this.hoverElement.type == "txt"){
-                      cursorHandler.setCursor("crossArrow", 0, "orange");
+                    //   cursorHandler.setCursor("crossArrow", 0, "orange");
+            S_CursorHandler.setCursor("crossArrow", 0);
                     }
                 }
             }
           } else {
-            cursorHandler.unsetCursor();
+            // cursorHandler.unsetCursor();
+            S_CursorHandler.unsetCursor();
           }
         }
     }

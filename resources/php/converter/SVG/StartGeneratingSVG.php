@@ -4,6 +4,7 @@
     require_once $rootpath.'/fd/resources/php/converter/SVG/createSVG.php';
     // require_once $rootpath.'/fd/resources/php/converter/image/imageCore.php';
     require_once $rootpath.'/fd/resources/php/converter/create/creatorHelper.php';
+    require_once $rootpath.'/fd/resources/php/converter/converterConfig.php';
 
     $fArray;
     $xAdd;
@@ -24,6 +25,7 @@ function start($ProjectData, $UserID, $ImgData = null, $TextData = null){
     global $y_C;
     global $align;
     global $offsetCenter;
+    $cfg = ConverterConfig::get();
     
     
     $ProjectID = $ProjectData[ProjectDB::PROJECT_ID];
@@ -58,7 +60,6 @@ function start($ProjectData, $UserID, $ImgData = null, $TextData = null){
             $align['cos'] = cos(deg2rad($data[TextDB::TEXT_ALIGN]));
 
             doImage($PathObject);
-            Debugg::log($PathObject);
             $PathObject = PathHelper::sortPath1($PathObject);
             $PathObject = PathHelper::smoothPaths($PathObject);
             $PathObject = PathHelper::shortPaths($PathObject);
@@ -79,9 +80,12 @@ function start($ProjectData, $UserID, $ImgData = null, $TextData = null){
             $xAdd = $data[ImageDB::IMAGE_POS_X];
             $yAdd = $data[ImageDB::IMAGE_POS_Y];
 
+            // TIMER -> start();
             $fArray = creatorHelper::img2fArray($img, true);
+            // TIMER -> print();
             $img -> destroy();
             creatorHelper::checkImgArray($fArray);
+            // TIMER -> print();
             $y_C = 0;
             $x_C = 0;
             $offsetCenter['x'] = $data[ImageDB::IMAGE_WIDTH] / 2;
@@ -89,7 +93,10 @@ function start($ProjectData, $UserID, $ImgData = null, $TextData = null){
             $align['sin'] = sin(deg2rad($data[ImageDB::IMAGE_ALIGN]));
             $align['cos'] = cos(deg2rad($data[ImageDB::IMAGE_ALIGN]));
 
+            
+            // TIMER -> print();
             doImage($PathObject);
+            // TIMER -> end();
             $PathObject = PathHelper::sortPath1($PathObject);
             $PathObject = PathHelper::smoothPaths($PathObject);
             $PathObject = PathHelper::shortPaths($PathObject);
@@ -104,11 +111,11 @@ function start($ProjectData, $UserID, $ImgData = null, $TextData = null){
     $LighterWidth   = ProjectDB::LIGHTER_WIDTH * ProjectDB::SCALE;
     $LighterHeight  = ProjectDB::LIGHTER_HEIGHT * ProjectDB::SCALE;
 
-    $model = new NCModel($PathObjectOut);
+    $model = new NCModel($PathObjectOut);//1970 ; 2875 ; = 0,02
     $model -> scale = ProjectDB::LIGHTER_HEIGHT / ($LighterHeight);
-    $model -> xNull = -$LighterWidth / 2;
-    $model -> yNull = -$LighterHeight / 2;
-    
+    $model -> xNull = ($cfg -> zero -> X * ProjectDB::SCALE) -($LighterWidth / 2) + (3.5 * ProjectDB::SCALE);//31 = 92.5
+    $model -> yNull = ($cfg -> zero -> Y * ProjectDB::SCALE) -($LighterHeight / 2) + (5.25 * ProjectDB::SCALE);//50,5 = 107.25
+
     $path = PATH_Project::get(PATH_Project::NC, $ProjectData[ProjectDB::PROJECT_ID], $UserID);
     $model -> save($path);
     error_log("finish");

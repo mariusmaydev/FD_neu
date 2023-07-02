@@ -1,5 +1,5 @@
 
-import * as THREE from 'threeJS';
+import * as THREE from 'three';
 import SPLINT from 'SPLINT';
 import * as MATERIALS from '../assets/materials/materials.js';
 import S_MATERIALS from '@SPLINT_THREE_DIR/materials/M_materials.js';
@@ -100,7 +100,7 @@ export default class Model {
             case 'unteres_teil1'        : {
                 // // assignUVs(element.children[0].geometry);
 
-                element.children[0].material = MATERIALS.Lighter.Body(element.children[0].material);
+                // element.children[0].material = MATERIALS.Lighter.Body(element.children[0].material);
                 // const bumpTexture = new THREE.TextureLoader().load("../../../../fd/data/3Dmodels/Lighter/normalMap_lighterBody.png");
                 //         material.normalMap = bumpTexture
                 //         material.normalMap.repeat.x = 2;
@@ -120,8 +120,8 @@ export default class Model {
                 // element.children[0].position.y = -0.001; 
                 element.children[0].position.x = -0.01919; 
                 //element.children[0].rotation.z = -134 * Math.PI / 180;
-                this.setTextureScale(element, 2);
-                element.children[0].material = MATERIALS.Lighter.Body(element.children[0].material);
+                // this.setTextureScale(element, 2);
+                // element.children[0].material = MATERIALS.Lighter.Body(element.children[0].material);
              } break;
             case 'stab1'                : {
                 // element.children[0].material = S_MATERIALS.chrome();
@@ -163,16 +163,16 @@ export default class Model {
                 // element.children[0].material.needsUpdate = true;
             } break;
             case 'Rad1'                 : {
-                let material = element.children[0].material;
-                    material.map.repeat.x = 1;
-                    material.map.repeat.y = 1;
-                    material.metalness = 0.2;
-                    material.roughness = 0.5;
+                // let material = element.children[0].material;
+                //     material.map.repeat.x = 1;
+                //     material.map.repeat.y = 1;
+                //     material.metalness = 0.2;
+                //     material.roughness = 0.5;
 
-                    material.normalMap.repeat.x = 2;
-                    material.normalMap.repeat.y = 2;
-                    material.normalScale.x = 8;
-                    material.normalScale.y = 8;
+                //     material.normalMap.repeat.x = 2;
+                //     material.normalMap.repeat.y = 2;
+                //     material.normalScale.x = 8;
+                //     material.normalScale.y = 8;
                 // element.children[0].material = MATERIALS.gray;
                 element.children[0].rotation.y = -100 * Math.PI / 180;
             } break;
@@ -198,7 +198,7 @@ export default class Model {
                 // element.children[0].position.y = 0; 
                 element.position.z = -0.038; 
             } break;
-            case 'docht1'          : element.children[0].material = S_MATERIALS.chrome(); break;
+            case 'docht1'          :  break;
         }
     }
     static setTextureScale(element){
@@ -274,6 +274,7 @@ export default class Model {
     static async getThumbnail(scene, instance, src , name = "", color = 0xe8b000, isHidden = false){
         let double = false;
         let material = null;
+        console.dir(scene);
             return MATERIALS.Lighter.Engraving3(instance, src, undefined, color, async function(texture, mat = null){
                 if(mat != null){
                     material = mat;
@@ -289,6 +290,7 @@ export default class Model {
                     // plane1.plane.scale.set(10, 10, 10);
                     plane1.get().material.needsUpdate = true;
                     plane1.get().name = name;
+                    console.dir(scene);
                     scene.children[0].children[0].add(plane1.get()); 
 
                 let plane2 = SPLINT.object.Plane(3.4/1000, 3.169/1000, 1, 1);

@@ -1,1 +1,6466 @@
-	
+<S-error>
+<S-msg>
+     
+     stdClass Object
+     (
+         [fastTravel] => stdClass Object
+             (
+                 [F] => 1080
+                 [S] => 
+                 [height] => 26
+             )
+     
+         [workTravel] => stdClass Object
+             (
+                 [F] => 120
+                 [S] => 
+                 [height] => 27
+             )
+     
+         [zero] => stdClass Object
+             (
+                 [X] => 192.5
+                 [Y] => 106.5
+             )
+     
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:85
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:8
+</S-trace>
+<S-time>2023-06-27 05:16:04</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     stdClass Object
+     (
+         [fastTravel] => stdClass Object
+             (
+                 [F] => 1080
+                 [S] => 
+                 [height] => 26
+             )
+     
+         [workTravel] => stdClass Object
+             (
+                 [F] => 120
+                 [S] => 
+                 [height] => 27
+             )
+     
+         [zero] => stdClass Object
+             (
+                 [X] => 92.5
+                 [Y] => 106.5
+             )
+     
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:85
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:8
+</S-trace>
+<S-time>2023-06-27 05:18:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     stdClass Object
+     (
+         [fastTravel] => stdClass Object
+             (
+                 [F] => 1080
+                 [S] => 
+                 [height] => 26
+             )
+     
+         [workTravel] => stdClass Object
+             (
+                 [F] => 120
+                 [S] => 
+                 [height] => 27
+             )
+     
+         [zero] => stdClass Object
+             (
+                 [X] => 92.5
+                 [Y] => 106.5
+             )
+     
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:85
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:8
+</S-trace>
+<S-time>2023-06-27 05:19:17</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"790f8e0d8d","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:20:05</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:17
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-06-27 07:20:17</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:22
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:18
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-06-27 07:20:17</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:30
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-06-27 07:20:17</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:35
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:31
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-06-27 07:20:17</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:17
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-06-27 07:20:18</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:22
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:18
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-06-27 07:20:18</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:30
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-06-27 07:20:19</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:35
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:31
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-06-27 07:20:19</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => []
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:20:19</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => []
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:20:19</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"3c51b5013a","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:30:41</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:17
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-06-27 07:30:50</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:22
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:18
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-06-27 07:30:50</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:30
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-06-27 07:30:51</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:35
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:31
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-06-27 07:30:51</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => []
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:30:51</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":null,"ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:37:24</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:17
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-06-27 07:37:32</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:22
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:18
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-06-27 07:37:33</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:30
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-06-27 07:37:33</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:35
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:31
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-06-27 07:37:33</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => []
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:37:34</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"635d757a23","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:47:24</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => []
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:47:27</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"f642b3202e","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:47:30</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => []
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:47:34</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"84443f26bf","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:47:39</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => []
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:47:52</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"b678946939","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:47:55</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => []
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:47:58</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"8fbf30fc1c","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:52:57</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => []
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:53:01</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"d3d8d537c0","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:53:04</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"d3d8d537c0","ProductName":"Lighter_Gold_custom","amount":1},{"ProjectID":"<br />\n<b>Fatal error</b>:  Uncaught ImagickException: UnableToOpenBlob 'C:/xampp/htdocs/fd/data/Users/ae227e8086/projects/15a0e3b3e4/texts/Text_ea7791d024.png': No such file or directory @ error/blob.c/OpenBlob/3527 in C:\\xampp\\htdocs\\fd\\resources\\php\\converter\\text\\text.php:116\nStack trace:\n#0 C:\\xampp\\htdocs\\fd\\resources\\php\\converter\\text\\text.php(116): Imagick-&gt;readImage('C:/xampp/htdocs...')\n#1 C:\\xampp\\htdocs\\fd\\resources\\php\\project\\project.php(170): Text::getTextImg('ea7791d024', '15a0e3b3e4', 'ae227e8086')\n#2 C:\\xampp\\htdocs\\fd\\resources\\php\\project\\projectAccess.php(12): Project::copy('15a0e3b3e4', 'ae227e8086', 'd63b55eb20', 'ae227e8086')\n#3 {main}\n  thrown in <b>C:\\xampp\\htdocs\\fd\\resources\\php\\converter\\text\\text.php</b> on line <b>116</b><br />\n","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:54:11</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"d3d8d537c0","ProductName":"Lighter_Gold_custom","amount":1},{"ProjectID":"<br />\n<b>Fatal error</b>:  Uncaught ImagickException: UnableToOpenBlob 'C:/xampp/htdocs/fd/data/Users/ae227e8086/projects/15a0e3b3e4/texts/Text_ea7791d024.png': No such file or directory @ error/blob.c/OpenBlob/3527 in C:\\xampp\\htdocs\\fd\\resources\\php\\converter\\text\\text.php:116\nStack trace:\n#0 C:\\xampp\\htdocs\\fd\\resources\\php\\converter\\text\\text.php(116): Imagick-&gt;readImage('C:/xampp/htdocs...')\n#1 C:\\xampp\\htdocs\\fd\\resources\\php\\project\\project.php(170): Text::getTextImg('ea7791d024', '15a0e3b3e4', 'ae227e8086')\n#2 C:\\xampp\\htdocs\\fd\\resources\\php\\project\\projectAccess.php(12): Project::copy('15a0e3b3e4', 'ae227e8086', 'b0c3fff456', 'ae227e8086')\n#3 {main}\n  thrown in <b>C:\\xampp\\htdocs\\fd\\resources\\php\\converter\\text\\text.php</b> on line <b>116</b><br />\n","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:54:17</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"d3d8d537c0","ProductName":"Lighter_Gold_custom","amount":1},{"ProjectID":"<br />\n<b>Fatal error</b>:  Uncaught ImagickException: UnableToOpenBlob 'C:/xampp/htdocs/fd/data/Users/ae227e8086/projects/15a0e3b3e4/texts/Text_ea7791d024.png': No such file or directory @ error/blob.c/OpenBlob/3527 in C:\\xampp\\htdocs\\fd\\resources\\php\\converter\\text\\text.php:116\nStack trace:\n#0 C:\\xampp\\htdocs\\fd\\resources\\php\\converter\\text\\text.php(116): Imagick-&gt;readImage('C:/xampp/htdocs...')\n#1 C:\\xampp\\htdocs\\fd\\resources\\php\\project\\project.php(170): Text::getTextImg('ea7791d024', '15a0e3b3e4', 'ae227e8086')\n#2 C:\\xampp\\htdocs\\fd\\resources\\php\\project\\projectAccess.php(12): Project::copy('15a0e3b3e4', 'ae227e8086', '385d69c041', 'ae227e8086')\n#3 {main}\n  thrown in <b>C:\\xampp\\htdocs\\fd\\resources\\php\\converter\\text\\text.php</b> on line <b>116</b><br />\n","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:54:45</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"d3d8d537c0","ProductName":"Lighter_Gold_custom","amount":1},{"ProjectID":"9e0ec4e9a7","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:54:48</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"d3d8d537c0","ProductName":"Lighter_Gold_custom","amount":1},{"ProjectID":"9e0ec4e9a7","ProductName":"Lighter_Gold_custom","amount":1},{"ProjectID":null,"ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:54:48</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"d3d8d537c0","ProductName":"Lighter_Gold_custom","amount":1},{"ProjectID":null,"ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:58:14</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":null,"ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:58:15</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => []
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:58:28</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"97548fe24f","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:58:57</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"97548fe24f","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => ae227e8086
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 08:00:11</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"62a9615e5d","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => 81fd9f632b
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-07-01 12:05:17</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:17
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-07-01 12:05:40</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:22
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:18
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-07-01 12:05:40</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:30
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-07-01 12:05:41</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:35
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:31
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-07-01 12:05:41</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => []
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => 81fd9f632b
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-07-01 12:05:41</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"612a196f18","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => 81fd9f632b
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-07-01 12:07:31</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"612a196f18","ProductName":"Lighter_Gold_custom","amount":1},{"ProjectID":"6bca7c3b53","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => 81fd9f632b
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-07-01 12:08:40</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"6bca7c3b53","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => 81fd9f632b
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-07-01 12:08:43</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:17
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-07-01 12:08:56</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:22
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:18
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-07-01 12:08:57</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:30
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-07-01 12:08:57</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:35
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:31
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-07-01 12:08:57</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => []
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => 81fd9f632b
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-07-01 12:08:57</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"f1830e844f","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => 81fd9f632b
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-07-01 13:11:26</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:17
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-07-01 13:11:46</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:22
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:18
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-07-01 13:11:46</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:30
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-07-01 13:11:47</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:35
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:31
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-07-01 13:11:47</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => []
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => 81fd9f632b
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-07-01 13:11:47</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"331de8aa90","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => 50e45a7bb3
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:59:03</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"331de8aa90","ProductName":"Lighter_Gold_custom","amount":1},{"ProjectID":"1c2c4ca3cb","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => 50e45a7bb3
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-07-02 14:00:31</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"1c2c4ca3cb","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => 50e45a7bb3
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-07-02 14:00:34</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:17
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-07-02 14:00:47</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:22
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:18
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-07-02 14:00:47</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:30
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-07-02 14:00:48</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:35
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:31
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-07-02 14:00:49</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => []
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => 50e45a7bb3
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-07-02 14:00:51</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"c153a09edd","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => 2475332a33
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-07-02 14:03:13</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:17
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-07-02 14:03:46</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:22
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:18
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-07-02 14:03:46</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:30
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-07-02 14:03:47</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:35
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:31
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-07-02 14:03:47</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => []
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => 2475332a33
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-07-02 14:03:47</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:17
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-07-02 14:03:52</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:22
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:18
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-07-02 14:03:52</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:30
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-07-02 14:03:53</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:35
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:31
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-07-02 14:03:53</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => []
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => 2475332a33
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-07-02 14:03:53</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"7e87b5dd54","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => 2475332a33
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-07-02 15:02:24</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:17
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-07-02 15:08:52</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:22
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:18
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-07-02 15:08:52</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:30
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-07-02 15:08:53</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:35
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:31
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-07-02 15:08:53</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => []
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => 2475332a33
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-07-02 15:08:53</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"d2cb6ffc0e","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => 2475332a33
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-07-02 15:14:44</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:17
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-07-02 15:14:55</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:22
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:18
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-07-02 15:14:55</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:30
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-07-02 15:14:56</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:35
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:31
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-07-02 15:14:56</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => []
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => 2475332a33
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-07-02 15:14:56</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"afdfd1341a","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => 2475332a33
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-07-02 15:18:04</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:17
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-07-02 15:18:15</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:22
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:18
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:7
+</S-trace>
+<S-time>2023-07-02 15:18:15</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:30
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-07-02 15:18:16</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Array
+     (
+         [message] => Unauthorized
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:35
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOffice.php:31
+> C:\xampp\htdocs\fd\resources\php\lexOffice\lexOfficeAccess.php:8
+</S-trace>
+<S-time>2023-07-02 15:18:16</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => []
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => 2475332a33
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-07-02 15:18:16</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:23</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:23</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:23</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:23</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.17     -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:24</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 3.216    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:27</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.276    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:27</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 3.665
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:27</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:29</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:29</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:29</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:29</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.171    -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:29</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 3.27     -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:32</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.294    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:33</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 3.737
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:33</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.17     -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 3.264    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:40</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.293    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:40</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 3.729
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:40</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:43</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:43</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:43</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:43</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.17     -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:43</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 3.268    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:46</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.303    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:46</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 3.744
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:46</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:49</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:49</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:49</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:49</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.169    -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:49</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 3.253    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:52</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.293    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:52</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 3.718
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:52</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.17     -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 3.26     -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:58</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.292    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:58</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 3.724
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:20:58</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:12</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:12</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:12</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:12</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.169    -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:12</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 3.697    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:16</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.526    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:16</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 4.395
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:16</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:20</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:20</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:20</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:20</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.17     -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:20</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 12.036   -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:32</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.427    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:32</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 12.636
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:32</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.17     -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 11.734   -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:49</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.231    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:49</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 12.137
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:49</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:51</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:51</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:51</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:51</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.17     -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:51</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 6.4      -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:57</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.23     -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:58</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 6.803
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:58</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:59</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:59</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:59</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:59</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.17     -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:21:59</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 4.681    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:04</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.232    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:04</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 5.086
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:04</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:07</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:07</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:07</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:07</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.17     -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:07</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 4.634    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:12</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.235    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:12</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 5.041
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:12</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:15</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:15</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:15</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:15</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.171    -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:15</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 4.668    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:20</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.25     -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:20</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 5.091
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:20</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:23</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:23</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:23</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:23</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.17     -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:23</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 4.683    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:28</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.266    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:28</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 5.121
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:28</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:30</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:30</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:30</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:30</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.17     -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:30</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 4.726    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:35</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.291    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:35</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 5.189
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:35</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.17     -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 6.939    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:44</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.291    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:45</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 7.402
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:45</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:47</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:47</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:47</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:47</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.169    -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:47</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 6.905    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.283    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 7.359
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:22:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:00</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:00</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:00</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:00</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.17     -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:00</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 4.26     -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:04</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.29     -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:05</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 4.722
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:05</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:11</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:11</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:11</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:11</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.169    -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:11</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 4.258    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:16</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.287    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:16</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 4.718
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:16</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:20</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:20</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:20</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:20</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.17     -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:20</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 4.248    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:24</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.289    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:24</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 4.71
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:24</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:41</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:41</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:41</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:41</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.169    -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:41</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 6.883    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:48</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.281    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:49</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 7.336
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:49</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.17     -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:23:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 6.902    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:24:01</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.296    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:24:01</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 7.37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:24:01</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:00</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:00</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:00</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:00</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.17     -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:00</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 6.43     -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:07</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.291    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:07</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 6.893
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:07</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:09</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:09</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:09</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:09</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.169    -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:09</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 9.213    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:18</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.281    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:18</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 9.666
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:18</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:24</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:24</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:24</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:24</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.17     -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:24</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 9.246    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:33</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.281    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:34</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 9.699
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:34</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:41</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:41</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:41</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:41</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.17     -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:42</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 3.245    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:45</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.298    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:45</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 3.715
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:45</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:53</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:53</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:53</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:53</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.17     -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:53</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 4.707    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:58</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.284    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:58</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 5.163
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:26:58</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:27:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:27:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:27:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:27:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.083    -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:27:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 3.093    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:27:57</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.12     -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:27:58</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 3.298
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:27:58</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:00</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:00</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:00</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:00</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.083    -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:00</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 2.195    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:02</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.125    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:02</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 2.405
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:02</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:03</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:03</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:03</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:03</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.083    -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:03</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 2.214    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:05</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.133    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:05</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 2.433
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:05</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:12</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:12</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:12</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:12</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.083    -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:12</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 2.216    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:15</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.134    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:15</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 2.435
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:15</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:17</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:17</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:17</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:17</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.083    -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:17</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 1.822    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:18</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.133    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:19</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 2.04
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:19</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:23</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:23</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:23</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:23</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.084    -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:24</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 1.906    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:25</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.191    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:26</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 2.183
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:26</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:28</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:28</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:28</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:28</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.084    -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:28</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 1.815    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:30</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.137    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:30</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 2.038
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:30</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:32</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:32</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:32</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:32</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.083    -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:32</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 1.839    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:34</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.137    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:34</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 2.061
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:34</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.083    -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 1.834    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:39</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.135    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:39</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 2.054
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:39</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:41</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:41</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:41</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:41</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.083    -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:41</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 1.839    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:43</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.134    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:43</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 2.058
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:43</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:46</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:46</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:46</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:46</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.083    -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:46</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 1.887    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:48</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.135    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:48</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 2.109
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:48</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.083    -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 1.155    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:56</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.134    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:56</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 1.374
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:56</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:58</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:58</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:58</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:58</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.083    -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:28:58</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 2.484    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:29:00</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.134    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:29:00</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 2.703
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:29:00</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:29:02</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:29:02</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:29:02</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:29:02</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.082    -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:29:02</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 2.405    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:29:04</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.133    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:29:05</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 2.623
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:29:05</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     START TIMER          -> converter\converter.php: 35
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:35
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:29:06</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 37
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:37
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:29:06</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 39
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:39
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:29:06</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0        -> converter\converter.php: 41
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:41
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:29:06</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.083    -> converter\converter.php: 44
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:44
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:29:06</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 2.445    -> converter\converter.php: 46
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:46
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:29:09</S-time></S-error>
+<S-error>
+<S-msg>
+     
+      ˅    TIME: 0.134    -> converter\converter.php: 49
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:49
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:29:09</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     END   TIMER 0   FullTime: 2.665
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:51
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:6
+</S-trace>
+<S-time>2023-07-02 15:29:09</S-time></S-error>

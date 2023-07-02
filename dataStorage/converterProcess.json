@@ -1,0 +1,16 @@
+{
+    "fastTravel" : {
+        "F" : 800,
+        "S" : null,
+        "height" : 23
+    },
+    "workTravel" : {
+        "F" : 80,
+        "S" : null,
+        "height" : 25.25
+    },
+    "zero" : {
+        "X" : 92.5,
+        "Y" : 106.5
+    }
+}

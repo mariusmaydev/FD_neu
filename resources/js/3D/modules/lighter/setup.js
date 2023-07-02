@@ -1,4 +1,4 @@
-import * as THREE from 'threeJS';
+import * as THREE from 'three';
 import SPLINT from 'SPLINT';
 import { OrbitControls } from '@THREE_MODULES_DIR/controls/OrbitControls.js';
 import MODEL from './model.js';

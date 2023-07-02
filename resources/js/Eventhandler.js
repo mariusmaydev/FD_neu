@@ -1,7 +1,7 @@
 var asyncProgress = false;
 
 
-var cursorHandler = new CursorHandler();
+// var cursorHandler = new CursorHandler();
 
 let SVG_Loader = new SVG_preLoader();
 

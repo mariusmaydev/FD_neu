@@ -50,11 +50,7 @@ class NavigationBar {
         return new Promise(async function(resolve){
             let cartData = (await ShoppingCart.get()).shoppingCart;
             if(cartData != null && cartData.length > 0){
-                this.cart.point = new SPLINT.DOMElement.SpanDiv(this.cart.div, "point", cartData.length);
-                this.cart.point.div.Class("cartPoint");
-                this.cart.point.div.onclick = function(){
-                    this.cart.button.button.click();
-                }.bind(this);
+                this.drawCartPoint(cartData.length);
             } else if(this.cart.point != undefined){
                 this.cart.point.div.style.visibility = "hidden";
             }
@@ -68,11 +64,23 @@ class NavigationBar {
         }.bind(this));
 
     }
+    drawCartPoint(amount = 0){
+        this.cart.point = new SPLINT.DOMElement.SpanDiv(this.cart.div, "point", amount);
+        this.cart.point.div.Class("cartPoint");
+        this.cart.point.div.onclick = function(){
+            this.cart.button.button.click();
+        }.bind(this);
+
+    }
     async updateCart(cartData = null){
         if(cartData == null){
             cartData = (await ShoppingCart.get()).shoppingCart;
         }
-        this.cart.point.value = cartData.length;
+        if(this.cart.point == undefined){
+            this.drawCartPoint(cartData.length);
+        } else {
+            this.cart.point.value = cartData.length;
+        }
     }
     static update(){
         new NavigationBar();

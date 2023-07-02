@@ -1,0 +1,2071 @@
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/b13b5d769a/projects/805de49ef1/texts/Text_25b28...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:30
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:57
+> C:\xampp\htdocs\fd\resources\php\project\project.php:119
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:11
+</S-trace>
+<S-time>2023-06-17 12:46:18</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/b13b5d769a/projects/805de49ef1/texts/Text_25b28...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:303
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:49
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-17 12:46:18</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/b13b5d769a/projects/805de49ef1/texts/Text_25b28...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:30
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:57
+> C:\xampp\htdocs\fd\resources\php\project\project.php:119
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:11
+</S-trace>
+<S-time>2023-06-17 12:47:20</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/b13b5d769a/projects/805de49ef1/texts/Text_25b28...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:303
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:49
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-17 12:47:20</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/ae227e8086/projects/15a0e3b3e4/texts/Text_ea779...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:30
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:57
+> C:\xampp\htdocs\fd\resources\php\project\project.php:119
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:54:11</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/ae227e8086/projects/15a0e3b3e4/texts/Text_ea779...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:303
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:49
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:54:11</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/ae227e8086/projects/15a0e3b3e4/texts/Text_ea779...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:30
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:57
+> C:\xampp\htdocs\fd\resources\php\project\project.php:119
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:54:17</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/ae227e8086/projects/15a0e3b3e4/texts/Text_ea779...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:303
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:49
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:54:17</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/ae227e8086/projects/15a0e3b3e4/texts/Text_ea779...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:30
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:57
+> C:\xampp\htdocs\fd\resources\php\project\project.php:119
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:54:45</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/ae227e8086/projects/15a0e3b3e4/texts/Text_ea779...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:303
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:49
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2023-06-27 07:54:45</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:304
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:18
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:58:20</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:306
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:18
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:58:20</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (TextID VARCHAR(40), TextName VARCHAR(40), TextValue VA...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:277
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:19
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:58:20</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:279
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:19
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:58:20</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:316
+> C:\xampp\htdocs\fd\resources\php\upload\upload.php:77
+> C:\xampp\htdocs\fd\resources\php\upload\uploadAccess.php:4
+</S-trace>
+<S-time>2023-07-02 13:58:33</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (ImageID) VALUES ('d04150a390')' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:56
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:318
+> C:\xampp\htdocs\fd\resources\php\upload\upload.php:77
+> C:\xampp\htdocs\fd\resources\php\upload\uploadAccess.php:4
+</S-trace>
+<S-time>2023-07-02 13:58:33</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\image\imageAccess.php:5
+</S-trace>
+<S-time>2023-07-02 13:58:33</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\image\imageAccess.php:5
+</S-trace>
+<S-time>2023-07-02 13:58:33</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:58:42</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:58:42</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:58:43</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 SET ImageName = 'neues Bild', ImagePosX = '1304.1218637...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:58:43</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:58:45</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 SET ImageName = 'neues Bild', ImagePosX = '1304.1218637...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:58:45</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:58:45</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 SET ImageName = 'neues Bild', ImagePosX = '1304.1218637...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:58:45</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:58:45</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 SET ImageName = 'neues Bild', ImagePosX = '1304.1218637...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:58:45</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:58:47</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:58:47</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:58:50</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:58:50</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:58:55</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:58:55</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:00</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:00</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:00</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:00</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:02</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:02</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:304
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\project\project.php:154
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:12
+</S-trace>
+<S-time>2023-07-02 13:59:03</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:306
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\project\project.php:154
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:12
+</S-trace>
+<S-time>2023-07-02 13:59:03</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (TextID VARCHAR(40), TextName VARCHAR(40), TextValue VA...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:277
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\project\project.php:167
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:12
+</S-trace>
+<S-time>2023-07-02 13:59:03</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:279
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\project\project.php:167
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:12
+</S-trace>
+<S-time>2023-07-02 13:59:03</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\image\imageAccess.php:5
+</S-trace>
+<S-time>2023-07-02 13:59:03</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\image\imageAccess.php:5
+</S-trace>
+<S-time>2023-07-02 13:59:03</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:03</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:03</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_331de8aa90 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:304
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:18
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:59:10</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_331de8aa90' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:306
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:18
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:59:10</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_331de8aa90 (TextID VARCHAR(40), TextName VARCHAR(40), TextValue VA...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:277
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:19
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:59:10</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_331de8aa90' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:279
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:19
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:59:10</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_331de8aa90 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:304
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:18
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:59:13</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_331de8aa90' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:306
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:18
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:59:13</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_331de8aa90 (TextID VARCHAR(40), TextName VARCHAR(40), TextValue VA...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:277
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:19
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:59:13</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_331de8aa90' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:279
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:19
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:59:13</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:304
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:18
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:59:21</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:306
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:18
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:59:21</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (TextID VARCHAR(40), TextName VARCHAR(40), TextValue VA...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:277
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:19
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:59:21</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:279
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:19
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:59:21</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:304
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:18
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:59:24</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:306
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:18
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:59:24</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (TextID VARCHAR(40), TextName VARCHAR(40), TextValue VA...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:277
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:19
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:59:24</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:279
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:19
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:59:24</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (TextID VARCHAR(40), TextName VARCHAR(40), TextValue VA...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:301
+> C:\xampp\htdocs\fd\resources\php\project\project.php:228
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:6
+</S-trace>
+<S-time>2023-07-02 13:59:33</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:62
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:303
+> C:\xampp\htdocs\fd\resources\php\project\project.php:228
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:6
+</S-trace>
+<S-time>2023-07-02 13:59:33</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:328
+> C:\xampp\htdocs\fd\resources\php\project\project.php:232
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:6
+</S-trace>
+<S-time>2023-07-02 13:59:33</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_064b3cea47' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:62
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:330
+> C:\xampp\htdocs\fd\resources\php\project\project.php:232
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:6
+</S-trace>
+<S-time>2023-07-02 13:59:33</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:304
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:18
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:59:34</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:306
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:18
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:59:34</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (TextID VARCHAR(40), TextName VARCHAR(40), TextValue VA...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:277
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:19
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:59:34</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:279
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:19
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:11
+</S-trace>
+<S-time>2023-07-02 13:59:34</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:316
+> C:\xampp\htdocs\fd\resources\php\upload\upload.php:77
+> C:\xampp\htdocs\fd\resources\php\upload\uploadAccess.php:4
+</S-trace>
+<S-time>2023-07-02 13:59:47</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID) VALUES ('f4893fcdfc')' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:56
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:318
+> C:\xampp\htdocs\fd\resources\php\upload\upload.php:77
+> C:\xampp\htdocs\fd\resources\php\upload\uploadAccess.php:4
+</S-trace>
+<S-time>2023-07-02 13:59:47</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\image\imageAccess.php:5
+</S-trace>
+<S-time>2023-07-02 13:59:47</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\image\imageAccess.php:5
+</S-trace>
+<S-time>2023-07-02 13:59:47</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:52</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '541.39784946...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:52</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:53</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '541.39784946...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:53</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '541.39784946...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:54</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:55</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '871.68458781...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:55</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:55</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '871.68458781...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:55</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:55</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '871.68458781...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:55</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:55</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '871.68458781...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:55</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:55</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '824.01433691...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:55</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:57</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:57</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:57</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:57</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:59</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 13:59:59</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 14:00:01</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 14:00:01</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 14:00:05</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 14:00:05</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 14:00:06</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 14:00:06</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 14:00:08</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 14:00:08</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 14:00:10</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 14:00:10</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 14:00:15</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 14:00:15</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 14:00:16</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 14:00:16</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 14:00:26</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 14:00:26</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 14:00:27</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 14:00:27</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 14:00:27</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 14:00:27</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:304
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\project\project.php:154
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:12
+</S-trace>
+<S-time>2023-07-02 14:00:31</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:306
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\project\project.php:154
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:12
+</S-trace>
+<S-time>2023-07-02 14:00:31</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (TextID VARCHAR(40), TextName VARCHAR(40), TextValue VA...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:277
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\project\project.php:167
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:12
+</S-trace>
+<S-time>2023-07-02 14:00:31</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:279
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\project\project.php:167
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:12
+</S-trace>
+<S-time>2023-07-02 14:00:31</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\image\imageAccess.php:5
+</S-trace>
+<S-time>2023-07-02 14:00:31</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\image\imageAccess.php:5
+</S-trace>
+<S-time>2023-07-02 14:00:31</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:310
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 14:00:31</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_27e94f1063 SET ImageName = 'neues Bild', ImagePosX = '950', ImageP...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:312
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:130
+> C:\xampp\htdocs\fd\resources\php\converter\DSController.php:11
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:10
+</S-trace>
+<S-time>2023-07-02 14:00:31</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_331de8aa90 (TextID VARCHAR(40), TextName VARCHAR(40), TextValue VA...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:301
+> C:\xampp\htdocs\fd\resources\php\project\project.php:228
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:6
+</S-trace>
+<S-time>2023-07-02 14:00:34</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_331de8aa90' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:62
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:303
+> C:\xampp\htdocs\fd\resources\php\project\project.php:228
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:6
+</S-trace>
+<S-time>2023-07-02 14:00:34</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_331de8aa90 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:328
+> C:\xampp\htdocs\fd\resources\php\project\project.php:232
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:6
+</S-trace>
+<S-time>2023-07-02 14:00:34</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_331de8aa90' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:62
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:330
+> C:\xampp\htdocs\fd\resources\php\project\project.php:232
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:6
+</S-trace>
+<S-time>2023-07-02 14:00:34</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_1c2c4ca3cb (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:304
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\project\project.php:154
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:12
+</S-trace>
+<S-time>2023-07-02 14:00:46</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_1c2c4ca3cb' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:306
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\project\project.php:154
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:12
+</S-trace>
+<S-time>2023-07-02 14:00:46</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_1c2c4ca3cb (TextID VARCHAR(40), TextName VARCHAR(40), TextValue VA...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:277
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\project\project.php:167
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:12
+</S-trace>
+<S-time>2023-07-02 14:00:46</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_1c2c4ca3cb' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:279
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\project\project.php:167
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:12
+</S-trace>
+<S-time>2023-07-02 14:00:46</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_1c2c4ca3cb (TextID VARCHAR(40), TextName VARCHAR(40), TextValue VA...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:301
+> C:\xampp\htdocs\fd\resources\php\project\project.php:228
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:6
+</S-trace>
+<S-time>2023-07-02 14:00:51</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_1c2c4ca3cb' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:62
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:303
+> C:\xampp\htdocs\fd\resources\php\project\project.php:228
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:6
+</S-trace>
+<S-time>2023-07-02 14:00:51</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_1c2c4ca3cb (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:328
+> C:\xampp\htdocs\fd\resources\php\project\project.php:232
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:6
+</S-trace>
+<S-time>2023-07-02 14:00:51</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_1c2c4ca3cb' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:62
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:330
+> C:\xampp\htdocs\fd\resources\php\project\project.php:232
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:6
+</S-trace>
+<S-time>2023-07-02 14:00:51</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_b7542dbda9 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:304
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:96
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:8
+</S-trace>
+<S-time>2023-07-02 14:01:22</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_b7542dbda9' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:306
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:96
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:8
+</S-trace>
+<S-time>2023-07-02 14:01:22</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_b7542dbda9 (TextID VARCHAR(40), TextName VARCHAR(40), TextValue VA...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:277
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:97
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:8
+</S-trace>
+<S-time>2023-07-02 14:01:22</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_b7542dbda9' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:279
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:97
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:8
+</S-trace>
+<S-time>2023-07-02 14:01:22</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_b7542dbda9 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:304
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:96
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:8
+</S-trace>
+<S-time>2023-07-02 14:01:25</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_b7542dbda9' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:306
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:96
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:8
+</S-trace>
+<S-time>2023-07-02 14:01:25</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_b7542dbda9 (TextID VARCHAR(40), TextName VARCHAR(40), TextValue VA...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:277
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:97
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:8
+</S-trace>
+<S-time>2023-07-02 14:01:25</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_b7542dbda9' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:279
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:97
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:8
+</S-trace>
+<S-time>2023-07-02 14:01:25</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_b7542dbda9 (ImageID VARCHAR(10), ImageName VARCHAR(40), ImagePosX ...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:304
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:96
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:8
+</S-trace>
+<S-time>2023-07-02 14:01:26</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_b7542dbda9' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:306
+> C:\xampp\htdocs\fd\resources\php\converter\image\image.php:91
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:96
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:8
+</S-trace>
+<S-time>2023-07-02 14:01:26</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_b7542dbda9 (TextID VARCHAR(40), TextName VARCHAR(40), TextValue VA...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:20
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:277
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:97
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:8
+</S-trace>
+<S-time>2023-07-02 14:01:26</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '50e45a7bb3_b7542dbda9' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:29
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:279
+> C:\xampp\htdocs\fd\resources\php\converter\text\text.php:59
+> C:\xampp\htdocs\fd\resources\php\converter\converter.php:97
+> C:\xampp\htdocs\fd\resources\php\converter\converterAccess.php:8
+</S-trace>
+<S-time>2023-07-02 14:01:26</S-time></S-error>

@@ -28,6 +28,29 @@ class ADMIN_order_list {
         return ProjectHelper.get(projectID);
     }    
     async draw(){
+        this.menuBody = new SPLINT.DOMElement(this.id + "menuBody", "div", this.parent);
+        this.menuBody.before(this.mainElement);
+        this.menuBody.Class("menuMain");
+            let bt_preRenderAll = new SPLINT.DOMElement.Button(this.menuBody, "preRenderAll", "alle modelle erstellen");
+                bt_preRenderAll.onclick = async function(){
+                    for(const e of this.orderData){
+                        for(const item of e.Items){
+                            this.#modelButton(item.ProjectID, e.Items.UserID);
+                            // let a = this.mainElement.querySelector("span[projectID='" + item.ProjectID + "']");
+                            //     if(a.innerHTML == "close"){
+                            //         let bt = this.mainElement.querySelector("button[projectID='" + item.ProjectID + "']");
+                            //             a.style.display = "none";
+                            //             let sp = new Spinner1(bt, item.ProjectID);
+                            //         ConverterHelper.createData(e.Items.UserID, item.ProjectID).then(function(){
+                            //                 sp.remove();
+                            //                 a.style.display = "block";
+                            //                 a.innerHTML = "check";
+                            //         }.bind(this));
+                            //     }
+                        }
+                    }
+                }.bind(this);
+        this.parent
         this.mainElement.innerHTML = "";
         await this.#getData();
 
@@ -95,14 +118,6 @@ class ADMIN_order_list {
     }
     drawButtonsDiv(parent, data){
         let main = new SPLINT.DOMElement(parent.id + "_buttons", "div", parent);
-            // if(!this.fromArchive){
-            //     let button_remove = new Button(main, "remove");
-            //         button_remove.bindIcon("delete");
-            //         button_remove.button.onclick = function(){
-            //             order.remove(data.OrderID);
-            //             this.draw();
-            //         }.bind(this);
-            // }
             
             let button_View = new SPLINT.DOMElement.Button(main, "View");
                 button_View.bindIcon("search");
@@ -114,15 +129,6 @@ class ADMIN_order_list {
                 }.bind(this);
 
             if(!this.fromArchive){
-                /*let button_stateCLOSE = new Button(main, "State_Close", "close");
-                    button_stateCLOSE.button.onclick = function(){
-                        order.setState(data.OrderID, order.STATE_CLOSED);
-                    }
-                
-                let button_stateOPEN = new Button(main, "State_Open", "open");
-                    button_stateOPEN.button.onclick = function(){
-                        order.setState(data.OrderID, order.STATE_OPEN);
-                    }*/
 
                 let button_sended = new SPLINT.DOMElement.Button(main, "sended", "versendet");
                     button_sended.bindIcon("check");
@@ -152,7 +158,7 @@ class ADMIN_order_list {
     }
     async drawProjectsDiv(parent, data){
             let items = data.Items;
-            let tableElement = new SPLINT.DOMElement.Table.Grid(parent, parent.id + "_projectTable", items.length, 4);
+            let tableElement = new SPLINT.DOMElement.Table.Grid(parent, parent.id + "_projectTable", items.length, 5);
                 tableElement.mainElement.Class("projectTable");
                 tableElement.getHead();
                 let gen = SPLINT.DOMElement.SpanDiv.get;
@@ -160,16 +166,20 @@ class ADMIN_order_list {
                 gen(tableElement.getData2Head(1), "", "Preis");
                 gen(tableElement.getData2Head(2), "", "gefertigt");
                 gen(tableElement.getData2Head(3), "", "beschichtet");
+                gen(tableElement.getData2Head(4), "", "Modell");
                 //tableElement.addRow("Galvanik", "Preis", "Laser");
             for(const index in items){
                 let item = items[index];
                 let projectID = item.ProjectID;
                 let project;
+                let projectPATH;
                 if(this.fromArchive){
                     project = await ProjectHelper.getFromArchive(projectID, this.orderData[0].UserID, this.orderData[0].OrderID);
+                    projectPATH = ProjectHelper.getPath2ProjectArchive(this.orderData[0].UserID, projectID, this.orderData[0].OrderID);
                     console.log(projectID, this.orderData[0].UserID, this.orderData[0].OrderID)
                 } else {
                     project = await ProjectHelper.get(projectID, this.orderData[0].UserID);
+                    projectPATH = ProjectHelper.getPath2Project(this.orderData[0].UserID, projectID);
                     console.log(project)
                 }
                 new SPLINT.DOMElement.SpanDiv(tableElement.getData(index, 0), "", project.EPType);
@@ -196,8 +206,40 @@ class ADMIN_order_list {
                         tableElement.getRow(index-1).state().setActive();
                     }
                 }
+                if(SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc", true)){
+                    let bt = new SPLINT.DOMElement.Button(tableElement.getData(index, 4), "bt");
+                        bt.button.setAttribute("projectID", projectID)
+                        bt.span.setAttribute("projectID", projectID)
+                        bt.bindIcon("check");
+                        bt.setTooltip("Modell erstellt", "right");
+                        bt.onclick = function(){
+                        }
+                } else {
+                    let bt = new SPLINT.DOMElement.Button(tableElement.getData(index, 4), "bt");
+                        bt.button.setAttribute("projectID", projectID)
+                        bt.span.setAttribute("projectID", projectID)
+                        bt.bindIcon("close");
+                        bt.setTooltip("Modell erstellen", "right");
+                        bt.onclick = function(){
+                            this.#modelButton(projectID, this.orderData[0].UserID);
+                        }.bind(this);
+                }
             }
             // resolve("ok");
             return true;
+    }
+    #modelButton(ProjectID, UserID){                            
+        let a = this.mainElement.querySelector("span[projectID='" + ProjectID + "']");
+        if(a.innerHTML == "close"){
+            let bt = this.mainElement.querySelector("button[projectID='" + ProjectID + "']");
+                a.style.display = "none";
+                let sp = new Spinner1(bt, ProjectID);
+            ConverterHelper.createData(UserID, ProjectID).then(function(){
+                    sp.remove();
+                    a.style.display = "block";
+                    a.innerHTML = "check";
+            }.bind(this));
+        }
+
     }
 }

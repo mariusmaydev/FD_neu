@@ -16,14 +16,18 @@
                 $colorS1 = 1;
                 $colorS2 = 0;
             }
-            for($x = 0; $x < $img -> getImageWidth(); $x++){
-                for($y = 0; $y < $img -> getImageHeight(); $y++){
-                    if(ImagickHelper::getPixelColor($img, $x, $y) == $color){
-                        $fArray -> set($x, $y, $colorS1);
-                    } else {
-                        $fArray -> set($x, $y, $colorS2);
-                    }
+            
+            $imageIterator = $img -> getPixelIterator();
+            // $fArray -> default = $colorS2;
+            foreach ($imageIterator as $row => $pixels) {
+                foreach ($pixels as $column => $pixel) {
+                        if($pixel -> getColor() == $color){
+                            $fArray -> set($column, $row, $colorS1);
+                        } else {
+                            $fArray -> set($column, $row, $colorS2);
+                        }
                 }
+                $imageIterator -> syncIterator(); /* Sync the iterator, this is important to do on each iteration */
             }
             return $fArray;
         }
@@ -65,8 +69,8 @@
             }
             return $pathObject;
         }
-        public static function fArray2Path() : PathObject {
-            global $fArray;
+        public static function fArray2Path(fixedArray $fArray) : PathObject {
+ 
             $flag = false;
             $pathObject = new PathObject();
             $pathElement = new pathElement2D();
@@ -689,9 +693,6 @@
             $path['y'] = $y - 2;
     
             return $path;
-        }
-        public static function doImage(){
-
         }
     }
 
