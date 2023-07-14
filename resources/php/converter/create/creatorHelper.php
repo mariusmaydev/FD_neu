@@ -736,14 +736,29 @@
                 $last['x'] = -100000;
                 $last['y'] = -100000;
                 foreach($steps as $key1 => $step){
-                    if($step['x'] >= 0 && $step['x'] <= ProjectDB::LIGHTER_WIDTH * ProjectDB::SCALE){
-                        if($step['y'] >= 0 && $step['y'] <= ProjectDB::LIGHTER_HEIGHT * ProjectDB::SCALE){
+                    if($step['x'] >= -2 && $step['x'] <= ProjectDB::LIGHTER_WIDTH * 61.29){
+                        if($step['y'] >= -2 && $step['y'] <= ProjectDB::LIGHTER_HEIGHT * 61.29){
                             if($step['x'] != $last['x'] OR $step['y'] != $last['y']){
                                 $newPathElement -> addStep($step['x'], $step['y']);
                                 $last['x'] = $step['x'];
                                 $last['y'] = $step['y'];
                             }
+                        } else {
+                            if($newPathElement -> stepCount() != 0){
+                                $PathObjectOutput -> addElement($newPathElement);
+                            }
+                            $newPathElement = new PathElement2D();
+                            //1 : 10, 0
+                            //2 : 15, 10
+                            // B  : 4
+                            // 15-10 = 5
+                            // 10-0 = 10
                         }
+                    } else {
+                        if($newPathElement -> stepCount() != 0){
+                            $PathObjectOutput -> addElement($newPathElement);
+                        }
+                        $newPathElement = new PathElement2D();
                     }
                 } 
                 if($newPathElement -> stepCount() != 0){

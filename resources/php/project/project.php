@@ -372,9 +372,9 @@
             const STATE_ORDER           = "ORDER";
             const STATE_ADMIN           = "ADMIN";
 
-        const LIGHTER_WIDTH         = 38;
-        const LIGHTER_HEIGHT        = 57.5;
-        const SCALE                 = 61.29;
+        const LIGHTER_WIDTH         = 31;///*31;*/38;
+        const LIGHTER_HEIGHT        = 47;///*47;*/57.5;
+        const SCALE                 = 50;///*50;*/61.29;//93.3161
 
         public static function getStruct(){
             $DS2 = new DataSet();

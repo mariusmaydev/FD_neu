@@ -9,7 +9,7 @@ export default function light(scene){
     let atmo = lights.new.AmbientLight(0xffffff, 1);
         atmo.bind();
 
-    let hemi  = lights.new.HemisphereLight( 0x242424, 0xfff2e5, 5 );
+    let hemi  = lights.new.HemisphereLight( 0x242424, 0xffffff, 5 );
     hemi.helper.size = 0.8;
     hemi.position.set(0,0,0)
         hemi.bind();

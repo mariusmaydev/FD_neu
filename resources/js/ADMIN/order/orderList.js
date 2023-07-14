@@ -92,13 +92,11 @@ class ADMIN_order_list {
             let projectID = item.ProjectID;
             let project;
             if(this.fromArchive){
-                project = await ProjectHelper.getFromArchive(projectID, this.orderData[0].UserID, this.orderData[0].OrderID);
+                project = await ProjectHelper.getFromArchive(projectID, data.UserID, data.OrderID);
             } else {
-                project = await ProjectHelper.get(projectID, this.orderData[0].UserID);
+                project = await ProjectHelper.get(projectID, data.UserID);
             }
-            console.log(project)
             let productData = await productHelper.getByName(project.Product);
-            console.dir(productData);
                 fullPrice = S_Math.add(fullPrice, S_Math.multiply(productData.price, item.amount));
             fullAmount += parseInt(item.amount);
         }
@@ -174,13 +172,11 @@ class ADMIN_order_list {
                 let project;
                 let projectPATH;
                 if(this.fromArchive){
-                    project = await ProjectHelper.getFromArchive(projectID, this.orderData[0].UserID, this.orderData[0].OrderID);
-                    projectPATH = ProjectHelper.getPath2ProjectArchive(this.orderData[0].UserID, projectID, this.orderData[0].OrderID);
-                    console.log(projectID, this.orderData[0].UserID, this.orderData[0].OrderID)
+                    project = await ProjectHelper.getFromArchive(projectID, data.UserID, data.OrderID);
+                    projectPATH = ProjectHelper.getPath2ProjectArchive(data.UserID, projectID, data.OrderID);
                 } else {
-                    project = await ProjectHelper.get(projectID, this.orderData[0].UserID);
-                    projectPATH = ProjectHelper.getPath2Project(this.orderData[0].UserID, projectID);
-                    console.log(project)
+                    project = await ProjectHelper.get(projectID, data.UserID);
+                    projectPATH = ProjectHelper.getPath2Project(data.UserID, projectID);
                 }
                 new SPLINT.DOMElement.SpanDiv(tableElement.getData(index, 0), "", project.EPType);
                 // LIGHTER_GOLD
@@ -221,7 +217,7 @@ class ADMIN_order_list {
                         bt.bindIcon("close");
                         bt.setTooltip("Modell erstellen", "right");
                         bt.onclick = function(){
-                            this.#modelButton(projectID, this.orderData[0].UserID);
+                            this.#modelButton(projectID, data.UserID);
                         }.bind(this);
                 }
             }

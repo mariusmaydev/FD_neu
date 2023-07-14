@@ -360,7 +360,7 @@ class Checkout {
                   console.log(res1);
                   ShoppingCart.clear();
                 // let orderobj = await preparePaypal();
-                console.dir(orderobj)
+                console.dir(orderObj)
 
             }
   }

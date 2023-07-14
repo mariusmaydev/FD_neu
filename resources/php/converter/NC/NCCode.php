@@ -79,9 +79,9 @@
                 if($key == 0){
                     // $this -> CodeString .= "\r\nM220 S200\r\n";
                     $this -> CodeString .= "M400\r\n";
-                    $this -> add_G(1, Coords::get(null, null, $cfg -> fastTravel -> height), $cfg -> fastTravel -> F);
+                    $this -> add_G(0, Coords::get(null, null, $cfg -> fastTravel -> height), $cfg -> fastTravel -> F);
                     $this -> CodeString .= "M400\r\n";
-                    $this -> add_G(1, Coords::get($step['x'], $step['y']), $cfg -> fastTravel -> F);
+                    $this -> add_G(0, Coords::get($step['x'], $step['y']), $cfg -> fastTravel -> F);
                     $this -> CodeString .= "M400\r\n";
                     // $this -> CodeString .= "M220 S100\r\n";
                     $this -> add_G(1, Coords::get(null, null,  $cfg -> workTravel -> height), $cfg -> workTravel -> F);
@@ -110,9 +110,9 @@
         }
         private function getEnd(){
             $cfg = ConverterConfig::get();
-            $this -> add_G(1, Coords::get(null, null, 0.1), $cfg -> fastTravel -> F);
+            $this -> add_G(0, Coords::get(null, null, 0.1), $cfg -> fastTravel -> F);
             $this -> CodeString .= "\r\nM400\r\n";
-            $this -> add_G(1, Coords::get(0.1, 0.1, 0.1), $cfg -> fastTravel -> F);
+            $this -> add_G(0, Coords::get(0.1, 0.1, 0.1), $cfg -> fastTravel -> F);
             $str = "\r\nM400\r\nG28\r\nG18";
             return $str;
         }

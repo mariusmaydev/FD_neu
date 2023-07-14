@@ -561,14 +561,45 @@ class CanvasElement_C {
       // CanvasHelper.Line(0, LighterMid * CanvasElement_C.SCALE, this.canvas.width, LighterMid * CanvasElement_C.SCALE, this.lines.ctx);
     }
   }
-  drawLine(x, y){
-    let space = 15;
+  drawLine(x, y, data){
+    let space = 25;
     let f1 = false;
     let f2 = false;
     let f3 = false; 
     let f4 = false;
+    let fR = false;
+    let fL = false;
+    let fT = false;
+    let fB = false;
     let xO = x;
     let yO = y;
+    let g = this.canvas.getBoundingClientRect();
+    console.dir( data)
+    console.log(x)
+    //right
+    if(data.ImageAlign == 0 || data.ImageAlign == 90 || data.ImageAlign == 180 || data.ImageAlign == 270 || data.ImageAlign == 360){
+        let xF = data.ImageWidth / 2 + x;
+        let xF1 = -data.ImageWidth / 2 + x;
+        let yF = data.ImageHeight / 2 + y;
+        let yF1 = -data.ImageHeight / 2 + y;
+        if(xF >= this.canvas.width - space && xF <= this.canvas.width + space){
+            fR = true;
+            xO = this.canvas.width - data.ImageWidth / 2;
+        }
+        if(xF1 >= 0 - space && xF1 <= 0 + space){
+            fL = true;
+            xO = data.ImageWidth / 2;
+        }        
+        if(yF >= this.canvas.height - space && yF <= this.canvas.height + space){
+            fB = true;
+            yO = this.canvas.height - data.ImageHeight / 2;
+        }
+        if(yF1 >= 0 - space && yF1 <= 0 + space){
+            fT = true;
+            yO = data.ImageHeight / 2;
+        }
+    }
+
     if(x >= this.canvas.width / 2 - space && x <= this.canvas.width / 2 + space){
       f1 = true;
       xO = this.canvas.width / 2;
@@ -589,6 +620,22 @@ class CanvasElement_C {
     if(f1 === true){
       CanvasHelper.Line(this.canvas.width/2, 0, this.canvas.width/2, this.canvas.height, this.lines.ctx);
     }
+    let scheme = { 
+        lineWidth : 2,
+        color : "white"
+    }
+    if(fR === true){
+      CanvasHelper.Line(this.canvas.width-5, 0, this.canvas.width-5, this.canvas.height, this.lines.ctx, scheme);
+    }
+    if(fL === true){
+      CanvasHelper.Line(5, 0, 5, this.canvas.height, this.lines.ctx, scheme);
+    }
+    if(fT === true){
+      CanvasHelper.Line(0, 5, this.canvas.width, 5, this.lines.ctx, scheme);
+    }
+    if(fB === true){
+      CanvasHelper.Line(0, this.canvas.height-5, this.canvas.width, this.canvas.height-5, this.lines.ctx, scheme);
+    }
     // if(f2 === true){
       // CanvasHelper.Line(0, LighterMid * CanvasElement_C.SCALE, this.canvas.width, LighterMid * CanvasElement_C.SCALE, this.lines.ctx);
     // }
@@ -602,6 +649,10 @@ class CanvasElement_C {
     f2 = false;
     f3 = false; 
     f4 = false;
+    fR = false;
+    fL = false;
+    fT = false;
+    fB = false;
     return [xO, yO]; 
   }
   // getTextImg(){
@@ -628,13 +679,19 @@ class CanvasElement_C {
 }
 
 class CanvasHelper {
-  static Line(x, y, dx, dy, ctx){
+  static Line(x, y, dx, dy, ctx, scheme = null){
+    if(scheme === null){
+        scheme = { 
+            lineWidth : 0.5,
+            color : "white"
+        }
+    }
     // ctx.beginPath();
     ctx.save();
     ctx.beginPath();
-    ctx.lineWidth = 0.5;
-    ctx.fillStyle = "white";
-    ctx.strokeStyle = "white";
+    ctx.lineWidth = scheme.lineWidth;
+    ctx.fillStyle = scheme.color;
+    ctx.strokeStyle = scheme.color;
     ctx.imageSmoothingEnabled = false;
     ctx.moveTo(x, y);
     ctx.lineTo(dx, dy);

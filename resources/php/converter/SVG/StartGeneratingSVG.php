@@ -27,7 +27,6 @@ function start($ProjectData, $UserID, $ImgData = null, $TextData = null){
     global $offsetCenter;
     $cfg = ConverterConfig::get();
     
-    
     $ProjectID = $ProjectData[ProjectDB::PROJECT_ID];
     
     $LastIndex = array();
@@ -82,7 +81,11 @@ function start($ProjectData, $UserID, $ImgData = null, $TextData = null){
 
             // TIMER -> start();
             $fArray = creatorHelper::img2fArray($img, true);
+            // $gh = $fArray -> getArray();
+            // creatorHelper::farray2file($fArray, "test" . random_int(0, 9) . ".txt");
             // TIMER -> print();
+            // file_put_contents ("test_1.png", $img); // works, or:
+            // $img-> writeImage(fopen ("test_2.jpg", "wb")); //also works
             $img -> destroy();
             creatorHelper::checkImgArray($fArray);
             // TIMER -> print();
@@ -98,23 +101,23 @@ function start($ProjectData, $UserID, $ImgData = null, $TextData = null){
             doImage($PathObject);
             // TIMER -> end();
             $PathObject = PathHelper::sortPath1($PathObject);
-            $PathObject = PathHelper::smoothPaths($PathObject);
-            $PathObject = PathHelper::shortPaths($PathObject);
+            // $PathObject = PathHelper::smoothPaths($PathObject);
+            // $PathObject = PathHelper::shortPaths($PathObject);
             $PathObject = PathHelper::sortPath1($PathObject, false);
             $PathObject = PathHelper::translatePathObject($PathObject);
             $PathObject = PathHelper::fixElements($PathObject);
             $PathObjectOut -> combinePathObject($PathObject);
         }
     }
-    $PathObjectOut = PathHelper::sortPath1($PathObjectOut, false);
+    // $PathObjectOut = PathHelper::sortPath1($PathObjectOut, false);
     
-    $LighterWidth   = ProjectDB::LIGHTER_WIDTH * ProjectDB::SCALE;
-    $LighterHeight  = ProjectDB::LIGHTER_HEIGHT * ProjectDB::SCALE;
+    $LighterWidth   = ProjectDB::LIGHTER_WIDTH * 61.29;//ProjectDB::SCALE;
+    $LighterHeight  = ProjectDB::LIGHTER_HEIGHT * 61.29;//ProjectDB::SCALE;
 
     $model = new NCModel($PathObjectOut);//1970 ; 2875 ; = 0,02
     $model -> scale = ProjectDB::LIGHTER_HEIGHT / ($LighterHeight);
-    $model -> xNull = ($cfg -> zero -> X * ProjectDB::SCALE) -($LighterWidth / 2) + (3.5 * ProjectDB::SCALE);//31 = 92.5
-    $model -> yNull = ($cfg -> zero -> Y * ProjectDB::SCALE) -($LighterHeight / 2) + (5.25 * ProjectDB::SCALE);//50,5 = 107.25
+    $model -> xNull = ($cfg -> zero -> X * ProjectDB::SCALE) -($LighterWidth / 2) ;//-(7.5 * ProjectDB::SCALE)) ;//31 = 92.5
+    $model -> yNull = ($cfg -> zero -> Y * ProjectDB::SCALE) -($LighterHeight / 2);// + (5.25 * ProjectDB::SCALE)) ;//50,5 = 107.25
 
     $path = PATH_Project::get(PATH_Project::NC, $ProjectData[ProjectDB::PROJECT_ID], $UserID);
     $model -> save($path);

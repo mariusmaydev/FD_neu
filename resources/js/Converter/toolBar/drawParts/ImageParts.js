@@ -56,4 +56,13 @@ class ToolBar_ImageElement_parts {
             sl.value    = value;
         return sl;
     } 
+    SL_rotation(parent = this.parent, value){          
+        let sl = new Slider(parent, "rotation_" + parent.id, "Drehung");
+            sl.drawTickMarks = false;
+            sl.min      = 0;
+            sl.max      = 360;
+            sl.step     = 1;
+            sl.value    = value;
+        return sl;
+    } 
 }

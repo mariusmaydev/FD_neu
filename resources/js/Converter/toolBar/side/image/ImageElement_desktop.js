@@ -100,6 +100,19 @@ class ToolBar_ImageElement {
             this.data.ImageFilter.sharpness = value;
             ConverterHelper.filter(DSImage.getIndex(this.ImageID));
         }.bind(this);
+
+        //Align
+        this.sl_rotation = new Slider(this.mainElement, "rotation_" + this.ImageID, "Drehung");
+        this.sl_rotation.drawTickMarks = false;
+        this.sl_rotation.min    = -180;
+        this.sl_rotation.max    = 180;
+        this.sl_rotation.value  = this.data.ImageAlign;
+        this.sl_rotation.oninput = function(value){
+            console.log("a")
+            this.data.ImageAlign = value;
+            CONVERTER_STORAGE.canvasNEW.refreshData();
+            // ConverterHelper.filter(DSImage.getIndex(this.ImageID));
+        }.bind(this);
     }
     blur(){
         this.mainElement.state().unsetActive();

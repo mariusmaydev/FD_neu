@@ -40,6 +40,7 @@ class Pages {
     //     BufferStorage.setFromObject(e);
     // }
     await login.Login();
+    SPLINT.SessionsPHP.showAll();
     // Cookie.showAll();
     // SPLINT.SessionsPHP.showAll();
     switch(Pages.actualSite().id){
