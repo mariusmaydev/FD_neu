@@ -39,29 +39,32 @@ function start($ProjectData, $UserID, $ImgData = null, $TextData = null){
             $img = Text::getTextImg($data[TextDB::TEXT_ID], $ProjectID, $UserID);
             $img -> brightnessContrastImage(0, 100);
             $img -> edgeImage(1);
+            $img -> modulateImage(0, 0, 100);
             $img -> setImageFormat('png');
             file_put_contents("testOut.png",$img);
             $img ->writeImage("testOut.png");
-            $xScale = $data[TextDB::TEXT_FRAME_WIDTH] / $img -> getImageWidth();
-            $yScale = $data[TextDB::TEXT_FRAME_HEIGHT] / $img -> getImageHeight();
+            $xScale = ($data[TextDB::TEXT_FRAME_WIDTH]*2) / $img -> getImageWidth();
+            $yScale = ($data[TextDB::TEXT_FRAME_HEIGHT]*2) / $img -> getImageHeight();
 
             $xAdd = $data[TextDB::TEXT_POS_X];
             $yAdd = $data[TextDB::TEXT_POS_Y];
 
             $fArray = creatorHelper::img2fArray($img, true);
+            // $gh = $fArray -> getArray();
+            // creatorHelper::farray2file($fArray, "test" . random_int(0, 9) . ".txt");
             $img -> destroy();
             creatorHelper::checkImgArray($fArray);
             $y_C = 0;
             $x_C = 0;
-            $offsetCenter['x'] = $data[TextDB::TEXT_FRAME_WIDTH] / 2;
-            $offsetCenter['y'] = $data[TextDB::TEXT_FRAME_HEIGHT] / 2;
+            $offsetCenter['x'] = ($data[TextDB::TEXT_FRAME_WIDTH]*2) / 2;
+            $offsetCenter['y'] = ($data[TextDB::TEXT_FRAME_HEIGHT]*2) / 2;
             $align['sin'] = sin(deg2rad($data[TextDB::TEXT_ALIGN]));
             $align['cos'] = cos(deg2rad($data[TextDB::TEXT_ALIGN]));
 
             doImage($PathObject);
             $PathObject = PathHelper::sortPath1($PathObject);
             $PathObject = PathHelper::smoothPaths($PathObject);
-            $PathObject = PathHelper::shortPaths($PathObject);
+            // $PathObject = PathHelper::shortPaths($PathObject);
             $PathObject = PathHelper::sortPath1($PathObject, false);
             $PathObject = PathHelper::translatePathObject($PathObject);
             $PathObject = PathHelper::fixElements($PathObject);
@@ -116,12 +119,11 @@ function start($ProjectData, $UserID, $ImgData = null, $TextData = null){
 
     $model = new NCModel($PathObjectOut);//1970 ; 2875 ; = 0,02
     $model -> scale = ProjectDB::LIGHTER_HEIGHT / ($LighterHeight);
-    $model -> xNull = ($cfg -> zero -> X * ProjectDB::SCALE) -($LighterWidth / 2) ;//-(7.5 * ProjectDB::SCALE)) ;//31 = 92.5
-    $model -> yNull = ($cfg -> zero -> Y * ProjectDB::SCALE) -($LighterHeight / 2);// + (5.25 * ProjectDB::SCALE)) ;//50,5 = 107.25
+    $model -> xNull = ($cfg -> zero -> X * 61.29 ) -($LighterWidth / 2);//-(7.5 * ProjectDB::SCALE)) ;//31 = 92.5
+    $model -> yNull = ($cfg -> zero -> Y * 61.29 ) -($LighterHeight / 2);// + (5.25 * ProjectDB::SCALE)) ;//50,5 = 107.25
 
     $path = PATH_Project::get(PATH_Project::NC, $ProjectData[ProjectDB::PROJECT_ID], $UserID);
     $model -> save($path);
-    error_log("finish");
 }
 
 function CalcCoords(float $x, float $y) : stdClass{

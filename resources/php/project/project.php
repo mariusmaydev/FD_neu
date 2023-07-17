@@ -162,6 +162,8 @@
             }
 
             $PATH = new PATH_Project(Sessions::get(Sessions::USER_ID), $NewProjectID);
+            
+            DataCreatePath($PATH -> get(PATH_Project::NONE, $NewProjectID, $UserID));
             Path::copyFile($GLOBALS['SSL1'].($_SERVER["DOCUMENT_ROOT"]).$ProjectData["Thumbnail"], $PATH -> get(PATH_Project::NONE, $NewProjectID, $UserID). $PATH -> getFileName(PATH_Project::THUMBNAIL));
             
             $textData = Text::get(null, $FromUserID, $projectID, false);

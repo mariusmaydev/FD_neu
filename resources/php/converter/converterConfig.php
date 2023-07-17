@@ -5,10 +5,9 @@
     include_once realpath($_SERVER["DOCUMENT_ROOT"]) . '/Splint/php/DataManagement/shmop/S_shmop.php';
 
     class ConverterConfig {
-        public static $forceReload = true;
         public static $processData = null;
         public static function get(bool $print = false){
-            if(self::$forceReload){
+            if(self::isForceReload()){
                 $processData = DataStorage::get("/converterProcess.json", false);
                 if($processData == false){
                     Debugger::error("converterProcess file not found");
@@ -27,7 +26,7 @@
                 return self::$processData;
             }
             $processData = S_shmop::read("converterProcessData");
-            if($processData == null || self::$forceReload){
+            if($processData == null || self::isForceReload()){
                 $processData = DataStorage::get("/converterProcess.json", false);
                 if($processData == false){
                     Debugger::error("converterProcess file not found");
@@ -41,5 +40,11 @@
             self::$processData = $processData;
             Communication::sendBack($processData, true, $print);
             return $processData;
+        }
+        private static function isForceReload() : bool {
+            if(SPLINT_CONFIG -> settings -> cacheResources -> project -> converterProcessing == false){
+                return true;
+            }
+            return false;
         }
     }

@@ -103,31 +103,37 @@ class CanvasElement_C {
           ctx.scale(scale, scale);
 
       this.stack.forEach(element =>{
+        let postEle = JSON.parse(JSON.stringify( element));
+        postEle.ctx = ctx;
+        postEle.src = element.src;
+        postEle.ctx_S = element.ctx_S;
         if(element.type == "img"){
-          CanvasHelper.Image(ctx).draw(element);
+          CanvasHelper.Image().draw(postEle, false);
         } else {
-          CanvasHelper.Text(ctx).draw(element);
+          CanvasHelper.Text().draw(postEle, false, true);
         }
       });
       
       return canvas.toDataURL("image/png", 1);
   }
-  createTextData(scale = 8){
+  async createTextData(scale = 1){
     for(const element of this.stack){
       if(element.type == "txt"){
-        let postEle = element;
+        let postEle = JSON.parse(JSON.stringify( element));
+        postEle.data.TextAlign = 0;
       let canvas  = document.createElement("canvas");
-          canvas.width  = (postEle.data.FrameWidth * scale) * 2 + 20;
-          canvas.height = (postEle.data.FrameHeight * scale) * 2 + 20;
+          canvas.width  = (postEle.data.FrameWidth * scale) + 10;
+          canvas.height = (postEle.data.FrameHeight * scale) + 10;
       let ctx     = canvas.getContext('2d');
           ctx.fillStyle = "transparent";
           ctx.fillRect(0, 0, canvas.width, canvas.height);
-          ctx.scale(scale, scale);
+          ctx.scale(scale / 2, scale / 2);
           let a = postEle.data.TextPosX;
           let b = postEle.data.TextPosY;
-          postEle.data.TextPosX = (canvas.width - 10) / 16;
-          postEle.data.TextPosY = (canvas.height -10) / 16;
-        CanvasHelper.Text(ctx).draw(postEle);
+          postEle.data.TextPosX = (canvas.width ) / (scale );
+          postEle.data.TextPosY = (canvas.height) / (scale );
+          postEle.ctx = ctx;
+        CanvasHelper.Text().draw(postEle, false, true);
         element.data.TextImg = canvas.toDataURL("image/png", 1);
         element.data.TextPosX = a;
         element.data.TextPosY = b;
@@ -141,14 +147,14 @@ class CanvasElement_C {
     this.stack.forEach(element =>{
       if(element.type == "img" && element.src.naturalHeight != 0){
         CanvasHelper.Image().dummy(element);
-        if(this.#check(element.ctx_S)){
+        if(this.#check(element.ctx, element.paths.rect)){
           ele = element;
           ele.dragEdge = -1;
         }
         element.ctx_S.clearRect(0, 0, element.canvas.width, element.canvas.height);
         for(let i = 0; i <= 8; i++){
           CanvasHelper.Image().edge(element, true, i);
-          if(this.#check(element.ctx_S)){
+          if(this.#check(element.ctx, element.paths.edges[i])){
             ele = element;
             ele.dragEdge = i;
           }
@@ -156,26 +162,26 @@ class CanvasElement_C {
         }
         // this.draw(element);
       } else if(element.type == "txt"){
-        CanvasHelper.Text().draw(element, true);
-        if(this.#check(element.ctx_S)){
+        // element.ctx.clearRect(0, 0, element.canvas.width, element.canvas.height);
+        // CanvasHelper.Text().draw(element, true);
+        if(this.#check(element.ctx, element.paths.rect)){
           ele = element;
           ele.dragEdge = -1;
         }
-        element.ctx_S.clearRect(0, 0, element.canvas.width, element.canvas.height);
 
         // CanvasHelper.Text().edge(element, true, 2);
         // if(this.#check(element.ctx_S)){
         //   ele = element;
         //   ele.dragEdge = 2;
         // }
-        element.ctx_S.clearRect(0, 0, element.canvas.width, element.canvas.height);
+        // element.ctx_S.clearRect(0, 0, element.canvas.width, element.canvas.height);
         
         CanvasHelper.Text().edge(element, true, 8);
-        if(this.#check(element.ctx_S)){
+        if(this.#check(element.ctx, element.paths.edges[8])){
           ele = element;
           ele.dragEdge = 8;
         }
-        element.ctx_S.clearRect(0, 0, element.canvas.width, element.canvas.height);
+        // element.ctx.clearRect(0, 0, element.canvas.width, element.canvas.height);
         // this.draw(element);
       }
     });
@@ -228,13 +234,18 @@ class CanvasElement_C {
           o.ctx    = o.canvas.getContext('2d');
           o.canvas_S = o.canvas.cloneNode();
           o.ctx_S     = o.canvas_S.getContext('2d');
+          o.paths       = new Object();
+          o.paths.edges = [];
           // o.input  = new canvasTextInput(o.ID, ConverterHelper.ELE_SQUARE_BORDER_DIV, obj);
           if(dataIn.TextPosX == -1 || dataIn.TextPosY == -1){
             dataIn.TextPosX = obj.canvas.width / 2;
             dataIn.TextPosY = obj.canvas.height / 2;
           }
           o.data = dataIn;
+          o.paths       = new Object();
+          o.paths.edges = [];
           obj.#update();
+          canvasPaths.updateTxtPath(o);
           obj.draw(o);
           DSText.saveAsync();
       return o;
@@ -253,6 +264,8 @@ class CanvasElement_C {
           o.ctx      = o.canvas.getContext('2d');
           o.canvas_S = o.canvas.cloneNode();
           o.ctx_S     = o.canvas_S.getContext('2d');
+          o.paths       = new Object();
+          o.paths.edges = [];
           o.src = new Image();
 
           if(dataIn.ImagePosX == undefined || dataIn.ImagePosY == undefined){
@@ -286,6 +299,9 @@ class CanvasElement_C {
                 o.src.height = Math.abs(img.height);
                 o.src.onload = function(){
                   obj.#update();
+                  
+                    canvasPaths.updateImgPath(o);
+                //   canvasPaths.updatePointPath(element, x, y, width, height, index)
                   obj.draw(o);
                 }.bind(obj, o);
               }.bind(obj, o);
@@ -314,7 +330,10 @@ class CanvasElement_C {
     });
     return output;
   }
-  #check(ctx){
+  #check(ctx, path = null){
+    if(path != null){
+        return ctx.isPointInPath(path, this.mouse.X * this.ratio.X, this.mouse.Y * this.ratio.Y);
+    }
     return ctx.isPointInPath(this.mouse.X * this.ratio.X, this.mouse.Y * this.ratio.Y);
   }
   refreshData(){
@@ -441,24 +460,24 @@ class CanvasElement_C {
         }
         if(element.drawEdge){
           this.focusCanvas(element);
-          CanvasHelper.Image().edge(element);
+        //   CanvasHelper.Image().draw(element, false);
         } else {
         }
-        CanvasHelper.Image().draw(element);
+        CanvasHelper.Image().draw(element, element.drawEdge);
       } else if(element.type == "txt"){
         if(this.mouse.down && this.dragElement == element && element.dragEdge == -1){
           element.data.TextPosX = this.mouse.X * this.ratio.X + element.offset.X;
           element.data.TextPosY = this.mouse.Y * this.ratio.Y + element.offset.Y;
         }
-        CanvasHelper.Text().draw(element);
         if(element.drawEdge){
           this.focusCanvas(element);
           // CanvasHelper.Text().edge(element, false, 2);
-          CanvasHelper.Text().edge(element, false, 8);
+        //   CanvasHelper.Text().edge(element, false, 8);
           // element.input.unHide();
         } else {
           // element.input.hide();
         }
+        CanvasHelper.Text().draw(element, element.drawEdge);
       }
     // }.bind(this));
   }
@@ -476,6 +495,7 @@ class CanvasElement_C {
   }
   computeEdges(element){
     if(element.type == "img"){
+        let align = element.data.ImageAlign;
       let offsetX = (-element.data.ImagePosX + ((this.mouse.X * this.ratio.X) + element.offset.X)) * 2;
       let offsetY = (-element.data.ImagePosY + ((this.mouse.Y * this.ratio.Y) + element.offset.Y)) * 2; 
       let wb = element.widthBase;
@@ -547,9 +567,16 @@ class CanvasElement_C {
     ConverterHelper.getSquareBorder().state().unsetActive();
   }
   dragStop(){
+    if(this.activeElement != null){
+        if(this.activeElement.type == "img"){
+            canvasPaths.updateImgPath(this.activeElement);
+        } else {
+            canvasPaths.updateTxtPath(this.activeElement);
+        }
+    }
     this.dragElement = null;
     this.activeElement = null;
-    
+    // canvasPaths.updatePointPath(element, width, height, index)
     DSController.saveAll();
     //   DSImage.saveAsync();
     //   DSText.saveAsync();
@@ -574,8 +601,6 @@ class CanvasElement_C {
     let xO = x;
     let yO = y;
     let g = this.canvas.getBoundingClientRect();
-    console.dir( data)
-    console.log(x)
     //right
     if(data.ImageAlign == 0 || data.ImageAlign == 90 || data.ImageAlign == 180 || data.ImageAlign == 270 || data.ImageAlign == 360){
         let xF = data.ImageWidth / 2 + x;
@@ -699,42 +724,64 @@ class CanvasHelper {
     ctx.closePath();
     ctx.restore();
   }
-  static drawEdges(ctx, width, height, index = -1){
+  static drawEdges(element, width, height, index = -1){
+    // canvasPaths.updatePointPath(element, width, height, index)
+    // for(const n of element.paths.edges){
+    //     // element.ctx.fillStyle = 'black';
+    //     // element.ctx.fill(n);
+    // }
+    return element.ctx;
+    let ctx = element.ctx;
+    let t = function(element, x, y, width, height){
+        console.dir(index)
+        let path = new Path2D();
+            path.rect(x, y, width, height);
+            if(index != -1){
+                element.paths.edges[index] = path;
+            }
+            console.dir(element);
+            element.ctx.fill(path);
+    }.bind(this);
     let size = 48;
     ctx.fillStyle = 'black';
     switch(index){
-      case 0: ctx.fillRect(-width / 2 - size, -height / 2 - size, size, size); break;
-      case 1: ctx.fillRect(0 - size / 2, -height / 2 - size, size, size); break;
-      case 2: ctx.fillRect(width / 2 , -height / 2 - size, size, size); break;
-      case 3: ctx.fillRect(width / 2, 0 - size / 2, size, size); break;
-      case 4: ctx.fillRect(width / 2 , height / 2, size, size); break;
-      case 5: ctx.fillRect(0 - size / 2, height / 2, size, size); break;
-      case 6: ctx.fillRect(-width / 2 - size, height / 2, size, size); break;
-      case 7: ctx.fillRect(-width / 2 - size, 0 - size / 2, size, size); break;
+      case 0: t(element, -width / 2 - size, -height / 2 - size, size, size, 0); break;
+      case 1: t(element, 0 - size / 2, -height / 2 - size, size, size); break;
+      case 2: t(element, width / 2 , -height / 2 - size, size, size); break;
+      case 3: t(element, width / 2, 0 - size / 2, size, size); break;
+      case 4: t(element, width / 2 , height / 2, size, size); break;
+      case 5: t(element, 0 - size / 2, height / 2, size, size); break;
+      case 6: t(element, -width / 2 - size, height / 2, size, size); break;
+      case 7: t(element, -width / 2 - size, 0 - size / 2, size, size); break;
       case 8: {
-        ctx.drawImage(SVG_Loader.SVG.turn.src,0 - size , -height / 2 - (size *4), size*2, size*2); 
+        ctx.drawImage(SVG_Loader.SVG.turn.src,0 - size , -height - size , size*2, size*2); 
 
       } break; //ctx.fillRect(0 - size / 2, -height / 2 - size - 40, size, size); break;
       default: {
-        ctx.fillRect(-width / 2 - size, -height / 2 - size, size, size);
-        ctx.fillRect(width / 2 , -height / 2 - size, size, size);
+        t(element, -width / 2 - size, -height / 2 - size, size, size, 0);
+        t(element, width / 2 , -height / 2 - size, size, size, 1);
         
-        ctx.fillRect(-width / 2 - size, height / 2, size, size);
-        ctx.fillRect(width / 2 , height / 2, size, size);
+        t(element, -width / 2 - size, height / 2, size, size, 2);
+        t(element, width / 2 , height / 2, size, size, 3);
       
-        ctx.fillRect(0 - size / 2, -height / 2 - size, size, size);
-        ctx.fillRect(0 - size / 2, height / 2, size, size);
+        t(element, 0 - size / 2, -height / 2 - size, size, size);
+        t(element, 0 - size / 2, height / 2, size, size);
         
-        ctx.fillRect(width / 2, 0 - size / 2, size, size);
-        ctx.fillRect(-width / 2 - size, 0 - size / 2, size, size);
+        t(element, width / 2, 0 - size / 2, size, size);
+        t(element, -width / 2 - size, 0 - size / 2, size, size);
 
-        ctx.drawImage(SVG_Loader.SVG.turn.src,0 - size , -height / 2 - (size *4), size*2, size*2); 
+        ctx.drawImage(SVG_Loader.SVG.turn.src,0 - size , -height - size , size*2, size*2); 
       } break;
     }
     return ctx;
   }
-  static drawEdgesInteractive(ctx, width, height, index = -1){
+  static drawEdgesInteractive(element, width, height, index = -1){
+    canvasPaths.updatePointPath(element, width, height, index)
+    console.dir(element);
+    return element.ctx;
+
     let size = 48;
+    console.dir(ctx);
     ctx.save();
     ctx.beginPath();
     switch(index){
@@ -746,7 +793,7 @@ class CanvasHelper {
       case 5: ctx.rect(0 - size / 2, height / 2, size, size); break;
       case 6: ctx.rect(-width / 2 - size, height / 2, size, size); break;
       case 7: ctx.rect(-width / 2 - size, 0 - size / 2, size, size); break;
-      case 8: ctx.rect(0 - size, -height / 2 - (size*4), (size*2), (size*2)); break;
+      case 8: ctx.rect(0 - size, -height  - size, (size*2), (size*2)); break;
       default: {
         ctx.rect(-width / 2 - size, -height / 2 - size, size, size);
         ctx.rect(width / 2 , -height / 2 - size, size, size);
@@ -760,7 +807,7 @@ class CanvasHelper {
         ctx.rect(width / 2, 0 - size / 2, size, size);
         ctx.rect(-width / 2 - size, 0 - size / 2, size, size);
 
-        ctx.rect(0 - size, -height / 2 - (size*4), (size*2), (size*2));
+        ctx.rect(0 - size, -height - size, (size*2), (size*2));
       } break;
     }
 
@@ -771,29 +818,35 @@ class CanvasHelper {
   static Text(ctx = null){
     function obj(ctx){
       this.edge = function(element, flag = false, index){
+        console.log(element.data)
         if(flag){
-          element.ctx_S.save();
-          element.ctx_S.beginPath();
-          element.ctx_S.fillStyle = 'black';
-          element.ctx_S.translate(element.data.TextPosX, element.data.TextPosY);
-          element.ctx_S.rotate(element.data.TextAlign * Math.PI / 180);
-          element.ctx_S.scale(1, 1);
-          CanvasHelper.drawEdgesInteractive(element.ctx_S, element.data.FrameWidth, element.data.FrameHeight, index);
-          element.ctx_S.closePath();
-          element.ctx_S.restore();
+        //   element.ctx_S.save();
+        //   element.ctx_S.beginPath();
+        //   element.ctx_S.fillStyle = 'black';
+        //   element.ctx_S.translate(element.data.TextPosX, element.data.TextPosY);
+        //   element.ctx_S.rotate(element.data.TextAlign * Math.PI / 180);
+        //   element.ctx_S.scale(1, 1);
+          CanvasHelper.drawEdges(element, element.data.FrameWidth, element.data.FrameHeight, index);
+        //   element.ctx_S.closePath();
+        //   element.ctx_S.restore();
         } else {
-          element.ctx.save();
-          element.ctx.beginPath();
-          element.ctx.fillStyle = 'black';
-          element.ctx.translate(element.data.TextPosX, element.data.TextPosY);
-          element.ctx.rotate(element.data.TextAlign * Math.PI / 180);
-          element.ctx.scale(1, 1);
-          CanvasHelper.drawEdges(element.ctx, element.data.FrameWidth, element.data.FrameHeight, index);
-          element.ctx.closePath();
-          element.ctx.restore();
+        //   element.ctx.save();
+        //   element.ctx.beginPath();
+        //   element.ctx.fillStyle = 'black';
+        //   element.ctx.translate(element.data.TextPosX, element.data.TextPosY);
+        //   element.ctx.rotate(element.data.TextAlign * Math.PI / 180);
+        //   element.ctx.scale(1, 1);
+          CanvasHelper.drawEdges(element, element.data.FrameWidth, element.data.FrameHeight, index);
+        //   element.ctx.closePath();
+        //   element.ctx.restore();
         }
       }
-      this.draw = function(element, renderFlag = false){
+      this.draw = function(element, pointFlag = true, thumbnailFlag = false){
+        if(pointFlag){
+            canvasPaths.updatePointPath(element, element.data.FrameWidth, element.data.FrameHeight, 8);
+        }
+        canvasPaths.updateTxt(element);
+        return;
         if(ctx == null){
           if(renderFlag){
             ctx = element.ctx_S;
@@ -814,17 +867,24 @@ class CanvasHelper {
         element.ctx.globalAlpha = 1;
         ctx.imageSmoothingEnabled = true;
         ctx.imageSmoothingQuality = "high";
-        ctx.lineWidth = 0.5;
+        ctx.textBaseline = "middle";
+        if(thumbnailFlag){
+            ctx.lineWidth = 1;
+        } else {
+            ctx.lineWidth = 0.5;
+        }
         ctx.strokeStyle = DSProject.getColorFor(DSProject.Storage.EPType);
+        ctx.fillStyle = DSProject.getColorFor(DSProject.Storage.EPType);
         ctx.font = element.data.FontWeight + " " + element.data.FontStyle + " " + element.data.FontSize + "px " + element.data.FontFamily;
         let metrics     = 0;
         let max_width   = 0;
         let height      = 0;
+        console.log(element.data.TextLineHeight);
         let max_height  = 0;
         let lines = element.data.TextValue.split('\n');
         for(let i = 0; i < lines.length; i++){
           metrics = ctx.measureText(lines[i]);
-          height = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
+          height = metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent + parseInt(element.data.TextLineHeight);
           let width = metrics.width;
           if(width > max_width){
             max_width = width;
@@ -836,40 +896,36 @@ class CanvasHelper {
         ctx.textAlign = element.data.TextOrientation;
         ctx.textRendering  = "optimizeSpeed";
         let C_width = max_width / 2;
-        let C_height = -(lines.length * max_height) / 2;
+        let C_height = -((lines.length-1) * max_height) / 2;
+        
+        let drawFunc = function(){ctx.strokeText(...arguments)};
+        if(renderFlag){
+            drawFunc = function(){ctx.fillText(...arguments)};
+        }
         for(let i = 0; i < lines.length; i++){
           if(element.data.TextOrientation == 'center'){
-            ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
-            ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
+            drawFunc(lines[i], 0,  C_height + ((i ) * max_height) );
+            drawFunc(lines[i], 0,  C_height + ((i ) * max_height) );
             // ctx.filter = 'blur(0.5px)';
             // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
             // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
             // // ctx.filter = 'blur(1px)';
             // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
           } else if(element.data.TextOrientation == 'right'){
-            ctx.strokeText(lines[i], +C_width,  C_height + ((i + 1) * max_height) );
-            ctx.strokeText(lines[i], +C_width,  C_height + ((i + 1) * max_height) );
-            // ctx.filter = 'blur(0.5px)';
-            // ctx.strokeText(lines[i], +C_width,  C_height + ((i + 1) * max_height) );
-            // ctx.strokeText(lines[i], +C_width,  C_height + ((i + 1) * max_height) );
-            // // ctx.filter = 'blur(1px)';
-            // ctx.strokeText(lines[i], +C_width,  C_height + ((i + 1) * max_height) );
+            drawFunc(lines[i], +C_width,  C_height + ((i ) * max_height) );
+            drawFunc(lines[i], +C_width,  C_height + ((i ) * max_height) );
           } else {
-            ctx.strokeText(lines[i], -C_width,  C_height + ((i + 1) * max_height) );
-            ctx.strokeText(lines[i], -C_width,  C_height + ((i + 1) * max_height) );
-            // ctx.strokeText(lines[i], -C_width,  C_height + ((i + 1) * max_height) );
-            // ctx.strokeText(lines[i], -C_width,  C_height + ((i + 1) * max_height) );
-            // // ctx.filter = 'blur(1px)';
-            // // ctx.filter = 'blur(0.5px)';
-            // ctx.strokeText(lines[i], -C_width,  C_height + ((i + 1) * max_height) );
+            drawFunc(lines[i], -C_width,  C_height + ((i ) * max_height) );
+            drawFunc(lines[i], -C_width,  C_height + ((i ) * max_height) );
           }
         }
-        
+        // ctx.strokeStyle = "red";
         ctx.rect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
+        // ctx.strokeRect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
         
-        element.data.FrameHeight     = ((lines.length) * max_height);
+        element.data.FrameHeight     = ((lines.length) * (max_height));
         element.data.FrameWidth      = max_width;
-        element.data.TextLineHeight  = max_height;
+        // element.data.TextLineHeight  = max_height;
 
         ctx.closePath();
         ctx.restore();
@@ -882,64 +938,68 @@ class CanvasHelper {
     function obj(ctx){
       this.edge = function(element, flag = false, index){
         if(flag){
-          element.ctx_S.save();
-          element.ctx_S.beginPath();
-          element.ctx_S.fillStyle = 'black';
-          element.ctx_S.translate(element.data.ImagePosX, element.data.ImagePosY);
-          element.ctx_S.rotate(element.data.ImageAlign * Math.PI / 180);
+        //   element.ctx.save();
+        //   element.ctx.beginPath();
+        //   element.ctx.fillStyle = 'black';
+        //   element.ctx.translate(element.data.ImagePosX, element.data.ImagePosY);
+        //   element.ctx.rotate(element.data.ImageAlign * Math.PI / 180);
 
-          CanvasHelper.drawEdgesInteractive(element.ctx_S, element.data.ImageWidth, element.data.ImageHeight, index);
-          element.ctx_S.closePath();
-          element.ctx_S.restore();
+          CanvasHelper.drawEdges(element, element.data.ImageWidth, element.data.ImageHeight, index);
+        //   element.ctx_S.closePath();
+        //   element.ctx_S.restore();
         } else {
-          element.ctx.save();
-          element.ctx.beginPath();
-          element.ctx.fillStyle = 'black';
-          element.ctx.translate(element.data.ImagePosX, element.data.ImagePosY);
-          element.ctx.rotate(element.data.ImageAlign * Math.PI / 180);
+        //   element.ctx.save();
+        //   element.ctx.beginPath();
+        //   element.ctx.fillStyle = 'black';
+        //   element.ctx.translate(element.data.ImagePosX, element.data.ImagePosY);
+        //   element.ctx.rotate(element.data.ImageAlign * Math.PI / 180);
 
-          CanvasHelper.drawEdges(element.ctx, element.data.ImageWidth, element.data.ImageHeight);
-          element.ctx.closePath();
-          element.ctx.restore();
+          CanvasHelper.drawEdges(element, element.data.ImageWidth, element.data.ImageHeight);
+        //   element.ctx.closePath();
+        //   element.ctx.restore();
         }
       }
-      this.draw = function(element){
-        //console.log(element);
-        let scale = 2;
-        let img = element.src;
-        if(ctx == null){
-          ctx = element.ctx;
+      this.draw = function(element, pointFlag = true){
+        //console.log(element);        
+        if(pointFlag){
+            canvasPaths.updatePointPath(element, element.data.ImageWidth, element.data.ImageHeight);
         }
-        ctx.save();
-        ctx.beginPath();
-        ctx.translate(element.data.ImagePosX, element.data.ImagePosY);
-        ctx.scale(1/scale, 1/scale);
-        ctx.rotate(element.data.ImageAlign * Math.PI/180);
-        ctx.filter = 'blur(1px)';
-        ctx.imageSmoothingEnabled = true;
-        ctx.imageSmoothingQuality  = "high";
-        ctx.globalAlpha = 1;
-        // element.ctx.globalAlpha = 1;
-        ctx.drawImage(img, 0, 0, parseInt(img.width), parseInt(img.height), -element.data.ImageWidth / (2/(scale)), -element.data.ImageHeight / (2/(scale)), element.data.ImageWidth * scale, element.data.ImageHeight * scale);
-        ctx.drawImage(img, 0, 0, parseInt(img.width), parseInt(img.height), -element.data.ImageWidth / (2/(scale)), -element.data.ImageHeight / (2/(scale)), element.data.ImageWidth * scale, element.data.ImageHeight * scale);
-        ctx.drawImage(img, 0, 0, parseInt(img.width), parseInt(img.height), -element.data.ImageWidth / (2/(scale)), -element.data.ImageHeight / (2/(scale)), element.data.ImageWidth * scale, element.data.ImageHeight * scale);
+        canvasPaths.updateImg(element);
+        // let scale = 2;
+        // let img = element.src;
+        // if(ctx == null){
+        //   ctx = element.ctx;
+        // }
+        // ctx.save();
+        // ctx.beginPath();
+        // ctx.translate(element.data.ImagePosX, element.data.ImagePosY);
+        // ctx.scale(1/scale, 1/scale);
+        // ctx.rotate(element.data.ImageAlign * Math.PI/180);
+        // ctx.filter = 'blur(1px)';
+        // ctx.imageSmoothingEnabled = true;
+        // ctx.imageSmoothingQuality  = "high";
+        // ctx.globalAlpha = 1;
+        // // element.ctx.globalAlpha = 1;
+        // ctx.drawImage(img, 0, 0, parseInt(img.width), parseInt(img.height), -element.data.ImageWidth / (2/(scale)), -element.data.ImageHeight / (2/(scale)), element.data.ImageWidth * scale, element.data.ImageHeight * scale);
+        // ctx.drawImage(img, 0, 0, parseInt(img.width), parseInt(img.height), -element.data.ImageWidth / (2/(scale)), -element.data.ImageHeight / (2/(scale)), element.data.ImageWidth * scale, element.data.ImageHeight * scale);
+        // ctx.drawImage(img, 0, 0, parseInt(img.width), parseInt(img.height), -element.data.ImageWidth / (2/(scale)), -element.data.ImageHeight / (2/(scale)), element.data.ImageWidth * scale, element.data.ImageHeight * scale);
 
-        // element.ctx.globalAlpha = 1;
-        // element.ctx.scale(10, 10);
-        ctx.rect(-element.data.ImageWidth / 2, -element.data.ImageHeight / 2, element.data.ImageWidth, element.data.ImageHeight);
-        ctx.closePath();
-        ctx.restore();
+        // // element.ctx.globalAlpha = 1;
+        // // element.ctx.scale(10, 10);
+        // ctx.rect(-element.data.ImageWidth / 2, -element.data.ImageHeight / 2, element.data.ImageWidth, element.data.ImageHeight);
+        // ctx.closePath();
+        // ctx.restore();
       }
       this.dummy = function(element){
-        element.ctx_S.save();
-        element.ctx_S.beginPath();
-        element.ctx_S.translate(element.data.ImagePosX, element.data.ImagePosY);
-        element.ctx_S.rotate(element.data.ImageAlign * Math.PI/180);
-        element.ctx_S.imageSmoothingEnabled = false;
-    
-        element.ctx_S.rect(-element.data.ImageWidth / 2, -element.data.ImageHeight / 2, element.data.ImageWidth, element.data.ImageHeight);
-        element.ctx_S.closePath();
-        element.ctx_S.restore();
+        // element.ctx_S.save();
+        // element.ctx_S.beginPath();
+        // element.ctx_S.translate(element.data.ImagePosX, element.data.ImagePosY);
+        // element.ctx_S.rotate(element.data.ImageAlign * Math.PI/180);
+        // element.ctx_S.imageSmoothingEnabled = false;
+        // canvasPaths.updateImgPath(element);
+        // element.ctx_S.rect(-element.data.ImageWidth / 2, -element.data.ImageHeight / 2, element.data.ImageWidth, element.data.ImageHeight);
+        // element.ctx_S.closePath();
+        // element.ctx_S.restore();
       }
     }
     return new obj(ctx);

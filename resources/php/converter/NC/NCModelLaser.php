@@ -4,13 +4,20 @@
     require_once $rootpath.'/fd/resources/php/converter/converterConfig.php';
     require_once $rootpath.'/fd/resources/php/project/project.php';
 
-    trait genNCCodeHelper {
+    trait genNCCodeHelperLaser {
         public function add_G(int $GNumber, Coords|null $coords = null, int|string $F = "") : string {
             $c = $this -> parseCoords($coords);
             if($F != ""){
                 $F = " F" . $F;
             }
             $result = "G" . $GNumber . $c -> x . $c -> y . $c -> z . $F . "\r\n";
+            if(isset($this -> CodeString)){
+                $this -> CodeString .= $result;
+            }
+            return $result;
+        }
+        public function add_S(int $intensity = 0) : string {
+            $result = "S" . $intensity . "\r\n";
             if(isset($this -> CodeString)){
                 $this -> CodeString .= $result;
             }
@@ -32,12 +39,12 @@
                 $strCoords -> y = " Y" . $coords -> y;
             }
             if($coords -> z !== null){
-                $strCoords -> z = " Z" . $coords -> z;
+                $strCoords -> z = " Z" . 10;
             }
             return $strCoords;
         }
     }
-    class NCModel {
+    class NCModelLaser {
         public $CodeString = "";
         public $PathObject;
 
@@ -48,7 +55,7 @@
         public $XMultiply   = 1;
         public $YMultiply   = 1;
 
-        use genNCCodeHelper;
+        use genNCCodeHelperLaser;
 
         public function __construct(PathObject $pathObject){
             $this -> PathObject = $pathObject;
@@ -79,13 +86,11 @@
                 if($key == 0){
                     // $this -> CodeString .= "\r\nM220 S200\r\n";
                     $this -> CodeString .= "M400\r\n";
-                    $this -> add_G(0, Coords::get(null, null, $cfg -> fastTravel -> height), $cfg -> fastTravel -> F);
+                    $this -> add_S(0);
+                    $this -> add_G(0, Coords::get($step['x'], $step['y'], 10), $cfg -> fastTravel -> F);
                     $this -> CodeString .= "M400\r\n";
-                    $this -> add_G(0, Coords::get($step['x'], $step['y']), $cfg -> fastTravel -> F);
-                    $this -> CodeString .= "M400\r\n";
+                    $this -> add_S(1);
                     // $this -> CodeString .= "M220 S100\r\n";
-                    $this -> add_G(1, Coords::get(null, null,  $cfg -> workTravel -> height), $cfg -> workTravel -> F);
-                    $this -> CodeString .= "M400\r\n";
                     // $this -> add_G(1, null, 1500);
                     // $this -> CodeString .= "M400\r\n";
                     // $this -> CodeString .= "M220 S100\r\n";
@@ -102,7 +107,8 @@
         private function getStart(){
             $cfg = ConverterConfig::get();
             $this -> CodeString = "G90\r\nG28\r\n";
-            $this -> add_G(0, Coords::get(round($cfg -> zero -> X, $this -> digits), round( $cfg -> zero -> Y, $this -> digits), 0.5), $cfg -> fastTravel -> F);
+            $this -> add_S(0);
+            $this -> add_G(0, Coords::get(round((800 + $this -> xNull) * $this -> scale, $this -> digits), round( (800 + $this -> yNull) * $this -> scale, $this -> digits), 10), $cfg -> fastTravel -> F);
             // $this -> CodeString .= "M220 S500\r\n";
             // $this -> CodeString .= "\r\nM400\r\n";
             // $this -> CodeString .= "M220 S100\r\n\r\n";
@@ -110,6 +116,7 @@
         }
         private function getEnd(){
             $cfg = ConverterConfig::get();
+            $this -> add_S(0);
             $this -> add_G(0, Coords::get(null, null, 0.1), $cfg -> fastTravel -> F);
             $this -> CodeString .= "\r\nM400\r\n";
             $this -> add_G(0, Coords::get(0.1, 0.1, 0.1), $cfg -> fastTravel -> F);

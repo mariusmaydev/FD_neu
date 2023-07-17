@@ -31,7 +31,8 @@
 			"project": {
 				"js": false,
 				"css": false,
-				"fileTree": false
+				"fileTree": false,
+                "converterProcessing": false
 			}
 		},
 		"debugging": {

@@ -10,6 +10,7 @@
     require_once $rootpath.'/fd/resources/php/converter/3Dprint/3Dprint.php';
     require_once $rootpath.'/fd/resources/php/converter/3Dprint/3DprintVase.php';
     require_once $rootpath.'/fd/resources/php/converter/3mf/3mfConverter.php';
+    require_once $rootpath.'/fd/resources/php/converter/laser/laserGCodeHelper.php';
     require_once $rootpath.'/fd/resources/php/project/project.php';
 
     class Converter {
@@ -96,6 +97,7 @@
             $ImageData = Image::get(null, $ProjectID, $UserID, false);
             $TextData = Text::get(null, $UserID, $ProjectID, false);
             // Communication::sendBack($TextData);
+            // laserGCodeHelper::genProjectImage($ProjectData, $UserID, $ImageData, $TextData);
             start($ProjectData, $UserID, $ImageData, $TextData);
             // start_generatingLaserData($_POST["StorageProject"], checkIsset($_POST["StorageImg"]), checkIsset($_POST["StorageText"]));
 

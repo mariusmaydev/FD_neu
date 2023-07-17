@@ -88,11 +88,11 @@ class DataStorageText_C {
     async saveAsync(){
       let call = new SPLINT.CallPHP(Text_C.PATH, Text_C.EDIT);
           call.data.Storage = this.parse();
-          call.send();
+        return call.send();
     }
     async save(){
       let call = new SPLINT.CallPHP(Text_C.PATH, Text_C.EDIT);
           call.data.Storage = this.parse();
-          call.sendInSequence();
+        return call.sendInSequence();
     }
   }

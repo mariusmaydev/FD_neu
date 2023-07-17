@@ -45,25 +45,6 @@
                     box-shadow: none;
                 }   
             }
-            // border-radius: 1em 1em; 
-            // > .ConverterDrawFrame {
-            //     border: 1px solid white;    
-            //     position: absolute;
-            //     // background-color: darkgray !important;
-            //     font-kerning : normal;
-            //     text-rendering: optimizeLegibility;
-            //     letter-spacing: normal;
-            //     overflow: hidden;
-            //     image-rendering: crisp-edges;
-            //     width: 100%;
-            //     height: 100%;
-            //     &[state*='passive']{
-            //         opacity: 0.5;
-            //     }
-            //     &[state*='active']{
-            //         opacity: 1.5;
-            //     }
-            // } 
             > canvas {
                 // display: none;
                 position: absolute;
@@ -76,7 +57,7 @@
                 width: 100%;
                 height: 100%;
                 &[state*='passive']{
-                    opacity: 0.5;
+                    opacity: 0.1;
                 }
                 &[state*='active']{
                     opacity: 1.5;

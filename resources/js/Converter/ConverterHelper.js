@@ -27,6 +27,7 @@ class ConverterHelper {
   static addText(){
     Text_C.new(function(txt){
       DSText.add(txt);
+      console.log(DSText, txt);
       CONVERTER_STORAGE.canvasNEW.refreshData();
       CONVERTER_STORAGE.canvasNEW.setActive(DSText.get(DSText.length() -1), "txt");
       CONVERTER_STORAGE.toolBar.update();

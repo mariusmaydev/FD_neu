@@ -8,8 +8,12 @@
 
     class DSController {
         public static function saveAll(){
-            Image::edit($_POST["img"], false);
-            Text::edit($_POST["txt"], false);
+            if(isset($_POST["img"])){
+                Image::edit($_POST["img"], false);
+            }
+            if(isset($_POST["txt"])){
+                Text::edit($_POST["txt"], false);
+            }
             Project::edit($_POST["project"]);
             Communication::sendBack(true);
         }

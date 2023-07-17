@@ -13,7 +13,7 @@ class Text_C {
               DSText.add(res);
               DSText.Storage.forEach(function(element, index) {
                 if(element.TextValue == "" || element.TextValue == "NaN"){
-                  DSText.rove(index);
+                  DSText.remove(index);
                 }
               });
                 // CONVERTER_STORAGE.canvasNEW.refreshData();

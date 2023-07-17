@@ -34,8 +34,9 @@ class Converter_closeButtons {
         let button_save = new SPLINT.DOMElement.Button(this.contentElement, "save", "speichern");
             button_save.Class("save");
             button_save.setStyleTemplate(S_Button.STYLE_NONE);
-            button_save.onclick = function(){
-                CONVERTER_STORAGE.canvasNEW.createTextData();
+            button_save.onclick = async function(){
+                await CONVERTER_STORAGE.canvasNEW.createTextData();
+                // console.dir(DSText);
                 ProjectHelper.CONVERTER_closeProject();
                 S_Location.back();
             }
@@ -110,16 +111,25 @@ class Converter_CloseOperations {
     static async Buy(){
       let projectID = DSProject.Storage.ProjectID;
       CONVERTER_STORAGE.canvasNEW.createTextData();
-      await DSText.save();
-      if(DSProject.get().State != ProjectHelper.STATE_CART){
-        projectID = (await ProjectHelper.copy(DSProject.Storage.ProjectID));
-        await ProjectHelper.changeState(projectID, ProjectHelper.STATE_CART);
-      }
-      if(DSProject.Storage.EPType == "GOLD"){
-        ShoppingCart.addItem(projectID, productHelper.LIGHTER_GOLD, 1);
-      } else {
-        ShoppingCart.addItem(projectID, productHelper.LIGHTER_CHROME, 1);
-      }
+    //   CONVERTER_STORAGE.canvasNEW.createData();
+    //   await DSController.saveAll();
+    //   await DSText.save();
+      DSText.save();
+    //   CONVERTER_STORAGE.canvasNEW.createData(1);
+      
+      DSImage.save();
+    //   DSText.save();
+      DSProject.save();
+            if(DSProject.get().State != ProjectHelper.STATE_CART){
+                projectID = (await ProjectHelper.copy(DSProject.Storage.ProjectID));
+                await ProjectHelper.changeState(projectID, ProjectHelper.STATE_CART);
+            }
+            if(DSProject.Storage.EPType == "GOLD"){
+                ShoppingCart.addItem(projectID, productHelper.LIGHTER_GOLD, 1);
+            } else {
+                ShoppingCart.addItem(projectID, productHelper.LIGHTER_CHROME, 1);
+            }
+ 
     //   console.dir(ShoppingCart.get());
       ShoppingCart.callLocation();
   
@@ -134,7 +144,7 @@ class Converter_CloseOperations {
       } else {
         ShoppingCart.editItem(projectID, productHelper.LIGHTER_CHROME);
       }
-      ShoppingCart.callLocation();
+    //   ShoppingCart.callLocation();
   
     }
   }

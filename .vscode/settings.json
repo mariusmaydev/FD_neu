@@ -284,7 +284,6 @@
 "outline.collapseItems": "alwaysCollapse",
 "liveSassCompile.settings.excludeList": [
     "/**/node_modules/**",
-    "/.vscode/**",
     "/resources/css/PUBLIC/profile/**"
 ]
 }
