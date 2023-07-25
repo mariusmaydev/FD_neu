@@ -1,19 +1,15 @@
 
 class Startup {
-    static INDEX        = "Body_ADMIN_index";
-    static DESIGN       = "Body_ADMIN_designs";
-    // static INVENTORY    = "Body_ADMIN_inventory";
-    static PRODUCTS     = "Body_ADMIN_products";
-    // static COUPONCODES  = "Body_ADMIN_couponCodes";
-    // static STATISTICS   = "Body_ADMIN_statistics";
-    // static BALANCE      = "Body_ADMIN_balance";
-    static ORDERS       = "Body_ADMIN_orders";
-    static TESTSPACE    = "Body_ADMIN_testSpace";
-    static COUPONCODES  = "Body_ADMIN_couponCodes";
-    static STATISTICS   = "Body_ADMIN_statistics";
-    static ENGRAVING    = "Body_ADMIN_engraving";
-    static LOGIN        = "Body_ADMIN_login";
-    // static MANAGEMENT   = "Body_ADMIN_management";
+    static INDEX            = "Body_ADMIN_index";
+    static DESIGN           = "Body_ADMIN_designs";
+    static PRODUCTS         = "Body_ADMIN_products";
+    static ORDERS           = "Body_ADMIN_orders";
+    static TESTSPACE        = "Body_ADMIN_testSpace";
+    static COUPONCODES      = "Body_ADMIN_couponCodes";
+    static STATISTICS       = "Body_ADMIN_statistics";
+    static ENGRAVING        = "Body_ADMIN_engraving";
+    static LOGIN            = "Body_ADMIN_login";
+    static USER_ACCOUNTS    = "Body_ADMIN_userAccounts";
     static {
         
         // document.addEventListener("visibilitychange", async function(e){
@@ -41,7 +37,7 @@ class Startup {
                 case Startup.PRODUCTS       : new ADMIN_products(); break;
                 // case Startup.COUPONCODES    : new ADMIN_couponCodes(); break;
                 // case Startup.STATISTICS     : load_Images(); break;
-                // case Startup.BALANCE        : load_Images(); break;
+                case Startup.USER_ACCOUNTS  : new ADMIN_userAccounts(); break;
                 case Startup.ORDERS         : new ADMIN_orders(); break;
                 case Startup.TESTSPACE      : new ADMIN_testSpace(); break;
                 case Startup.ENGRAVING      : new ADMIN_engraving(); break;

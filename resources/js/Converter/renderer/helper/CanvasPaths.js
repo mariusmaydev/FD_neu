@@ -20,7 +20,6 @@ class canvasPaths {
             element.ctx.fill(path2);
     }
     static updatePointPath(element, width, height, index){
-        console.log("a")
         let rotPointFunc = function(element, size, width, height){
             element.ctx.fillStyle = 'transparent';
             this.#getPointPath(element, 0 - size, -height /2 - (size*4), (size*2), (size*2), 8); 
@@ -71,7 +70,6 @@ class canvasPaths {
     static updateImgPath(element){
         this.updatePointPath(element, element.data.ImageWidth, element.data.ImageHeight);
         
-        console.log("b");
         // element.ctx_S.translate(element.data.ImagePosX, element.data.ImagePosY);
         // element.ctx_S.rotate(element.data.ImageAlign * Math.PI/180);
         let mat = new DOMMatrix().translate(element.data.ImagePosX, element.data.ImagePosY).rotate(element.data.ImageAlign );
@@ -112,10 +110,9 @@ class canvasPaths {
     static updateTxtPath(element){
         this.updatePointPath(element, element.data.FrameWidth, element.data.FrameHeight, 8);
         
-        console.log("b");
         // element.ctx_S.translate(element.data.ImagePosX, element.data.ImagePosY);
         // element.ctx_S.rotate(element.data.ImageAlign * Math.PI/180);
-        let mat = new DOMMatrix().translate(element.data.TextPosX, element.data.TextPosY).rotate(element.data.TextAlign );
+        let mat = new DOMMatrix().translate(element.data.TextPosX, element.data.TextPosY).rotate(element.data.TextAlign ).scale(2);
         
         let path = new Path2D();
             path.rect(-element.data.FrameWidth / 2, -element.data.FrameHeight / 2, element.data.FrameWidth, element.data.FrameHeight);
@@ -152,7 +149,7 @@ class canvasPaths {
           if(thumbnailFlag){
               ctx.lineWidth = 1;
           } else {
-              ctx.lineWidth = 0.5;
+              ctx.lineWidth = 1;
           }
           ctx.strokeStyle = DSProject.getColorFor(DSProject.Storage.EPType);
           ctx.fillStyle = DSProject.getColorFor(DSProject.Storage.EPType);
@@ -160,7 +157,6 @@ class canvasPaths {
           let metrics     = 0;
           let max_width   = 0;
           let height      = 0;
-          console.log(element.data.TextLineHeight);
           let max_height  = 0;
           let lines = element.data.TextValue.split('\n');
           for(let i = 0; i < lines.length; i++){
@@ -202,7 +198,7 @@ class canvasPaths {
           }
           // ctx.strokeStyle = "red";
           ctx.rect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
-          // ctx.strokeRect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
+        //   ctx.strokeRect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
           
           element.data.FrameHeight     = ((lines.length) * (max_height));
           element.data.FrameWidth      = max_width;

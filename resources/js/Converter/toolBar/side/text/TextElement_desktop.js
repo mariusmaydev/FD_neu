@@ -39,12 +39,26 @@ class ToolBar_TextElement {
           this.TOOLS.setValue(this.input_text.Value);
         }.bind(this);
         this.input_text.setValue(this.data.TextValue);
+        // this.input_text.setLabel("text")
 
         
+        this.toolsBody = new SPLINT.DOMElement(this.data.TextID + "_toolsBody", "div", this.mainElement);
+        this.toolsBody.Class("toolsBody");
 
-        this.fontFamilyDropDown = new SPLINT.DOMElement.InputDropDown(this.mainElement, "Schriftart");
-        this.fontFamilyDropDown.addEntry("Arial", "arial");
-        this.fontFamilyDropDown.addEntry("Impact", "impact");
+        this.fontFamilyDropDown = new SPLINT.DOMElement.InputDropDown(this.toolsBody, "Schriftart");
+        let f = function(entry, value){
+            entry.span.style.fontFamily = value;
+        }
+
+        this.fontFamilyDropDown.addEntry("Arial", "arial", f);
+        this.fontFamilyDropDown.addEntry("Impact", "impact", f);
+        this.fontFamilyDropDown.addEntry("Verdana", "verdana", f);
+        this.fontFamilyDropDown.addEntry("Trebuchet MS", "Trebuchet MS", f);
+        this.fontFamilyDropDown.addEntry("Times New Roman", "Times New Roman", f);
+        this.fontFamilyDropDown.addEntry("Georgia", "Georgia", f);
+        this.fontFamilyDropDown.addEntry("Garamond", "Garamond", f);
+        this.fontFamilyDropDown.addEntry("Courier New", "Courier New", f);
+        this.fontFamilyDropDown.addEntry("Brush Script MT", "Brush Script MT", f);
 
         this.fontFamilyDropDown.onValueChange = function(v){
                 this.TOOLS.fontFamily(v);
@@ -59,7 +73,7 @@ class ToolBar_TextElement {
 
     }
     drawButtons(){
-        let buttonsDiv = new SPLINT.DOMElement(this.TextID + "_buttonsDiv", "div", this.mainElement);
+        let buttonsDiv = new SPLINT.DOMElement(this.TextID + "_buttonsDiv", "div", this.toolsBody);
             buttonsDiv.Class("buttonsDiv");
             this.PARTS.BT_remove(buttonsDiv);
             let bt_italic = this.PARTS.BT_italic(buttonsDiv);
@@ -116,7 +130,7 @@ class ToolBar_TextElement {
     }
     drawSlider(){
         //Line Height
-        this.sl_lineHeight = new Slider(this.mainElement, "lineHeight_" + this.TextID, "Zeilenabstand");
+        this.sl_lineHeight = new Slider(this.toolsBody, "lineHeight_" + this.TextID, "Zeilenabstand");
         this.sl_lineHeight.drawTickMarks = false;
         this.sl_lineHeight.min    = 10;
         this.sl_lineHeight.max    = 100;
@@ -127,7 +141,7 @@ class ToolBar_TextElement {
         }.bind(this);
 
         //Font Weight
-        this.sl_fontWeight = new Slider(this.mainElement, "fontWeight_" + this.TextID, "Schriftstärke");
+        this.sl_fontWeight = new Slider(this.toolsBody, "fontWeight_" + this.TextID, "Schriftstärke");
         this.sl_fontWeight.drawTickMarks = false;
         this.sl_fontWeight.min    = 100;
         this.sl_fontWeight.step   = 100; 
@@ -139,17 +153,60 @@ class ToolBar_TextElement {
         }.bind(this);
 
         //Font Size
-        this.sl_fontSize = new Slider(this.mainElement, "fontSize_" + this.TextID, "Schriftgröße");
+        this.sl_fontSize = new Slider(this.toolsBody, "fontSize_" + this.TextID, "Schriftgröße");
         this.sl_fontSize.drawTickMarks = false;
         this.sl_fontSize.min            = 0.5;
         this.sl_fontSize.max            = 20;
         this.sl_fontSize.step           = 0.5; 
         this.sl_fontSize.value          = Math.round(MATH_convert.px2pt(S_Math.divide(this.data.FontSize, 10)) * 2) / 2;
-        this.sl_fontSize.valueExtension = "pt";
+        this.sl_fontSize.valueExtension = "";
         this.sl_fontSize.oninput = function(value){
             this.data.FontSize = Math.round(MATH_convert.pt2px(S_Math.multiply(value, 10)) * 2) / 2;
             CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt");
         }.bind(this);
+        
+        //rotation
+        this.sl_rotationBody = new SPLINT.DOMElement(this.TextID + "_rotationDiv", "div", this.toolsBody);
+        this.sl_rotationBody.Class("rotationBody");
+            this.sl_rotation = new Slider(this.sl_rotationBody, "rotation_" + this.TextID, "Drehung");
+            this.sl_rotation.drawTickMarks = false;
+            this.sl_rotation.min    = -180;
+            this.sl_rotation.max    = 180;
+            this.sl_rotation.value  = this.data.TextAlign;
+            this.sl_rotation.oninput = function(value){
+                this.data.TextAlign = value;
+                CONVERTER_STORAGE.canvasNEW.refreshData();
+                // ConverterHelper.filter(DSImage.getIndex(this.ImageID));
+            }.bind(this);
+            let rotationButtonsBody = new SPLINT.DOMElement(this.TextID + "_rotationButtonsBody", "div", this.sl_rotationBody);
+                rotationButtonsBody.Class("ContainerBody");
+                let rotationButtonsContainer = new SPLINT.DOMElement(this.TextID + "_rotationButtonsContainer", "div", rotationButtonsBody);
+                    rotationButtonsContainer.Class("container");
+
+                    let buttonR90 = new SPLINT.DOMElement.Button(rotationButtonsContainer, "R90", "-90°");
+                        buttonR90.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_DEFAULT);
+                        buttonR90.onclick = function(){
+                            this.data.TextAlign = -90;
+                            this.sl_rotation.value = -90;
+                            CONVERTER_STORAGE.canvasNEW.refreshData();
+                        }.bind(this);
+                    let buttonzero = new SPLINT.DOMElement.Button(rotationButtonsContainer, "reset", 0);
+                        buttonzero.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_DEFAULT);
+                        buttonzero.onclick = function(){
+                            this.data.TextAlign = 0;
+                            this.sl_rotation.value = 0;
+                            CONVERTER_STORAGE.canvasNEW.refreshData();
+                        }.bind(this);
+
+                    let button90 = new SPLINT.DOMElement.Button(rotationButtonsContainer, "90", "+90°");
+                        button90.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_DEFAULT);
+                        button90.onclick = function(){
+                            this.data.TextAlign = 90;
+                            this.sl_rotation.value = 90;
+                            CONVERTER_STORAGE.canvasNEW.refreshData();
+                        }.bind(this);
+                let rotationButtonsEmpty = new SPLINT.DOMElement(this.TextID + "_rotationsButtonEmpty", "div", rotationButtonsBody);
+                    rotationButtonsEmpty.Class("empty");
     }
     blur(){
         this.mainElement.state().unsetActive();

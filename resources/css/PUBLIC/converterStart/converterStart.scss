@@ -114,7 +114,7 @@ body {
                 // max-width: 10%;
                 // grid-row: 1;
                 grid-column: 1;
-                margin-top: 0.5rem;
+                margin-top: 1rem;
                 > .buttonsContent {
                     position: relative;
                     width: 100%;
@@ -122,12 +122,22 @@ body {
                     > div {
                         position: relative;
                         box-sizing: border-box;
+                        overflow: hidden;
                         @include T_container();
-                        background-color: transparent;
-                        box-shadow: none;
+                        background-color: rgb(230, 230, 230);
+                        @include box-shadow(0, black, 0.6);
+                        // box-shadow: none;
                         padding: 0;
-                        margin: 0.5em;
-                        margin-bottom: 0.5rem;
+                        padding-top: 0.5em;
+                        padding-bottom: 0.25em;
+                        // border-top-right-radius: 0.5em;
+                        border-radius: 0em;
+                        // border-bottom-right-radius: 0.5em;
+                        margin: 0;
+                        padding-right: 1em;
+                        padding-left: 0.5em;
+                        margin-bottom: 1rem;
+                        margin-left: 0.5em;
                         // overflow: hidden;
                         // height: 10px;
                         // transition: height 0.5s ease-in;
@@ -137,21 +147,46 @@ body {
                         > button {
                             position: relative;
                             box-sizing: border-box;
+                            box-shadow: none;
+                            // border-bottom: 1px solid black;
                             margin: 0;
+                            background-color: transparent;
 
                             // padding: 0;
                             width: 100%;
                             height: 100%;
+                            // padding: 0;
+                            // padding-top: 0.5em;
+                            // padding-bottom: 0.25em;
+                            // border-top-right-radius: 1em;
+                            // border-bottom-right-radius: 1em;
+                            // margin: 0;
+                            padding-right: 1em;
+                            padding-left: 1em;
+                            margin-bottom: 0.25rem;
+                            &[state*='active']{
+                                > span {
+                                    color: $color-primary-Dark;
+                                }
+                            }
                             > span {
                                 font-size: 1.5em;
                             }
                         }
                         > div {
                             @include T_container();
+                            background-color: transparent;
+                            box-shadow: none;
                             padding: 0.4rem;
                             // padding-top: 0;
-                            margin-top: 0.3rem;
-                            width: calc(100% - 0.8rem);
+                            border-top: 1px solid rgb(63, 63, 63);
+                            margin-top: 0rem;
+                            padding-left: 0.4rem;
+                            // margin-left: 0.4rem;
+                            width: calc(100% - 0.4rem);
+                            &[ishidden*='true']{
+                                border-top: none;
+                            }
                         }
                         @include ProjectCategoryMenu-desktop();
                     }

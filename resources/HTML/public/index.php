@@ -29,7 +29,10 @@
         <!-- End Google Tag Manager (noscript) -->
         <div class="NavigationBar" id="NavigationBar" ></div>
 
-        <s-part first src="/js/GLOBAL/Paths.js"></s-part>
+        <script src="../../../../Splint/lib/touchEmulator/touch-emulator.js"></script>
+        <script> TouchEmulator();</script>
+            <!-- <script defer src = "projects_test.js"></script> -->
+                    <s-part first src="/js/GLOBAL/Paths.js"></s-part>
         <s-part src="/js/GLOBAL/global_Helper.js"></s-part>
         <s-part src="/js/assets/functionsShoppingCart.js"></s-part>
 

@@ -54,13 +54,17 @@ class ToolBar_ImageElement {
         this.imgEle.Class("imgDiv");
             this.img = new SPLINT.DOMElement(this.ImageID + "_img", "img", this.imgEle);
             this.img.src = this.data.images.scale;
+            
+        this.toolsBody = new SPLINT.DOMElement(this.ImageID + "_toolsBody", "div", this.mainElement);
+        this.toolsBody.Class("toolsBody");
+
         this.drawButtons();
         this.drawSlider();
         this.drawSpinner();
     }
     drawButtons(){
         
-        let buttonsDiv = new SPLINT.DOMElement(this.ImageID + "_buttonsDiv", "div", this.mainElement);
+        let buttonsDiv = new SPLINT.DOMElement(this.ImageID + "_buttonsDiv", "div", this.toolsBody);
             buttonsDiv.Class("buttonsDiv");
             this.PARTS.BT_remove(buttonsDiv);
             this.PARTS.BT_copy(buttonsDiv);
@@ -69,7 +73,7 @@ class ToolBar_ImageElement {
     }
     drawSlider(){
         //Contrast
-        this.sl_contrast = new Slider(this.mainElement, "contrast_" + this.ImageID, "Kontrast");
+        this.sl_contrast = new Slider(this.toolsBody, "contrast_" + this.ImageID, "Kontrast");
         this.sl_contrast.drawTickMarks = false;
         this.sl_contrast.min    = 0;
         this.sl_contrast.max    = 10;
@@ -80,7 +84,7 @@ class ToolBar_ImageElement {
         }.bind(this);
 
         //Antialiasing
-        this.sl_antialiasing = new Slider(this.mainElement, "antialiasing_" + this.ImageID, "Glättung");
+        this.sl_antialiasing = new Slider(this.toolsBody, "antialiasing_" + this.ImageID, "Glättung");
         this.sl_antialiasing.drawTickMarks = false;
         this.sl_antialiasing.min    = 0;
         this.sl_antialiasing.max    = 10;
@@ -91,7 +95,7 @@ class ToolBar_ImageElement {
         }.bind(this);
 
         //Sharpness
-        this.sl_sharpness = new Slider(this.mainElement, "sharpness_" + this.ImageID, "Schärfe");
+        this.sl_sharpness = new Slider(this.toolsBody, "sharpness_" + this.ImageID, "Schärfe");
         this.sl_sharpness.drawTickMarks = false;
         this.sl_sharpness.min    = 0;
         this.sl_sharpness.max    = 10;
@@ -102,17 +106,48 @@ class ToolBar_ImageElement {
         }.bind(this);
 
         //Align
-        this.sl_rotation = new Slider(this.mainElement, "rotation_" + this.ImageID, "Drehung");
-        this.sl_rotation.drawTickMarks = false;
-        this.sl_rotation.min    = -180;
-        this.sl_rotation.max    = 180;
-        this.sl_rotation.value  = this.data.ImageAlign;
-        this.sl_rotation.oninput = function(value){
-            console.log("a")
-            this.data.ImageAlign = value;
-            CONVERTER_STORAGE.canvasNEW.refreshData();
-            // ConverterHelper.filter(DSImage.getIndex(this.ImageID));
-        }.bind(this);
+        this.sl_rotationBody = new SPLINT.DOMElement(this.ImageID + "_rotationDiv", "div", this.toolsBody);
+        this.sl_rotationBody.Class("rotationBody");
+            this.sl_rotation = new Slider(this.sl_rotationBody, "rotation_" + this.ImageID, "Drehung");
+            this.sl_rotation.drawTickMarks = false;
+            this.sl_rotation.min    = -180;
+            this.sl_rotation.max    = 180;
+            this.sl_rotation.value  = this.data.ImageAlign;
+            this.sl_rotation.oninput = function(value){
+                this.data.ImageAlign = value;
+                CONVERTER_STORAGE.canvasNEW.refreshData();
+                // ConverterHelper.filter(DSImage.getIndex(this.ImageID));
+            }.bind(this);
+            let rotationButtonsBody = new SPLINT.DOMElement(this.ImageID + "_rotationButtonsBody", "div", this.sl_rotationBody);
+                rotationButtonsBody.Class("ContainerBody");
+                let rotationButtonsContainer = new SPLINT.DOMElement(this.ImageID + "_rotationButtonsContainer", "div", rotationButtonsBody);
+                    rotationButtonsContainer.Class("container");
+
+                    let buttonR90 = new SPLINT.DOMElement.Button(rotationButtonsContainer, "R90", "-90°");
+                        buttonR90.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_DEFAULT);
+                        buttonR90.onclick = function(){
+                            this.data.ImageAlign = -90;
+                            this.sl_rotation.value = -90;
+                            CONVERTER_STORAGE.canvasNEW.refreshData();
+                        }.bind(this);
+                    let buttonzero = new SPLINT.DOMElement.Button(rotationButtonsContainer, "reset", 0);
+                        buttonzero.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_DEFAULT);
+                        buttonzero.onclick = function(){
+                            this.data.ImageAlign = 0;
+                            this.sl_rotation.value = 0;
+                            CONVERTER_STORAGE.canvasNEW.refreshData();
+                        }.bind(this);
+
+                    let button90 = new SPLINT.DOMElement.Button(rotationButtonsContainer, "90", "+90°");
+                        button90.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_DEFAULT);
+                        button90.onclick = function(){
+                            this.data.ImageAlign = 90;
+                            this.sl_rotation.value = 90;
+                            CONVERTER_STORAGE.canvasNEW.refreshData();
+                        }.bind(this);
+                let rotationButtonsEmpty = new SPLINT.DOMElement(this.ImageID + "_rotationsButtonEmpty", "div", rotationButtonsBody);
+                    rotationButtonsEmpty.Class("empty");
+
     }
     blur(){
         this.mainElement.state().unsetActive();

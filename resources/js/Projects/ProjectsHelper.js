@@ -69,8 +69,12 @@ class ProjectHelper extends SPLINT.CallPHP.Manager {
     static Design(projectID = null, userID = null){
       return new ProjectHelper_Design(projectID, userID);
     }
-    static getPath2Project(UserID, projectID){
-      return SSL + "//" + domain + "/" + folder + "/data/Users/" + UserID + "/projects/" + projectID;
+    static getPath2Project(UserID, projectID, domainFlag = true){
+        let domainStart = "";
+        if(domainFlag){
+            domainStart = SSL + "//" + domain + "/";
+        }
+      return domainStart + folder + "/data/Users/" + UserID + "/projects/" + projectID;
     }
     static getPath2ProjectArchive(UserID, projectID, orderID){
       return SSL + "//" + domain + "/" + folder + "/data/Archive/Orders/" + orderID + "/" + UserID + "/projects/" + projectID;

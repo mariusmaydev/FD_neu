@@ -112,9 +112,10 @@ class drawCartList {
                 let buttonRemove = new SPLINT.DOMElement.Button(ButtonsInner, "remove");
                 buttonRemove.bindIcon("delete");
                 buttonRemove.button.Class("remove");
-                buttonRemove.onclick = function(){
-                    ShoppingCart.removeItem(item.ProjectID);
+                buttonRemove.onclick = async function(){
+                    await ShoppingCart.removeItem(item.ProjectID);
                     ShoppingCart.drawPrices();
+                    console.log(ShoppingCart.get())
                     listElement.remove();
                 }.bind(this);
                 buttonRemove.button.setTooltip("entfernen", "top");

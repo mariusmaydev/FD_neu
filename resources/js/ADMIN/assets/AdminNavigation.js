@@ -19,7 +19,7 @@ class ADMIN_NavigationMenu {
       this.createSubElement("testSpace", "TestSpace");
       this.createSubElement("couponCodes", "Rabattcodes");
       this.createSubElement("login", "Administratorkonten");
-      // this.createSubElement("dataBase", "Datenbanken");
+      this.createSubElement("userAccounts", "Nutzerkonten");
       // this.createSubElement("management", "Verwaltung");
     }
     #computeParentID(name){

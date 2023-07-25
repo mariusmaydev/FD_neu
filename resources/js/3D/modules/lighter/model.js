@@ -1,9 +1,26 @@
 
-import * as THREE from 'three';
+// import { Cache, ShaderMaterial } from 'three';
 import SPLINT from 'SPLINT';
 import * as MATERIALS from '../assets/materials/materials.js';
 import S_MATERIALS from '@SPLINT_THREE_DIR/materials/M_materials.js';
 import SETUP from './setup.js';
+import {
+    Cache,
+    Vector3,
+    Matrix4,
+    SphereGeometry,
+    Box3,
+    Mesh,
+    ShaderMaterial
+} from 'three';
+// import { Cache } from "@THREE_ROOT_DIR/src/loaders/Cache.js";
+// import { Vector3 } from "@THREE_ROOT_DIR/src/math/Vector3.js";
+// import { Matrix4 } from "@THREE_ROOT_DIR/src/math/Matrix4.js";
+// import { SphereGeometry } from "@THREE_ROOT_DIR/src/geometries/SphereGeometry.js";
+// import { Box3 } from "@THREE_ROOT_DIR/src/math/Box3.js";
+// import { Mesh } from "@THREE_ROOT_DIR/src/objects/Mesh.js";
+import * as THC from "@THREE_ROOT_DIR/src/constants.js";
+// import { ShaderMaterial } from "@THREE_ROOT_DIR/src/materials/ShaderMaterial.js";
 // import * as TEXTURES from '../assets/materials/textures.js';
 // import { SVGLoader } from '@THREE_MODULES_DIR/loaders/SVGLoader.js';
 // import { TWEEN } from '@THREE_MODULES_DIR/libs/tween.module.min.js'
@@ -16,10 +33,10 @@ export default class Model {
     static loaded = false;
 
     static async init(instance, name = "lighter", loaderCount = 1, GoldFlag = true){
-        THREE.Cache.enabled = true;
+        Cache.enabled = true;
         // if(FLAG_sceneLoaded < loaderCount){
             let SRCscene = null;
-            const pos = new THREE.Vector3( 0, 0, 0 );
+            const pos = new Vector3( 0, 0, 0 );
             // Model.loaded = new Promise(function(resolve){
                 
             //     SRCscene = Model.load(SPLINT.resources.models.lighter_glb.scene.clone(), pos);
@@ -116,7 +133,7 @@ export default class Model {
                 // element.children[0].material.roughness = 0;
                 // element.children[0].material.metalness = 0.5;
                 // element.children[0].material.dithering = false;
-                element.children[0].geometry.applyMatrix4( new THREE.Matrix4().makeTranslation( 1.919, 0, 0 ) );
+                element.children[0].geometry.applyMatrix4( new Matrix4().makeTranslation( 1.919, 0, 0 ) );
                 // element.children[0].position.y = -0.001; 
                 element.children[0].position.x = -0.01919; 
                 //element.children[0].rotation.z = -134 * Math.PI / 180;
@@ -130,10 +147,10 @@ export default class Model {
                 // element.children[0].geometry.applyMatrix4( new THREE.Matrix4().makeTranslation( 1.919, 0, 0 ) );
                 // // element.children[0].position.y = -0.001; 
                 // element.children[0].position.x = -0.01919; 
-                element.children[0].geometry.applyMatrix4( new THREE.Matrix4().makeTranslation( 0, -2.08, -0.475 ) );
+                element.children[0].geometry.applyMatrix4( new Matrix4().makeTranslation( 0, -2.08, -0.475 ) );
                 element.children[0].position.z = 0.00475; 
                 element.children[0].position.y = 0.0208; 
-                let boundingBox = new THREE.Box3().setFromObject(element.children[0])
+                let boundingBox = new Box3().setFromObject(element.children[0])
                 element.children[0].rotation.x = -135 * Math.PI / 180;
             } break;
             case 'verbindung_unten1'    : {
@@ -192,7 +209,7 @@ export default class Model {
             case 'Feuerstein1'          : element.children[0].material = S_MATERIALS.chrome(); break;
             case 'Scharnier1'          : {
                 element.children[0].material = S_MATERIALS.chrome(0xc2c2c2);
-                element.children[0].geometry.applyMatrix4( new THREE.Matrix4().makeTranslation( 7.573, 0, -11.183 ) );
+                element.children[0].geometry.applyMatrix4( new Matrix4().makeTranslation( 7.573, 0, -11.183 ) );
                 element.children[0].rotation.y = 105 * Math.PI / 180;
                 element.position.x = -0.0135; 
                 // element.children[0].position.y = 0; 
@@ -212,11 +229,11 @@ export default class Model {
         // flame
         var flameMaterials = [];
         function flame(isFrontSide){
-            let flameGeo = new THREE.SphereGeometry(0.5, 32, 32);
+            let flameGeo = new SphereGeometry(0.5, 32, 32);
                 flameGeo.translate(0, 0.5, 0);
             let flameMat = getFlameMaterial(true);
                 flameMaterials.push(flameMat);
-            let flame = new THREE.Mesh(flameGeo, flameMat);
+            let flame = new Mesh(flameGeo, flameMat);
             flame.position.set(0.0, 3.6, 0.00);
             flame.rotation.y = -45 *(Math.PI / 180);
             flame.name = "flame";
@@ -274,7 +291,6 @@ export default class Model {
     static async getThumbnail(scene, instance, src , name = "", color = 0xe8b000, isHidden = false){
         let double = false;
         let material = null;
-        console.dir(scene);
             return MATERIALS.Lighter.Engraving3(instance, src, undefined, color, async function(texture, mat = null){
                 if(mat != null){
                     material = mat;
@@ -290,7 +306,6 @@ export default class Model {
                     // plane1.plane.scale.set(10, 10, 10);
                     plane1.get().material.needsUpdate = true;
                     plane1.get().name = name;
-                    console.dir(scene);
                     scene.children[0].children[0].add(plane1.get()); 
 
                 let plane2 = SPLINT.object.Plane(3.4/1000, 3.169/1000, 1, 1);
@@ -364,8 +379,8 @@ export default class Model {
 }
 
 function getFlameMaterial(isFrontSide){
-    let side = isFrontSide ? THREE.FrontSide : THREE.BackSide;
-    return new THREE.ShaderMaterial({
+    let side = isFrontSide ? THC.FrontSide : THC.BackSide;
+    return new ShaderMaterial({
       uniforms: {
         time: {value: 0}
       },

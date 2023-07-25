@@ -1,6 +1,7 @@
 
-import * as THREE from 'three';
+// import * as THREE from 'three';
 import SPLINT from 'SPLINT';
+import * as THC from "@THREE_ROOT_DIR/src/constants.js";
 import SRC from '../Helper.js';
 
 export class Lighter_textures {
@@ -12,14 +13,14 @@ export class Lighter_textures {
         texture = src.clone();
       }
 
-          texture.wrapS = THREE.RepeatWrapping;
-          texture.wrapT = THREE.RepeatWrapping;
+          texture.wrapS = THC.RepeatWrapping;
+          texture.wrapT = THC.RepeatWrapping;
           // texture.repeat.set(1, 0.6156);
           texture.flipY = false;
-          texture.mapping = THREE.EquirectangularRefractionMapping;
+          texture.mapping = THC.EquirectangularRefractionMapping;
           // texture.generateMipmaps = false;
-          texture.magFilter = THREE.LinearFilter;
-          texture.minFilter = THREE.LinearMipMapLinearFilter;
+          texture.magFilter = THC.LinearFilter;
+          texture.minFilter = THC.LinearMipMapLinearFilter;
           texture.anisotropy = instance.renderer.capabilities.getMaxAnisotropy();
 
       return texture;

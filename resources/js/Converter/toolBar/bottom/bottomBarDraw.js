@@ -29,6 +29,7 @@ class BottomBar_Draw {
 
     }
     unsetFocus(){
+        this.clear();
         this.renderStandard.draw();
     }
     clear(){

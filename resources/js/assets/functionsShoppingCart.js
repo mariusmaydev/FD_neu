@@ -131,8 +131,8 @@ class ShoppingCart {
       }
     }
     NavBar.updateCart(cartData);
-    ShoppingCart.set(JSON.stringify(cartData));
-    ProjectHelper.remove(projectID);
+    await ShoppingCart.set(JSON.stringify(cartData));
+    await ProjectHelper.remove(projectID);
   }
   static async getFullPrice(cartObject){
     let fullPrice = 0;

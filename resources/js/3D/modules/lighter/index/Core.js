@@ -1,4 +1,7 @@
-import * as THREE from 'three';
+// import * as THREE from 'three';
+// import { Fog } from "@THREE_ROOT_DIR/src/scenes/Fog.js";
+// import { PerspectiveCamera } from "@THREE_ROOT_DIR/src/cameras/PerspectiveCamera.js";
+// import { Color } from "@THREE_ROOT_DIR/src/math/Color.js";
 import SPLINT from 'SPLINT';
 import * as MATERIALS from '../../assets/materials/materials.js';
 import LIGHT from './light.js';
@@ -7,6 +10,11 @@ import LighterAnimations from '../animations.js';
 import SETUP from '../setup.js';
 import MODEL from '../model.js';
 import Communication from './communication.js';
+import {
+    PerspectiveCamera,
+    Color,
+    Fog
+} from 'three';
 
 export class draw {
     static get(canvas){
@@ -56,7 +64,7 @@ export class draw {
         // this.thumbnailSRC_specularMap = SPLINT.resources.textures.lighter_engraving_specularMap.clone();
         // this.thumbnailSRC_displacementMap = SPLINT.resources.textures.lighter_engraving_displacementMap.clone();
         // console.log(SPLINT.resources.textures.lighter_engraving_thumbnail);
-        this.scene.fog = new THREE.Fog(0xffefe2, 4, 10);
+        this.scene.fog = new Fog(0xffefe2, 4, 10);
         this.mouseHandler = SPLINT.MouseHandler( this.canvas );
         this.Animations = new LighterAnimations(this);
         this.compressedAnimations = new CompressedAnimations(this);
@@ -68,11 +76,11 @@ export class draw {
     }
     setupCamera(){
         if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
-            this.camera     = new THREE.PerspectiveCamera(50, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
+            this.camera     = new PerspectiveCamera(50, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
             // this.camera.position.set(0, 0.4, 4);
             this.camera.position.set(0, 0.18, 0.7);
         } else {
-            this.camera     = new THREE.PerspectiveCamera(10, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
+            this.camera     = new PerspectiveCamera(10, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
             this.camera.position.set(-0.15, 0.35, 3.5);
         }
         this.camera.name = "camera";
@@ -128,7 +136,7 @@ export class draw {
         this.context.drawImage(domE, 0, 0, domE.width, domE.height, 0, 0, this.canvas.width, this.canvas.height);
     }
     drawBackground(){
-        this.scene.background = new THREE.Color( 0xffffff);
+        this.scene.background = new Color( 0xffffff);
         let plane = SPLINT.object.Plane(1000, 1600, 1, 1);
         plane.get().geometry.translate(0, -799, 0);
         // plane.position(0, 0, -15);

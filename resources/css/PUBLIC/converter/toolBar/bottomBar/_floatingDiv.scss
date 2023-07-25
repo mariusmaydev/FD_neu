@@ -83,16 +83,28 @@
             justify-content: center;
             overflow: visible;
             > .S-SliderMain {
+                display: flex;
+                flex-direction: column;
+                justify-content: stretch;
+                align-items: stretch;
+                // padding: 0.5em;
                 text-align: center;
+                margin-top: 0em;
+                margin-bottom: 0.5em;
                 > .label {
-                    width: max-content;
-                    margin-left: auto;
-                    margin-right: auto;
+                    margin-top: 0.4em;
+                    margin-bottom: 0.2em;
+                    position: relative;
+                    width: 100%;
+                    display: inline-block;
+                    box-sizing: border-box;
+                    text-align: center;
                     > span {
 
                     }
                 }
                 > .contentBody {
+                    margin-bottom: 0.5em;
                     margin-left: auto;
                     margin-right: auto;
                     width: 90%;
@@ -100,7 +112,89 @@
                         width: 100%;
                     }
                     > .valueOutput {
-                        width: max-content;
+                        position: relative;
+                        order: 2;
+                        font-size: 1.1em;
+                        height: max-content;
+                        &[hidden='true']{
+                            display: none;
+                        }
+                        top: -0.1em;
+                        width: 1.5em;
+                        display: inline-block;
+                        box-sizing: border-box;
+                        text-align: center;
+                        margin-top: auto;
+                        > span {
+                        }
+                    }
+                }
+            }
+            > .rotationBody {
+                > .S-SliderMain {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: stretch;
+                    align-items: stretch;
+                    > .label {
+                        position: relative;
+                        width: 100%;
+                        display: inline-block;
+                        box-sizing: border-box;
+                        text-align: center;
+                        > span {
+                
+                        }
+                    }
+                    > .contentBody {
+                        display: flex;
+                        justify-content: stretch;
+                        align-items: stretch;
+                        
+                        margin-left: auto;
+                        margin-right: auto;
+                        width: 90%;
+                        > .sliderBody {
+                            width: 100%;
+                            > input {
+
+                            }
+                        }
+                        > .valueOutput {
+                            position: relative;
+                            order: 2;
+                            font-size: 1.1em;
+                            height: max-content;
+                            &[hidden='true']{
+                                display: none;
+                            }
+                            top: -0.1em;
+                            width: 1.5em;
+                            display: inline-block;
+                            box-sizing: border-box;
+                            text-align: center;
+                            margin-top: auto;
+                            > span {
+                            }
+                        }
+                    }
+                }
+                > .ContainerBody {
+                    display: flex;
+                    justify-content: center;
+                    > .container {
+                        width: 80%;
+                        display: flex;
+                        justify-content: stretch;
+                        > button {
+                            width: 100%;
+                            > span {
+
+                            }
+                        }
+                    }
+                    > .empty {
+                        display: none;
                     }
                 }
             }

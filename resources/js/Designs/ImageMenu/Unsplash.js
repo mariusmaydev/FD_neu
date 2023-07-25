@@ -34,6 +34,20 @@ class unsplash {
      })
      .catch(error => console.log(error));
   }
+  static test1(){
+
+    let instance = new unsplash(function(response){});
+    instance.test();
+    return instance;
+  }
+  test(){
+    this.url = "https://api.unsplash.com/photos/mpwF3Mv2UaU" + 
+    '?per_page=' + 10 + 
+    '&page=' + 1 + 
+    '&client_id=' + this.client_id;   
+    this.response = this.#call(true);
+    return this;
+  }
   getStartImages(){
     this.url = this.urlBaseStart + 
     '?per_page=' + this.count + 
@@ -41,7 +55,7 @@ class unsplash {
     '&client_id=' + this.client_id;   
     this.response = this.#call(true);
     return this;
-  }
+  }//mpwF3Mv2UaU
   search(value){
     this.value = value;
     if(value == "" || value == undefined){

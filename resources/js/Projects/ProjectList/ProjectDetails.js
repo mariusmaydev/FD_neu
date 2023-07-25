@@ -6,7 +6,7 @@ class ProjectDetails {
         this.data = data;
         this.mainElement = null;
     }
-    async show(){
+    async show(drawButtons = true){
         this.productData = await productHelper.getProductData(this.data.Product);
         console.log(this.productData);
         this.mainElement = new SPLINT.DOMElement.popupWindow(this.id, true)
@@ -25,7 +25,10 @@ class ProjectDetails {
             this.lighter.saveContext = false;
             // this.lighter.canvas.setAttribute("showDimensions", true);
                 this.drawInformation();
-                this.drawButtons();
+                if(drawButtons){
+                    this.drawButtons();
+
+                }
             
             // listElement.lighter = lighter;
             // listElement.setAttribute("state", data.State);

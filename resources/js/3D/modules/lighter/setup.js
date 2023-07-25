@@ -1,5 +1,12 @@
-import * as THREE from 'three';
+// import * as THREE from 'three';
 import SPLINT from 'SPLINT';
+import * as THC from "@THREE_ROOT_DIR/src/constants.js";
+import {
+    Scene,
+    WebGLRenderer
+} from 'three';
+// import { Scene } from "@THREE_ROOT_DIR/src/scenes/Scene.js";
+// import { WebGLRenderer } from "@THREE_ROOT_DIR/src/renderers/WebGLRenderer.js";
 import { OrbitControls } from '@THREE_MODULES_DIR/controls/OrbitControls.js';
 import MODEL from './model.js';
 
@@ -19,9 +26,9 @@ export default class setup {
             this.inst.canvas.style.width = (a) + "px";
             this.inst.canvas.style.height = (b) + "px";
         if(setup.RENDERER == null || newFlag){
-            this.inst.renderer   = new THREE.WebGLRenderer({antialias: true, alpha: true});
+            this.inst.renderer   = new WebGLRenderer({antialias: true, alpha: true});
             this.inst.renderer.shadowMap.enabled = true
-            this.inst.renderer.shadowMap.type = THREE.VSMShadowMap
+            this.inst.renderer.shadowMap.type = THC.VSMShadowMap
             this.inst.renderer.shadowMap.soft = true;
             this.inst.renderer.shadowMap.needsUpdate = true;
             // this.inst.renderer.gammaFactor = 0.5;
@@ -46,7 +53,7 @@ export default class setup {
     }
     scene(sceneName = "scene"){
         // if(SPLINT.resources.models.lighter_glb[sceneName] == undefined){
-            this.inst.scene      = new THREE.Scene();
+            this.inst.scene      = new Scene();
         // } else {
         //     this.inst.scene = SPLINT.resources.models.lighter_glb[sceneName].clone();
         // }

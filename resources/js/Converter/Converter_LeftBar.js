@@ -62,8 +62,17 @@ class Converter_LeftBar {
   buttonProductInformation(){
     this.button_ProductInformation = new SPLINT.DOMElement.Button(this.contentElement, "ProductInformation");
     this.button_ProductInformation.bindIcon("info");
-    this.button_ProductInformation.button.onclick = function(){
-        let productInformation = new ProductInformation("converter");
+    this.button_ProductInformation.button.onclick = async function(){
+        let UserID = (await SPLINT.SessionsPHP.get("USER_ID", false));
+        let data = DSProject.Storage;
+            data.Thumbnail = ProjectHelper.getPath2Project(UserID, DSProject.Storage.ProjectID, false) + "/thumbnail.png";
+        let p = new ProjectDetails(data, null, document.body);
+            p.show(false);
+        // let projectDetails = new ProjectDetails(data, index, listElement);
+        //   listElement.onclick = function(){
+        //     projectDetails.show();
+        //   }
+        // let productInformation = new ProductInformation("converter");
     }
   }
 }

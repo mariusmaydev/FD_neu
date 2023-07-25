@@ -19,6 +19,13 @@ class ImageMenuFilter {
         }.bind(this);
     this.searchBar = new SPLINT.DOMElement.InputDiv(this.mainElement, "searchBar", "suche");
     this.searchBar.type = "search";
+    let sugg = new SPLINT.DOMElement("sugg", "datalist", this.searchBar.mainElement);
+        let opt1 = new SPLINT.DOMElement(null, "option", sugg);
+            opt1.innerHTML = "BMW";
+            let opt2 = new SPLINT.DOMElement(null, "option", sugg);
+                opt2.innerHTML = "DFR";
+    this.searchBar.input.autocomplete = true;
+    this.searchBar.input.setAttribute("list", "sugg");
       let bt = this.searchBar.drawToggleButton();
           bt.bindIcon("search");
           bt.onchange = function(){

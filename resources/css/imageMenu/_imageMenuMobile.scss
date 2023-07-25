@@ -50,7 +50,7 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
                 width: 100%;
                 margin-top: 0;
                 > .inputBody {
-                    > input.search {
+                    > input {
 
                     }
                     >label {
@@ -121,10 +121,28 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
             > .ListMain {
                 // justify-content: flex-start;
                 > .column {
-                    width: 40%;
+                    overflow: visible;
+                    width: 50%;
                     -webkit-box-orient: horizontal;
                     box-sizing: border-box;
                     > .ListElement {
+                        // transition: transform 0.2s ease-in-out;
+                        &[s-state*="active"]{
+                            // &[c_index*="0"]{
+                            //         z-index: 5;
+                            //         transform: translateX(10%) translateY(10%) scale(1.2);
+                            // }
+                            // &[c_index*="1"]{
+                            //     z-index: 5;
+                            //     transform: translateY(10%) scale(1.2);
+
+                            // }
+                            // &[c_index*="2"]{
+                            //     z-index: 5;
+                            //     transform: translateX(-10%) translateY(10%) scale(1.2);
+
+                            // }
+                        }
                         padding: 0;
                         box-sizing: border-box;
                         height: min-content;
@@ -133,6 +151,9 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
                             margin: 1vw;
                             width: calc(100% - 2vw);
                             overflow-clip-margin: border-box;
+                            border-bottom-left-radius: 0;
+                            border-bottom-right-radius: 0;
+                            margin-bottom: 0;
                         }
                         > .hoverDiv {
                             box-sizing: border-box;
@@ -157,7 +178,7 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
                                     right: 0;
                                     > span {
                                         color: $color-primary-Dark;
-                                        font-size: 2em;
+                                        font-size: 1em;
                                     }
                                     &:hover {
                                         color: white;
@@ -175,15 +196,16 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
                             }
                         }
                         > .bottomDiv {
-                            display: none !important;
+                            // display: none !important;
                             position: relative;
                             @include T_container();
                             z-index: 2000;
-                            width: 100%;
                             height: 20px;
                             margin: 1vw;
+                            margin-top: 0;
                             margin-bottom: 0;
                             width: calc(100% - 2vw);
+                            padding: 0;
                             display: flex;
                             justify-content: center;
                             // height: calc(100% - 2vw);
@@ -210,7 +232,7 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
         width: 100%;
         height: 100%;
         // background-color: rgba(43, 43, 43, 0.651);
-        background-color: rgba(225, 225, 225, 0.479);
+        background-color: rgba(167, 167, 167, 0.479);
     }
 
     .HashtagListMenu {

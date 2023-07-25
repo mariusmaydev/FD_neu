@@ -1,10 +1,21 @@
-import * as THREE from 'three';
+// import * as THREE from 'three';
+// import * as THC from "@THREE_ROOT_DIR/src/constants.js";
+// import { Scene } from "@THREE_ROOT_DIR/src/scenes/Scene.js";
+// import { Fog } from "@THREE_ROOT_DIR/src/scenes/Fog.js";
+// import { PerspectiveCamera } from "@THREE_ROOT_DIR/src/cameras/PerspectiveCamera.js";
+// import { Color } from "@THREE_ROOT_DIR/src/math/Color.js";
 import SPLINT from 'SPLINT';
 import * as MATERIALS from '../assets/materials/materials.js';
 import LIGHT_Dark from './light_dark.js';
 import LIGHT_Bright from './light_bright.js';
 import LIGHT_Medium from './light_medium.js';
 import SETUP from '../lighter/setup.js';
+import {
+    PerspectiveCamera,
+    Color,
+    Fog,
+    Scene
+} from 'three';
 
 export class draw {
     static get(canvas){
@@ -22,15 +33,15 @@ export class draw {
     }
     init(){
         this.setup.renderer(true);
-        this.scene      = new THREE.Scene();
-        this.scene.fog = new THREE.Fog(0xd7d7d7, 0.05, 20);
+        this.scene      = new Scene();
+        this.scene.fog = new Fog(0xd7d7d7, 0.05, 20);
         this.setupCamera();
 
         this.renderer.toneMappingExposure = 1;
         // this.setup.controls();
     }
     setupCamera(){
-        this.camera     = new THREE.PerspectiveCamera(10, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
+        this.camera     = new PerspectiveCamera(10, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
         this.camera.position.set(-0.15, 0.35, 3.5);
         this.camera.rotation.set(-0.05, 0, 0);
     }
@@ -58,7 +69,7 @@ export class draw {
         this.context.drawImage(domE, 0, 0, domE.width, domE.height, 0, 0, this.canvas.width, this.canvas.height);
     }
     drawBackground(){
-        this.scene.background = new THREE.Color( 0x000000);
+        this.scene.background = new Color( 0x000000);
         let plane = SPLINT.object.Plane(1000, 1600, 1, 1);
         plane.get().geometry.translate(0, -799, 0);
         // plane.position(0, 0, -15);
@@ -66,7 +77,7 @@ export class draw {
             let color;
             switch(this.canvas.getAttribute("brightness")){
                 case "dark"     : color = 0x9e856b; break;
-                case "medium"   : color = 0xbfa182; break;
+                case "medium"   : color = 0xf6f6f6; break;
                 case "bright"   : color = 0xdfcbb7; break;
                 default         : color = 0xbfa182; break;
             }

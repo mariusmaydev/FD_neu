@@ -109,12 +109,12 @@ class ConverterEvents {
           } else {
             this.dragElement = null;
             let flag = true;
-            if(e.target.classList.contains("ToolBar_ListElement")){
+            if(e.target.classList.contains("ToolBar_ListElement") || e.target.classList.contains("converter-bottom-bar")){
               flag = false;
             } else {
               for(const element of e.target.path()){
                 if(element.classList != undefined){
-                  if(element.classList.contains("ToolBar_ListElement")){
+                  if(element.classList.contains("ToolBar_ListElement") || element.classList.contains("converter-bottom-bar")){
                     flag = false;
                     break;
                   }
@@ -123,6 +123,8 @@ class ConverterEvents {
             }
             if(flag){
               this.activeElement = null;
+            //   console.dir(CONVERTER_STORAGE);
+              CONVERTER_STORAGE.toolBar.blurAll();
               this.removeEdges();
             }
           }

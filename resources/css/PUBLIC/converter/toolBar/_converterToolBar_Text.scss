@@ -15,22 +15,34 @@
     > .ToolBar_ListElement_Text {
         position: relative;
         &[state*='passive']{
-            height: 6em;
-            > .S-SliderMain {
-                display: none;
+            > .toolsBody {
+                max-height: 0px;
                 overflow: hidden;
             }
-            > .TextInputDiv {
-                height: calc(100% - 1.5em);
-                box-sizing: content-box;
-                // display: none;
-            }
-            > .buttonsDiv {
-                display: none;
-            }
-            > .DropDownInputMain_S {
-                display: none;
-            }
+            // height: 6em;
+            // > .S-SliderMain {
+            //     // display: none;
+            //     max-height: 0px;
+            //     margin: 0;
+            //     overflow: hidden;
+            // }
+            // > .TextInputDiv {
+            //     height: calc(100% - 1.5em);
+            //     box-sizing: content-box;
+            //     // display: none;
+            // }
+            // > .buttonsDiv {
+            //     max-height: 0px;
+            //     margin: 0;
+            // }
+            // > .DropDownInputMain_S {
+            //     max-height: 0px;
+            //     margin: 0;
+            // }
+            // > .rotationBody {
+            //     max-height: 0px;
+            //     margin: 0;
+            // }
         }
         > .TextInputDiv {
             position: relative;
@@ -62,164 +74,192 @@
                 padding-left: 0.5em;
             }
         }
-        > .buttonsDiv {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 0.5em;
-            > .AlignDiv {
+        > .toolsBody{
+            max-height: 500px;
+            height: max-content;
+            transition: max-height 0.3s ease-in-out;
+            overflow: hidden;
+            > .buttonsDiv {
                 display: flex;
-                border: 1px solid lightgray;
-                border-radius: $border-radius;
-                padding: 0.2em;
-                > button {
+                justify-content: space-between;
+                margin-top: 0.5em;
+                > .AlignDiv {
                     display: flex;
-                    align-items: center;
-                    flex-direction: row;
-                    flex-wrap: nowrap;
-                    // justify-content: space-between;
-                    > span {
-                        // margin-top: auto;
-                        // margin-bottom: auto;
+                    border: 1px solid lightgray;
+                    border-radius: $border-radius;
+                    padding: 0.2em;
+                    > button {
+                        display: flex;
+                        align-items: center;
+                        flex-direction: row;
+                        flex-wrap: nowrap;
+                        // justify-content: space-between;
+                        > span {
+                            // margin-top: auto;
+                            // margin-bottom: auto;
+                        }
+                        // &[state*='active']{
+                        //     > span {
+                        //         color: $color-primary;
+                        //     }
+                        // }
                     }
-                    // &[state*='active']{
-                    //     > span {
-                    //         color: $color-primary;
-                    //     }
-                    // }
+                    // @include switchButton($color-primary);
                 }
-                // @include switchButton($color-primary);
             }
-        }
-        >.DropDownInputMain_S {
-            margin-top: 0.5em;
-            margin-bottom: 0.5em;
-        }
-        .S-SliderMain {
-            margin-top: 0.4em;
-            margin-bottom: 0.4em;
-            height: auto;
-            max-height: max-content;
-            // padding-top: 0.4rem !important;
-            // padding-bottom: 0.4rem !important;
-            overflow: visible;
-            transition: all 0.3s ease-in;
+            >.DropDownInputMain_S {
+                margin-top: 0.5em;
+                margin-bottom: 0.5em;
+            }
+            .S-SliderMain {
+                margin-top: 0.4em;
+                margin-bottom: 0.4em;
+                height: auto;
+                max-height: max-content;
+                // padding-top: 0.4rem !important;
+                // padding-bottom: 0.4rem !important;
+                overflow: visible;
+                transition: all 0.3s ease-in;
 
-            &[drawDivider='true']{
-                &::after {
-                    content: "";
-                    display: block;
-                    width: 100%;
-                    height: 0px;
-                    background: transparent;
-                    border-bottom: 1px solid $color-devider;
-                    left: 0;
-                    // top: 50%;
-                    margin-top: 0.25em;
-                    position: relative;
-                }
-                &::before {
-                    content: "";
-                    display: block;
-                    width: 100%;
-                    height: 0px;
-                    background: transparent;
-                    border-top: 1px solid $color-devider;
-                    left: 0;
-                    // top: 50%;
-                    margin-bottom: 0.2em;
-                    position: relative;
-                }
-            }
-            > .label {
-                position: relative;
-                width: 100%;
-                display: inline-block;
-                box-sizing: border-box;
-                text-align: left;
-                > span {
-        
-                }
-            }
-            > .contentBody {
-                height: 2.1em;
-                display: flex;
-                flex-direction: column;
-        
-                > .sliderBody {
-                    order: 1;
-                    height: 100%;
-                    > input[type="range"] {
+                &[drawDivider='true']{
+                    &::after {
+                        content: "";
+                        display: block;
                         width: 100%;
+                        height: 0px;
+                        background: transparent;
+                        border-bottom: 1px solid $color-devider;
+                        left: 0;
+                        // top: 50%;
+                        margin-top: 0.25em;
                         position: relative;
-                        font-size: 1em;
-                        height: 100%;
-                        display: inline-block;
-                        outline: none;
-                        // align-items: center;
-                        -webkit-appearance: none;
-                        transition: box-shadow 0.2s ease;
-                        &::-webkit-slider-runnable-track {
-                            box-sizing: border-box;
-                            // top: 45%;
-                            width: 100%;
-                            // margin-inline: -5%;
-                            height: 0.15em;
-                            // margin-top: 0.25em;
-                            // margin-top: 45%;
-                            // margin-bottom: 45%;
-                            background: black;
-                            border: none;
-                            border-radius: 10px;
-                        }
-                        &::-webkit-slider-thumb {
-                            // z-index: 2;
-                            -webkit-appearance: none;
-                            appearance: none;
-                            border: none;
-                            vertical-align: baseline;
-                            height: 1em;
-                            width: 0.5em;
-                            // border-radius: 10%;
-                            margin-top: -0.425em;
-                            background: $color-primary-Dark;
-                            
-                            // margin-top: calc(-100% + 0.5em);
-                            box-sizing: border-box;
-                            // @include border();
-                            transition: box-shadow 0.2s ease;
-                        }
-                        &:focus {
-                            &::-webkit-slider-thumb {
-                                @include box-shadow(0, $color-primary-Dark, 0.7);
-                            }
-                            outline: none;
-                        }
-                        
-                        &:hover::-webkit-slider-runnable-track {
-                            @include box-shadow(0, gray);
-                        }
                     }
-                    > datalist {
-                        display: none;
-                        > option {
-                        }
+                    &::before {
+                        content: "";
+                        display: block;
+                        width: 100%;
+                        height: 0px;
+                        background: transparent;
+                        border-top: 1px solid $color-devider;
+                        left: 0;
+                        // top: 50%;
+                        margin-bottom: 0.2em;
+                        position: relative;
                     }
                 }
-                > .valueOutput {
+                > .label {
                     position: relative;
-                    order: 2;
-                    font-size: 1.1em;
-                    height: 1.1em;
-                    &[hidden='true']{
-                        display: none;
-                    }
-                    top: -0.1em;
-                    width: 1.5em;
+                    width: 100%;
                     display: inline-block;
                     box-sizing: border-box;
-                    text-align: center;
-                    margin-top: auto;
+                    text-align: left;
                     > span {
+            
+                    }
+                }
+                > .contentBody {
+                    height: 1em;
+                    display: flex;
+                    width: 100%;
+            
+                    > .sliderBody {
+                        order: 1;
+                        height: 100%;
+                        width: 100%;
+                        > input[type="range"] {
+                            width: 100%;
+                            position: relative;
+                            font-size: 1em;
+                            height: 100%;
+                            display: inline-block;
+                            outline: none;
+                            // align-items: center;
+                            -webkit-appearance: none;
+                            transition: box-shadow 0.2s ease;
+                            &::-webkit-slider-runnable-track {
+                                box-sizing: border-box;
+                                // top: 45%;
+                                width: 100%;
+                                // margin-inline: -5%;
+                                height: 0.15em;
+                                // margin-top: 0.25em;
+                                // margin-top: 45%;
+                                // margin-bottom: 45%;
+                                background: black;
+                                border: none;
+                                border-radius: 10px;
+                            }
+                            &::-webkit-slider-thumb {
+                                // z-index: 2;
+                                -webkit-appearance: none;
+                                appearance: none;
+                                border: none;
+                                vertical-align: baseline;
+                                height: 1em;
+                                width: 0.5em;
+                                // border-radius: 10%;
+                                margin-top: -0.425em;
+                                background: $color-primary-Dark;
+                                
+                                // margin-top: calc(-100% + 0.5em);
+                                box-sizing: border-box;
+                                // @include border();
+                                transition: box-shadow 0.2s ease;
+                            }
+                            &:focus {
+                                &::-webkit-slider-thumb {
+                                    @include box-shadow(0, $color-primary-Dark, 0.7);
+                                }
+                                outline: none;
+                            }
+                            
+                            &:hover::-webkit-slider-runnable-track {
+                                @include box-shadow(0, gray);
+                            }
+                        }
+                        > datalist {
+                            display: none;
+                            > option {
+                            }
+                        }
+                    }
+                    > .valueOutput {
+                        position: relative;
+                        order: 2;
+                        font-size: 1.1em;
+                        height: max-content;
+                        &[hidden='true']{
+                            display: none;
+                        }
+                        top: -0.1em;
+                        width: 1.5em;
+                        display: inline-block;
+                        box-sizing: border-box;
+                        text-align: center;
+                        margin-top: auto;
+                        > span {
+                        }
+                    }
+                }
+            }
+            > .rotationBody {
+                > .ContainerBody {
+                    display: flex;
+                    > .container {
+                        width: 100%;
+                        display: flex;
+                        justify-content: stretch;
+                        > button {
+                            width: 100%;
+                            font-size: 1em;
+                            padding: 0;
+                            margin: 0.1em;
+                            // box-shadow: none;
+                        }
+                    }
+                    > .empty {
+                        width: 1.5em;
+
                     }
                 }
             }

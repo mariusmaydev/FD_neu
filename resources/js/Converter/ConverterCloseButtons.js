@@ -58,6 +58,9 @@ class Converter_closeButtons {
     }
     drawButtonBuy(){
         let button_finish = new SPLINT.DOMElement.Button(this.contentElement, "finish", "Kaufen");
+            let span1 = new SPLINT.DOMElement(button_finish.button.id + "span1", "span", button_finish.button);   
+                span1.innerHTML = "jetzt";
+            button_finish.button.insertBefore(span1, button_finish.span);
             button_finish.Class("buy")
             button_finish.button.Class("buy");
             // button_finish.setStyleTemplate(Button.STYLE_NONE);

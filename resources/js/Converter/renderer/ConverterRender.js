@@ -42,19 +42,22 @@ class CanvasElement_C {
 
     this.setListeners();
     this.setSize();
+    
+    SPLINT.ViewPort.onViewPortChanged = function(){
+        this.setListeners();
+    }.bind(this);
   }
   setListeners(){
-    // window.addEventListener("touchstart", ConverterTouchHandler.touchStart.bind(this));
-    // window.addEventListener("touchmove", ConverterTouchHandler.touchMove.bind(this), false);
-    // window.addEventListener("touchend", ConverterTouchHandler.touchEnd.bind(this));
+    if(SPLINT.ViewPort.getSize() == "mobile-small"){
+        window.addEventListener("touchstart", ConverterTouchHandler.touchStart.bind(this));
+        window.addEventListener("touchmove", ConverterTouchHandler.touchMove.bind(this), false);
+        window.addEventListener("touchend", ConverterTouchHandler.touchEnd.bind(this));
+    } else {
+        window.addEventListener("mousedown", ConverterMouseHandler.mouseDown.bind(this));
+        window.addEventListener("mousemove", ConverterMouseHandler.mouseMove.bind(this));
+        window.addEventListener("mouseup", ConverterMouseHandler.mouseUp.bind(this));
+    }
 
-    window.addEventListener("mousedown", ConverterMouseHandler.mouseDown.bind(this));
-    window.addEventListener("mousemove", ConverterMouseHandler.mouseMove.bind(this));
-    window.addEventListener("mouseup", ConverterMouseHandler.mouseUp.bind(this));
-    // console.log(window)
-    // window.addEventListener("resize", function(e){
-    //   this.setSize();
-    // }.bind(this));
 
   }
   ListenersActive(flag){
@@ -142,7 +145,7 @@ class CanvasElement_C {
     }
   }
   getElementForCoords(){
-    window.requestAnimationFrame(function(){
+    // window.requestAnimationFrame(function(){
     let ele = null;
     this.stack.forEach(element =>{
       if(element.type == "img" && element.src.naturalHeight != 0){
@@ -186,7 +189,7 @@ class CanvasElement_C {
       }
     });
     this.hoverElement = ele;
-  }.bind(this));
+//   }.bind(this));
   }
   setFirstInStack(element){
     let index = this.#getElementByID_Type(element.ID, element.type).index;
@@ -440,7 +443,7 @@ class CanvasElement_C {
     // window.requestAnimationFrame(function(){
       element.ctx.clearRect(0, 0, element.canvas.width, element.canvas.height);
       if(element.type == "img" && element.src.naturalHeight != 0){
-        if(this.mouse.down && this.dragElement == element && element.dragEdge == -1){
+        if(this.mouse.down && this.dragElement == element && element.dragEdge == -1 && element.resize != true){
           let data = element.data;
           data.ImagePosX = this.mouse.X * this.ratio.X + element.offset.X;
           data.ImagePosY = this.mouse.Y * this.ratio.Y + element.offset.Y; 
@@ -465,7 +468,7 @@ class CanvasElement_C {
         }
         CanvasHelper.Image().draw(element, element.drawEdge);
       } else if(element.type == "txt"){
-        if(this.mouse.down && this.dragElement == element && element.dragEdge == -1){
+        if(this.mouse.down && this.dragElement == element && element.dragEdge == -1 && element.resize != true){
           element.data.TextPosX = this.mouse.X * this.ratio.X + element.offset.X;
           element.data.TextPosY = this.mouse.Y * this.ratio.Y + element.offset.Y;
         }
@@ -495,37 +498,8 @@ class CanvasElement_C {
   }
   computeEdges(element){
     if(element.type == "img"){
-        let align = element.data.ImageAlign;
-      let offsetX = (-element.data.ImagePosX + ((this.mouse.X * this.ratio.X) + element.offset.X)) * 2;
-      let offsetY = (-element.data.ImagePosY + ((this.mouse.Y * this.ratio.Y) + element.offset.Y)) * 2; 
-      let wb = element.widthBase;
-      let hb = element.heightBase;
-      let size = {width: wb, height: hb};
-      switch(element.dragEdge){
-        case 0: size = S_Math.getNewSize(-offsetX, -offsetY, hb, wb); break;
-        case 1: size = {width: wb, height: hb - offsetY}; break;
-        case 2: size = S_Math.getNewSize(offsetX, -offsetY, hb, wb); break;
-        case 3: size = {width: wb + offsetX, height: hb}; break;
-        case 4: size = S_Math.getNewSize(offsetX, offsetY, hb, wb); break;
-        case 5: size = {width: wb, height: hb + offsetY}; break;
-        case 6: size = S_Math.getNewSize(-offsetX, offsetY, hb, wb); break;
-        case 7: size = {width: wb - offsetX, height: hb}; break;
-        case 8: {
-          let a = element.data.ImagePosX - (this.mouse.X * this.ratio.X);
-          let b = element.data.ImagePosY - (this.mouse.Y * this.ratio.Y);
-          let c = S_Math.pytagoras(a, b);
-          if(a < 0 ){
-            element.data.ImageAlign = S_Math.toDegrees(Math.acos(b / c)) ;
-          } else {
-            element.data.ImageAlign = -S_Math.toDegrees(Math.acos(b / c));
-          }
-        } break;
-        default: break;
-      }
-      // element.src.width   = size.width;
-      // element.src.height  = size.height;
-      element.data.ImageWidth  = size.width;
-      element.data.ImageHeight = size.height;
+        ConverterComputeEdges.compute(element, element.dragEdge, this.mouse, this.ratio);
+        
     } else {
       // CanvasHelper.Text().edge(element, false, 2);
       CanvasHelper.Text().edge(element, false, 8);
@@ -537,9 +511,17 @@ class CanvasElement_C {
         let b = element.data.TextPosY - (this.mouse.Y * this.ratio.Y);
         let c = S_Math.pytagoras(a, b);
         if(a < 0 ){
-          element.data.TextAlign = S_Math.toDegrees(Math.acos(b / c)) ;
+          element.data.TextAlign = Math.round(S_Math.toDegrees(Math.acos(b / c)));
         } else {
-          element.data.TextAlign = -S_Math.toDegrees(Math.acos(b / c));
+          element.data.TextAlign = Math.round(-S_Math.toDegrees(Math.acos(b / c)));
+        }
+        // console.dir(CONVERTER_STORAGE.toolBar)
+        if(CONVERTER_STORAGE.toolBar.textBar != undefined){
+            for(const ele of CONVERTER_STORAGE.toolBar.textBar.ELEMENTS){
+                  if(ele.TextID == element.ID){
+                      ele.sl_rotation.value = element.data.TextAlign;
+                  }
+            }
         }
       }
     }
@@ -569,8 +551,10 @@ class CanvasElement_C {
   dragStop(){
     if(this.activeElement != null){
         if(this.activeElement.type == "img"){
+            this.activeElement.calcEdgeFlag = false;
             canvasPaths.updateImgPath(this.activeElement);
         } else {
+            this.activeElement.calcEdgeFlag = false;
             canvasPaths.updateTxtPath(this.activeElement);
         }
     }
@@ -661,9 +645,9 @@ class CanvasElement_C {
     if(fB === true){
       CanvasHelper.Line(0, this.canvas.height-5, this.canvas.width, this.canvas.height-5, this.lines.ctx, scheme);
     }
-    // if(f2 === true){
-      // CanvasHelper.Line(0, LighterMid * CanvasElement_C.SCALE, this.canvas.width, LighterMid * CanvasElement_C.SCALE, this.lines.ctx);
-    // }
+    if(f2 === true){
+      CanvasHelper.Line(0, LighterMid * CanvasElement_C.SCALE, this.canvas.width, LighterMid * CanvasElement_C.SCALE, this.lines.ctx);
+    }
     if(f3 === true){
       CanvasHelper.Line(0, (LighterMid / 2) * CanvasElement_C.SCALE, this.canvas.width, LighterMid * CanvasElement_C.SCALE / 2, this.lines.ctx);
     }
@@ -818,7 +802,6 @@ class CanvasHelper {
   static Text(ctx = null){
     function obj(ctx){
       this.edge = function(element, flag = false, index){
-        console.log(element.data)
         if(flag){
         //   element.ctx_S.save();
         //   element.ctx_S.beginPath();

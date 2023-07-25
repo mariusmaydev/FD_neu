@@ -76,6 +76,11 @@ class NavigationBar {
         if(cartData == null){
             cartData = (await ShoppingCart.get()).shoppingCart;
         }
+        if(cartData.length == 0){
+            this.cart.point.div.remove();
+            this.cart.point = undefined;
+            return;
+        }
         if(this.cart.point == undefined){
             this.drawCartPoint(cartData.length);
         } else {

@@ -22,12 +22,15 @@
         overflow: visible;
         box-sizing: content-box;
         order: 2;
+        font-size: min(4vw, 1rem);
         > .conv_BottomBar_Main {
             width: 100%;
             box-sizing: content-box;
             height: max-content;
+            max-height: 4em;
             // overflow: hidden;
             > .conv_bottom_bar_std {
+                width: calc(100% - 32vw);
                 position: relative;
                 height: max-content;
                 display: flex;
@@ -35,7 +38,7 @@
                 background-color: white;
                 border-radius: $border-radius;
                 @include box-shadow();
-                justify-content: space-between;
+                justify-content: space-evenly;
                 box-sizing: border-box;
                 > input {
                     display: none;
@@ -47,7 +50,7 @@
                     aspect-ratio: 1/1;
                     height: 100%;
                     > span {
-                        font-size: 10vw;  
+                        font-size: 2.5em;  
                     }
                     &.buy {
                         display: none;
@@ -66,40 +69,134 @@
                     }
                     display: block;
                     @include conv_floatingDiv_aligned();
-                }
-                > .content {
-                    max-height: 100%;
-                    height: 100%;
-                    overflow: hidden;
-                    display: flex;
-                    box-sizing: border-box;
-                    > button {
-                        overflow: visible;
-                        box-sizing: border-box;
-                        padding-inline: 0.1em;
-                        height: 100%;
-                        > span {
-                            font-size: 10vw;  
-                        }
-                        &.toCart {
-                            aspect-ratio: 1/1;
+                    @include conv_floatingDiv_block();
+                    &.AddElement {
+                        > div {
+                            width: calc(100vw - 1em) !important;
+                            margin-bottom: 0.5em;
+                            > div {
+                                width: 100%;
+                                display: flex !important;
+                                flex-direction: row !important;
+                                flex-wrap: nowrap !important;
+                                justify-content: space-between;
+                                > input {
+                                    display : none;
+                                }
+                                > button {
+                                    // margin-inline-start: 0;
+                                    // margin-inline-end: 0;
+                                    margin-inline: 0.5em;
+                                    padding: 0.5em;
+                                    
+                                    text-decoration: none;
+                                    > span {
+                                        text-decoration: none;
+                                        // background-color: red !important;
+                                        &.text {
+                                            text-decoration: none;
+                                            font-size: 0.75em;
+                                            // background-color: red !important;
 
-                        }
-                        &.buy {
-                            // background-color: red;
-                            white-space: nowrap;
-                            height: calc(100% + 10em);
-                            margin: auto;
-                            padding: auto;
-                            background-color: $color-primary-Dark;
-                            > span {
-                                height: 100%;
-                                font-size: 8vw;  
+                                        }
+                                    }
+
+                                }
                             }
-                            // word-wrap: no;
+                        }
+                    }
+                    > div[name*='buttons_EP'] {
+                        width: calc(100vw - 1em) !important;
+                        margin-bottom: 0.5em;
+                        > div {
+                            width: 100%;
+                            display: flex !important;
+                            flex-direction: row !important;
+                            flex-wrap: nowrap !important;
+                            justify-content: space-evenly;
+                            > button {
+                                margin-inline: 0.5em;
+                                padding: 0.5em;
+                                &[state*='active']{
+                                    background-color: $color-primary;
+                                }
+
+                                // width: 10%;
+                                > span {
+                                    font-size: 2rem!important;
+                                }
+                            }
                         }
                     }
                 }
+                > .close_buttons_container{
+                    position: fixed;
+                    // margin: 2em;
+                    // padding: 2em;
+                    height: 0;
+                    width: 0;
+                    background-color: red !important;
+
+                    overflow: visible;
+                    display: flex;
+                    box-sizing: content-box;
+                    > .content {
+                        // max-height: 100%;
+                        position: fixed;
+                        // margin: 2em;
+                        // padding: 2em;
+                        height: 4.6em;
+                        right: 0.2em;
+                        bottom: 0.2em;
+                        width: 35vw;
+                        @include T_container();
+                        @include box-shadow(0, rgb(82, 82, 82), 0.7);
+                        padding: 0;
+    
+                        overflow: hidden;
+                        display: flex;
+                        box-sizing: content-box;
+                        > button {
+                            overflow: visible;
+                            box-sizing: border-box;
+                            padding-inline: 0.1em;
+
+                            height: 100%;
+                            > span {
+                                font-size: 3em;  
+                            }
+                            &.toCart {
+                                // margin: 0.5em;
+                                aspect-ratio: 1/1;
+    
+                            }
+                            &.buy {
+                                // background-color: red;
+                                // white-space: nowrap;
+                                // height: calc(100% + 10em);
+                                display: flex;
+                                flex-direction: column;
+                                overflow: hidden;
+                                align-content: space-evenly;
+                                justify-content: center;
+                                aspect-ratio: 1/1;
+                                height: 100%;
+                                width: max(100%, 4.6em);
+                                margin: 0;
+                                padding: 0;
+                                text-align: center;
+                                background-color: $color-primary;
+                                > span {
+                                    height: max-content;
+                                    width: 100%;
+                                    font-size: 1em;  
+                                }
+                                // word-wrap: no;
+                            }
+                        }
+                    }
+                }
+                
             }        
             &[name*='image']{
                 background-color: transparent;

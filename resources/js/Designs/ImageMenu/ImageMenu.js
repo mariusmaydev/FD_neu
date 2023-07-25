@@ -18,7 +18,10 @@ class ImageMenu {
     return this.background;
   }
   close(){
-    this.background.remove();
+    this.background.classList.remove("start");
+    setTimeout(function(){
+        this.background.remove();
+    }.bind(this), 300);
     this.mainElement.remove();
     this.onClose();
   }
@@ -30,6 +33,8 @@ class ImageMenu {
     }.bind(this);
   }
   async drawUnsplash(searchValue){
+    let g = unsplash.test1();
+    console.log(g)
     unsplash.search(searchValue).callback = draw.bind(this);
     function draw(imageData, instance){
 
@@ -64,14 +69,14 @@ class ImageMenu {
                           unsplash.download(data);
                           this.close();
                         }.bind(this);
-                    let buttonView = new SPLINT.DOMElement.Button(buttonDiv, "view");
-                        buttonView.bindIcon("search");
-                        buttonView.onclick = function(){
-                        //   unsplash.download(data);
-                        //   this.close();
-                        }.bind(this);
-                    let informationDiv = new SPLINT.DOMElement("informationDiv_" + index, "div", hoverDiv);
-                        informationDiv.Class("informationDiv");
+                    // let buttonView = new SPLINT.DOMElement.Button(buttonDiv, "view");
+                    //     buttonView.bindIcon("search");
+                    //     buttonView.onclick = function(){
+                    //     //   unsplash.download(data);
+                    //     //   this.close();
+                    //     }.bind(this);
+                    // let informationDiv = new SPLINT.DOMElement("informationDiv_" + index, "div", hoverDiv);
+                    //     informationDiv.Class("informationDiv");
                     let tagsDiv = new SPLINT.DOMElement("tagsDiv_" + index, "div", hoverDiv);
                         tagsDiv.Class("tagsDiv");
                         if(data.tags != undefined){
@@ -92,15 +97,43 @@ class ImageMenu {
                             bt_use.onclick = function(){
 
                             }
-                    
-                    hoverDiv.onmouseenter = function(){
-                        bottomDiv.SPLINT.state.setActive();
-                        listElement.SPLINT.state.setActive();
-                    }.bind(this);
-                    hoverDiv.onmouseleave = function(){
-                        bottomDiv.SPLINT.state.setPassive();
-                        listElement.SPLINT.state.setPassive();
-                    }.bind(this);
+                    if(SPLINT.ViewPort.getSize() == "mobile-small"){
+                        // hoverDiv.onclick = function(){
+                        //     bottomDiv.SPLINT.state.setActive();
+                        //     listElement.SPLINT.state.setActive();
+                        // }.bind(this);
+                            let hd = function(e1){
+                                if(!e1.target.hasParentWithID(listElement.id)){
+                                    hoverDiv.parentElement.setAttribute("s-state", "passive");
+                                    bottomDiv.SPLINT.state.setPassive();
+                                    listElement.SPLINT.state.setPassive();
+                                    document.removeEventListener("mousedown", hd, false);
+                                }
+                            };
+                        hoverDiv.onclick = function(e){
+                                document.addEventListener("mousedown", hd, false);
+                            
+                            if(e.target.parentElement.getAttribute("s-state") == "active"){
+                                e.target.parentElement.setAttribute("s-state", "passive");
+                                bottomDiv.SPLINT.state.setPassive();
+                                listElement.SPLINT.state.setPassive();
+                            } else {
+                                e.target.parentElement.setAttribute("s-state", "active");
+                                bottomDiv.SPLINT.state.setActive();
+                                listElement.SPLINT.state.setActive();
+                            }
+                        }.bind(this);
+                        
+                    } else {
+                        hoverDiv.onmouseenter = function(){
+                            bottomDiv.SPLINT.state.setActive();
+                            listElement.SPLINT.state.setActive();
+                        }.bind(this);
+                        hoverDiv.onmouseleave = function(){
+                            bottomDiv.SPLINT.state.setPassive();
+                            listElement.SPLINT.state.setPassive();
+                        }.bind(this);
+                    }
                 }.bind(this);
 
           table.draw();

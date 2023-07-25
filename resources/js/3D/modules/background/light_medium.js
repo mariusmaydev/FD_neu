@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+// import * as THREE from 'three';
 import * as SPLINT from 'SPLINT';
 
 export default function light(scene){
@@ -6,7 +6,7 @@ export default function light(scene){
     const lights = new SPLINT.lights.lightCluster(scene, false);
           lights.helper.size = 0.1;
 
-    let atmo = lights.new.AmbientLight(0xffffff, 1);
+    let atmo = lights.new.AmbientLight(0x141313, 40);
         atmo.bind();
 
     let hemi  = lights.new.HemisphereLight( 0x242424, 0xffffff, 5 );

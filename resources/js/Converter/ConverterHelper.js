@@ -110,6 +110,9 @@ class ConverterHelper {
           CONVERTER_STORAGE.canvasNEW.ListenersActive(true);
         }.bind(this);
         let background = imageMenu.drawBackground();
+        setTimeout(function(){
+            background.Class("start");
+        }, 100);
             background.onclick = function(e){
               imageMenu.close();
             };

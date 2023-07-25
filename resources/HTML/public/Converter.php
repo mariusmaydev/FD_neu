@@ -17,6 +17,8 @@
         </div>
         <div class="NavigationBar" id="NavigationBar"></div>
 
+        <script src="../../../../Splint/lib/touchEmulator/touch-emulator.js"></script>
+        <!-- <script> TouchEmulator();</script> -->
         <s-part first src="/js/GLOBAL/Paths.js"></s-part>
 
         <s-part src="/js/Pages/pagesHelper.js"></s-part>
@@ -39,6 +41,7 @@
         <s-part first src="/js/Converter/DataStorage/DSProject.js"></s-part>
         <s-part src="/js/assets/functionsProduct.js"></s-part>
         <s-part src="/js/assets/product/productHelper.js"></s-part>
+        <s-part src="/js/Projects/ProjectList/ProjectDetails.js"></s-part>
         <s-part src="/js/assets/product/drawProductInformation.js"></s-part>
         <!-- <s-part src="/js/Converter/Upload.js"></s-part> -->
         <!-- <s-part src="/js/Converter/renderer/ConverterRender"></s-part> -->
