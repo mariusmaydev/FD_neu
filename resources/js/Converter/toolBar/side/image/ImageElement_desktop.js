@@ -90,7 +90,7 @@ class ToolBar_ImageElement {
             this.data.ImageFilter.contrast = value;
             ConverterHelper.filter(DSImage.getIndex(this.ImageID));
         }.bind(this);
-
+ 
         //Antialiasing
         this.sl_antialiasing = new SPLINT.DOMElement.Slider(this.toolsBody, "antialiasing_" + this.ImageID, "Glättung");
         this.sl_antialiasing.drawTickMarks = false;
