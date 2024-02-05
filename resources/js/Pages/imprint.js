@@ -22,7 +22,7 @@ class drawImprint extends Pages_template{
             this.getTextContainer("name", "Name", "MariusMay")
             this.getTextContainer("address", "Anschrift", 
             "Marius May<br> " + 
-            "Wernsdorfer Straße 27a<br>" +
+            "Wernsdorfer Straße 27a<br>" + 
             "09322 Penig")
                 
 
