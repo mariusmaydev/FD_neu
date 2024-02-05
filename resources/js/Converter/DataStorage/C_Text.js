@@ -32,17 +32,17 @@ class Text_C {
           call.onFinish = function(txt){
             callBack(txt);
           };
-          call.send();
+        return call.send();
     }
     static remove(){
-      data = CallPHP_S.getCallObject(this.REMOVE);
-      console.log(CallPHP_S.call(this.PATH, data).text);
+      data = SPLINT.Data.CallPHP_OLD.getCallObject(this.REMOVE);
+      console.log(SPLINT.Data.CallPHP_OLD.call(this.PATH, data).text);
     }
     static copy(index){
       let clone = [DSText.getClone().get(index)];
-      let data = CallPHP_S.getCallObject(this.COPY);
+      let data = SPLINT.Data.CallPHP_OLD.getCallObject(this.COPY);
           data.TextID = clone[0].TextID;
-      let response = CallPHP_S.call(this.PATH, data).toObject();
+      let response = SPLINT.Data.CallPHP_OLD.call(this.PATH, data).toObject();
       clone[0].TextID          = response;
       clone[0].TextPosX = parseFloat(clone[0].TextPosX) + 20;
       clone[0].TextPosY = parseFloat(clone[0].TextPosY) + 20;

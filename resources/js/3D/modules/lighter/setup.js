@@ -1,13 +1,14 @@
 // import * as THREE from 'three';
 import SPLINT from 'SPLINT';
 import * as THC from "@THREE_ROOT_DIR/src/constants.js";
-import {
-    Scene,
-    WebGLRenderer
-} from 'three';
-// import { Scene } from "@THREE_ROOT_DIR/src/scenes/Scene.js";
-// import { WebGLRenderer } from "@THREE_ROOT_DIR/src/renderers/WebGLRenderer.js";
-import { OrbitControls } from '@THREE_MODULES_DIR/controls/OrbitControls.js';
+import { OrbitControls } from '@SPLINT_MODULES_DIR/ThreeJS/animations/OrbitControls_Modified.js';
+// import {
+    // Scene,
+    // WebGLRenderer
+// } from 'three';
+import { Scene } from "@THREE_ROOT_DIR/src/scenes/Scene.js";
+import { WebGLRenderer } from "@THREE_ROOT_DIR/src/renderers/WebGLRenderer.js";
+// import { OrbitControls } from '@THREE_MODULES_DIR/controls/OrbitControls.js';
 import MODEL from './model.js';
 
 export default class setup {
@@ -21,8 +22,14 @@ export default class setup {
             let canvas = this.inst.canvas;
             let a = this.inst.canvas.parentNode.clientWidth;
             let b = this.inst.canvas.parentNode.clientHeight;
-            this.inst.canvas.width = a * 2;
-            this.inst.canvas.height = b * 2;
+            if(SPLINT.ViewPort.getSize() == "mobile-small"){
+                this.inst.canvas.width = a ;
+                this.inst.canvas.height = b ;
+            } else {
+                this.inst.canvas.width = a * 2;
+                this.inst.canvas.height = b * 2;
+
+            }
             this.inst.canvas.style.width = (a) + "px";
             this.inst.canvas.style.height = (b) + "px";
         if(setup.RENDERER == null || newFlag){
@@ -33,8 +40,13 @@ export default class setup {
             this.inst.renderer.shadowMap.needsUpdate = true;
             // this.inst.renderer.gammaFactor = 0.5;
             // this.inst.renderer.outputEncoding = THREE.sRGBEncoding;
-            this.inst.renderer.setPixelRatio( window.devicePixelRatio * 1);
-            this.inst.renderer.setSize( this.inst.canvas.parentNode.clientWidth * 2, this.inst.canvas.parentNode.clientHeight * 2);
+            // console.log(window.devicePixelRatio, this.inst.canvas.parentNode.clientWidth, this.inst.canvas.parentNode.clientHeight)
+            if(SPLINT.ViewPort.getSize() == "mobile-small"){
+                this.inst.renderer.setPixelRatio( Math.min(2, window.devicePixelRatio));
+            } else {
+                this.inst.renderer.setPixelRatio( window.devicePixelRatio * 2);
+            }
+            this.inst.renderer.setSize( this.inst.canvas.parentNode.clientWidth, this.inst.canvas.parentNode.clientHeight, false);
 
             this.inst.renderer.gammaOutput = false;
             this.inst.renderer.gammaInput = true;
@@ -42,6 +54,7 @@ export default class setup {
             this.inst.renderer.alpha = true;
             this.inst.renderer.physicallyCorrectLights = true;
             this.inst.renderer.setClearColor(0x000000, 0);
+            // this.inst.renderer.powerPreference = "high-performance";
             this.inst.renderer.autoClear = true;
             if(newFlag == false){
                 setup.RENDERER = this.inst.renderer;
@@ -80,6 +93,7 @@ export default class setup {
         }.bind(this));
     }
     getLighterGroupe(scene = this.inst.scene, name = 'lighter'){
+        
         if(this.inst.LighterGroupe[name] == undefined){
             this.inst.LighterGroupe[name] = SPLINT.Utils.getObjByKey_Value(scene.children, "name", name);
         }

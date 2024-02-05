@@ -1,6 +1,12 @@
-@import '../general/main.scss';
-@import '../general/buttons.scss';
-@import 'Navigation.scss';
+@use '../general/main' as Gmain;
+@use '../themes/theme1/vars';
+@use '../themes/theme1/main' as Tmain;
+@use '../themes/theme1/buttons' as Tbuttons;
+@use '../general/buttons' as Gbuttons;
+@use 'Navigation';
+
+.button_General {
+}
 
 body {
     padding: 0 !important;
@@ -15,17 +21,19 @@ body {
     > .head {
         position: fixed;
         display: flex;
-        background-color: lightsalmon;
+        background-color: vars.$color-primary-Dark ;
         top: 0;
         height: 5vh;
         width: 100%;
         overflow: hidden;
         z-index: 20;
-        
-        margin: 0.5rem;
-        width: calc(100% - 1rem);
+        margin: 0.5em;
+        margin-bottom: 0.2em;
+        padding: 0;
+        width: calc(100% - 1em);
+        @include Gmain.box-shadow();
         > .back {
-            @include T_container();
+            @include Tmain.T_container();
             margin: 0.2rem;
             // border-radius: 50%;
         }
@@ -36,10 +44,46 @@ body {
             margin-left: auto;
             height: 100%;
             > button {
-                @include T_container();
+                @include Tmain.T_container();
                 margin: 0.2rem;
                 > span {
 
+                }
+            }
+        }
+        > .n_RadioButton {
+            > .inner {
+                > hr {
+                    
+                }
+                > div {
+                    // background-color: red !important;
+                    // margin: 0;
+                    &:hover {
+                        background-color: vars.$color-primary-light;
+                    }
+                    padding: 0;
+                    height: max-content;
+                    box-sizing: border-box;
+                    > .labelDiv {
+                        margin: 0;
+                        padding: 0.8rem;
+                        box-sizing: border-box;
+                        > div {
+                            transition: transform 0.3s ease;
+                        }
+                        &[state*='active']{
+                            background-color: vars.$color-primary !important;
+                            @include Gmain.box-shadow(0, black, 0.5);
+                            > div {
+                                transform: scale(1.1);
+                                > span {
+                                    // font-size: 1.1em;
+                                    // font-weight: bold;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

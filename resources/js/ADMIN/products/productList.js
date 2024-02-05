@@ -1,6 +1,7 @@
 
 class AdminProductList {
-    constructor(parent){
+    constructor(parent, ADMIN_productsInstance = null){
+        this.Instance = ADMIN_productsInstance;
         this.parent = parent;
         this.id = "AdminProductList_";
         this.mainElement = new SPLINT.DOMElement(this.id + "main", "div", this.parent);
@@ -10,7 +11,6 @@ class AdminProductList {
     async draw(){
         this.mainElement.innerHTML = "";
         let dataIn = await productHelper.getProducts();
-        console.log(dataIn)
         if(dataIn == null){
             return;
         }
@@ -24,7 +24,8 @@ class AdminProductList {
         gen(this.table.getData2Head(2), "", "Preis");
         gen(this.table.getData2Head(3), "", "Abmaße (in mm)");
         gen(this.table.getData2Head(4), "", "andere Eigenschaften");
-        gen(this.table.getData2Head(5), "", "");
+        gen(this.table.getData2Head(5), "", "Verkäufe");
+        gen(this.table.getData2Head(6), "", "");
         this.table.draw();
         let index = 0;
         for(const entry in dataIn){
@@ -51,7 +52,9 @@ class AdminProductList {
                         attrTable.addRow(e.name, e.value);
                     }
 
-                let buttonRemove = new SPLINT.DOMElement.Button(this.table.getData(index, 5), "remove");
+                    gen(this.table.getData(index, 5), "sales", data.sales);
+                
+                let buttonRemove = new SPLINT.DOMElement.Button(this.table.getData(index, 6), "remove");
                     buttonRemove.bindIcon("delete");
                     buttonRemove.setTooltip("Produkt entfernen", "bottom");
                     buttonRemove.onclick = function(){
@@ -73,6 +76,15 @@ class AdminProductList {
                                     this.draw();
                                 }.bind(this);
                             // popup.content
+                    }.bind(this);
+                
+                
+                let buttonEdit = new SPLINT.DOMElement.Button(this.table.getData(index, 6), "edit");
+                    buttonEdit.bindIcon("edit");
+                    buttonEdit.setTooltip("bearbeiten", "bottom");
+                    buttonEdit.onclick = function(){
+                        data.name = entry;
+                        this.Instance.draw(data);
                     }.bind(this);
                     index++;
         }

@@ -1,5 +1,6 @@
-@import 'mobile/projectDetails';
-@import 'desktop/projectDetails';
+@use '../../general/mediaQueries';
+@use 'mobile/projectDetails' as projectDetailsMobile;
+@use 'desktop/projectDetails' as projectDetailsDesktop;
 
 @keyframes translateProjectDetails {
     0% {
@@ -34,11 +35,11 @@
     }
 }
 body {
-    @include forMediaBreakpoint(desktop mobile){
-        @include projectDetails-desktop();
+    @include mediaQueries.forMediaBreakpoint(desktop mobile){
+        @include projectDetailsDesktop.projectDetails-desktop();
     }
-    @include forMediaBreakpoint(mobile-small){
-        @include projectDetails-mobile();
+    @include mediaQueries.forMediaBreakpoint(mobile-small){
+        @include projectDetailsMobile.projectDetails-mobile();
     }
 
 }

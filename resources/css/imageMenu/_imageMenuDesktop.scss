@@ -1,6 +1,10 @@
-@import '../general/buttons.scss';
+@use '../general/main' as Gmain;
+@use '../themes/theme1/vars';
+@use '../themes/theme1/main' as Tmain;
+@use '../general/buttons' as Gbuttons;
+@use '../../../../Splint/scss/tools/tools' as S_tools;
+@use '../../../../Splint/scss/Elements/AdaptiveTable' as S_adaptTable;
 // @import '../general/NavigationBar.scss';
-@import '../general/main.scss';
 // @import '../ADMIN/designs/designs.scss';
 
 $color-image-hover         : rgba(64, 64, 64, 0.553);
@@ -12,11 +16,11 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
         background-color: transparent;
         user-select: all;
         pointer-events: all;
-        z-index: 1000;
-        top: 7vh;
+        z-index: 1001;
+        top: 8vh;
         left: 5%;
         width: 90%;
-        height: calc(100% - 7vh);
+        height: calc(100% - 8vh);
         padding: 0;
         display: flex;
         flex-direction: row;
@@ -24,7 +28,7 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
         align-items: center;
         overflow: visible;
         > .ImageMenuFilter {
-            @include T_container();
+            @include Tmain.T_container();
             order: 1;
             flex-grow: 0;
             flex-shrink: 3;
@@ -35,6 +39,25 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
             margin-top: 0.5rem;
             margin-bottom: 0;
             height: 90%;
+            z-index: 1001;
+            > .bt_help {
+                background-color: green;
+                > .dropdown {
+                    position: absolute;
+                    left: 50%;
+                    top: 100%;
+                    transform: translateX(-50%);
+                    min-width: 200%;
+                    min-height: 200%;
+                    margin-left: 0;
+                    width: max-content;
+                    height: max-content;
+                    background-color: yellow;
+                    > .test {
+                        background-color: red;
+                    }
+                }
+            }
             .ModeSwitch {
                 position: relative;
                 display: inline-block;
@@ -50,15 +73,15 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
                     padding: 0.2em;
                     gap: 1%;
                     button {
-                        @include box-shadow();
+                        @include Gmain.box-shadow();
                         width: 100%;
                         // padding: 0.2em;
                         // margin-inline: 1em;
-                        border-radius: $border-radius;
+                        border-radius: vars.$border-radius;
                         border: none;
                         position: relative;
                         &:hover{
-                            background-color: $color-primary;
+                            background-color: vars.$color-primary;
                         }
                     }
                 }
@@ -66,13 +89,34 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
             .InputDivMain {
                 > button {
                     &:hover {
-                        background-color: $color-primary;
+                        background-color: vars.$color-primary;
                     }
                 }
         
             } 
         }
-        @include SPLINT-AdaptiveTableStyle($border-radius);
+        > .hintBody {
+            // background-color: red;
+            height: 100%;
+            width: 98%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            > button {
+                color: white;
+                user-select: none;
+                pointer-events: none;
+                > span {
+                    font-size: 20em;
+                    &.description {
+                        font-size: 2rem;
+                        text-decoration: none;
+                    }
+                }
+
+            }
+        }
+        @include S_adaptTable.AdaptiveTableStyle(vars.$border-radius);
         >.AdaptiveTableMain {
             > .ListMain {
                 margin-top: 0.5rem;
@@ -83,13 +127,79 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
                     > .ListElement {
                         padding: 0.3rem;
                         > img {
-                            @include box-shadow(0, rgba(255, 255, 255, 0.705), 0.4);
-                            border-radius: $border-radius;
+                            @include Gmain.box-shadow(0, rgba(255, 255, 255, 0.705), 0.4);
+                            border-radius: vars.$border-radius;
                         }
                         > .hoverDiv {
                             margin: 0.3rem;
                             width: calc(100% - 0.6rem);
                             height: calc(100% - 0.6rem);
+                            > .buttonDiv {
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: space-evenly;
+                                position: absolute;
+                                margin-top: auto;
+                                bottom: 0;
+                                width: 100%;
+                                height: fit-content;
+                                @include S_tools.SPLINT-border-inset();
+                                > button {
+                                    > span {
+                                        color: white;
+                                        font-size: 3rem;
+
+                                    }
+                                }
+                                > .likeDiv {
+                                    position: relative;
+                                    width: min-content;
+                                    overflow: hidden;
+                                    height: min-content;
+                                    > button {
+                                        width: 100%;
+                                        height: 100%;
+                                        color: white;
+
+                                        > span {
+                                            
+                                        color: white;
+                                            font-size: 3rem;
+                                        }
+                                    }
+                                    > .likePoint {
+
+                                        @include Tmain.preventSelect();
+                                        cursor: pointer;
+                                        position: absolute;
+                                        z-index: 1;
+                                        left: 50%;
+                                        top: 60%;
+                                        background-color: vars.$color-primary;
+                                        border-radius: 50%;
+                                        width: 1em;
+                                        height: 1em;
+                                        aspect-ratio: 1/1;
+                                        display: flex;
+                                        justify-content: center;
+                                    }
+                                }
+                            }
+                            > .tagsDiv {
+                                > Button {
+                                    > span {
+                                        
+                                    }
+                                }
+                            }
+                        }
+                        > .bottomDiv {
+                            // display: none;
+                            > button {
+                                > span {
+
+                                }
+                            }
                         }
                     }
                 }
@@ -141,20 +251,20 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
         height: max-content;
         font-size: 1em;
         > div {
-            @include box-shadow(1);
-            background-color: $color-primary-light;
+            @include Gmain.box-shadow(1);
+            background-color: vars.$color-primary-light;
             $map: (
-                background-color    : $color-primary,
+                background-color    : vars.$color-primary,
                 border              : 0px solid yellow
                 );
-            @include onActive($map);
-            border-radius: $border-radius;
+            @include Gbuttons.onActive($map);
+            border-radius: vars.$border-radius;
             padding: 0.2em;
             margin: 0.15em;
             transition: background-color 0.2s;
             transition: transform 0.2s;
             &:hover {
-                background-color: $color-primary-Dark;
+                background-color: vars.$color-primary-Dark;
                 transform: translateY(-10%);
             }
             > button {

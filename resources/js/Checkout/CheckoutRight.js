@@ -6,6 +6,8 @@ class CheckoutRightBar {
     this.id     = "CheckoutRight_";
     this.mainElement = new SPLINT.DOMElement(this.id + "mainRight", "div", this.parent);
     this.mainElement.Class("CheckoutRightMain");
+    this.backgroundFiller = new SPLINT.DOMElement(this.id + "mainRight_backgroundFiller", "div", this.mainElement);
+    this.backgroundFiller.Class("backgroundFiller");
     this.price = 0;
     this.drawList();
     this.drawConclusion();
@@ -48,7 +50,7 @@ class CheckoutRightBar {
                   nameDiv.Class("name");
               let priceDivBody = new SPLINT.DOMElement("priceBody_" + index, "div", informationDiv);
                   priceDivBody.Class("price");
-                  let priceDiv = new PriceDiv_S(priceDivBody, "price_" + index, (product.price * item.amount));
+                  let priceDiv = new SPLINT.DOMElement.PriceDiv(priceDivBody, "price_" + index, (product.price * item.amount));
                       // priceDiv.
     }
   }
@@ -96,7 +98,7 @@ class CheckoutRightBar {
                 // table.getHead();
                 let gen = SPLINT.DOMElement.SpanDiv.get;
                 gen(table.getData(0, 0), "", "Zwischensumme");
-                let pD1 = new PriceDiv_S(table.getData(0, 1), "", fullPrice)
+                let pD1 = new SPLINT.DOMElement.PriceDiv(table.getData(0, 1), "", fullPrice)
                 // gen(table.getData(0, 1), "", fullPrice);
                 gen(table.getData(1, 0), "", "Versand");
                 gen(table.getData(1, 1), "", "kostenlos");

@@ -1,15 +1,19 @@
-import * as THREE from 'three';
 import SPLINT from 'SPLINT';
 import * as MATERIALS from '../../assets/materials/materials.js';
+import { Mesh } from "@THREE_ROOT_DIR/src/objects/Mesh.js";
+import { BoxHelper } from "@THREE_ROOT_DIR/src/helpers/BoxHelper.js";
+import { PlaneGeometry } from "@THREE_ROOT_DIR/src/geometries/PlaneGeometry.js";
+import { MeshBasicMaterial } from "@THREE_ROOT_DIR/src/materials/MeshBasicMaterial.js";
+
 export default class converterImages {
     constructor(inst) {
         this.inst = inst;
         this.scene = inst.scene;
         this.stack = new Array();
-        this.meshGeo = new THREE.PlaneGeometry(3.4/20, 5.145/20, 1, 1);
+        this.meshGeo = new PlaneGeometry(3.4/20, 5.145/20, 1, 1);
         this.meshGeo.translate(3.4/40, -5.145/40, 0);
-        this.mesh = new THREE.Mesh(this.meshGeo, new THREE.MeshBasicMaterial({transparent: true, opacity: 0}));
-        let helper = new THREE.BoxHelper(this.mesh, 0x006aff);
+        this.mesh = new Mesh(this.meshGeo, new MeshBasicMaterial({transparent: true, opacity: 0}));
+        let helper = new BoxHelper(this.mesh, 0x006aff);
         helper.update();
         // this.mesh.add(helper);
         this.mesh.position.y = 0.267;

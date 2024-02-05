@@ -24,7 +24,7 @@ class drawProjectList {
     }
     async draw(){
         this.clear();
-        this.table = new Table(this.mainElement, "Projects_" + this.name, this.data);
+        this.table = new SPLINT.DOMElement.Table(this.mainElement, "Projects_" + this.name, this.data);
           if(this.drawNew){
             this.table.func_drawFirstListElement = async function(listElement){
               listElement.onclick = async function(){
@@ -48,6 +48,7 @@ class drawProjectList {
                   buttonDiv.Class("buttonDiv");
                   if(data.Original != "true"){
                     let button_edit = new SPLINT.DOMElement.Button(buttonDiv, index + "_edit");
+                        button_edit.setTooltip("bearbeiten", "bottom");
                     if(data.State == "ADMIN"){
                       button_edit.value = "verwenden";
                     } else {
@@ -66,6 +67,7 @@ class drawProjectList {
                   }
               let button_toCart = new SPLINT.DOMElement.Button(buttonDiv, index + "_toCart");
                   button_toCart.bindIcon("add_shopping_cart");
+                  button_toCart.setTooltip("in dem Warenkorb", "bottom");
                   button_toCart.onclick = async function(e){
                         e.stopPropagation();
                       let projectID = data.ProjectID;
@@ -82,6 +84,7 @@ class drawProjectList {
                 if(data.State == ProjectHelper.STATE_NORMAL){
                     let button_copy = new SPLINT.DOMElement.Button(buttonDiv, index + "_copy");
                         button_copy.bindIcon("content_copy");
+                        button_copy.setTooltip("kopieren", "bottom");
                         button_copy.onclick = async function(e){
                             e.stopPropagation();
                             await ProjectHelper.copy(data.ProjectID);
@@ -93,6 +96,7 @@ class drawProjectList {
                 if(data.State == ProjectHelper.STATE_NORMAL){
                     let button_remove = new SPLINT.DOMElement.Button(buttonDiv, index + "_remove");
                         button_remove.bindIcon("delete");
+                        button_remove.setTooltip("löschen", "bottom");
                         button_remove.onclick = function(e){
                             e.stopPropagation();
                             if(data.State == ProjectHelper.STATE_NORMAL){

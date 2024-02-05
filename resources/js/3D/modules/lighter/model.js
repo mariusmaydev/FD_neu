@@ -1,29 +1,15 @@
 
-// import { Cache, ShaderMaterial } from 'three';
 import SPLINT from 'SPLINT';
 import * as MATERIALS from '../assets/materials/materials.js';
 import S_MATERIALS from '@SPLINT_THREE_DIR/materials/M_materials.js';
-import SETUP from './setup.js';
-import {
-    Cache,
-    Vector3,
-    Matrix4,
-    SphereGeometry,
-    Box3,
-    Mesh,
-    ShaderMaterial
-} from 'three';
-// import { Cache } from "@THREE_ROOT_DIR/src/loaders/Cache.js";
-// import { Vector3 } from "@THREE_ROOT_DIR/src/math/Vector3.js";
-// import { Matrix4 } from "@THREE_ROOT_DIR/src/math/Matrix4.js";
-// import { SphereGeometry } from "@THREE_ROOT_DIR/src/geometries/SphereGeometry.js";
-// import { Box3 } from "@THREE_ROOT_DIR/src/math/Box3.js";
-// import { Mesh } from "@THREE_ROOT_DIR/src/objects/Mesh.js";
+import { Cache } from "@THREE_ROOT_DIR/src/loaders/Cache.js";
+import { Vector3 } from "@THREE_ROOT_DIR/src/math/Vector3.js";
+import { Matrix4 } from "@THREE_ROOT_DIR/src/math/Matrix4.js";
+import { SphereGeometry } from "@THREE_ROOT_DIR/src/geometries/SphereGeometry.js";
+import { Box3 } from "@THREE_ROOT_DIR/src/math/Box3.js";
+import { Mesh } from "@THREE_ROOT_DIR/src/objects/Mesh.js";
 import * as THC from "@THREE_ROOT_DIR/src/constants.js";
-// import { ShaderMaterial } from "@THREE_ROOT_DIR/src/materials/ShaderMaterial.js";
-// import * as TEXTURES from '../assets/materials/textures.js';
-// import { SVGLoader } from '@THREE_MODULES_DIR/loaders/SVGLoader.js';
-// import { TWEEN } from '@THREE_MODULES_DIR/libs/tween.module.min.js'
+import { ShaderMaterial } from "@THREE_ROOT_DIR/src/materials/ShaderMaterial.js";
 
 
 var FLAG_sceneLoaded = 0;
@@ -291,7 +277,7 @@ export default class Model {
     static async getThumbnail(scene, instance, src , name = "", color = 0xe8b000, isHidden = false){
         let double = false;
         let material = null;
-            return MATERIALS.Lighter.Engraving3(instance, src, undefined, color, async function(texture, mat = null){
+            return MATERIALS.Lighter.Engraving3(src, async function(texture, mat = null){
                 if(mat != null){
                     material = mat;
                 }      
@@ -374,7 +360,6 @@ export default class Model {
                 // c.update(1);
                 return true;
             }.bind(this));
-
     }
 }
 

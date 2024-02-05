@@ -6,6 +6,10 @@ class Converter_LeftBar {
     SPLINT.Events.onLoadingComplete = function(){
       this.mainElement.setAttribute("loaded", true);
     }.bind(this)
+    if(SPLINT.Events.onLoadingComplete.dispatched == true){
+        this.mainElement.setAttribute("loaded", true);
+
+    }
     this.contentElement = new SPLINT.DOMElement("LeftBar_content_div", "div", this.mainElement);
     this.contentElement.Class("content");
     this.buttonImageMenu();
@@ -13,10 +17,12 @@ class Converter_LeftBar {
     this.buttonNewText();
     this.buttonEPType();
     this.buttonProductInformation();
+    //this.blockEPType();
   }
   buttonImageMenu(){
     this.button_ImageMenu = new SPLINT.DOMElement.Button(this.contentElement, "OpenImageMenu");
     this.button_ImageMenu.bindIcon("image_search");
+    this.button_ImageMenu.Description = "Bilder finden";
     this.button_ImageMenu.button.setTooltip("Bild laden", "right");
     this.button_ImageMenu.button.onclick = function(){
       ConverterHelper.openImageMenu();
@@ -25,6 +31,7 @@ class Converter_LeftBar {
   buttonImageUpload(){
     this.button_upload = new FileUploadButton(this.contentElement, "ImageUploadInput", "image/*", FileUpload.CONVERTER_IMG);
     this.button_upload.bindIcon("upload_file");
+    this.button_upload.Description = "Bild hochladen";
     this.button_upload.button.setTooltip("Bild hochladen", "right");
     this.button_upload.onsuccess = function(data){
       ConverterHelper.uploadImage(data);
@@ -33,6 +40,7 @@ class Converter_LeftBar {
   buttonNewText(){
     this.button_NewText = new SPLINT.DOMElement.Button(this.contentElement, "CreateText");
     this.button_NewText.bindIcon("format_shapes");
+    this.button_NewText.Description = "Text einfügen";
     this.button_NewText.button.setTooltip("Text einfügen", "right");
     this.button_NewText.button.onclick = function(){
       
@@ -42,11 +50,12 @@ class Converter_LeftBar {
   buttonEPType(){
     this.button_EPType = new SPLINT.DOMElement.Button(this.contentElement, "ChangeEPtype_button");
     this.button_EPType.bindIcon("auto_awesome");
+    this.button_EPType.Description = "Farbe ändern";
     this.button_EPType.button.setTooltip("Veredelung", "right");
     this.button_EPType.bindDropdown(function(parent){
           let div = new SPLINT.DOMElement("dropDownDiv_changeEPType", "div", parent);
       
-              let RadioButton = new S_radioButton(div, "changeEPType");
+              let RadioButton = new SPLINT.DOMElement.Button.Radio(div, "changeEPType");
               RadioButton.onChange = function(event){
                 ConverterHelper.setEPType(event.target.value);
               }
@@ -62,6 +71,7 @@ class Converter_LeftBar {
   buttonProductInformation(){
     this.button_ProductInformation = new SPLINT.DOMElement.Button(this.contentElement, "ProductInformation");
     this.button_ProductInformation.bindIcon("info");
+    this.button_ProductInformation.Description = "Informationen";
     this.button_ProductInformation.button.onclick = async function(){
         let UserID = (await SPLINT.SessionsPHP.get("USER_ID", false));
         let data = DSProject.Storage;
@@ -74,5 +84,17 @@ class Converter_LeftBar {
         //   }
         // let productInformation = new ProductInformation("converter");
     }
+  }
+  blockEPType(){
+    this.block_EPType = new SPLINT.DOMElement(this.mainElement.id + "Block_EPType", "div", this.mainElement);
+    this.block_EPType.Class("content");
+    this.block_EPType.classList.add("content1");
+        let headline = new SPLINT.DOMElement.SpanDiv(this.block_EPType, "headline", "Farbe");
+            headline.Class("headline");
+        let swButton = new SPLINT.DOMElement.Button.Toggle(this.block_EPType, "EPTypeSW");
+            // swButton.Class("swButton");
+            swButton.addElement("value","name");
+            swButton.addElement("value1","name1");
+            
   }
 }

@@ -35,6 +35,7 @@
         <s-part src="/js/Projects/ProjectsHelper.js"></s-part>
 
         <s-part src="/js/NavigationBar.js"></s-part>
+        <s-part src="/js/Footer.js"></s-part>
         <s-loader src="/js/Eventhandler.js"></s-loader>
 
         <script type="text/javascript" src="../../../../Splint/js/Splint.js" onload="SPLINT.start()"></script>

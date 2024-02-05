@@ -1,3 +1,6 @@
+@use '../../../../general/main' as Gmain;
+@use '../../../../themes/theme1/main' as Tmain;
+@use '../../../../themes/theme1/vars';
 
 @mixin conv_floatingDiv_aligned() {
     >.converter-bottomBar-floatingDiv.aligned {
@@ -28,7 +31,7 @@
                 height: max-content;
                 width: 100%;
                 background-color: white;
-                @include box-shadow();
+                @include Gmain.box-shadow();
                 padding: 1%;
                 margin: auto;
                 margin-top: 5%;
@@ -65,7 +68,7 @@
 @mixin conv_floatingDiv_block() {
     >.converter-bottomBar-floatingDiv.block {
         pointer-events: none;
-        bottom: 100%;
+        bottom: calc(100% + 0.5rem);
         left: 0;
         height: max-content;
         width: 100%;
@@ -82,45 +85,185 @@
             align-items: center;
             justify-content: center;
             overflow: visible;
-            > .S-SliderMain {
-                display: flex;
-                flex-direction: column;
-                justify-content: stretch;
-                align-items: stretch;
-                // padding: 0.5em;
-                text-align: center;
-                margin-top: 0em;
-                margin-bottom: 0.5em;
-                > .label {
-                    margin-top: 0.4em;
-                    margin-bottom: 0.2em;
+            > .spinnerDiv {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(60, 60, 60, 0.447);
+                z-index: 100;
+                opacity: 0;
+                transition: opacity 0.2s ease;
+                user-select: none;
+                pointer-events: none;
+                &[state*='active'] {
+                    opacity: 1;
+                    pointer-events: all;
+                }
+                > div {
+                    top: 50%; 
+                    left: 50%;
+                    transform: translate(-50%,-50%);
                     position: relative;
-                    width: 100%;
+                    aspect-ratio: 1/1;
+                    display: block;
+                    width: auto;
+                    height: auto;
+                    max-height: 100%;
+                    max-width: 100%;;
+                    > div {
+
+                    }
+                }
+            }
+            > .S-SliderMain {
+                position: relative;
+                @include Tmain.T_container();
+                @include Tmain.clipEdgesAll(5px);
+                margin-top: 0.4em;
+                margin-bottom: 0.4em;
+                height: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: stretch;
+                align-content: stretch;
+                max-height: max-content;
+                // padding-top: 0.4rem !important;
+                // padding-bottom: 0.4rem !important;
+                overflow: visible;
+                transition: all 0.3s ease-in;
+
+                &[drawDivider='true']{
+                    &::after {
+                        content: "";
+                        display: block;
+                        width: 100%;
+                        height: 0px;
+                        background: transparent;
+                        border-bottom: 1px solid vars.$color-devider;
+                        left: 0;
+                        // top: 50%;
+                        margin-top: 0.25em;
+                        position: relative;
+                    }
+                    &::before {
+                        content: "";
+                        display: block;
+                        width: 100%;
+                        height: 0px;
+                        background: transparent;
+                        border-top: 1px solid vars.$color-devider;
+                        left: 0;
+                        // top: 50%;
+                        margin-bottom: 0.2em;
+                        position: relative;
+                    }
+                }
+                > .label {
+                    position: relative;
+                    width: 20%;
                     display: inline-block;
                     box-sizing: border-box;
                     text-align: center;
                     > span {
-
+                        font-size: 2rem;
                     }
                 }
                 > .contentBody {
-                    margin-bottom: 0.5em;
-                    margin-left: auto;
-                    margin-right: auto;
-                    width: 90%;
+                    flex-grow: 1;
+                    height: 100%;
+                    display: flex;
+                    width: 100%;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 2rem;
                     > .sliderBody {
+                        flex-grow: 1;
+                        order: 1;
+                        top: -0.25rem;
+                        height: max-content;
                         width: 100%;
+                        > input[type="range"] {
+                            width: 100%;
+                            position: relative;
+                            font-size: 1em;
+                            height: 100%;
+                            display: inline-block;
+                            outline: none;
+                            top: 0;
+                            margin: 0;
+                            padding: 0;
+                            // align-items: center;
+                            background-color: transparent;
+                            -webkit-appearance: none;
+                            transition: box-shadow 0.2s ease;
+                            &::-webkit-slider-runnable-track {
+                                box-sizing: border-box;
+                                // top: 45%;
+                                width: 100%;
+                                // margin-inline: -5%;
+                                height: 0.15em;
+                                // top: -0.075em;
+                                // margin-top: 0.25em;
+                                // margin-top: 45%;
+                                margin: 0;
+                                padding: 0;
+                                // margin-bottom: 45%;
+                                background-color: vars.$color-primary-Dark;
+                                transition: background-color 0.2s ease;
+                                box-shadow: 1px 1px 1px 0px vars.$color-slider-thumb;
+                                border: none;
+                                border-radius: 10px;
+                            }
+                            &::-webkit-slider-thumb {
+                                // z-index: 2;
+                                -webkit-appearance: none;
+                                appearance: none;
+                                border: none;
+                                vertical-align: baseline;
+                                height: 1em;
+                                width: 0.5em;
+                                // border-radius: 10%;
+                                margin-top: -0.425em;
+                                background: vars.$color-slider-thumb;
+                                box-shadow: 1px 1px 0px 0px vars.$color-slider-thumb-Dark;
+                                            // 2px 1px 0px 0px vars.$color-slider-thumb-Dark;
+                                // @include S_tools.SPLINT-border-inset(vars.$color-slider-thumb-Dark, 1px, false, false, true, true);
+                                // margin-top: calc(-100% + 0.5em);
+                                box-sizing: border-box;
+                                // @include border();
+                                transition: box-shadow 0.2s ease;
+                            }
+                            &:focus {
+                                &::-webkit-slider-thumb {
+                                    @include Gmain.box-shadow(0, vars.$color-primary-Dark, 0.7);
+                                }
+                                outline: none;
+                            }
+                            
+                            &:hover::-webkit-slider-runnable-track {
+                                background-color: vars.$color-primary;
+                            }
+                        }
+                        > datalist {
+                            display: none;
+                            > option {
+                            }
+                        }
                     }
                     > .valueOutput {
+                        flex-grow: 1;
                         position: relative;
                         order: 2;
                         font-size: 1.1em;
-                        height: max-content;
+                        height: 100%;
                         &[hidden='true']{
                             display: none;
                         }
-                        top: -0.1em;
+                        top: 0.25rem;
                         width: 1.5em;
+                        
                         display: inline-block;
                         box-sizing: border-box;
                         text-align: center;
@@ -204,12 +347,12 @@
                 user-select: none;
                 height: max-content;
                 width: 100%;
-                @include box-shadow();
+                @include Gmain.box-shadow();
                 background-color: white;
                 // padding: 1%;
                 margin-bottom: 2%;
                 box-sizing: border-box;
-                border-radius: $border-radius;
+                border-radius: vars.$border-radius;
                 > label {
                     font-size: 0.75em;
                 }
@@ -224,7 +367,10 @@
             }
             > button {
                 span {
-                    font-size: 10vw;
+                    font-size: 6rem;
+                    &.text {
+                        font-size: 2rem;
+                    }
                 }
             }
         
@@ -235,18 +381,20 @@
             }
         }
         &[name*='fontFamilySlideShow']{
-            height: 5em;
+            height: 10rem;
             overflow: visible;
             width: 100vw;
             left: -2%;
             background-color: transparent;
             > div {
-                height: 5em;
-                // height: 100%;
+                // height: max-content;
+                height: 100%;
                 background-color: transparent;
-                > div {
+                > .SlideShow_S {
                     box-shadow: none;
                     scrollbar-width: 0;
+                    height: 100%;
+                    margin-bottom: 0;
                     background-color: transparent;
                     &::-webkit-scrollbar {
                         display: none;
@@ -260,10 +408,32 @@
                         display: none;
                         width: 0;
                     }
-                    height: 100%;
+                    height: max-content;
+                    padding: 1rem;
                     > div {
+                        height: 100%;
+                        margin: 0;
+                        width: 100%;
+                        box-sizing: border-box;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-evenly;
+                        align-items: stretch;
+                        align-content: stretch;
+                        gap: 1rem;
                         > div {
+                            @include Tmain.T_container();
+                            align-items: center;
+                            font-size: 4rem;
+                            margin: 0;
+                            overflow: hidden;
+                            height: 100%;;
+                            box-sizing: border-box;
+                            min-width: max-content;
+                            width: max-content;
                             cursor: pointer;
+                            padding: 0rem;
+                            // padding-left: 1rem;
                             user-select: none;
                             &[state*='active']{
                                 background-color: orange;
@@ -272,7 +442,15 @@
 
                             }
                             > div {
+                                width: min-content;
+                                height: 100%;
+                                box-sizing: border-box;
+                                margin: 1rem;
+                                // padding: 0;
+                                // margin: 0;
                                 > span {
+                                    box-sizing: border-box;
+                                    font-size: 4rem;
                                     &[id*='Arial']{
                                         font-family: Arial;
                                     }
@@ -281,6 +459,24 @@
                                     }
                                     &[id*='Roboto']{
                                         font-family: G-Roboto;
+                                    }
+                                    &[id*='Verdana']{
+                                        font-family: verdana;
+                                    }
+                                    &[id*='Georgia']{
+                                        font-family: Georgia;
+                                    }
+                                    &[id*='Trebuchet']{
+                                        font-family: "Trebuchet MS";
+                                    }
+                                    &[id*='Garmond']{
+                                        font-family: Garmond;
+                                    }
+                                    &[id*='Courier']{
+                                        font-family: "Courier New";
+                                    }
+                                    &[id*='Brush']{
+                                        font-family: "Brush Script MT";
                                     }
                                 }
                             }

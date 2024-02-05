@@ -1,8 +1,7 @@
-@import '../../general/main.scss';
-@import '../../general/buttons.scss';
-// @import '../../general/NavigationBar.scss';
-@import '../ADMIN.scss';
-// @import '../../addresses/address.scss';
+@use '../../general/main' as Gmain;
+@use '../../general/buttons' as Gbuttons;
+@use '../../../../../Splint/scss/tools/tools' as S_tools;
+@use '../ADMIN';
 
 body {
     // > .head {
@@ -15,7 +14,7 @@ body {
                 padding-left: 0.5em;
                 padding-bottom: 0.25em;
                 width: 100%;
-                @include SPLINT-border-inset(gray, 1px, false, false, true, false);
+                @include S_tools.SPLINT-border-inset(gray, 1px, false, false, true, false);
                 > span {
                     font-size: 1.5em;
 
@@ -40,7 +39,7 @@ body {
                     padding-left: 0.5em;
                     padding-bottom: 0.25em;
                     width: 100%;
-                    @include SPLINT-border-inset(gray, 1px, false, false, true, false);
+                    @include S_tools.SPLINT-border-inset(gray, 1px, false, false, true, false);
                     > span {
                         font-size: 1.5em;
                     }
@@ -64,7 +63,7 @@ body {
                 padding-bottom: 0.25em;
                 margin-bottom: 0.5em;
                 width: 100%;
-                @include SPLINT-border-inset(gray, 1px, false, false, true, false);
+                @include S_tools.SPLINT-border-inset(gray, 1px, false, false, true, false);
                 > span {
                     font-size: 1.5em;
 

@@ -1,7 +1,8 @@
-@import '../../general/main.scss';
-@import '../../general/buttons.scss';
+@use '../../general/main' as Gmain;
+@use '../../general/buttons' as Gbuttons;
+@use '../../../../../Splint/scss/tools/tools' as S_tools;
 // @import '../../general/NavigationBar.scss';
-@import '../ADMIN.scss';
+@use '../ADMIN';
 
 .logo-icon {
     position: relative;
@@ -32,7 +33,7 @@ body {
             > div {
                 margin-right: 1em;
                 padding-right: 1em;
-                @include SPLINT-border-inset(gray, 1px, false, false, false, true);
+                @include S_tools.SPLINT-border-inset(gray, 1px, false, false, false, true);
                 > span {
                     font-size: 2em;
                 }

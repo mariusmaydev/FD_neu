@@ -13,22 +13,22 @@ class drawCartList {
         if(this.data.length == 0){
             SPLINT.Events.onLoadingComplete.dispatch();
         }
-        this.listHead = new SPLINT.DOMElement(this.id + "ItemListHead", "div", this.listBody);
-        this.listHead.Class("itemListHead");
-        SPLINT.Events.onLoadingComplete = function(){
-            this.listHead.setAttribute("loaded", true);;
-        }.bind(this);
-            let descDiv = this.listHead.newDiv("ItemList_head_description", "description");
-                new SPLINT.DOMElement.SpanDiv(descDiv, "inner", "Beschreibung");
+        // this.listHead = new SPLINT.DOMElement(this.id + "ItemListHead", "div", this.listBody);
+        // this.listHead.Class("itemListHead");
+        // SPLINT.Events.onLoadingComplete = function(){
+        //     this.listHead.setAttribute("loaded", true);;
+        // }.bind(this);
+        //     let descDiv = this.listHead.newDiv("ItemList_head_description", "description");
+        //         new SPLINT.DOMElement.SpanDiv(descDiv, "inner", "Beschreibung");
 
-            let itemPriceDiv = this.listHead.newDiv("ItemList_head_itemPrice", "itemPrice");
-                new SPLINT.DOMElement.SpanDiv(itemPriceDiv, "inner", "Stückpreis");
+        //     let itemPriceDiv = this.listHead.newDiv("ItemList_head_itemPrice", "itemPrice");
+        //         new SPLINT.DOMElement.SpanDiv(itemPriceDiv, "inner", "Stückpreis");
 
-            let amountDiv = this.listHead.newDiv("ItemList_head_amount", "amount");
-                new SPLINT.DOMElement.SpanDiv(amountDiv, "inner", "Anzahl");
+        //     let amountDiv = this.listHead.newDiv("ItemList_head_amount", "amount");
+        //         new SPLINT.DOMElement.SpanDiv(amountDiv, "inner", "Anzahl");
 
-            let priceDivEle = this.listHead.newDiv("ItemList_head_price", "price");
-                new SPLINT.DOMElement.SpanDiv(priceDivEle, "inner", "Preis");
+        //     let priceDivEle = this.listHead.newDiv("ItemList_head_price", "price");
+        //         new SPLINT.DOMElement.SpanDiv(priceDivEle, "inner", "Preis");
         this.list = new Table(this.listBody, "ItemList", this.data);
         // this.list.func_drawFirstListElement = function(listElement){
         //     let descDiv = listElement.newDiv("ItemList_head_description", "description");
@@ -55,20 +55,18 @@ class drawCartList {
             let priceEle        = rightDiv.newDiv(null, "price");
             let buttonsEle      = rightDiv.newDiv(null, "buttons");
             
-
             projectData.then(function(data){
                 let lighter = new drawLighter3D(lighterEle, lighterEle.id, "PROJECT", data.Thumbnail);
             })
 
             let infoDivInner = infoEle.newDiv("/ID/info_inner", "inner");
-                let infoText = new SPLINT.DOMElement.SpanDiv(infoDivInner, "text", "123456789-123456789");
+                let infoText = new SPLINT.DOMElement.SpanDiv(infoDivInner, "text", "vergoldetes Feuerzeug");
                     infoText.div.Class("text");
                 let info_buttons = infoDivInner.newDiv("/ID/info_buttons", "buttons");
 
             let itemPriceDivInner = itemPriceDiv.newDiv("/ID/item_price_inner", "inner");
-            console.dir(productData);
             productData.then(function(data){
-                console.log(parseInt(data.price))
+                infoText.value = data.viewName;
                 // let priceDivItem = new PriceDiv_S(itemPriceDivInner, index, "25.55");
             });
             let priceDiv

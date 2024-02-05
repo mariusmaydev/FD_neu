@@ -697,6 +697,7 @@
     }
 
     class PathHelper {
+        public static $FlagG1 = true;
         public static function smoothPaths(PathObject $PathObject) : PathObject {
             $PathElements = $PathObject -> getElements();
             $PathObjectOut = new PathObject();
@@ -727,8 +728,13 @@
             return $PathObjectOut;
         }
         public static function fixElements(PathObject $PathObject) : PathObject{
+            global $LIGHTER_HEIGHT;
+            global $LIGHTER_WIDTH;
+            global $LIGHTER_MULTIPLY;
             $PathElements = $PathObject -> getElements();
             $PathObjectOutput = new PathObject();
+            $LW = $LIGHTER_WIDTH;
+            $LH = $LIGHTER_HEIGHT;
             foreach($PathElements as $key => $element){
                 $last = array(); 
                 $newPathElement = new PathElement2D();
@@ -736,26 +742,53 @@
                 $last['x'] = -100000;
                 $last['y'] = -100000;
                 foreach($steps as $key1 => $step){
-                    if($step['x'] >= -2 && $step['x'] <= ProjectDB::LIGHTER_WIDTH * 61.29){
-                        if($step['y'] >= -2 && $step['y'] <= ProjectDB::LIGHTER_HEIGHT * 61.29){
+                    if($step['x'] >= -2 && $step['x'] <= $LW){
+                        if($step['y'] >= -2 && $step['y'] <= $LH){
                             if($step['x'] != $last['x'] OR $step['y'] != $last['y']){
+
+                                if($steps[$key1-1]['x'] >= -2 && $steps[$key1-1]['x'] <= $LW){
+                                    if($steps[$key1-1]['y'] >= -2 && $steps[$key1-1]['y'] <= $LH){
+                                        
+                                    } else {
+                                        if($key1 != 0){
+                                            $Nstep = self::LimitCoords($step, $steps[$key1-1], null, $LH);
+                                            $newPathElement -> addStep($Nstep['x'], $Nstep['y']);
+                                        }
+                                    }
+                                } else {
+                                    if($key1 != 0){
+                                        $Nstep = self::LimitCoords($step, $steps[$key1-1], $LW);
+                                        $newPathElement -> addStep($Nstep['x'], $Nstep['y']);
+                                    }
+                                }
                                 $newPathElement -> addStep($step['x'], $step['y']);
                                 $last['x'] = $step['x'];
                                 $last['y'] = $step['y'];
                             }
                         } else {
-                            if($newPathElement -> stepCount() != 0){
+                            if($last['x'] != -100000 && $last['y'] != -100000){
+                                $Nstep = self::LimitCoords($step, $last, null, $LH);
+                                if($Nstep['x'] != $last['x'] OR $Nstep['y'] != $last['y']){
+                                    $newPathElement -> addStep($Nstep['x'], $Nstep['y']);
+                                    $last['x'] = $Nstep['x'];
+                                    $last['y'] = $Nstep['y'];
+                                }
+                            }
+                            if($newPathElement -> stepCount() > 1){
                                 $PathObjectOutput -> addElement($newPathElement);
                             }
                             $newPathElement = new PathElement2D();
-                            //1 : 10, 0
-                            //2 : 15, 10
-                            // B  : 4
-                            // 15-10 = 5
-                            // 10-0 = 10
                         }
                     } else {
-                        if($newPathElement -> stepCount() != 0){
+                        if($last['x'] != -100000 && $last['y'] != -100000){
+                            $Nstep = self::LimitCoords($step, $last, $LW);
+                            if($Nstep['x'] != $last['x'] OR $Nstep['y'] != $last['y']){
+                                $newPathElement -> addStep($Nstep['x'], $Nstep['y']);
+                                $last['x'] = $Nstep['x'];
+                                $last['y'] = $Nstep['y'];
+                            }
+                        }
+                        if($newPathElement -> stepCount() > 1){
                             $PathObjectOutput -> addElement($newPathElement);
                         }
                         $newPathElement = new PathElement2D();
@@ -839,10 +872,57 @@
             $last = [];
             foreach($pathElements as $key => $pathElement){
                 $responsePathObject = f2($pathElement);
-                if($responsePathObject -> stepCount() > 1){
+                // if($responsePathObject -> stepCount() > 0){
                     $PathObjectOutput -> addElement($responsePathObject);
-                }
+                // }
             }
             return $PathObjectOutput;
+        }
+        public static function LimitCoords(array $step, array $last, float $X = null, float $Y = null) : array {
+            // 10|10 - 0|0 = 10|10
+            // 10/10=1
+            // 10|20 - 0|0 = 10|20
+            // 20/10 = 2
+            $Xn = 0;
+            $Yn = 0;
+            $dX = $step['x'] - $last['x'];
+            $dY = $step['y'] - $last['y'];
+            $ddX_Y = 0;
+            $ddY_X = 0;
+            if($dX != 0){
+                $ddX_Y = $dY / $dX; // 2
+            } 
+            if($dY != 0){
+                $ddY_X = $dX / $dY; // 0,5
+            }
+            $st = [];
+            $st['x'] = $last['x'];
+            $st['y'] = $last['y'];
+            if($last['x'] < $Xn || $step['x'] < $Xn){
+                $rY = $ddX_Y * ($last['x'] - $Xn);
+                $st['x'] = $Xn;
+                $st['y'] = $last['y'] + $rY;
+                if($st['y'] < $Yn){
+                    $st = self::LimitCoords($st, $step, $X, $Y);
+                }
+            } else if($last['y'] < $Yn || $step['y'] < $Yn){
+                $rX = $ddY_X * ($last['y'] - $Yn);
+                $st['y'] = $Yn;
+                $st['x'] = $last['x'] - $rX;
+                if($st['x'] < $Xn){
+                    $st = self::LimitCoords($st, $step, $X, $Y);
+                }
+            } else {
+                if($X != null){
+                    $rY = $ddX_Y * ($X - $last['x']);
+                    $st['x'] = $X;
+                    $st['y'] = $last['y'] - $rY;
+                } else if($Y != null){
+                    $rX = $ddY_X * ($Y - $last['y']);
+                    $st['y'] = $Y;
+                    $st['x'] = $last['x'] + $rX;
+                }
+            }
+            return $st;
         }
     }

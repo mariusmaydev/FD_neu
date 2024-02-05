@@ -16,6 +16,10 @@ class ADMIN_order_list {
             } else {
                 this.orderData = await order.get();
             }
+            for(const e of this.orderData){
+                e.uTime = S_Time.convertDateTimeToFormatedUnix(e.Time);
+            }
+            SArray.assortInt(this.orderData, "uTime", true);
             resolve(true);
         }.bind(this));
     }
@@ -31,29 +35,53 @@ class ADMIN_order_list {
         this.menuBody = new SPLINT.DOMElement(this.id + "menuBody", "div", this.parent);
         this.menuBody.before(this.mainElement);
         this.menuBody.Class("menuMain");
-            let bt_preRenderAll = new SPLINT.DOMElement.Button(this.menuBody, "preRenderAll", "alle modelle erstellen");
-                bt_preRenderAll.onclick = async function(){
-                    for(const e of this.orderData){
-                        for(const item of e.Items){
-                            this.#modelButton(item.ProjectID, e.Items.UserID);
-                            // let a = this.mainElement.querySelector("span[projectID='" + item.ProjectID + "']");
-                            //     if(a.innerHTML == "close"){
-                            //         let bt = this.mainElement.querySelector("button[projectID='" + item.ProjectID + "']");
-                            //             a.style.display = "none";
-                            //             let sp = new Spinner1(bt, item.ProjectID);
-                            //         ConverterHelper.createData(e.Items.UserID, item.ProjectID).then(function(){
-                            //                 sp.remove();
-                            //                 a.style.display = "block";
-                            //                 a.innerHTML = "check";
-                            //         }.bind(this));
-                            //     }
-                        }
-                    }
-                }.bind(this);
+
+            let informationDiv = new SPLINT.DOMElement(this.id + "mainInformationMain", "div", this.menuBody);
+                let table = new SPLINT.DOMElement.Table.TextTable(informationDiv, "test");
+                    // table.setHead("a", "b");
         this.parent
         this.mainElement.innerHTML = "";
         await this.#getData();
-
+        console.dir(this.orderData)
+        let full = 0;
+        let fullAmountEP = 0;
+        let fullAmountLaser = 0;
+        for(const e of this.orderData){
+            for(const ei of e.Items){
+                if(ei.amountFinishEP != undefined){
+                    fullAmountEP += parseInt(ei.amountFinishEP);
+                }
+                if(ei.amountFinishLaser != undefined){
+                    fullAmountLaser += parseInt(ei.amountFinishLaser);
+                }
+            }
+            full += e.Items.length;
+        }
+        table.setRow(0, "offene Bestellungen:", this.orderData.length, "noch zu galvanisierende Feuerzeuge:", fullAmountEP);
+        table.setRow(1, "noch zu fertigende Feuerzeuge:", full,"noch zu lasernde Feuerzeuge:", fullAmountLaser);
+        // table.setRow(2, );
+        // table.setRow(3, );
+        table.draw();
+        let bt_preRenderAll = new SPLINT.DOMElement.Button(this.menuBody, "preRenderAll", "alle modelle erstellen");
+            bt_preRenderAll.setStyleTemplate(SPLINT.CONSTANTS.BUTTON_STYLES.DEFAULT)
+        bt_preRenderAll.onclick = async function(){
+            for(const e of this.orderData){
+                for(const item of e.Items){
+                    this.#modelButton(item.ProjectID, e.Items.UserID);
+                    // let a = this.mainElement.querySelector("span[projectID='" + item.ProjectID + "']");
+                    //     if(a.innerHTML == "close"){
+                    //         let bt = this.mainElement.querySelector("button[projectID='" + item.ProjectID + "']");
+                    //             a.style.display = "none";
+                    //             let sp = new Spinner1(bt, item.ProjectID);
+                    //         ConverterHelper.createData(e.Items.UserID, item.ProjectID).then(function(){
+                    //                 sp.remove();
+                    //                 a.style.display = "block";
+                    //                 a.innerHTML = "check";
+                    //         }.bind(this));
+                    //     }
+                }
+            }
+        }.bind(this);
         for(const index in this.orderData){
             await this.drawListElement(index, this.orderData[index]);
         }
@@ -80,6 +108,7 @@ class ADMIN_order_list {
             await this.drawProjectsDiv(listElement, data);
             await this.drawInformationDiv(listElement, data);
             await this.drawAddressDiv(listElement, data, i);
+            await this.drawTimeDiv(listElement, data);
             await this.drawButtonsDiv(listElement, data);
             // resolve(true);
     }
@@ -114,9 +143,15 @@ class ADMIN_order_list {
     drawAddressDiv(parent, data, index){
         let main = new drawAddressElement(parent, data.Address.sending, index);
     }
+    drawTimeDiv(parent, data){
+        let main = new SPLINT.DOMElement(parent.id + "_time", "div", parent);
+            main.Class("timeDiv");
+            let time = new formatUnix_S(data.uTime * 1000);
+            let inner = new SPLINT.DOMElement.SpanDiv(main, "inner", time.date() + " " + time.time());
+    }
     drawButtonsDiv(parent, data){
         let main = new SPLINT.DOMElement(parent.id + "_buttons", "div", parent);
-            
+            main.Class("buttonsDiv");
             let button_View = new SPLINT.DOMElement.Button(main, "View");
                 button_View.bindIcon("search");
                 button_View.button.setTooltip("öffnen", "bottom");
@@ -138,9 +173,10 @@ class ADMIN_order_list {
                             let buttonEnter = new SPLINT.DOMElement.Button(confirmWindow.element, "subwindow_enter", "bestätigen");
                                 buttonEnter.onclick = async function(){
                                     let r = await order.finish(data);
+
                                     console.dir(r);
                                     confirmWindow.close();
-                                    // parent.remove();
+                                    parent.remove();
                                 }
                             let buttonReject = new SPLINT.DOMElement.Button(confirmWindow.element, "subwindow_reject", "abbrechen");
                                 buttonReject.button.onclick = function(){

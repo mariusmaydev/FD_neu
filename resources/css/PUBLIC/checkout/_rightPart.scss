@@ -1,19 +1,31 @@
+@use '../../general/mediaQueries';
+@use '../../themes/theme1/main' as Tmain;
+@use '../../themes/theme1/vars';
+@use '../../../../../Splint/scss/tools/tools' as S_tools;
 
 @mixin Checkout_rightPart {
     > .CheckoutRightMain{
-        @include forMediaBreakpoint(mobile-small){
+        @include mediaQueries.forMediaBreakpoint(mobile-small){
             display: none !important;
         }
         background-color: rgb(236, 236, 236);
         position: relative;
-        margin-right: 0%;
+        margin-right: 0;
         padding-left: 1%;
         width: 40%;
         height: 100%;
         display: flex;
         flex-direction: column;
-        overflow: hidden;
+        overflow: visible;
         justify-content: start;
+        >.backgroundFiller {
+            position: absolute;
+            background-color: rgb(236, 236, 236);
+            left: 100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
         > .listMain {
             position: relative;
             width: 80%;
@@ -26,7 +38,7 @@
                 position: relative;
                 max-height: 20em;
                 height: max-content;
-                @include T_container();
+                @include Tmain.T_container();
                 overflow: hidden;
                 gap: 1em;
                 display: flex;
@@ -39,8 +51,10 @@
                     margin-top: 0.5em;
 
                 }
+                @include Tmain.clipEdgesAll(5px);
+                @include S_tools.SPLINT-border-inset(vars.$color-T_container-Medium, 1px, true, true, true, true);
                 > .Lighter3D {
-                    aspect-ratio: $LIGHTER-ratio;
+                    aspect-ratio: vars.$LIGHTER-ratio;
                     position: relative;
                     height: 100%;
                     box-sizing: content-box !important;
@@ -52,7 +66,7 @@
                     }
                     > div { 
                         position: absolute;
-                        background-color: $color-primary;
+                        background-color: vars.$color-primary;
                         font-size: 150%;
                         top: 10%;
                         left: 80%;
@@ -144,10 +158,14 @@
             padding: 0;
             box-sizing: border-box;
             > .couponCodeContainer {
-                @include T_container();
+                // @include Tmain.T_container();
                 display: flex;
                 justify-content: stretch;
                 padding: 0;
+                @include Tmain.T_container();
+                @include Tmain.clipEdgesAll(5px);
+                @include S_tools.SPLINT-border-inset(vars.$color-T_container-Medium, 1px, true, true, true, true);
+                padding: 0.5em;
                 > div {
                     flex-grow: 1;
                     // width: 100%;
@@ -156,20 +174,23 @@
                     width: max-content;
                     margin-top: 1em;
                     margin-bottom: 1em;;
-                    background-color: $color-primary;
+                    background-color: vars.$color-primary;
                     > span {
                         word-wrap: none;
                         white-space: nowrap;
                         // wr
                     }
                     &:hover {
-                        background-color: $color-primary-Dark;
+                        background-color: vars.$color-primary-Dark;
                     }
                 }
 
             }
             > .priceContainer {
-                @include T_container();
+                @include Tmain.T_container();
+                @include Tmain.clipEdgesAll(5px);
+                @include S_tools.SPLINT-border-inset(vars.$color-T_container-Medium, 1px, true, true, true, true);
+                padding: 0.5em;
                 margin-top: 0.5em;
                 // width: 100%;
                 > .Table2D {
@@ -185,7 +206,7 @@
                             padding-bottom: 0.25em;
                             }
                             &:not(:last-child){
-                                @include SPLINT-border-inset(rgba(211, 211, 211, 0.39), 1px, false, false, true, false);
+                                @include S_tools.SPLINT-border-inset(rgba(211, 211, 211, 0.39), 1px, false, false, true, false);
 
                             }
                         }

@@ -69,6 +69,13 @@ class ProjectHelper extends SPLINT.CallPHP.Manager {
     static Design(projectID = null, userID = null){
       return new ProjectHelper_Design(projectID, userID);
     }
+    static getPath2AdminProject(projectID, domainFlag = true){
+        let domainStart = "";
+        if(domainFlag){
+            domainStart = SSL + "//" + domain + "/";
+        }
+      return domainStart + folder + "/data/Users/Admin/projects/" + projectID;
+    }
     static getPath2Project(UserID, projectID, domainFlag = true){
         let domainStart = "";
         if(domainFlag){
@@ -86,8 +93,9 @@ class ProjectHelper extends SPLINT.CallPHP.Manager {
           call.data.OrderID   = orderID;
       return call.send();
     }
-    static async new(ProjectName = 'unbenannt', Product = 'Test', isAdmin = false, isOriginal = false){
+    static async new(ProjectName = 'unbenannt', Product = 'Test', isAdmin = false, isOriginal = false, isExperimental = false){
       let call = this.callPHP(this.NEW);
+          call.data.Experimental = isExperimental;
           call.data.Original     = isOriginal;
           call.data.ProjectName  = ProjectName;
           call.data.Product      = Product;

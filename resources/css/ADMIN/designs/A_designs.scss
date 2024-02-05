@@ -1,4 +1,10 @@
-@import '../../general/main.scss';
+@use '../../general/main' as Gmain;
+@use '../../general/mediaQueries';
+@use '../../themes/theme1/vars';
+@use '../../themes/theme1/buttons' as Tbuttons;
+@use '../../themes/theme1/main' as Tmain;
+
+// @import '../../general/main.scss';
 @import '../../general/buttons.scss';
 @import '../ADMIN.scss';
 // @import '../../general/NavigationBar/NavigationBar.scss';
@@ -16,7 +22,7 @@
     // @include border();
         background-color: white;
     &[state *= 'active'] {
-        background-color: $color-primary-light;
+        background-color: vars.$color-primary-light;
         > .I_headBody {
             > .I_header{
                 padding-right: 2.5rem;
@@ -37,7 +43,7 @@
             position: relative;
             left: 1em;
             height: 1.2em;
-            background-color: $color-devider;
+            background-color: vars.$color-devider;
             // width: 5rem;
             font-size: 1em;
             >.n_inputDiv {
@@ -201,7 +207,7 @@ body {
 
 .ADMIN_designs_main {
     position: absolute;
-    background-color: $color-primary-light;
+    background-color: vars.$color-primary-light;
     box-sizing: border-box;
     height: 100%;
     width: 100%;
@@ -212,7 +218,7 @@ body {
     overflow: hidden;
     > .CategoryMenuMain {
         box-sizing: content-box;
-        @include T_container();
+        @include Tmain.T_container();
         // padding: 0;
         top: 1rem;
         margin-left: 0.5rem;
@@ -223,7 +229,7 @@ body {
     }
     > .TableMain {
         width: 100%;
-        background-color: $color-primary-light;
+        background-color: vars.$color-primary-light;
         position: relative;
         padding: 0;
         overflow: hidden;
@@ -233,7 +239,7 @@ body {
         > .ListMain {
             width: 100%;
             height: 100%;
-            background-color: $color-primary-light;
+            background-color: vars.$color-primary-light;
             top: 0;
             overflow: auto;
             display: block;
@@ -245,7 +251,7 @@ body {
                 position: relative;
                 height: 20rem;
                 width: calc(100% - 2rem);
-                @include T_container();
+                @include Tmain.T_container();
                 padding: 1rem;
                 margin: 1rem;;
                 box-sizing: border-box;
@@ -334,7 +340,7 @@ body {
                             position: relative;
                             box-sizing: border-box;
                             
-                            aspect-ratio: $LIGHTER-ratio;
+                            aspect-ratio: vars.$LIGHTER-ratio;
                             width: 15%;
                             min-width: max-content;
                             transform: translateY(-10%);
@@ -372,12 +378,12 @@ body {
                             height: 100%;
                             width: 20vw;
                             overflow: hidden;
-                            @include border();
+                            @include Gmain.border();
                             > .viewBody {
                                 position: relative;
                                 height: 100%;
                                 width: 100%;
-                                @include border();
+                                @include Gmain.border();
                                 overflow: auto;
                                 
                             }
@@ -399,7 +405,7 @@ body {
             border-bottom: 1px solid black;; 
             padding: 0.1em;
             > button {
-                background-color: $color-primary;
+                background-color: vars.$color-primary;
                 margin: 0.1em;
                 margin-inline: 0.5em;
                 padding: 0.2em;
@@ -451,7 +457,7 @@ body {
 }
 
 .DesignFilterMain {
-    @include border();
+    @include Gmain.border();
     > div {
         > div {
             border: none;
@@ -461,7 +467,7 @@ body {
             flex-direction: row;
             gap: 0;
             > div[id*="radioButtonDiv"] {
-                border-radius: $border-radius;
+                border-radius: vars.$border-radius;
                 overflow: hidden;
                 text-align: center;
                 > input {
@@ -470,7 +476,7 @@ body {
                     padding: 0;
                     border: none;
                     &:checked ~ div {
-                        background-color: $color-primary;
+                        background-color: vars.$color-primary;
                     }
                 }
                 > div {
@@ -485,7 +491,7 @@ body {
 
 .DesignListMain {
     flex-grow: 1;
-    @include border();
+    @include Gmain.border();
     $color-block: rgb(255, 70, 70);
     $color-open: rgb(19, 160, 0);
     position: relative;
@@ -498,7 +504,7 @@ body {
         flex-wrap: wrap;
         > .ListElement {
             padding: 0.1em;
-            background-color: $color-devider;
+            background-color: vars.$color-devider;
             position: relative;
             width: 14em;
             height: max-content;
@@ -549,7 +555,7 @@ body {
 
 
 .HashtagMenuMain {
-    @include border();
+    @include Gmain.border();
 
     > div {
         max-height: 5em;
@@ -566,14 +572,14 @@ body {
             > button {
                 padding: 0.1em;
                 margin: 0.1em;
-                border-radius: $border-radius !important;
+                border-radius: vars.$border-radius !important;
             }
             > .showDiv {
                 padding: 0.1em;
                 position: relative;
                 background-color: red;
                 width: max-content;
-                border-radius: $border-radius;
+                border-radius: vars.$border-radius;
                 margin: 0.1em;
                 vertical-align: middle;
                 > span {
@@ -616,9 +622,9 @@ body {
 }
 
 .snap-button {
-    background-color: $color-primary-light;
+    background-color: vars.$color-primary-light;
     &.button-active {
-        background-color: $color-primary;
+        background-color: vars.$color-primary;
     }
 }
 

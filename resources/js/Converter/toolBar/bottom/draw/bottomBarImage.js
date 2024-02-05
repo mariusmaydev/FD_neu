@@ -40,7 +40,7 @@ class BottomBar_Image {
         //         // }.bind(this);
 
         //     }.bind(this);
-        let button_settings = new S_switchButton(buttonsDiv, "button_settings");
+        let button_settings = new SPLINT.DOMElement.Button.Switch(buttonsDiv, "button_settings");
             button_settings.bindIcon("tune");
             button_settings.onactive = function(){
                 this.drawSlider(button_settings);
@@ -66,25 +66,32 @@ class BottomBar_Image {
     }
     drawSlider(parent){
         this.floatingDiv = new Converter_BottomBar_floatingDiv_block("slider");
-        // this.floatingDiv.body.before(parent.span);
+        let spinnerDiv = new SPLINT.DOMElement("spinnerDiv_slider_img", "div", this.floatingDiv.content);
+            spinnerDiv.Class("spinnerDiv");
+            let spinner = new SPLINT.DOMElement.Spinner(spinnerDiv, "test");
 
         let sl_contrast = this.PARTS.SL_contrast(this.floatingDiv.content, this.data.ImageFilter.contrast);
-            sl_contrast.oninput = function(e){
-                console.log(this.data)
+            sl_contrast.oninput = async function(e){
+                spinnerDiv.state().setActive();
                 this.data.ImageFilter.contrast = sl_contrast.value;
-                ConverterHelper.filter(DSImage.getIndex(this.data.ImageID));
+                await ConverterHelper.filter(DSImage.getIndex(this.data.ImageID));
+                spinnerDiv.state().unsetActive();
             }.bind(this);
 
         let sl_sharpness = this.PARTS.SL_sharpness(this.floatingDiv.content, this.data.ImageFilter.sharpness);
-            sl_sharpness.oninput = function(e){
+            sl_sharpness.oninput = async function(e){
+                spinnerDiv.state().setActive();
                 this.data.ImageFilter.contrast = sl_sharpness.value;
-                ConverterHelper.filter(DSImage.getIndex(this.data.ImageID));
+                await ConverterHelper.filter(DSImage.getIndex(this.data.ImageID));
+                spinnerDiv.state().unsetActive();
             }.bind(this);
 
         let sl_antialiasing = this.PARTS.SL_antialiasing(this.floatingDiv.content, this.data.ImageFilter.antialiasing);
-            sl_antialiasing.oninput = function(e){
+            sl_antialiasing.oninput = async function(e){
+                spinnerDiv.state().setActive();
                 this.data.ImageFilter.antialiasing = sl_antialiasing.value;
-                ConverterHelper.filter(DSImage.getIndex(this.data.ImageID));
+                await ConverterHelper.filter(DSImage.getIndex(this.data.ImageID));
+                spinnerDiv.state().unsetActive();
             }.bind(this);
         // let sliderDiv = new SPLINT.DOMElement(this.id + "_sliderDiv", "div", this.mainElement);
     }

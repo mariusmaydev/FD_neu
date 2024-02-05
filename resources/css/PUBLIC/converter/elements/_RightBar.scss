@@ -1,4 +1,9 @@
-
+@use '../../../themes/theme1/main';
+@use '../../../themes/theme1/vars';
+@use '../../../themes/theme1/buttons' as Tbuttons;
+@use '../toolBar/converterToolBar';
+@use '../../../../../../Splint/scss/tools/tools' as S_tools;
+@use 'sass:color';
 
 @mixin conv_RightBar(){
     > .Conv_RightBar {
@@ -8,12 +13,18 @@
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
+        gap: 0.5em;
         justify-content: stretch;
-        height: 100%;
+        align-content: stretch;
+        margin-top: 7vh;
+        height: calc(100% - 7vh);
         width: 30%;
         
         box-sizing: content-box;
-        @include ToolBar_Main();
+        > * {
+            z-index: 1000;
+        }
+        @include converterToolBar.ToolBar_Main();
         > .ToolBar_Main {
             box-sizing: content-box;
             user-select: none;
@@ -21,67 +32,210 @@
             overflow-y:hidden;
             margin: 0em;
             padding: 0;
-            flex-grow: 1;
+            flex-shrink: 1;
+            flex-grow: 2;
             display: flex;
-            height: 100%;
+            height: max-content;
             position: relative;
             width: 100%;
         }
 
         > .ConverterMainButtons {
             user-select: none;
-            flex-grow: 1;
+            flex-grow: 0;
+            flex-shrink: 1;
             position: relative;
-            height: max-content;
+            height: fit-content;
             display: flex;
             justify-content: stretch;
             > .content {
                 position: relative;
                 display: flex;
+                margin-bottom: 1rem;
+                gap: 1rem;
                 width: 100%;
-                height: max-content;
-                box-sizing: border-box;
-                > button {
-                    position: relative;
-                    cursor: pointer;
-                    @include T_container();
-                    border: none;
-                    padding: 2rem;
-                    margin: 0.5rem;
+                > div {
+                    -ms-transform: skewX(-20deg); /* IE 9 */
+                    -webkit-transform: skewX(-20deg); /* Safari */
+                    height: auto;
+                    width: max-content;
                     user-select: auto;
                     pointer-events: auto;
-                    > span {
-                        user-select: auto;
+                    padding: 0;
+                    background-color: transparent;
+                    > button {
+                        position: relative;
+                        cursor: pointer;
+                        @include main.T_container();
+                        border: none;
+                        margin: 0;
+                        @include main.preventSelect();
                         pointer-events: auto;
-                        font-size: 2rem;
+                        display: flex;
+                        flex-direction: row;
+                        > span {
+                            -ms-transform: skewX(20deg); /* IE 9 */
+                            -webkit-transform: skewX(20deg); /* Safari */
+                            transform: skewX(20deg);
+                            pointer-events: auto;
+                            font-size: 2rem;
+                            text-shadow: 0px 0px 0px transparent;
+                            transition: text-shadow cubic-bezier(0, 0.52, 1, 1) 2s;
+                            color: vars.$color-primary-text !important;
+                        }
+                    
                     }
                     &.buy {
-    
-                        transform: translateX(0px);
+                        flex: 1;
+                        transform: translateX(0px) skewX(-20deg);
                         &:not([loaded*='true']){
                             visibility: hidden;
                             transform: translateX(40rem);
                         }
                         transition: transform 0.4s ease-out;
                         visibility: visible;
-
-                        width: 100%;
-                        user-select: auto;
-                        pointer-events: auto;
-                        background-color: $color-primary;
+                        box-shadow: none;
+                        background-color: vars.$color-header;
+                        box-shadow: 3px 3px 0px 0px vars.$color-header-Dark;
+                        transition: box-shadow 100ms ease, transform 100ms ease;
                         &:hover {
-                            background-color: $color-primary-Dark;
+                            box-shadow: 5px 5px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1);//, 3px 3px 2px 0px color.adjust(vars.$color-primary-light);
+                            transform: skewX(-20deg) translateX(-2px) translateY(-2px);
+                            color: vars.$color-primary-text;
+                        }
+                        > button {
+                            @include main.preventSelect();
+                            > span:first-of-type{
+                                margin-right: 0.2em;
+                            }
+                            width: 100%;
+                            padding: 0.75rem;
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: center;
+                            
+                            background-color: vars.$color-primary-Dark;
+                            box-shadow: none;
+                            @include S_tools.SPLINT-border-inset(vars.$color-primary-complementary-Dark, 2px, false, false, true, true);
+                            transition: box-shadow cubic-bezier(0, 0.52, 1, 1) 1s;
+                            &:hover {
+                                @include S_tools.SPLINT-border-inset(vars.$color-primary-complementary-Dark, 4px, false, false, true, true);
+                                > span {
+                                    color: vars.$color-primary-text;
+                                }
+                            }
+                            > span {
+                                font-size: 2rem;
+                            }
                         }
                     }
-                    &.cart {
-                        transform: translateY(0px);
+                    &.toCart {
+                        aspect-ratio: 1/1;
+                        transform: translateY(0px) skewX(-20deg);
                         &:not([loaded*='true']){
                             visibility: hidden;
-                            transform: translateY(20rem);
+                            transform: translateY(20rem) skewX(-20deg);;
                         }
                         transition: transform 0.4s ease-out;
                         visibility: visible;
+                        
+                        background-color: vars.$color-header;
+                        box-shadow: 3px 3px 0px 0px vars.$color-header-Dark;
+                        transition: box-shadow 100ms ease, transform 100ms ease;
+                        &:hover {
+                            box-shadow: 5px 5px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1);//, 3px 3px 2px 0px color.adjust(vars.$color-primary-light);
+                            transform: skewX(-20deg) translateX(-2px) translateY(-2px);
+                            color: vars.$color-primary-text;
+                        }
+                        > button {
+                            resize: horizontal;
+                            height: 100%;
+                            width: 100%;
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: center;
+                            align-items: center;
+                            padding: 0.75rem;
+                            box-shadow: none;
+                            background-color: vars.$color-primary-Dark;
+                            @include S_tools.SPLINT-border-inset(vars.$color-primary-complementary-Dark, 2px, false, false, true, true);
+                            transition: box-shadow cubic-bezier(0, 0.52, 1, 1) 1s;
+                            
+                            &:hover {
+                                @include S_tools.SPLINT-border-inset(vars.$color-primary-complementary-Dark, 4px, false, false, true, true);
+                                > span {
+                                    color: vars.$color-primary-text;
+                                }
+                            }
+                            // padding-inline: 1.5rem;
+                        }
                     }
+                }
+                // > button {
+                //     position: relative;
+                //     cursor: pointer;
+                //     @include main.T_container();
+                //     border: none;
+                //     padding: 1rem;
+                //     margin: 0.5rem;
+                //     user-select: auto;
+                //     @include main.preventSelect();
+                //     pointer-events: auto;
+                    
+                //     -ms-transform: skewX(-20deg); /* IE 9 */
+                //     -webkit-transform: skewX(-20deg); /* Safari */
+                //     transform: skewX(-20deg);
+                //     > span {
+                //         pointer-events: auto;
+                //         font-size: 2rem;
+                        
+                //     -ms-transform: skewX(20deg); /* IE 9 */
+                //     -webkit-transform: skewX(20deg); /* Safari */
+                //     transform: skewX(20deg);
+                //     }
+                //     &.cart {
+                //         // @include preventSelect();
+                //         transform: translateY(0px);
+                //         &:not([loaded*='true']){
+                //             visibility: hidden;
+                //             transform: translateY(20rem);
+                //         }
+                //         transition: transform 0.4s ease-out;
+                //         visibility: visible;
+                //         @include main.preventSelect();
+                //         @include Tbuttons.T_button_Animated();
+                //     }
+                // }
+            }
+            &.ADMINPLUS {
+                > .content {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: content-box;
+                    margin-bottom: 0.5rem;
+                    // height: 40rem;
+                    > .n_inputDiv {
+                        // order: 1;
+                        position: relative;
+                        width: 100%;
+                    }
+                    > button {
+                        @include main.preventSelect();
+                        width: 30%;
+                        > span {
+                            user-select: auto;
+                            pointer-events: auto;
+                            font-size: 1rem;
+                        }
+
+                    }
+                    > .n_RadioButton {
+                        width: 30%;
+                    }
+
                 }
             }
             // display: none;

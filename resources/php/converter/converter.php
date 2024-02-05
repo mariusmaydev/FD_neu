@@ -32,24 +32,21 @@
         // }
         public static function filter(){
             $ImageData  = $_POST["Storage"];
-            // debugg($ImageData);
-            TIMER -> start();
             $Filter     = $ImageData[ImageDB::IMAGE_FILTER]; 
-            TIMER -> print();
             $SessionObj = new Sessions();
-            TIMER -> print();
             $Sessions = $SessionObj -> save();
-            TIMER -> print();
             $imgScale = getSingleProjectImage($Sessions[Sessions::USER_ID], $Sessions[Sessions::PROJECT_ID], $ImageData[ImageDB::IMAGE_ID], PATH_Project::IMG_SCALE);
             
-            TIMER -> print();
-            Filter::createImage($imgScale, $Filter);
-            TIMER -> print();
+            if($ImageData["grayscale"] == "true"){
+                $ImageData["grayscale"] = true;
+            } else {
+                $ImageData["grayscale"] = false;
+            }
+            Filter::createImage($imgScale, $Filter, $ImageData["grayscale"]);
             $response[ImageDB::IMAGE_VIEW_PATH] = saveSingleProjectImage($ImageData[ImageDB::IMAGE_ID], PATH_Project::IMG_VIEW, $imgScale, $Sessions[Sessions::USER_ID], $Sessions[Sessions::PROJECT_ID]);
             
-            TIMER -> print();
+            // file_put_contents ("test_1.png", $imgScale); // works, or:
             $SessionObj -> unsave();
-            TIMER -> end();
             Communication::sendBack($response);
         }
         public static function flip(){
@@ -80,8 +77,34 @@
 
             print_r(json_encode($response));
         }
+        public static function createLaser($UserID, $ProjectID){
+
+        }
+        public static function create3MF(){
+
+        }
         public static function create($UserID, $ProjectID){
             global $rootpath;
+            global $LIGHTER_HEIGHT;
+            global $LIGHTER_WIDTH;
+            global $LIGHTER_MULTIPLY;
+
+            $args = new stdClass();
+            $args -> type = "laser";
+            $args -> PointZero = new stdClass();
+            $args -> PointZero -> X = null;
+            $args -> PointZero -> Y = null;
+            if(isset($_POST["Args"])){
+                $args = $_POST["Args"];
+                $args = new stdClass();
+                $args -> type = $_POST["Args"]["type"];
+                $args -> PointZero = new stdClass();
+                $args -> PointZero -> X = $_POST["Args"]["PointZero"]["X"] / 16.4;
+                $args -> PointZero -> Y = $_POST["Args"]["PointZero"]["Y"] / 16.4;
+                Communication::sendBack($args);
+                
+            }
+            
             $g = ConverterConfig::get(false);
             // $Storage = [];
             // $Storage["IMG"] = $_POST["StorageImg"];
@@ -97,8 +120,21 @@
             $ImageData = Image::get(null, $ProjectID, $UserID, false);
             $TextData = Text::get(null, $UserID, $ProjectID, false);
             // Communication::sendBack($TextData);
-            // laserGCodeHelper::genProjectImage($ProjectData, $UserID, $ImageData, $TextData);
-            start($ProjectData, $UserID, $ImageData, $TextData);
+            if($args -> type == "laserFlat"){
+                // $LIGHTER_HEIGHT = ($ProjectData[ProjectDB::SQUARE] -> height / 16.4) * 0.9 * 5.36 * 2 * 2 * 2;//ProjectDB::LIGHTER_HEIGHT;
+                // $LIGHTER_WIDTH = ($ProjectData[ProjectDB::SQUARE] -> width / 16.4) * 0.9 * 5.36  * 2 * 2 * 2;
+                $LIGHTER_HEIGHT = $ProjectData[ProjectDB::SQUARE] -> heightMM * 50;
+                $LIGHTER_WIDTH = $ProjectData[ProjectDB::SQUARE] -> widthMM * 50;
+                $LIGHTER_MULTIPLY = 1;//61.29;//66.08;
+                laserGCodeHelper::genProjectImage($ProjectData, $UserID, $ImageData, $TextData, $args);
+            } else if($args -> type == "laser" || $args -> type == "engraving" || $args -> type == "SVG"){
+                $LIGHTER_HEIGHT = $ProjectData[ProjectDB::SQUARE] -> heightMM * 50;
+                $LIGHTER_WIDTH = $ProjectData[ProjectDB::SQUARE] -> widthMM * 50;
+                $LIGHTER_MULTIPLY = 1;//61.29;//66.08;
+                start($ProjectData, $UserID, $ImageData, $TextData, $args);
+            } else if($args -> type == "SVG"){
+                
+            }
             // start_generatingLaserData($_POST["StorageProject"], checkIsset($_POST["StorageImg"]), checkIsset($_POST["StorageText"]));
 
 

@@ -1,9 +1,33 @@
 // @import '../../general/main.scss';
 // @import '../../general/buttons.scss';
-@import '../../general/NavigationBar/NavigationBar.scss';
-@import '../_publicMain.scss';
-@import '_cartList.scss';
-@import '_cartRight.scss';
+@use '../../general/NavigationBar/NavigationBar';
+@use '../_publicMain';
+@use 'cartList';
+@use 'cartRight';
+@use '../../general/mediaQueries';
+@use '../../general/Footer/FooterMobile.scss';
+@use '../../general/Footer/FooterDesktop.scss';
+
+@include mediaQueries.forMediaBreakpoint(desktop mobile){
+        @include FooterDesktop.FooterDesktop();
+        body {
+            top: 0 !important;
+            height: 100vh !important;
+            overflow-y: scroll !important;
+        }
+        .FooterBody {
+            top: 0;
+            position: relative !important;
+        }
+}
+@include mediaQueries.forMediaBreakpoint(mobile-small){
+        @include FooterMobile.FooterMobile();
+        .FooterBody {
+            // position: sticky;
+            top: 0;
+            // bottom: 0;
+        }
+}
 
 body {
     
@@ -17,7 +41,7 @@ body {
         height: 100%; 
         pointer-events: none;
         background-color: transparent;
-
+        
         > canvas { 
             // po
             position: relative;
@@ -30,12 +54,15 @@ body {
 }
 
 .Pages_MAIN {
+    scroll-snap-align: start;
     // @include border();
     // background-color: red;
     width: 100%;
-    
+    height: max-content;
     display: flex;
-    overflow: visible;
+    overflow: hidden;
+    gap: 0;
+    margin-top: 0vh;
     > div {
         box-sizing: border-box;
         &.cartListMain {
@@ -45,21 +72,25 @@ body {
             order: 2;
         }
     }
-    @include forMediaBreakpoint(mobile-small){
-        overflow: auto;
+    @include mediaQueries.forMediaBreakpoint(mobile-small){
+        overflow: visible;
         margin-inline: 0rem;
         &::-webkit-scrollbar {
             display: none;
         }
         scrollbar-width: none;
-        flex-direction: column;    
+        flex-direction: column;   
+        min-height: 100vh;;
+        align-items: center; 
+        gap: 0;
         > div {
             &.cartListMain {
-                margin-top: 0.5rem;
-                width: 100%;
+                margin-top: 0;
+                width: 96%;
             }
             &.cartRightMain {
-                width: 100%;
+                width: 96%;
+
             }
         }
         > .footer {
@@ -77,26 +108,60 @@ body {
             }
         }
     }
-    @include forMediaBreakpoint(mobile){
-        overflow: auto;
+    // @include mediaQueries.forMediaBreakpoint(mobile-small){
+    //     overflow: auto;
+    //     margin-inline: 0rem;
+    //     &::-webkit-scrollbar {
+    //         display: none;
+    //     }
+    //     scrollbar-width: none;
+    //     flex-direction: column;    
+    //     > div {
+    //         &.cartListMain {
+    //             margin-top: 0.5rem;
+    //             width: 100%;
+    //         }
+    //         &.cartRightMain {
+    //             width: 100%;
+    //         }
+    //     }
+    //     > .footer {
+    //         order: 3;
+    //         position: relative;
+    //         width: 100%;
+    //         height: 20vh !important;
+    //         margin-top: 2vh;
+    //         padding: 5vh;
+    //         background-color: lightgrey;
+    //         > div {
+    //             > span {
+
+    //             }
+    //         }
+    //     }
+    // }
+    @include mediaQueries.forMediaBreakpoint(mobile){
+        overflow: visible;
         margin-inline: 0rem;
         &::-webkit-scrollbar {
             display: none;
         }
         scrollbar-width: none;
-        flex-direction: column;    
+        flex-direction: column;   
+        align-items: center; 
+        gap: 0;
         > div {
             &.cartListMain {
-                margin-top: 1rem;
-                width: 100%;
+                margin-top: 0;
+                width: 96%;
             }
             &.cartRightMain {
-                width: 100%;
+                width: 96%;
 
             }
         }
     }
-    @include forMediaBreakpoint(desktop){
+    @include mediaQueries.forMediaBreakpoint(desktop){
         overflow: visible;
         box-sizing: border-box;
         margin-inline: 0rem;
@@ -109,7 +174,7 @@ body {
         min-width: 60rem;
         > div {
             &.cartListMain {
-                margin-top: 1rem;
+                margin-top: 0;
                 width: 75%;
             }
             &.cartRightMain {
@@ -118,6 +183,6 @@ body {
             }
         }
     }
-    @include cartListMain();
-    @include cartRightMain();
+    @include cartList.cartListMain();
+    @include cartRight.cartRightMain();
 }

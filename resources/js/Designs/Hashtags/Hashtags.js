@@ -4,22 +4,22 @@ class Hashtags{
   static ADD    = "ADD";
   static PATH   = PATH.php.hashtags;
   static get(){
-    let data = CallPHP_S.getCallObject(Hashtags.GET);
-    let a = CallPHP_S.call(Hashtags.PATH, data).toObject();
+    let data = SPLINT.Data.CallPHP_OLD.getCallObject(Hashtags.GET);
+    let a = SPLINT.Data.CallPHP_OLD.call(Hashtags.PATH, data).toObject();
     if(a == null){
       a = [];
     }
     return a;
   }
   static add(name){
-    let data = CallPHP_S.getCallObject(Hashtags.ADD);
+    let data = SPLINT.Data.CallPHP_OLD.getCallObject(Hashtags.ADD);
         data.HashtagName = name;
-    CallPHP_S.call(Hashtags.PATH, data);
+        SPLINT.Data.CallPHP_OLD.call(Hashtags.PATH, data);
   }
   static remove(hashtagName){
-    let data = CallPHP_S.getCallObject(Hashtags.REMOVE);
+    let data = SPLINT.Data.CallPHP_OLD.getCallObject(Hashtags.REMOVE);
         data.HashtagName = hashtagName;
-    CallPHP_S.call(Hashtags.PATH, data);
+        SPLINT.Data.CallPHP_OLD.call(Hashtags.PATH, data);
   }
 }
 
@@ -104,8 +104,8 @@ function HashtagMenu(parent){
 }
 
 function getHashtags(){
-  let data = CallPHP_S.getCallObject("GET");
-  let a = CallPHP_S.call(PATH.php.hashtags, data).toObject();
+  let data = SPLINT.Data.CallPHP_OLD.getCallObject("GET");
+  let a = SPLINT.Data.CallPHP_OLD.call(PATH.php.hashtags, data).toObject();
   if(a == null){
     a = [];
   }
@@ -113,9 +113,9 @@ function getHashtags(){
 }
 
 function newHashtag(name, type){
-  let data = CallPHP_S.getCallObject("ADD");
+  let data = SPLINT.Data.CallPHP_OLD.getCallObject("ADD");
       data.HashtagName = name;
-  let output = CallPHP_S.call(PATH.php.hashtags, data).text;
+  let output = SPLINT.Data.CallPHP_OLD.call(PATH.php.hashtags, data).text;
   console.log(output);
   if(output != ""){
     return JSON.parse(output);
@@ -125,9 +125,9 @@ function newHashtag(name, type){
 }
 
 function removeHashtag(HashtagName){
-  let data = CallPHP_S.getCallObject("REMOVE");
+  let data = SPLINT.Data.CallPHP_OLD.getCallObject("REMOVE");
       data.HashtagName = HashtagName
-  return CallPHP_S.call(PATH.php.hashtags, data);
+  return SPLINT.Data.CallPHP_OLD.call(PATH.php.hashtags, data);
 }
 
 function DrawHashtagUI_new(parent, type){

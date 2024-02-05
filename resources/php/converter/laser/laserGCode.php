@@ -15,6 +15,9 @@ function start($ProjectData, $UserID, $ImgData = null, $TextData = null){
     global $y_C;
     global $align;
     global $offsetCenter;
+    global $LIGHTER_HEIGHT;
+    global $LIGHTER_WIDTH;
+    global $LIGHTER_MULTIPLY;
     $cfg = ConverterConfig::get();
     
     $ProjectID = $ProjectData[ProjectDB::PROJECT_ID];
@@ -89,11 +92,11 @@ function start($ProjectData, $UserID, $ImgData = null, $TextData = null){
     }
     // $PathObjectOut = PathHelper::sortPath1($PathObjectOut, false);
     
-    $LighterWidth   = ProjectDB::LIGHTER_WIDTH * 61.29;//ProjectDB::SCALE;
-    $LighterHeight  = ProjectDB::LIGHTER_HEIGHT * 61.29;//ProjectDB::SCALE;
+    $LighterWidth   = $LIGHTER_WIDTH * $LIGHTER_MULTIPLY;//ProjectDB::SCALE;
+    $LighterHeight  = $LIGHTER_HEIGHT * $LIGHTER_MULTIPLY;//ProjectDB::SCALE;
 
     $model = new NCModel($PathObjectOut);//1970 ; 2875 ; = 0,02
-    $model -> scale = ProjectDB::LIGHTER_HEIGHT / ($LighterHeight);
+    $model -> scale = $LIGHTER_HEIGHT / ($LighterHeight);
     $model -> xNull = ($cfg -> zero -> X * ProjectDB::SCALE) -($LighterWidth / 2) ;//-(7.5 * ProjectDB::SCALE)) ;//31 = 92.5
     $model -> yNull = ($cfg -> zero -> Y * ProjectDB::SCALE) -($LighterHeight / 2);// + (5.25 * ProjectDB::SCALE)) ;//50,5 = 107.25
 

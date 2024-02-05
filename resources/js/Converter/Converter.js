@@ -7,9 +7,9 @@ SPLINT.require_now('@PROJECT_ROOT/Converter/DataStorage/DSProject.js');
 // SPLINT.require_now('@PROJECT_ROOT/Converter/renderer/ConverterRender.js');
   //Feuerzeugdaten
  //      Champ Xentai
- const LighterWidth  = 38;    //in mm 38,5  38,3
- const LighterHeight = 57.5;    //in mm 57,8  57,8
- const LighterMid    = S_Math.multiply(23.5, 0.94);    //in mm 22,4  23,4
+ var LighterWidth  = 38;    //in mm 38,5  38,3
+ var LighterHeight = 57.5;    //in mm 57,8  57,8
+ var LighterMid    = S_Math.multiply(23.5, 0.94);    //in mm 22,4  23,4
  var Box = new Object();
      Box.X = 0;
      Box.Y = 0;
@@ -21,7 +21,6 @@ var DSProject   = new DataStorageProject_C();
 
 const CONVERTER_STORAGE = new SPLINT.autoObject();
 // const DOM_CONVERTER_STORAGE = new Object();
-
 
 class Converter {
   constructor(parent = document.body){
@@ -40,6 +39,11 @@ class Converter {
     console.dir(DSImage)
     console.dir(DSText)
     console.dir(DSProject)
+    
+    DSProject.Storage[DSProject.SQUARE].width = LighterWidth * 16.4;
+    DSProject.Storage[DSProject.SQUARE].widthMM = LighterWidth;
+    DSProject.Storage[DSProject.SQUARE].height = LighterHeight * 16.4;
+    DSProject.Storage[DSProject.SQUARE].heightMM = LighterHeight;
         this.draw();
         this.init();
         this.initEvents();
@@ -79,6 +83,9 @@ class Converter {
     let hashes = S_Location.getHashes();
     if(hashes == "ADMIN"){
       NavBar.hide();
+    } else if(hashes == "ADMINPLUS"){
+    //   NavBar.hide();
+      NavBar.clear();
     }
     // ProjectHelper.get().then(async function(project){
 
@@ -140,9 +147,10 @@ function AdjustSquareBorder(){
       // Box.Y = getAbsoluteHeight(SquareBorder) - parseInt(border) * 2;
             
   CONVERTER_STORAGE.canvasNEW.setSize();
-  
-  DSController.saveAll();
-  DSProject.saveAsync();
+  if(SPLINT.Events.onLoadingComplete.dispatched == true){
+    DSController.saveAll();
+    DSProject.saveAsync();
+  };
 //   DSImage.saveAsync();
 //   DSText.saveAsync();
 }

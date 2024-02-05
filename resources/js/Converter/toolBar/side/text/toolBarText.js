@@ -74,6 +74,7 @@ class ToolBar_Text {
     clear(){
         this.mainElement.innerHTML = "";
         this.ELEMENTS = [];
+        document.getElementById("ConverterToolBar_activeBody").innerHTML = "";
     }
     updateElement(){
 

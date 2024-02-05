@@ -11,18 +11,59 @@ class drawProjectChoiceMenu {
       window.onhashchange = this.#chooseType.bind(this);
       this.#chooseType();
     }
+    removeMobileMenuButton(){
+
+        if(this.mobileMenuButton != null){
+            this.mobileMenuButton.button.remove();
+            this.closemobileMenuButton.button.remove();
+            this.closemobileMenuButtonContainer.remove();
+            this.mobileMenuBackground.remove();
+        }
+    }
+    drawMobileMenuButton(){
+        this.mobileMenuButton = null;
+        this.mobileMenuBackground = new SPLINT.DOMElement("MobileMenuBackground", "div", this.buttonDiv);
+        this.mobileMenuBackground.before(this.buttonDiv.firstChild);
+        this.mobileMenuBackground.Class("MobileMenuBackground");
+        this.mobileMenuBackground.onclick = function(){
+            this.buttonDiv.state().unsetActive();
+            this.mobileMenuButton.button.state().setActive();
+        }.bind(this)
+
+        this.closemobileMenuButtonContainer = new SPLINT.DOMElement("MobileMenuCloseButtonContainer", "div", this.buttonContentDiv);
+        this.closemobileMenuButtonContainer.Class("MobileMenuCloseButtonContainer");
+        this.closemobileMenuButtonContainer.before(this.buttonContentDiv.firstChild);
+            let headline = new SPLINT.DOMElement.SpanDiv(this.closemobileMenuButtonContainer, "headline", "Auswahl");
+                headline.Class("headline");
+
+            this.closemobileMenuButton = new SPLINT.DOMElement.Button(this.closemobileMenuButtonContainer, "MobileMenuCloseButton");
+            this.closemobileMenuButton.bindIcon("close");
+            this.closemobileMenuButton.Class("MobileMenuButtonClose");
+            this.closemobileMenuButton.onclick = function(){
+                this.buttonDiv.state().unsetActive();
+                this.mobileMenuButton.button.state().setActive();
+            }.bind(this);
+
+            this.mobileMenuButton = new SPLINT.DOMElement.Button(this.parent, "MobileMenuButton", "test");
+            this.mobileMenuButton.Class("MobileMenuButton");
+            this.mobileMenuButton.bindIcon("menu");
+            this.mobileMenuButton.onclick = function(){
+                this.buttonDiv.state().setActive();
+                this.mobileMenuButton.button.state().unsetActive();
+            }.bind(this);
+    }
     draw(){
       let headlineDiv = new SPLINT.DOMElement.SpanDiv(this.mainElement, "headline", "Entwürfe");
           headlineDiv.div.Class("headline");
           
-      let buttonDiv = new SPLINT.DOMElement(this.id + "buttonDiv", "div", this.mainElement);
-          buttonDiv.Class("buttons");
-            let buttonContentDiv = new SPLINT.DOMElement(this.id + "buttonContentDiv", "div", buttonDiv);
-                buttonContentDiv.Class("buttonsContent");
-            let buttonsCategoryMenuDiv = new SPLINT.DOMElement(this.id + "buttonsCategoryMenuDiv", "div", buttonDiv);
+        this.buttonDiv = new SPLINT.DOMElement(this.id + "buttonDiv", "div", this.mainElement);
+        this.buttonDiv.Class("buttons");
+            this.buttonContentDiv = new SPLINT.DOMElement(this.id + "buttonContentDiv", "div", this.buttonDiv);
+            this.buttonContentDiv.Class("buttonsContent");
+            let buttonsCategoryMenuDiv = new SPLINT.DOMElement(this.id + "buttonsCategoryMenuDiv", "div", this.buttonDiv);
                 buttonsCategoryMenuDiv.Class("buttonsCategoryContainer");
                 // buttonsCategoryMenuDiv.
-      let div_originals = buttonContentDiv.newDiv("div_originals", "originals");
+      let div_originals = this.buttonContentDiv.newDiv("div_originals", "originals");
         this.bt_originals = new SPLINT.DOMElement.Button(div_originals, "project_originals", "Orginale");
 
             this.CategoryMenu_originals = new ProjectCategoryMenu(div_originals, true, true);
@@ -44,7 +85,7 @@ class drawProjectChoiceMenu {
           }.bind(this);
         // }
 
-      let div_public = buttonContentDiv.newDiv("div_public", "public");
+      let div_public = this.buttonContentDiv.newDiv("div_public", "public");
         this.bt_public = new SPLINT.DOMElement.Button(div_public, "project_public", "Vorlagen");
 
         this.CategoryMenu_public = new ProjectCategoryMenu(div_public, false, true);
@@ -67,7 +108,7 @@ class drawProjectChoiceMenu {
           }.bind(this);
         // }
       
-      let div_private = buttonContentDiv.newDiv("div_private", "private");
+      let div_private = this.buttonContentDiv.newDiv("div_private", "private");
           this.bt_private = new SPLINT.DOMElement.Button(div_private, "project_private", "deine Designs");
           this.bt_private.setStyleTemplate(S_Button.STYLE_DEFAULT);
           this.bt_private.button.state().unsetActive();
@@ -82,12 +123,15 @@ class drawProjectChoiceMenu {
 
         function changeViewPortSize(){
             let vp = SPLINT.ViewPort.getSize();
-            console.log(vp);
             if(vp == "mobile-small"){
-                console.dir(this.CategoryMenu_originals.mainElement.S.state.setActive());
-                this.CategoryMenu_originals.move(buttonsCategoryMenuDiv);
-                this.CategoryMenu_public.move(buttonsCategoryMenuDiv);
+                this.drawMobileMenuButton();
+                    NavBar.grow();
+            //     console.dir(this.CategoryMenu_originals.mainElement.S.state.setActive());
+            //     this.CategoryMenu_originals.move(buttonsCategoryMenuDiv);
+            //     this.CategoryMenu_public.move(buttonsCategoryMenuDiv);
             } else {
+                this.removeMobileMenuButton();
+                NavBar.shrink();
                 this.CategoryMenu_originals.move(div_originals);
                 this.CategoryMenu_public.move(div_public);
             }
@@ -100,7 +144,7 @@ class drawProjectChoiceMenu {
       //   this.CategoryMenu.remove();
       // }
       // this.draw();
-      let hashes = S_Location.getHashes();
+      let hashes = SPLINT.Tools.Location.getHashes();
       let type = hashes;
       let state = "NORMAL";
       if(Array.isArray(hashes)){

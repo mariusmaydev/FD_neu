@@ -160,8 +160,19 @@ class indexOverlay {
             }
         }.bind(this));
         let height = this.contentElement.clientHeight;
-        this.scrollDelta = parseInt(S_Math.divide(height, 20));
-        this.scrollAim = parseInt(S_Math.multiply((index - 1), height));
+        if(index == 5 || (index == 4 && this.scrollFlag == "up")){
+            this.scrollDelta = parseInt(S_Math.divide(parseInt(Footer.mainElement.clientHeight), 10));
+            if(this.scrollFlag == "up"){
+                this.scrollAim = parseInt(S_Math.multiply((index - 1), height));
+            } else {
+                this.scrollAim = parseInt(S_Math.multiply((index - 2), height)) + parseInt(Footer.mainElement.clientHeight);
+
+            }
+        } else {
+            this.scrollDelta = parseInt(S_Math.divide(height, 20));
+            this.scrollAim = parseInt(S_Math.multiply((index - 1), height));
+        }
+        console.log(this.scrollAim, height, index);
         this.animate();
     }
     animate(){
@@ -199,7 +210,7 @@ class indexOverlay {
     }
     scrollDown(){
         let index = parseInt(this.activePart);
-        if(index < 4){
+        if(index < 5){
             this.activePart = index + 1;
         }
         this.scrollFlag = 'down';

@@ -134,6 +134,7 @@ PATH.images.product                     = SSL + "//" + domain + "/" + folder + "
 PATH.images.navBarSparks                = SSL + "//" + domain + "/" + folder + "/data/images/sparks.png";
 PATH.images.errorSRC                    = SSL + "//" + domain + "/" + folder + "/data/images/no_image.png";
 PATH.images.logo                        = SSL + "//" + domain + "/" + folder + "/data/images/Logo.png";
+PATH.images.PaypalLogo                  = SSL + "//" + domain + "/" + folder + "/data/images/PaypalLogo.jpg";
 PATH.images.cursor = new Object();
 PATH.images.cursor.test                 = SSL + "//" + domain + "/" + folder + "/data/images/cursor/test.png";
 PATH.images.thumbnailBase               = SSL + "//" + domain + "/" + folder + "/data/images/ThumbnailBase.png";

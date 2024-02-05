@@ -1,4 +1,6 @@
-import * as THREE from 'three';
+
+import { Fog } from "@THREE_ROOT_DIR/src/scenes/Fog.js";
+import { PerspectiveCamera } from "@THREE_ROOT_DIR/src/cameras/PerspectiveCamera.js";
 import SPLINT from 'SPLINT';
 import * as MATERIALS from '../../assets/materials/materials.js';
 import LIGHT from './light.js';
@@ -27,11 +29,11 @@ export class draw {
             
             if(this.canvas.parentElement.getAttribute("mouseEvents") == 'true'){
                 this.mouseHandler.onMove = function(event){
+                    console.log(this.mouseHandler.dX)
                     if(this.mouseHandler.mouseDown){
-                        this.renderer.setAnimationLoop( function(){
-                           this.render();
-                        }.bind(this));
+                        this.render();
                         MODEL._rotate(this.setup.getLighterGroupe(this.scene), 0, 0, this.mouseHandler.dX);
+                        
                     } else {
                     }
                 }.bind(this);
@@ -79,16 +81,16 @@ export class draw {
             this.setup.renderer();
         // }
         this.setup.scene("scene");
-        this.scene.fog = new THREE.Fog(0xcccccc, 4, 10);
+        this.scene.fog = new Fog(0xcccccc, 4, 10);
         if(this.canvas.parentElement.getAttribute("mouseEvents") == 'true'){
-            this.raycaster = SPLINT.raycaster(this);
+            // this.raycaster = SPLINT.raycaster(this);
             this.mouseHandler = SPLINT.MouseHandler( this.canvas );
         }
         this.Animations = new LighterAnimations(this);
         this.setupCamera();
         this.renderer.toneMappingExposure = 1;
         // this.setup.controls();
-        this.mouseHandler = SPLINT.MouseHandler( this.canvas );
+        // this.mouseHandler = SPLINT.MouseHandler( this.canvas );
     }
     async loadThumbnail(name, GoldFlag){
         // this.setup.getLighterGroupe(this.scene, name);
@@ -112,12 +114,21 @@ export class draw {
     onResize(){
         let a = this.canvas.parentNode.clientWidth;
         let b = this.canvas.parentNode.clientHeight;
-        this.canvas.width = a * 2 ;
-        this.canvas.height = b * 2 ;
+        if(SPLINT.ViewPort.getSize() == "mobile-small"){
+            this.canvas.width = a ;
+            this.canvas.height = b ;
+        } else {
+            this.canvas.width = a * 2;
+            this.canvas.height = b * 2;
+        }
         this.canvas.style.width = a + "px";
         this.canvas.style.height = b + "px";
-        this.renderer.setPixelRatio( window.devicePixelRatio * 1.5);
-        this.renderer.setSize( this.canvas.parentNode.clientWidth * 2, this.canvas.parentNode.clientHeight * 2);
+        if(SPLINT.ViewPort.getSize() == "mobile-small"){
+            this.renderer.setPixelRatio( Math.min(2, window.devicePixelRatio));
+        } else {
+            this.renderer.setPixelRatio( window.devicePixelRatio * 2);
+        }
+        this.renderer.setSize( this.canvas.parentNode.clientWidth * 1, this.canvas.parentNode.clientHeight * 1, false);
         this.camera.aspect = this.canvas.parentNode.clientWidth / this.canvas.parentNode.clientHeight;
         this.camera.updateProjectionMatrix();
         this.render();
@@ -127,6 +138,7 @@ export class draw {
         // if(a != undefined){
             // a.parent.remove(a);
         // }
+        // debugger;
         if(this.scene != null){
             // this.render();
             this.Animations.lighter_close.start(false, 0);
@@ -138,10 +150,12 @@ export class draw {
                 this.communication.showDimensions();
             }
             this.onResize();
+            // this.canvas.parentElement.parentElement.parentElement.setAttribute("loaded", true);
         }
+        // debugger;
     }
     setupCamera(){
-        this.camera     = new THREE.PerspectiveCamera(55, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 10);
+        this.camera     = new PerspectiveCamera(55, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 10);
         this.camera.position.set(0, 0.15, 0.45);
         this.camera.rotation.set(0, 0, 0);
         this.camera.filmGauge = 50;

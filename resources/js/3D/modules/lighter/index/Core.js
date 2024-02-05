@@ -10,11 +10,9 @@ import LighterAnimations from '../animations.js';
 import SETUP from '../setup.js';
 import MODEL from '../model.js';
 import Communication from './communication.js';
-import {
-    PerspectiveCamera,
-    Color,
-    Fog
-} from 'three';
+import { PerspectiveCamera } from "@THREE_ROOT_DIR/src/cameras/PerspectiveCamera.js";
+import { Fog } from "@THREE_ROOT_DIR/src/scenes/Fog.js";
+import { Color } from "@THREE_ROOT_DIR/src/math/Color.js";
 
 export class draw {
     static get(canvas){
@@ -47,15 +45,24 @@ export class draw {
     onResize(){
         let a = this.canvas.parentNode.clientWidth;
         let b = this.canvas.parentNode.clientHeight;
-        this.canvas.width = a * 2 ;
-        this.canvas.height = b * 2 ;
+        if(SPLINT.ViewPort.getSize() == "mobile-small"){
+            this.canvas.width = a ;
+            this.canvas.height = b ;
+        } else {
+            this.canvas.width = a * 2;
+            this.canvas.height = b * 2;
+        }
         this.canvas.style.width = a + "px";
         this.canvas.style.height = b + "px";
-        this.renderer.setPixelRatio( window.devicePixelRatio * 1);
-        this.renderer.setSize( this.canvas.parentNode.clientWidth * 2, this.canvas.parentNode.clientHeight * 2);
+        if(SPLINT.ViewPort.getSize() == "mobile-small"){
+            this.renderer.setPixelRatio( Math.min(2, window.devicePixelRatio));
+        } else {
+            this.renderer.setPixelRatio( window.devicePixelRatio * 2);
+        }
+        this.renderer.setSize( this.canvas.parentNode.clientWidth * 1, this.canvas.parentNode.clientHeight * 1, false);
         this.camera.aspect = this.canvas.parentNode.clientWidth / this.canvas.parentNode.clientHeight;
         this.camera.updateProjectionMatrix();
-        // this.render();
+        this.render();
     }
     init(){
         this.setup.renderer(true);
@@ -76,6 +83,7 @@ export class draw {
     }
     setupCamera(){
         if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
+            console.log("ok")
             this.camera     = new PerspectiveCamera(50, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
             // this.camera.position.set(0, 0.4, 4);
             this.camera.position.set(0, 0.18, 0.7);

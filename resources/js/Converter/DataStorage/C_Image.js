@@ -40,9 +40,9 @@ class Image_C {
     }
     static copy(index){
       let clone = [DSImage.getClone().get(index)];
-      let data = CallPHP_S.getCallObject(this.COPY);
+      let data = SPLINT.Data.CallPHP_OLD.getCallObject(this.COPY);
           data.ImageID = clone[0].ImageID;
-      let response = CallPHP_S.call(this.PATH, data).toObject();
+      let response = SPLINT.Data.CallPHP_OLD.call(this.PATH, data).toObject();
       clone[0].ImageID          = response.ImageID;
       clone[0].ImagePosX          = parseFloat(clone[0].ImagePosX) + 20;
       clone[0].ImagePosY          = parseFloat(clone[0].ImagePosY) + 20;
@@ -63,7 +63,7 @@ class Image_C {
       return JSON.stringify(data);
     }
     static remove(){
-      data = CallPHP_S.getCallObject(this.REMOVE);
-      console.log(CallPHP_S.call(this.PATH, data).text);
+      data = SPLINT.Data.CallPHP_OLD.getCallObject(this.REMOVE);
+      console.log(SPLINT.Data.CallPHP_OLD.call(this.PATH, data).text);
     }
   }

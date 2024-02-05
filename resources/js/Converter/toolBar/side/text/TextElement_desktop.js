@@ -7,13 +7,14 @@ class ToolBar_TextElement {
         this.mainElement = new SPLINT.DOMElement(this.id + data.TextID, "div", "ConverterToolBar_Text_main");
         this.mainElement.Class("ToolBar_ListElement");
         this.mainElement.Class("ToolBar_ListElement_Text");
+        this.mainElement.setAttribute("ele-type", "txt");
         this.PARTS = new ToolBar_TextElement_parts(this.TOOLS, this.mainElement);
         this.draw();
     }
     draw(){
         this.expanderBody = new SPLINT.DOMElement(this.TextID + "_expanderBody", "div", this.mainElement);
         this.expanderBody.Class("expanderBody");
-            this.expander = new S_switchButton(this.expanderBody, "Expander");
+            this.expander = new SPLINT.DOMElement.Button.Switch(this.expanderBody, "Expander");
             this.expander.disableStandardSwitch();
             this.expander.button.Class("expander");
             this.expander.onactive = function(){
@@ -24,6 +25,7 @@ class ToolBar_TextElement {
                 this.expander.bindIcon("expand_more");
             }.bind(this);
 
+            this.blur();
             this.expander.onchange = function(state){
                 if(state == "passive"){
                     this.blur();
@@ -38,6 +40,16 @@ class ToolBar_TextElement {
         this.input_text.oninput = function(){
           this.TOOLS.setValue(this.input_text.Value);
         }.bind(this);
+        this.input_text.textarea.onclick = function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            CONVERTER_STORAGE.toolBar.focusElement("txt", this.data.TextID)
+            this.input_text.textarea.focus();
+        }.bind(this)
+        this.input_text.textarea.onmouseup = function(e){
+            // e.preventDefault();
+
+        }
         this.input_text.setValue(this.data.TextValue);
         // this.input_text.setLabel("text")
 
@@ -45,26 +57,28 @@ class ToolBar_TextElement {
         this.toolsBody = new SPLINT.DOMElement(this.data.TextID + "_toolsBody", "div", this.mainElement);
         this.toolsBody.Class("toolsBody");
 
-        this.fontFamilyDropDown = new SPLINT.DOMElement.InputDropDown(this.toolsBody, "Schriftart");
-        let f = function(entry, value){
-            entry.span.style.fontFamily = value;
-        }
+            this.firstToolContainer = new SPLINT.DOMElement(this.data.TextID + "_firstToolContainer", "div", this.toolsBody);
+            this.firstToolContainer.Class("firstToolContainer");
+                this.fontFamilyDropDown = new SPLINT.DOMElement.InputDropDown(this.firstToolContainer, "fontFamily" + this.data.TextID, "Schriftart");
+                let f = function(entry, value){
+                    entry.span.style.fontFamily = value;
+                }
 
-        this.fontFamilyDropDown.addEntry("Arial", "arial", f);
-        this.fontFamilyDropDown.addEntry("Impact", "impact", f);
-        this.fontFamilyDropDown.addEntry("Verdana", "verdana", f);
-        this.fontFamilyDropDown.addEntry("Trebuchet MS", "Trebuchet MS", f);
-        this.fontFamilyDropDown.addEntry("Times New Roman", "Times New Roman", f);
-        this.fontFamilyDropDown.addEntry("Georgia", "Georgia", f);
-        this.fontFamilyDropDown.addEntry("Garamond", "Garamond", f);
-        this.fontFamilyDropDown.addEntry("Courier New", "Courier New", f);
-        this.fontFamilyDropDown.addEntry("Brush Script MT", "Brush Script MT", f);
+                this.fontFamilyDropDown.addEntry("Arial", "arial", f);
+                this.fontFamilyDropDown.addEntry("Impact", "impact", f);
+                this.fontFamilyDropDown.addEntry("Verdana", "verdana", f);
+                this.fontFamilyDropDown.addEntry("Trebuchet MS", "Trebuchet MS", f);
+                this.fontFamilyDropDown.addEntry("Times New Roman", "Times New Roman", f);
+                this.fontFamilyDropDown.addEntry("Georgia", "Georgia", f);
+                this.fontFamilyDropDown.addEntry("Garamond", "Garamond", f);
+                this.fontFamilyDropDown.addEntry("Courier New", "Courier New", f);
+                this.fontFamilyDropDown.addEntry("Brush Script MT", "Brush Script MT", f);
 
-        this.fontFamilyDropDown.onValueChange = function(v){
-                this.TOOLS.fontFamily(v);
-            }.bind(this);
+                this.fontFamilyDropDown.onValueChange = function(v){
+                        this.TOOLS.fontFamily(v);
+                    }.bind(this);
 
-        this.fontFamilyDropDown.value = this.data.FontFamily;
+                this.fontFamilyDropDown.value = this.data.FontFamily;
 
         this.drawButtons();
 
@@ -73,7 +87,7 @@ class ToolBar_TextElement {
 
     }
     drawButtons(){
-        let buttonsDiv = new SPLINT.DOMElement(this.TextID + "_buttonsDiv", "div", this.toolsBody);
+        let buttonsDiv = new SPLINT.DOMElement(this.TextID + "_buttonsDiv", "div", this.firstToolContainer);
             buttonsDiv.Class("buttonsDiv");
             this.PARTS.BT_remove(buttonsDiv);
             let bt_italic = this.PARTS.BT_italic(buttonsDiv);
@@ -130,7 +144,7 @@ class ToolBar_TextElement {
     }
     drawSlider(){
         //Line Height
-        this.sl_lineHeight = new Slider(this.toolsBody, "lineHeight_" + this.TextID, "Zeilenabstand");
+        this.sl_lineHeight = new SPLINT.DOMElement.Slider(this.toolsBody, "lineHeight_" + this.TextID, "Zeilenabstand");
         this.sl_lineHeight.drawTickMarks = false;
         this.sl_lineHeight.min    = 10;
         this.sl_lineHeight.max    = 100;
@@ -141,7 +155,7 @@ class ToolBar_TextElement {
         }.bind(this);
 
         //Font Weight
-        this.sl_fontWeight = new Slider(this.toolsBody, "fontWeight_" + this.TextID, "Schriftstärke");
+        this.sl_fontWeight = new SPLINT.DOMElement.Slider(this.toolsBody, "fontWeight_" + this.TextID, "Schriftstärke");
         this.sl_fontWeight.drawTickMarks = false;
         this.sl_fontWeight.min    = 100;
         this.sl_fontWeight.step   = 100; 
@@ -153,7 +167,7 @@ class ToolBar_TextElement {
         }.bind(this);
 
         //Font Size
-        this.sl_fontSize = new Slider(this.toolsBody, "fontSize_" + this.TextID, "Schriftgröße");
+        this.sl_fontSize = new SPLINT.DOMElement.Slider(this.toolsBody, "fontSize_" + this.TextID, "Schriftgröße");
         this.sl_fontSize.drawTickMarks = false;
         this.sl_fontSize.min            = 0.5;
         this.sl_fontSize.max            = 20;
@@ -211,12 +225,25 @@ class ToolBar_TextElement {
     blur(){
         this.mainElement.state().unsetActive();
         this.expander.unsetActive();
+        document.getElementById("ConverterToolBar_Text_main").appendChild(this.mainElement);
     }
     focus(){
         CONVERTER_STORAGE.toolBar.blurElement("txt");
         this.mainElement.state().setActive();
         this.expander.setActive();
         CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt");
+        let ele = document.getElementById("ConverterToolBar_activeBody").childNodes[0];
+        if(document.getElementById("ConverterToolBar_activeBody").childNodes.length > 0){
+            if(ele.getAttribute("ele-type") == "txt"){
+                document.getElementById("ConverterToolBar_Text_main").appendChild(ele);
+                ele.state().unsetActive();
+            } else {
+                document.getElementById("ConverterToolBar_Image_main").appendChild(ele);
+                ele.state().unsetActive();
+            }
+            document.getElementById("ConverterToolBar_activeBody").clear();
+        }
+        document.getElementById("ConverterToolBar_activeBody").appendChild(this.mainElement);
     }
 }
 

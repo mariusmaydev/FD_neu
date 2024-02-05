@@ -7,6 +7,8 @@ class Converter_ToolBar_side {
         this.parent = parent;
         this.id = "ConverterToolBar_";
         this.type = "side";
+        this.activeBody = new SPLINT.DOMElement(this.id + "activeBody", "div", this.parent);
+        this.activeBody.Class("ToolBar_ActiveBody");
         this.mainElement = new SPLINT.DOMElement(this.id + "main", "div", this.parent);
         this.mainElement.Class("ToolBar_Main");
         this.imageBar = new ToolBar_Image(this.mainElement);

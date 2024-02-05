@@ -1,23 +1,50 @@
-@import '../../../general/main.scss';
-@import '../../../general/buttons.scss';
+@use '../../../general/main' as Gmain;
+@use '../../../themes/theme1/main' as Tmain;
+@use '../../../themes/theme1/vars';
+@use '../../../general/buttons' as Gbuttons;
+@use '../../../themes/theme1/buttons' as Tbuttons;
+@use '../../../../../../Splint/scss/tools/tools' as S_tools;
+@use 'sass:color';
 // @import '../../../general/NavigationBar.scss';
 
-@import '_converterToolBarHelper.scss';
+@use 'converterToolBarHelper';
 
 @mixin ToolBar_Image_Main() {
     > .ToolBar_ImageMain {
-        @include ToolBar_ListElement();
+        > :first-child {
+            margin-top: 0.1em !important;
+        }
+        > :last-child {
+            margin-bottom: 0.1em !important;
+        }
+        @include converterToolBarHelper.ToolBar_ListElement();
         @include ToolBar_ListElement_Image();
+        overflow-x: hidden;
     }
 }
 
 @mixin ToolBar_ListElement_Image {
     > .ToolBar_ListElement_Image {
         position: relative;
+        // display: flex;
+        // flex-direction: row;
+        // flex-wrap: wrap;
+        // display: grid;
+        // grid-template-columns: repeat(2, 1fr);
+        // grid-auto-flow: dense;
+        // grid-template-areas: 
+        // "imgDiv imgDiv"
+        // "buttonsDiv buttonsDiv"
+        // "slider slider";
         &[state*='passive']{
             > .toolsBody {
                 max-height: 0px;
                 overflow: hidden;
+            }
+            > .topDiv {
+                > .buttonsDiv {
+                    display: none;
+                }
             }
             // > .S-SliderMain {
             //     max-height: 0px;
@@ -37,49 +64,157 @@
             //     // display: none;
             // }
         }
-        >.imgDiv {
-            display: block;
-            box-sizing: border-box;
-            position: relative;
+        &[state*='active']{
+            > .topDiv {
+                position: relative;
+                display: flex;
+                height: 8em !important;
+                max-height: 8em !important;
+                width: 100%;
+                flex-grow: 1;
+                align-items: stretch;
+                overflow: hidden;
+                >.imgDiv {
+                    display: flex;
+                    flex-direction: row;
+                    overflow: hidden;
+                    align-items: center;
+                    justify-content: center;
+                    // align-self: center;
+                    // justify-self: center;
+                    // display: block;
+                    box-sizing: border-box;
+                    position: relative;
+                    background-color: vars.$color-T_container-Medium;
+                    height: 100%;
+                    // flex-grow: 2;
+                    // flex-shrink: 1;
+                    max-height: 100%;
+                    max-width: 100%;
+                    width: min-content;
+                    // @include box-shadow();
+                    box-shadow: none;
+                    // height: max-content; 
+                    padding: 1px;
+                    // height: 5em;
+                    // box-shadow: 3px 3px 0px 0px vars.$color-header-Dark, 
+                    //     inset -2px 0px 0px 0px vars.$color-primary,
+                    //     inset 0px -2px 0px 0px vars.$color-primary;
+                    //     border: 1px solid vars.$color-T_container-Dark-M;
+                        @include Tmain.clipEdgesAll(5px);
+                    > img {
+                        @include Tmain.clipEdgesAll(5px);
+                        @include Tmain.preventSelect();
+                        // margin: 10px;
+                        box-sizing: border-box;
+                        position: relative;
+                        height: 100%;
+                        width: auto;;
+                        // overflow: hidden;
+                        // max-width: 100%;
+                        // width: auto;
+                        // display: block;
+                    }
+                }
+                > .buttonsDiv {
+                    // width: 100%;
+                    flex-grow: 1;
+                    // flex-shrink: 1;
+                    display: flex;
+                    flex-direction: row;
+                    // align-items: ;
+                    margin-top: 0.8vh;
+                    margin-bottom: 0.5vh;
+                    height: 100%;
+                    // padding-top: 0.4rem !important;
+                    // padding-bottom: 0.4rem !important;
+                    overflow: hidden;
+                    transition: all 0.2s ease-in;
+                    > button{
+                        
+                        height: max-content;
+                        width: max-content;
+                        padding: 0.5em;
+                        margin: 0 5px ;
+                        aspect-ratio: 1/1;
+                        // border: 1px solid vars.$color-T_container-Dark-M;
+                        background-color: vars.$color-T_container-Medium;
+
+                        box-shadow: none;
+                        box-shadow: 3px 3px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1),
+                                    inset -1px 0px 0px 0px vars.$color-primary-Dark,
+                                    inset 0px -1px 0px 0px vars.$color-primary-Dark;
+                        // @include S_tools.SPLINT-border-inset(vars.$color-T_container-Dark-M, 1px, true, true, true, true);
+                        transition: box-shadow 50ms ease, transform 50ms ease;
+                        &:active {
+                            box-shadow: 2px 2px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1),
+                                        inset -1px 0px 0px 0px vars.$color-primary-Dark,
+                                        inset 0px -1px 0px 0px vars.$color-primary-Dark;
+                            transform: translateX(1px) translateY(1px);
+                        }
+                        &:hover {
+                            > span {
+                                color: color.adjust(vars.$color-primary-Dark);
+                            }
+                        }
+                        > span {
+                            font-size: 2em;
+                            transition: color 50ms ease;
+                        }
+                    }
+                }
+            }
+
+        }
+        > .topDiv {
             width: 100%;
-            @include box-shadow();
-            // padding: 0.25em;
-            > img {
+            >.imgDiv {
+                // grid-area: imgDiv;
+                display: block;
                 box-sizing: border-box;
                 position: relative;
                 width: 100%;
-                display: block;
-            }
-            > .spinner {
-                margin: 0;
-                position: absolute;
-                z-index: 1;
-                // padding: 0.5em;
-                box-sizing: border-box;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: transparent;
-                //visibility: hidden;
-                &[state*='active']{
-                    visibility: visible;
-                }
-                > div {
-                    top: 50%; 
-                    left: 50%;
-                    transform: translate(-50%,-50%);
+                @include Gmain.box-shadow();
+                // padding: 0.25em;
+                > img {
+                    box-sizing: border-box;
                     position: relative;
-                    aspect-ratio: 1/1;
+                    width: 100%;
                     display: block;
-                    width: auto;
-                    height: auto;
-                    max-height: 100%;
-                    max-width: 100%;;
+                }
+                > .spinner {
+                    margin: 0;
+                    position: absolute;
+                    z-index: 1;
+                    // padding: 0.5em;
+                    box-sizing: border-box;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: transparent;
+                    //visibility: hidden;
+                    &[state*='active']{
+                        visibility: visible;
+                    }
+                    > div {
+                        top: 50%; 
+                        left: 50%;
+                        transform: translate(-50%,-50%);
+                        position: relative;
+                        aspect-ratio: 1/1;
+                        display: block;
+                        width: auto;
+                        height: auto;
+                        max-height: 100%;
+                        max-width: 100%;;
+                    }
                 }
             }
         }
         > .toolsBody{
+            // grid-area: slider;
+            display: block;
             max-height: 500px;
             height: max-content;
             transition: max-height 0.3s ease-in-out;
@@ -96,19 +231,29 @@
                 // padding-bottom: 0.4rem !important;
                 overflow: hidden;
                 transition: all 0.2s ease-in;
+                // margin: 0 !important;
             }
             > .rotationBody {
+                position: relative;
+                // height: 100%;
+                display: block;
+
+                // height: max-content
                 > .ContainerBody {
                     display: flex;
+                // height: 100%;
                     > .container {
                         width: 100%;
                         display: flex;
                         justify-content: stretch;
                         > button {
-                            width: 100%;
+                            border-radius: 0;
                             font-size: 1em;
                             padding: 0;
                             margin: 0.1em;
+                            margin-inline: 0.5em;
+                            @include Tbuttons.T_button_Animated(true);
+                            width: 100%;
                             // box-shadow: none;
                         }
                     }

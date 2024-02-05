@@ -1,4 +1,9 @@
-
+@use '../../general/main' as Gmain;
+@use '../../general/mediaQueries';
+@use '../../themes/theme1/vars';
+@use '../../themes/theme1/main' as Tmain;
+@use '../../themes/theme1/buttons' as Tbuttons;
+@use '../../../../../Splint/scss/tools/tools' as S_tools;
 // @import 'list/desktop-small';
 // @import 'list/desktop';
 // @import 'list/mobile';
@@ -9,57 +14,80 @@
     > .cartListMain {
         // @include border();
         width: 100%;
-        @include forMediaBreakpoint(desktop){
-            height: calc(94vh - 4rem);
-        }
+        overflow: visible;
+        margin-top: 0;
+        height: max-content;
+        // @include mediaQueries.forMediaBreakpoint(desktop){
+        //     height: calc(100vh - 4rem);
+        // }
         // box-sizing: border-box;
         // padding: 0.5rem;
         // padding-top: 1vh;
         padding-bottom: 0;
-        // * {
-        //     position: relative;
-        // }
+        @include mediaQueries.forMediaBreakpoint(mobile-small){
+            width: 98% !important;
+        }
         >.ListBody {
+            position: relative;
             width: 100%;
-            height: 100%;
+            height: max-content;
             // box
-            display: flex;
-            flex-direction: column;
-            justify-content: stretch;
-            gap: 1vh;
+            // display: flex;
+            // flex-direction: column;
+            // justify-content: stretch;
+            // gap: 1vh;
             box-sizing: content-box;
             // overflow: hidden;
             > .TableMain {
                 position: relative;
                 width: 100%;
-                // flex-grow: 1;
-                // flex-shrink: 1;
-                height: calc(100%);
-                // max-height: fit-content;
-                // display: block;
-                    box-sizing: border-box;
-                    margin-bottom: 0.5rem;;
+                @include mediaQueries.forMediaBreakpoint(desktop){
+                    height: max-content;
+                }
+                @include mediaQueries.forMediaBreakpoint(mobile){
+                    height: 100%;
+                }
+                bottom: 0;
+                box-sizing: border-box;
+                margin: 0;
                 justify-content: start;
+                ::-webkit-scrollbar {
+                    display: none;
+                }
                 > .ListMain {
                     width: 100%;
                     display: flex;
                     flex-direction: column;
                     flex-wrap: nowrap;
                     gap: 0rem;
-                    height: calc(100% + 1.8rem);
-                    // padding: 0.5rem;
-                    // margin: 0.5em;
-                    // padding-top: 0;
+                    // padding-top: 0.5rem;
+                    @include mediaQueries.forMediaBreakpoint(desktop){
+                        padding-top: calc(8vh + 0.5rem);
+                        padding-bottom: 2vh;
+                    }
+                    @include mediaQueries.forMediaBreakpoint(mobile){
+                        padding-top: calc(8vh + 0.5rem);
+                        padding-bottom: 2vh;
+                    }
+                    @include mediaQueries.forMediaBreakpoint(mobile-small){
+                        padding-top: calc(7vh + 0.5rem);
+                        padding-bottom: 0;
+                    }
+                    height: max-content;
                     justify-content: start;
                     box-sizing: border-box;
-                    overflow: auto;
+                    overflow: hidden;
                     overflow-x: hidden;
                     > .ListElement {
+                        height: 20rem;
+                        @include mediaQueries.forMediaBreakpoint(mobile-small){
+                            font-size: 2rem;
+                            height: 30rem;
+                        }
                         margin: 0.5rem;
                         margin-bottom: 0.1rem;
-                        @include T_container();
+                        @include Tmain.T_container();
                         display: flex;
-                        height: 20rem;
                         // width: 100%;
                         // margin: 0;
                         justify-content: stretch;
@@ -70,6 +98,9 @@
                         &[loaded='true']{
                             transform: translateX(0rem);
                         }
+                        
+                        @include S_tools.SPLINT-border-inset(vars.$color-T_container-Medium, 1px, true, true, true, true);
+                        @include Tmain.clipEdgesAll(5px);
                         &:not(.First){
                             > div {
                                 height: 100%;
@@ -78,7 +109,7 @@
                                 box-sizing: border-box;
                                 &.lighter {
                                     height: 100%;
-                                    aspect-ratio: $LIGHTER-ratio;
+                                    aspect-ratio: vars.$LIGHTER-ratio;
                                     > div {
                                         transform: translateY(-5%) scale(1.3);
                                         width: 100%;
@@ -115,7 +146,7 @@
                                     // flex-shrink: 1;
                                     // flex-basis: auto;
                                     // align-items: stretch;
-                                    @include forMediaBreakpoint(mobile-small){
+                                    @include mediaQueries.forMediaBreakpoint(mobile-small){
 
                                         justify-content: stretch;
                                         display: grid;
@@ -131,7 +162,7 @@
                                                 > .inner {
                                                     padding-top: 0 !important;
                                                 }
-                                                border-bottom:1px solid $color-devider;
+                                                border-bottom:1px solid vars.$color-devider;
                                             }
                                             &.price {
                                                 > .inner {
@@ -150,7 +181,7 @@
                                             }
                                         }
                                     }
-                                    @include forMediaBreakpoint(mobile desktop){
+                                    @include mediaQueries.forMediaBreakpoint(mobile desktop){
                                         justify-content: stretch;
                                         display: grid;
                                         grid-template-columns: auto 10em 9em;
@@ -264,6 +295,7 @@
                                                 // justify-content: right;
                                                 align-items: center;
                                                 > button {
+                                                    @include Tbuttons.T_button_Animated(true);
                                                     &.remove {
                                                         // margin-left: auto;
 
@@ -301,7 +333,7 @@
                     transform: translateX(0rem);
                 }
                 position: relative;
-                @include T_container();
+                @include Tmain.T_container();
                 padding-top: 0;
                 padding-bottom: 0;
                 display: flex;
@@ -316,7 +348,9 @@
                 height: 2em;
                 box-sizing: border-box;
                 display: none;
-                @include forMediaBreakpoint(mobile desktop){
+                @include S_tools.SPLINT-border-inset(vars.$color-T_container-Medium, 1px, true, true, true, true);
+                @include Tmain.clipEdgesAll(5px);
+                @include mediaQueries.forMediaBreakpoint(mobile desktop){
                     display: flex;
                 }
                 // @include forMediaBreakpoint(mobile){
@@ -363,7 +397,7 @@
                         width: 0px;
                         right: -0.5rem;
                         // top: 4%;
-                        border-right:1px solid $color-devider;
+                        border-right:1px solid vars.$color-devider;
                     }
                 }
             }

@@ -1,18 +1,29 @@
-@import '../general/_main.scss';
-@import '../general/buttons.scss';
-// @import '../general/NavigationBar.scss';
+@use '../general/main' as Gmain;
+@use '../general/buttons' as Gbuttons;
+@use '../general/mediaQueries';
 
 body {
     position: relative !important;
     width: 100vw !important;
-    overflow: hidden !important;
+    overflow: visible !important;
     box-sizing: border-box !important;
-    top: 7vh !important;
-    height: calc(93vh) !important;
+    @include mediaQueries.forMediaBreakpoint(mobile-small){
+        top: 0 !important;
+        height: 100vh !important;
+    }
+    @include mediaQueries.forMediaBreakpoint(mobile){
+        top: 0 !important;
+        height: 100vh !important;
+    }
+    @include mediaQueries.forMediaBreakpoint(desktop){
+        top: 8vh !important;
+        height: calc(92vh) !important;
+    }
 }
 
 .Pages_MAIN {
     box-sizing: border-box;
-    margin-inline: 1%;
+    margin-inline: 0%;
     height: 100%;
+    overflow: visible;
 }

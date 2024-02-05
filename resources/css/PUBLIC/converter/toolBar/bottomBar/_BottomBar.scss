@@ -1,11 +1,13 @@
-@import '../../../../general/main.scss';
-@import '../../../../general/buttons.scss';
+@use '../../../../general/main' as Gmain;
+@use '../../../../themes/theme1/main' as Tmain;
+@use '../../../../themes/theme1/buttons' as Tbuttons;
+@use '../../../../themes/theme1/vars';
+@use '../../../../general/buttons';
 // @import '../../../../general/NavigationBar.scss';
 
-@import '../_converterToolBarHelper.scss';
-@import '_floatingDiv.scss';
-@import '_image.scss';
-@import '_text.scss';
+@use 'floatingDiv';
+@use 'image';
+@use 'text';
 
 
 @mixin conv_BottomBar(){
@@ -14,9 +16,10 @@
 
         position: relative;
         margin: 0;
-        margin: 0.5em;
-        width: calc(100% - 1em);
+        margin: 0.5rem;
+        width: calc(100% - 1rem);
         height: max-content;
+        // margin-bottom: 0.5rem;
         max-height: 10%;
         // left: 2%;
         overflow: visible;
@@ -26,37 +29,62 @@
         > .conv_BottomBar_Main {
             width: 100%;
             box-sizing: content-box;
-            height: max-content;
-            max-height: 4em;
+            height: 100%;
+            max-height: 10rem;
             // overflow: hidden;
             > .conv_bottom_bar_std {
-                width: calc(100% - 32vw);
+                // @include Tmain.T_container();
+                        @include Tmain.T_container();
+                width: calc(100%);
                 position: relative;
-                height: max-content;
+                height: 100%;
                 display: flex;
-                padding: 0.5em;
-                background-color: white;
-                border-radius: $border-radius;
-                @include box-shadow();
-                justify-content: space-evenly;
+                // justify-content: stretch;
+                // gap: 1rem;
+                padding: 0.25em;
+                gap: 1rem;
+
+                // border-radius: vars.$border-radius;
+                // @include Gmain.box-shadow();
+                // align-items: stretch;
+                justify-content: stretch;
+                justify-items: stretch;
                 box-sizing: border-box;
                 > input {
                     display: none;
                 }
                 > button {
+                    // @include Tbuttons.T_button_Animated(false, false);
                     overflow: visible;
                     box-sizing: border-box;
-                    padding: 0.2em;
-                    aspect-ratio: 1/1;
+                    padding: 0.5rem;
+                    user-select: none;
+                    // aspect-ratio: 1/1;
                     height: 100%;
+                    &:not(.button_NewText):not(.AddElement){
+                        aspect-ratio: 1/1;
+                    }
+                    background-color: transparent;
+                    &[state*='active'] {
+                        background-color: red;
+                    }
                     > span {
-                        font-size: 2.5em;  
+                        font-size: 6rem;
+                        margin: -0.05em;  
+                        // white-space: nowrap;
+                        &.description {
+                            // display: none;
+                            margin: -0.05em;  
+                            margin-bottom: -0.1em;  
+                            margin-top: 0.1em;
+                            font-size: 1.8rem;
+                        }
                     }
                     &.buy {
                         display: none;
                         position: relative;
                         cursor: pointer;
-                        @include T_container();
+                        @include Tmain.T_container();
                         border: none;
                         margin: 1em;
                         user-select: auto;
@@ -68,9 +96,10 @@
                         }
                     }
                     display: block;
-                    @include conv_floatingDiv_aligned();
-                    @include conv_floatingDiv_block();
+                    @include floatingDiv.conv_floatingDiv_aligned();
+                    @include floatingDiv.conv_floatingDiv_block();
                     &.AddElement {
+                        flex: 1;
                         > div {
                             width: calc(100vw - 1em) !important;
                             margin-bottom: 0.5em;
@@ -105,6 +134,59 @@
                             }
                         }
                     }
+                    &.button_NewText {
+                        
+                        flex: 1;
+                    }
+                    &.finish {
+                        &[state*='active'] {
+                            background-color: red;
+                            > div {
+                                transform: translateX(0%);
+                            }
+                        }
+                        > div {
+                            // transform: translateX(80%);
+                            transition: transform 0.3s ease 2s;
+                            > div {
+                                > .content {
+                                    display: flex;
+                                    flex-direction: row;
+                                    box-shadow: none;
+                                    justify-content: right;
+                                    border-radius: 0;
+                                    gap: 2rem;
+                                    > .toCart {
+                                        @include Tmain.T_container();
+                                        @include Tmain.clipEdgesAll(5px);
+                                        > button {
+                                            > span {
+                                                font-size: 7rem;
+
+                                            }
+                                        }
+                                    }
+                                    > .buy {
+                                        @include Tmain.T_container();
+                                        @include Tmain.clipEdgesAll(5px);
+                                        > button {
+                                            display: flex;
+                                            flex-direction: row;
+
+                                            > span {
+                                                font-size: 6rem;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+                        // flex: 1 1;
+                        // width: min-content;
+                        // max-width: 200px;
+                        // height: auto;
+                    }
                     > div[name*='buttons_EP'] {
                         width: calc(100vw - 1em) !important;
                         margin-bottom: 0.5em;
@@ -118,7 +200,7 @@
                                 margin-inline: 0.5em;
                                 padding: 0.5em;
                                 &[state*='active']{
-                                    background-color: $color-primary;
+                                    background-color: vars.$color-primary;
                                 }
 
                                 // width: 10%;
@@ -148,9 +230,10 @@
                         height: 4.6em;
                         right: 0.2em;
                         bottom: 0.2em;
-                        width: 35vw;
-                        @include T_container();
-                        @include box-shadow(0, rgb(82, 82, 82), 0.7);
+                        width: 20vw;
+                        // width: 35vw;
+                        @include Tmain.T_container();
+                        @include Gmain.box-shadow(0, rgb(82, 82, 82), 0.7);
                         padding: 0;
     
                         overflow: hidden;
@@ -168,6 +251,7 @@
                             &.toCart {
                                 // margin: 0.5em;
                                 aspect-ratio: 1/1;
+                                display: none;
     
                             }
                             &.buy {
@@ -181,11 +265,12 @@
                                 justify-content: center;
                                 aspect-ratio: 1/1;
                                 height: 100%;
-                                width: max(100%, 4.6em);
+                                width: max(100%, 2.6em);
+                                // width: max(100%, 4.6em);
                                 margin: 0;
                                 padding: 0;
                                 text-align: center;
-                                background-color: $color-primary;
+                                background-color: vars.$color-primary;
                                 > span {
                                     height: max-content;
                                     width: 100%;
@@ -199,18 +284,18 @@
                 
             }        
             &[name*='image']{
-                background-color: transparent;
+                // background-color: transparent;
                 border-radius: 0px 0px;
                 box-shadow: none;
                 box-sizing: border-box;
-                @include conv_bottomBar_image();
+                @include image.conv_bottomBar_image();
             }   
             &[name*='text']{
                 background-color: transparent;
                 border-radius: 0px 0px;
                 box-shadow: none;
                 box-sizing: border-box;
-                @include conv_bottomBar_text();
+                @include text.conv_bottomBar_text();
             }
 
         }

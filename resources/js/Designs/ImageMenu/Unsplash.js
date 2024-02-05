@@ -24,6 +24,7 @@ class unsplash {
      })
      .then(data => {
       if(data.total == 0){
+        this.callback(data, this);
         return data;
       }
       console.log(data)
@@ -56,7 +57,7 @@ class unsplash {
     this.response = this.#call(true);
     return this;
   }//mpwF3Mv2UaU
-  search(value){
+  async search(value){
     this.value = value;
     if(value == "" || value == undefined){
       this.getStartImages();
@@ -68,7 +69,8 @@ class unsplash {
     '&page=' + this.page + 
     '&orientation=' + "portrait" +
     '&client_id=' + this.client_id; 
-    this.response = this.#call();
+    this.response = await this.#call();
+    console.log(this.response);
     return this;
   }
   getImageData(flag = false){
@@ -84,6 +86,7 @@ class unsplash {
             response.alt = data.alt_description;
             response.likes = data.likes;
             response.urls = data.urls;
+            response.id = data.id;
             response.type = "unsplash";
             response.links = data.links;
         output.push(response);
@@ -99,6 +102,7 @@ class unsplash {
             response.alt = data.alt_description;
             response.likes = data.likes;
             response.urls = data.urls;
+            response.id = data.id;
             response.type = "unsplash";
             response.links = data.links;
         output.push(response);
@@ -112,19 +116,41 @@ class unsplash {
     instance.search(value);
     return instance;
   }
+  static async like(id){
+    
+    let url = "https://api.unsplash.com/photos/" + id + "/like/?client_id=" + unsplash.clientID;
+        //get    
+        fetch(url, {
+          method: 'POST',
+        })
+        .then(response => {
+            console.log(response)
+        });
+    // let url = "https://api.unsplash.com/photos/"+ id + "/like";
+    //     let call = new SPLINT.CallPHP(url);
+    //     call.headers["Authorization"] = unsplash.clientID;
+    //     call.headers["Accept-Version"] = "v1";
+    //     // call.headers["Accept"] = 'application/json';
+    //     // call.headers["Content-Type"] = 'multipart/form-data';
+    //     // call.credentials = "include";
+    // return call.send(true);
+
+  }
   static download(data){
     let url = data.urls.regular + '&client_id=' + unsplash.clientID;
         //get    
         fetch(url, {
           method: 'GET',
         })
-        .then(response => {
-          FileUpload.fromUnsplash(response.url, function(data){
-            DSImage.add(JSON.parse(data));
+        .then(async function(response) {
+            
+            let call = new SPLINT.CallPHP(PATH.php.upload, "UNSPLASH_IMG");
+                call.data.link = response.url;
+            let res = (await call.send());
+                res = JSON.stringify(res);
+            DSImage.add(JSON.parse(res));
             CONVERTER_STORAGE.canvasNEW.refreshData();
             CONVERTER_STORAGE.toolBar.update();
-            // addImageToDataBase(DSImage.get(DSImage.length() - 1).ImageID);
-          })
         });
 
         //endpoint

@@ -1,11 +1,14 @@
-@import '../main.scss';
-@import '../_mediaQueries.scss';
+@use '../main' as Gmain;
+@use '../../themes/theme1/vars';
+@use '../../themes/theme1/main' as Tmain;
+@use '../../../../../Splint/scss/tools/tools' as S_tools;
+@use 'sass:color';
+@use '../mediaQueries';
 // @import 'mobile.scss';
 // @import 'desktop.scss';
 
 
 .NavigationBar {
-    // box-shadow: 0 4px 4px -2px gray;
     
     transform: translateY(0px);
     &:not([loaded*='true']){
@@ -16,40 +19,63 @@
     visibility: visible;
 
     position: fixed;
-    z-index: 1001;
+    z-index: 1002;
     // background-color: $color-header;
     background-color: transparent;
     top: 0;
     left: 0;
     height: 7vh;
     padding: 0%;
+    margin-top: 0.5vh;
     box-sizing: border-box;
     width: 100vw;
+    @include mediaQueries.forMediaBreakpoint(mobile-small){
+        height: vars.$NavBar-height-mobile-small;
+        margin-top: 0.5vh;
+    }
+    @include mediaQueries.forMediaBreakpoint(mobile){
+        height: vars.$NavBar-height-mobile;
+        margin-top: 0.5vh;
+    }
+    @include mediaQueries.forMediaBreakpoint(desktop){
+        height: vars.$NavBar-height-desktop;
+        margin-top: 0.5vh;
+    }
     >.content {
         background-color: transparent;
         // @include T_container();
         // @include box-shadow(1, rgb(26, 26, 26), 0.52);
         position: relative;
         margin: 0.5rem;
+        margin-inline: 2rem;
         margin-bottom: 0;
-        width: calc(100% - 1rem);
+        width: calc(100% - 4rem);
         height: calc(7vh - 0.5rem);
         box-sizing: border-box;
         display: grid;
     
-        grid-template-areas: "Logo Design shoppingCart"; 
-        grid-template-columns: [Logo] 3fr [Design] minmax(min-content, max-content) [shoppingCart] minmax(min-content, max-content);
+        grid-template-areas: "Logo Design Original shoppingCart"; 
+        grid-template-columns: [Logo] 1fr [Design] minmax(min-content, max-content) [Original] minmax(min-content, max-content) [shoppingCart] minmax(min-content, max-content);
         grid-template-rows: 100%;
         grid-auto-flow: dense;
         align-content: stretch;
-        gap: 0.5rem;
+        gap: 0.75rem;
         // justify-items: center;
         // justify-content: safe;
         align-items: stretch;
         padding: 0;
+        @include mediaQueries.forMediaBreakpoint(mobile-small){
+            height: calc(vars.$NavBar-height-mobile-small - 0.5rem);
+        }
+        @include mediaQueries.forMediaBreakpoint(mobile){
+            height: calc(vars.$NavBar-height-mobile - 0.5rem);
+        }
+        @include mediaQueries.forMediaBreakpoint(desktop){
+            height: calc(vars.$NavBar-height-desktop - 0.5rem);
+        }
         div {
-            @include T_container();
-            @include box-shadow(1, rgb(26, 26, 26), 0.52);
+            @include Tmain.T_container();
+            // @include Gmain.box-shadow(1, rgb(26, 26, 26), 0.52);
             box-sizing: border-box;
             position: relative;
             padding: 0;
@@ -57,6 +83,8 @@
             display: flex;
             align-items: center;
             // justify-content: ;
+                border: none;
+                box-shadow: none;
             > button {
                 position: relative;
                 // top: 0.4em;
@@ -68,17 +96,95 @@
                 // top: -1%;
                 height: 100%;
                 width: auto;
-                > div {
-                    box-shadow: none;
-                    height: 100%;
-                    width: max-content;
-                    left: 0.5rem;
-                    padding: 0.5rem;
-                    img {
-                        position: relative;
-                        height: 100%;
-                        transform: scale(1.2);
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                background-color: transparent;
+                > .inner {
+                    cursor: pointer;
+                    // box-sizing: border-box;
+                    width: 1%;
+                    overflow: visible;
+                    -ms-transform: skewX(-20deg); /* IE 9 */
+                    -webkit-transform: skewX(-20deg); /* Safari */
+                    transform: skewX(-20deg);
+                    // transition: width 0.15s ease-in-out; 
+                    box-shadow: 3px 3px 0px 0px vars.$color-header-Dark,//, 3px 3px 2px 0px color.adjust(vars.$color-primary-light);
+                                inset -2px 0px 0px 0px vars.$color-primary,
+                                inset 0px -2px 0px 0px vars.$color-primary;
+                                transition: width 0.15s ease-in-out, box-shadow 100ms ease, transform 100ms ease;
+                    &[state*='active']{
+                        width: 100%;
+                        &:hover {
+                            box-shadow: 5px 5px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1),//, 3px 3px 2px 0px color.adjust(vars.$color-primary-light);
+                                        inset -3px 0px 0px 0px vars.$color-primary,
+                                        inset 0px -3px 0px 0px vars.$color-primary;
+                            transform:  translateX(-2px) translateY(-2px) skewX(-20deg);
+                            color: vars.$color-primary-text;
+                        }
+                        > .inner1 {
+                            box-shadow: 0px 0px 0px 0px vars.$color-header-Dark,//, 3px 3px 2px 0px color.adjust(vars.$color-primary-light);
+                                        inset 0px 0px 0px 0px vars.$color-primary,
+                                        inset 0px 0px 0px 0px vars.$color-primary;
+                            background-color: transparent;
+                            transition: box-shadow 50ms linear, transform 100ms ease, background-color 0.15s ease-in-out;
+                                        // box-shadow: none;
+                        }
+                    }
+                    &:not([state*='active']){
+                        
+                        box-shadow: 0px 0px 0px 0px vars.$color-header-Dark,//, 3px 3px 2px 0px color.adjust(vars.$color-primary-light);
+                                    inset 0px 0px 0px 0px vars.$color-primary,
+                                    inset 0px 0px 0px 0px vars.$color-primary;
+                        > .inner1 {
+                            &:hover {
+                                box-shadow: 5px 5px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1),//, 3px 3px 2px 0px color.adjust(vars.$color-primary-light);
+                                            inset -3px 0px 0px 0px vars.$color-primary,
+                                            inset 0px -3px 0px 0px vars.$color-primary;
+                                transform:  translateX(-2px) translateY(-2px);
+                                color: vars.$color-primary-text;
+                            }
+                        }
+                    }
+                    background-color: vars.$color-header;
+                    > .inner1 {
                         cursor: pointer;
+                        width: calc(max-content + 23rem);
+                        padding-inline: 0.5em;
+                        padding-right: 2em;
+                        background-color: vars.$color-header;
+                        box-shadow: 3px 3px 0px 0px vars.$color-header-Dark,//, 3px 3px 2px 0px color.adjust(vars.$color-primary-light);
+                                    inset -2px 0px 0px 0px vars.$color-primary,
+                                    inset 0px -2px 0px 0px vars.$color-primary;
+                        transition: box-shadow 100ms ease, transform 100ms ease, background-color 0.15s ease-in-out;
+                        
+                        // &:hover {
+                        //     @include S_tools.SPLINT-border-inset(vars.$color-primary, 3px, false, false, true, true);
+                        //     > span {
+                        //         color: vars.$color-primary-text;
+                        //     }
+                        // }
+                        background-color: vars.$color-header;
+                        > .content {
+                            box-shadow: none;
+                            height: 100%;
+                            width: max-content;
+                            left: 0.75rem;
+                            padding: 0.6rem;
+                            padding-bottom: 0.7rem;
+                            padding-top: 0.5rem;
+                            background-color: transparent;
+                            -ms-transform: skewX(20deg); /* IE 9 */
+                            -webkit-transform: skewX(20deg); /* Safari */
+                            transform: skewX(20deg);
+                            img {
+                                @include Tmain.preventSelect();
+                                position: relative;
+                                height: 100%;
+                                transform: scale(1.2);
+                                cursor: pointer;
+                            }
+                        }
                     }
                 }
             }
@@ -89,28 +195,111 @@
                 aspect-ratio: 1/1;
                 // width: max-content;  
                 padding: 0rem;  
+                -ms-transform: skewX(-20deg); /* IE 9 */
+                -webkit-transform: skewX(-20deg); /* Safari */
+                transform: skewX(-20deg);
+                border: none;
+                box-shadow: none;
+                background-color: vars.$color-header;
+                box-shadow: 3px 3px 0px 0px vars.$color-header-Dark;
+                transition: box-shadow 100ms ease, transform 100ms ease;
+                &:hover {
+                    box-shadow: 5px 5px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1);//, 3px 3px 2px 0px color.adjust(vars.$color-primary-light);
+                    transform: skewX(-20deg) translateX(-2px) translateY(-2px);
+                    color: vars.$color-primary-text;
+                }
                 > button {
                     width: 100%;
                     height: 100%;
 
+                    border-radius: 0;
+                    border: none;
+                    box-shadow: none;
+                    box-shadow: none;
+                    @include S_tools.SPLINT-border-inset(vars.$color-primary, 2px, false, false, true, true);
+                    transition: box-shadow 50ms ease;
                     > span {
-                        
+                        animation: none;
+                        &:hover {
+                            color: vars.$color-primary-text;
+                        }
+                    -ms-transform: skewX(20deg); /* IE 9 */
+                    -webkit-transform: skewX(20deg); /* Safari */
+                    transform: skewX(20deg);
                         font-size: 2rem;
+                    }
+                    &:hover {
+                        @include S_tools.SPLINT-border-inset(vars.$color-primary, 3px, false, false, true, true);
+                        > span {
+                            color: vars.$color-primary-text;
+                        }
                     }
                 }
                 > .cartPoint {
+                    @include Tmain.preventSelect();
+                    -ms-transform: skewX(20deg); /* IE 9 */
+                    -webkit-transform: skewX(20deg); /* Safari */
+                    transform: skewX(20deg);
                     cursor: pointer;
                     position: absolute;
                     z-index: 1;
-                    left: 50%;
+                    left: 60%;
                     top: 60%;
-                    background-color: $color-primary;
+                    background-color: vars.$color-primary;
                     border-radius: 50%;
                     width: 1em;
                     height: 1em;
                     aspect-ratio: 1/1;
                     display: flex;
                     justify-content: center;
+                }
+            }
+            &.Original {
+                // @include T_container();
+                // @include box-shadow(1, rgb(26, 26, 26), 0.52);
+                position: relative;
+                grid-area: Original;
+                box-sizing: border-box;
+                height: 100%;
+                width: max-content;
+                background-color: vars.$color-header;
+                // margin-right: 1em;
+                margin: 0;
+                padding: 0rem;
+                -ms-transform: skewX(-20deg); /* IE 9 */
+                -webkit-transform: skewX(-20deg); /* Safari */
+                transform: skewX(-20deg);
+                border: none;
+                box-shadow: none;
+                box-shadow: 3px 3px 0px 0px vars.$color-header-Dark;
+                transition: box-shadow 100ms ease, transform 100ms ease;
+                &:hover {
+                    box-shadow: 5px 5px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1);//, 3px 3px 2px 0px color.adjust(vars.$color-primary-light);
+                    transform: skewX(-20deg) translateX(-2px) translateY(-2px);
+                }
+                > button {
+                    margin: 0;
+                    width: 100%;
+                    height: 100%;
+                    padding: 0;
+                    padding-inline: 1.5rem;
+                    background-color: vars.$color-header;
+                    border-radius: 0;
+                    border: none;
+                    box-shadow: none;
+                    @include S_tools.SPLINT-border-inset(vars.$color-primary, 2px, false, false, true, true);
+                    transition: box-shadow 50ms ease;
+                    > span {
+                        -ms-transform: skewX(20deg); /* IE 9 */
+                        -webkit-transform: skewX(20deg); /* Safari */
+                        transform: skewX(20deg);
+                        color: black;
+                        font-size: 1.6rem;
+
+                    }
+                    &:hover {
+                        @include S_tools.SPLINT-border-inset(vars.$color-primary, 3px, false, false, true, true);
+                    }
                 }
             }
             &.Design {
@@ -121,25 +310,43 @@
                 box-sizing: border-box;
                 height: 100%;
                 width: max-content;
-                // background-color: $color-primary-light;
-                // margin-right: 1em;
+                background-color: vars.$color-header;
                 margin: 0;
                 padding: 0rem;
+                -ms-transform: skewX(-20deg); /* IE 9 */
+                -webkit-transform: skewX(-20deg); /* Safari */
+                transform: skewX(-20deg);
+                border: none;
+                box-shadow: none;
+                box-shadow: 3px 3px 0px 0px vars.$color-header-Dark;
+                transition: box-shadow 100ms ease, transform 100ms ease;
+                &:hover {
+                    box-shadow: 5px 5px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1);//, 3px 3px 2px 0px color.adjust(vars.$color-primary-light);
+                    transform: skewX(-20deg) translateX(-2px) translateY(-2px);
+                }
                 > button {
                     margin: 0;
                     width: 100%;
                     height: 100%;
                     padding: 0;
                     padding-inline: 1.5rem;
-                    background-color: $color-primary;
-                    transition: background-color 0.05s linear;
+                    background-color: vars.$color-header;
+                    // transition: background-color 0.05s linear;
+                    border-radius: 0;
+                    border: none;
+                    box-shadow: none;
+                    @include S_tools.SPLINT-border-inset(vars.$color-primary, 2px, false, false, true, true);
+                    transition: box-shadow 50ms ease;
                     > span {
+                        -ms-transform: skewX(20deg); /* IE 9 */
+                        -webkit-transform: skewX(20deg); /* Safari */
+                        transform: skewX(20deg);
                         color: black;
-                        font-size: 1.4rem;
+                        font-size: 1.6rem;
 
                     }
                     &:hover {
-                        background-color: $color-primary-Dark;
+                        @include S_tools.SPLINT-border-inset(vars.$color-primary, 3px, false, false, true, true);
                     }
                 }
             }

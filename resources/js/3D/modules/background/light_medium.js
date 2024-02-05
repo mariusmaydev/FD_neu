@@ -35,7 +35,6 @@ export default function light(scene){
         // directional1.shadowDarkness = 0.5;
         // directional1.target.updateMatrixWorld();
         directional1.bind();
-        console.log(directional1)
         
     let directional2 = lights.new.DirectionalLight( 0xfff2e4, 4 );
         directional2.position.set(0.4, 0.3, 0.4);

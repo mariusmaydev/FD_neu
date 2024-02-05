@@ -58,18 +58,22 @@ class DataStorageProject_C {
           }.bind(this))
     }
     async save(){
-      let a = CONVERTER_STORAGE.canvasNEW.createData(1);
-          a.then(function(img){
-            this.Storage.Thumbnail = img;
-            return img;
-          }.bind(this))
-          .then(async function(){
-            let call = new SPLINT.CallPHP(ProjectHelper.PATH, ProjectHelper.EDIT);
-                call.data.Storage = this.Storage;
-                call.keepalive = false;
-                call.sendInSequence();
-                return true;
-          }.bind(this))
+        return new Promise((resolve, reject) => {
+            let a = CONVERTER_STORAGE.canvasNEW.createData(1);
+            a.then(function(img){
+                this.Storage.Thumbnail = img;
+                return img;
+            }.bind(this))
+            .then(async function(){
+                let call = new SPLINT.CallPHP(ProjectHelper.PATH, ProjectHelper.EDIT);
+                    call.data.Storage = this.Storage;
+                    call.keepalive = false;
+                    call.sendInSequence();
+                    resolve();
+                    return true;
+
+            }.bind(this))
+        });
     }
 
     getColorFor(color){

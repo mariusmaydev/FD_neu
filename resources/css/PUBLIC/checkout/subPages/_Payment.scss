@@ -1,15 +1,36 @@
-// @import '../../../general/main.scss';
-// @import '../../../general/buttons.scss';
-// @import '../../../PUBLIC/profile/subPages/Adresses.scss';
+@use '../../../general/main' as Gmain;
+@use '../../../themes/theme1/main' as Tmain;
+@use '../../../themes/theme1/vars';
+@use '../../../general/mediaQueries';
+@use '../../../general/buttons.scss' as Gbuttons;
+@use '../../../../../../Splint/scss/tools/tools' as S_tools;
 
 @mixin checkout_Payment(){
     > .PaymentMain {
-        width: 98%;
-        left: 1%;
+        @include mediaQueries.forMediaBreakpoint(mobile-small){
+            font-size: 2em;
+        }
+        width: 100%;
+        // left: 1%;
         > div {
+            @include mediaQueries.forMediaBreakpoint(mobile-small){
+                margin-bottom: 1em;
+            }
             margin-bottom: 0.5em;
-            @include T_container();
+            @include Tmain.T_container();
             border: none;
+            &:not(.buttonsDiv){
+                @include Tmain.clipEdgesAll(5px);
+                @include S_tools.SPLINT-border-inset(vars.$color-T_container-Medium, 1px, true, true, true, true);
+
+            }
+            &.buttonsDiv{
+                >button {
+                    @include mediaQueries.forMediaBreakpoint(mobile-small){
+                        width: 100%;
+                    }
+                }
+            }
         }
         > .n_RadioButton:not(.InvoiceMethodMain) {
             > div {
@@ -47,6 +68,19 @@
                             &:not(.inputBody){
 
                             }
+                            &.labelDiv {
+                                > .name {
+                                    padding-left: 0.5rem;
+                                    > span {
+    
+                                    }
+                                }
+                                > .displayDiv {
+                                    > div {
+                                        // display: none;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -74,6 +108,22 @@
 
                     }
                     > div {
+                        &:nth-child(4){
+                            > .labelDiv {
+                                > .name {
+                                    > span {
+    
+                                    }
+                                }
+                                >.displayDiv{
+                                    // background-color: red !important;
+
+                                    > .S-AddressInput {
+                                        padding: 0.5em;
+                                    }
+                                }
+                            }
+                        }
                         > .inputBody {
                             > input {
 
@@ -84,6 +134,7 @@
                         }
                         > .labelDiv {
                             > .name {
+                                padding-left: 0.5rem;
                                 > span {
 
                                 }

@@ -4,18 +4,16 @@
 // import { Fog } from "@THREE_ROOT_DIR/src/scenes/Fog.js";
 // import { PerspectiveCamera } from "@THREE_ROOT_DIR/src/cameras/PerspectiveCamera.js";
 // import { Color } from "@THREE_ROOT_DIR/src/math/Color.js";
+import { Fog } from "@THREE_ROOT_DIR/src/scenes/Fog.js";
 import SPLINT from 'SPLINT';
 import * as MATERIALS from '../assets/materials/materials.js';
 import LIGHT_Dark from './light_dark.js';
 import LIGHT_Bright from './light_bright.js';
 import LIGHT_Medium from './light_medium.js';
 import SETUP from '../lighter/setup.js';
-import {
-    PerspectiveCamera,
-    Color,
-    Fog,
-    Scene
-} from 'three';
+import { PerspectiveCamera } from "@THREE_ROOT_DIR/src/cameras/PerspectiveCamera.js";
+import { Scene } from "@THREE_ROOT_DIR/src/scenes/Scene.js";
+import { Color } from "@THREE_ROOT_DIR/src/math/Color.js";
 
 export class draw {
     static get(canvas){
@@ -34,7 +32,7 @@ export class draw {
     init(){
         this.setup.renderer(true);
         this.scene      = new Scene();
-        this.scene.fog = new Fog(0xd7d7d7, 0.05, 20);
+        // this.scene.fog = new Fog(0xd7d7d7, 0.05, 20);
         this.setupCamera();
 
         this.renderer.toneMappingExposure = 1;

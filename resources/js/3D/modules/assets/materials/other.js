@@ -1,12 +1,12 @@
 
 // import * as THREE from 'three';
 import * as THC from "@THREE_ROOT_DIR/src/constants.js";
-// import { MeshStandardMaterial } from "@THREE_ROOT_DIR/src/materials/MeshStandardMaterial.js";
-// import { ShadowMaterial } from "@THREE_ROOT_DIR/src/materials/ShadowMaterial.js";
-import {
-    ShadowMaterial,
-    MeshStandardMaterial,
-} from 'three';
+import { MeshStandardMaterial } from "@THREE_ROOT_DIR/src/materials/MeshStandardMaterial.js";
+import { ShadowMaterial } from "@THREE_ROOT_DIR/src/materials/ShadowMaterial.js";
+// import {
+//     ShadowMaterial,
+//     MeshStandardMaterial,
+// } from 'three';
 // import { MeshPhongMaterial } from "@THREE_ROOT_DIR/src/materials/MeshPhongMaterial.js";
 // import SPLINT from 'SPLINT';
 

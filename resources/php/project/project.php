@@ -218,6 +218,8 @@
         }
         static function remove($ProjectID){
             $project = self::get($ProjectID);
+            // Communication::sendBack($ProjectID);
+            // return;
             if($project[ProjectDB::STATE] != "ADMIN"){
                 $DataSet = new DataSet();
                 $DataSet -> newEntry(ProjectDB::PROJECT_ID, $ProjectID);

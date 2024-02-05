@@ -18,7 +18,6 @@ function ADMIN_DesignList(parent){
       } else {
         hashtags = [];
       }
-      console.log(hashtags);
 
       let listElement = getElement(parent.id + "_DesignListElement_" + i, "div", list.id);
           listElement.Class("ListElement");

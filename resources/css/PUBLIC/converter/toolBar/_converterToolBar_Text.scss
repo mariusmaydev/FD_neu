@@ -1,12 +1,23 @@
-@import '../../../general/main.scss';
-@import '../../../general/buttons.scss';
+@use '../../../general/main' as Gmain;
+@use '../../../themes/theme1/main' as Tmain;
+@use '../../../themes/theme1/vars';
+@use '../../../general/buttons' as Gbuttons;
+@use '../../../themes/theme1/buttons' as Tbuttons;
+@use '../../../../../../Splint/scss/tools/tools' as S_tools;
+@use 'sass:color';
 // @import '../../../general/NavigationBar.scss';
 
-@import '_converterToolBarHelper.scss';
+@use 'converterToolBarHelper';
 
 @mixin ToolBar_Text_Main() {
     > .ToolBar_TextMain {
-        @include ToolBar_ListElement();
+        > :first-child {
+            margin-top: 0.1em !important;
+        }
+        > :last-child {
+            margin-bottom: 0.1em !important;
+        }
+        @include converterToolBarHelper.ToolBar_ListElement();
         @include ToolBar_ListElement_Text();
     }
 }
@@ -14,6 +25,7 @@
 @mixin ToolBar_ListElement_Text {
     > .ToolBar_ListElement_Text {
         position: relative;
+        overflow: visible !important;
         &[state*='passive']{
             > .toolsBody {
                 max-height: 0px;
@@ -47,7 +59,7 @@
         > .TextInputDiv {
             position: relative;
             overflow: hidden;
-            @include box-shadow();
+            @include Gmain.box-shadow();
             margin: 0;
             height: fit-content;
             // padding: 0.25em;
@@ -77,24 +89,82 @@
         > .toolsBody{
             max-height: 500px;
             height: max-content;
+            width: 100%;
             transition: max-height 0.3s ease-in-out;
             overflow: hidden;
-            > .buttonsDiv {
+            > .firstToolContainer {
+                width: 100%;
                 display: flex;
-                justify-content: space-between;
-                margin-top: 0.5em;
-                > .AlignDiv {
+                flex-direction: row;
+                flex-flow: row;;
+                flex-wrap: wrap ;
+                // grid-auto-rows: min-content;
+                // grid-template-columns: repeat(auto-fill, minmax(10em, 50%));
+                grid-gap: 0rem;
+                > .buttonsDiv {
+                    flex-grow: 1;
                     display: flex;
-                    border: 1px solid lightgray;
-                    border-radius: $border-radius;
-                    padding: 0.2em;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    width: max-content;
+                    margin-top: 0.5em;
+                    gap: 0.5em;
+                    > .AlignDiv {
+                        display: flex;
+                        height: max-content;
+                        border: 1px solid lightgray;
+                        gap: 0.5em;
+                        border-radius: vars.$border-radius;
+                        margin: 0.5em;
+                        > button {
+                            @include Tbuttons.T_button_Animated(true);
+                            &[state*='active']{
+                                box-shadow: 1px 1px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1),
+                                            inset -1px 0px 0px 0px vars.$color-primary-Dark,
+                                            inset 0px -1px 0px 0px vars.$color-primary-Dark;
+                                transform: translateX(1px) translateY(1px);
+                            }
+                            display: flex;
+                            align-items: center;
+                            flex-direction: row;
+                            flex-wrap: nowrap;
+                            font-size: 1.7rem;
+                            padding: 0.2em;
+                            aspect-ratio: 1/1;
+                            // justify-content: space-between;
+                            > span {
+                                font-size: 1em;
+                                // margin-top: auto;
+                                // margin-bottom: auto;
+                            }
+                            // &[state*='active']{
+                            //     > span {
+                            //         color: $color-primary;
+                            //     }
+                            // }
+                        }
+                        // @include switchButton($color-primary);
+                    }
                     > button {
+                        @include Tbuttons.T_button_Animated(true);
+                        &[state*='active']{
+                            box-shadow: 1px 1px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1),
+                                        inset -1px 0px 0px 0px vars.$color-primary-Dark,
+                                        inset 0px -1px 0px 0px vars.$color-primary-Dark;
+                            transform: translateX(1px) translateY(1px);
+                        }
                         display: flex;
                         align-items: center;
                         flex-direction: row;
                         flex-wrap: nowrap;
+                        font-size: 1.7rem;
+                        // width: 1.4rem;
+                        // height:  1.4rem;
+                        padding: 0.2em;
+                        aspect-ratio: 1/1;
                         // justify-content: space-between;
                         > span {
+                            font-size: 1em;
                             // margin-top: auto;
                             // margin-bottom: auto;
                         }
@@ -104,12 +174,44 @@
                         //     }
                         // }
                     }
-                    // @include switchButton($color-primary);
                 }
-            }
-            >.DropDownInputMain_S {
-                margin-top: 0.5em;
-                margin-bottom: 0.5em;
+                >.DropDownInputMain_S {
+                    flex-grow: 0;
+                    flex-shrink: 1;
+                    // min-width: fit-content;
+                    max-width: 40%;
+                    margin-top: 0em;
+                    margin-bottom: 0em;
+                    > div {
+                        &.DropDown_expander {
+                            @include Tmain.preventSelect();
+                            > div {
+                                cursor: pointer;
+                                > span {
+                                    
+                                    font-size: 1em;
+                                    transition: font-size 0.2s ease-in-out;
+                                }
+                                &:hover {
+                                    > span {
+                                        font-size: 1.25em;
+                                    }
+                                    background-color: vars.$color-hover;
+                                }
+                            }
+                        }
+                        > div {
+                            > input {
+                                
+                                @include Tmain.preventSelect();
+                            }
+                            > label {
+                                @include Tmain.preventSelect();
+
+                            }
+                        }
+                    }
+                }
             }
             .S-SliderMain {
                 margin-top: 0.4em;
@@ -128,7 +230,7 @@
                         width: 100%;
                         height: 0px;
                         background: transparent;
-                        border-bottom: 1px solid $color-devider;
+                        border-bottom: 1px solid vars.$color-devider;
                         left: 0;
                         // top: 50%;
                         margin-top: 0.25em;
@@ -140,7 +242,7 @@
                         width: 100%;
                         height: 0px;
                         background: transparent;
-                        border-top: 1px solid $color-devider;
+                        border-top: 1px solid vars.$color-devider;
                         left: 0;
                         // top: 50%;
                         margin-bottom: 0.2em;
@@ -174,6 +276,7 @@
                             display: inline-block;
                             outline: none;
                             // align-items: center;
+                            background-color: transparent;
                             -webkit-appearance: none;
                             transition: box-shadow 0.2s ease;
                             &::-webkit-slider-runnable-track {
@@ -185,7 +288,9 @@
                                 // margin-top: 0.25em;
                                 // margin-top: 45%;
                                 // margin-bottom: 45%;
-                                background: black;
+                                background-color: vars.$color-primary-Dark;
+                                transition: background-color 0.2s ease;
+                                box-shadow: 1px 1px 1px 0px vars.$color-slider-thumb;
                                 border: none;
                                 border-radius: 10px;
                             }
@@ -199,8 +304,10 @@
                                 width: 0.5em;
                                 // border-radius: 10%;
                                 margin-top: -0.425em;
-                                background: $color-primary-Dark;
-                                
+                                background: vars.$color-slider-thumb;
+                                box-shadow: 1px 1px 0px 0px vars.$color-slider-thumb-Dark;
+                                            // 2px 1px 0px 0px vars.$color-slider-thumb-Dark;
+                                // @include S_tools.SPLINT-border-inset(vars.$color-slider-thumb-Dark, 1px, false, false, true, true);
                                 // margin-top: calc(-100% + 0.5em);
                                 box-sizing: border-box;
                                 // @include border();
@@ -208,13 +315,13 @@
                             }
                             &:focus {
                                 &::-webkit-slider-thumb {
-                                    @include box-shadow(0, $color-primary-Dark, 0.7);
+                                    @include Gmain.box-shadow(0, vars.$color-primary-Dark, 0.7);
                                 }
                                 outline: none;
                             }
                             
                             &:hover::-webkit-slider-runnable-track {
-                                @include box-shadow(0, gray);
+                                background-color: vars.$color-primary;
                             }
                         }
                         > datalist {
@@ -243,17 +350,26 @@
                 }
             }
             > .rotationBody {
+                position: relative;
+                // height: 100%;
+                display: block;
+
+                // height: max-content
                 > .ContainerBody {
                     display: flex;
+                // height: 100%;
                     > .container {
                         width: 100%;
                         display: flex;
                         justify-content: stretch;
                         > button {
-                            width: 100%;
+                            border-radius: 0;
                             font-size: 1em;
                             padding: 0;
                             margin: 0.1em;
+                            margin-inline: 0.5em;
+                            @include Tbuttons.T_button_Animated(true);
+                            width: 100%;
                             // box-shadow: none;
                         }
                     }

@@ -1,20 +1,55 @@
-@import '../../../general/main.scss';
-@import '../../../general/buttons.scss';
+@use '../../../general/main' as Gmain;
+@use '../../../general/buttons' as Gbuttons;
 // @import '../../../general/NavigationBar.scss';
 
-@import '_converterToolBar_Text.scss';
-@import '_converterToolBar_Image.scss';
-@import '_converterToolBarHelper.scss';
+@use 'converterToolBar_Text';
+@use 'converterToolBar_Image';
+@use 'converterToolBarHelper';
 
 @mixin ToolBar_Main() {
+    > .ToolBar_ActiveBody {
+        // flex-grow: 1 !important;
+        box-sizing: content-box;
+        position: relative;
+        overflow-x: visible;
+        width: 100%;
+        // height: fit-content !important;
+        // min-height: 10%;
+        // max-height: 100%;
+        top: 0;
+        margin: 0 !important;
+        padding: 0 !important;
+        z-index: 0 !important;
+        > div {
+            position: relative;
+            width: 100%;
+            // height: 100%;
+            box-sizing: border-box;
+            overflow: visible;
+            overflow-y: auto;
+            overflow-x: visible;
+            margin: 0.5em !important;
+            margin-bottom: 0 !important;
+            padding: 0.5em !important;
+            z-index: 0 !important;
+        }
+        @include converterToolBarHelper.ToolBar_ListElement();
+        @include converterToolBar_Image.ToolBar_ListElement_Image();
+        @include converterToolBar_Text.ToolBar_ListElement_Text();
+
+    }
     > .ToolBar_Main {
         box-sizing: content-box;
         position: relative;
         overflow-x: visible;
         width: 100%;
-        top: 1vh;
+        top: 0;
         > div {
             position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
             width: 50%;
             height: 100%;
             box-sizing: border-box;
@@ -22,7 +57,7 @@
             overflow-y: auto;
             overflow-x: visible;
         }
-        @include ToolBar_Text_Main();
-        @include ToolBar_Image_Main();
+        @include converterToolBar_Text.ToolBar_Text_Main();
+        @include converterToolBar_Image.ToolBar_Image_Main();
     }
 }

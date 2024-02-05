@@ -7,36 +7,18 @@ class ProjectDetails {
         this.mainElement = null;
     }
     async show(drawButtons = true){
-        this.productData = await productHelper.getProductData(this.data.Product);
-        console.log(this.productData);
-        this.mainElement = new SPLINT.DOMElement.popupWindow(this.id, true)
-        this.mainElement.close = function(){
-            this.mainElement.content.startAnimation_str("translateProjectDetails_close 0.3s ease forwards", 0.3);
-            this.mainElement.background.startAnimation_str("translateProjectDetailsBackground_close 0.3s ease forwards", 0.3).then(function(){
-                this.mainElement.element.remove();
-            }.bind(this));
-        }.bind(this);
-        this.contentElement = this.mainElement.content;
-            let container = new SPLINT.DOMElement(this.id + "container", "div", this.contentElement);
-                container.Class("container");
-                let data = new SPLINT.autoObject();
-            this.lighter = new drawLighter3D(container, this.id, drawLighter3D.PROJECT, this.data.Thumbnail, true, true);
-            this.lighter.canvas.setAttribute("showDimensions", false);
-            this.lighter.saveContext = false;
-            // this.lighter.canvas.setAttribute("showDimensions", true);
-                this.drawInformation();
-                if(drawButtons){
-                    this.drawButtons();
-
-                }
-            
-            // listElement.lighter = lighter;
-            // listElement.setAttribute("state", data.State);
+        if(SPLINT.ViewPort.getSize() == "mobile-small"){
+            this.ele = new ProjectDetails_Mobile(this.data, 0, this.parent);
+        } else {
+            this.ele = new ProjectDetails_Desktop(this.data, 0, this.parent);
+        }
+        this.ele.show(drawButtons);
     }
     hide(){
-        if(this.mainElement != null){
-            this.mainElement.close();
-        }
+        this.ele.hide();
+        // if(this.mainElement != null){
+        //     this.mainElement.close();
+        // }
     }
     drawInformation(){ 
         this.informationDiv = new SPLINT.DOMElement(this.id + "informationDiv", "div", this.contentElement);
@@ -46,13 +28,19 @@ class ProjectDetails {
                 console.log(this.data);
                 let headline = new SPLINT.DOMElement.SpanDiv(content, "headline", this.productData.viewName);
                     headline.Class("headline");
-                let informationTable = new textTable(content, "information");
-                    informationTable.Class("informationTable");
-                    // informationTable.addRow("erstellt", this.data.First_Time);
-                    // informationTable.addRow("zuletzt bearbeitet", this.data.Last_Time);
-                    for(const e of this.productData.attrs){
-                        informationTable.addRow(e.name + ": ", e.value);
-                    }
+
+                    let informationTableBody = new SPLINT.DOMElement(this.id + "informationTableBody", "div", content);
+                        informationTableBody.Class("informationTableBody");
+                        let informationTableHeadline = new SPLINT.DOMElement.SpanDiv(informationTableBody, "headline", "Produktdetails");
+                            informationTableHeadline.Class("headline");
+                        let informationTable = new SPLINT.DOMElement.Table.TextTable(informationTableBody, "information");
+                            informationTable.Class("informationTable");
+                            // informationTable.addRow("erstellt", this.data.First_Time);
+                            // informationTable.addRow("zuletzt bearbeitet", this.data.Last_Time);
+                            console.log(this.productData)
+                            for(const e of this.productData.attrs){
+                                informationTable.addRow(e.name + ": ", e.value);
+                            }
                     // informationTable.addRow("Farbe", this.data.color);
                     // informationTable.addRow("zuletzt bearbeitet", this.data.Last_Time);
 
@@ -75,14 +63,18 @@ class ProjectDetails {
 
                 let priceBody = new SPLINT.DOMElement("priceBody", "div", content);
                     priceBody.Class("priceBody");
-                    let priceElement = new PriceDiv_S(priceBody, "priceElement", this.productData.price);
+                    let priceElement = new SPLINT.DOMElement.PriceDiv(priceBody, "priceElement", this.productData.price);
                     let buttonSize = new SPLINT.DOMElement.Button.Switch(priceBody, "size", "Abmaße");
                         buttonSize.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_DEFAULT)
                         buttonSize.onactive = function(){
                             this.lighter.send("showDimensions", true);
+                            this.lighter.canvas.setAttribute("showDimensions", "true")
+                            this.lighter.div.setAttribute("showDimensions", "true")
                         }.bind(this);
                         buttonSize.onpassive = function(){
                             this.lighter.send("showDimensions", false);
+                            this.lighter.canvas.setAttribute("showDimensions", "false")
+                            this.lighter.div.setAttribute("showDimensions", "false")
                         }.bind(this);
 
                     // sizeBody.onmouseenter = function(){
@@ -114,21 +106,40 @@ class ProjectDetails {
                         }
                     }.bind(this);
                   }
-                let button_toCart = new SPLINT.DOMElement.Button(buttonDiv, "_toCart");
-                    button_toCart.bindIcon("add_shopping_cart");
-                    button_toCart.onclick = async function(e){
-                        e.stopPropagation();
-                        let projectID = this.data.ProjectID;
-                        if(this.data.State != ProjectHelper.STATE_CART){
-                            if(this.data.State == "ADMIN"){
-                                projectID = await ProjectHelper.copy(this.data.ProjectID, "admin");
-                            } else {
-                                projectID = await ProjectHelper.copy(this.data.ProjectID);
-                            }
-                            await ProjectHelper.changeState(projectID, ProjectHelper.STATE_CART);
-                        }
-                        ShoppingCart.addItem(projectID, this.data.Product, 1);
-                  }.bind(this);
+                    let buttonContainer_Buy = new SPLINT.DOMElement(this.id + "_buttonContainer_Buy", "div", buttonDiv);
+                        buttonContainer_Buy.Class("buttonContainer_Buy");
+                        let amountInput = new SPLINT.DOMElement.InputAmount(buttonContainer_Buy, "amount", 1, "");
+                        let button_toCart = new SPLINT.DOMElement.Button(buttonContainer_Buy, "_toCart");
+                            button_toCart.bindIcon("add_shopping_cart");
+                            button_toCart.onclick = async function(e){
+                                e.stopPropagation();
+                                let projectID = this.data.ProjectID;
+                                if(this.data.State != ProjectHelper.STATE_CART){
+                                    if(this.data.State == "ADMIN"){
+                                        projectID = await ProjectHelper.copy(this.data.ProjectID, "admin");
+                                    } else {
+                                        projectID = await ProjectHelper.copy(this.data.ProjectID);
+                                    }
+                                    await ProjectHelper.changeState(projectID, ProjectHelper.STATE_CART);
+                                }
+                                ShoppingCart.addItem(projectID, this.data.Product, amountInput.amount);
+                        }.bind(this);
+                        let button_Buy = new SPLINT.DOMElement.Button(buttonContainer_Buy, "_Buy", "jetzt kaufen");
+                            // button_Buy.bindIcon("add_shopping_cart");
+                            button_Buy.onclick = async function(e){
+                                e.stopPropagation();
+                                let projectID = this.data.ProjectID;
+                                if(this.data.State != ProjectHelper.STATE_CART){
+                                    if(this.data.State == "ADMIN"){
+                                        projectID = await ProjectHelper.copy(this.data.ProjectID, "admin");
+                                    } else {
+                                        projectID = await ProjectHelper.copy(this.data.ProjectID);
+                                    }
+                                    await ProjectHelper.changeState(projectID, ProjectHelper.STATE_CART);
+                                }
+                                await ShoppingCart.addItem(projectID, this.data.Product, amountInput.amount);
+                                ShoppingCart.callLocation();
+                        }.bind(this);
                 // if(data.State == ProjectHelper.STATE_NORMAL){
                 //     let button_copy = new SPLINT.DOMElement.Button(buttonDiv, "_copy");
                 //         button_copy.bindIcon("content_copy");

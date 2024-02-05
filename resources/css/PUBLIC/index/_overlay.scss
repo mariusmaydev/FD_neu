@@ -1,4 +1,8 @@
-
+// @use '../../general/main' as Gmain;
+// @use '../../general/mediaQueries';
+@use '../../themes/theme1/vars';
+@use '../../themes/theme1/buttons' as Tbuttons;
+// @use '../../themes/theme1/main' as Tmain;
 $settings: (
     'font': (
         'color-1': rgb(30, 30, 30),
@@ -53,8 +57,8 @@ $settings: (
                                 z-index: 2;
                                 top: 85%;
                                 left: 40%;
-                                @include T_button_4();
-                                background-color: $color-primary-Dark;
+                                @include Tbuttons.T_button_4();
+                                background-color: vars.$color-primary-Dark;
                                 > span {
                                     font-size: 3rem;
         

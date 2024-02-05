@@ -1,6 +1,87 @@
-@import '../../../general/main.scss';
-@import '../../../general/buttons.scss';
+
+@use '../../../themes/theme1/vars';
+@use '../../../themes/theme1/main' as Tmain;
+@use '../../../general/main' as Gmain;
+@use '../../../general/mediaQueries';
+@use '../../../general/buttons' as Gbuttons;
+@use '../../../themes/theme1/buttons' as Tbuttons;
+@use '../../../PUBLIC/profile/subPages/Adresses';
+@use '../../../../../../Splint/scss/tools/tools' as S_tools;
 
 @mixin checkout_Overview(){
-    
+    > .CheckOrderMain {
+        @include mediaQueries.forMediaBreakpoint(mobile-small){
+            font-size: 2em;
+        }
+        > div {
+            margin-bottom: 0.5em;
+            @include mediaQueries.forMediaBreakpoint(mobile-small){
+                margin-bottom: 1em;
+            }
+            @include Tmain.T_container();
+            border: none;
+            &:not(.buttonsDiv){
+                // &:not(.paypalContainer){
+                    @include Tmain.clipEdgesAll(5px);
+                    @include S_tools.SPLINT-border-inset(vars.$color-T_container-Medium, 1px, true, true, true, true);
+                // }
+            }
+            &.buttonsDiv{
+                >button {
+                    @include mediaQueries.forMediaBreakpoint(mobile-small){
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        > .paypalContainer {
+            // width: 100%;
+            position: relative;
+            // padding: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            > div {
+                min-width: 80%!important;
+                max-width: 100%!important;
+                position: relative;
+                // margin: auto;
+                // width: 100%;
+                // background-color: transparent;;
+                // padding: 0;
+                // display: flex;
+                // justify-content: center;
+            }
+        }
+    }
 }
+
+// @media only screen and (min-width: 75px) {
+//     #paypal-button-container {
+//       min-width: 75px;
+//     }
+//   }
+  
+//   @media only screen and (min-width: 150px) {
+//     #paypal-button-container {
+//       min-width: 150px;
+//     }
+//   }
+  
+//   @media only screen and (min-width: 200px) {
+//     #paypal-button-container {
+//       min-width: 200px;
+//     }
+//   }
+  
+//   @media only screen and (min-width: 300px) {
+//     #paypal-button-container {
+//       min-width: 300px;
+//     }
+//   }
+  
+//   @media only screen and (min-width: 500px) {
+//     #paypal-button-container {
+//       min-width: 500px;
+//     }
+//   }

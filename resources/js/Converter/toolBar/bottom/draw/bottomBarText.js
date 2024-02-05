@@ -41,10 +41,19 @@ class BottomBar_Text {
                 button_edit.bindIcon("edit");
                 // button_edit.button.setTooltip("Bearbeiten", "top");
                 button_edit.onclick = function(){
-                    let SubWindow = new S_popupWindow("editText", true);
+                    let SubWindow = new SPLINT.DOMElement.popupWindow("editText", true);
                         SubWindow.Class("editText_mobile");
-                        let textInput = new TextInputDiv(SubWindow.content, "editTextInputDiv", "test");
+                        SubWindow.buttonClose.bindIcon("check");
+                        SubWindow.content.onclick = function(e){
+                            if(e.srcElement.id == SubWindow.content.id){
+                                SubWindow.close();
+                            }
+                        }
+                        let headline = new SPLINT.DOMElement.SpanDiv(SubWindow.content, "headline", "Verfasse einen Text.");
+                            headline.Class("headline");
+                        let textInput = new SPLINT.DOMElement.InputText(SubWindow.content, "editTextInputDiv", "test");
                             // console.log(this.data)    
+                            textInput.textarea.focus();
                             textInput.setValue(this.data.TextValue);
                             textInput.oninput = function(){
                                 this.TOOLS.setValue(textInput.Value);
@@ -64,7 +73,7 @@ class BottomBar_Text {
             this.button_fontSize = new BottomBar_Text_Button_FontSize(buttonsDiv, this.TOOLS, this.data);
 
 
-            let buttonItalic = new S_switchButton(buttonsDiv, "italic");
+            let buttonItalic = new SPLINT.DOMElement.Button.Switch(buttonsDiv, "italic");
                 buttonItalic.bindIcon("format_italic");
                 buttonItalic.onactive = function(){
                         this.TOOLS.fontStyle('italic');

@@ -1,6 +1,14 @@
-import * as THREE from 'three';
-import { TextGeometry } from '@THREE_MODULES_DIR/geometries/TextGeometry.js';
-import { FontLoader } from '@THREE_MODULES_DIR/loaders/FontLoader.js';
+
+import { TextGeometry } from '@SPLINT_MODULES_DIR/ThreeJS/objects/TextGeometry_Modified.js';
+import { FontLoader } from '@SPLINT_MODULES_DIR/ThreeJS/loader/FontLoader_Modified.js';
+import { Vector3 } from '@THREE_ROOT_DIR/src/math/Vector3.js';
+import { Group } from "@THREE_ROOT_DIR/src/objects/Group.js";
+import { MeshPhongMaterial } from "@THREE_ROOT_DIR/src/materials/MeshPhongMaterial.js";
+import { Mesh } from "@THREE_ROOT_DIR/src/objects/Mesh.js";
+import { BufferGeometry } from "@THREE_ROOT_DIR/src/core/BufferGeometry.js";
+import { LineBasicMaterial } from "@THREE_ROOT_DIR/src/materials/LineBasicMaterial.js";
+import { Line } from "@THREE_ROOT_DIR/src/objects/Line.js";
+
 export default class projectCommunication {
     constructor(instance){
         this.inst = instance;
@@ -46,31 +54,31 @@ export default class projectCommunication {
             let points;
             this.LighterGroup = this.inst.setup.getLighterGroupe(this.inst.scene, 'lighter');
             points = []
-            points.push(new THREE.Vector3(-0.019, 0.01, 0))
-            points.push(new THREE.Vector3(0.019, 0.01, 0))
+            points.push(new Vector3(-0.019, 0.01, 0))
+            points.push(new Vector3(0.019, 0.01, 0))
             let m1 = this.getMessurement(points, {x:0, y:1, z:0})
-            let pos = new THREE.Vector3(0, 0.013, 0);
-            let rot = new THREE.Vector3(0, 2, 0);
+            let pos = new Vector3(0, 0.013, 0);
+            let rot = new Vector3(0, 2, 0);
             let t1 = this.getText("35", pos, rot)
 
             points = []
-            points.push(new THREE.Vector3(-0.023, 0, 0))
-            points.push(new THREE.Vector3(-0.023, 0, -0.057))
+            points.push(new Vector3(-0.023, 0, 0))
+            points.push(new Vector3(-0.023, 0, -0.057))
             let m2 = this.getMessurement(points, {x:1, y:0, z:0})
 
-            pos = new THREE.Vector3(-0.026, 0, -0.0285);
-            rot = new THREE.Vector3(1, 2, 1);
+            pos = new Vector3(-0.026, 0, -0.0285);
+            rot = new Vector3(1, 2, 1);
             let t2 = this.getText("57", pos, rot)
 
             points = []
-            points.push(new THREE.Vector3(0.023, -0.0065, 0))
-            points.push(new THREE.Vector3(0.023, 0.0065, 0))
+            points.push(new Vector3(0.023, -0.0065, 0))
+            points.push(new Vector3(0.023, 0.0065, 0))
             let m3 = this.getMessurement(points, {x:1, y:0, z:0})
-            pos = new THREE.Vector3(0.026, 0, 0);
-            rot = new THREE.Vector3(0, 2, -1);
+            pos = new Vector3(0.026, 0, 0);
+            rot = new Vector3(0, 2, -1);
             let t3 = this.getText("13", pos, rot)
 
-            this.group = new THREE.Group();
+            this.group = new Group();
             this.group.add(t1)
             this.group.add(t2)
             this.group.add(t3)
@@ -97,14 +105,14 @@ export default class projectCommunication {
             bevelSegments: 1
         } );
         
-        const material = new THREE.MeshPhongMaterial( 
+        const material = new MeshPhongMaterial( 
             { 
                 color: 0x000000, 
                 specular: 0x3e3e3e ,
                 shininess: 100
             }
           );
-        const mesh = new THREE.Mesh( textShapes, material ) ;
+        const mesh = new Mesh( textShapes, material ) ;
                 mesh.translateX(pos.x);
                 mesh.translateY(pos.y);
                 mesh.translateZ(pos.z);
@@ -123,41 +131,41 @@ export default class projectCommunication {
         let v1 = pointsIn[1];
         let points;
         points = []
-        points.push(new THREE.Vector3(v0.x, v0.y, v0.z))
-        points.push(new THREE.Vector3(v1.x, v1.y, v1.z))
+        points.push(new Vector3(v0.x, v0.y, v0.z))
+        points.push(new Vector3(v1.x, v1.y, v1.z))
         let l1 = this.getLine(points, rot);
 
         points = []
-        points.push(new THREE.Vector3(v0.x+(rot.x*-0.0015), v0.y+(rot.y*-0.0015), v0.z+(rot.z*-0.0015)))
-        points.push(new THREE.Vector3(v0.x+(rot.x*+0.0015), v0.y+(rot.y*+0.0015), v0.z+(rot.z*+0.0015)))
+        points.push(new Vector3(v0.x+(rot.x*-0.0015), v0.y+(rot.y*-0.0015), v0.z+(rot.z*-0.0015)))
+        points.push(new Vector3(v0.x+(rot.x*+0.0015), v0.y+(rot.y*+0.0015), v0.z+(rot.z*+0.0015)))
         let l2 = this.getLine(points, rot);
 
         points = []
-        points.push(new THREE.Vector3(v1.x+(rot.x*-0.0015), v1.y+(rot.y*-0.0015), v1.z+(rot.z*-0.0015)))
-        points.push(new THREE.Vector3(v1.x+(rot.x*+0.0015), v1.y+(rot.y*+0.0015), v1.z+(rot.z*+0.0015)))
+        points.push(new Vector3(v1.x+(rot.x*-0.0015), v1.y+(rot.y*-0.0015), v1.z+(rot.z*-0.0015)))
+        points.push(new Vector3(v1.x+(rot.x*+0.0015), v1.y+(rot.y*+0.0015), v1.z+(rot.z*+0.0015)))
         let l3 = this.getLine(points, rot);
-        let group = new THREE.Group();
+        let group = new Group();
         group.add(l1);
         group.add(l2);
         group.add(l3);
         return group;
     }
     getLine(points, rot){
-        const geometry = new THREE.BufferGeometry().setFromPoints(points)
-        const material = new THREE.LineBasicMaterial({
+        const geometry = new BufferGeometry().setFromPoints(points)
+        const material = new LineBasicMaterial({
         // for normal lines
             color: 0x000000,
             linewidth: 105,
             linecap: 'round', //ignored by WebGLRenderer
             linejoin: 'round', //ignored by WebGLRenderer
         })
-        const line = new THREE.Line(geometry, material)
+        const line = new Line(geometry, material)
         return line;
 
     }
     getCenterPoint(mesh) {
-        let middle = new THREE.Vector3();
-        let geometry = mesh instanceof THREE.Mesh || mesh.isMesh ? mesh.geometry : mesh;
+        let middle = new Vector3();
+        let geometry = mesh instanceof Mesh || mesh.isMesh ? mesh.geometry : mesh;
     
         geometry.computeBoundingBox();
         geometry.boundingBox.getSize(middle);

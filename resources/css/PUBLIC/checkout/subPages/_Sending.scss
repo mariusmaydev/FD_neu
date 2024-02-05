@@ -1,11 +1,29 @@
-@import '../../../general/main.scss';
-@import '../../../general/buttons.scss';
+@use '../../../general/main' as Gmain;
+@use '../../../themes/theme1/main' as Tmain;
+@use '../../../themes/theme1/vars';
+@use '../../../general/buttons.scss' as Gbuttons;
+@use '../../../../../../Splint/scss/tools/tools' as S_tools;
+@use '../../../general/mediaQueries';
 
 @mixin checkout_Sending(){
 
     >.SendingMain {
+        @include mediaQueries.forMediaBreakpoint(mobile-small){
+            font-size: 2em;
+        }
+        > div {
+            margin-bottom: 0.5em;
+            @include mediaQueries.forMediaBreakpoint(mobile-small){
+                margin-bottom: 1em;
+            }
+            &:not(.buttonsDiv){
+                @include Tmain.clipEdgesAll(5px);
+                @include S_tools.SPLINT-border-inset(vars.$color-T_container-Medium, 1px, true, true, true, true);
+
+            }
+        }
         > .n_RadioButton {
-            @include T_container();
+            @include Tmain.T_container();
             border: none;
             > .inner {
                 > hr {
@@ -21,6 +39,7 @@
                         }
                     }
                     > .labelDiv {
+                        padding-left: 0.5rem;
                         > .name {
                             > span {
 

@@ -1,5 +1,5 @@
 
-class ImageElement extends DOMElement {
+class ImageElement extends SPLINT.DOMElement {
   constructor(name, parent){
     super(name + "_img", "img", parent);
     this.name = name;
@@ -13,7 +13,7 @@ let test = new Object();
     test.a = "ok";
     test.a
 
-class FileUploadButton extends S_Button {
+class FileUploadButton extends SPLINT.DOMElement.Button {
   constructor(parent, name, accept, type){
     super(parent, name);
     this.parent = parent;
@@ -23,6 +23,7 @@ class FileUploadButton extends S_Button {
     this.onsuccess = function(data){};
     this.id     = "ImageUpload_" + name;
     this.#draw();
+    this._onclick = function(e){};
   }
   preventDirect(){
     this.#draw(true);
@@ -45,8 +46,10 @@ class FileUploadButton extends S_Button {
           this.input.clear();
         }.bind(this);
   
-    this.button.onclick = function(){
-          this.input.click();
+    this.button.onclick = function(e){
+        this._onclick(e)  
+        this.input.click();
+
         }.bind(this);
   }
 }

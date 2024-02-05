@@ -1,8 +1,11 @@
-@import '../publicMain.scss';
+@use '../../themes/theme1/main' as Tmain;
+@use '../../themes/theme1/vars';
+@use '../../general/main' as Gmain;
+@use '../publicMain.scss';
 
 .Pages_MAIN {
     overflow: visible;
-    @include box-shadow();
+    @include Gmain.box-shadow();
     position: relative;
     top: 6%;
     width: 50em;
@@ -18,17 +21,17 @@
             display: flex;
             justify-content: space-evenly;
             > button {
-                border-radius: $border-radius;
-                @include box-shadow(0);
+                border-radius: vars.$border-radius;
+                @include Gmain.box-shadow(0);
                 overflow: visible;
                 border: none;
                 margin-inline: 0.5em;
                 position: relative;
                 width: 100%;
-                background-color: $color-primary;
+                background-color: vars.$color-primary;
                 &:hover{
-                    background-color: $color-primary-Dark;
-                    @include box-shadow(0, black, 0.9);
+                    background-color: vars.$color-primary-Dark;
+                    @include Gmain.box-shadow(0, black, 0.9);
                 }
             }
         }
@@ -48,15 +51,15 @@
     span {
         font-size: 0.8em;
         cursor: pointer;
-        color: $color-primary-text;
+        color: vars.$color-primary-text;
         &:hover {
-            color: $color-accent;
+            color: vars.$color-accent;
         }
     }
 }
 
 .CreateAccountMain {
-    @include border();   
+    @include Gmain.border();   
     padding: 1%;
     display: flex;
     flex-direction: column;
@@ -74,10 +77,10 @@
             flex-direction: column;
             > div {
                 &.headline { 
-                    color: $color-primary-text
+                    color: vars.$color-primary-text
                 }
                 &.text {
-                    color: $color-secondary-text
+                    color: vars.$color-secondary-text
                 }
             }
         }

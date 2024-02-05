@@ -6,13 +6,14 @@ class drawSavedInformation{
       return main;
     }
     static async address(parent){
+        return new Promise(async function(resolve, reject) {
       let main = drawSavedInformation.createMainDiv(parent);
       let address = await SPLINT.SessionsPHP.get(Checkout.sessions.addresses);
       if(address.Phone != undefined && address.Phone != ""){
         let phoneDivMain = new SPLINT.DOMElement("checkoutphoneDivMain", "div", main);
             phoneDivMain.Class("element");
             let phoneDiv = new SPLINT.DOMElement.SpanDiv(phoneDivMain, "phone", address.Phone);
-                let phoneLabel = new Label(phoneDivMain, phoneDiv.div, "Telefonnummer");
+                let phoneLabel = new SPLINT.DOMElement.Label(phoneDivMain, phoneDiv.div, "Telefonnummer");
                     phoneLabel.before();
       }
   
@@ -21,7 +22,7 @@ class drawSavedInformation{
       let emailDivMain = new SPLINT.DOMElement("checkoutEmailDivMain", "div", main);
           emailDivMain.Class("element");
           let emailDiv = new SPLINT.DOMElement.SpanDiv(emailDivMain, "email", address.Email);
-              let emailLabel = new Label(emailDivMain, emailDiv.div, "Emailadresse");
+              let emailLabel = new SPLINT.DOMElement.Label(emailDivMain, emailDiv.div, "Emailadresse");
                   emailLabel.before();
   
           let buttonChangeContact = new SPLINT.DOMElement.Button(emailDivMain, "change", "ändern");
@@ -65,17 +66,20 @@ class drawSavedInformation{
               buttonChangeAddress.onclick = function(){
                 window.location.hash = CheckoutHelper.ADDRESS;
               }
+              resolve();
+            }.bind(this));
     }
     static async sending(parent){
+        return new Promise(async function(resolve, reject) {
       let main = drawSavedInformation.createMainDiv(parent);
-      new SPLINT.DOMElement.HorizontalLine(main);
+    //   new SPLINT.DOMElement.HorizontalLine(main);
       let sending = await SPLINT.SessionsPHP.get(Checkout.sessions.addresses);
           let sendingDiv = new SPLINT.DOMElement("CheckoutSendingConditionsDiv", "div", main);
               sendingDiv.Class("element");
   
               let contentDiv = new SPLINT.DOMElement("checkoutSendingContentDiv", "div", sendingDiv);
                   contentDiv.Class("contentDiv");
-                  let label = new Label(sendingDiv, contentDiv, "Versand");
+                  let label = new SPLINT.DOMElement.Label(sendingDiv, contentDiv, "Versand");
                       label.before(); 
                   
                   let typeSpan = new SPLINT.DOMElement.SpanDiv(contentDiv, "type", sending.type);
@@ -90,12 +94,14 @@ class drawSavedInformation{
                   buttonChangeSending.button.onclick = function(){
                     window.location.hash = CheckoutHelper.SENDING;
                   }
+                  resolve();
+                }.bind(this));
     }
   
     static async payment(parent){
-    //   return;
+        return new Promise(async function(resolve, reject) {
       let main = drawSavedInformation.createMainDiv(parent);
-      new SPLINT.DOMElement.HorizontalLine(main);
+      new SPLINT.DOMElement.HorizontalLine(main, "horizontalLine");
           let paymentMethod = await SPLINT.SessionsPHP.get(Checkout.sessions.paymentType);
           let invoiceAddress = SPLINT.SessionsPHP.get(Checkout.sessions.invoiceAddress);
           
@@ -150,6 +156,7 @@ class drawSavedInformation{
                               window.location.hash = CheckoutHelper.PAYMENT;
                             }
             }
-  
+            resolve();
+        }.bind(this));
     }
   }

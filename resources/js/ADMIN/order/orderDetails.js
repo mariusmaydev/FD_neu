@@ -17,10 +17,12 @@ class ADMIN_order_view {
             this.data = await order.get(this.orderID);
         }
         this.data = this.data[0];
+        this.data.uTime = S_Time.convertDateTimeToFormatedUnix(this.data.Time, false);
         this.items = this.data.Items;
         this.draw();
     }
     draw(){
+        this.drawMainInfoDiv();
         this.drawProjectsDiv();
         this.drawAddressDiv();
         this.drawPDFDiv();
@@ -30,6 +32,35 @@ class ADMIN_order_view {
         this.rightDiv = new SPLINT.DOMElement(this.id + "rightDiv", "div", this.mainElement);
         this.rightDiv.Class("rightBar");
 
+    }
+    drawMainInfoDiv(){
+        this.mainInfoDiv = new SPLINT.DOMElement(this.id + "mainInfoDiv", "div", this.contentElement);
+        this.mainInfoDiv.Class("mainInfoDiv");
+            let time = new formatUnix_S(this.data.uTime);
+            const f = S_ANSI.use;
+                console.log(f.i + "test" + f.cBG.green + f.cFG.red + "test2");
+            let dateBody = new SPLINT.DOMElement(this.id + "dateBody", "div", this.mainInfoDiv);
+                dateBody.Class("dateBody");
+                let date_i1 = new SPLINT.DOMElement.SpanDiv(dateBody, "date_i1", "Bestellt am&nbsp;");
+                    date_i1.identifier = 0;
+                let date_i2 = new SPLINT.DOMElement.SpanDiv(dateBody, "date_i2", time.date());
+                    date_i2.identifier = 1;
+                let date_i3 = new SPLINT.DOMElement.SpanDiv(dateBody, "date_i3", "&nbsp;um&nbsp;");
+                    date_i3.identifier = 2;
+                let date_i4 = new SPLINT.DOMElement.SpanDiv(dateBody, "date_i4", time.time());
+                    date_i4.identifier = 3;
+
+            let timeBody = new SPLINT.DOMElement(this.id + "timeBody", "div", this.mainInfoDiv);
+            
+            let b = S_DateTime.timeDiff(this.data.uTime, S_DateTime.getUnixTime(false), true);
+                timeBody.Class("timeBody");
+                let time_i1 = new SPLINT.DOMElement.SpanDiv(timeBody, "time_i1", "Bestellung offen seit&nbsp;");
+                    time_i1.identifier = 0;
+                let time_i2 = new SPLINT.DOMElement.SpanDiv(timeBody, "time_i2", b);
+                    time_i2.identifier = 1;
+
+            // let span = new SPLINT.DOMElement.SpanDiv(this.mainInfoDiv, "date", time);
+        console.dir(this.data);
     }
     async drawProjectsDiv(){
         this.projectDiv = new SPLINT.DOMElement(this.id + "projectDiv", "div", this.contentElement);
@@ -67,7 +98,7 @@ class ADMIN_order_view {
                                 laserDiv.state().setActive();
                             }
                         }
-                        let amountInputLaser = new AmountInput(laserDiv, "amountInputLaser", amountFinishLaser, " / " + this.items[index].amount);
+                        let amountInputLaser = new SPLINT.DOMElement.InputAmount(laserDiv, "amountInputLaser", amountFinishLaser, " / " + this.items[index].amount);
                             amountInputLaser.min = 0;
                             amountInputLaser.oninput = function(amount){
                                 this.items[index].amountFinishLaser = amount;
@@ -91,10 +122,16 @@ class ADMIN_order_view {
                                     let button_render = new SPLINT.DOMElement.Button(buttonsContainer, "render", "Model erstellen");
                                         button_render.setStyleTemplate(S_Button.STYLE_NONE);
                                         button_render.button.onclick = async function(){
-                                            let sp = new Spinner1(button_render.button, "test");
+                                            let sp = new SPLINT.DOMElement.Spinner(button_render.button, "test");
                                                 // sp.
                                             console.log(this.data.UserID, project.ProjectID);
-                                            let res = (await ConverterHelper.createData(this.data.UserID, project.ProjectID));
+                                            let Args = new Object();
+                                                Args.type = "laser";
+                                                console.log(project);
+                                                // Args.PointZero = new Object();
+                                                // Args.PointZero.X = DSProject.Storage[DSProject.SQUARE].PointZeroX;
+                                                // Args.PointZero.Y = DSProject.Storage[DSProject.SQUARE].PointZeroY;
+                                            let res = (await ConverterHelper.createData(this.data.UserID, project.ProjectID, Args));
                                             sp.remove();
                                             button_download_NC.button.disabled = false;
                                             button_startEngraving.button.disabled = false;
@@ -126,6 +163,7 @@ class ADMIN_order_view {
                                     button_startEngraving.setStyleTemplate(S_Button.STYLE_NONE);
                                     button_startEngraving.button.onclick = async function(){
                                         if(SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc", true)){
+                                            
                                             let res = await SPLINT.API.Moonraker.printFile(projectPATH + "/Full.nc");
                                             // let name = this.orderID + "_" + (parseInt(index) + 1) + "_Model";
                                             // let code = (await SPLINT.API.Moonraker.loadGCode(projectPATH + "/Full.nc"));

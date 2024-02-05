@@ -6,6 +6,7 @@ class ToolBar_TextElement_parts {
     BT_remove(parent = this.parent){
         let bt_remove = new SPLINT.DOMElement.Button(parent, "bt_remove");
             bt_remove.bindIcon("delete");
+            bt_remove.setTooltip("entfernen", "bottom");
             bt_remove.button.onclick = function(){
                 this.TOOLS.remove();
             }.bind(this);
@@ -14,6 +15,7 @@ class ToolBar_TextElement_parts {
     BT_copy(parent = this.parent){
         let button = new SPLINT.DOMElement.Button(parent, "bt_copy");
             button.bindIcon("content_copy");
+            button.setTooltip("duplizieren", "bottom");
             button.button.onclick = function(){
                 this.TOOLS.copy();
             }.bind(this);
@@ -22,6 +24,7 @@ class ToolBar_TextElement_parts {
     BT_italic(parent = this.parent){
         let buttonItalic = new S_switchButton(parent, "Italic");
             buttonItalic.bindIcon("format_italic");
+            buttonItalic.setTooltip("kursiv", "bottom");
 
             buttonItalic.onactive = function(){
                     this.TOOLS.fontStyle('italic');

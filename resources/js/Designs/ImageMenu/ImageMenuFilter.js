@@ -12,20 +12,39 @@ class ImageMenuFilter {
   }
   draw(){
     // this.drawModeSwitch();
+    // let buttonHelp = new SPLINT.DOMElement.Button(this.mainElement, this.id + "help");
+    //     buttonHelp.Class("bt_help");
+    //     buttonHelp.bindIcon("question_mark");
+    //     buttonHelp.setTooltip("sdfdsadfafd<br>sadad", "bottom")
+    //     buttonHelp.bindDropdown(function(g){
+    //         let div = new SPLINT.DOMElement(g.id + "_MAIN", "div", g);
+    //             div.Class("test");
+    //             let text = new SPLINT.DOMElement(g.id + "_text", "p", div);
+    //                 text.innerHTML = "Hier kannst du Bilder auswählen";
+    //         console.dir(g)
+    //         buttonHelp.button.onclick = function(){
+    //           buttonHelp.toggleDropdown();
+    //         }.bind(this);
+    //     })
+        // buttonHelp.onclick = function(){
+        //     console.log("help");
+        //     // this.ImageMenuInstance.close();
+        // }.bind(this);
     let buttonClose = new SPLINT.DOMElement.Button(this.mainElement, this.id + "close");
         buttonClose.bindIcon("close");
+        buttonClose.Class("closeBT");
         buttonClose.onclick = function(){
             this.ImageMenuInstance.close();
         }.bind(this);
     this.searchBar = new SPLINT.DOMElement.InputDiv(this.mainElement, "searchBar", "suche");
-    this.searchBar.type = "search";
-    let sugg = new SPLINT.DOMElement("sugg", "datalist", this.searchBar.mainElement);
-        let opt1 = new SPLINT.DOMElement(null, "option", sugg);
-            opt1.innerHTML = "BMW";
-            let opt2 = new SPLINT.DOMElement(null, "option", sugg);
-                opt2.innerHTML = "DFR";
+    this.searchBar.type = "text";
+    // let sugg = new SPLINT.DOMElement("sugg", "datalist", this.searchBar.mainElement);
+    //     let opt1 = new SPLINT.DOMElement(null, "option", sugg);
+    //         opt1.innerHTML = "BMW";
+    //         let opt2 = new SPLINT.DOMElement(null, "option", sugg);
+    //             opt2.innerHTML = "DFR";
     this.searchBar.input.autocomplete = true;
-    this.searchBar.input.setAttribute("list", "sugg");
+    // this.searchBar.input.setAttribute("list", "sugg");
       let bt = this.searchBar.drawToggleButton();
           bt.bindIcon("search");
           bt.onchange = function(){
@@ -36,11 +55,11 @@ class ImageMenuFilter {
             bt.button.click();
           }
         });
-        let hashtagMenu = new drawHashtags(this.mainElement);
-            hashtagMenu.onsearch = function(s){
-              this.onsearch(s);
-            }.bind(this)
-            hashtagMenu.drawListMenu();
+        // let hashtagMenu = new drawHashtags(this.mainElement);
+        //     hashtagMenu.onsearch = function(s){
+        //       this.onsearch(s);
+        //     }.bind(this)
+        //     hashtagMenu.drawListMenu();
         // DrawHashtagUI_list(this.mainElement);
   }
   drawModeSwitch(){

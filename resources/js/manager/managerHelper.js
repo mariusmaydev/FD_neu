@@ -7,7 +7,6 @@ class ManagerHelper {
     static PAGE;
     static STORAGE = new SPLINT.autoObject();
     static {
-            console.log("okokoko")
         SPLINT.Events.onInitComplete = function(){
             if(location.href.includes("/HTML/ADMIN/")){
                 return;

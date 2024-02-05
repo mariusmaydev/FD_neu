@@ -248,8 +248,8 @@ class CanvasElement_C {
           o.paths       = new Object();
           o.paths.edges = [];
           obj.#update();
-          canvasPaths.updateTxtPath(o);
           obj.draw(o);
+          canvasPaths.updateTxtPath(o);
           DSText.saveAsync();
       return o;
     }
@@ -291,8 +291,10 @@ class CanvasElement_C {
                     ctx.imageSmoothingQuality = "high";
                     ctx.drawImage(img, 0, 0, Math.abs(img.width), Math.abs(img.height));
                     ctx.globalCompositeOperation = "source-in";
-                    ctx.fillStyle = DSProject.getColorFor(DSProject.Storage.EPType);
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    if(DSProject.Storage.grayscale != true){
+                        ctx.fillStyle = DSProject.getColorFor(DSProject.Storage.EPType);
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    }
                     ctx.globalCompositeOperation = "source-over";
                 let imgData = canvas.toDataURL('image/png', 1);
 
@@ -371,15 +373,15 @@ class CanvasElement_C {
       if(response != false){
           response.element.data = data;
           this.stack[response.index] = response.element;
-          // if(this.activeElement != null){
-          //   this.activeElement.reload();
-          // }
-          // if(this.dragElement != null){
-          //   this.dragElement.reload();
-          // }
-          // if(this.hoverElement != null){
-          //   this.hoverElement.reload();
-          // }
+        //   if(this.activeElement != null){
+        //     this.activeElement.reload();
+        //   }
+        //   if(this.dragElement != null){
+        //     this.dragElement.reload();
+        //   }
+        //   if(this.hoverElement != null){
+        //     this.hoverElement.reload();
+        //   }
       } else {
         this.stack.push(this.#newStackObj("txt", data));
       }
@@ -417,6 +419,8 @@ class CanvasElement_C {
         this.draw(element);
       } else {
         let data = DSText.get(DSText.getIndex(element.ID));
+        this.activeElement = element;
+        this.setFirstInStack(element);
         if(data == undefined){
           element.ctx.clearRect(0, 0, element.canvas.width, element.canvas.height);
           element.ctx_S.clearRect(0, 0, element.canvas.width, element.canvas.height);
@@ -432,9 +436,9 @@ class CanvasElement_C {
           // }
           return;
         }
-          // this.#checkEdge(element);
-          // this.activeElement = element;
-          // // this.setFirstInStack(element);
+          this.checkEdge(element);
+          this.activeElement = element;
+          this.setFirstInStack(element);
           this.draw(element);
       }
     });

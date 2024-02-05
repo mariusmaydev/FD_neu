@@ -5,6 +5,7 @@
     // require_once $rootpath.'/fd/resources/php/converter/image/imageCore.php';
     require_once $rootpath.'/fd/resources/php/converter/create/creatorHelper.php';
     require_once $rootpath.'/fd/resources/php/converter/converterConfig.php';
+    require_once $rootpath.'/fd/resources/php/converter/SVG/SVGModel.php';
 
     $fArray;
     $xAdd;
@@ -15,7 +16,7 @@
     $y_C;
     $align = [];
     $offsetCenter = [];
-function start($ProjectData, $UserID, $ImgData = null, $TextData = null){
+function start($ProjectData, $UserID, $ImgData = null, $TextData = null, $args = null){
     global $fArray;
     global $yAdd;
     global $xAdd;
@@ -25,6 +26,9 @@ function start($ProjectData, $UserID, $ImgData = null, $TextData = null){
     global $y_C;
     global $align;
     global $offsetCenter;
+    //global $LIGHTER_HEIGHT;
+    //global $LIGHTER_WIDTH;
+    //global $LIGHTER_MULTIPLY;
     $cfg = ConverterConfig::get();
     
     $ProjectID = $ProjectData[ProjectDB::PROJECT_ID];
@@ -41,8 +45,9 @@ function start($ProjectData, $UserID, $ImgData = null, $TextData = null){
             $img -> edgeImage(1);
             $img -> modulateImage(0, 0, 100);
             $img -> setImageFormat('png');
-            file_put_contents("testOut.png",$img);
-            $img ->writeImage("testOut.png");
+            // $img -> flipImage();
+            // file_put_contents("testOut.png",$img);
+            // $img ->writeImage("testOut.png");
             $xScale = ($data[TextDB::TEXT_FRAME_WIDTH]*2) / $img -> getImageWidth();
             $yScale = ($data[TextDB::TEXT_FRAME_HEIGHT]*2) / $img -> getImageHeight();
 
@@ -64,7 +69,7 @@ function start($ProjectData, $UserID, $ImgData = null, $TextData = null){
             doImage($PathObject);
             $PathObject = PathHelper::sortPath1($PathObject);
             $PathObject = PathHelper::smoothPaths($PathObject);
-            // $PathObject = PathHelper::shortPaths($PathObject);
+            $PathObject = PathHelper::shortPaths($PathObject);
             $PathObject = PathHelper::sortPath1($PathObject, false);
             $PathObject = PathHelper::translatePathObject($PathObject);
             $PathObject = PathHelper::fixElements($PathObject);
@@ -77,13 +82,13 @@ function start($ProjectData, $UserID, $ImgData = null, $TextData = null){
             $img = getSingleProjectImage($UserID, $ProjectID, $data[ImageDB::IMAGE_ID], PATH_Project::IMG_VIEW);
             $xScale = $data[ImageDB::IMAGE_WIDTH] / $img -> getImageWidth();
             $yScale = $data[ImageDB::IMAGE_HEIGHT] / $img -> getImageHeight();
-
             $img -> setImageFormat('png');
             $xAdd = $data[ImageDB::IMAGE_POS_X];
             $yAdd = $data[ImageDB::IMAGE_POS_Y];
 
             // TIMER -> start();
             $fArray = creatorHelper::img2fArray($img, true);
+
             // $gh = $fArray -> getArray();
             // creatorHelper::farray2file($fArray, "test" . random_int(0, 9) . ".txt");
             // TIMER -> print();
@@ -104,8 +109,8 @@ function start($ProjectData, $UserID, $ImgData = null, $TextData = null){
             doImage($PathObject);
             // TIMER -> end();
             $PathObject = PathHelper::sortPath1($PathObject);
-            // $PathObject = PathHelper::smoothPaths($PathObject);
-            // $PathObject = PathHelper::shortPaths($PathObject);
+            $PathObject = PathHelper::smoothPaths($PathObject);
+            $PathObject = PathHelper::shortPaths($PathObject);
             $PathObject = PathHelper::sortPath1($PathObject, false);
             $PathObject = PathHelper::translatePathObject($PathObject);
             $PathObject = PathHelper::fixElements($PathObject);
@@ -113,19 +118,46 @@ function start($ProjectData, $UserID, $ImgData = null, $TextData = null){
         }
     }
     // $PathObjectOut = PathHelper::sortPath1($PathObjectOut, false);
-    
-    $LighterWidth   = ProjectDB::LIGHTER_WIDTH * 61.29;//ProjectDB::SCALE;
-    $LighterHeight  = ProjectDB::LIGHTER_HEIGHT * 61.29;//ProjectDB::SCALE;
+    // $LighterWidth   = $LIGHTER_WIDTH * $LIGHTER_MULTIPLY;//ProjectDB::SCALE;
+    // $LighterHeight  = $LIGHTER_HEIGHT * $LIGHTER_MULTIPLY;//ProjectDB::SCALE;
+    Debugger::log($args);
+    if($args == null || $args -> type == "laser") {
+        if($args -> PointZero -> X === null){
+            $args -> PointZero -> X = $cfg -> laser -> zero -> X;
+            $args -> PointZero -> Y = $cfg -> laser -> zero -> Y;
+        }
+        $model = new NCLaserModel($PathObjectOut);//1970 ; 2875 ; = 0,02
+        $model -> scale = 0.02;//$LIGHTER_HEIGHT / ($LighterHeight);
+        $model -> xNull = $args -> PointZero -> X;//($cfg -> laser -> zero -> X *  $LIGHTER_MULTIPLY) -($LighterWidth / 2);//-(7.5 * ProjectDB::SCALE)) ;//31 = 92.5
+        $model -> yNull = $args -> PointZero -> Y + $ProjectData[ProjectDB::SQUARE] -> heightMM;//($cfg -> laser -> zero -> Y * $LIGHTER_MULTIPLY ) +($LighterHeight / 2);// + (5.25 * ProjectDB::SCALE)) ;//50,5 = 107.25
+        //Debugg::log($LIGHTER_HEIGHT);
+        $path = PATH_Project::get(PATH_Project::NC, $ProjectData[ProjectDB::PROJECT_ID], $UserID);
+        $model -> save($path);
+    } else if($args -> type == "engraving"){
+        if($args -> PointZero -> X === null){
+            $args -> PointZero -> X = $cfg -> engraving -> zero -> X;
+            $args -> PointZero -> Y = $cfg -> engraving -> zero -> Y;
+        }
+        $model = new NCModel($PathObjectOut);//1970 ; 2875 ; = 0,02
+        $model -> scale = 0.02;//$LIGHTER_HEIGHT / ($LighterHeight);
+        $model -> xNull = $args -> PointZero -> X;//-(7.5 * ProjectDB::SCALE)) ;//31 = 92.5
+        $model -> yNull = $args -> PointZero -> Y + $ProjectData[ProjectDB::SQUARE] -> heightMM;// + (5.25 * ProjectDB::SCALE)) ;//50,5 = 107.25
+        $path = PATH_Project::get(PATH_Project::NC, $ProjectData[ProjectDB::PROJECT_ID], $UserID);
+        $model -> save($path);
+    } else {
+        if($args -> PointZero -> X === null){
+            $args -> PointZero -> X = $cfg -> SVG -> zero -> X;
+            $args -> PointZero -> Y = $cfg -> SVG -> zero -> Y;
+        }
+        $model = new SVGModel($PathObjectOut);//1970 ; 2875 ; = 0,02
+        $model -> scale = 0.02;//$LIGHTER_HEIGHT / ($LighterHeight);
+        $model -> xNull = $args -> PointZero -> X;//-(7.5 * ProjectDB::SCALE)) ;//31 = 92.5
+        $model -> yNull = $args -> PointZero -> Y + $ProjectData[ProjectDB::SQUARE] -> heightMM;// + (5.25 * ProjectDB::SCALE)) ;//50,5 = 107.25
+        $path = PATH_Project::get(PATH_Project::NC, $ProjectData[ProjectDB::PROJECT_ID], $UserID);
+        $model -> save($path);
+    }
 
-    $model = new NCModel($PathObjectOut);//1970 ; 2875 ; = 0,02
-    $model -> scale = ProjectDB::LIGHTER_HEIGHT / ($LighterHeight);
-    $model -> xNull = ($cfg -> zero -> X * 61.29 ) -($LighterWidth / 2);//-(7.5 * ProjectDB::SCALE)) ;//31 = 92.5
-    $model -> yNull = ($cfg -> zero -> Y * 61.29 ) -($LighterHeight / 2);// + (5.25 * ProjectDB::SCALE)) ;//50,5 = 107.25
-
-    $path = PATH_Project::get(PATH_Project::NC, $ProjectData[ProjectDB::PROJECT_ID], $UserID);
-    $model -> save($path);
 }
-
 function CalcCoords(float $x, float $y) : stdClass{
     global $align;
     global $xAdd;

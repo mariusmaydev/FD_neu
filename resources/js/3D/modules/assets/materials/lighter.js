@@ -2,14 +2,14 @@
 // import * as THREE from 'three';
 import * as THC from "@THREE_ROOT_DIR/src/constants.js";
 import SPLINT from 'SPLINT';
-// import { MeshStandardMaterial } from "@THREE_ROOT_DIR/src/materials/MeshStandardMaterial.js";
-// import { MeshPhysicalMaterial } from "@THREE_ROOT_DIR/src/materials/MeshPhysicalMaterial.js";
-// import { MeshPhongMaterial } from "@THREE_ROOT_DIR/src/materials/MeshPhongMaterial.js";
-import {
-    MeshPhongMaterial,
-    MeshStandardMaterial,
-    MeshPhysicalMaterial
-} from 'three';
+import { MeshStandardMaterial } from "@THREE_ROOT_DIR/src/materials/MeshStandardMaterial.js";
+import { MeshPhysicalMaterial } from "@THREE_ROOT_DIR/src/materials/MeshPhysicalMaterial.js";
+import { MeshPhongMaterial } from "@THREE_ROOT_DIR/src/materials/MeshPhongMaterial.js";
+// import {
+//     MeshPhongMaterial,
+//     MeshStandardMaterial,
+//     MeshPhysicalMaterial
+// } from 'three';
 import SRC from '../Helper.js';
 // import S_materials from '@SPLINT_MODULES_DIR/ThreeJS/materials/M_materials.js';
 import MaterialHelper from '@SPLINT_MODULES_DIR/ThreeJS/materials/MaterialHelper.js';
@@ -113,10 +113,9 @@ export class Lighter {
       materialIn.needsUpdate = true;
       return materialIn;
     }
-    static async Engraving3( instance, src = null, srcMap = SPLINT.URIs.project + "/" + SRC().lighter.engraving.normalMap, color, onload = function(){}){
-      
+    static async Engraving3(src = null, onload = function(){}){
       let material = null;
-      let HELPER = new MaterialHelper("gold");
+    //   let HELPER = new MaterialHelper("gold");
       // if(HELPER.material != undefined){
       //     material =  MaterialHelper.cloneMaterial(HELPER.material);
       //     // material.color.set(0xffc400);
@@ -193,8 +192,7 @@ export class Lighter {
             });
             material.bumpMap.needsUpdate = true;
             material.color.convertSRGBToLinear();
-        HELPER.material = material.clone();
-      onload(null, material);
+      await onload(null, material);
       return material;
     }
     static Engraving( instance, src = null, srcMap = SPLINT.URIs.project + "/" + SRC().lighter.engraving.normalMap, color, onload = function(){}){

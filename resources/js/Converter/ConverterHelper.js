@@ -25,16 +25,16 @@ class ConverterHelper {
     return document.getElementById(ConverterHelper.ELE_SQUARE_BORDER_DIV);
   }
   static addText(){
-    Text_C.new(function(txt){
+    return Text_C.new(function(txt){
       DSText.add(txt);
-      console.log(DSText, txt);
       CONVERTER_STORAGE.canvasNEW.refreshData();
       CONVERTER_STORAGE.canvasNEW.setActive(DSText.get(DSText.length() -1), "txt");
       CONVERTER_STORAGE.toolBar.update();
+      CONVERTER_STORAGE.toolBar.focusElement("txt", txt[0].TextID);
     });
   }
 
-  static setEPType(type){
+  static async setEPType(type){
     if(type == "GOLD"){
         DSProject.Storage.Product = "Lighter_Gold_custom";
     } else {
@@ -52,31 +52,40 @@ class ConverterHelper {
   //       data.StorageProject = DSProject.Storage;
   //   CallPHP_S.call(ConverterHelper.PATH, data, "POST", false);
   // }
-  static async createData(UserID, ProjectID){
+  static async createData(UserID, ProjectID, Args = null){
     // let RenderImage = CONVERTER_STORAGE.canvasNEW.createData();
     // CONVERTER_STORAGE.canvasNEW.getTextImg();
     let call = new SPLINT.CallPHP(ConverterHelper.PATH, ConverterHelper.CREATE);
         call.data.UserID             = UserID;
         call.data.ProjectID          = ProjectID;
+        call.data.Args               = Args;
         // data.StorageImg         = DSImage.Storage;
         // data.StorageText        = DSText.Storage;
         // data.StorageProject     = DSProject.Storage;
         // data.StorageRenderImage = RenderImage;
     return call.send();
   }
-  static flip(index, type){
-    let data = CallPHP_S.getCallObject(this.FLIP);
-        data.ImageID = DSImage.get(index).ImageID;
-        data.FLIP_TYPE = type;
-    let output = CallPHP_S.call(this.PATH, data).toObject();
+  static async flip(index, type){
+    let call = new SPLINT.CallPHP(this.PATH, this.FLIP);
+        call.data.ImageID = DSImage.get(index).ImageID;
+        call.data.FLIP_TYPE = type;
+    let output = await call.send();
+        console.log(output);
         DSImage.setImages(index, output);
         CONVERTER_STORAGE.canvasNEW.refreshData();
   }
-  static filter(index){
+  static async filerGrayscale(active = true){
+    for(const index in DSImage.Storage){
+        await this.filter(index, active)
+    }
+  }
+  static async filter(index, grayscale = false){
+    DSProject.Storage.grayscale = grayscale;
     let imgData = DSImage.get(index);
     let imgID                       = imgData.ImageID;
     let call = new SPLINT.CallPHP(ConverterHelper.PATH, ConverterHelper.FILTER);
         call.data.Storage  = imgData;
+        call.data.Storage.grayscale = grayscale;
         call.onBeforeSend = function(){
             if(CONVERTER_STORAGE.toolBar.imageBar == undefined){
                 // CONVERTER_STORAGE.toolBar.drawBar.blockElement(imgID);
@@ -92,7 +101,7 @@ class ConverterHelper {
                     CONVERTER_STORAGE.toolBar.imageBar.unBlockElement(imgID);
                 }
         }.bind(this)
-        call.send();
+    return call.send();
   }
   static uploadImage(data){
     let pData = JSON.parse(data);
@@ -105,8 +114,10 @@ class ConverterHelper {
   }
   static openImageMenu(){
     CONVERTER_STORAGE.canvasNEW.ListenersActive(false);
+    NavBar.grow();
     let imageMenu = new ImageMenu(document.body);
         imageMenu.onClose = function(){
+            NavBar.shrink();
           CONVERTER_STORAGE.canvasNEW.ListenersActive(true);
         }.bind(this);
         let background = imageMenu.drawBackground();

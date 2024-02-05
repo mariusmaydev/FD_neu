@@ -14,8 +14,8 @@
         public function createObject(Array $filterData) : void {
             $this -> response = new FilterHelper(ImagickHelper::Filter($this -> imgScale, $filterData, true));
         }
-        public static function createImage(Imagick &$imgScale, Array $filterData) {
-            return ImagickHelper::Filter($imgScale, $filterData, false);
+        public static function createImage(Imagick &$imgScale, Array $filterData, bool $grayscale = false) {
+            return ImagickHelper::Filter($imgScale, $filterData, false, $grayscale);
         }
         public function get() : Imagick|FilterHelper {
             return $this -> imgScale;
@@ -211,22 +211,26 @@
     }
 
     class ImagickHelper {
-        private static function filterImage(Imagick &$img, $filterData) : void {
+        private static function filterImage(Imagick &$img, $filterData, bool $grayscale = false) : void {
             $sharpness      = $filterData[ImageDB::FILTER_SHARPNESS] + 1;
             $antialiasing   = $filterData[ImageDB::FILTER_ANTIALIASING]; // Stärke
             $contrast       = $filterData[ImageDB::FILTER_CONTRAST];
             $d              = ($filterData[ImageDB::FILTER_D] / 100); 
             $edges          = $filterData[ImageDB::FILTER_EDGES]; 
-
+            if($grayscale){
+                $edges = false;
+                $img->brightnessContrastImage(0, $contrast, Imagick::CHANNEL_ALL);
+                $img -> setImageColorspace(Imagick::COLORSPACE_GRAY);
+            }
             if($edges){
                 $img -> cannyEdgeImage(20 - ($sharpness * 2), $antialiasing, $d + 0.1, $d + 1.01 - ($contrast / 10));
             }
             $img -> setImageFormat("png");
         }
-        public static function Filter(Imagick &$img, $filterData, bool $getFixedArray = true) {
-            self::filterImage($img, $filterData);
+        public static function Filter(Imagick &$img, $filterData, bool $getFixedArray = true, bool $grayscale = false) {
+            self::filterImage($img, $filterData, $grayscale);
             if(!$getFixedArray){
-                ImagickHelper::setColorTransparent($img, 'white');
+                ImagickHelper::setColorTransparent($img, 'white', !$grayscale);
                 return $img;
             } else {
                 $fArray = new fixedArray($img -> getImageWidth(), $img -> getImageHeight());
@@ -257,8 +261,8 @@
             }
             return $img;
         }
-        public static function setColorTransparent(Imagick &$img, string $color = "white") : void {
-            $img -> transparentPaintImage(new ImagickPixel($color), 0, 0, true);
+        public static function setColorTransparent(Imagick &$img, string $color = "white", bool $invert = true) : void {
+            $img -> transparentPaintImage(new ImagickPixel($color), 0, 0, $invert);
         }
         public static function setPixel(Imagick &$img, int $x, int $y, array $color) : void{
             $imageIterator = $img->getPixelRegionIterator($x, 0, 1, $y + 2);

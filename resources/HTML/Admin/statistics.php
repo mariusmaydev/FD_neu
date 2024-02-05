@@ -5,7 +5,7 @@
         <s-style pre src="A_statistics.css"></s-style>
 
 <!-- <script src="../../../../Splint/lib/require.js"></script> -->
-<!-- <script defer src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script> -->
+<script defer src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
     </head>
     <body id="Body_ADMIN_statistics">
         <s-part src="/js/ADMIN/assets/AdminNavigation.js"></s-part>
@@ -30,5 +30,5 @@
 
         <script src="../../../../Splint/js/Splint.js" onload="SPLINT.start()"></script>
     </body>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 </html>

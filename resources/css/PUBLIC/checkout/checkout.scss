@@ -1,12 +1,20 @@
-@import '../../general/main.scss';
+@use '../../general/main' as Gmain;
+@use '../../general/mediaQueries';
+@use '../../../../../Splint/scss/tools/tools' as S_tools;
+
+@use '../../themes/theme1/main' as Tmain;
+@use '../../themes/theme1/buttons' as Tbuttons;
+@use '../../themes/theme1/vars';
 // @import '../../general/buttons.scss';
-@import '../../general/NavigationBar/NavigationBar.scss';
+@use '../../general/NavigationBar/NavigationBar';
+
 // @import '../../shoppingCart/shoppingCart.scss';NavigationBar/NavigationBar
 
 @import 'subPages/_Payment.scss';
 @import 'subPages/_Address.scss';
 @import 'subPages/_Overview.scss';
 @import 'subPages/_Sending.scss';
+@import 'subPages/_Overview.scss';
 @import '_rightPart.scss';
 @import '_mobileProductOverview.scss';
 
@@ -21,9 +29,9 @@ body {
     top: 0 !important;
     padding: 0;
     width: 100%;
-    height: 100vh !important;
+    height: 100dvh !important;
     overflow: hidden;
-    background-color: $color-background;
+    background-color: vars.$color-background;
     display: flex;
     flex-direction: row;
     
@@ -40,8 +48,8 @@ body {
 
 .SavedInformationMain {
     position: relative;
-    @include T_container();
-    background-color: white;
+    @include Tmain.T_container();
+    // background-color: white;
     margin: 0.5em;
     box-sizing: border-box;
     overflow:hidden;
@@ -92,13 +100,14 @@ body {
     flex-direction: row;
     > .CheckoutLeftMain {
         padding-left: 10%;
+        padding-right: calc(1% - 0.5rem);
         overflow: visible;
         position: relative;
-        border-right: 1px solid $color-devider;
+        border-right: 1px solid vars.$color-devider;
         display: flex;
         flex-direction: column;
         width: 60%;
-        @include forMediaBreakpoint(mobile-small){
+        @include mediaQueries.forMediaBreakpoint(mobile-small){
             padding-left: 5%;
             width: 90%;
             border: none;
@@ -108,15 +117,40 @@ body {
             position: relative;
             width: 100%;
             height: 20%;
+            @include mediaQueries.forMediaBreakpoint(mobile-small){
+                height: 13%;
+                padding-bottom: 1rem;
+            }
             box-sizing: border-box;
-            > img {
+            > .CheckoutLogoContainer {
+                @include mediaQueries.forMediaBreakpoint(mobile-small){
+                    display: flex;
+                    justify-content: center;
+                }
                 position: relative;
                 top: 10%;
+                margin-left: auto;
+                margin-right: auto;
                 // width: 5%;
                 height: 50%;
+                padding-bottom: 0.5rem;
                 margin: 0;
+                > img {
+    
+                    position: relative;
+                    top: 10%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    // width: 5%;
+                    height: 100%;
+                    margin: 0;
+                }
+
             }
             > .progressDivMain{
+                @include mediaQueries.forMediaBreakpoint(mobile-small){
+                    font-size: 1.5rem;
+                }
                 position: relative;
                 top: 22.5%;
                 height: 15%;
@@ -141,13 +175,13 @@ body {
         }
         
         > .SendingMain{
-            width: 98%;
-            left: 1%;
+            width: 100%;
+            // left: 1%;
             .sendingChoiceDiv {
                 > .RadioButton {
                     border: none;
                     background-color: white;
-                    @include box-shadow();
+                    @include Gmain.box-shadow();
                     > div {
                         > div {
                             display: flex;
@@ -173,23 +207,24 @@ body {
             @include checkout_Sending();
             @include checkout_Payment();
             @include checkout_Address();
+            @include checkout_Overview();
         > div {
             position: relative;
             height: 100%;
             overflow-x: hidden;
             overflow-y: auto;
             > * {
-                margin: 0.5em;
-                margin-right: 0.5em;
-                margin-top: 0.5em;
+                margin: 0.5rem;
+                margin-right: 0.5rem;
+                margin-top: 0.5rem;
             }
             
             > .productOverviewBody {
-                @include T_container();
+                @include Tmain.T_container();
                 position: relative;
                 display: none;
                 height: min-content;
-                @include forMediaBreakpoint(mobile-small){
+                @include mediaQueries.forMediaBreakpoint(mobile-small){
                     display: block;
                 }
                 padding: 0;
@@ -208,9 +243,9 @@ body {
                     // height: 100%;
                     transition: box-shadow 0.3s;
                     &:hover {
-                        @include box-shadow(0, black, 0.95);
+                        @include Gmain.box-shadow(0, black, 0.95);
                     }
-                    @include SPLINT-border-inset(lightgray, 1px, false, false, true, false);
+                    @include S_tools.SPLINT-border-inset(lightgray, 1px, false, false, true, false);
                     > button {
                         &.switchButton {
                             padding: 1rem;
@@ -227,7 +262,7 @@ body {
                             text-align: left;
                             background-color: transparent;
                             > span {
-                                font-size: 1.5em;;
+                                font-size: 2em;;
                             }
                             &:hover {
                                 background-color: transparent;
@@ -239,8 +274,8 @@ body {
                         height: 100%;
                         margin-top: auto;
                         margin-bottom: auto;
-                        margin-right: 1rem;
-                        font-size: 1em;
+                        margin-right: 2em;
+                        font-size: 1.2em;
                     }
                 }
                 > .expander {
@@ -266,23 +301,30 @@ body {
 
                 }
             }
-            > .button_submit {
-                position: relative;
-                float: right;
-                cursor: pointer;
-                // margin: 1em
-                @include T_container();
-                border: none;
-                box-sizing: border-box;
-                > span {
-                    box-sizing: border-box;
+            > .buttonsDiv {
+                background-color: transparent;
+                box-shadow: none;
+                padding: 0;
+                > .button_submit {
                     position: relative;
-                    margin: 2em;
-                    font-size: 1.5em;
+                    float: right;
+                    cursor: pointer;
+                    // margin: 1em
+                    @include Tmain.T_container();
+                    border: none;
+                    box-sizing: border-box;
+                    > span {
+                        box-sizing: border-box;
+                        position: relative;
+                        margin: 2em;
+                        font-size: 1.5em;
+                    }
+                    &:hover {
+                        background-color: vars.$color-primary;
+                    }
+                    @include Tbuttons.T_button_Animated(true, false);
                 }
-                &:hover {
-                    background-color: $color-primary;
-                }
+
             }
         }
         // }
@@ -298,7 +340,7 @@ body {
     box-sizing: border-box;
     // padding: 0!important;
     padding: 1em;
-    @include T_container();
+    @include Tmain.T_container();
     > div {
         display: flex!important;
         justify-content: center;

@@ -27,7 +27,7 @@ class login {
         SPLINT.CallPHP.Manager.bind2class(PATH.php.login, this);
     }
     static call(data){
-        return CallPHP_S.call(login.PATH, data);
+        return SPLINT.Data.CallPHP.call(login.PATH, data);
     }
 
     // static newAccount_ADMIN(email, userName, password){
@@ -49,7 +49,7 @@ class login {
                 return "ADMIN";
             } else {
                 let call = new SPLINT.CallPHP(login.PATH, login.nLOGIN_GUEST);
-                    call.data.UserID = Cookie.get(login.COOKIE_GUEST);
+                    call.data.UserID = SPLINT.Data.Cookie.get(login.COOKIE_GUEST);
                 let res = SPLINT.Tools.parse.toJSON((await call.send()));
                 resolve(res);
                 return res;
@@ -59,7 +59,7 @@ class login {
             if(data == "ADMIN"){
                 return data;
             }
-            Cookie.set(login.COOKIE_GUEST, data.UserID);
+            SPLINT.Data.Cookie.set(login.COOKIE_GUEST, data.UserID);
             return data;
         });
     }

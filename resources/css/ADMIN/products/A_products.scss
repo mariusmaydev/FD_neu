@@ -1,4 +1,9 @@
-@import '../ADMIN.scss';
+@use '../../general/main' as Gmain;
+@use '../../../../../Splint/scss/tools/tools' as S_tools;
+@use '../../themes/theme1/vars';
+@use '../../themes/theme1/main' as Tmain;
+@use '../../themes/theme1/buttons' as Tbuttons;
+@use '../ADMIN.scss';
 
 body {
     >.popup_removeProduct {
@@ -15,9 +20,9 @@ body {
             }
             > button {
                 &.break {
-                    background-color: $color-primary;
+                    background-color: vars.$color-primary;
                     &:hover {
-                        background-color: $color-primary-Dark;
+                        background-color: vars.$color-primary-Dark;
                     }
                 }  
                 &.submit {
@@ -36,14 +41,16 @@ body {
         margin-left:auto;
         margin-right: auto;
         box-sizing: border-box;
+        overflow: hidden;
+        overflow-y: scroll;
         > .newProductBody{
             box-sizing: border-box;
             height: max-content;
             padding: 0.5rem;
             width: 100%;
-            @include SPLINT-border-inset(gray, 1px);
+            @include S_tools.SPLINT-border-inset(gray, 1px);
             > .head {
-                @include SPLINT-border-inset(gray, 0.5px, false, false, true, false);
+                @include S_tools.SPLINT-border-inset(gray, 0.5px, false, false, true, false);
                 > span {
                     font-size: 1.5em;
                 }
@@ -70,7 +77,7 @@ body {
             > .descriptionBody {
                 > .headlineContainer {
                     margin-left: 0.5em;
-                    @include SPLINT-border-inset(gray, 0.5px, false, false, true, false);
+                    @include S_tools.SPLINT-border-inset(gray, 0.5px, false, false, true, false);
 
                     > .headline {
                         > span {
@@ -84,43 +91,55 @@ body {
                     }
                 }
                 > .descriptionInput {
+                    background-color: red !important;
                     > label {
-
+                        display: none;
                     }
                     > textarea {
+                        padding-top: 0.5em !important;
+                        padding-bottom: 0.5em !important;
+                        height: 100% !important;
                         &.inputFilled {
-                            height: 100%;
                         }
                     }
                     hr {
-
+                        display: none;
                     }
                 }
             }
-            > button {
-                // box-sizing: border-box;
-                position: relative;
-                display: block;
-                // float: right;
-                // right: -100%;
-                margin: 0.5rem;
-                margin-left: auto;
-                // margin-right: 0;
-                background-color: $color-primary;
-                &:hover {
-                    background-color: $color-primary-Dark;
+            > .buttonsDiv {
+                display: flex;
+                flex-direction: row;
+                justify-content: end;
+                gap: 0.5rem;
+                align-items: center;
+                > button {
+                    @include Tbuttons.T_button_Animated(true);
+                    // // box-sizing: border-box;
+                    // position: relative;
+                    // display: block;
+                    // // float: right;
+                    // // right: -100%;
+                    // margin: 0.5rem;
+                    // // margin-left: auto;
+                    // // margin-right: 0;
+                    // background-color: vars.$color-primary;
+                    // &:hover {
+                    //     background-color: vars.$color-primary-Dark;
+                    // }
                 }
+
             }
             > .s-DynamicInput {
                 // @include SPLINT-border-inset();
                 // @include SPLINT-border-inset(rgb(0, 0, 0), 1px, false, false, true, false);
                 margin-top: 1em;
-                margin-bottom: 1em;
+                margin-bottom: 0em;
                 padding-top: 1em;
                 padding-bottom: 1em;
                 > .headlineContainer {
                     margin-left: 0.5em;
-                    @include SPLINT-border-inset(gray, 0.5px, false, false, true, false);
+                    @include S_tools.SPLINT-border-inset(gray, 0.5px, false, false, true, false);
 
                     > .headline {
                         > span {
@@ -171,9 +190,10 @@ body {
         }
         > .ProductsList {
             width: 100%;
+            height: fit-content;
             > .headline {
                 width: 100%;
-                @include SPLINT-border-inset(gray, 0.5px, false, false, true, false);
+                @include S_tools.SPLINT-border-inset(gray, 0.5px, false, false, true, false);
                 // margin-bottom: 0.5rem;
                 margin-top: 1rem;
                 padding-left: 0.5rem;
@@ -188,7 +208,7 @@ body {
                     width: 100%;
                     > tr {
                         // &.Table2DHead {
-                            @include SPLINT-border-inset(gray, 0.5px, false, false, true, false);
+                            @include S_tools.SPLINT-border-inset(gray, 0.5px, false, false, true, false);
                         // }
                         > th {
                             text-align: left;

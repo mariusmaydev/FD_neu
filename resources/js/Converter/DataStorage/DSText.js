@@ -63,6 +63,9 @@ class DataStorageText_C {
       return deepClone(this);
     }
     async remove(index){
+        if(this.Storage[index] == undefined){
+            return;
+        }
       let call = new SPLINT.CallPHP(Text_C.PATH, Text_C.REMOVE);
           call.data.TextID = this.Storage[index].TextID;
           call.onBeforeSend = function(){

@@ -1,3 +1,7 @@
+@use '../../../../general/main' as Gmain;
+@use '../../../../themes/theme1/main' as Tmain;
+@use '../../../../themes/theme1/vars';
+@use 'floatingDiv';
 
 @mixin conv_bottomBar_text(){
     
@@ -6,6 +10,7 @@
         // width: calc(100% - 2em);
         // height: 100%;
         width: 100%;
+        height: 8rem;
         // margin-right: 0.5em;
         display: flex;
         box-sizing: border-box;
@@ -14,22 +19,23 @@
             padding: 0.5em;
         }
         > .buttonsDiv {
-            box-shadow: inset 25px 0px 25px -25px rgba(0,0,0,0.45), inset -25px 0px 25px -25px rgba(0,0,0,0.45);
+            // box-shadow: inset 25px 0px 25px -25px rgba(0,0,0,0.45), inset -25px 0px 25px -25px rgba(0,0,0,0.45);
             overflow: auto;
             overflow-y:visible;
             &::-webkit-scrollbar {
                 display: none;
             }
             // margin-left: 0.3em;
-            background-color: white;
-            border-radius: $border-radius;
+            // border-radius: vars.$border-radius;
             // @include box-shadow();
             box-sizing: border-box;
             display: flex;
-            justify-content: left;
+            justify-content: space-between;
             position: relative;
             width: 100%;
             height: 100%;
+            @include Tmain.T_container();
+            @include Tmain.clipEdgesAll(5px);
             > button {
                 box-sizing: border-box;
                 padding-inline: 0.1em;
@@ -38,20 +44,23 @@
                 > span {
                     font-size: 10vw;
                 }
-                @include conv_floatingDiv_aligned();
+                @include floatingDiv.conv_floatingDiv_aligned();
                 &[id*='fontFamily']{
                     
                 }
             }
         }
         > button {
+            @include Tmain.T_container();
+            @include Tmain.clipEdgesAll(5px);
             margin-right: 0.3em;
             user-select: none;;
-            background-color: white;
-            border-radius: $border-radius;
-            @include box-shadow();
+            // border-radius: vars.$border-radius;
+            // @include Gmain.box-shadow();
             position: relative;
             // box-sizing: border-box;
+            aspect-ratio: 1/1;
+            height: 100%;
             top: 0;
             left: 0;
             padding-inline: 0;
@@ -60,5 +69,5 @@
             }
         }
     }
-    @include conv_floatingDiv_block();
+    @include floatingDiv.conv_floatingDiv_block();
 }

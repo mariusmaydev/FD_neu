@@ -1,4 +1,4 @@
-@import "vars.scss";
+@use "vars";
 /* width */
 ::-webkit-scrollbar {
     margin-inline: 2px;
@@ -9,18 +9,18 @@
 ::-webkit-scrollbar-track {
     width: 2px;
     transform: scale(2);
-  background: $scrollbar-track-color;
+  background: vars.$scrollbar-track-color;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
     width: 5px;
     transform: scale(2);
-  background: $scrollbar-thumb-color;
-  border-radius: $border-radius;
+  background: vars.$scrollbar-thumb-color;
+  border-radius: vars.$border-radius;
 }
  
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: $scrollbar-thumb-hover-color;
+  background: vars.$scrollbar-thumb-hover-color;
 }

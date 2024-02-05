@@ -1,6 +1,9 @@
-@import '../general/buttons.scss';
+
+@use "../themes/theme1/main" as Tmain;
+@use "../themes/theme1/vars";
+@use '../general/main' as Gmain;
+@use '../general/buttons' as Gbuttons;
 // @import '../general/NavigationBar.scss';
-@import '../general/main.scss';
 // @import '../ADMIN/designs/designs.scss';
 
 $color-image-hover         : rgba(64, 64, 64, 0.553);
@@ -27,20 +30,20 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
     height: max-content;
     font-size: 1em;
     > div {
-        @include box-shadow(1);
-        background-color: $color-primary-light;
+        @include Gmain.box-shadow(1);
+        background-color: vars.$color-primary-light;
         $map: (
-            background-color    : $color-primary,
+            background-color    : vars.$color-primary,
             border              : 0px solid yellow
             );
-        @include onActive($map);
-        border-radius: $border-radius;
+        @include Gbuttons.onActive($map);
+        border-radius: vars.$border-radius;
         padding: 0.2em;
         margin: 0.15em;
         transition: background-color 0.2s;
         transition: transform 0.2s;
         &:hover {
-            background-color: $color-primary-Dark;
+            background-color: vars.$color-primary-Dark;
             transform: translateY(-10%);
         }
         > button {
@@ -73,9 +76,9 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
     max-height: fit-content;
     font-size: 1.2em;
     > div {
-        @include box-shadow();
-        background-color: $color-primary;
-        border-radius: $border-radius;
+        @include Gmain.box-shadow();
+        background-color: vars.$color-primary;
+        border-radius: vars.$border-radius;
         padding: 0.2em;
         margin: 0.15em;
         transition: background-color 0.2s;
@@ -84,7 +87,7 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
         user-select: all;
         cursor: pointer !important;
         &:hover {
-            background-color: $color-primary-Dark;
+            background-color: vars.$color-primary-Dark;
             transform: translateY(-10%);
         }
     }
@@ -124,7 +127,7 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
 }
 
 .ImageMenuFilter {
-    @include T_container();
+    @include Tmain.T_container();
     order: 1;
     flex-grow: 0;
     flex-shrink: 3;
@@ -149,15 +152,15 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
             padding: 0.2em;
             gap: 1%;
             button {
-                @include box-shadow();
+                @include Gmain.box-shadow();
                 width: 100%;
                 // padding: 0.2em;
                 // margin-inline: 1em;
-                border-radius: $border-radius;
+                border-radius: vars.$border-radius;
                 border: none;
                 position: relative;
                 &:hover{
-                    background-color: $color-primary;
+                    background-color: vars.$color-primary;
                 }
             }
         }
@@ -165,7 +168,7 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
     .InputDivMain {
         > button {
             &:hover {
-                background-color: $color-primary;
+                background-color: vars.$color-primary;
             }
         }
 
@@ -205,9 +208,9 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
             flex-direction: column;
             overflow: visible;
             > .DesignListImageElement{
-                @include T_container();
+                @include Tmain.T_container();
                 // @include box-shadow(0, black, 0.5);
-                border-radius: $border-radius;
+                border-radius: vars.$border-radius;
                 position: relative;
                 display: inline-block;
                 height: 100%;
@@ -227,7 +230,7 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
                 &:hover {
                     > .hoverDiv {
                         background-color: $color-image-hover;
-                        @include box-shadow();
+                        @include Gmain.box-shadow();
                         > .informationDiv {
                             transform: translateX(0%);
                             visibility: visible;
@@ -317,7 +320,7 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
 
 
 .DesignMenuMain {
-    @include border();
+    @include Gmain.border();
     position: relative;
     width: 50%;
     display: none;
@@ -329,14 +332,14 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
 }
 
 .DesignListMain {
-    @include border();
+    @include Gmain.border();
     position: relative;
     display: flex;
     flex-direction: row;
     gap: 1%;
     padding: 1%;
     > .ListElement {
-        @include border();
+        @include Gmain.border();
         position: relative;
         width: 20%;
         > div {
@@ -351,7 +354,7 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
 }
 
 .HashtagMenuMain {
-    @include border();
+    @include Gmain.border();
     > .list {
         > button {
             margin: 0.1em;

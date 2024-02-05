@@ -20,7 +20,9 @@ class order {
 
     }
     static call(data){
-        return CallPHP_S.call(order.PATH, data);
+        
+        console.log(login.PATH, data)
+        return SPLINT.Data.CallPHP_OLD.call(order.PATH, data);
     }
     static async getFromArchive(orderID = null, UserID = null){
         let call = this.callPHP(order.GET_FROM_ARCHIVE);
@@ -64,7 +66,6 @@ class order {
     static async parse(data){
         for(const index in data){
             let item = data[index];
-            console.log(item)
             data[index].Address = JSON.parse(item.Address);
             data[index].Items   = JSON.parse(item.Items);
         }

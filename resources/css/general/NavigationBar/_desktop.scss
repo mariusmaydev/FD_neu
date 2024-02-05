@@ -1,3 +1,4 @@
+@use '../../themes/theme1/vars';
 
 @mixin NavBar_desktop(){
     grid-template-areas: "Logo emptySpace Design shoppingCart profileLogin Sparks"; 
@@ -39,7 +40,7 @@
                 z-index: 1;
                 left: 50%;
                 top: 60%;
-                background-color: $color-primary;
+                background-color: vars.$color-primary;
                 border-radius: 50%;
                 width: 1em;
                 height: 1em;
@@ -54,6 +55,15 @@
             height: 100%;
             width: max-content;
             margin-right: 1em;
+            -ms-transform: skewX(-20deg); /* IE 9 */
+            -webkit-transform: skewX(-20deg); /* Safari */
+            transform: skewX(-20deg);
+            > button {
+                -ms-transform: skewX(-20deg); /* IE 9 */
+                -webkit-transform: skewX(-20deg); /* Safari */
+                transform: skewX(-20deg);
+
+            }
         }
         &.Profile {
             display: none;

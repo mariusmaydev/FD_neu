@@ -113,6 +113,7 @@ class Checkout {
     new SPLINT.API.Paypal.draw.fastCheckout(this.addressMenuMainElement);
     
         let addressInput = new SPLINT.DOMElement.InputAddress(this.addressMenuMainElement, "newAddress");
+        
             addressInput.onsubmit = function(){
                 let flag = false;
                 if(addressInput.firstName_input.isEmpty()){
@@ -153,28 +154,29 @@ class Checkout {
         } else {
             addressInput.value = (new S_AddressObject(false));
         }
-
-    let buttonSubmit = new SPLINT.DOMElement.Button(this.addressMenuMainElement, "submit", "weiter");
-        buttonSubmit.button.Class("button_submit");
-        buttonSubmit.setStyleTemplate(S_Button.STYLE_NONE);
-        buttonSubmit.onclick = async function(){
-            if(!addressInput.submit()){
-                return;
-            }
-          await SPLINT.SessionsPHP.set(Checkout.sessions.addresses, addressInput.value);
-          (await CheckoutHelper.progress()).add(CheckoutHelper.ADDRESS);
-          CheckoutHelper.goto(CheckoutHelper.SENDING);
-        }
+        let buttonDiv = new SPLINT.DOMElement(this.id + "buttonsDiv", "div", this.addressMenuMainElement);
+            buttonDiv.Class("buttonsDiv");
+            let buttonSubmit = new SPLINT.DOMElement.Button(buttonDiv, "submit", "weiter");
+                buttonSubmit.button.Class("button_submit");
+                buttonSubmit.setStyleTemplate(S_Button.STYLE_NONE);
+                buttonSubmit.onclick = async function(){
+                    if(!addressInput.submit()){
+                        return;
+                    }
+                await SPLINT.SessionsPHP.set(Checkout.sessions.addresses, addressInput.value);
+                (await CheckoutHelper.progress()).add(CheckoutHelper.ADDRESS);
+                CheckoutHelper.goto(CheckoutHelper.SENDING);
+                }
     
   }
-  drawSendingMenu(){
+  async drawSendingMenu(){
     this.sendingMenuMainElement = new SPLINT.DOMElement(this.id + "sendingMenuMain", "div", this.mainElementLeft);
     this.sendingMenuMainElement.Class("SendingMain");    
     if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
         let mobileProductOverview = new CheckoutMobileProductOverview(this.sendingMenuMainElement);
         this.rightBar = new CheckoutRightBar(mobileProductOverview.contentElement, mobileProductOverview);
     }
-    drawSavedInformation.address(this.sendingMenuMainElement);
+    await drawSavedInformation.address(this.sendingMenuMainElement);
 
     // DrawSendingChoiceMenu(this.sendingMenuMainElement);
     let obj = [];
@@ -183,17 +185,19 @@ class Checkout {
         obj[0].price  = 3.79;
         obj[0].data   = "2 bis 4 Werktage";
         obj[0].name   = "Standartversand";
-    let RadioButton = new S_radioButton(this.sendingMenuMainElement, "SendingChoiceMenu");
+    let RadioButton = new SPLINT.DOMElement.Button.Radio(this.sendingMenuMainElement, "SendingChoiceMenu");
         RadioButton.data = obj;
         RadioButton.drawRadio();
 
-    let buttonSubmit = new SPLINT.DOMElement.Button(this.sendingMenuMainElement, "submit", "weiter zur Zahlung");
-        buttonSubmit.button.Class("button_submit");
-        buttonSubmit.setStyleTemplate(S_Button.STYLE_NONE);
-        buttonSubmit.onclick = async function(){
-          await SPLINT.SessionsPHP.set(Checkout.sessions.sending, RadioButton.Value);
-          CheckoutHelper.goto(CheckoutHelper.PAYMENT);
-        }
+        let buttonDiv = new SPLINT.DOMElement(this.id + "buttonsDiv", "div", this.sendingMenuMainElement);
+            buttonDiv.Class("buttonsDiv");
+            let buttonSubmit = new SPLINT.DOMElement.Button(buttonDiv, "submit", "weiter zur Zahlung");
+                buttonSubmit.button.Class("button_submit");
+                buttonSubmit.setStyleTemplate(S_Button.STYLE_NONE);
+                buttonSubmit.onclick = async function(){
+                await SPLINT.SessionsPHP.set(Checkout.sessions.sending, RadioButton.Value);
+                CheckoutHelper.goto(CheckoutHelper.PAYMENT);
+                }
     function DrawSendingChoiceMenu(parent){
       let main = new SPLINT.DOMElement.SpanDiv(parent, "sendingChoiceMenu", "Versandart");
           main.div.Class("sendingChoiceDiv");
@@ -217,10 +221,10 @@ class Checkout {
         this.rightBar = new CheckoutRightBar(mobileProductOverview.contentElement,mobileProductOverview);
     }
 
-    drawSavedInformation.address(this.paymentMenuMainElement);
-    drawSavedInformation.sending(this.paymentMenuMainElement);
+    await drawSavedInformation.address(this.paymentMenuMainElement);
+    await drawSavedInformation.sending(this.paymentMenuMainElement);
 
-    let radioPaymentMethod = new S_radioButton(this.paymentMenuMainElement, "PaymentMethod");
+    let radioPaymentMethod = new SPLINT.DOMElement.Button.Radio(this.paymentMenuMainElement, "PaymentMethod");
         radioPaymentMethod.Headline("Zahlungsart");
         radioPaymentMethod.dataObj.add("PAYPAL", "Paypal");
         radioPaymentMethod.dataObj.add("SEPA", "SEPA");
@@ -298,21 +302,24 @@ class Checkout {
         radioInvoiceMethod.onChange = func.bind(this);
         func();
 
-    let buttonSubmit = new SPLINT.DOMElement.Button(this.paymentMenuMainElement, "submit", "Bestellung überprüfen");
-        buttonSubmit.button.Class("button_submit");
-        buttonSubmit.setStyleTemplate(S_Button.STYLE_NONE);
-        buttonSubmit.button.onclick = async function(){
-            if(await SPLINT.SessionsPHP.get(Checkout.sessions.invoiceType) == "different"){
-                if(!this.invoiceAddressMenu.submit()){
-                    return;
-                }
-                await SPLINT.SessionsPHP.set(Checkout.sessions.invoiceAddress, this.invoiceAddressMenu.value);
-            } else {
-                await SPLINT.SessionsPHP.set(Checkout.sessions.invoiceAddress, await SPLINT.SessionsPHP.get(Checkout.sessions.addresses));
-            }
-            await SPLINT.SessionsPHP.set(Checkout.sessions.paymentType, radioPaymentMethod.Value);
-            CheckoutHelper.goto(CheckoutHelper.CHECKORDER);
-        }.bind(this);
+
+        let buttonDiv = new SPLINT.DOMElement(this.id + "buttonsDiv", "div", this.paymentMenuMainElement);
+            buttonDiv.Class("buttonsDiv");
+            let buttonSubmit = new SPLINT.DOMElement.Button(buttonDiv, "submit", "Bestellung überprüfen");
+                buttonSubmit.button.Class("button_submit");
+                buttonSubmit.setStyleTemplate(S_Button.STYLE_NONE);
+                buttonSubmit.button.onclick = async function(){
+                    if(await SPLINT.SessionsPHP.get(Checkout.sessions.invoiceType) == "different"){
+                        if(!this.invoiceAddressMenu.submit()){
+                            return;
+                        }
+                        await SPLINT.SessionsPHP.set(Checkout.sessions.invoiceAddress, this.invoiceAddressMenu.value);
+                    } else {
+                        await SPLINT.SessionsPHP.set(Checkout.sessions.invoiceAddress, await SPLINT.SessionsPHP.get(Checkout.sessions.addresses));
+                    }
+                    await SPLINT.SessionsPHP.set(Checkout.sessions.paymentType, radioPaymentMethod.Value);
+                    CheckoutHelper.goto(CheckoutHelper.CHECKORDER);
+                }.bind(this);
   }
   async drawOverview(){
     this.overviewMenuMainElement = new SPLINT.DOMElement(this.id + "overviewMenuMain", "div", this.mainElementLeft);
@@ -321,47 +328,51 @@ class Checkout {
         let mobileProductOverview = new CheckoutMobileProductOverview(this.overviewMenuMainElement);
         this.rightBar = new CheckoutRightBar(mobileProductOverview.contentElement, mobileProductOverview);
     }
-        drawSavedInformation.address(this.overviewMenuMainElement);
-        drawSavedInformation.sending(this.overviewMenuMainElement);
-        drawSavedInformation.payment(this.overviewMenuMainElement);
+        await drawSavedInformation.address(this.overviewMenuMainElement);
+        await drawSavedInformation.sending(this.overviewMenuMainElement);
+        await drawSavedInformation.payment(this.overviewMenuMainElement);
 
         // Paypal.drawButtons(this.overviewMenuMainElement);
 
-        SPLINT.API.Paypal.draw.Buttons.draw(this.overviewMenuMainElement);
+        let containerPaypal = new SPLINT.DOMElement(this.id + "paypalContainer", "div", this.overviewMenuMainElement);
+            containerPaypal.Class("paypalContainer");
+            SPLINT.API.Paypal.draw.Buttons.draw(containerPaypal);
 
         
-        let buttonBuy = new SPLINT.DOMElement.Button(this.overviewMenuMainElement, "Buy", "jetzt kaufen");
-            buttonBuy.button.Class("button_submit");
-            buttonBuy.setStyleTemplate(S_Button.STYLE_NONE);
-            buttonBuy.button.onclick = async function(){
-              let Items = (await ShoppingCart.get()).shoppingCart;
-              if(Items.length == 0){
-                return;
-              }
-              for(const index in Items){
-                let newProjectID = (await ProjectHelper.copy(Items[index].ProjectID));
-                // ProjectHelper.remove(Items[index].ProjectID)
-                // ShoppingCart.removeItem(Items[index].ProjectID);
-                Items[index].ProjectID = newProjectID;
-                await ProjectHelper.changeState(Items[index].ProjectID, ProjectHelper.STATE_ORDER);
-              }
+        let buttonDiv = new SPLINT.DOMElement(this.id + "buttonsDiv", "div", this.overviewMenuMainElement);
+            buttonDiv.Class("buttonsDiv");
+            let buttonBuy = new SPLINT.DOMElement.Button(buttonDiv, "Buy", "jetzt kaufen");
+                buttonBuy.button.Class("button_submit");
+                buttonBuy.setStyleTemplate(S_Button.STYLE_NONE);
+                buttonBuy.button.onclick = async function(){
+                let Items = (await ShoppingCart.get()).shoppingCart;
+                if(Items.length == 0){
+                    return;
+                }
+                for(const index in Items){
+                    let newProjectID = (await ProjectHelper.copy(Items[index].ProjectID));
+                    // ProjectHelper.remove(Items[index].ProjectID)
+                    // ShoppingCart.removeItem(Items[index].ProjectID);
+                    Items[index].ProjectID = newProjectID;
+                    await ProjectHelper.changeState(Items[index].ProjectID, ProjectHelper.STATE_ORDER);
+                }
 
-              let orderObj = new OrderObject();
-                  orderObj.items = Items;
-                  orderObj.sendingAddress = await SPLINT.SessionsPHP.get(Checkout.sessions.addresses);
-                  orderObj.invoiceAddress = await SPLINT.SessionsPHP.get(Checkout.sessions.invoiceAddress);
-                  orderObj.paymentMethod  = await SPLINT.SessionsPHP.get(Checkout.sessions.paymentType);
-                  orderObj.UserID         = await SPLINT.SessionsPHP.get(SPLINT.SessionsPHP.USER_ID, false);
-                  orderObj.couponCode     = await SPLINT.SessionsPHP.get(Checkout.sessions.couponCode);
-                  let orderID = order.new(orderObj.get());
-                  let res = lexOffice.newInvoice(orderObj.get(), orderID);
-                  console.log(res);
-                  let res1 = lexOffice.newDeliveryNote(orderObj.get(), orderID);
-                  console.log(res1);
-                  ShoppingCart.clear();
-                // let orderobj = await preparePaypal();
-                console.dir(orderObj)
+                let orderObj = new OrderObject();
+                    orderObj.items = Items;
+                    orderObj.sendingAddress = await SPLINT.SessionsPHP.get(Checkout.sessions.addresses);
+                    orderObj.invoiceAddress = await SPLINT.SessionsPHP.get(Checkout.sessions.invoiceAddress);
+                    orderObj.paymentMethod  = await SPLINT.SessionsPHP.get(Checkout.sessions.paymentType);
+                    orderObj.UserID         = await SPLINT.SessionsPHP.get(SPLINT.SessionsPHP.USER_ID, false);
+                    orderObj.couponCode     = await SPLINT.SessionsPHP.get(Checkout.sessions.couponCode);
+                    let orderID = order.new(orderObj.get());
+                    let res = lexOffice.newInvoice(orderObj.get(), orderID);
+                    console.log(res);
+                    let res1 = lexOffice.newDeliveryNote(orderObj.get(), orderID);
+                    console.log(res1);
+                    ShoppingCart.clear();
+                    // let orderobj = await preparePaypal();
+                    console.dir(orderObj)
 
-            }
+                }
   }
 }

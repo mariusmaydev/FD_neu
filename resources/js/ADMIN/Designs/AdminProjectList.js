@@ -33,7 +33,7 @@ class drawProjectList_ADMIN {
       if(document.getElementById("Table_Projects_main") != null){
         document.getElementById("Table_Projects_main").remove();
       }
-        this.table = new Table(this.parent, "Projects", data);
+        this.table = new SPLINT.DOMElement.Table(this.parent, "Projects", data);
         this.mainElement = this.table.mainElement;
           if(this.drawNew){
             this.table.func_drawFirstListElement = function(listElement){
@@ -55,7 +55,7 @@ class drawProjectList_ADMIN {
                       await SPLINT.SessionsPHP.set("GUEST", false, false);
                       ProjectHelper.new('ADMIN', "Lighter_Gold_custom", true, true).then(S_Location.goto(PATH.location.converter).setHash("ADMIN").call());
                   };
-                let typeSwitchButton = new S_radioButton(listElement, "typeSwitch");
+                let typeSwitchButton = new SPLINT.DOMElement.Button.Radio(listElement, "typeSwitch");
                     typeSwitchButton.Class("typeSwitchButton");
                     typeSwitchButton.dataObj.add("original", "Originale");
                     typeSwitchButton.dataObj.add("example", "Vorlagen");
@@ -165,7 +165,8 @@ class drawProjectList_ADMIN {
                   await SPLINT.SessionsPHP.set("ADMIN", true, false);
                   await SPLINT.SessionsPHP.set("GUEST", false, false);
                   SPLINT.Tools.Location.URL = PATH.location.converter;
-                  SPLINT.Tools.Location.addParams({"mode": "edit_project"}).setHash("ADMIN").call();
+                //   console.dir(SPLINT.Tools.Location.addParams({"mode": "edit_project"}))
+                  SPLINT.Tools.Location.addParams({"mode": "edit_project"}).addHash("ADMIN").call();
               }
             let button_remove = new SPLINT.DOMElement.Button(buttonDiv, index + "_remove");
                 button_remove.bindIcon("delete");
@@ -174,9 +175,13 @@ class drawProjectList_ADMIN {
                   await SPLINT.SessionsPHP.set("USER_NAME", "ADMIN", false);
                   await SPLINT.SessionsPHP.set("ADMIN", true, false);
                   await SPLINT.SessionsPHP.set("GUEST", false, false);
-                  await ProjectHelper.remove(data.ProjectID);
-                  contentBody.parentElement.remove();
-                  // this.draw();
+                  let j = contentBody.querySelectorAll("[connected*='true']");
+                  if(j.length == 0) {
+                      let f = await ProjectHelper.remove(data.ProjectID);
+                      contentBody.parentElement.remove();
+                  } else {
+                        button_remove.button.style.backgroundColor = "red";
+                  }
                 }.bind(this);
 
     }
@@ -275,6 +280,7 @@ class drawProjectList_ADMIN {
                     }
                     last = last[entry];
                 }
+                console.log(nestingElement)
                 if(this.getOriginal){
                   CategoryHelper.edit_Originals(nestingElement.obj).then(function(a){});
                 } else {
@@ -284,12 +290,14 @@ class drawProjectList_ADMIN {
             }.bind(this);
             nestingElement.callBack = function(ele, path, key, index, id, obj){
                 if(typeof obj[key].attr == 'object' && typeof obj[key].attr.data == 'object'){
-                    console.log(obj[key])
+                    // console.log(obj[key])
                     if(obj[key].attr.data.includes(data.ProjectID)){
                         ele.setAttribute("connected", true);
+                        console.log("connected", data)
                     }
                 }
                 ele.onclick = function(event){
+                    console.log("edit")
                     event.stopPropagation();
                     // console.log(ele);
                     let c = ele.attributes.ivalue.value;
@@ -355,6 +363,7 @@ class drawProjectList_ADMIN {
         obj1 = await CategoryHelper.get_Examples();
       }
         let nestingElement = new SPLINT.DOMElement.Nesting(this.categoryMenuMain, "test1__", obj1);
+        this.categoryMenuNestingElement = nestingElement;
             nestingElement.onEnter = function(e, entries){
                 let last = nestingElement.obj;
                 for(const entry of entries){

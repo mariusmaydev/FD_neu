@@ -1,5 +1,8 @@
-@import '../ADMIN.scss';
-@import 'couponCodeList.scss';
+@use '../../general/main' as Gmain;
+@use '../../themes/theme1/vars';
+@use '../../themes/theme1/main' as Tmain;
+@use '../ADMIN';
+@use 'couponCodeList';
 
 body {
     > .head {
@@ -16,7 +19,7 @@ body {
         flex-direction: column;
         gap: 1vh;
         > .newBody {
-            @include T_container();
+            @include Tmain.T_container();
             box-sizing: border-box;
             position: relative;
             width: 100%;
@@ -42,10 +45,10 @@ body {
                         border: none;
                         cursor: pointer;
                         &:hover {
-                            background-color: $color-primary;
+                            background-color: vars.$color-primary;
                         }
                         &[state*='active']{
-                            background-color: $color-primary-Dark;
+                            background-color: vars.$color-primary-Dark;
                         }
                         > span {
                 
@@ -54,6 +57,6 @@ body {
                 }
             }
         }
-        @include couponCodeList();
+        @include couponCodeList.couponCodeList();
     }
 }

@@ -1,8 +1,8 @@
-import * as THREE from 'three';
 import * as SPLINT from 'SPLINT';
+import { Group } from "@THREE_ROOT_DIR/src/objects/Group.js";
 
 export default function light(scene){
-    let groupe = new THREE.Group();
+    let groupe = new Group();
     let c1 = 0xffd7af;
     const lights = new SPLINT.lights.lightCluster(groupe, false);
           lights.helper.size = 0.1;

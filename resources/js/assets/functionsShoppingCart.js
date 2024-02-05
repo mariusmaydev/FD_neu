@@ -83,7 +83,7 @@ class ShoppingCart {
         }
         NavBar.updateCart(cartData);
         resolve(cartData);
-    }).then(function(cartData){
+    }).then(async function(cartData){
         return ShoppingCart.set(JSON.stringify(cartData));
     });
   }

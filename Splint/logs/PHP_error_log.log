@@ -1,0 +1,163 @@
+<S-error>
+<S-msg>
+     
+     Undefined array key "UserID"
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\collector\collectorUserData.php:83
+> C:\xampp\htdocs\fd\resources\php\collector\collectorAccess.php:16
+</S-trace>
+<S-time>2024-02-05 01:03:32</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "Path"
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\collector\collectorUserData.php:87
+> C:\xampp\htdocs\fd\resources\php\collector\collectorAccess.php:16
+</S-trace>
+<S-time>2024-02-05 01:03:32</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "IP"
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\collector\collectorUserData.php:88
+> C:\xampp\htdocs\fd\resources\php\collector\collectorAccess.php:16
+</S-trace>
+<S-time>2024-02-05 01:03:32</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "TimeStart"
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\collector\collectorUserData.php:89
+> C:\xampp\htdocs\fd\resources\php\collector\collectorAccess.php:16
+</S-trace>
+<S-time>2024-02-05 01:03:32</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     Undefined array key "TimeEnd"
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\collector\collectorUserData.php:90
+> C:\xampp\htdocs\fd\resources\php\collector\collectorAccess.php:16
+</S-trace>
+<S-time>2024-02-05 01:03:32</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     shmop_open(): Unable to attach or create shared memory segment &quot;No error&quot;
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataManagement\shmop\S_shmop.php:11
+> C:\xampp\htdocs\Splint\loadFolderFromHTML.php:45
+> C:\xampp\htdocs\Splint\loadFolderFromHTML.php:26
+> C:\xampp\htdocs\Splint\loadFolderFromHTML.php:29
+> C:\xampp\htdocs\Splint\loadFolderFromHTML.php:75
+</S-trace>
+<S-time>2024-02-05 04:00:42</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     shmop_open(): Unable to attach or create shared memory segment &quot;No error&quot;
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataManagement\shmop\S_shmop.php:20
+> C:\xampp\htdocs\Splint\loadFolderFromHTML.php:33
+> C:\xampp\htdocs\Splint\loadFolderFromHTML.php:26
+> C:\xampp\htdocs\Splint\loadFolderFromHTML.php:29
+> C:\xampp\htdocs\Splint\loadFolderFromHTML.php:75
+</S-trace>
+<S-time>2024-02-05 04:00:47</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     shmop_open(): Unable to attach or create shared memory segment &quot;No error&quot;
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataManagement\shmop\S_shmop.php:20
+> C:\xampp\htdocs\Splint\loadFromHTML.php:55
+> C:\xampp\htdocs\Splint\loadFromHTML.php:48
+> C:\xampp\htdocs\Splint\loadFromHTML.php:51
+> C:\xampp\htdocs\Splint\loadFromHTML.php:117
+</S-trace>
+<S-time>2024-02-05 04:00:47</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     shmop_open(): Unable to attach or create shared memory segment &quot;No error&quot;
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataManagement\shmop\S_shmop.php:20
+> C:\xampp\htdocs\Splint\php\autoloader.php:12
+> C:\xampp\htdocs\Splint\php\DataManagement\sessions\sessionsAccess.php:5
+</S-trace>
+<S-time>2024-02-05 04:00:48</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     shmop_open(): Unable to attach or create shared memory segment &quot;No error&quot;
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataManagement\shmop\S_shmop.php:11
+> C:\xampp\htdocs\Splint\loadFolderFromHTML.php:45
+> C:\xampp\htdocs\Splint\loadFolderFromHTML.php:26
+> C:\xampp\htdocs\Splint\loadFolderFromHTML.php:29
+> C:\xampp\htdocs\Splint\loadFolderFromHTML.php:75
+</S-trace>
+<S-time>2024-02-05 14:58:46</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     shmop_open(): Unable to attach or create shared memory segment &quot;No error&quot;
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataManagement\shmop\S_shmop.php:20
+> C:\xampp\htdocs\Splint\loadFolderFromHTML.php:33
+> C:\xampp\htdocs\Splint\loadFolderFromHTML.php:26
+> C:\xampp\htdocs\Splint\loadFolderFromHTML.php:29
+> C:\xampp\htdocs\Splint\loadFolderFromHTML.php:75
+</S-trace>
+<S-time>2024-02-05 14:58:51</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     shmop_open(): Unable to attach or create shared memory segment &quot;No error&quot;
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataManagement\shmop\S_shmop.php:20
+> C:\xampp\htdocs\Splint\loadFromHTML.php:55
+> C:\xampp\htdocs\Splint\loadFromHTML.php:48
+> C:\xampp\htdocs\Splint\loadFromHTML.php:51
+> C:\xampp\htdocs\Splint\loadFromHTML.php:117
+</S-trace>
+<S-time>2024-02-05 14:58:51</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     shmop_open(): Unable to attach or create shared memory segment &quot;No such file or directory&quot;
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataManagement\shmop\S_shmop.php:20
+> C:\xampp\htdocs\Splint\php\autoloader.php:12
+> C:\xampp\htdocs\fd\resources\php\userdata\login\loginAccess.php:5
+</S-trace>
+<S-time>2024-02-05 14:58:51</S-time></S-error>

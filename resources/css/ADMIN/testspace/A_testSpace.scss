@@ -1,7 +1,7 @@
-@import '../../general/main.scss';
-@import '../../general/buttons.scss';
+@use '../../general/main' as Gmain;
+@use '../../general/buttons' as Gbuttons;
 // @import '../../general/NavigationBar.scss';
-@import '../ADMIN.scss';
+@use '../ADMIN';
 
 
 
@@ -9,6 +9,11 @@ body {
     >.ADMIN_testSpace_Main {
         width: 100%;
         height: 100%;
+        display: flex;
+        flex-direction: column;
+        > button {
+
+        }
         // > button {
         //     position: absolute;
         //     // left: 500px;

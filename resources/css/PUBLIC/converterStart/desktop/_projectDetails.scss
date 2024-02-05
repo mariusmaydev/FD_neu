@@ -1,8 +1,11 @@
+@use '../../../themes/theme1/vars';
+@use '../../../themes/theme1/main' as Tmain;
+@use '../../../../../../Splint/scss/tools/tools' as S_tools;
 
 @mixin projectDetails-desktop(){
     >.subWindow_MAIN {
         > .background {
-            background-color: rgba($color-background-subWindow, 0.6);
+            background-color: rgba(vars.$color-background-subWindow, 0.6);
             animation: translateProjectDetailsBackground 0.3s ease ;
         }
         > .content {
@@ -12,21 +15,28 @@
             animation: translateProjectDetails 0.3s ease;
             width: 90%;
             display: flex;
+            border-radius: 0;
             flex-direction: row;
+            @include Tmain.clipEdgesAll(5px);
             > .container {
                 position: relative;
                 // width: 50%;
                 height: 100%;
-                aspect-ratio: $LIGHTER-ratio;
+                aspect-ratio: vars.$LIGHTER-ratio;
                 box-sizing: border-box !important;
                 >.Lighter3D {
                     // box-sizing: border-box;
                     position: relative;
                     width: 100%;
                     height: 100%;
-                    overflow: visible;
+                    overflow: hidden;
                     box-sizing: content-box !important;
                     > canvas {
+                        transform: scale(1.12);
+                        &[showdimensions*='true']{
+                            transform: scale(1);
+                        }
+                        transition: transform 0.2s ease-in-out;
                         // transform: scale(1.1);
                         box-sizing: content-box !important;
                     }
@@ -43,13 +53,33 @@
                     height: 100%;
                     display: flex;
                     flex-direction: column;
-                    > .informationTable {
-                        > table {
-                            > .tr {
-                                > .td {
-                                    > div {
-                                        > span {
-                                            
+                    > .informationTableBody {
+                        @include S_tools.SPLINT-border-inset();
+                        > .headline {
+                            @include S_tools.SPLINT-border-inset();
+                        }
+                        > .informationTable {
+                            // border: 1px solid red;;
+                                padding-left: 1em;
+                            > table {
+                                border-collapse: collapse;
+                                min-width: 50%;;
+                                // border: 1px solid black;;
+                                    > :first-child{
+                                        border: none;
+                                    }
+                                > tr {
+                                    border-bottom: 1px solid black ;;
+                                    :first-child{
+                                        border:  none !important;
+                                    }
+                                    > td {
+                                        // border-bottom: 2px solid yellow !important;;
+                                    // border-bottom: 3px solid red !important;;
+                                        > div {
+                                            > span {
+                                                
+                                            }
                                         }
                                     }
                                 }
@@ -124,12 +154,12 @@
                         margin: 1rem;
                         padding: 0.3rem;
                         width: 100%;
-                        background-color: $color-primary;
+                        background-color: vars.$color-primary;
                         > span {
                             font-size: 3rem;
                         }
                         &:hover {
-                            background-color: $color-primary-Dark;
+                            background-color: vars.$color-primary-Dark;
                         }
                     }
                 }

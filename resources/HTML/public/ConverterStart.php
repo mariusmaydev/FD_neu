@@ -34,6 +34,8 @@
         <s-part src="/js/Projects/ProjectList/ProjectCategoryMenu.js"></s-part>
         <s-part src="/js/Projects/ProjectList/ProjectChoiceMenu.js"></s-part>
         <s-part src="/js/Projects/ProjectList/ProjectList.js"></s-part>
+        <s-part src="/js/Projects/ProjectList/Details/ProjectDetailsDesktop.js"></s-part>
+        <s-part src="/js/Projects/ProjectList/Details/ProjectDetailsMobile.js"></s-part>
         <s-part src="/js/Projects/ProjectList/ProjectDetails.js"></s-part>
         <s-part src="/js/Designs/Hashtags/Hashtags.js"></s-part>
         <s-part src="/js/Designs/CategoryHelper.js"></s-part>
@@ -42,6 +44,7 @@
         <s-part src="/js/assets/functionsProduct.js"></s-part>
         <s-part src="/js/manager/"></s-part>
         <s-part src="/js/NavigationBar.js"></s-part>
+        <s-part src="/js/Footer.js"></s-part>
 
     </body>
         <script type="text/javascript" src="../../../../Splint/js/Splint.js" onload="SPLINT.start()"></script>

@@ -1,0 +1,66 @@
+@use '../main' as Gmain;
+@use '../../themes/theme1/vars';
+@use '../../themes/theme1/main' as Tmain;
+@use '../../../../../Splint/scss/tools/tools' as S_tools;
+@use 'sass:color';
+@use '../mediaQueries';
+
+@mixin FooterMobile(){
+    html {
+        overflow: hidden !important;
+    }
+    body {
+        overflow-y: scroll!important;
+        overflow-x: hidden!important;
+        scroll-snap-type: y mandatory !important;
+        // scroll-snap-points-y: repeat(300px);
+    }
+    .FooterBody {
+        scroll-padding-top: 6vh;
+        scroll-snap-align: end;
+        top: 6%;
+        position: relative;
+        width: 100%;
+        height: max-content;
+        background-color: vars.$color-Footer;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        > .BTContainer {
+            width: 80%;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            display: flex;
+            gap: 2rem;
+            flex-direction: column;
+            justify-content: left;
+            > button {
+                width: max-content;
+                > span {
+                    text-decoration: underline;
+                    text-decoration-thickness: 3px;
+                    font-size: 3rem;
+                }
+            }
+        }
+        > hr {
+            margin: 0;
+            padding: 0;
+            left: 0;
+            width: 95%;
+        }
+        > .PayingMethodsContainer {
+            width: 80%;
+
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: left;
+            > img {
+                height: 7rem;
+            }
+        }
+    }
+}

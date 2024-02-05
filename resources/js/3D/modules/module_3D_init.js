@@ -29,7 +29,7 @@ function init3D(){
                         for(const ele of elements){
                             for(const i in SPLINT.threeJS.scenes){
                                 if(ele.firstChild.id == SPLINT.threeJS.scenes[i].canvas.id){
-                                    console.log(ele);
+                                    // console.log(ele);
                                     SPLINT.threeJS.scenes[i].remove();
                                     SPLINT.threeJS.scenes.splice(i, 1);
                                 }

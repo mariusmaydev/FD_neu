@@ -1,37 +1,65 @@
 
-@import '../_publicMain.scss';
-@import 'desktop/_projects.scss';
-// @import 'desktop/_projects-mobile.scss';
-@import '../../general/NavigationBar/NavigationBar.scss';
-@import 'projectDetails';
-@import 'desktop/_Categories.scss';
-@import 'mobile/_Categories.scss';
-@import 'desktop/projectList.scss';
-@import 'mobile/projectList.scss';
-@import 'projectList.scss';
+@use '../publicMain';
+@use 'desktop/projects';
+@use '../../themes/theme1/vars';
+@use '../../themes/theme1/main' as Tmain;
+@use '../../themes/theme1/buttons' as Tbuttons;
+@use '../../general/main' as Gmain;
+@use '../../general/mediaQueries';
+@use '../../general/NavigationBar/NavigationBar';
+@use 'projectDetails';
+@use 'desktop/Categories' as desktopCategory;
+@use 'mobile/Categories' as mobileCategory;
+@use 'mobile/projectList' as mobileProjectList;
+@use '../../general/Footer/FooterMobile.scss';
+@use '../../general/Footer/FooterDesktop.scss';
 $color-CS-divider : rgb(199, 199, 199);
 
+@include mediaQueries.forMediaBreakpoint(desktop mobile){
+        @include FooterDesktop.FooterDesktop();
+        body {
+            top: 0 !important;
+            height: 100vh !important;
+        }
+}
+@include mediaQueries.forMediaBreakpoint(mobile-small){
+        @include FooterMobile.FooterMobile();
+        .FooterBody {
+            // position: sticky;
+            top: 0;
+            // bottom: 0;
+        }
+}
 body {
     // @include converterStart_projectDetails;
     box-sizing: border-box;
+    &::-webkit-scrollbar {
+        display: none !important;
+    }
+    ::-webkit-scrollbar {
+        display: none !important;
+    }
     >.Background3D {
         // z-index: 1000;
         position: fixed; 
+        overflow: hidden;
         left: 0;
         top: 0;
         width: 100%;
         height: 100%;  
         pointer-events: all;
         background-color: transparent;
- 
+        
         > canvas {  
             background-color: transparent;
         }
     }
+    // @include FooterDesktop.FooterDesktop();
 }
 .Pages_MAIN {
+    scroll-snap-align: start;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -51,10 +79,10 @@ body {
         color: gray;
         display: block;
         &:hover {
-            color: $color-primary
+            color: vars.$color-primary
         }
     } 
-    @include forMediaBreakpoint(desktop mobile){   
+    @include mediaQueries.forMediaBreakpoint(desktop mobile){   
         &[loaded*='true']{
             > .ProjectContainer {
                 > .buttons {
@@ -80,14 +108,13 @@ body {
                 align-content: start;
                 // align-items: start;
             gap: 0rem;
-            overflow: hidden;
+            overflow: visible;
             margin-top: 0;
             margin-bottom: 1vh;
             position: relative;
             height: 100%;
 
 
-            overflow: hidden; 
             // margin-left: 14%;
             // display: flex;
             // flex-direction: column;
@@ -100,44 +127,47 @@ body {
             >.buttons {
                 transform: translateX(-14rem);
                 transition: transform 0.3s ease-out;
-                position: relative;
+                position: sticky;
                 box-sizing: content-box;
                 width: 100%;//fit-content;
                 min-width: 10rem;
                 max-width: 14rem;
-                height: 100%;
+                // height: calc(100% - 15%);
                 margin: 0;
+                height: max-content !important;
+                max-height: 50%;
                 padding: 0;
                 // justify-self: right;
                 justify-self: center;
-                top: 0;
+                top: 7vh;
                 // max-width: 10%;
                 // grid-row: 1;
                 grid-column: 1;
-                margin-top: 1rem;
+                // padding-top: calc(1rem + 8vh);
                 > .buttonsContent {
                     position: relative;
                     width: 100%;
-                    height: 100%;
+                    height: 100% - 15%;
+                    padding-top: 15%;
                     > div {
                         position: relative;
                         box-sizing: border-box;
                         overflow: hidden;
-                        @include T_container();
-                        background-color: rgb(230, 230, 230);
-                        @include box-shadow(0, black, 0.6);
+                        // @include T_container();
+                        // background-color: rgb(230, 230, 230);
                         // box-shadow: none;
                         padding: 0;
                         padding-top: 0.5em;
-                        padding-bottom: 0.25em;
+                        padding-bottom: 0em;
                         // border-top-right-radius: 0.5em;
                         border-radius: 0em;
                         // border-bottom-right-radius: 0.5em;
                         margin: 0;
                         padding-right: 1em;
-                        padding-left: 0.5em;
-                        margin-bottom: 1rem;
+                        padding-left: 0em;
+                        margin-bottom: 0.5rem;
                         margin-left: 0.5em;
+                        transition: padding-left 0.2s ease;
                         // overflow: hidden;
                         // height: 10px;
                         // transition: height 0.5s ease-in;
@@ -145,12 +175,19 @@ body {
                         //     height: max-content;
                         // }
                         > button {
+                            @include Gmain.box-shadow(0, black, 0.6);
+                            @include Tbuttons.T_button_Animated();
+                            -ms-transform: skewX(-20deg); /* IE 9 */
+                            -webkit-transform: skewX(-20deg); /* Safari */
+                            transform: skewX(-20deg);
+                            border-radius: 0;
                             position: relative;
                             box-sizing: border-box;
-                            box-shadow: none;
+                            // box-shadow: none;
                             // border-bottom: 1px solid black;
                             margin: 0;
-                            background-color: transparent;
+                            margin-left: 0.5em;
+                            // background-color: white;
 
                             // padding: 0;
                             width: 100%;
@@ -166,29 +203,39 @@ body {
                             margin-bottom: 0.25rem;
                             &[state*='active']{
                                 > span {
-                                    color: $color-primary-Dark;
+                                    color: vars.$color-primary-Dark;
                                 }
                             }
                             > span {
+                                -ms-transform: skewX(20deg); /* IE 9 */
+                                -webkit-transform: skewX(20deg); /* Safari */
+                                transform: skewX(20deg);
                                 font-size: 1.5em;
                             }
                         }
                         > div {
-                            @include T_container();
-                            background-color: transparent;
+                            box-sizing: border-box;
+                            @include Tmain.T_container();
+                            // @include box-shadow(0, black, 0.6);
+                            // background-color: white;
+                            overflow: hidden;
                             box-shadow: none;
                             padding: 0.4rem;
+                            padding-right: 0.1em;
+                            font-size: 1rem;
                             // padding-top: 0;
-                            border-top: 1px solid rgb(63, 63, 63);
+                            // border-top: 1px solid rgb(63, 63, 63);
                             margin-top: 0rem;
-                            padding-left: 0.4rem;
+                            padding-left: 0.5rem;
                             // margin-left: 0.4rem;
-                            width: calc(100% - 0.4rem);
+                            width: 100%;
+                            z-index: 4;
                             &[ishidden*='true']{
                                 border-top: none;
+                            
                             }
                         }
-                        @include ProjectCategoryMenu-desktop();
+                        @include desktopCategory.ProjectCategoryMenu-desktop();
                     }
                 }
             }
@@ -203,10 +250,10 @@ body {
                 height: 100%;
                 // max-width: 90%;
                 justify-self: center;
-                overflow: hidden;
+                overflow: visible;
                 position: relative;
                 grid-column: 2;
-                @include ProjectList(); 
+                @include projects.ProjectList(); 
             }
             >.headline {
                 position: relative;
@@ -227,7 +274,28 @@ body {
             }
         }
     }
-    @include forMediaBreakpoint(mobile-small){   
+    @include mediaQueries.forMediaBreakpoint(mobile-small){  
+        
+        overflow:hidden;
+        > .MobileMenuButton {
+            border-radius: 50%;
+            padding: 1rem;
+            font-size: 5rem;
+            right: 2rem;
+            bottom: 2rem;
+            position: absolute;
+            user-select: none;
+            background-color: vars.$color-primary;
+            transform: translateY(0rem);
+            > span {
+                font-size: 5rem;
+
+            }
+            transition: transform 0.15s ease;
+            &[state*='passive']{
+                transform: translateY(10rem);
+            }
+        } 
         &[loaded*='true']{
             > .ProjectContainer {
                 > .buttons {
@@ -235,37 +303,30 @@ body {
                 }
             }
         }
+        display: flex;
+        flex-direction: column;
         >.ProjectContainer {
             position: relative;
             // @include SPLINT-border-inset();
             box-sizing: border-box;
             display: flex;
-            flex-direction: column;
+            bottom:0%;
+            margin-top: 0;
+            flex-direction: row;
             width: 100%;
             height: 100%;
-            // max-width: min(100rem, 100%);
-            // max-width: ;
-            // width: max(max-content, 100rem);
-            // min-width: 60rem;
-            // position: relative;
-            // display: grid;
-            // grid-template-columns: minmax(4rem, 14rem) minmax(40rem, 1fr) fit-content(14rem);
-            // grid-auto-columns: minmax(10rem, 14rem) minmax(52rem, 78rem) minmax(0rem, 14rem);
-            // grid-auto-flow: column;
-            // grid-template-rows: 100%;
-                // justify-content: space-evenly;
-                // justify-items: center;
-                // align-content: start;
-                // align-items: start;
-            // gap: 0rem;
-            // overflow: hidden;
-            // margin-top: 0;
-            // margin-bottom: 1vh;
-            // position: relative;
-            // height: 100%;
+            > .ProjectListBody {
+                > .ProjectListMain {
+                    > div {
+                        >div {
+                            
+                        }
+                    }
 
+                }
+            }
 
-            overflow: hidden; 
+            overflow: visible; 
             // margin-left: 14%;
             // display: flex;
             // flex-direction: column;
@@ -283,7 +344,7 @@ body {
                 box-sizing: content-box;
                 display: flex;
                 flex-direction: column;
-                width: calc(100% - 2rem);//fit-content;
+                width: 0;//calc(100% - 2rem);//fit-content;
                 // width: 100%;
                 // min-width: 10rem;
                 // max-width: 14rem;
@@ -293,70 +354,168 @@ body {
                 // justify-self: right;
                 justify-self: center;
                 top: 0;
-                margin-bottom: 0;
+                margin: 0;
+                z-index: 2;
                 // max-width: 10%;
                 // grid-row: 1;
                 // grid-column: 1;
                 // margin-top: 0.5rem;
+                &[state*='active']{
+                    > .buttonsContent {
+                        transform: translateX(0em);
+                        // width: 40em !important;
+                    }
+                    > .MobileMenuBackground {
+                        width: 100vw;
+                    }
+                }
+                > .MobileMenuBackground {
+                    position: absolute;
+                    background-color: vars.$color-background-subWindow;
+                    padding: 0;
+                    margin: 0;
+                    width: 0;
+                    transition: width 0.2s linear;;
+                    height: 100vh;
+                }
                 > .buttonsContent {
                     position: relative;
-                    width: 100%;
+                    width: 30em;
+                    margin-top: calc(vars.$NavBar-height-mobile-small + 1vh + 0.5rem);
+                    transform: translateX(-30em);
+                    overflow: hidden;
                     height: 100%;
-                    display: flex;
-                    @include T_container();
+                    transition: transform 0.2s linear;;
+                    padding-top: 15%;
+                    background-color: vars.$color-T_container;
                     > div {
                         position: relative;
                         box-sizing: border-box;
-                        @include T_container();
-                        background-color: transparent;
-                        box-shadow: none;
+                        overflow: hidden;
+                        // height: ;
+                        // @include T_container();
+                        // background-color: rgb(230, 230, 230);
+                        // box-shadow: none;
                         padding: 0;
+                        padding-top: 0em;
+                        padding-bottom: 0.25em;
+                        // border-top-right-radius: 0.5em;
+                        border-radius: 0em;
+                        // border-bottom-right-radius: 0.5em;
                         margin: 0;
-                        &:not(:first-child){
-                            margin-left: 0.5rem;
+                        padding-right: 0em;
+                        margin-bottom: 1rem;
+                        padding-left: 0em;
+                        border-bottom: 1px solid gray;
+                        transition: padding-left 0.2s ease;
+                        &:focus-within {
+                            padding-left: 1rem;
                         }
-                        // overflow: hidden;
-                        // height: 10px;
-                        // transition: height 0.5s ease-in;
-                        // &:has(button[state*='active']){
-                        //     height: max-content;
-                        // }
                         > button {
+                            font-size: 2rem;
+                            background-color: transparent;
+                            // @include Gmain.box-shadow(0, black, 0.6);
+                            // @include Tbuttons.T_button_Animated();
+                            border-radius: 0;
                             position: relative;
                             box-sizing: border-box;
                             margin: 0;
-
-                            // padding: 0;
+                            margin-left: 0.5em;
                             width: 100%;
-                            height: max-content;
+                            height: 100%;
+                            padding-right: 1em;
+                            padding-left: 0.5em;
+                            margin: 0;
+                            // padding: 0;
+                            margin-top: 0rem;
+                            box-shadow: none;
+                            text-align: left;
+                            &[state*='active']{
+                                > span {
+                                    color: vars.$color-primary-Dark;
+                                }
+                            }
                             > span {
+                                color: vars.$color-primary-text;
                                 font-size: 1.5em;
                             }
                         }
-                        > div {
-                            position: sticky;
-                            @include T_container();
-                            left: 0;
+                        > .ProjectCategoryMenu {
+                            box-sizing: border-box;
+                            @include Tmain.T_container();
+                            // @include box-shadow(0, black, 0.6);
+                            // background-color: white;
+                            overflow: hidden;
+                            box-shadow: none;
                             padding: 0.4rem;
+                            padding-right: 0.1em;
+                            font-size: 2em;
                             // padding-top: 0;
-                            margin-top: 0.3rem;
-                            width: calc(100% - 0.8rem);
+                            // border-top: 1px solid rgb(63, 63, 63);
+                            margin-top: 0rem;
+                            padding-left: 0.5rem;
+                            // margin-left: 0.4rem;
+                            width: 100%;
+                            z-index: 4;
+                            &[ishidden*='true']{
+                                border-top: none;
+                            }
+                        }
+                        @include mobileCategory.ProjectCategoryMenu-mobile();
+                    }
+                    > .MobileMenuCloseButtonContainer { 
+                        width: 100%;
+                        background-color: transparent;
+                        box-shadow: none;
+                        padding: 0;
+                        padding-left: 1rem;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: right;
+                        margin: 0;
+                        border-bottom: 1px solid gray;
+                        > .headline {
+                            background-color: transparent;
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: left;
+                            align-items: center;
+                            > span {
+                                font-size: 2.5rem;
+                            }
+                        }
+                        > .MobileMenuButtonClose {
+                            width: max-content;
+                            background-color: transparent;
+                            box-shadow: none;
+
+                            aspect-ratio: 1/1;
+                            padding: 0.5rem;
+                            position: relative;
+                            right: 0;
+                            left: auto;
+                            margin-left: auto;
                         }
                     }
                 }
-                > .buttonsCategoryContainer {
-                    position: relative;
-                    box-sizing: content-box;
-                    width: calc(100% + 1rem);
-                    height: 100%;
-                    margin: 0;
-                    padding: 0;
-                    display: flex;
-                    flex-direction: column;
-                    // @include T_container();
-                    @include ProjectCategoryMenu-mobile();
+                // > .buttonsCategoryContainer {
+                //     user-select: all;
+                //     pointer-events: all;
+                //     position: relative;
+                //     // box-sizing: content-box;
+                //     width: calc(100% + 1rem);
+                //     height: 100px;
+                //     margin: 0;
+                //     top: 100%;
+                //     // transform: translateY(100%);
+                //     padding: 0;
+                //     display: block;
+                //     // flex-direction: column;
+                //     z-index: 2000;
+                //     // @include T_container();
+                //     @include mobileCategory.ProjectCategoryMenu-mobile();
 
-                }
+                // }
             }
             >.ProjectListBody {
                 order: 2;
@@ -371,13 +530,13 @@ body {
                 height: 100%;
                 // max-width: 90%;
                 justify-self: center;
-                overflow: hidden;
+                overflow: visible;
                 position: relative;
                 // grid-column: 2;
-                @include ProjectList-mobile(); 
+                @include mobileProjectList.ProjectList-mobile(); 
             }
             >.headline {
-                position: relative;
+                position: absolute;
                 box-sizing: border-box;
                 max-width: 14rem;
                 width: 100%;

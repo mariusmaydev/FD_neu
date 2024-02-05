@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+
 import SPLINT from 'SPLINT';
 import * as MATERIALS from '../../assets/materials/materials.js';
 import LIGHT from './light.js';
@@ -8,7 +8,9 @@ import SETUP from '../setup.js';
 import SRC from '../../assets/Helper.js';
 import MODEL from '../model.js';
 import Communication from './communication.js';
-import IMAGES from './images.js';
+// import IMAGES from './images.js';
+import { Fog } from "@THREE_ROOT_DIR/src/scenes/Fog.js";
+import { PerspectiveCamera } from "@THREE_ROOT_DIR/src/cameras/PerspectiveCamera.js";
 
 export class draw {
     static get(canvas){
@@ -27,6 +29,7 @@ export class draw {
             this.events();
             this.draw();
             // this.mouseHandler.onMove = function(event){
+            //     console.log(event)
             //     if(this.mouseHandler.mouseDown){
             //         this.renderer.setAnimationLoop( function(){
             //            this.renderer.render( this.scene, this.camera );
@@ -53,7 +56,7 @@ export class draw {
     init(){
         // console.log(SPLINT.resources.textures.lighter_engraving_thumbnail);
         this.setup.scene();
-        // this.scene.fog = new THREE.Fog(0xcccccc, 0.1, 30);
+        // this.scene.fog = new Fog(0xff0000, 10, 300);
         // this.mouseHandler = SPLINT.MouseHandler( this.canvas );
         this.Animations = new LighterAnimations(this);
         this.compressedAnimations = new CompressedAnimations(this);
@@ -62,12 +65,12 @@ export class draw {
 
         // this.renderImages = new IMAGES(this);
         this.renderer.toneMappingExposure = 1;
-        this.renderer.shadowMap.type = THREE.VSMShadowMap
+        this.renderer.shadowMap.type = SPLINT.VSMShadowMap;
         // this.raycaster = SPLINT.raycaster(this);
         // this.setup.controls();
     }
     setupCamera(){
-        this.camera     = new THREE.PerspectiveCamera(24, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.1, 100);
+        this.camera     = new PerspectiveCamera(24, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.1, 100);
         this.camera.position.set(0, 0.135, 0.97);
         // this.camera.zoom = 1.1;
         this.camera.updateProjectionMatrix();
@@ -149,12 +152,22 @@ export class draw {
     onResize(){
         let a = this.canvas.parentNode.clientWidth;
         let b = this.canvas.parentNode.clientHeight;
-        this.canvas.width = a * 2 ;
-        this.canvas.height = b * 2 ;
+        if(SPLINT.ViewPort.getSize() == "mobile-small"){
+            this.canvas.width = a ;
+            this.canvas.height = b ;
+        } else {
+            this.canvas.width = a * 2;
+            this.canvas.height = b * 2;
+        }
         this.canvas.style.width = a + "px";
         this.canvas.style.height = b + "px";
-        this.renderer.setPixelRatio( window.devicePixelRatio * 1.5);
-        this.renderer.setSize( this.canvas.parentNode.clientWidth * 2, this.canvas.parentNode.clientHeight * 2);
+        if(SPLINT.ViewPort.getSize() == "mobile-small"){
+            this.renderer.setPixelRatio( Math.min(2, window.devicePixelRatio));
+        } else {
+            this.renderer.setPixelRatio( window.devicePixelRatio * 2);
+        }
+        // this.renderer.setPixelRatio( window.devicePixelRatio * 1.5);
+        this.renderer.setSize( this.canvas.parentNode.clientWidth * 1, this.canvas.parentNode.clientHeight * 1, false);
         this.camera.aspect = this.canvas.parentNode.clientWidth / this.canvas.parentNode.clientHeight;
         this.camera.updateProjectionMatrix();
         this.render();

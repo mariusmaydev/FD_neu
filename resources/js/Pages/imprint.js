@@ -7,6 +7,12 @@ class drawImprint extends Pages_template{
     }
     _draw(){
         
+        // Footer.parent = this.overlay.contentElement;
+        if(SPLINT.ViewPort.getSize() == "mobile-small"){
+            Footer.mobile();
+        } else {
+            Footer.desktop();
+        }
         this.background = new drawBackground3D(document.body, "back", "medium");
         this.background.div.before(this.mainElement);
         this.containerMain = new SPLINT.DOMElement(this.id + "ContainerMain", "div", this.mainElement);

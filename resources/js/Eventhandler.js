@@ -67,7 +67,6 @@ class Pages {
     new drawIndex();
   }
   cart(){
-    let background = new drawBackground3D(document.body, "back3D");
     // this.background.div.before(this.mainElement);
     new drawCart();
   }
@@ -79,6 +78,7 @@ class Pages {
     new drawPaymentComplete();
   }
   imprint(){
+    NavBar.draw();
     new drawImprint();
   }
   productInformation(){

@@ -6,6 +6,7 @@ class converter_drawMobile {
         
         this.mainElement = new SPLINT.DOMElement("ConverterMainElement", "div", parent);
         this.mainElement.Class("Conv_MAIN");
+        Footer.mobile();
         
         this.EditorFrameElement = new SPLINT.DOMElement("ConverterEditorFrame", "div", this.mainElement);
         this.EditorFrameElement.Class("EditorFrame");
@@ -13,7 +14,13 @@ class converter_drawMobile {
         this.SquareBorder = new SPLINT.DOMElement(ConverterHelper.ELE_SQUARE_BORDER_DIV, "div", this.EditorFrameElement);
         this.SquareBorder.Class("square-border-div");
     
-        CONVERTER_STORAGE.lighter3D = new drawLighter3D(this.SquareBorder, "ConverterLighter", drawLighter3D.CONVERTER);
-        CONVERTER_STORAGE.lighter3D.saveContext = true;
+        let hashes = S_Location.getHashes();
+        if(hashes == "ADMINPLUS"){
+            this.SquareBorder.classList.add("ADMINPLUS");
+            SPLINT.Events.onLoadingComplete.dispatch();
+        } else {
+            CONVERTER_STORAGE.lighter3D = new drawLighter3D(this.SquareBorder, "ConverterLighter", drawLighter3D.CONVERTER);
+            CONVERTER_STORAGE.lighter3D.saveContext = true;
+        }
     }
 }

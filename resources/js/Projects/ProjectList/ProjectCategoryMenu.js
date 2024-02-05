@@ -16,8 +16,10 @@ class ProjectCategoryMenu {
     async draw(){
         if(this.isOriginal){
             this.data = await CategoryHelper.get_Originals();
+            this.dataObjects = await ProjectHelper.getAllAdmin(true);
         } else {
             this.data = await CategoryHelper.get_Examples();
+            this.dataObjects = await ProjectHelper.getAllAdmin(false);
         }
         let nestingElement = new SPLINT.DOMElement.Nesting(this.mainElement, this.id + "Nesting_", this.data);
             nestingElement.callBack = function(ele, path, key, index, id, obj){
@@ -38,7 +40,7 @@ class ProjectCategoryMenu {
                     let sign = new SPLINT.DOMElement.SpanDiv(ele, "sign", 0);
                         sign.Class("sign");
                 }
-                ele.onclick = function(event){
+                ele.onclick = async function(event){
                     event.stopPropagation();
                         for(const child of ele.children){
                             if(child.classList.contains("I_expander")){
@@ -70,31 +72,42 @@ class ProjectCategoryMenu {
                     }
                     ele.setAttribute("connected", true)
                     let promises = []
+                    let stack = [];
                     for(const d of last.attr.data){
                         if(d != null){
-                            promises.push(ProjectHelper.get(d, "admin").then(function(r){
-                                return r;
-                            }));
-                        }
-                    }
-                    let stack = [];
-                    Promise.all(promises).then(function(r){
-                        for(const e of r){
-                            if(typeof e == 'object'){
-                                if(this.isOriginal){
-                                    if(e.Original == "true"){
-                                        stack.push(e);
-                                    }
-                                } else {
-                                    if(e.Original == "false"){
-                                        stack.push(e);
-                                    }
+                            for(const i in this.dataObjects){
+                                if(this.dataObjects[i].ProjectID == d){
+                                    
+                                    stack.push(this.dataObjects[i]);
                                 }
                             }
+                            // let h = ProjectHelper.get(d, "admin");
+                            // promises.push(h);
+                            // console.log(this.data)
+                            // promises.push(.then(function(r){
+                            //     return r;
+                            // }));
                         }
-                        this.callBack(stack);
-                        // console.log(r);
-                    }.bind(this))
+                    }
+                    this.callBack(stack);
+                    // let stack = [];
+                    // Promise.all(promises).then(async function(r){
+                    //     for(const e of r){
+                    //         if(typeof e == 'object'){
+                    //             if(this.isOriginal){
+                    //                 if(e.Original == "true"){
+                    //                     stack.push(e);
+                    //                 }
+                    //             } else {
+                    //                 if(e.Original == "false"){
+                    //                     stack.push(e);
+                    //                 }
+                    //             }
+                    //         }
+                    //     }
+                    //     this.callBack(stack);
+                    //     // console.log(r);
+                    // }.bind(this))
                     // console.log(last.attr.data);
                     // ele.style.backgroundColor = "red";
                     // this.draw(last.attr.data);

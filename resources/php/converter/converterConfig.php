@@ -6,6 +6,13 @@
 
     class ConverterConfig {
         public static $processData = null;
+        private static function check(){
+            if(self::$processData -> type == "laser"){
+                return self::$processData -> laser;
+            } else {
+                return self::$processData -> engraving;
+            }
+        }
         public static function get(bool $print = false){
             if(self::isForceReload()){
                 $processData = DataStorage::get("/converterProcess.json", false);

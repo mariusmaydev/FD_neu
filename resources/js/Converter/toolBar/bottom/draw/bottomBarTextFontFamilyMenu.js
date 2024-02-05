@@ -12,10 +12,12 @@ class BottomBar_Text_FontFamily_Menu {
         this.add("Impact");
         this.add("Roboto");
         this.add("Arial");
+        this.add("Verdana");
+        this.add("Georgia");
     }
     draw(){
         this.floatingDiv = new Converter_BottomBar_floatingDiv_block("fontFamilySlideShow");
-        this.slideShow = new SlideShow_S(this.floatingDiv.content, "FontFamily");
+        this.slideShow = new SPLINT.DOMElement.SlideShow(this.floatingDiv.content, "FontFamily");
 
         this.genElement();
 

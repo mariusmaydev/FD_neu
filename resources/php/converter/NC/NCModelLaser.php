@@ -5,12 +5,15 @@
     require_once $rootpath.'/fd/resources/php/project/project.php';
 
     trait genNCCodeHelperLaser {
-        public function add_G(int $GNumber, Coords|null $coords = null, int|string $F = "") : string {
+        public function add_G(int $GNumber, Coords|null $coords = null, int|string $F = "", int|string $S = "") : string {
             $c = $this -> parseCoords($coords);
             if($F != ""){
                 $F = " F" . $F;
             }
-            $result = "G" . $GNumber . $c -> x . $c -> y . $c -> z . $F . "\r\n";
+            if($S != ""){
+                $S = " S" . $S;
+            }
+            $result = "G" . $GNumber . $c -> x . $c -> y . $c -> z . $F . $S . "\r\n";
             if(isset($this -> CodeString)){
                 $this -> CodeString .= $result;
             }
@@ -54,13 +57,14 @@
         public $scale       = 1;
         public $XMultiply   = 1;
         public $YMultiply   = 1;
+        public $length      = 0;
 
         use genNCCodeHelperLaser;
 
-        public function __construct(PathObject $pathObject){
+        public function __construct(PathObject3D $pathObject){
             $this -> PathObject = $pathObject;
         }        
-        public static function getGCode(PathObject $pathObject) : string {
+        public static function getGCode(PathObject3D $pathObject) : string {
             return (new self($pathObject)) -> get();
         }
         public function save(string $path){
@@ -78,50 +82,63 @@
             $this -> CodeString .= $this -> getEnd();
             return $this -> CodeString;
         }    
-        private function newElement(PathElement2D &$pathElement){
+        private function newElement(PathElement3D &$pathElement){
             $cfg = ConverterConfig::get();
             $steps = $pathElement -> getSteps();
+            $lastStep = [];
             foreach($steps as $key => $step){
                 $this -> scale($step);
+                if(count($lastStep) == 0){
+                    $lastStep = $step;
+                }
                 if($key == 0){
                     // $this -> CodeString .= "\r\nM220 S200\r\n";
                     $this -> CodeString .= "M400\r\n";
                     $this -> add_S(0);
-                    $this -> add_G(0, Coords::get($step['x'], $step['y'], 10), $cfg -> fastTravel -> F);
+                    $this -> add_G(0, Coords::get($step['x'], $step['y'], 10), $cfg -> laser -> fastTravel -> F);
                     $this -> CodeString .= "M400\r\n";
-                    $this -> add_S(1);
+                    // $this -> add_S(1);
+                    $this -> add_G(1, Coords::get($step['x'], $step['y'], 10), $cfg -> laser -> workTravel -> F);
                     // $this -> CodeString .= "M220 S100\r\n";
                     // $this -> add_G(1, null, 1500);
                     // $this -> CodeString .= "M400\r\n";
                     // $this -> CodeString .= "M220 S100\r\n";
                 }
-                $this -> add_G(1, Coords::get($step['x'], $step['y']), $cfg -> workTravel -> F);
-            }
+                $this -> add_G(1, Coords::get($step['x'], $step['y']), "", intval($step['z']));
+            }                
+            $this -> length += sqrt(pow($step['x'] - $lastStep['x'], 2) + pow($step['y'] - $lastStep['y'], 2));
+            $lastStep = $step;
             // $this -> CodeString .= "\r\nM220 S100";
             // $this -> CodeString .= "\r\nM400\r\n\r\n";
         }
         private function scale(array &$step){            
-            $step['x'] = round(($step['x'] + $this -> xNull) * $this -> scale, $this -> digits) * $this -> XMultiply;
-            $step['y'] = round(($step['y'] + $this -> yNull) * $this -> scale, $this -> digits) * $this -> YMultiply;
+            $step['x'] = round($this -> xNull + ($step['x']) * $this -> scale, $this -> digits) * $this -> XMultiply;
+            $step['y'] = round($this -> yNull + (($step['y']*-1)) * $this -> scale, $this -> digits) * $this -> YMultiply;
         }
         private function getStart(){
             $cfg = ConverterConfig::get();
-            $this -> CodeString = "G90\r\nG28\r\n";
-            $this -> add_S(0);
-            $this -> add_G(0, Coords::get(round((800 + $this -> xNull) * $this -> scale, $this -> digits), round( (800 + $this -> yNull) * $this -> scale, $this -> digits), 10), $cfg -> fastTravel -> F);
-            // $this -> CodeString .= "M220 S500\r\n";
+            $this -> CodeString .= "G00 G17 G40 G21 G54\r\nG90\r\nM3\r\nM8\r\n";// $this -> CodeString .= "M220 S500\r\n";
             // $this -> CodeString .= "\r\nM400\r\n";
             // $this -> CodeString .= "M220 S100\r\n\r\n";
             // $this -> add_G(1, Coords::get(70, 120, 75), 3000);
         }
         private function getEnd(){
             $cfg = ConverterConfig::get();
-            $this -> add_S(0);
-            $this -> add_G(0, Coords::get(null, null, 0.1), $cfg -> fastTravel -> F);
-            $this -> CodeString .= "\r\nM400\r\n";
-            $this -> add_G(0, Coords::get(0.1, 0.1, 0.1), $cfg -> fastTravel -> F);
-            $str = "\r\nM400\r\nG28\r\nG18";
+
+            // $this -> add_G(0, Coords::get(null, null, 0.1), $cfg -> fastTravel -> F ,$cfg -> fastTravel -> S);
+            $this -> CodeString .= "\r\nM5\r\n";
+            // $this -> add_G(0, Coords::get(0.1, 0.1, 0.1), $cfg -> fastTravel -> F, $cfg -> fastTravel -> S);
+            $str = "M2\r\n";
+            // $this -> CodeString = ";full engraving length: " . round($this -> length, 2) . "mm\r\n" . $this -> CodeString;
+            // $this -> CodeString = ";full engraving duration: " . $this -> calcTime() . "\r\n" . $this -> CodeString;
             return $str;
+        }
+        private function calcTime(){
+            $length = $this -> length;
+            $cfg = ConverterConfig::get() -> laser;
+            $speed = round($cfg -> workTravel -> F / 60, 0);
+            $duration = round(($speed * $length) / 60, 2);
+            return explode('.',$duration)[0] ."min " . explode('.', $duration)[1] . "s" ;
         }
         // public static function getFromPathObject(PathObject $pathObject){
         //     $pathElements = $pathObject -> getElements();

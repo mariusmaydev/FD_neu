@@ -1,4 +1,4 @@
-@import "main.scss";
+@use "main.scss" as Gmain;
 
 @mixin onActive($map){
   &[state = 'active']{
@@ -48,12 +48,12 @@
       transform:  translateY(0em) rotate(90deg);
     } 
     to {
-      transform:  translateY(-0.1em) rotate(90deg);
+      transform:  translateY(0em) rotate(90deg);
     }
   }
 
 .RadioButton {
-    @include border(); 
+    @include Gmain.border(); 
     position: relative;
     > div {
         width: 100%;

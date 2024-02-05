@@ -2,7 +2,7 @@
 	"projectName": "fd",
 	"SSL": "http",
 	"host": "localhost",
-	"host2": "192.168.178.81",
+	"host2": "192.168.178.88",
 	"host1": "192.168.178.67",
 	"port": "80",
 	"moonraker": {
@@ -36,7 +36,7 @@
 			}
 		},
 		"debugging": {
-			"error": false,
+			"error": true,
 			"warn": false,
 			"log": false
 		}

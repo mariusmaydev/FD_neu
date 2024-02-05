@@ -1,18 +1,71 @@
-@import '../../general/main.scss';
-@import '../../general/buttons.scss';
-@import '../../general/NavigationBar/NavigationBar.scss';
+
+@use 'elements/LeftBar';
+@use '../../general/main';
+@use '../../themes/theme1/vars';
+@use '../../general/buttons.scss';
+@use '../../general/NavigationBar/NavigationBar.scss';
+@use '../../general/Footer/FooterMobile.scss';
+@use '../../general/Footer/FooterDesktop.scss';
+@use '../converterStart/projectDetails';
 // @import '../designs/designs.scss';
-@import 'toolBar/converterToolBar.scss';
-@import 'elements/_EditorFrame.scss';
-@import 'elements/_EditorFrameMobile.scss';
-@import 'elements/_RightBar.scss';
-@import 'elements/_LeftBar.scss';
-@import 'toolBar/bottomBar/_BottomBar.scss';
-@import '../../general/mediaQueries';
-@import 'DOMConverter/DOMConverterMAIN.scss';
-@import '../../productInformation/productInformation';
-@import '../converterStart/projectDetails';
+@use 'toolBar/converterToolBar';
+@use 'elements/EditorFrame';
+@use 'elements/EditorFrameMobile';
+@use 'elements/_RightBar.scss';
+@use 'toolBar/bottomBar/BottomBar';
+@use '../../general/mediaQueries';
+// @use 'DOMConverter/DOMConverterMAIN';
+// @use '../../productInformation/productInformation';
  
+.NavigationBar {
+    &.ADMINPLUS {
+        > .content {
+            display: flex;
+            justify-content: right;
+            > div {
+                // width: 20em;
+                display: flex;
+                flex-direction: column;
+                > .label {
+                    width: 100%;
+                    > .span {
+                        width: 100%;
+                    }
+
+                }
+                > .inputContainer {
+                    width: 100%;
+                    > label {
+
+                    }
+                    > .AmountDiv {
+                        margin-inline: 0.5em;
+                        > button {
+                            > span {
+
+                            }
+                        }
+                        > div {
+                            width: 5em;
+                            margin-inline: 0.5em;
+                            > input {
+
+                            }
+                        }
+
+                    }
+                }
+            }
+            > .sizing_Container {
+                background-color: red;
+            }
+            > .X0_Container {
+                background-color: blue;
+
+            }
+        }
+    }
+}
 //
 .Converter3D {
     position: absolute;
@@ -21,7 +74,7 @@
     height: 750px;
     left: 100px;
     top: 100px; 
-    @include border();   
+    @include main.border();   
 } 
 body {
     position: absolute; 
@@ -32,7 +85,7 @@ body {
     height: 100%;
     padding-top: 0;
     overflow: hidden;
-    @include forMediaBreakpoint(mobile){
+    @include mediaQueries.forMediaBreakpoint(mobile){
         // background-color: red;
     }
     > .Background {
@@ -41,45 +94,87 @@ body {
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: $color-background-subWindow;
+        background-color: vars.$color-background-subWindow;
         opacity: 0;
         transition: opacity 0.3s ease;
+        z-index: 1000;
         &.start {
             opacity: 1;
+        }
+    }
+    > .subWindow_MAIN {
+        z-index: 1101;
+        > .content {
+            z-index: 1101;
         }
     }
   
 }
 
-@include forMediaBreakpoint(mobile-small){
+@include mediaQueries.forMediaBreakpoint(mobile-small){
+    @include FooterMobile.FooterMobile();
     .editText_mobile {
+        z-index: 1001 !important;
         > .background {
-            background-color: rgba(28, 28, 28, 0.379);
+            background-color: rgba(21, 21, 21, 0.961) !important;
+            z-index: 1001 !important;
         }
         > .content {
+            margin-top: -10vh !important;
+            margin-bottom: 20vh !important;
             background-color: transparent;
             box-shadow: none;
+            display: flex;
+            width: 100%!important;
+            max-width: 100%!important;
+            flex-direction: column;
+            min-height: 30% !important;
+            max-height: 70% !important;
+            height: fit-content !important;
+            // background-color: red !important;
+            // justify-content: space-around;
+            flex-wrap: nowrap;
+            align-items: start;
             box-sizing: border-box;
             padding: 0;
             // @include SPLINT-border-inset();
             > button {
+                // display: none !important;
+                top: 80% !important;
+                left: 85% !important;
+                height: auto !important;
+                width: auto !important;
                 > span {
-                    font-size: 4em;
+                    font-size: 8rem !important;
                     color: white;
+                }
+            }
+            > .headline {
+                width: 100%;
+                background-color: transparent;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                > span {
+                    color: white;
+                    font-size: 5rem;
                 }
             }
             > .TextInputDiv {
                 box-sizing: border-box;
-                width: 90vw;
-                height: 50vh;
+                width: 100% !important;
+                height: max-content;
                 margin: 0;
                 margin-top: 10vh;
+                margin-bottom: 10vh;
                 background-color: transparent;
+                caret-color: white !important;
                 > label {
                     display: none;
                 }
                 > textarea {
                     padding: 0;
+                    white-space: nowrap !important;
                     background-color: transparent;
                     box-sizing: border-box;
                     overflow: auto;
@@ -87,8 +182,9 @@ body {
                     pointer-events: all !important;
                     border: none;
                     text-align: center;
-                    font-size: 4em;
+                    font-size: 4rem;
                     color: white;
+                    caret-color: white!important;
                 }
                 hr {
                     display: none;
@@ -104,7 +200,8 @@ body {
 // //   image-rendering: pixelated;
 //   image-rendering: crisp-edges;
 // }
-@include forMediaBreakpoint(desktop mobile){
+@include mediaQueries.forMediaBreakpoint(desktop mobile){
+    @include FooterDesktop.FooterDesktop();
     .Background3D {
         // z-index: 1000;
         position: fixed;
@@ -120,7 +217,9 @@ body {
         }
     }
     .Conv_MAIN {
-        position: relative;
+        scroll-snap-align: start;
+        position: absolute;
+        height: 100vh;
         width: 100%;
         display: flex;
         justify-content: center;
@@ -133,22 +232,22 @@ body {
         margin-right: auto;
         padding-top: 2vh;
         // width: 100%;
-        top: 6vh;
-        height: 94vh;
+        bottom: 0;
+        // height: 94vh;
         box-sizing: border-box;
         overflow: hidden !important;
         > div {
             margin-inline: 1%;
             overflow-x: visible;
         }
-        @include conv_LeftBar();
-        @include conv_EditorFrame();
-        @include conv_RightBar();
+        @include LeftBar.conv_LeftBar();
+        @include EditorFrame.conv_EditorFrame();
+        @include RightBar.conv_RightBar();
     
       }
 }
 
-@include forMediaBreakpoint(mobile-small){
+@include mediaQueries.forMediaBreakpoint(mobile-small){
     .Background3D {
         // z-index: 1000;
         position: fixed;
@@ -164,6 +263,8 @@ body {
         }
     }
     .Conv_MAIN {
+        scroll-margin-top: calc(7vh);
+        scroll-snap-align: start;
         position: relative;
         width: 100vw;
         display: flex;
@@ -182,14 +283,14 @@ body {
 
 
 
-        @include conv_EditorFrame_mobile();
+        @include EditorFrameMobile.conv_EditorFrame_mobile();
         > .Conv_RightBar {
             display: none !important;
         }
         > .leftBar {
             display: none !important;
         } 
-        @include conv_BottomBar();
+        @include BottomBar.conv_BottomBar();
       }
 }
 
@@ -202,10 +303,10 @@ body {
                 flex-direction: column;
                 > .ListElement {
                     &:hover {
-                        background-color: $color-primary-light;
+                        background-color: vars.$color-primary-light;
                     }
                     &[state*='active']{
-                        background-color: $color-primary;
+                        background-color: vars.$color-primary;
                     }
                     // &[state*='passive']{
 

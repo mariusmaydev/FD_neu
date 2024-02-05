@@ -1,3 +1,4 @@
+@use '../../themes/theme1/vars';
 
 @mixin NavBar_mobile(){
     grid-template-areas: "Logo emptySpace Design shoppingCart profileLogin Sparks"; 
@@ -45,7 +46,7 @@
             z-index: 1;
             left: 50%;
             top: 60%;
-            background-color: $color-primary;
+            background-color: vars.$color-primary;
             border-radius: 50%;
             width: 1em;
             height: 1em;

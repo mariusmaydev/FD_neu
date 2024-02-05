@@ -2,6 +2,7 @@
     $rootpath = realpath($_SERVER["DOCUMENT_ROOT"]);
     require_once $rootpath.'/fd/resources/php/converter/converterCore.php';
     require_once $rootpath.'/fd/resources/php/converter/NC/NCCode.php';
+    require_once $rootpath.'/fd/resources/php/converter/NC/NCLaserCode.php';
     require_once $rootpath.'/fd/resources/php/project/project.php';
 
 

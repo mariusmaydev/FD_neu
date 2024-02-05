@@ -10,8 +10,14 @@
         padding: 1%;
         overflow: visible;
 
-        > .square-border-div{            
-            > .Lighter3D {
+        > .square-border-div{   
+            z-index: 0;     
+            &.ADMINPLUS {
+                background-color: gray;
+                border: 1px solid black;
+            }    
+            > .Lighter3D { 
+                z-index: 0;     
                 // display: none;
                 position: absolute;
                 top: -22%;

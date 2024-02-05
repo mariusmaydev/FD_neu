@@ -1,4 +1,5 @@
-@import './mobileProductOverviewList';
+@use './mobileProductOverviewList';
+@use '../../themes/theme1/vars';
 @mixin CheckoutMobileProductOverview {
     > .C_MobileProductOverviewMain {
         // background-color: rgb(236, 236, 236);
@@ -19,7 +20,7 @@
         overflow: hidden;
         justify-content: space-between;
         // background-color: red;
-        @include Checkout_MobileProductOverviewList();
+        @include mobileProductOverviewList.Checkout_MobileProductOverviewList();
         > .listMain {
             position: relative;
             width: 100%;
@@ -56,7 +57,7 @@
                         width: 100%;
                         height: 0px;
                         background-color: black;
-                        border-bottom: 1px solid $color-devider;
+                        border-bottom: 1px solid vars.$color-devider;
                     
                     }
                 }
@@ -66,7 +67,7 @@
                     }
                 }
                 > .Lighter3D {
-                    aspect-ratio: $LIGHTER-ratio;
+                    aspect-ratio: vars.$LIGHTER-ratio;
                     position: relative;
                     height: 100%;
                     box-sizing: content-box !important;
@@ -77,7 +78,7 @@
                     > div { 
                         cursor: pointer;
                         position: absolute;
-                        background-color: $color-primary;
+                        background-color: vars.$color-primary;
                         font-size: 150%;
                         top: 10%;
                         left: 80%;
@@ -141,18 +142,18 @@
                 width: calc(98% - 0.4em);
                 height: 0px;
                 background-color: black;
-                border-top: 1px solid $color-devider;
+                border-top: 1px solid vars.$color-devider;
             }
             > div {
                 margin-top: 0;
             }
             > button {
-                background-color: $color-primary;
+                background-color: vars.$color-primary;
                 > span {
                     
                 }
                 &:hover {
-                    background-color: $color-primary-Dark;
+                    background-color: vars.$color-primary-Dark;
                 }
             }
         }

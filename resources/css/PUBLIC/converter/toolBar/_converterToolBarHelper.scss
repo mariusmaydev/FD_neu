@@ -1,28 +1,34 @@
-@import '../../../general/main.scss';
-@import '../../../general/buttons.scss';
+@use '../../../general/main' as Gmain;
+@use '../../../themes/theme1/main' as Tmain;
+@use '../../../themes/theme1/vars';
+@use '../../../general/buttons' as Gbuttons;
+@use '../../../../../../Splint/scss/tools/tools' as S_tools;
 // @import '../../../general/NavigationBar.scss';
 
 @mixin ToolBar_ListElement() {
     > .ToolBar_ListElement {
-        @include T_container();
+        @include Tmain.T_container();
         position: relative;
         // width: 100%;
         // margin: 0.25em;
         padding: 0.5em;
-        width: 90%;
-        margin: 5%;
+        width: calc(100% - 1em);
+        margin: 0.5em;
         box-sizing: border-box;
+        @include Tmain.clipEdgesAll(5px);
+        @include S_tools.SPLINT-border-inset(vars.$color-T_container-Medium, 1px, true, true, true, true);
         // >*{
         //     // box-sizing: border-box;
         // }
         >.expanderBody {
-            position: relative;
-            width: 100%;
-            margin-top: -0.25em;
-            padding: 0;
-            > .expander {
+            display: none;
+            // position: relative;
+            // width: 100%;
+            // margin-top: -0.25em;
+            // padding: 0;
+            // > .expander {
 
-            }
+            // }
         }
         >.toolsBody{
             .S-SliderMain {
@@ -42,7 +48,7 @@
                         width: 100%;
                         height: 0px;
                         background: transparent;
-                        border-bottom: 1px solid $color-devider;
+                        border-bottom: 1px solid vars.$color-devider;
                         left: 0;
                         // top: 50%;
                         margin-top: 0.25em;
@@ -54,7 +60,7 @@
                         width: 100%;
                         height: 0px;
                         background: transparent;
-                        border-top: 1px solid $color-devider;
+                        border-top: 1px solid vars.$color-devider;
                         left: 0;
                         // top: 50%;
                         margin-bottom: 0.2em;
@@ -62,6 +68,7 @@
                     }
                 }
                 > .label {
+                    @include Tmain.preventSelect();
                     position: relative;
                     width: 100%;
                     display: inline-block;
@@ -88,6 +95,7 @@
                             display: inline-block;
                             outline: none;
                             // align-items: center;
+                            background-color: transparent;
                             -webkit-appearance: none;
                             transition: box-shadow 0.2s ease;
                             &::-webkit-slider-runnable-track {
@@ -99,7 +107,9 @@
                                 // margin-top: 0.25em;
                                 // margin-top: 45%;
                                 // margin-bottom: 45%;
-                                background: black;
+                                background-color: vars.$color-primary-Dark;
+                                transition: background-color 0.2s ease;
+                                box-shadow: 1px 1px 1px 0px vars.$color-slider-thumb;
                                 border: none;
                                 border-radius: 10px;
                             }
@@ -113,8 +123,10 @@
                                 width: 0.5em;
                                 // border-radius: 10%;
                                 margin-top: -0.425em;
-                                background: $color-primary-Dark;
-                                
+                                background: vars.$color-slider-thumb;
+                                box-shadow: 1px 1px 0px 0px vars.$color-slider-thumb-Dark;
+                                            // 2px 1px 0px 0px vars.$color-slider-thumb-Dark;
+                                // @include S_tools.SPLINT-border-inset(vars.$color-slider-thumb-Dark, 1px, false, false, true, true);
                                 // margin-top: calc(-100% + 0.5em);
                                 box-sizing: border-box;
                                 // @include border();
@@ -122,13 +134,13 @@
                             }
                             &:focus {
                                 &::-webkit-slider-thumb {
-                                    @include box-shadow(0, $color-primary-Dark, 0.7);
+                                    @include Gmain.box-shadow(0, vars.$color-primary-Dark, 0.7);
                                 }
                                 outline: none;
                             }
                             
                             &:hover::-webkit-slider-runnable-track {
-                                @include box-shadow(0, gray);
+                                background-color: vars.$color-primary;
                             }
                         }
                         > datalist {
@@ -138,6 +150,7 @@
                         }
                     }
                     > .valueOutput {
+                        @include Tmain.preventSelect();
                         position: relative;
                         order: 2;
                         font-size: 1.1em;

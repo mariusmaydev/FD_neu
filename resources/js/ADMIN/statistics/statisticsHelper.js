@@ -36,6 +36,19 @@ class statisticsHelper {
         }
         return res;
     }
+    static async getOrderAmount(orderData){
+        let price = 25;
+        let res = [];
+        for(const e of orderData){
+            let value = 0;
+            for(const i of e.Items){
+                price = (await productHelper.getByName(i.ProductName)).price;
+                value = value + parseInt(i.amount) * price;
+            }
+            res.push(value);
+        }
+        return res;
+    }
     static async getOrderValues(orderData){
         let price = 25;
         let res = [];

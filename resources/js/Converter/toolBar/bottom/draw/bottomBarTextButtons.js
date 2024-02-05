@@ -8,7 +8,7 @@ class BottomBar_Text_Button_FontSize {
         this.draw();
     }
     draw(){
-        this.button = new S_switchButton(this.parent, "fontSize");
+        this.button = new SPLINT.DOMElement.Button.Switch(this.parent, "fontSize");
         this.button.bindIcon("format_size");
         this.button.onactive = function(){
             this.drawSlider();
@@ -19,7 +19,8 @@ class BottomBar_Text_Button_FontSize {
     }
     drawSlider(){
         this.floatingDiv = new Converter_BottomBar_floatingDiv_block("fontSizeSlider");
-            let sl = new Slider(this.floatingDiv.content, "sl_fontSize_" + this.floatingDiv.content.id, "Schriftgröße");
+        
+            let sl = new SPLINT.DOMElement.Slider(this.floatingDiv.content, "sl_fontSize_" + this.floatingDiv.content.id, "Schriftgröße");
                 sl.min    = 100;
                 sl.max    = 1000;
                 sl.step   = 100;
@@ -40,7 +41,7 @@ class BottomBar_Text_Button_FontWeight {
         this.draw();
     }
     draw(){
-        this.button = new S_switchButton(this.parent, "fontWeight");
+        this.button = new SPLINT.DOMElement.Button.Switch(this.parent, "fontWeight");
         this.button.bindIcon("format_bold");
         this.button.onactive = function(){
             this.drawSlider();
@@ -74,7 +75,7 @@ class BottomBar_Text_Button_TextAlign {
         this.draw();
     }
     draw(){
-        this.button = new S_switchButton(this.parent, "textAlign");
+        this.button = new SPLINT.DOMElement.Button.Switch(this.parent, "textAlign");
         this.button.bindIcon("format_align_center");
         this.button.onactive = function(){
             this.drawSlider();
@@ -86,7 +87,7 @@ class BottomBar_Text_Button_TextAlign {
     drawSlider(){
         this.floatingDiv = new Converter_BottomBar_floatingDiv_block("textAlignSlider");
 
-            this.button_left = new S_switchButton(this.floatingDiv.content, "textAlign_left");
+            this.button_left = new SPLINT.DOMElement.Button.Switch(this.floatingDiv.content, "textAlign_left");
             this.button_left.bindIcon("format_align_left");
             this.button_left.onactive = function(){
                     this.TOOLS.align('left');
@@ -94,7 +95,7 @@ class BottomBar_Text_Button_TextAlign {
                     this.button_center.unsetActive();
                 }.bind(this);
 
-            this.button_center = new S_switchButton(this.floatingDiv.content, "textAlign_center");
+            this.button_center = new SPLINT.DOMElement.Button.Switch(this.floatingDiv.content, "textAlign_center");
             this.button_center.bindIcon("format_align_center");
             this.button_center.onactive = function(){
                     this.TOOLS.align('center');
@@ -102,7 +103,7 @@ class BottomBar_Text_Button_TextAlign {
                     this.button_right.unsetActive();
                 }.bind(this);
 
-            this.button_right = new S_switchButton(this.floatingDiv.content, "textAlign_right");
+            this.button_right = new SPLINT.DOMElement.Button.Switch(this.floatingDiv.content, "textAlign_right");
             this.button_right.bindIcon("format_align_right");
             this.button_right.onactive = function(){
                     this.TOOLS.align('right');

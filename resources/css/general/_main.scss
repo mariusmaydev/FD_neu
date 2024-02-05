@@ -1,13 +1,14 @@
 
 @use "sass:math";
+@use "mediaQueries";
+@use "../themes/theme1/main";
+@use "../themes/theme1/vars";
+@use "cursor";
 // @use "tools";
 // @use 'SplintStyling';
 // @use "../../../splint.config/config.style.scss";
 @import "../../../Splint/splint.config/config.style.scss";
-@import "_mediaQueries.scss";
-@import "cursor.scss";
 // @import "scrollbar.scss";
-@import "../themes/theme1/_main.scss";
 // @import "3D.scss";
 
 
@@ -18,13 +19,13 @@ body {
     box-sizing: content-box;
     top: 6vh; 
     height: 94vh;
-    @include forMediaBreakpoint(mobile-small){
+    @include mediaQueries.forMediaBreakpoint(mobile-small){
         font-size: 1em;
     }
-    @include forMediaBreakpoint(mobile){
+    @include mediaQueries.forMediaBreakpoint(mobile){
         font-size: 1em; 
     }
-    @include forMediaBreakpoint(desktop){
+    @include mediaQueries.forMediaBreakpoint(desktop){
         font-size: 1em;
     }
 }
@@ -87,7 +88,7 @@ body {
 
 .LoadBar {
     z-index: 3;
-    border-radius: $border-radius;
+    border-radius: vars.$border-radius;
     position: relative !important;
     background-color: red!important;
     width: 100%!important;
@@ -131,11 +132,11 @@ body {
 
 
 .Text-primary {
-    color: $color-primary-text;
+    color: vars.$color-primary-text;
 }
 
 .Text-secondary {
-    color: $color-secondary-text;
+    color: vars.$color-secondary-text;
 }
 
 .Text-small {
@@ -151,8 +152,8 @@ body {
 
 .TextInputDiv {
     position: relative;
-    background-color: $color-background;
-    border-radius: $border-radius;
+    background-color: vars.$color-background;
+    border-radius: vars.$border-radius;
     margin: 0.5em;
     margin-bottom: 1.5em;
     font-size: inherit;
@@ -169,7 +170,7 @@ body {
         padding-left: 0.5em;
         word-break: normal;
         border: 1px solid black;
-        border-radius: $border-radius !important;
+        border-radius: vars.$border-radius !important;
         &.inputFilled {
           position: relative;
           width: 100%;
@@ -188,7 +189,7 @@ body {
         position: absolute;
         z-index: 1;
         width: 100%;
-        background-color: $color-background;
+        background-color: vars.$color-background;
         font-weight: inherit;
         font-style: normal;
         font-size: 0.5em;
@@ -213,7 +214,7 @@ body {
 
 .InputDivMain {
     position: relative;
-    background-color: $color-background;
+    background-color: vars.$color-background;
     // border-radius: 5px;
     margin: 0.5em;
     // font-size: inherit;
@@ -238,12 +239,12 @@ body {
         }
         
         &[state*='active'] {
-            background-color: $color-primary-Dark;
+            background-color: vars.$color-primary-Dark;
         }
         &[state*='passive'] {
             background-color: transparent;
             &:hover {
-                background-color: $color-primary;
+                background-color: vars.$color-primary;
             }
         }
     }
@@ -268,7 +269,7 @@ body {
       word-break: normal;
       border: 1px solid black;
       font-size: inherit; 
-      border-radius: $border-radius !important;
+      border-radius: vars.$border-radius !important;
       outline: none;
       &.inputFilled {
         position: relative;
@@ -289,7 +290,7 @@ body {
     }
     .invalidInput{
         color: red;
-        background-color: $color-primary-light;
+        background-color: vars.$color-primary-light;
     }
 }
 

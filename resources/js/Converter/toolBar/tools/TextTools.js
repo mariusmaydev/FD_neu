@@ -38,7 +38,7 @@ class TextTools {
       DSText.save();
     }
     async remove(){
-      await DSText.remove(DSText.getIndex(this.ID));
+      await DSText.remove(this.index);
       CONVERTER_STORAGE.canvasNEW.refreshData();
       DSText.saveAsync();
       CONVERTER_STORAGE.toolBar.update();

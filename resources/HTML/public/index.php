@@ -30,7 +30,7 @@
         <div class="NavigationBar" id="NavigationBar" ></div>
 
         <script src="../../../../Splint/lib/touchEmulator/touch-emulator.js"></script>
-        <script> TouchEmulator();</script>
+        <!-- <script> TouchEmulator();</script> -->
             <!-- <script defer src = "projects_test.js"></script> -->
                     <s-part first src="/js/GLOBAL/Paths.js"></s-part>
         <s-part src="/js/GLOBAL/global_Helper.js"></s-part>
@@ -53,6 +53,7 @@
         <s-part src="/js/Projects/ProjectsHelper.js"></s-part>
 
         <s-part src="/js/NavigationBar.js"></s-part>
+        <s-part src="/js/Footer.js"></s-part>
         <s-loader src="/js/Eventhandler.js"></s-loader>
         <script async src="../../../../Splint/js/Splint.js" onload="SPLINT.start()"></script>
     </body>

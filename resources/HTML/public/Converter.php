@@ -4,20 +4,20 @@
     <head>
         <title>Funkendesign-Converter</title>
         <meta charset="ISO-8859-1" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" /> -->
         <s-style src="imageMenu.css"></s-style>
         <s-style src="converter.css"></s-style>
 
     </head>
     
     <body id="ConverterBODY">
-                
+               
         <div id="CustomCursorEle" style='position:absolute;z-index:3; pointer-events:none;user-select:none;'>
         <!-- <img id='CustomCursor' src='https://img.icons8.com/ios-glyphs/90/000000/resize-horizontal.png' width='25' height='25' style='position:absolute;z-index:3; pointer-events:none;user-select:none;visibility: hidden'/> -->
         </div>
-        <div class="NavigationBar" id="NavigationBar"></div>
+        <div class="NavigationBar" id="NavigationBar"></div> 
 
-        <script src="../../../../Splint/lib/touchEmulator/touch-emulator.js"></script>
+        <!-- <script src="../../../../Splint/lib/touchEmulator/touch-emulator.js"></script> -->
         <!-- <script> TouchEmulator();</script> -->
         <s-part first src="/js/GLOBAL/Paths.js"></s-part>
 
@@ -70,6 +70,7 @@
 
         
         <s-part src="/js/NavigationBar.js"></s-part>
+        <s-part src="/js/Footer.js"></s-part>
         <s-loader src="/js/Eventhandler.js"></s-loader>
 
         

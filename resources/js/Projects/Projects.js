@@ -7,7 +7,7 @@ class DrawProject {
     this.mainElement = new SPLINT.DOMElement(this.id + "main", "div", this.parent);
     this.mainElement.Class("ProjectMenuMain");
     // let projectList = new drawProjectList(this.mainElement);
-    let projectList2 = new drawProjectList(this.mainElement, "test2");
+    // let projectList2 = new drawProjectList(this.mainElement, "test2");
     // new drawNewProject(projectList.mainElement);
     this.drawHealine("Deine Projekte");
   }

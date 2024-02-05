@@ -1,4 +1,5 @@
 
+@use '../themes/theme1/vars';
 .NavigationMenu {
     position: relative;
     // @include border();
@@ -8,15 +9,25 @@
     height: max-content;
     flex-direction: column;
     width: max-content;
+
     > button {
+        padding: 0.5rem;
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
         text-align: left;
         > span {
+            color: vars.$color-primary-text;
+            &:hover {
+                color: vars.$color-primary-Dark;
+                transition-duration: 0.1s;
+            }
+            transition: color 1s ease;
             text-align: left;
         }
     }
     * {
         text-align: left;
-        font-size: 2em;
+        font-size: 2.5rem;
     }
     > .active {
         display: none;

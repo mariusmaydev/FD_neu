@@ -7,6 +7,8 @@ class ToolBar_ImageElement {
         this.mainElement = new SPLINT.DOMElement(this.id + data.ImageID, "div", "ConverterToolBar_Image_main");
         this.mainElement.Class("ToolBar_ListElement");
         this.mainElement.Class("ToolBar_ListElement_Image");
+        this.mainElement.setAttribute("ele-type", "img");
+        // this.mainElement.
         this.PARTS = new ToolBar_ImageElement_parts(this.TOOLS, this.mainElement);
         this.draw();
     }
@@ -30,7 +32,7 @@ class ToolBar_ImageElement {
         
         this.expanderBody = new SPLINT.DOMElement(this.ImageID + "_expanderBody", "div", this.mainElement);
         this.expanderBody.Class("expanderBody");
-            this.expander = new S_switchButton(this.expanderBody, "Expander");
+            this.expander = new SPLINT.DOMElement.Button.Switch(this.expanderBody, "Expander");
             this.expander.disableStandardSwitch();
             this.expander.button.Class("expander");
             this.expander.onactive = function(){
@@ -41,6 +43,7 @@ class ToolBar_ImageElement {
                 this.expander.bindIcon("expand_more");
             }.bind(this);
 
+            this.blur();
             this.expander.onchange = function(state){
                 if(state == "passive"){
                     this.blur();
@@ -50,7 +53,12 @@ class ToolBar_ImageElement {
             }.bind(this);
             this.expander.unsetActive();
 
-        this.imgEle = new SPLINT.DOMElement(this.ImageID + "_imgDiv", "div", this.mainElement);  
+        this.topDiv = new SPLINT.DOMElement(this.ImageID + "_topDiv", "div", this.mainElement);
+        this.topDiv.Class("topDiv");
+            // this.topDiv.appendChild(this.imgEle);
+            // this.topDiv.appendChild(this.buttonsDiv);
+            // this.mainElement.insertBefore(this.topDiv, this.mainElement.childNodes[0]);
+        this.imgEle = new SPLINT.DOMElement(this.ImageID + "_imgDiv", "div", this.topDiv);  
         this.imgEle.Class("imgDiv");
             this.img = new SPLINT.DOMElement(this.ImageID + "_img", "img", this.imgEle);
             this.img.src = this.data.images.scale;
@@ -64,16 +72,16 @@ class ToolBar_ImageElement {
     }
     drawButtons(){
         
-        let buttonsDiv = new SPLINT.DOMElement(this.ImageID + "_buttonsDiv", "div", this.toolsBody);
-            buttonsDiv.Class("buttonsDiv");
-            this.PARTS.BT_remove(buttonsDiv);
-            this.PARTS.BT_copy(buttonsDiv);
-            this.PARTS.BT_flip("HORIZONTAL", buttonsDiv);
-            this.PARTS.BT_flip("VERTICAL", buttonsDiv);
+        this.buttonsDiv = new SPLINT.DOMElement(this.ImageID + "_buttonsDiv", "div", this.topDiv);
+        this.buttonsDiv.Class("buttonsDiv");
+            this.PARTS.BT_remove(this.buttonsDiv);
+            this.PARTS.BT_copy(this.buttonsDiv);
+            this.PARTS.BT_flip("HORIZONTAL", this.buttonsDiv);
+            this.PARTS.BT_flip("VERTICAL", this.buttonsDiv);
     }
     drawSlider(){
         //Contrast
-        this.sl_contrast = new Slider(this.toolsBody, "contrast_" + this.ImageID, "Kontrast");
+        this.sl_contrast = new SPLINT.DOMElement.Slider(this.toolsBody, "contrast_" + this.ImageID, "Kontrast");
         this.sl_contrast.drawTickMarks = false;
         this.sl_contrast.min    = 0;
         this.sl_contrast.max    = 10;
@@ -84,7 +92,7 @@ class ToolBar_ImageElement {
         }.bind(this);
 
         //Antialiasing
-        this.sl_antialiasing = new Slider(this.toolsBody, "antialiasing_" + this.ImageID, "Glättung");
+        this.sl_antialiasing = new SPLINT.DOMElement.Slider(this.toolsBody, "antialiasing_" + this.ImageID, "Glättung");
         this.sl_antialiasing.drawTickMarks = false;
         this.sl_antialiasing.min    = 0;
         this.sl_antialiasing.max    = 10;
@@ -95,7 +103,7 @@ class ToolBar_ImageElement {
         }.bind(this);
 
         //Sharpness
-        this.sl_sharpness = new Slider(this.toolsBody, "sharpness_" + this.ImageID, "Schärfe");
+        this.sl_sharpness = new SPLINT.DOMElement.Slider(this.toolsBody, "sharpness_" + this.ImageID, "Schärfe");
         this.sl_sharpness.drawTickMarks = false;
         this.sl_sharpness.min    = 0;
         this.sl_sharpness.max    = 10;
@@ -108,7 +116,7 @@ class ToolBar_ImageElement {
         //Align
         this.sl_rotationBody = new SPLINT.DOMElement(this.ImageID + "_rotationDiv", "div", this.toolsBody);
         this.sl_rotationBody.Class("rotationBody");
-            this.sl_rotation = new Slider(this.sl_rotationBody, "rotation_" + this.ImageID, "Drehung");
+            this.sl_rotation = new SPLINT.DOMElement.Slider(this.sl_rotationBody, "rotation_" + this.ImageID, "Drehung");
             this.sl_rotation.drawTickMarks = false;
             this.sl_rotation.min    = -180;
             this.sl_rotation.max    = 180;
@@ -152,17 +160,33 @@ class ToolBar_ImageElement {
     blur(){
         this.mainElement.state().unsetActive();
         this.expander.unsetActive();
+        document.getElementById("ConverterToolBar_Image_main").appendChild(this.mainElement);
     }
     focus(){
         CONVERTER_STORAGE.toolBar.blurElement("img");
         this.mainElement.state().setActive();
         this.expander.setActive();
         CONVERTER_STORAGE.canvasNEW.setActive(this.data, "img");
+
+
+        let ele = document.getElementById("ConverterToolBar_activeBody").childNodes[0];
+        if(document.getElementById("ConverterToolBar_activeBody").childNodes.length > 0){
+            if(ele.getAttribute("ele-type") == "txt"){
+                document.getElementById("ConverterToolBar_Text_main").appendChild(ele);
+                ele.state().unsetActive();
+            } else {
+                document.getElementById("ConverterToolBar_Image_main").appendChild(ele);
+                // this.mainElement.insertBefore(tD, this.mainElement.childNodes[0]);
+                ele.state().unsetActive();
+            }
+            document.getElementById("ConverterToolBar_activeBody").clear();
+        }
+        document.getElementById("ConverterToolBar_activeBody").appendChild(this.mainElement);
     }
     drawSpinner(){
         this.spinnerBody = new SPLINT.DOMElement(this.ImageID + "_Spinner", "div", this.imgEle);
         this.spinnerBody.Class("spinner");
-            this.spinner = new Spinner1(this.spinnerBody, this.ImageID);
+            this.spinner = new SPLINT.DOMElement.Spinner(this.spinnerBody, this.ImageID);
             this.spinner.hide();
     }
 }

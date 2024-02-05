@@ -1,13 +1,15 @@
-
+// @use '../../general/main' as Gmain;
+@use '../../themes/theme1/vars';
+@use '../../themes/theme1/main' as Tmain;
 @mixin couponCodeList(){
     >.listCodeBody {
-        @include T_container();
+        @include Tmain.T_container();
         > .Table2D {
             > table {
                 width: 100%;
                 > tr {
                     &:nth-child(even){
-                        background-color: $color-devider;
+                        background-color: vars.$color-devider;
                     }
                     &.Table2DHead {
                         > th {

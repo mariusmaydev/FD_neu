@@ -9,8 +9,10 @@ class CheckoutHead {
       this.draw();
     }
     drawLogo(){
-      this.logo = new ImageElement("CheckoutLogo", this.mainElement);
-      this.logo.src = PATH.images.logo;
+        let logoContainer = new SPLINT.DOMElement("CheckoutLogoContainer", "div", this.mainElement);
+            logoContainer.Class("CheckoutLogoContainer");
+            this.logo = new ImageElement("CheckoutLogo", logoContainer);
+            this.logo.src = PATH.images.logo;
     }
     draw(){
       this.progressDiv = new SPLINT.DOMElement(this.id + "progress", "div", this.mainElement);
