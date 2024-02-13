@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="de">
     <head>
-        <title>Funkendesign-Converter</title>
+        <title>Enflame</title>
         <meta charset="ISO-8859-1" />
         <s-style style src="index.css"></s-style>
         <!-- Google tag (gtag.js) -->

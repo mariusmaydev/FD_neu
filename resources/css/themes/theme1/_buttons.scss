@@ -31,31 +31,37 @@
 }
 
 @mixin T_button_Animated($small: false, $hoverAnimation : true){
+        $color1: vars.$color-header-Dark;
+        $color2: vars.$color-primary-Dark;
+        $color3: vars.$color-T_container-Medium;
+        $color4: vars.$color-primary;
+
+
         height: max-content;
         width: max-content;
         padding: 0.5em;
-        background-color: vars.$color-T_container-Medium;
+        background-color: $color3;
 
         box-shadow: none;
         transition: box-shadow 50ms ease, transform 50ms ease;
         @if $small {
-            box-shadow: 2px 2px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1),
-                        inset -1px 0px 0px 0px vars.$color-primary-Dark,
-                        inset 0px -1px 0px 0px vars.$color-primary-Dark;
+            box-shadow: 2px 2px 0px 0px color.adjust($color1, $alpha: -0.1),
+                        inset -1px 0px 0px 0px $color2,
+                        inset 0px -1px 0px 0px $color2;
             &:active {
-                box-shadow: 1px 1px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1),
-                            inset -1px 0px 0px 0px vars.$color-primary-Dark,
-                            inset 0px -1px 0px 0px vars.$color-primary-Dark;
+                box-shadow: 1px 1px 0px 0px color.adjust($color1, $alpha: -0.1),
+                            inset -1px 0px 0px 0px $color2,
+                            inset 0px -1px 0px 0px $color2;
                 transform: translateX(1px) translateY(1px);
             }
         } @else {
-            box-shadow: 3px 3px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1),
-                        inset -1px 0px 0px 0px vars.$color-primary-Dark,
-                        inset 0px -1px 0px 0px vars.$color-primary-Dark;
+            box-shadow: 3px 3px 0px 0px color.adjust($color1, $alpha: -0.1),
+                        inset -1px 0px 0px 0px $color2,
+                        inset 0px -1px 0px 0px $color2;
             &:active {
-                box-shadow: 2px 2px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1),
-                            inset -1px 0px 0px 0px vars.$color-primary-Dark,
-                            inset 0px -1px 0px 0px vars.$color-primary-Dark;
+                box-shadow: 2px 2px 0px 0px color.adjust($color1, $alpha: -0.1),
+                            inset -1px 0px 0px 0px $color2,
+                            inset 0px -1px 0px 0px $color2;
                 transform: translateX(1px) translateY(1px);
             }
         }
@@ -63,7 +69,7 @@
             &:hover {
                 > span {
                     &:not(.description) {
-                        text-shadow: 2px 2px 0px color.adjust(vars.$color-primary);
+                        text-shadow: 2px 2px 0px color.adjust($color4);
                         transition-duration: 10ms;
                         // color: vars.$color-primary;
                     }

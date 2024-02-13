@@ -18,12 +18,11 @@
             }
         }
         > div {
-            @include Tmain.T_container();
+            padding: 0.5rem;
             
             &:not(.buttonsDiv){
                 // &:not(.paypalContainer){
-                    @include Tmain.clipEdgesAll(5px);
-                    @include S_tools.SPLINT-border-inset(vars.$color-T_container-Medium, 1px, true, true, true, true);
+            @include Tmain.TContainer_basic();
                 // }
             }
             margin-bottom: 0.5em;

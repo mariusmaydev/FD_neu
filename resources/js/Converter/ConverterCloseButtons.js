@@ -157,19 +157,21 @@ class Converter_closeButtons {
                 }
     }
     drawButtonSave_editCartItem(){
-        let button_finish = new SPLINT.DOMElement.Button(this.contentElement, "finish", "speichern");
-            button_finish.Class("buy");
-            button_finish.setStyleTemplate(S_Button.STYLE_NONE);
-            button_finish.onclick = function(){
-            Converter_CloseOperations.save();
-        }
-        
-        SPLINT.Events.onLoadingComplete = function(){
-            button_finish.button.setAttribute("loaded", true);
-        };
-        if(SPLINT.Events.onLoadingComplete.dispatched){
-            button_finish.button.setAttribute("loaded", true);
-        }
+        let button_finish_Div = new SPLINT.DOMElement("bt_finish_div", "div", this.contentElement);
+            button_finish_Div.Class("buy");
+            let button_finish = new SPLINT.DOMElement.Button(button_finish_Div, "finish", "speichern");
+                button_finish.Class("buy");
+                button_finish.setStyleTemplate(S_Button.STYLE_NONE);
+                button_finish.onclick = function(){
+                Converter_CloseOperations.save();
+            }
+            
+            SPLINT.Events.onLoadingComplete = function(){
+                button_finish_Div.setAttribute("loaded", true);
+            };
+            if(SPLINT.Events.onLoadingComplete.dispatched){
+                button_finish_Div.setAttribute("loaded", true);
+            }
     }
 }
 
@@ -208,9 +210,9 @@ class Converter_CloseOperations {
                 await ProjectHelper.changeState(projectID, ProjectHelper.STATE_CART);
             }
             if(DSProject.Storage.EPType == "GOLD"){
-                ShoppingCart.addItem(projectID, productHelper.LIGHTER_GOLD, 1);
+                await ShoppingCart.addItem(projectID, productHelper.LIGHTER_GOLD, 1);
             } else {
-                ShoppingCart.addItem(projectID, productHelper.LIGHTER_CHROME, 1);
+                await ShoppingCart.addItem(projectID, productHelper.LIGHTER_CHROME, 1);
             }
     ShoppingCart.callLocation();
 

@@ -5,10 +5,10 @@
 <!DOCTYPE html>
 <html lang="de">
     <head>
-        <title>Checkout</title>
+        <title>Enflame</title>
         <meta charset="ISO-8859-1"/>
         <s-style src="checkout.css"></s-style>
-        <script src='https://www.paypal.com/sdk/js?client-id=AcY69ITexNWNGhhjCZTpjHIyM-KiqjWbTaACjMNj5SLRvXd8fMKysveevIZ4fffuBXEevk5Jf_LDw0nw&components=buttons,payment-fields,marks,funding-eligibility&enable-funding=giropay&currency=EUR'></script>
+        <script src='https://www.paypal.com/sdk/js?client-id=AcY69ITexNWNGhhjCZTpjHIyM-KiqjWbTaACjMNj5SLRvXd8fMKysveevIZ4fffuBXEevk5Jf_LDw0nw&components=buttons,marks,card-fields,applepay&enable-funding=giropay&disable-funding=paylater,blik,sepa,bancontact&currency=EUR'></script>
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
     <?php 
 

@@ -2,6 +2,7 @@
 
     $rootpath = realpath($_SERVER["DOCUMENT_ROOT"]);
     require_once $rootpath.'/fd/resources/php/CORE.php';
+    require_once $rootpath.'/fd/resources/php/product/product.php';
 
     define('PAYPAL_CLIENT_ID', 'AcY69ITexNWNGhhjCZTpjHIyM-KiqjWbTaACjMNj5SLRvXd8fMKysveevIZ4fffuBXEevk5Jf_LDw0nw');
     define('PAYPAL_SECRET', 'EGgwQhCkMb4LUsNjgEA8hvvBjgh6Vnad9L3doqqtdOjQ7v90AIk7hUQrr-Y6IyLkYMFb0kHdzCfPnWJ8');
@@ -12,9 +13,11 @@
             $Storage = $_POST["Storage"];
             $shoppingCart = [];
             foreach($Storage["shoppingCart"] as $item){
+                // $r = Project::get($item -> ProjectID, null, false);
+                $r = Product::get(false, true, null, $item['ProductName'], null, null);
                 $obj = new stdClass();
                 $obj -> amount  = $item["amount"];
-                $obj -> price   = $item["price"];
+                $obj -> price   = $r[0]["price"];
                 $obj -> name    = $item["ProductName"];
 
                 array_push($shoppingCart, $obj);
@@ -22,10 +25,10 @@
             $URL = new stdClass();
             $URL -> return_url = $Storage["return_url"];
             $URL -> cancel_url = $Storage["cancel_url"];
-            print_r(paypalHelper::createOrder(paypalHelper::getAccessToken(), $shoppingCart, $Storage["shippingAddress"], $URL));       
+            Communication::sendBack(paypalHelper::createOrder(paypalHelper::getAccessToken(), $shoppingCart, $Storage["shippingAddress"], $URL), true, true);       
         } 
         public static function capturePayment(){
-            print_r(paypalHelper::capturePayment(paypalHelper::getAccessToken(), $_POST["orderID"], $_POST["token"]));
+            Communication::sendBack(paypalHelper::capturePayment(paypalHelper::getAccessToken(), $_POST["orderID"], $_POST["token"]), true, true);
         }
     }
     class paypalHelper {
@@ -65,8 +68,43 @@
             $data -> payment_source -> token = new stdClass();
             $data -> payment_source -> token -> id = $token;
             $data -> payment_source -> token -> type = "BILLING_AGREEMENT";
-    
+            // $data -> payment_source -> card = new stdClass();
+            // $data -> payment_source -> card -> name = "John";
+            // $data -> payment_source -> card -> number = "4020027320457279";
+            // $data -> payment_source -> card -> security_code = "575";
+            // $data -> payment_source -> card -> expiry = "10/2026";
+
+            // $data -> payment_source -> paypal = new stdClass();
+            // $data -> payment_source -> paypal -> experience_context = new stdClass();
+            // $data -> payment_source -> paypal -> experience_context -> payment_method_preference = "IMMEDIATE_PAYMENT_REQUIRED";
+            // $data -> payment_source -> paypal -> experience_context -> payment_method_selected = "PAYPAL";
+            // $data -> payment_source -> paypal -> experience_context -> brand_name = "EXAMPLE INC";
+            // $data -> payment_source -> paypal -> experience_context -> locale = "en-US";
+            // $data -> payment_source -> paypal -> experience_context -> landing_page = "LOGIN";
+            // $data -> payment_source -> paypal -> experience_context -> shipping_preference = "SET_PROVIDED_ADDRESS";
+            // $data -> payment_source -> paypal -> experience_context -> user_action = "PAY_NOW";
+            // $data -> payment_source -> paypal -> experience_context -> return_url = "https://fd/resources/HTML/public/paymentComplete.php";
+            // $data -> payment_source -> paypal -> experience_context -> cancel_url = "https://fd/resources/HTML/public/paymentComplete.php";
+            // $a = "'payment_source': {
+            //     'paypal': {
+            //       'experience_context': {
+            //         'payment_method_preference': 'IMMEDIATE_PAYMENT_REQUIRED',
+            //         'payment_method_selected': 'PAYPAL',
+            //         'brand_name': 'EXAMPLE INC',
+            //         'locale': 'en-US',
+            //         'landing_page': 'LOGIN',
+            //         'shipping_preference': 'SET_PROVIDED_ADDRESS',
+            //         'user_action': 'PAY_NOW',
+            //         'return_url': 'https://fd/resources/HTML/public/paymentComplete.php',
+            //         'cancel_url': 'https://fd/resources/HTML/public/paymentComplete.php'
+            //       }
+            //     }
+            //   }";
+            //   $data -> payment_source = $a;
             $dataString = json_encode($data);
+            // Communication::sendBack($dataString);
+            // return;
+
     
             $curl = curl_init();
             $options = [
@@ -147,17 +185,54 @@
             $applicationContext = new stdClass();
             $applicationContext -> shipping_preference = "SET_PROVIDED_ADDRESS";
             $applicationContext -> return_url = strval($URL -> return_url);
-            $applicationContext -> cancel_url = strval($URL -> cancel_url);
+            $applicationContext -> cancel_url = strval($URL -> return_url);
+
+            
+            $payment_source = new stdClass();
+            // $data -> payment_source -> token = new stdClass();
+            // $data -> payment_source -> token -> id = $token;
+            // $data -> payment_source -> token -> type = "BILLING_AGREEMENT";
+            $payment_source -> card = new stdClass();
+            $payment_source -> card -> name = "John May";
+            $payment_source -> card -> billing_address = new stdClass();
+            $payment_source -> card -> billing_address -> address_line_1 = "123 Main St.";
+            $payment_source -> card -> billing_address -> address_line_2 = "Unit B";
+            $payment_source -> card -> billing_address -> admin_area_2 = "Anytown";
+            $payment_source -> card -> billing_address -> admin_area_1 = "CA";
+            $payment_source -> card -> billing_address -> postal_code = "12345";
+            $payment_source -> card -> billing_address -> country_code = "US";
+            $payment_source -> card -> attributes = new stdClass();// = "4020027320457279";
+            $payment_source -> card -> attributes -> vault = new stdClass();
+            $payment_source -> card -> attributes -> vault -> store_in_vault = "ON_SUCCESS";
+            $payment_source -> card -> attributes -> verification = new stdClass();
+            $payment_source -> card -> attributes -> verification -> method = "SCA_ALWAYS";
+
+            // $payment_source -> card -> security_code = "575";
+            // $payment_source -> card -> expiry = "10/2026";
+
+            // $payment_source -> paypal = new stdClass();
+            // $payment_source -> paypal -> experience_context = new stdClass();
+            // $payment_source -> paypal -> experience_context -> payment_method_preference = "IMMEDIATE_PAYMENT_REQUIRED";
+            // $payment_source -> paypal -> experience_context -> payment_method_selected = "PAYPAL";
+            // $payment_source -> paypal -> experience_context -> brand_name = "EXAMPLE INC";
+            // $payment_source -> paypal -> experience_context -> locale = "en-US";
+            // $payment_source -> paypal -> experience_context -> landing_page = "LOGIN";
+            // // $payment_source -> paypal -> experience_context -> shipping_preference = "SET_PROVIDED_ADDRESS";
+            // $payment_source -> paypal -> experience_context -> user_action = "PAY_NOW";
+            // $payment_source -> paypal -> experience_context -> return_url = "https://fd/resources/HTML/public/paymentComplete.php";
+            // $payment_source -> paypal -> experience_context -> cancel_url = "https://fd/resources/HTML/public/paymentComplete.php";
+
+
             // debugg($obj);
             $data = [
-                "payer" => $payer,
+                // "payer" => $payer,
                 "application_context" => $applicationContext,
                 "intent" => "CAPTURE",
                 "purchase_units" => [
                     $obj
-                ]
+                ],
+                "payment_source" => $payment_source
             ];
-
             $dataString = json_encode($data);
 
             $options = [
@@ -178,6 +253,7 @@
             }
             curl_close($curl);
             $data = json_decode($result, true);
+            // Communication::sendBack($data);
             // debugg($data);
             if($data['status'] !== "CREATED"){
                 return false;

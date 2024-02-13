@@ -10,6 +10,8 @@ class Startup {
     static ENGRAVING        = "Body_ADMIN_engraving";
     static LOGIN            = "Body_ADMIN_login";
     static USER_ACCOUNTS    = "Body_ADMIN_userAccounts";
+    static STRIPE           = "Body_ADMIN_stripe";
+    static STRIPE_SUCCESS   = "Body_ADMIN_stripeSuccess";
     static {
         
         // document.addEventListener("visibilitychange", async function(e){
@@ -41,6 +43,8 @@ class Startup {
                 case Startup.ORDERS         : new ADMIN_orders(); break;
                 case Startup.TESTSPACE      : new ADMIN_testSpace(); break;
                 case Startup.ENGRAVING      : new ADMIN_engraving(); break;
+                case Startup.STRIPE         : new ADMIN_Stripe(); break;
+                case Startup.STRIPE_SUCCESS : new ADMIN_StripeSuccess(); break;
                 // case Startup.DATABASE       : new ADMIN_dataBase(); break;
                 // case Startup.MANAGEMENT     : new ADMIN_management(); break;
             }

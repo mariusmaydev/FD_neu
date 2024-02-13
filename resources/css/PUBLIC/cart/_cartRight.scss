@@ -33,9 +33,9 @@
                 }
             }
             > .conclusion {
-                @include Tmain.clipEdgesAll(5px);
+                @include Tmain.TContainer_basic();
+                padding: 0.5rem;
                 visibility: visible;
-                @include Tmain.T_container();
                 margin-top: 0;
                 @include mediaQueries.forMediaBreakpoint(mobile-small){
 
@@ -49,7 +49,6 @@
                     }
                     margin-top: 0.5rem;
                 }
-                @include S_tools.SPLINT-border-inset(vars.$color-T_container-Medium, 1px, true, true, true, true);
                 > .sumBody {
                     > .Table2D {
                         > table {
@@ -88,44 +87,7 @@
                     }
                 }
                 > .buttonBody {
-                    position: relative;
-                    width: 100%;
-                    box-sizing: border-box;
-                    background-color: vars.$color-header;
-                    box-shadow: 3px 3px 0px 0px vars.$color-header-Dark;
-                    transition: box-shadow 100ms ease, transform 100ms ease;
-                    &:hover {
-                        box-shadow: 5px 5px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1);//, 3px 3px 2px 0px color.adjust(vars.$color-primary-light);
-                        transform: translateX(-2px) translateY(-2px);
-                        color: vars.$color-primary-text;
-                    }
-                    > button {
-                        @include Tmain.preventSelect();
-                        > span:first-of-type{
-                            margin-right: 0.2em;
-                        }
-                        width: 100%;
-                        padding: 0.5em;
-                        box-sizing: border-box;
-                        display: flex;
-                        flex-direction: row;
-                        justify-content: center;
-                        margin: 0;
-                        border-radius: 0;
-                        background-color: vars.$color-primary-Dark;
-                        box-shadow: none;
-                        @include S_tools.SPLINT-border-inset(vars.$color-primary-complementary-Dark, 2px, false, false, true, true);
-                        transition: box-shadow cubic-bezier(0, 0.52, 1, 1) 1s;
-                        &:hover {
-                            @include S_tools.SPLINT-border-inset(vars.$color-primary-complementary-Dark, 4px, false, false, true, true);
-                            > span {
-                                color: vars.$color-primary-text;
-                            }
-                        }
-                        > span {
-                            font-size: 1.5em;
-                        }
-                    }
+                    @include Tmain.TButton_important_B();
 
                 }
                 > .mwstBody {
@@ -142,9 +104,6 @@
                 }
             }
             > .code {
-                
-                @include Tmain.clipEdgesAll(5px);
-                @include S_tools.SPLINT-border-inset(vars.$color-T_container-Medium, 1px, true, true, true, true);
                 transform: translateX(0px);
                 &:not([loaded*='true']){
                     visibility: hidden;
@@ -153,7 +112,8 @@
                 transition: transform 0.3s ease-out 0.15s;
                 visibility: visible;
 
-                @include Tmain.T_container();
+                @include Tmain.TContainer_basic();
+                padding: 0.5rem;
                 box-sizing: border-box;
                 padding-top: 0;
                 > s-input {
@@ -164,7 +124,7 @@
                     // }
                 }
                 > button {
-                    @include Tbuttons.T_button_4();
+                    @include Tmain.TButton_simple();
                     
                     box-sizing: content-box;
                     width: 100%;

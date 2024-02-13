@@ -3,6 +3,8 @@
     <head>
         <title>Admin</title>
         <s-style src="A_engraving.css"></s-style>
+        <meta name="robots" content="noindex"/>
+        <meta name="robots" content="nofollow"/>
 
     </head>
     <body id="Body_ADMIN_engraving">

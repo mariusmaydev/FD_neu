@@ -14,6 +14,7 @@ class ImageTools {
       CONVERTER_STORAGE.canvasNEW.refreshData();
       DSImage.saveAsync();
       CONVERTER_STORAGE.toolBar.update();
+      CONVERTER_STORAGE.toolBar.blurAll();
     }
     copy(){
       Image_C.copy(this.index);

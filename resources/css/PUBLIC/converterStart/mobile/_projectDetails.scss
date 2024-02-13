@@ -10,7 +10,7 @@
             background-color: rgba(vars.$color-background-subWindow, 0.6);
             animation: translateProjectDetailsBackground 0.3s ease ;
         }
-        > .content {
+        > .content.converterStart{
             font-size: 1.5rem;
             margin-top: 3.5vh;
             height: calc(97vh - vars.$NavBar-height-mobile-small);
@@ -24,7 +24,7 @@
             overflow-x: hidden;
             overflow-y: auto;
             box-sizing: content-box;
-            @include Tmain.clipEdgesAll(5px);
+            @include Tmain.TContainer_basic();
             > .button_close {
                 // display: none;
                 height: 0;

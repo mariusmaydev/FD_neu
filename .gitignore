@@ -4,6 +4,8 @@
 /data/products
 /data/Users
 /data/devData
+/data/Archive
 /resources/lib/other
-/vendor
+/resources/php/vendor
+/vendor2
 /old

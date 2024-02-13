@@ -21,12 +21,15 @@ class NavigationBar {
     }
     grow(){
         this.logo.inner.state().setActive();
+        this.mainElement.state().setActive();
     }
     shrink(){
         this.logo.inner.state().unsetActive();
+        this.mainElement.state().unsetActive();
     }
     toggle(){
         this.logo.inner.state().toggle();
+        this.mainElement.state().toggle();
     }
     draw(){
         this.drawLogo();

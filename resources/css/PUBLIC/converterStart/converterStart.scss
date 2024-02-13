@@ -293,7 +293,7 @@ body {
             }
             transition: transform 0.15s ease;
             &[state*='passive']{
-                transform: translateY(10rem);
+                transform: translateY(30rem);
             }
         } 
         &[loaded*='true']{
@@ -338,7 +338,7 @@ body {
             // @include T_container();
             >.buttons { 
                 order: 1;
-                transform: translateX(-14rem);
+                transform: translateX(-30rem);
                 transition: transform 0.3s ease-out;
                 position: relative;
                 box-sizing: content-box;
@@ -387,7 +387,7 @@ body {
                     height: 100%;
                     transition: transform 0.2s linear;;
                     padding-top: 15%;
-                    background-color: vars.$color-T_container;
+                    @include Tmain.TContainer_basic(false);
                     > div {
                         position: relative;
                         box-sizing: border-box;

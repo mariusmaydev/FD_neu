@@ -3,32 +3,17 @@
 @use '../../../themes/theme1/vars';
 @use '../../../general/buttons' as Gbuttons;
 @use '../../../../../../Splint/scss/tools/tools' as S_tools;
-// @import '../../../general/NavigationBar.scss';
 
 @mixin ToolBar_ListElement() {
     > .ToolBar_ListElement {
-        @include Tmain.T_container();
+        @include Tmain.TContainer_basic();
         position: relative;
-        // width: 100%;
-        // margin: 0.25em;
         padding: 0.5em;
         width: calc(100% - 1em);
         margin: 0.5em;
         box-sizing: border-box;
-        @include Tmain.clipEdgesAll(5px);
-        @include S_tools.SPLINT-border-inset(vars.$color-T_container-Medium, 1px, true, true, true, true);
-        // >*{
-        //     // box-sizing: border-box;
-        // }
         >.expanderBody {
             display: none;
-            // position: relative;
-            // width: 100%;
-            // margin-top: -0.25em;
-            // padding: 0;
-            // > .expander {
-
-            // }
         }
         >.toolsBody{
             .S-SliderMain {
@@ -36,11 +21,8 @@
                 margin-bottom: 0.4em;
                 height: auto;
                 max-height: max-content;
-                // padding-top: 0.4rem !important;
-                // padding-bottom: 0.4rem !important;
                 overflow: visible;
                 transition: all 0.3s ease-in;
-
                 &[drawDivider='true']{
                     &::after {
                         content: "";
@@ -50,7 +32,6 @@
                         background: transparent;
                         border-bottom: 1px solid vars.$color-devider;
                         left: 0;
-                        // top: 50%;
                         margin-top: 0.25em;
                         position: relative;
                     }
@@ -62,7 +43,6 @@
                         background: transparent;
                         border-top: 1px solid vars.$color-devider;
                         left: 0;
-                        // top: 50%;
                         margin-bottom: 0.2em;
                         position: relative;
                     }
@@ -74,15 +54,14 @@
                     display: inline-block;
                     box-sizing: border-box;
                     text-align: left;
-                    > span {
+                    // > span {
             
-                    }
+                    // }
                 }
                 > .contentBody {
                     height: 1em;
                     display: flex;
                     width: 100%;
-            
                     > .sliderBody {
                         order: 1;
                         height: 100%;
@@ -94,19 +73,13 @@
                             height: 100%;
                             display: inline-block;
                             outline: none;
-                            // align-items: center;
                             background-color: transparent;
                             -webkit-appearance: none;
                             transition: box-shadow 0.2s ease;
                             &::-webkit-slider-runnable-track {
                                 box-sizing: border-box;
-                                // top: 45%;
                                 width: 100%;
-                                // margin-inline: -5%;
                                 height: 0.15em;
-                                // margin-top: 0.25em;
-                                // margin-top: 45%;
-                                // margin-bottom: 45%;
                                 background-color: vars.$color-primary-Dark;
                                 transition: background-color 0.2s ease;
                                 box-shadow: 1px 1px 1px 0px vars.$color-slider-thumb;
@@ -114,22 +87,16 @@
                                 border-radius: 10px;
                             }
                             &::-webkit-slider-thumb {
-                                // z-index: 2;
                                 -webkit-appearance: none;
                                 appearance: none;
                                 border: none;
                                 vertical-align: baseline;
                                 height: 1em;
                                 width: 0.5em;
-                                // border-radius: 10%;
                                 margin-top: -0.425em;
                                 background: vars.$color-slider-thumb;
                                 box-shadow: 1px 1px 0px 0px vars.$color-slider-thumb-Dark;
-                                            // 2px 1px 0px 0px vars.$color-slider-thumb-Dark;
-                                // @include S_tools.SPLINT-border-inset(vars.$color-slider-thumb-Dark, 1px, false, false, true, true);
-                                // margin-top: calc(-100% + 0.5em);
                                 box-sizing: border-box;
-                                // @include border();
                                 transition: box-shadow 0.2s ease;
                             }
                             &:focus {
@@ -138,15 +105,15 @@
                                 }
                                 outline: none;
                             }
-                            
                             &:hover::-webkit-slider-runnable-track {
                                 background-color: vars.$color-primary;
                             }
                         }
                         > datalist {
                             display: none;
-                            > option {
-                            }
+                            // > option {
+
+                            // }
                         }
                     }
                     > .valueOutput {
@@ -164,8 +131,9 @@
                         box-sizing: border-box;
                         text-align: center;
                         margin-top: auto;
-                        > span {
-                        }
+                        // > span {
+
+                        // }
                     }
                 }
             }

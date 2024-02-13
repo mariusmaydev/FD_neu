@@ -5,6 +5,7 @@ class BottomBar_Text_FontFamily_Menu {
         this.parent = parent;
         this.data = data;
         this.list = [];
+        this._onRemoveFloatingDiv = function(){};
         this.genList();
         this.draw();
     }
@@ -14,6 +15,10 @@ class BottomBar_Text_FontFamily_Menu {
         this.add("Arial");
         this.add("Verdana");
         this.add("Georgia");
+    }
+    set onRemoveFloatingDiv(v){
+        this._onRemoveFloatingDiv = v;
+        this.floatingDiv.onRemoveFloatingDiv = v;
     }
     draw(){
         this.floatingDiv = new Converter_BottomBar_floatingDiv_block("fontFamilySlideShow");

@@ -1,14 +1,23 @@
 
 @use '../themes/theme1/vars';
+@use '../themes/theme1/main' as Tmain;
 .NavigationMenu {
     position: relative;
     // @include border();
     display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    column-gap: 5rem;
+    justify-content: start;
+    align-items: flex-start;
+    justify-items: left;
+    align-content: start;
+    // grid-template-columns: repeat(auto-fit, 1fr);
     top: 2em;
     left: 5%;
-    height: max-content;
-    flex-direction: column;
-    width: max-content;
+    height: calc(100vh - 14em);
+    overflow: hidden;
+    width: calc(100% - 10%);
 
     > button {
         padding: 0.5rem;
@@ -23,6 +32,36 @@
             }
             transition: color 1s ease;
             text-align: left;
+        }
+        &.orders {
+            display: flex;
+            flex-direction: row;
+            position: relative;
+            > span {
+
+            }
+            > .orderCount {
+                @include Tmain.preventSelect();
+                cursor: pointer;
+                position: absolute;
+                z-index: 1;
+                left: 100%;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: vars.$color-primary;
+                border-radius: 50%;
+                width: 2rem;
+                height: 2rem;
+                aspect-ratio: 1/1;
+                display: flex;
+                justify-content: center;
+                > span {
+                    font-size: 2rem;
+                    display: inline-flex;
+                    align-items: center;
+
+                }
+            }
         }
     }
     * {

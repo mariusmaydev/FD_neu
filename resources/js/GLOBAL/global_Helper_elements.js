@@ -36,14 +36,20 @@ class FileUploadButton extends SPLINT.DOMElement.Button {
     this.input.type = "file";
     this.input.accept = this.accept;
     this.input.name = "inputfile";
+    this.input.multiple = true;
     this.input.oninput = function(){
-            if(preventDirect){
-              this.file_data = FileUpload.getFileData(this.input);
-            } else {
-              FileUpload.direct(this.input, this.type, this.onsuccess);
+            this.file_data = FileUpload.getFileData(this.input);
+            for (const file of this.file_data) {
+                FileUpload.direct(file, this.type, this.onsuccess);
+            //   output.innerText += `\n${file.name}`;
             }
+            // if(preventDirect){
+            //   this.file_data = FileUpload.getFileData(this.input);
+            // } else {
+            //   FileUpload.direct(this.input, this.type, this.onsuccess);
+            // }
           // UploadDirect(this.input);
-          this.input.clear();
+          this.input.value = "";
         }.bind(this);
   
     this.button.onclick = function(e){

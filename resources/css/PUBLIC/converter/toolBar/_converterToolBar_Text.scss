@@ -5,7 +5,6 @@
 @use '../../../themes/theme1/buttons' as Tbuttons;
 @use '../../../../../../Splint/scss/tools/tools' as S_tools;
 @use 'sass:color';
-// @import '../../../general/NavigationBar.scss';
 
 @use 'converterToolBarHelper';
 
@@ -31,30 +30,6 @@
                 max-height: 0px;
                 overflow: hidden;
             }
-            // height: 6em;
-            // > .S-SliderMain {
-            //     // display: none;
-            //     max-height: 0px;
-            //     margin: 0;
-            //     overflow: hidden;
-            // }
-            // > .TextInputDiv {
-            //     height: calc(100% - 1.5em);
-            //     box-sizing: content-box;
-            //     // display: none;
-            // }
-            // > .buttonsDiv {
-            //     max-height: 0px;
-            //     margin: 0;
-            // }
-            // > .DropDownInputMain_S {
-            //     max-height: 0px;
-            //     margin: 0;
-            // }
-            // > .rotationBody {
-            //     max-height: 0px;
-            //     margin: 0;
-            // }
         }
         > .TextInputDiv {
             position: relative;
@@ -62,22 +37,19 @@
             @include Gmain.box-shadow();
             margin: 0;
             height: fit-content;
-            // padding: 0.25em;
             overflow: auto;
             max-height: 20em;
-            >*{
+            >* {
                 box-sizing: border-box;
             }
             > label, hr {
                 display: none;
-
             }
             > textarea {
                 position: relative;
                 border: none;
                 resize: none;
                 overflow: hidden;
-                // vertical-align: bottom;
                 box-sizing: border-box;
                 height: auto;
                 width: 100%;
@@ -98,8 +70,6 @@
                 flex-direction: row;
                 flex-flow: row;;
                 flex-wrap: wrap ;
-                // grid-auto-rows: min-content;
-                // grid-template-columns: repeat(auto-fill, minmax(10em, 50%));
                 grid-gap: 0rem;
                 > .buttonsDiv {
                     flex-grow: 1;
@@ -131,54 +101,47 @@
                             font-size: 1.7rem;
                             padding: 0.2em;
                             aspect-ratio: 1/1;
-                            // justify-content: space-between;
                             > span {
                                 font-size: 1em;
-                                // margin-top: auto;
-                                // margin-bottom: auto;
                             }
-                            // &[state*='active']{
-                            //     > span {
-                            //         color: $color-primary;
-                            //     }
-                            // }
                         }
-                        // @include switchButton($color-primary);
                     }
                     > button {
-                        @include Tbuttons.T_button_Animated(true);
+                        @include Tmain.TButton_simple();
                         &[state*='active']{
-                            box-shadow: 1px 1px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1),
-                                        inset -1px 0px 0px 0px vars.$color-primary-Dark,
-                                        inset 0px -1px 0px 0px vars.$color-primary-Dark;
-                            transform: translateX(1px) translateY(1px);
+                            // box-shadow: 1px 1px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1),
+                            //             inset -1px 0px 0px 0px vars.$color-primary-Dark,
+                            //             inset 0px -1px 0px 0px vars.$color-primary-Dark;
+                            // transform: translateX(1px) translateY(1px);
+                            @include S_tools.SPLINT-border-inset(vars.$color-primary, 1px);
                         }
                         display: flex;
                         align-items: center;
                         flex-direction: row;
                         flex-wrap: nowrap;
                         font-size: 1.7rem;
-                        // width: 1.4rem;
-                        // height:  1.4rem;
                         padding: 0.2em;
                         aspect-ratio: 1/1;
-                        // justify-content: space-between;
-                        > span {
-                            font-size: 1em;
-                            // margin-top: auto;
-                            // margin-bottom: auto;
+                        &:hover {
+                            > span {
+                                &:not(.description) {
+                                    text-shadow: 1px 1px 0px color.adjust(vars.$color-primary );
+                                    transition-duration: 200ms;
+                                    // color: vars.$color-primary;
+                                }
+                            }
                         }
-                        // &[state*='active']{
-                        //     > span {
-                        //         color: $color-primary;
-                        //     }
-                        // }
+                        > span {
+                            text-shadow: 0px 0px 0px transparent;
+                            transition: text-shadow cubic-bezier(0, 0.52, 1, 1) 0.5s;
+                            color: vars.$color-primary-text;
+                            font-size: 1em;
+                        }
                     }
                 }
                 >.DropDownInputMain_S {
                     flex-grow: 0;
                     flex-shrink: 1;
-                    // min-width: fit-content;
                     max-width: 40%;
                     margin-top: 0em;
                     margin-bottom: 0em;
@@ -188,7 +151,6 @@
                             > div {
                                 cursor: pointer;
                                 > span {
-                                    
                                     font-size: 1em;
                                     transition: font-size 0.2s ease-in-out;
                                 }
@@ -202,7 +164,6 @@
                         }
                         > div {
                             > input {
-                                
                                 @include Tmain.preventSelect();
                             }
                             > label {
@@ -218,11 +179,8 @@
                 margin-bottom: 0.4em;
                 height: auto;
                 max-height: max-content;
-                // padding-top: 0.4rem !important;
-                // padding-bottom: 0.4rem !important;
                 overflow: visible;
                 transition: all 0.3s ease-in;
-
                 &[drawDivider='true']{
                     &::after {
                         content: "";
@@ -232,7 +190,6 @@
                         background: transparent;
                         border-bottom: 1px solid vars.$color-devider;
                         left: 0;
-                        // top: 50%;
                         margin-top: 0.25em;
                         position: relative;
                     }
@@ -244,7 +201,6 @@
                         background: transparent;
                         border-top: 1px solid vars.$color-devider;
                         left: 0;
-                        // top: 50%;
                         margin-bottom: 0.2em;
                         position: relative;
                     }
@@ -255,15 +211,14 @@
                     display: inline-block;
                     box-sizing: border-box;
                     text-align: left;
-                    > span {
+                    // > span {
             
-                    }
+                    // }
                 }
                 > .contentBody {
                     height: 1em;
                     display: flex;
                     width: 100%;
-            
                     > .sliderBody {
                         order: 1;
                         height: 100%;
@@ -275,19 +230,13 @@
                             height: 100%;
                             display: inline-block;
                             outline: none;
-                            // align-items: center;
                             background-color: transparent;
                             -webkit-appearance: none;
                             transition: box-shadow 0.2s ease;
                             &::-webkit-slider-runnable-track {
                                 box-sizing: border-box;
-                                // top: 45%;
                                 width: 100%;
-                                // margin-inline: -5%;
                                 height: 0.15em;
-                                // margin-top: 0.25em;
-                                // margin-top: 45%;
-                                // margin-bottom: 45%;
                                 background-color: vars.$color-primary-Dark;
                                 transition: background-color 0.2s ease;
                                 box-shadow: 1px 1px 1px 0px vars.$color-slider-thumb;
@@ -295,22 +244,16 @@
                                 border-radius: 10px;
                             }
                             &::-webkit-slider-thumb {
-                                // z-index: 2;
                                 -webkit-appearance: none;
                                 appearance: none;
                                 border: none;
                                 vertical-align: baseline;
                                 height: 1em;
                                 width: 0.5em;
-                                // border-radius: 10%;
                                 margin-top: -0.425em;
                                 background: vars.$color-slider-thumb;
                                 box-shadow: 1px 1px 0px 0px vars.$color-slider-thumb-Dark;
-                                            // 2px 1px 0px 0px vars.$color-slider-thumb-Dark;
-                                // @include S_tools.SPLINT-border-inset(vars.$color-slider-thumb-Dark, 1px, false, false, true, true);
-                                // margin-top: calc(-100% + 0.5em);
                                 box-sizing: border-box;
-                                // @include border();
                                 transition: box-shadow 0.2s ease;
                             }
                             &:focus {
@@ -319,15 +262,15 @@
                                 }
                                 outline: none;
                             }
-                            
                             &:hover::-webkit-slider-runnable-track {
                                 background-color: vars.$color-primary;
                             }
                         }
                         > datalist {
                             display: none;
-                            > option {
-                            }
+                            // > option {
+
+                            // }
                         }
                     }
                     > .valueOutput {
@@ -344,20 +287,17 @@
                         box-sizing: border-box;
                         text-align: center;
                         margin-top: auto;
-                        > span {
-                        }
+                        // > span {
+
+                        // }
                     }
                 }
             }
             > .rotationBody {
                 position: relative;
-                // height: 100%;
                 display: block;
-
-                // height: max-content
                 > .ContainerBody {
                     display: flex;
-                // height: 100%;
                     > .container {
                         width: 100%;
                         display: flex;
@@ -370,12 +310,10 @@
                             margin-inline: 0.5em;
                             @include Tbuttons.T_button_Animated(true);
                             width: 100%;
-                            // box-shadow: none;
                         }
                     }
                     > .empty {
                         width: 1.5em;
-
                     }
                 }
             }

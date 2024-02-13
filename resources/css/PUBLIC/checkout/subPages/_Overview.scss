@@ -18,12 +18,11 @@
             @include mediaQueries.forMediaBreakpoint(mobile-small){
                 margin-bottom: 1em;
             }
-            @include Tmain.T_container();
+            padding: 0.5rem;
             border: none;
             &:not(.buttonsDiv){
                 // &:not(.paypalContainer){
-                    @include Tmain.clipEdgesAll(5px);
-                    @include S_tools.SPLINT-border-inset(vars.$color-T_container-Medium, 1px, true, true, true, true);
+            @include Tmain.TContainer_basic();
                 // }
             }
             &.buttonsDiv{
@@ -45,43 +44,7 @@
                 min-width: 80%!important;
                 max-width: 100%!important;
                 position: relative;
-                // margin: auto;
-                // width: 100%;
-                // background-color: transparent;;
-                // padding: 0;
-                // display: flex;
-                // justify-content: center;
             }
         }
     }
 }
-
-// @media only screen and (min-width: 75px) {
-//     #paypal-button-container {
-//       min-width: 75px;
-//     }
-//   }
-  
-//   @media only screen and (min-width: 150px) {
-//     #paypal-button-container {
-//       min-width: 150px;
-//     }
-//   }
-  
-//   @media only screen and (min-width: 200px) {
-//     #paypal-button-container {
-//       min-width: 200px;
-//     }
-//   }
-  
-//   @media only screen and (min-width: 300px) {
-//     #paypal-button-container {
-//       min-width: 300px;
-//     }
-//   }
-  
-//   @media only screen and (min-width: 500px) {
-//     #paypal-button-container {
-//       min-width: 500px;
-//     }
-//   }

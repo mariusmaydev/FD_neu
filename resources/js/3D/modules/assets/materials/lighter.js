@@ -113,7 +113,7 @@ export class Lighter {
       materialIn.needsUpdate = true;
       return materialIn;
     }
-    static async Engraving3(src = null, onload = function(){}){
+    static async Engraving3(color = 0xffc400, src = null, onload = function(){}){
       let material = null;
     //   let HELPER = new MaterialHelper("gold");
       // if(HELPER.material != undefined){
@@ -162,7 +162,7 @@ export class Lighter {
           bumpTexture.needsUpdate = true;
 
           material = new MeshPhysicalMaterial( {
-            color: 0xffc400,
+            color: color,
             map: texture,
             bumpMap: bumpTexture,
             bumpScale: 10,
@@ -173,7 +173,7 @@ export class Lighter {
             roughness: 6, // between 0 and 1
             // depthFunc: THC.LessEqualDepth,
             depthTest: true,
-            emissive: 0xffc400,
+            emissive: color,
             emissiveIntensity: 0.8,
             alphaToCoverage: false,
             transparent: true,
@@ -183,7 +183,7 @@ export class Lighter {
             specularColor: 0x000000,
             specularIntensity: 0.1,
             thickness: 0,
-            sheenColor: 0x7b5e00,
+            sheenColor: 0xffffff,
             sheenRoughness: 0.5,
             sheen: 0.2,
             ior: 0,

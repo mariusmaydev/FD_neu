@@ -42,19 +42,21 @@ class BottomBar_Standard {
         this.button_NewText.Description = "Text hinzufügen";
         this.button_NewText.onclick = async function(){
             let res = await ConverterHelper.addText();
-            console.log(res)
+            console.log(res);
             let SubWindow = new SPLINT.DOMElement.popupWindow("editText", true);
             SubWindow.buttonClose.bindIcon("check");
             SubWindow.Class("editText_mobile");
-            SubWindow.content.onclick = function(e){
-                if(e.srcElement.id == SubWindow.content.id){
-                    SubWindow.close();
-                }
+            SubWindow.onclose = function(){
+                CONVERTER_STORAGE.toolBar.focusElement("txt", res[0].TextID);
             }
+            // SubWindow.content.onclick = function(e){
+            //     if(e.srcElement.id == SubWindow.content.id){
+            //         SubWindow.close();
+            //     }
+            // }
             let headline = new SPLINT.DOMElement.SpanDiv(SubWindow.content, "headline", "Verfasse einen Text.");
                 headline.Class("headline");
-            let textInput = new SPLINT.DOMElement.InputText(SubWindow.content, "editTextInputDiv", "test");
-                // console.log(this.data)    
+            let textInput = new SPLINT.DOMElement.InputText(SubWindow.content, "editTextInputDiv", "test"); 
                 textInput.textarea.focus();
                 textInput.setValue(res[0].TextValue);
                 textInput.oninput = function(){

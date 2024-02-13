@@ -15,7 +15,10 @@ $LIGHTER-ratio2         : 1.5131;
 $font-family-main       : "G-Roboto";
 $font-weight-main       : 400;
 
+$general-skew           : 0deg;
+$header-skew            : 0deg; 
 $color-Footer           : gray;
+$color-Footer-Converter-mobile  : rgb(211, 211, 211);
 
 $color-hover            : #c9c9c9;
 $color-primary-complementary : #3287ff;
@@ -43,7 +46,8 @@ $color-background-subWindow : rgba(26, 26, 26, 0.808);
 
 
 $color-header-Dark      : rgba(0, 0, 0, 0.7);
-$color-header           : #cbcbcb;
+$color-header           : transparent;
+$color-header-active    : white;//#cbcbcb;
 
 $color-T_container-Dark : rgba(0, 0, 0, 0.7);
 $color-T_container-Dark-M      : #858585;

@@ -23,8 +23,8 @@ export default class setup {
             let a = this.inst.canvas.parentNode.clientWidth;
             let b = this.inst.canvas.parentNode.clientHeight;
             if(SPLINT.ViewPort.getSize() == "mobile-small"){
-                this.inst.canvas.width = a ;
-                this.inst.canvas.height = b ;
+                this.inst.canvas.width = a *2;
+                this.inst.canvas.height = b *2;
             } else {
                 this.inst.canvas.width = a * 2;
                 this.inst.canvas.height = b * 2;
@@ -42,7 +42,8 @@ export default class setup {
             // this.inst.renderer.outputEncoding = THREE.sRGBEncoding;
             // console.log(window.devicePixelRatio, this.inst.canvas.parentNode.clientWidth, this.inst.canvas.parentNode.clientHeight)
             if(SPLINT.ViewPort.getSize() == "mobile-small"){
-                this.inst.renderer.setPixelRatio( Math.min(2, window.devicePixelRatio));
+                // this.inst.renderer.setPixelRatio( Math.min(2, window.devicePixelRatio));
+                this.inst.renderer.setPixelRatio( window.devicePixelRatio * 2);
             } else {
                 this.inst.renderer.setPixelRatio( window.devicePixelRatio * 2);
             }
@@ -87,7 +88,11 @@ export default class setup {
         this.inst.light();
         this.inst.scene.add( this.inst.camera );
         return new Promise(async function(resolve){
-            await MODEL.init(this.inst);
+            if(this.inst.canvas.getAttribute("color") == "CHROME"){
+                await MODEL.init(this.inst, "lighter", 1, false);
+            } else {
+                await MODEL.init(this.inst);
+            }
             resolve('resolved');
             this.inst.onFinishLoading();
         }.bind(this));

@@ -1,0 +1,38 @@
+<S-error>
+<S-msg>
+     
+     DataSet Object
+     (
+         [dataSet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => ShoppingCart
+                         [1] => [{"ProjectID":"bd5c05176f","ProductName":"Lighter_Gold_custom","amount":1}]
+                     )
+     
+             )
+     
+         [keySet] => Array
+             (
+                 [0] => Array
+                     (
+                         [0] => UserID
+                         [1] => 1f75a9ed56
+                         [2] => -1
+                     )
+     
+             )
+     
+         [PrimaryKey] => 
+         [TBName] => 
+         [DBName] => 
+     )
+     
+</S-msg>
+<S-type>NOTICE</S-type>
+<S-trace>
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2024-02-13 10:52:51</S-time></S-error>

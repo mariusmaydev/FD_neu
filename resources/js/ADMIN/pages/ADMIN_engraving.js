@@ -2,7 +2,6 @@
 class ADMIN_engraving extends ADMIN_DrawTemplate {
     constructor(){
         super("engraving");
-        ADMIN_loginFuncs.check_redirect();
         this.draw();
     }
     draw(){

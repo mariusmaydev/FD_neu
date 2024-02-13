@@ -12,7 +12,6 @@ class ADMIN_login extends ADMIN_DrawTemplate {
         if(hashes.includes("login")){
             this.drawLoginMenu();
         } else {
-            ADMIN_loginFuncs.check_redirect();
             this.drawLoginList();
         }
     }

@@ -41,7 +41,7 @@ class ConverterHelper {
         DSProject.Storage.Product = "Lighter_Chrome_custom";
     }
     DSProject.Storage.EPType = type;
-    DSProject.saveAsync();
+    DSProject.save();
     CONVERTER_STORAGE.canvasNEW.refreshData();
   }
 

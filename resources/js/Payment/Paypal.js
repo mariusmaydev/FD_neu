@@ -14,25 +14,29 @@ class Paypal {
   constructor(shoppingCart, address){
     this.shoppingCart = shoppingCart;
     this.address      = address;
-    this.return_url   = PATH.location.index;
+    this.return_url   = PATH.location.paymentComplete;
     this.cancel_url   = "";
     this.purchaseUnits = "purchaseUnits";
   }
   async createOrder(){
     let response = this.#call(Paypal.CREATE_ORDER);
+    console.log(response);
     await SPLINT.SessionsPHP.set(Paypal.Session_OrderID, response.orderID);
     // Location_S.goto(response.URL).call();
+    return response;
   }
   static async capturePayment(token){
-    let data = CallPHP_S.getCallObject(Paypal.CAPTURE_PAYMENT);
+    let data = SPLINT.Data.CallPHP_OLD.getCallObject(Paypal.CAPTURE_PAYMENT);
         data.token    = token;
         data.orderID  = await SPLINT.SessionsPHP.get(Paypal.Session_OrderID);
-    return CallPHP_S.call(Paypal.PATH, data);
+        console.log(data)
+    return SPLINT.Data.CallPHP_OLD.call(Paypal.PATH, data);
   }
   #call(method){
     this.#prepare();
     let data = CallPHP_S.getCallObject(method);
         data.Storage = this.data;
+        console.dir(data);
     return CallPHP_S.call(Paypal.PATH, data).toObject(true);
   }
   #prepare(){
@@ -82,53 +86,53 @@ class Paypal {
 //   }
 }
 
-// async function preparePaypal(){
-//     let CouponObj = null;
-//     let Items = (await ShoppingCart.get()).shoppingCart;
-//     let FullPrice = 0;
-//     let productsData = await productHelper.getProducts();
-//     console.log(Items)
-//     console.dir(await productHelper.getProducts());
-//     for(const item of Items){
-//         item.price = parseFloat(productsData[item.ProductName].price);
-//         FullPrice += S_Math.multiply(item.price, item.amount);
-//     }
-//     let orderObject = '{' +
-//       '"purchase_units": [{' +
-//          '"amount": {' +
-//            '"currency_code": "EUR",' +
-//            '"value": "' + FullPrice + '",' +
-//            '"breakdown": {' +
-//              '"item_total": {' +
-//                '"currency_code": "EUR",' +
-//                '"value": "' + FullPrice + '"' +
-//              '}' +
-//            '}' +
-//          '},' +
-//          '"items": [';
+async function preparePaypal(){
+    let CouponObj = null;
+    let Items = (await ShoppingCart.get()).shoppingCart;
+    let FullPrice = 0;
+    let productsData = await productHelper.getProducts();
+    console.log(Items)
+    console.dir(await productHelper.getProducts());
+    for(const item of Items){
+        item.price = parseFloat(productsData[item.ProductName].price);
+        FullPrice += S_Math.multiply(item.price, item.amount);
+    }
+    let orderObject = '{' +
+      '"purchase_units": [{' +
+         '"amount": {' +
+           '"currency_code": "EUR",' +
+           '"value": "' + FullPrice + '",' +
+           '"breakdown": {' +
+             '"item_total": {' +
+               '"currency_code": "EUR",' +
+               '"value": "' + FullPrice + '"' +
+             '}' +
+           '}' +
+         '},' +
+         '"items": [';
 
-//     for(let i = 0; i < Items.length; i++){
-//       orderObject +=
-//        '{' +
-//          '"name": "' + Items[i].ProductName + '",';
-//       if(CouponObj != null){
-//         orderObject +=   '"description": "CouponCode:' + CouponObj.code + '  Wert: ' + CouponObj.value + '  Für alle Produkte: ' + CouponObj.eachItem + '",';
-//       } else {
-//         orderObject +=   '"description": "",';
-//       }
-//       orderObject +=
-//          '"unit_amount": {' +
-//            '"currency_code": "EUR",' +
-//            '"value": "' + Items[i].price + '"' +
-//          '},' +
-//          '"quantity": "' + Items[i].amount + '"' +
-//        '}';
-//       if(i < Items.length - 1){
-//         orderObject += ',';
-//       }
-//     }
+    for(let i = 0; i < Items.length; i++){
+      orderObject +=
+       '{' +
+         '"name": "' + Items[i].ProductName + '",';
+      if(CouponObj != null){
+        orderObject +=   '"description": "CouponCode:' + CouponObj.code + '  Wert: ' + CouponObj.value + '  Für alle Produkte: ' + CouponObj.eachItem + '",';
+      } else {
+        orderObject +=   '"description": "",';
+      }
+      orderObject +=
+         '"unit_amount": {' +
+           '"currency_code": "EUR",' +
+           '"value": "' + Items[i].price + '"' +
+         '},' +
+         '"quantity": "' + Items[i].amount + '"' +
+       '}';
+      if(i < Items.length - 1){
+        orderObject += ',';
+      }
+    }
 
-//     orderObject += ']}]}';
-//     orderObject = JSON.parse(orderObject);
-//     return orderObject;
-// }
+    orderObject += ']}]}';
+    orderObject = JSON.parse(orderObject);
+    return orderObject;
+}

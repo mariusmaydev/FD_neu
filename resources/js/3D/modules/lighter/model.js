@@ -19,7 +19,7 @@ export default class Model {
     static loaded = false;
 
     static async init(instance, name = "lighter", loaderCount = 1, GoldFlag = true){
-        Cache.enabled = true;
+        Cache.enabled = false;
         // if(FLAG_sceneLoaded < loaderCount){
             let SRCscene = null;
             const pos = new Vector3( 0, 0, 0 );
@@ -73,7 +73,6 @@ export default class Model {
             // FLAG_sceneLoaded = parseInt(FLAG_sceneLoaded) + 1;
         // }
         Model.getFlame(instance, instance.setup.getLighterGroupe(instance.scene, name));
-
         // if(FLAG_sceneLoaded >= loaderCount){
             // instance.onFinishLoading(name);
         // }
@@ -277,7 +276,7 @@ export default class Model {
     static async getThumbnail(scene, instance, src , name = "", color = 0xe8b000, isHidden = false){
         let double = false;
         let material = null;
-            return MATERIALS.Lighter.Engraving3(src, async function(texture, mat = null){
+            return MATERIALS.Lighter.Engraving3(color, src, async function(texture, mat = null){
                 if(mat != null){
                     material = mat;
                 }      

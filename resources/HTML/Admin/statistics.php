@@ -3,6 +3,8 @@
     <head>
         <title>Admin</title>
         <s-style pre src="A_statistics.css"></s-style>
+        <meta name="robots" content="noindex"/>
+        <meta name="robots" content="nofollow"/>
 
 <!-- <script src="../../../../Splint/lib/require.js"></script> -->
 <script defer src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>

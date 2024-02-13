@@ -44,6 +44,10 @@ class BottomBar_Text {
                     let SubWindow = new SPLINT.DOMElement.popupWindow("editText", true);
                         SubWindow.Class("editText_mobile");
                         SubWindow.buttonClose.bindIcon("check");
+                        SubWindow.onclose = function(){
+                            // console.log(this.data);
+                            CONVERTER_STORAGE.toolBar.focusElement("txt", this.data.TextID);
+                        }.bind(this);
                         SubWindow.content.onclick = function(e){
                             if(e.srcElement.id == SubWindow.content.id){
                                 SubWindow.close();
@@ -65,7 +69,11 @@ class BottomBar_Text {
                 button_FontFamily.bindIcon("text_format");
                 // button_FontFamily.span.style.fontFamily = this.data.FontFamily;
                 button_FontFamily.onclick = function(){
-                    new BottomBar_Text_FontFamily_Menu(buttonsDiv, this.TOOLS, this.data);
+                    button_FontFamily.button.state().setActive();
+                    let ele = new BottomBar_Text_FontFamily_Menu(buttonsDiv, this.TOOLS, this.data);
+                        ele.onRemoveFloatingDiv = function(){
+                            button_FontFamily.button.state().unsetActive();
+                        }.bind(this);
                 }.bind(this);
 
             this.button_textAlign = new BottomBar_Text_Button_TextAlign(buttonsDiv, this.TOOLS, this.data);

@@ -1,6 +1,5 @@
 @use '../../../general/main' as Gmain;
 @use '../../../general/buttons' as Gbuttons;
-// @import '../../../general/NavigationBar.scss';
 
 @use 'converterToolBar_Text';
 @use 'converterToolBar_Image';
@@ -8,14 +7,10 @@
 
 @mixin ToolBar_Main() {
     > .ToolBar_ActiveBody {
-        // flex-grow: 1 !important;
         box-sizing: content-box;
         position: relative;
         overflow-x: visible;
         width: 100%;
-        // height: fit-content !important;
-        // min-height: 10%;
-        // max-height: 100%;
         top: 0;
         margin: 0 !important;
         padding: 0 !important;
@@ -23,7 +18,6 @@
         > div {
             position: relative;
             width: 100%;
-            // height: 100%;
             box-sizing: border-box;
             overflow: visible;
             overflow-y: auto;

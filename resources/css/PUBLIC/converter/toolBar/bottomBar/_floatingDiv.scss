@@ -11,7 +11,6 @@
         width: 100%;
         overflow: visible;
         box-sizing: content-box;
-
         position: relative;
         > div {            
             position: absolute;
@@ -50,7 +49,6 @@
                     }
                 }
             }
-            
         }
         &[name*='buttons_Text']{
             > div {
@@ -64,11 +62,11 @@
     }
 }
 
-
 @mixin conv_floatingDiv_block() {
     >.converter-bottomBar-floatingDiv.block {
         pointer-events: none;
         bottom: calc(100% + 0.5rem);
+        padding-inline: 0.5rem;
         left: 0;
         height: max-content;
         width: 100%;
@@ -112,15 +110,17 @@
                     height: auto;
                     max-height: 100%;
                     max-width: 100%;;
-                    > div {
+                    // > div {
 
-                    }
+                    // }
                 }
             }
             > .S-SliderMain {
                 position: relative;
-                @include Tmain.T_container();
-                @include Tmain.clipEdgesAll(5px);
+                // @include Tmain.TContainer_basic();
+                background-color: vars.$color-primary-complementary;
+                box-shadow: none;
+                padding: 1rem;
                 margin-top: 0.4em;
                 margin-bottom: 0.4em;
                 height: 100%;
@@ -129,8 +129,6 @@
                 align-items: stretch;
                 align-content: stretch;
                 max-height: max-content;
-                // padding-top: 0.4rem !important;
-                // padding-bottom: 0.4rem !important;
                 overflow: visible;
                 transition: all 0.3s ease-in;
 
@@ -143,7 +141,6 @@
                         background: transparent;
                         border-bottom: 1px solid vars.$color-devider;
                         left: 0;
-                        // top: 50%;
                         margin-top: 0.25em;
                         position: relative;
                     }
@@ -155,7 +152,6 @@
                         background: transparent;
                         border-top: 1px solid vars.$color-devider;
                         left: 0;
-                        // top: 50%;
                         margin-bottom: 0.2em;
                         position: relative;
                     }
@@ -194,22 +190,17 @@
                             top: 0;
                             margin: 0;
                             padding: 0;
-                            // align-items: center;
                             background-color: transparent;
                             -webkit-appearance: none;
+                            -moz-appearance: none;
+                            appearance: none;
                             transition: box-shadow 0.2s ease;
                             &::-webkit-slider-runnable-track {
                                 box-sizing: border-box;
-                                // top: 45%;
                                 width: 100%;
-                                // margin-inline: -5%;
                                 height: 0.15em;
-                                // top: -0.075em;
-                                // margin-top: 0.25em;
-                                // margin-top: 45%;
                                 margin: 0;
                                 padding: 0;
-                                // margin-bottom: 45%;
                                 background-color: vars.$color-primary-Dark;
                                 transition: background-color 0.2s ease;
                                 box-shadow: 1px 1px 1px 0px vars.$color-slider-thumb;
@@ -217,22 +208,16 @@
                                 border-radius: 10px;
                             }
                             &::-webkit-slider-thumb {
-                                // z-index: 2;
                                 -webkit-appearance: none;
                                 appearance: none;
                                 border: none;
                                 vertical-align: baseline;
                                 height: 1em;
                                 width: 0.5em;
-                                // border-radius: 10%;
                                 margin-top: -0.425em;
                                 background: vars.$color-slider-thumb;
                                 box-shadow: 1px 1px 0px 0px vars.$color-slider-thumb-Dark;
-                                            // 2px 1px 0px 0px vars.$color-slider-thumb-Dark;
-                                // @include S_tools.SPLINT-border-inset(vars.$color-slider-thumb-Dark, 1px, false, false, true, true);
-                                // margin-top: calc(-100% + 0.5em);
                                 box-sizing: border-box;
-                                // @include border();
                                 transition: box-shadow 0.2s ease;
                             }
                             &:focus {
@@ -248,8 +233,9 @@
                         }
                         > datalist {
                             display: none;
-                            > option {
-                            }
+                            // > option {
+
+                            // }
                         }
                     }
                     > .valueOutput {
@@ -263,13 +249,13 @@
                         }
                         top: 0.25rem;
                         width: 1.5em;
-                        
                         display: inline-block;
                         box-sizing: border-box;
                         text-align: center;
                         margin-top: auto;
-                        > span {
-                        }
+                        // > span {
+
+                        // }
                     }
                 }
             }
@@ -285,9 +271,9 @@
                         display: inline-block;
                         box-sizing: border-box;
                         text-align: center;
-                        > span {
+                        // > span {
                 
-                        }
+                        // }
                     }
                     > .contentBody {
                         display: flex;
@@ -299,9 +285,9 @@
                         width: 90%;
                         > .sliderBody {
                             width: 100%;
-                            > input {
+                            // > input {
 
-                            }
+                            // }
                         }
                         > .valueOutput {
                             position: relative;
@@ -317,8 +303,9 @@
                             box-sizing: border-box;
                             text-align: center;
                             margin-top: auto;
-                            > span {
-                            }
+                            // > span {
+
+                            // }
                         }
                     }
                 }
@@ -331,9 +318,9 @@
                         justify-content: stretch;
                         > button {
                             width: 100%;
-                            > span {
+                            // > span {
 
-                            }
+                            // }
                         }
                     }
                     > .empty {
@@ -349,7 +336,6 @@
                 width: 100%;
                 @include Gmain.box-shadow();
                 background-color: white;
-                // padding: 1%;
                 margin-bottom: 2%;
                 box-sizing: border-box;
                 border-radius: vars.$border-radius;
@@ -366,36 +352,39 @@
                 }
             }
             > button {
+                background-color: vars.$color-primary-complementary;
+                margin-bottom: 0;
                 span {
-                    font-size: 6rem;
+                    font-size: 7rem;
                     &.text {
                         font-size: 2rem;
                     }
                 }
             }
-        
         }
         &[name*='textAlignSlider']{
             > div {
                 flex-direction: row;
+                gap: 0.5rem;
             }
         }
         &[name*='fontFamilySlideShow']{
-            height: 10rem;
+            height: 7rem;
             overflow: visible;
             width: 100vw;
-            left: -2%;
+            padding-inline: 0rem;
+            left: 0;
             background-color: transparent;
             > div {
-                // height: max-content;
                 height: 100%;
                 background-color: transparent;
                 > .SlideShow_S {
                     box-shadow: none;
+                    padding: 0;
                     scrollbar-width: 0;
                     height: 100%;
                     margin-bottom: 0;
-                    background-color: transparent;
+                    
                     &::-webkit-scrollbar {
                         display: none;
                         width: 0;
@@ -408,9 +397,8 @@
                         display: none;
                         width: 0;
                     }
-                    height: max-content;
-                    padding: 1rem;
                     > div {
+                        padding-inline: 0.5rem;
                         height: 100%;
                         margin: 0;
                         width: 100%;
@@ -420,34 +408,37 @@
                         justify-content: space-evenly;
                         align-items: stretch;
                         align-content: stretch;
-                        gap: 1rem;
+                        border-radius: 0;
+                        gap: 0.5rem;
+                        aspect-ratio: auto;
                         > div {
-                            @include Tmain.T_container();
+                            background-color: vars.$color-primary-complementary;
+                            box-shadow: none;
                             align-items: center;
                             font-size: 4rem;
                             margin: 0;
+                            border-radius: 0;
                             overflow: hidden;
                             height: 100%;;
                             box-sizing: border-box;
                             min-width: max-content;
                             width: max-content;
                             cursor: pointer;
+                            aspect-ratio: auto;
                             padding: 0rem;
-                            // padding-left: 1rem;
                             user-select: none;
                             &[state*='active']{
-                                background-color: orange;
+                                background-color: vars.$color-primary;
                             }
-                            &[state*='passive']{
+                            // &[state*='passive']{
 
-                            }
+                            // }
                             > div {
                                 width: min-content;
                                 height: 100%;
                                 box-sizing: border-box;
                                 margin: 1rem;
-                                // padding: 0;
-                                // margin: 0;
+                                aspect-ratio: auto;
                                 > span {
                                     box-sizing: border-box;
                                     font-size: 4rem;

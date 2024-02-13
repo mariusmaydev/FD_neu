@@ -365,13 +365,21 @@ class Checkout {
                     orderObj.UserID         = await SPLINT.SessionsPHP.get(SPLINT.SessionsPHP.USER_ID, false);
                     orderObj.couponCode     = await SPLINT.SessionsPHP.get(Checkout.sessions.couponCode);
                     let orderID = order.new(orderObj.get());
-                    let res = lexOffice.newInvoice(orderObj.get(), orderID);
-                    console.log(res);
-                    let res1 = lexOffice.newDeliveryNote(orderObj.get(), orderID);
-                    console.log(res1);
-                    ShoppingCart.clear();
+                    // let res = lexOffice.newInvoice(orderObj.get(), orderID);
+                    // console.log(res);
+                    // let res1 = lexOffice.newDeliveryNote(orderObj.get(), orderID);
+                    // console.log(res1);
+                    // ShoppingCart.clear();
                     // let orderobj = await preparePaypal();
-                    console.dir(orderObj)
+                    // let sh = await ShoppingCart.get()
+                    // console.dir(sh.shoppingCart)
+                    // let Paypap = new Paypal(sh.shoppingCart, orderObj.sendingAddress);
+                    //     let r = await Paypap.createOrder();
+                    //     window.location.href = r.URL
+                    //     // let r1 = await Paypal.capturePayment(r.accessToken);
+                    // // Paypal.crea
+                    // console.log(r)
+                    // console.log(r1)
 
                 }
   }

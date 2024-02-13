@@ -13,6 +13,8 @@
 @include mediaQueries.forMediaBreakpoint(desktop mobile){
     @include FooterDesktop.FooterDesktop();
     body {
+        top: 0 !important;
+        height: 100vh !important;
         overflow-y: hidden !important;
         ::-webkit-scrollbar {
             display: none !important;
@@ -43,6 +45,8 @@
 @include mediaQueries.forMediaBreakpoint(mobile-small){
     @include FooterMobile.FooterMobile();
     body {
+        top: 0 !important;
+        height: 100vh !important;
         overflow-y: hidden !important;
         ::-webkit-scrollbar {
             display: none !important;

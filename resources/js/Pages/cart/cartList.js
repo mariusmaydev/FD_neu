@@ -10,7 +10,13 @@ class drawCartList {
     async draw(){
         this.data = (await ShoppingCart.get()).shoppingCart;
         console.log(this.data);
+        this.emptyBody = new SPLINT.DOMElement(this.id + "emptyBody", "div", this.mainElement);
+        this.emptyBody.Class("emptyBody");
+            let bt_emptyBody = new SPLINT.DOMElement.Button(this.emptyBody, "BT_EmptyBody");
+                bt_emptyBody.bindIcon("production_quantity_limits")
+                bt_emptyBody.Description = "Warenkorb ist leer";
         if(this.data.length == 0){
+            this.emptyBody.state().setActive();
             SPLINT.Events.onLoadingComplete.dispatch();
         }
         // this.listHead = new SPLINT.DOMElement(this.id + "ItemListHead", "div", this.listBody);
@@ -56,7 +62,7 @@ class drawCartList {
             let buttonsEle      = rightDiv.newDiv(null, "buttons");
             
             projectData.then(function(data){
-                let lighter = new drawLighter3D(lighterEle, lighterEle.id, "PROJECT", data.Thumbnail);
+                let lighter = new drawLighter3D(lighterEle, lighterEle.id, "PROJECT", data.Thumbnail, false, false, data.EPType);
             })
 
             let infoDivInner = infoEle.newDiv("/ID/info_inner", "inner");
@@ -113,7 +119,10 @@ class drawCartList {
                 buttonRemove.onclick = async function(){
                     await ShoppingCart.removeItem(item.ProjectID);
                     ShoppingCart.drawPrices();
-                    console.log(ShoppingCart.get())
+                    let cart = await ShoppingCart.get()
+                    if(cart.shoppingCart.length == 0){
+                        this.emptyBody.state().setActive();
+                    }
                     listElement.remove();
                 }.bind(this);
                 buttonRemove.button.setTooltip("entfernen", "top");

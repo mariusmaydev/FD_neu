@@ -16,7 +16,7 @@ class ProjectDetails_Mobile {
             }.bind(this));
         }.bind(this);
         this.contentElement = this.mainElement.content;
-
+        this.contentElement.classList.add("converterStart");
         if(drawButtons){
             this.drawButtons();
 

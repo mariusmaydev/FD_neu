@@ -49,14 +49,10 @@ class ADMIN_testSpace {
                     console.dir(f);
                 }
 
-        let button_T = new SPLINT.DOMElement.Button(this.mainElement, "butten_ConvNew", "ConverterNew");
-                button_T.onclick = async function(){
-                    await SPLINT.SessionsPHP.set("USER_ID", "ADMIN", false);
-                    await SPLINT.SessionsPHP.set("USER_NAME", "ADMIN", false);
-                    await SPLINT.SessionsPHP.set("ADMIN", true, false);
-                    await SPLINT.SessionsPHP.set("GUEST", false, false);
-                    ProjectHelper.new('ADMIN', "Lighter_Gold_custom", true, false, true).then(S_Location.goto(PATH.location.converter).setHash("ADMINPLUS").call());
-                };
+        let bt2 = new SPLINT.DOMElement.Button(this.mainElement, "stripe", "stripe");
+            bt2.onclick = function(){
+                S_Location.goto(PATH.location.ADMIN.stripe).call();
+            }
 
     }
     draw1(){

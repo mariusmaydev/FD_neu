@@ -69,14 +69,13 @@
     }
     static getFileData(srcElement){
       let element = $('#' + srcElement.id);
-      if (typeof element.prop('files')[0] != 'undefined') {
-        return element.prop('files')[0];
+      if (typeof element.prop('files') != 'undefined') {
+        return element.prop('files');
       } else {
         return false;
       }
     }
-    static direct(srcElement, type, onsuccess){
-      let file_data = FileUpload.getFileData(srcElement);
+    static direct(file_data, type, onsuccess){
       
       if(file_data != false){
         let fileUpload = new FileUpload(file_data, type);

@@ -4,6 +4,8 @@
         <title>Admin</title>
         <meta charset="ISO-8859-1" />
         <s-style src="A_login.css"></s-style>
+        <meta name="robots" content="noindex"/>
+        <meta name="robots" content="nofollow"/>
     </head>
     <body id="Body_ADMIN_login">
 

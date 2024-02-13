@@ -1,0 +1,5 @@
+
+AuthType Basic
+AuthName "Geschützter Bereich - Bitte geben Sie ein Passwort ein!"
+AuthUserFile C:/xampp/htdocs/fd/resources/HTML/Admin/.htpasswd
+Require valid-user

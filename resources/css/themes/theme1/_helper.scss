@@ -1,0 +1,39 @@
+
+@mixin clipEdgesAll($size){
+    
+    clip-path: polygon(
+            0 $size,
+            $size 0,
+
+            $size -400%,
+            calc(100% - $size) -400%,
+
+            calc(100% - $size) 0,
+            100% $size,
+
+            400% $size,
+            400% calc(100% - $size),
+
+            100% calc(100% - $size),
+            calc(100% - $size) 100%,
+
+            calc(100% - $size) 400%,
+            $size 400%,
+
+            $size 100%,
+            0 calc(100% - $size),
+
+            -400% calc(100% - $size),
+            -400% $size,
+
+            0 $size
+    );
+}
+
+
+@mixin preventSelect(){
+    
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+  }

@@ -282,7 +282,8 @@
 "outline.collapseItems": "alwaysCollapse",
 "liveSassCompile.settings.excludeList": [
     "/**/node_modules/**",
-    "/resources/css/PUBLIC/profile/**"
+    "/resources/css/PUBLIC/profile/**",
+    "/old/**"
 ],
 "workbench.editor.tabActionLocation": "left"
 }

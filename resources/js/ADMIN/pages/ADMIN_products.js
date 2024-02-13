@@ -2,7 +2,6 @@
 class ADMIN_products extends ADMIN_DrawTemplate {
     constructor(){
         super("products");
-        ADMIN_loginFuncs.check_redirect();
         this.mainElement.Class("ADMIN_productsMain");
     }
     draw(editProductData = null){

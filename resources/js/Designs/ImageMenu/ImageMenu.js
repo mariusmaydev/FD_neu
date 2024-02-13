@@ -81,6 +81,22 @@ class ImageMenu {
                 let hoverDiv = new SPLINT.DOMElement("hoverDiv_" + index, "div", listElement);
                     hoverDiv.Class("hoverDiv");
                     // console.log(data);
+                    
+                    let tagsDiv = new SPLINT.DOMElement("tagsDiv_" + index, "div", hoverDiv);
+                        tagsDiv.Class("tagsDiv");
+                        if(data.tags != undefined){
+                          for(const ind in data.tags){
+                            let name = data.tags[ind];
+                            let button = new SPLINT.DOMElement.Button(tagsDiv, "tag_" + index + "_" + ind, name);
+                                button.setStyleTemplate(S_Button.STYLE_DEFAULT);
+                                button.button.onclick = function(){
+                                  this.Filter.searchBar.input.value = name;
+                                  this.drawUnsplash(name);
+                                }.bind(this);
+                            // console.log(img);
+                          }
+                        }
+                        
                     let buttonDiv = new SPLINT.DOMElement("buttonDiv_" + index, "div", hoverDiv);
                         buttonDiv.Class("buttonDiv");
                         let buttonUse = new SPLINT.DOMElement.Button(buttonDiv, "use");
@@ -112,27 +128,13 @@ class ImageMenu {
                     //     }.bind(this);
                     // let informationDiv = new SPLINT.DOMElement("informationDiv_" + index, "div", hoverDiv);
                     //     informationDiv.Class("informationDiv");
-                    let tagsDiv = new SPLINT.DOMElement("tagsDiv_" + index, "div", hoverDiv);
-                        tagsDiv.Class("tagsDiv");
-                        if(data.tags != undefined){
-                          for(const ind in data.tags){
-                            let name = data.tags[ind];
-                            let button = new SPLINT.DOMElement.Button(tagsDiv, "tag_" + index + "_" + ind, name);
-                                button.setStyleTemplate(S_Button.STYLE_DEFAULT);
-                                button.button.onclick = function(){
-                                  this.Filter.searchBar.input.value = name;
-                                  this.drawUnsplash(name);
-                                }.bind(this);
-                            // console.log(img);
-                          }
-                        }
                     let bottomDiv = new SPLINT.DOMElement("bottomDiv_" + index, "div", listElement);
                         bottomDiv.Class("bottomDiv");
-                        let bt_use = new SPLINT.DOMElement.Button(bottomDiv, "use");
-                            bt_use.bindIcon("add_photo_alternate");
-                            bt_use.onclick = function(){
+                    //     let bt_use = new SPLINT.DOMElement.Button(bottomDiv, "use");
+                    //         bt_use.bindIcon("add_photo_alternate");
+                    //         bt_use.onclick = function(){
 
-                            }
+                    //         }
                     if(SPLINT.ViewPort.getSize() == "mobile-small"){
                         // hoverDiv.onclick = function(){
                         //     bottomDiv.SPLINT.state.setActive();

@@ -87,6 +87,17 @@ class drawProjectList_ADMIN {
                         this.#chooseType();
                       }
                     }.bind(this)
+                
+                let bt_resetOriginals = new SPLINT.DOMElement.Button(listElement, "resetOriginals", "Originale reparieren");
+                    bt_resetOriginals.onclick = async function(){
+                        await CategoryHelper.reset_Originals();
+                        this.#chooseType();
+                    }.bind(this);
+                let bt_resetExamples = new SPLINT.DOMElement.Button(listElement, "resetExamples", "Beispiele reparieren");
+                    bt_resetExamples.onclick = async function(){
+                        await CategoryHelper.reset_Examples();
+                        this.#chooseType();
+                    }.bind(this);
                 let button_openHashtags = new SPLINT.DOMElement.Button(listElement, "openTags", "Tags hinzufügen");
                     button_openHashtags.button.Class("openTags");
                     button_openHashtags.onclick = function(){
@@ -129,27 +140,6 @@ class drawProjectList_ADMIN {
                 this.drawButtonDiv(contentBody, data, index);
                 this.drawHashtagDiv(contentBody, data, index)
           }.bind(this)
-          // this.table.func_drawHoverDiv = function(data, index, hoverElement){
-          //   // let button_edit = new Button(hoverElement, index + "_edit");
-          //   //     button_edit.bindIcon("edit");
-          //   //     button_edit.button.onclick = function(){
-          //   //         PHP_sessions_S.set(PHP_sessions_S.PROJECT_ID, data.ProjectID, false);
-          //   //         PHP_sessions_S.set(PHP_sessions_S.CONVERTER_MODE, "EDIT_PROJECT", false);
-          //   //         PHP_sessions_S.set("USER_ID", "ADMIN", false);
-          //   //         PHP_sessions_S.set("USER_NAME", "ADMIN", false);
-          //   //         PHP_sessions_S.set("ADMIN", true, false);
-          //   //         PHP_sessions_S.set("GUEST", false, false);
-          //   //         Location_S.goto(PATH.location.converter).setHash("ADMIN").call();
-          //   //     }
-          //   //   let button_remove = new Button(hoverElement, index + "_remove");
-          //   //       button_remove.bindIcon("delete");
-          //   //       button_remove.onclick = function(){
-          //   //         Project.remove(data.ProjectID);
-          //   //         hoverElement.parentNode.remove();
-          //   //         // this.draw();
-          //   //       }.bind(this);
-            
-          // }
           this.table.draw();
     }
     drawButtonDiv(contentBody, data, index){
@@ -208,14 +198,6 @@ class drawProjectList_ADMIN {
           } else {
             obj1 = await CategoryHelper.get_Examples();
           }
-        //     console.dir(obj1.server.a)
-        //     content1.push(obj1);
-        //     CategoryHelper.edit(obj1).then(function(a){
-        //   console.log(a);
-        // });
-        //     CategoryHelper.get().then(function(a){
-        //   console.log(a);
-        // });
         let nestingElement = new SPLINT.DOMElement.Nesting(viewBody, "test__" + index, obj1);
             nestingElement.onEnter = function(e, entries){
                 let last = nestingElement.obj;
@@ -480,39 +462,3 @@ class drawProjectList_ADMIN {
             }
     }
   }
-
-
-  
-
-  // let testOBJ = new SPLINT.autoObject();
-  // testOBJ.b.attr.name = "test";
-  // testOBJ.b.b.attr.name = "o";
-  // testOBJ.a.f.h.d.attr.name = "ok";
-  // testOBJ.a.f.h.f.attr.name = "ok";
-  // console.dir(testOBJ);
-  // testOBJ.toDOMStructure(document.body, function(element, entry, key, index){
-  //   console.log(index);
-  //   if(key != "attr"){
-  //     let ele = new SPLINT.DOMElement("/UID()/", "div", element);
-  //         let headBody = new SPLINT.DOMElement(ele.id + "_headBody", "div", ele);
-  //             headBody.Class("I_headBody");
-
-  //           if(entry.attr != undefined){
-  //             let head = new SPLINT.DOMElement.SpanDiv(headBody, "head", entry.attr.name);
-  //                 head.Class("I_header");
-  //           } else {
-  //             let head = new SPLINT.DOMElement.SpanDiv(headBody, "head", key);
-  //                 head.Class("I_header");
-  //           }
-
-  //           if(index == 0){
-  //             let ele1 = new SPLINT.DOMElement("/UID()/_inputBody", "div", headBody);
-  //                 ele1.Class("I_inputBody");
-  //                 let input = new n_InputDiv(ele1, "I_input", "test", 0);
-  //                     input.disableAnimation();
-  //           }
-  //         ele.Class("I_expander");
-  //     return ele;
-  //   }
-  //   return false;
-  // });

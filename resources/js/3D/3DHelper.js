@@ -5,7 +5,7 @@ class drawLighter3D {
   static CONVERTER            = "CONVERTER";
   static PROJECT              = "PROJECT";
   static PROJECT_NEW          = "PROJECT_NEW";
-    constructor(parent, name = "", type = "", src = null, newContext = false, mouseEvents = false){
+    constructor(parent, name = "", type = "", src = null, newContext = false, mouseEvents = false, color = null){
       this.parent       = parent;
       this.type         = type;
       this._saveContext  = false;
@@ -30,6 +30,9 @@ class drawLighter3D {
       this.parent.appendChild(this.div);
 
       this.canvas = new SPLINT.DOMElement(this.id + "canvas", "canvas", this.div);
+      if(color != null){
+        this.canvas.setAttribute("color", color);
+      }
       if(src != null){
         this.canvas.setAttribute("thumbsrc", src);
         this.canvas.setAttribute("newContext", newContext);

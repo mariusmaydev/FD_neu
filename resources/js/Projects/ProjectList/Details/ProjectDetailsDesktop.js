@@ -16,6 +16,7 @@ class ProjectDetails_Desktop {
             }.bind(this));
         }.bind(this);
         this.contentElement = this.mainElement.content;
+        this.contentElement.classList.add("converterStart");
             let container = new SPLINT.DOMElement(this.id + "container", "div", this.contentElement);
                 container.Class("container");
                 let data = new SPLINT.Types.autoObject();

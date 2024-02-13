@@ -186,8 +186,8 @@ export class draw {
         let a = this.canvas.parentNode.clientWidth;
         let b = this.canvas.parentNode.clientHeight;
         if(SPLINT.ViewPort.getSize() == "mobile-small"){
-            this.canvas.width = a ;
-            this.canvas.height = b ;
+            this.canvas.width = a * 2;
+            this.canvas.height = b * 2;
         } else {
             this.canvas.width = a * 2;
             this.canvas.height = b * 2;
@@ -195,7 +195,8 @@ export class draw {
         this.canvas.style.width = a + "px";
         this.canvas.style.height = b + "px";
         if(SPLINT.ViewPort.getSize() == "mobile-small"){
-            this.renderer.setPixelRatio( Math.min(2, window.devicePixelRatio));
+            // this.renderer.setPixelRatio( Math.min(2, window.devicePixelRatio));
+            this.renderer.setPixelRatio( window.devicePixelRatio * 2);
         } else {
             this.renderer.setPixelRatio( window.devicePixelRatio * 2);
         }

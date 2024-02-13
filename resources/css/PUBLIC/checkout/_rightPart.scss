@@ -38,7 +38,7 @@
                 position: relative;
                 max-height: 20em;
                 height: max-content;
-                @include Tmain.T_container();
+                @include Tmain.TContainer_basic();
                 overflow: hidden;
                 gap: 1em;
                 display: flex;
@@ -114,41 +114,6 @@
                     }
                 }
             }
-            // > .RightDivConclusion {
-            //     position: relative;
-            //     display: contents;
-            //     width: 100%;
-            //     > .PriceDiv {
-            //         display: contents;
-            //         flex-direction: row;
-            //         width: 100%;
-            //         > .Full {
-            //             position: relative;
-            //             margin-top: 0.1em;;
-            //             font-size: 1.5em;
-            //         }
-            //         > .hint {
-            //             position: relative;
-            //             top: -0.5em;
-            //             left: 0.1em;
-            //             vertical-align: text-top;
-            //         }
-            //         > div {
-            //             position: relative;
-            //             display: inline;
-            //             float: right;
-            //             margin-left: auto;
-            //             margin-right: 5%;
-            //             font-weight: bold;
-            //             &.Full {
-            //                 font-size: 1.5em;
-            //             }
-            //             > span {
-            //                 position: relative;
-            //             }
-            //         }
-            //     } 
-            // } 
         }
         > .conclusionMain {
             margin: 0.1em;
@@ -162,34 +127,27 @@
                 display: flex;
                 justify-content: stretch;
                 padding: 0;
-                @include Tmain.T_container();
-                @include Tmain.clipEdgesAll(5px);
-                @include S_tools.SPLINT-border-inset(vars.$color-T_container-Medium, 1px, true, true, true, true);
+                @include Tmain.TContainer_basic();
                 padding: 0.5em;
                 > div {
                     flex-grow: 1;
                     // width: 100%;
                 }
                 > button {
+                    @include Tmain.TButton_simple();
                     width: max-content;
                     margin-top: 1em;
                     margin-bottom: 1em;;
-                    background-color: vars.$color-primary;
                     > span {
                         word-wrap: none;
                         white-space: nowrap;
                         // wr
                     }
-                    &:hover {
-                        background-color: vars.$color-primary-Dark;
-                    }
                 }
 
             }
             > .priceContainer {
-                @include Tmain.T_container();
-                @include Tmain.clipEdgesAll(5px);
-                @include S_tools.SPLINT-border-inset(vars.$color-T_container-Medium, 1px, true, true, true, true);
+                @include Tmain.TContainer_basic();
                 padding: 0.5em;
                 margin-top: 0.5em;
                 // width: 100%;

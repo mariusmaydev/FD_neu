@@ -50,6 +50,7 @@ PATH.php.designs.image                  = SPLINT.projectRootPath + php + "/Desig
 PATH.php.hashtags                       = SPLINT.projectRootPath + php + "/Designs/Hashtags/hashtagsAccess.php";
 
 PATH.php.userData                       = SPLINT.projectRootPath + php + "/userdata/userdataAccess.php";
+PATH.php.stripe                         = SPLINT.projectRootPath + php + "/Stripe/StripeMain.php";
 
 PATH.php.converter                      = SPLINT.projectRootPath + php + "/converter/converterAccess.php";
 PATH.php.image                          = SPLINT.projectRootPath + php + "/converter/image/imageAccess.php";
@@ -103,6 +104,7 @@ PATH.location.ADMIN.orders              = SPLINT.projectRootPath + "HTML/ADMIN/o
 PATH.location.ADMIN.orderOverview       = SPLINT.projectRootPath + "HTML/ADMIN/orderOverview.php";
 PATH.location.ADMIN.couponCodes         = SPLINT.projectRootPath + "HTML/ADMIN/couponCodes.php";
 PATH.location.ADMIN.users               = SPLINT.projectRootPath + "HTML/ADMIN/users.php";
+PATH.location.ADMIN.stripe              = SPLINT.projectRootPath + "HTML/ADMIN/stripe.php";
 
 PATH.location.admin = new Object();
 PATH.location.admin.orderOverview       = SPLINT.projectRootPath + "HTML/Admin/orders/ADMIN_orderOverview.php";

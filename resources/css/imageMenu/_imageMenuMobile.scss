@@ -40,7 +40,7 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
         > .ImageMenuFilter {
             // pointer-events: none;
             // user-select: none;
-            @include Tmain.T_container();
+            @include Tmain.TContainer_basic();
             display: flex;
             border-radius: 5px;
             order: 1;
@@ -55,7 +55,6 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
             box-sizing: border-box;
             height: min-content;
             // box-shadow: 0 0 50px 2px rgba(1, 1, 1, 0.6);
-            @include Tmain.clipEdgesAll(5px);
             > button {
                 order: 2;
                 height: 100%;

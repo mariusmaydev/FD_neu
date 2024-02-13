@@ -16,11 +16,15 @@ class ADMIN_order_list {
             } else {
                 this.orderData = await order.get();
             }
-            for(const e of this.orderData){
-                e.uTime = S_Time.convertDateTimeToFormatedUnix(e.Time);
+            if(this.orderData != null){
+                for(const e of this.orderData){
+                    e.uTime = S_Time.convertDateTimeToFormatedUnix(e.Time);
+                }
+                SArray.assortInt(this.orderData, "uTime", true);
+                resolve(true);
+            } else {
+                resolve(false);
             }
-            SArray.assortInt(this.orderData, "uTime", true);
-            resolve(true);
         }.bind(this));
     }
     #getProjectData(projectID){
@@ -42,7 +46,9 @@ class ADMIN_order_list {
         this.parent
         this.mainElement.innerHTML = "";
         await this.#getData();
-        console.dir(this.orderData)
+        if(this.orderData == null){
+            return;
+        }
         let full = 0;
         let fullAmountEP = 0;
         let fullAmountLaser = 0;

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
     <head>
-        <title>Funkendesign</title>
+        <title>Enflame</title>
         <meta charset="ISO-8859-1"/>
         <s-style src="cart.css"></s-style>
 

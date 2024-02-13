@@ -1,7 +1,10 @@
 @use "buttons";
 @use "scrollbar";
 @use "vars";
+@forward "helper";
 @use "../../../../../Splint/scss/tools/tools" as S_tools;
+@forward "container" show TContainer_basic;
+@forward "buttonNew" show TButton_basic, TButton_important_A, TButton_important_B, TButton_simple, TButton_Animated;
 
 * {
     // transition: .1s ease;
@@ -16,43 +19,8 @@ body {
     }
 }
 
-@mixin preventSelect{
-    
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
-}
 
-@mixin clipEdgesAll($size){
-    
-    clip-path: polygon(
-            0 $size,
-            $size 0,
 
-            $size -400%,
-            calc(100% - $size) -400%,
-
-            calc(100% - $size) 0,
-            100% $size,
-
-            400% $size,
-            400% calc(100% - $size),
-
-            100% calc(100% - $size),
-            calc(100% - $size) 100%,
-
-            calc(100% - $size) 400%,
-            $size 400%,
-
-            $size 100%,
-            0 calc(100% - $size),
-
-            -400% calc(100% - $size),
-            -400% $size,
-
-            0 $size
-    );
-}
 
 @mixin clipEdges_t1($size){
     clip-path: polygon(

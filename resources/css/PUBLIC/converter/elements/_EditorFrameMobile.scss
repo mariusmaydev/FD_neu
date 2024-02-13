@@ -3,12 +3,13 @@
     > .EditorFrame {
         position: relative;
         border: none;
+        flex-grow: 1;
         order: 1;
-        display: block;
-        height: 100%;
+        width: 90%;
+        height: auto;
+        aspect-ratio: 1/1.513;
         top: 0;
         left: 5%;
-        width: 90%;
         margin: 2%;
         margin: 0;
         box-sizing: border-box;
@@ -19,8 +20,6 @@
         > .square-border-div{       
             background-color: transparent !important;       
             > .Lighter3D {
-                // display: none;
-                // box-sizing: border-box;
                 position: absolute;
                 top: -22%;
                 left: -24%;
@@ -31,21 +30,15 @@
                     
                 background-color: transparent !important;
                 }
-                // @include border();
             } 
-            // @include box-shadow();
-            // @include border();   
             top: 0%;  
             width: 90%;
-            // max-height: 94% !important;
-            // border-color: white;     
             position: relative;
-            // border: none;
             box-sizing: border-box;
             display: block;
             margin-left: auto;
             margin-right: auto;
-            background-color: transparent; //rgb(24, 24, 24);
+            background-color: transparent;
             overflow: visible; 
             &[state*='active']{
                 >#square-border {
@@ -57,11 +50,8 @@
                     box-shadow: none;
                 }   
             }
-            // border-radius: 1em 1em;  
             > canvas {
-                // border: 1px solid white;
                 position: absolute;
-                // background-color: darkgray !important;
                 font-kerning : normal;
                 text-rendering: optimizeLegibility;
                 letter-spacing: normal;
@@ -75,7 +65,6 @@
                 &[state*='active']{
                     opacity: 1.5;
                 }
-                // filter: drop-shadow(0px 0px 1px $color-gold);
             }      
         }
     }    

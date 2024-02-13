@@ -5,7 +5,8 @@
         <meta charset="ISO-8859-1" />
         <title>Admin</title>
         <s-style src="A_couponCodes.css"></s-style>
-
+        <meta name="robots" content="noindex"/>
+        <meta name="robots" content="nofollow"/>
     </head>
     <body id="Body_ADMIN_couponCodes">
 

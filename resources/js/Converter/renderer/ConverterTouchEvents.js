@@ -65,7 +65,6 @@ class ConverterTouchEvents {
             if(ConverterTouchHandler.rotation.now != false){
                 this.hoverElement.alignBase = parseFloat(this.hoverElement.data.ImageAlign);
             }
-            console.log(CONVERTER_STORAGE);
             this.Offset(this.hoverElement).get();
             this.dragElement = this.hoverElement;
             this.activeElement = this.hoverElement;
