@@ -44,64 +44,6 @@ class Checkout {
       default : this.drawAddressMenu(); break;
     }
   }
-//   async drawRight(){
-//     let checkoutRight = new CheckoutRightBar(this.mainElementRight);
-//     let contentDiv = new SPLINT.DOMElement(this.id + "right_content", "div", this.mainElementRight);
-//         contentDiv.Class("ContentDiv");
-//         // main.classList.add("ShoppingCart");
-//         let cartData = (await ShoppingCart.get()).shoppingCart;
-//         let ItemListMain = new SPLINT.DOMElement(this.id + "itemListMain", "div", contentDiv);
-//             ItemListMain.Class("ItemList");
-//             for(const index in cartData){
-//               let itemData = cartData[index];
-//               let projectData = (await ProjectHelper.get(itemData.ProjectID));
-//               let listElement = new SPLINT.DOMElement(this.id + "right_listElement_" + index, "div", ItemListMain);
-//                   let lighter = new drawLighter3D(listElement, "lighter_right_" + index, drawLighter3D.PROJECT, projectData.Thumbnail)
-//             }
-        
-//         let conclusionDiv = getElement("CheckoutRightConclusionDiv", "div", contentDiv.id);
-//             conclusionDiv.Class("RightDivConclusion");
-//             drawFullPrice(conclusionDiv);
-//         // drawCartCouponCode(conclusionDiv);
-
-//         async function drawFullPrice(parent){
-//           new SPLINT.DOMElement.HorizontalLine(parent);
-//           let main = getElement("CheckoutPriceDivMain", "div", parent.id);
-//               main.Class("PriceDiv");
-//               let cartData = await ShoppingCart.get();
-//               let price = 0;
-//               for(let i = 0; i < cartData.length; i++){
-
-//                 let productData = productHelper.getByName(cartData[i].ProductName);
-//                 price += S_Math.multiply(cartData[i].amount, productData.price);
-//               }
-//               let priceElement = new priceDiv(main, price);
-//               let priceLabel = new Label(main, priceElement.main, "Zwischensumme");
-//                   priceLabel.before();
-
-//           // breakHTML(main);
-//       // let shippingCosts = PHP_sessions_S.checkout().sending().get();
-//       // let shippingCostsDiv = new priceDiv(main, shippingCosts.price, "ShippingPrice");
-//       //     let shippingCostsLabel = new Label(main, shippingCostsDiv.main, "Versand");
-//       //         shippingCostsLabel.before();
-
-//       // breakHTML(main);
-//       // getHorizontalLine(main);
-//       let FullPriceDiv = new priceDiv(main, price, "FullPrice");
-//           FullPriceDiv.main.Class("Full");
-//           let FullPriceLabel = new Label(main, FullPriceDiv.main, "Gesamt");
-//               FullPriceLabel.element.Class("Full");
-//               FullPriceLabel.before();
-      
-//       // breakHTML(main);
-//       let tax = S_Math.multiply(price, 0.19);
-//       let MwStLabel = new Label(main, "", "inkl. ");
-//           MwStLabel.element.Class("Text-small_hint");
-//           new PriceDiv_S(MwStLabel.element, "tax",tax);
-//           MwStLabel.element.innerHTML += " MwSt.";
-//           new SPLINT.DOMElement.HorizontalLine(main);
-//     }
-//   } 
   async drawAddressMenu(){
     this.addressMenuMainElement = new SPLINT.DOMElement(this.id + "addressMenuMain", "div", this.mainElementLeft);
     this.addressMenuMainElement.Class("AddressMain");

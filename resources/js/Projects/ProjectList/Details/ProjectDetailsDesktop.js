@@ -34,21 +34,39 @@ class ProjectDetails_Desktop {
                 this.drawInformation();
                 if(drawButtons){
                     this.drawBuyBody();
-                    this.drawButtons();
+                    // this.drawButtons();
                 }
                 
-                let buttonSize = new SPLINT.DOMElement.Button.Switch(container, "size", "Maße anzeigen");
-                    buttonSize.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_DEFAULT)
-                    buttonSize.onactive = function(){
-                        this.lighter.send("showDimensions", true);
-                        this.lighter.canvas.setAttribute("showDimensions", "true")
-                        this.lighter.div.setAttribute("showDimensions", "true")
-                    }.bind(this);
-                    buttonSize.onpassive = function(){
-                        this.lighter.send("showDimensions", false);
-                        this.lighter.canvas.setAttribute("showDimensions", "false")
-                        this.lighter.div.setAttribute("showDimensions", "false")
-                    }.bind(this);
+                let buttonsContainer = new SPLINT.DOMElement(this.id + "buttonsContainer", "div", container);
+                    buttonsContainer.Class("buttonsContainer");
+                    let buttonSize = new SPLINT.DOMElement.Button.Switch(buttonsContainer, "size", "Maße anzeigen");
+                        buttonSize.Class("size");
+                        buttonSize.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_DEFAULT)
+                        buttonSize.onactive = function(){
+                            this.lighter.send("showDimensions", true);
+                            this.lighter.canvas.setAttribute("showDimensions", "true")
+                            this.lighter.div.setAttribute("showDimensions", "true")
+                        }.bind(this);
+                        buttonSize.onpassive = function(){
+                            this.lighter.send("showDimensions", false);
+                            this.lighter.canvas.setAttribute("showDimensions", "false")
+                            this.lighter.div.setAttribute("showDimensions", "false")
+                        }.bind(this);
+
+                    let buttonEdit = new SPLINT.DOMElement.Button.Switch(buttonsContainer, "edit", "bearbeiten");
+                        buttonEdit.Class("edit");
+                        buttonEdit.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_DEFAULT)
+                        // buttonEdit.bindIcon("edit");
+                        buttonEdit.onclick = async function(e){
+                            e.stopPropagation();
+                            if(this.data.State == ProjectHelper.STATE_NORMAL){
+                                ProjectHelper.CONVERTER_startProject(this.data.ProjectID, false);
+                            } else if(this.data.State == "ADMIN"){
+                                let projectID = await ProjectHelper.copy(this.data.ProjectID, "admin");
+                                ProjectHelper.CONVERTER_startProject(projectID, false);
+                            }
+                        }.bind(this);
+
             
             // listElement.lighter = lighter;
             // listElement.setAttribute("state", data.State);
@@ -73,30 +91,9 @@ class ProjectDetails_Desktop {
                             informationTableHeadline.Class("headline");
                         let informationTable = new SPLINT.DOMElement.Table.TextTable(informationTableBody, "information");
                             informationTable.Class("informationTable");
-                            // informationTable.addRow("erstellt", this.data.First_Time);
-                            // informationTable.addRow("zuletzt bearbeitet", this.data.Last_Time);
-                            console.log(this.productData)
                             for(const e of this.productData.attrs){
-                                informationTable.addRow(e.name + ": ", e.value);
+                                informationTable.addRow(e.name + " ", e.value);
                             }
-                    // informationTable.addRow("Farbe", this.data.color);
-                    // informationTable.addRow("zuletzt bearbeitet", this.data.Last_Time);
-
-                
-                    // let headline_size = new SPLINT.DOMElement.SpanDiv(sizeBody, "size_headline", "Abmaße");
-                    //     headline_size.Class("headline_size");
-                    // let sizeContent = new SPLINT.DOMElement("sizeContent", "div", sizeBody);
-                    //     sizeContent.Class("sizeContent");
-                    //     let sizeHeight = new SPLINT.DOMElement.SpanDiv(sizeContent, "size_height", this.productData.size.height);
-                    //         let sizeHeightLabel = new SPLINT.DOMElement.Label(sizeContent, sizeHeight.div, "Höhe");
-                    //             sizeHeightLabel.before();
-                    //     let sizeWidth = new SPLINT.DOMElement.SpanDiv(sizeContent, "size_width", this.productData.size.width);
-                    //         let sizeWidthLabel = new SPLINT.DOMElement.Label(sizeContent, sizeWidth.div, "Breite");
-                    //             sizeWidthLabel.before();
-                    //     let sizeDeep = new SPLINT.DOMElement.SpanDiv(sizeContent, "size_deep", this.productData.size.deep);
-                    //         let sizeDeepLabel = new SPLINT.DOMElement.Label(sizeContent, sizeDeep.div, "Tiefe");
-                    //             sizeDeepLabel.before();
-                    
                     let horizontalLine2 = new SPLINT.DOMElement.HorizontalLine(content);
                 let descBody = new SPLINT.DOMElement("descriptionBody_details", "div", content);
                     descBody.Class("descBody");

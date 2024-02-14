@@ -6,12 +6,6 @@ const folder    = "fd";
 const php       = "php";
 const SSL       = location.protocol;
 
-// var GLOBALS = new Object();
-// var globalUserID        = "";
-// var globalProjectID     = "";
-// var globalUserName      = "";
-// var globalProjectName   = "";
-//vars
 Electropainting = new Object();
 Electropainting.color = new Object();
 Electropainting.color.actual            = "";
@@ -61,24 +55,12 @@ PATH.php.codes = new Object();
 PATH.php.codes.email                    = SPLINT.projectRootPath + php + "/mail/EmailAccess.php";
 PATH.php.codes.coupon                   = SPLINT.projectRootPath + php + "/couponCode/couponCodeAccess.php";
 
-// PATH.php.inventory = new Object();
-// PATH.php.inventory.Item = new Object();
-// PATH.php.inventory.Item.add             = SPLINT.projectRootPath + php + "/inventory/inventoryAddItem.php";
-// PATH.php.inventory.Item.remove          = SPLINT.projectRootPath + php + "/inventory/inventoryRemoveItem.php";
-// PATH.php.inventory.Item.get             = SPLINT.projectRootPath + php + "/inventory/inventoryGetItems.php";
-// PATH.php.inventory.Item.edit            = SPLINT.projectRootPath + php + "/inventory/inventoryEditItem.php";
-
-// PATH.php.balance = new Object();
-// PATH.php.balance.add                    = SPLINT.projectRootPath + php + "/balance/balanceADD.php";
-// PATH.php.balance.get                    = SPLINT.projectRootPath + php + "/balance/balanceGET.php";
 
 PATH.php.paypal                         = SPLINT.projectRootPath + php + "/paypal/paypalAccess.php";
 PATH.php.session                        = SPLINT.projectRootPath + php + "/security/sessionAccess.php";
 
 //LexOffice
 PATH.php.lexOffice                      = SPLINT.projectRootPath + php + "/lexOffice/lexOfficeAccess.php";
-
-// PATH.php.time                           = SPLINT.projectRootPath + php + "/Time.php";
 
 //location
 PATH.location = new Object();
@@ -149,6 +131,3 @@ PATH.images.lighter.black.chrome        = SSL + "//" + domain + "/" + folder + "
 PATH.images.collector = new Object();
 PATH.images.collector.output            = SSL + "//" + domain + "/" + folder + "/data/images/Collector/output.png?"  +  new Date().getTime();
 
-// function PATH_productImage(ProductID){
-//     return SSL + "//" + domain + "/" + folder + "/data/images/products/" + ProductID + ".png?"  +  new Date().getTime();
-// }

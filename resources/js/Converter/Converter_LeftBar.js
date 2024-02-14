@@ -29,7 +29,7 @@ class Converter_LeftBar {
         }
   }
   buttonImageUpload(){
-    this.button_upload = new FileUploadButton(this.contentElement, "ImageUploadInput", "image/*", FileUpload.CONVERTER_IMG);
+    this.button_upload = new SPLINT.DOMElement.Button.FileUpload(this.contentElement, "ImageUploadInput", "image/*", ConverterHelper.CONVERTER_IMG);
     this.button_upload.bindIcon("upload_file");
     this.button_upload.Description = "Bild hochladen";
     this.button_upload.button.setTooltip("Bild hochladen", "right");

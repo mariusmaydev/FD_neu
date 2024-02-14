@@ -26,7 +26,6 @@
 
         <s-part first src="/js/Pages/pagesHelper.js"></s-part>
         <s-part first src="/js/GLOBAL/Paths.js"></s-part>
-        <s-part src="/js/GLOBAL/global_Helper.js"></s-part>
         <s-part src="/js/Login/LoginHelper.js"></s-part>
         <s-part src="/js/assets/functionsShoppingCart.js"></s-part>
         <s-part src="/js/Projects/Projects.js"></s-part>
@@ -37,7 +36,7 @@
         <s-part src="/js/Projects/ProjectList/Details/ProjectDetailsDesktop.js"></s-part>
         <s-part src="/js/Projects/ProjectList/Details/ProjectDetailsMobile.js"></s-part>
         <s-part src="/js/Projects/ProjectList/ProjectDetails.js"></s-part>
-        <s-part src="/js/Designs/Hashtags/Hashtags.js"></s-part>
+        <!-- <s-part src="/js/Designs/Hashtags/Hashtags.js"></s-part> -->
         <s-part src="/js/Designs/CategoryHelper.js"></s-part>
         <s-part src="/js/assets/product/"></s-part>
         <s-part src="/js/Pages/converterStart.js"></s-part>

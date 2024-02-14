@@ -29,24 +29,29 @@
         > .listMain {
             position: relative;
             width: 80%;
-            margin-top: 6vh;
+            margin-top: 0;
             height: max-content;
             overflow: auto;
             padding: 0.1em;
+            padding-top: 6vh;
             box-sizing: border-box;
+            &::-webkit-scrollbar {
+                display: none;
+              }
             > .listElement {
                 position: relative;
                 max-height: 20em;
                 height: max-content;
                 @include Tmain.TContainer_basic();
                 overflow: hidden;
-                gap: 1em;
+                gap: 1rem;
                 display: flex;
                 align-items: stretch;
                 padding: 0em;
                 padding-inline: 0.5em;
                 padding-top: -0.5em;
                 box-sizing: border-box;
+                width: 100%;
                 &:not(:first-child){
                     margin-top: 0.5em;
 
@@ -58,10 +63,10 @@
                     position: relative;
                     height: 100%;
                     box-sizing: content-box !important;
-                    height: 20vh;
+                    height: 15vh;
                     // transform: translateY(-15%);
                     > canvas {
-                        transform: scale(1.2);
+                        transform: scale(1.3);
                         box-sizing: content-box !important;
                     }
                     > div { 
@@ -91,23 +96,51 @@
                     user-select: none;
                     flex-grow: 1;
                     position: relative;
-                    width: auto;
+                    width: 100%;
                     display: flex;
-                    flex-direction: column;
+                    flex-direction: row;
 
                     > div {
-                        &.name {
-                            margin-top: 1em;
-                            order: 2;
-                            font-size: 1em;
+                        flex-grow: 1;
+                        &.informationTableBody {
+                            margin-top: 1rem;
+                            order: 1;
+                            font-size: 0.7rem;
+                            > .name {
+                                padding-bottom: 0.25rem;
+                                > span {
+                                    font-size: 1rem;
+
+                                }
+                            }
+                            > .informationTable {
+                                > table {
+                                    > tr {
+                                        > td {
+                                            &[col*='1']{
+                                                padding-left: 1rem;
+                                            }
+                                            > div {
+                                                > span {
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                         &.price {
-                            margin: 0.25em;
+                            margin: 0;
+                            width: max-content;
+                            margin-right: 0.25rem;
+                            padding-left: 0.25rem;
+                            margin-top: 0.75rem;
                             float: right;
                             justify-content: right;
-                            font-size: 2.5em;
-                            order: 1;
+                            font-size: 2rem;
+                            order: 2;
                             >.PriceDiv {
+                                width: max-content;
                                 float: right;
                             }
                         }

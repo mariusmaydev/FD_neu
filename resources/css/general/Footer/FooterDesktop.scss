@@ -22,14 +22,15 @@
         width: 100%;
         height: max-content;
         background-color: vars.$color-Footer;
+        border-top: 1px solid vars.$color-Footer-Border;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         > .BTContainer {
             width: 80%;
-            padding-top: 1rem;
-            padding-bottom: 1rem;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
             display: flex;
             gap: 1rem;
             flex-direction: column;
@@ -37,9 +38,9 @@
             > button {
                 width: max-content;
                 > span {
-                    text-decoration: underline;
-                    text-decoration-thickness: 3px;
-                    font-size: 1.5rem;
+                    // text-decoration: underline;
+                    // text-decoration-thickness: 3px;
+                    font-size: 1rem;
                 }
             }
         }
@@ -50,16 +51,17 @@
             width: 95%;
         }
         > .PayingMethodsContainer {
-            width: 80%;
+            display: none;
+            // width: 80%;
 
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-            display: flex;
-            flex-direction: row;
-            justify-content: left;
-            > img {
-                height: 3.5rem;
-            }
+            // padding-top: 1rem;
+            // padding-bottom: 1rem;
+            // display: flex;
+            // flex-direction: row;
+            // justify-content: left;
+            // > img {
+            //     height: 3.5rem;
+            // }
         }
     }
 }

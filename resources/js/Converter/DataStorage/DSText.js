@@ -60,7 +60,7 @@ class DataStorageText_C {
       return this;
     }
     getClone(){
-      return deepClone(this);
+      return SPLINT.Tools.ObjectTools.deepClone(this);
     }
     async remove(index){
         if(this.Storage[index] == undefined){

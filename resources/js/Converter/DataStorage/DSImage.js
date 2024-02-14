@@ -70,7 +70,7 @@ class DataStorageImage_C {
       return this;
     }
     getClone(){
-      return deepClone(this);
+      return SPLINT.Tools.ObjectTools.deepClone(this);
     }
     async remove(index){
       let call = new SPLINT.CallPHP(Image_C.PATH, Image_C.REMOVE);

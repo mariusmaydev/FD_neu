@@ -45,9 +45,24 @@ class CheckoutRightBar {
 
           let informationDiv = new SPLINT.DOMElement(this.id + "informationDiv" + index, "div", listElement);
               informationDiv.Class("informationDiv");
-              // console.log(product)
-              let nameDiv = new SPLINT.DOMElement.SpanDiv(informationDiv, "name_" + index, product.name);
-                  nameDiv.Class("name");
+              console.log(product)
+
+
+            let informationTableBody = new SPLINT.DOMElement(this.id + "informationTableBody" + index, "div", informationDiv);
+                informationTableBody.Class("informationTableBody");
+                    let nameDiv = new SPLINT.DOMElement.SpanDiv(informationTableBody, "name_" + index, product.viewName);
+                        nameDiv.Class("name");
+                    // let informationTableHeadline = new SPLINT.DOMElement.SpanDiv(informationTableBody, infoDivInner.id + "headline", "Produktdetails");
+                    //     informationTableHeadline.Class("headline");
+                    let informationTable = new SPLINT.DOMElement.Table.TextTable(informationTableBody, this.id + "information" + index);
+                        informationTable.Class("informationTable");
+                        // informationTable.addRow("erstellt", this.data.First_Time);
+                        // informationTable.addRow("zuletzt bearbeitet", this.data.Last_Time);
+                            for(const e of product.attrs){
+                                informationTable.addRow(e.name + " ", e.value);
+                            }
+
+
               let priceDivBody = new SPLINT.DOMElement("priceBody_" + index, "div", informationDiv);
                   priceDivBody.Class("price");
                   let priceDiv = new SPLINT.DOMElement.PriceDiv(priceDivBody, "price_" + index, (product.price * item.amount));
@@ -126,16 +141,6 @@ class CheckoutRightBar {
                 if(this.instance != null){
                     this.instance.price = this.price;
                 }
-                // gen(table.getData2Head(1), "", "Name");
-                // gen(table.getData2Head(2), "", "Preis");
-                // gen(table.getData2Head(3), "", "Abmaße (in mm)");
-                // gen(table.getData2Head(4), "", "andere Eigenschaften");
-                // gen(table.getData2Head(5), "", "");
-            // this.table.draw();
-            // let table = new SPLINT.DOMElement.Table.TextTable(PriceDiv, "conclusionPrice");
-            //     table.addRow("Zwischensumme: ", fullPrice);
-            //     table.addRow("Versand: ", "kosstenlos");
-            //     table.addRow("Summe: ", fullPrice);
 
   
   }

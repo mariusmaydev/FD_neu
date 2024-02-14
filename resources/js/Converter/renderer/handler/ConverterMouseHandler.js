@@ -9,7 +9,6 @@ class ConverterMouseHandler {
         ConverterEvents.start.call(this, e);
     }
     static mouseMove(e){
-        // console.log(listAllEventListeners())
         if(!this.CanvasActive){ 
             return; 
         }

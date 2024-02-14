@@ -16,7 +16,7 @@ class ConverterTouchEvents {
         //     console.log(this.hoverElement, this.dragElement);
         //   if(e.target.offsetParent == null || e.target.offsetParent.id != ConverterHelper.ELE_SQUARE_BORDER_DIV){
         //     // cursorHandler.unsetCursor();
-        //     S_CursorHandler.unsetCursor();
+        //     SPLINT.Tools.CursorHandler.unsetCursor();
         //     return;
         //   }
         //   this.getElementForCoords();

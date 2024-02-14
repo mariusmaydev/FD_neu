@@ -74,8 +74,8 @@ class BottomBar_Standard {
             this.button_AddElement.button.state().setActive();
           let t = new Converter_BottomBar_floatingDiv_block("buttons");
           t.body.before(this.button_AddElement.span);
-
-          this.button_upload = new FileUploadButton(t.content, "ImageUploadInput", "image/*", FileUpload.CONVERTER_IMG);
+          
+          this.button_upload = new SPLINT.DOMElement.Button.FileUpload(t.content, "ImageUploadInput", "image/*", ConverterHelper.CONVERTER_IMG);
           this.button_upload.bindIcon("upload_file");
             let spanText_btUpload = new SPLINT.DOMElement(this.button_upload.button.id + "spanText", "span", this.button_upload.button);  
                 spanText_btUpload.Class("text");

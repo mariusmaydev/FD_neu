@@ -1,5 +1,9 @@
 
 class ConverterHelper {
+    static CONVERTER_IMG  = "CONVERTER_IMG";
+    static UNSPLASH_IMG   = "UNSPLASH_IMG";
+    static PRODUCT_IMG    = "PRODUCT_IMG";
+    
   static PATH = PATH.php.converter;
   static CREATE_THUMBNAIL       = "CREATE_THUMBNAIL";
   static FILTER                 = "FILTER";
@@ -127,7 +131,7 @@ class ConverterHelper {
             background.onclick = function(e){
               imageMenu.close();
             };
-        let ESC_listener = new KeyInput(document.body, KeyInput.KEY_UP, function(e){
+        let ESC_listener = new SPLINT.Events.KeyEvent(document.body, SPLINT.Events.KeyEvent.KEY_UP, function(e){
                                   imageMenu.close();
                                   this.remove();
                                 });

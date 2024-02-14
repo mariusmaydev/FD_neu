@@ -11,9 +11,14 @@ class CheckoutHead {
     drawLogo(){
         let logoContainer = new SPLINT.DOMElement("CheckoutLogoContainer", "div", this.mainElement);
             logoContainer.Class("CheckoutLogoContainer");
-            this.logo = new ImageElement("CheckoutLogo", logoContainer);
+            this.logo = new SPLINT.DOMElement("CheckoutLogo_img", "img", logoContainer);
+            this.logo.name = "CheckoutLogo";
+            this.logo.onerror = function(){
+                this.logo.src = PATH.images.errorSRC;
+              }.bind(this);
             this.logo.src = PATH.images.logo;
     }
+    
     draw(){
       this.progressDiv = new SPLINT.DOMElement(this.id + "progress", "div", this.mainElement);
       this.progressDiv.Class("progressDivMain");
@@ -56,9 +61,9 @@ class CheckoutHead {
   
     }
     DrawAnimationLine(parent, index){
-      let LineDiv = getElement("LineDiv_" + index, "div", parent.id);
+      let LineDiv = new SPLINT.DOMElement("LineDiv_" + index, "div", parent.id);
            LineDiv.classList.add("LineDiv");
-        return getElement("Line_" + index, "hr", LineDiv.id);
+        return new SPLINT.DOMElement("Line_" + index, "hr", LineDiv.id);
    }
    static refresh(index){
         for(let e = 0; e < index; e++){

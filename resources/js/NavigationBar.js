@@ -42,12 +42,8 @@ class NavigationBar {
         this.original.div.Class("Original");
             this.original.button = new SPLINT.DOMElement.Button(this.original.div, "original", "Originale");
             this.original.button.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_DEFAULT);
-            // this.design.button.bindIcon("Add");
             this.original.button.button.onclick = function() {
                 S_Location.goto(PATH.location.converterStart).setHash("originals").call();
-                // SPLINT.Tools.Location.URL = PATH.location.converterStart;
-                // SPLINT.Tools.Location.setHash("originals").call();
-                // openConverter();
             }
 
     }

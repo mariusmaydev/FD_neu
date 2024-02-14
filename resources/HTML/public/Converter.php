@@ -22,8 +22,6 @@
         <s-part first src="/js/GLOBAL/Paths.js"></s-part>
 
         <s-part src="/js/Pages/pagesHelper.js"></s-part>
-        <s-part src="/js/GLOBAL/global_Helper.js"></s-part>
-        <s-part src="/js/GLOBAL/global_Helper_elements.js"></s-part>
         <s-part src="/js/Login/LoginHelper.js"></s-part>
         <s-part src="/js/assets/functionsShoppingCart.js"></s-part>
         <s-module src="/js/3D/modules/module_3D_init.js"></s-module>
@@ -65,7 +63,7 @@
         <s-part src="/js/3D/Element3D.js"></s-part>
         <!-- <s-part src="/js/Converter/ConverterDOM.js"></s-part> -->
 
-        <s-part src="/js/Designs/Hashtags/Hashtags.js"></s-part>
+        <!-- <s-part src="/js/Designs/Hashtags/Hashtags.js"></s-part> -->
         <s-part src="/js/Designs/CategoryHelper.js"></s-part>
 
         

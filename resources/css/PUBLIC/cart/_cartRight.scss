@@ -14,7 +14,8 @@
         @include mediaQueries.forMediaBreakpoint(desktop mobile){
             height: 50%;
             position: sticky;
-            top: calc(11vh + 0.8rem);
+            // top: calc(11vh + 0.8rem);
+            top: calc(8vh);
             margin-top: 0 !important;
         }
         @include mediaQueries.forMediaBreakpoint(mobile-small){
@@ -52,7 +53,10 @@
                 > .sumBody {
                     > .headline {
                         padding: 0.25rem;
+                        padding-inline: 0;
+                        text-align: center;
                         > span {
+                            text-align: center;
                             font-size: 1.5rem;
                             font-weight: 500;
                         }

@@ -43,22 +43,22 @@ class drawSavedInformation{
   
               if(address.Title != ""){
                 let Title       = new SPLINT.DOMElement.SpanDiv(contentDiv, "Title", address.Title);
-                drawSimpleElement(contentDiv, " ");
+                SPLINT.DOMElement.SimpleElement.get(contentDiv, " ");
               }
               let FirstName   = new SPLINT.DOMElement.SpanDiv(contentDiv, "FirstName", address.FirstName);
-              drawSimpleElement(contentDiv, " ");
+              SPLINT.DOMElement.SimpleElement.get(contentDiv, " ");
               let LastName    = new SPLINT.DOMElement.SpanDiv(contentDiv, "LastName", address.LastName);
-              drawSimpleElement(contentDiv, ", ");
+              SPLINT.DOMElement.SimpleElement.get(contentDiv, ", ");
         
               let Street      = new SPLINT.DOMElement.SpanDiv(contentDiv, "Street", address.Street);
-              drawSimpleElement(contentDiv, " ");
+              SPLINT.DOMElement.SimpleElement.get(contentDiv, " ");
               let HouseNumber = new SPLINT.DOMElement.SpanDiv(contentDiv, "HouseNumber", address.HouseNumber);
         
-              drawSimpleElement(contentDiv, ", ");
+              SPLINT.DOMElement.SimpleElement.get(contentDiv, ", ");
               let PostCode    = new SPLINT.DOMElement.SpanDiv(contentDiv, "Postcode", address.Postcode);
-              drawSimpleElement(contentDiv, " ");
+              SPLINT.DOMElement.SimpleElement.get(contentDiv, " ");
               let City        = new SPLINT.DOMElement.SpanDiv(contentDiv, "City", address.City);
-              drawSimpleElement(contentDiv, ", ");
+              SPLINT.DOMElement.SimpleElement.get(contentDiv, ", ");
               let Country     = new SPLINT.DOMElement.SpanDiv(contentDiv, "Country", address.Country);
   
           let buttonChangeAddress = new SPLINT.DOMElement.Button(addressDiv, "change", "ändern");
@@ -83,10 +83,10 @@ class drawSavedInformation{
                       label.before(); 
                   
                   let typeSpan = new SPLINT.DOMElement.SpanDiv(contentDiv, "type", sending.type);
-                  drawSimpleElement(contentDiv);
-                  let hypenElement = drawSimpleElement(contentDiv, "-");
+                  SPLINT.DOMElement.SimpleElement.get(contentDiv);
+                  let hypenElement = SPLINT.DOMElement.SimpleElement.get(contentDiv, "-");
                       hypenElement.span.Class("bold");
-                  drawSimpleElement(contentDiv);
+                  SPLINT.DOMElement.SimpleElement.get(contentDiv);
                   // DrawPrice(contentDiv, sending.price, "ConclusionSendingPrice");
               let buttonChangeSending = new SPLINT.DOMElement.Button(sendingDiv, "change", "ändern");
                   buttonChangeSending.button.Class("simple");
@@ -132,22 +132,22 @@ class drawSavedInformation{
   
                         if(invoiceAddress.Title != ""){
                           let Title       = new SPLINT.DOMElement.SpanDiv(invoiceContentDiv, "Title", invoiceAddress.Title);
-                          drawSimpleElement(invoiceContentDiv, " ");
+                          SPLINT.DOMElement.SimpleElement.get(invoiceContentDiv, " ");
                         }
                         let FirstName   = new SPLINT.DOMElement.SpanDiv(invoiceContentDiv, "FirstName", invoiceAddress.FirstName);
-                        drawSimpleElement(invoiceContentDiv, " ");
+                        SPLINT.DOMElement.SimpleElement.get(invoiceContentDiv, " ");
                         let LastName    = new SPLINT.DOMElement.SpanDiv(invoiceContentDiv, "LastName", invoiceAddress.LastName);
-                        drawSimpleElement(invoiceContentDiv, ", ");
+                        SPLINT.DOMElement.SimpleElement.get(invoiceContentDiv, ", ");
                   
                         let Street      = new SPLINT.DOMElement.SpanDiv(invoiceContentDiv, "Street", invoiceAddress.Street);
-                        drawSimpleElement(invoiceContentDiv, " ");
+                        SPLINT.DOMElement.SimpleElement.get(invoiceContentDiv, " ");
                         let HouseNumber = new SPLINT.DOMElement.SpanDiv(invoiceContentDiv, "HouseNumber", invoiceAddress.HouseNumber);
                   
-                        drawSimpleElement(invoiceContentDiv, ", ");
+                        SPLINT.DOMElement.SimpleElement.get(invoiceContentDiv, ", ");
                         let PostCode    = new SPLINT.DOMElement.SpanDiv(invoiceContentDiv, "Postcode", invoiceAddress.Postcode);
-                        drawSimpleElement(invoiceContentDiv, " ");
+                        SPLINT.DOMElement.SimpleElement.get(invoiceContentDiv, " ");
                         let City        = new SPLINT.DOMElement.SpanDiv(invoiceContentDiv, "City", invoiceAddress.City);
-                        drawSimpleElement(invoiceContentDiv, ", ");
+                        SPLINT.DOMElement.SimpleElement.get(invoiceContentDiv, ", ");
                         let Country     = new SPLINT.DOMElement.SpanDiv(invoiceContentDiv, "Country", invoiceAddress.Country);
             
                         let buttonChangeInvoiceAddress = new SPLINT.DOMElement.Button(invoiceAddressDiv, "change", "ändern");

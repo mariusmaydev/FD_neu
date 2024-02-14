@@ -11,7 +11,6 @@
 
         
         <s-part first src="/js/GLOBAL/Paths.js"></s-part>
-        <s-part first src="/js/GLOBAL/global_Helper.js"></s-part>
         <s-part first src="/js/assets/functionsShoppingCart.js"></s-part>
 
         <s-part src="/js/manager/manager.js"></s-part>
@@ -19,7 +18,6 @@
         <s-module src="/js/3D/modules/module_3D_init.js"></s-module>
 
         <s-part first src="/js/Pages/pagesHelper.js"></s-part>
-        <s-part src="/js/GLOBAL/global_Helper_elements.js"></s-part>
         <s-part src="/js/assets/UserData.js"></s-part>
 
         <s-part src="/js/Login/LoginHelper.js"></s-part>

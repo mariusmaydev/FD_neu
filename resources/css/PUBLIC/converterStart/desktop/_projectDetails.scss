@@ -49,27 +49,44 @@
                         box-sizing: content-box !important;
                     }
                 }
-                > button {
+                > .buttonsContainer {
                     position: absolute;
                     bottom: 0;
                     border-radius: 0;
                     box-shadow: none;
-                    @include Tmain.TButton_Animated(false, false);
                     width: calc(100% - 1rem);
                     margin: 0;
                     margin-bottom: 0.5rem;
-                    > span {
-                        font-size: 1.8rem;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: left;
+                    gap: 1rem;
+                    > button {
+                        width: max-content;
+                        position: relative;
+                        bottom: 0;
+                        border-radius: 0;
+                        padding: 0.25rem;
+                        box-shadow: none;
+                        @include Tmain.TButton_Animated(false, false);
+                        // width: calc(100% - 1rem);
+                        margin: 0;
+                        > span {
+                            font-size: 1.8rem;
+                        }
                     }
+
                 }
             } 
             > .informationDiv {
-                margin-right: 1em;
+                padding-right: 1em;
                 width: 100%;
                 height: 100%;
                 display: flex;
                 flex-direction: column;
                 box-sizing: border-box;
+                overflow: auto;
+                overflow-x: hidden;
                 > .informationContent {
                     height: 100%;
                     display: flex;
@@ -105,6 +122,7 @@
 
                                     :first-child{
                                         border:  none !important;
+                                        padding-right: 1rem;
                                     }
                                     > td {
                                         padding-bottom: 0.5rem;
@@ -123,6 +141,9 @@
                 
                     > .descBody {
                         // padding-left: 0.5rem;
+                        overflow: auto;
+                        height: fit-content;
+                        width: 100%;
                         padding: 0.5rem;
                         > .descContent {
                             > span {
@@ -131,7 +152,8 @@
                         }
                     }
                     > .priceBody {
-                        height: 100%;
+                        flex-grow: 1;
+                        height: fit-content;
                         font-size: 4em;
                         > div {
                             position: sticky;
@@ -141,16 +163,18 @@
                     }
                 }
                 > .buyBody {
-                    position: relative;
+                    position: sticky;
                     width: 100%;
                     display: flex;
                     padding-inline: 0.5rem;
+                    padding-bottom: 0.5rem;
+                    padding-left: 1rem;
                     box-sizing: border-box;
                     flex-direction: column;
                     justify-content: stretch;
                     // align-items: stretch;
                     // justify-items: stretch;
-                    gap: 1.5rem;
+                    gap: 1rem;
                     > .amountInputContainer {
                         width: 100%;
                         display: flex;
@@ -183,18 +207,18 @@
                                 @include Tmain.TButton_Animated(true);
                                 height: calc(100% - 0.5rem);
                                 position: relative;
-                                padding: 0.15rem;
+                                padding: 0.5rem;
                                 width: 20% !important;
                                 > span {
                                     transform: translateX(0px) skewX(20deg);
-                                    font-size: 1rem;
+                                    font-size: 2rem;
                                 }
                             }
                             > div {
                                 width: 60%;
                                 padding-inline: 1rem;
                                 > input {
-                                    font-size: 1rem;
+                                    font-size: 1.5rem;
     
                                     transform: translateX(0px) skewX(20deg);
                                 }

@@ -1,9 +1,6 @@
 var asyncProgress = false;
 
-
-// var cursorHandler = new CursorHandler();
-
-let SVG_Loader = new SVG_preLoader();
+let SVG_Loader = new SPLINT.SVG.Loader();
 
 const BufferStorage = new SPLINT.BufferStorage("FD", true);
 function reload(){
@@ -34,15 +31,8 @@ class Pages {
   }
   async getActualPage(){
     console.log(SPLINT.ViewPort.getSize())
-    // BufferStorage.KEY = await SPLINT.SessionsPHP.getSessionID();
-
-    // for(const e of Object.entries((await SPLINT.SessionsPHP.getAll()))){
-    //     BufferStorage.setFromObject(e);
-    // }
     await login.Login();
     SPLINT.SessionsPHP.showAll();
-    // Cookie.showAll();
-    // SPLINT.SessionsPHP.showAll();
     switch(Pages.actualSite().id){
       case Pages.CONVERTER            : this.converter(); break;
       case Pages.CONVERTER_START      : this.converterStart(); break;
@@ -63,11 +53,9 @@ class Pages {
     new drawConverterStart();
   }
   index(){
-    // console.log("load")
     new drawIndex();
   }
   cart(){
-    // this.background.div.before(this.mainElement);
     new drawCart();
   }
   checkout(){

@@ -41,7 +41,7 @@ class DataStorageProject_C {
       return this;
     }
     getClone(){
-      return deepClone(this);
+      return SPLINT.Tools.ObjectTools.deepClone(this);
     }
     async saveAsync(){
       let a = CONVERTER_STORAGE.canvasNEW.createData(1);
