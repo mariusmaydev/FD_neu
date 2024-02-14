@@ -33,6 +33,9 @@
         <s-part src="/js/assets/functionsCouponCode.js"></s-part>
         <s-part src="/js/Projects/Projects.js"></s-part>
         <s-part src="/js/Projects/ProjectsHelper.js"></s-part>
+        <s-part src="/js/Projects/ProjectList/Details/ProjectDetailsDesktop.js"></s-part>
+        <s-part src="/js/Projects/ProjectList/Details/ProjectDetailsMobile.js"></s-part>
+        <s-part src="/js/Projects/ProjectList/ProjectDetails.js"></s-part>
 
         <s-part src="/js/NavigationBar.js"></s-part>
         <s-part src="/js/Footer.js"></s-part>

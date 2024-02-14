@@ -5,6 +5,11 @@ class ProjectDetails {
         this.id = "ProjectDetails_" + "_";
         this.data = data;
         this.mainElement = null;
+        this.ele = null;
+        this._onclose = function(){};
+    }
+    set onclose(v){
+        this._onclose = v;
     }
     async show(drawButtons = true){
         if(SPLINT.ViewPort.getSize() == "mobile-small"){
@@ -12,13 +17,11 @@ class ProjectDetails {
         } else {
             this.ele = new ProjectDetails_Desktop(this.data, 0, this.parent);
         }
-        this.ele.show(drawButtons);
+        await this.ele.show(drawButtons);
+        this.ele.onclose = this._onclose;
     }
     hide(){
         this.ele.hide();
-        // if(this.mainElement != null){
-        //     this.mainElement.close();
-        // }
     }
     drawInformation(){ 
         this.informationDiv = new SPLINT.DOMElement(this.id + "informationDiv", "div", this.contentElement);
@@ -35,31 +38,13 @@ class ProjectDetails {
                             informationTableHeadline.Class("headline");
                         let informationTable = new SPLINT.DOMElement.Table.TextTable(informationTableBody, "information");
                             informationTable.Class("informationTable");
-                            // informationTable.addRow("erstellt", this.data.First_Time);
-                            // informationTable.addRow("zuletzt bearbeitet", this.data.Last_Time);
-                            console.log(this.productData)
                             for(const e of this.productData.attrs){
                                 informationTable.addRow(e.name + ": ", e.value);
                             }
-                    // informationTable.addRow("Farbe", this.data.color);
-                    // informationTable.addRow("zuletzt bearbeitet", this.data.Last_Time);
 
                 
                 let sizeBody = new SPLINT.DOMElement("sizeBody", "div", content);
                     sizeBody.Class("sizeBody");
-                    // let headline_size = new SPLINT.DOMElement.SpanDiv(sizeBody, "size_headline", "Abmaße");
-                    //     headline_size.Class("headline_size");
-                    // let sizeContent = new SPLINT.DOMElement("sizeContent", "div", sizeBody);
-                    //     sizeContent.Class("sizeContent");
-                    //     let sizeHeight = new SPLINT.DOMElement.SpanDiv(sizeContent, "size_height", this.productData.size.height);
-                    //         let sizeHeightLabel = new SPLINT.DOMElement.Label(sizeContent, sizeHeight.div, "Höhe");
-                    //             sizeHeightLabel.before();
-                    //     let sizeWidth = new SPLINT.DOMElement.SpanDiv(sizeContent, "size_width", this.productData.size.width);
-                    //         let sizeWidthLabel = new SPLINT.DOMElement.Label(sizeContent, sizeWidth.div, "Breite");
-                    //             sizeWidthLabel.before();
-                    //     let sizeDeep = new SPLINT.DOMElement.SpanDiv(sizeContent, "size_deep", this.productData.size.deep);
-                    //         let sizeDeepLabel = new SPLINT.DOMElement.Label(sizeContent, sizeDeep.div, "Tiefe");
-                    //             sizeDeepLabel.before();
 
                 let priceBody = new SPLINT.DOMElement("priceBody", "div", content);
                     priceBody.Class("priceBody");

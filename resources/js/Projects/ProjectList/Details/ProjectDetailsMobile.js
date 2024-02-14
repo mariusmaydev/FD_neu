@@ -5,11 +5,18 @@ class ProjectDetails_Mobile {
         this.id = "ProjectDetails_" + "_";
         this.data = data;
         this.mainElement = null;
+        this._onclose = function(){};
+    }
+    set onclose(v){
+        this._onclose = v;
+        this.mainElement.onclose = v;
     }
     async show(drawButtons = true){
         this.productData = await productHelper.getProductData(this.data.Product);
         this.mainElement = new SPLINT.DOMElement.popupWindow(this.id, true)
+        this.mainElement.onclose = this._onclose;
         this.mainElement.close = function(){
+            this._onclose();
             this.mainElement.content.startAnimation_str("translateProjectDetails_close 0.3s ease forwards", 0.3);
             this.mainElement.background.startAnimation_str("translateProjectDetailsBackground_close 0.3s ease forwards", 0.3).then(function(){
                 this.mainElement.element.remove();
@@ -231,68 +238,5 @@ class ProjectDetails_Mobile {
                         this.buttonSizeMain.unsetActive();
                     }.bind(this);
 
-            //       let button_edit = new SPLINT.DOMElement.Button(buttonDiv, this.id + "_edit");
-            //       button_edit.bindIcon("edit");
-            //       button_edit.setTooltip("bearbeiten", "top");
-            //       button_edit.button.onclick = function(e){
-            //         e.stopPropagation();
-            //         if(this.isAdmin){
-            //           let pID = ProjectHelper.copy(this.data.ProjectID, "ADMIN");
-            //           if(this.data.State == ProjectHelper.STATE_CART){
-            //             ProjectHelper.CONVERTER_startProject(pID, true);
-            //           } else {
-            //             ProjectHelper.CONVERTER_startProject(pID, false);
-            //           }
-            //         } else {
-            //           if(this.data.State == ProjectHelper.STATE_CART){
-            //             ProjectHelper.CONVERTER_startProject(this.data.ProjectID, true);
-            //           } else {
-            //             ProjectHelper.CONVERTER_startProject(this.data.ProjectID, false);
-            //           }
-            //         }
-            //       }.bind(this);
-            //   if(await SPLINT.SessionsPHP.get("ADMIN", false)){
-            //     let button_remove = new SPLINT.DOMElement.Button(buttonDiv, this.id + "_remove");
-            //         button_remove.bindIcon("delete");
-            //         button_remove.setTooltip("löschen", "top");
-            //         button_remove.onclick = function(e){
-            //           e.stopPropagation();
-            //           ProjectHelper.remove(this.data.ProjectID);
-            //           if(this.data.State == ProjectHelper.STATE_CART){
-            //             ShoppingCart.removeItem(this.data.ProjectID);
-            //           }
-            //           buttonDiv.parentNode.remove();
-            //           // this.draw();
-            //         }.bind(this);
-            //   }
-            //   let button_toCart = new SPLINT.DOMElement.Button(buttonDiv, this.id + "_toCart");
-            //       button_toCart.bindIcon("add_shopping_cart");
-            //       button_toCart.setTooltip("zur Auswahl hinzufügen", "top");
-            //       button_toCart.button.onclick = async function(e){
-            //           e.stopPropagation();
-            //           let projectID = this.data.ProjectID;
-            //           if(this.data.State != ProjectHelper.STATE_CART){
-            //             projectID = ProjectHelper.copy(this.data.ProjectID, await SPLINT.SessionsPHP.get("USER_ID", false));
-            //             ProjectHelper.changeState(projectID, ProjectHelper.STATE_CART);
-            //           }
-            //           if(this.data.EPType == "GOLD"){
-            //             ShoppingCart.addItem(projectID, productHelper.LIGHTER_GOLD, 1);
-            //           } else {
-            //             ShoppingCart.addItem(projectID, productHelper.LIGHTER_CHROME, 1);
-            //           }
-            //       }.bind(this);
-            //   let button_remove = new SPLINT.DOMElement.Button(buttonDiv, this.id + "_remove");
-            //       button_remove.bindIcon("delete");
-            //       button_remove.setTooltip("löschen", "top");
-            //       button_remove.onclick = function(e){
-            //         e.stopPropagation();
-            //         ProjectHelper.remove(this.data.ProjectID);
-            //         if(this.data.State == ProjectHelper.STATE_CART){
-            //           ShoppingCart.removeItem(this.data.ProjectID);
-            //         }
-            //         this.parent.remove();
-            //         this.mainElement.close();
-            //         // this.draw();
-            //       }.bind(this);
     }
 }

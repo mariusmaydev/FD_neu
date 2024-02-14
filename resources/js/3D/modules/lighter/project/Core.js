@@ -29,7 +29,6 @@ export class draw {
             
             if(this.canvas.parentElement.getAttribute("mouseEvents") == 'true'){
                 this.mouseHandler.onMove = function(event){
-                    console.log(this.mouseHandler.dX)
                     if(this.mouseHandler.mouseDown){
                         this.render();
                         MODEL._rotate(this.setup.getLighterGroupe(this.scene), 0, 0, this.mouseHandler.dX);

@@ -36,19 +36,10 @@ class drawCartList {
         //     let priceDivEle = this.listHead.newDiv("ItemList_head_price", "price");
         //         new SPLINT.DOMElement.SpanDiv(priceDivEle, "inner", "Preis");
         this.list = new Table(this.listBody, "ItemList", this.data);
-        // this.list.func_drawFirstListElement = function(listElement){
-        //     let descDiv = listElement.newDiv("ItemList_head_description", "description");
-        //         new SPLINT.DOMElement.SpanDiv(descDiv, "inner", "Beschreibung");
-
-        //     let itemPriceDiv = listElement.newDiv("ItemList_head_itemPrice", "itemPrice");
-        //         new SPLINT.DOMElement.SpanDiv(itemPriceDiv, "inner", "Stückpreis");
-
-        //     let amountDiv = listElement.newDiv("ItemList_head_amount", "amount");
-        //         new SPLINT.DOMElement.SpanDiv(amountDiv, "inner", "Anzahl");
-
-        //     let priceDiv = listElement.newDiv("ItemList_head_price", "price");
-        //         new SPLINT.DOMElement.SpanDiv(priceDiv, "inner", "Preis");
-        // }
+        this.list.func_drawFirstListElement = function(listElement){
+            let header = new SPLINT.DOMElement.SpanDiv(listElement, "headline_cart", "Warenkorb");
+                header.Class("headline_cart");
+        }
         this.list.func_drawListElement = function(item, index, listElement){
             console.log(item)
             let projectData     = ProjectHelper.get(item.ProjectID);
@@ -68,7 +59,21 @@ class drawCartList {
             let infoDivInner = infoEle.newDiv("/ID/info_inner", "inner");
                 let infoText = new SPLINT.DOMElement.SpanDiv(infoDivInner, "text", "vergoldetes Feuerzeug");
                     infoText.div.Class("text");
-                let info_buttons = infoDivInner.newDiv("/ID/info_buttons", "buttons");
+                    let horizontalLine = new SPLINT.DOMElement.HorizontalLine(infoDivInner);
+                let informationTableBody = new SPLINT.DOMElement(infoDivInner.id + "informationTableBody", "div", infoDivInner);
+                    informationTableBody.Class("informationTableBody");
+                    // let informationTableHeadline = new SPLINT.DOMElement.SpanDiv(informationTableBody, infoDivInner.id + "headline", "Produktdetails");
+                    //     informationTableHeadline.Class("headline");
+                    let informationTable = new SPLINT.DOMElement.Table.TextTable(informationTableBody, infoDivInner.id + "information");
+                        informationTable.Class("informationTable");
+                        // informationTable.addRow("erstellt", this.data.First_Time);
+                        // informationTable.addRow("zuletzt bearbeitet", this.data.Last_Time);
+                        productData.then(function(data){
+                            console.dir(data);
+                            for(const e of data.attrs){
+                                informationTable.addRow(e.name + " ", e.value);
+                            }
+                        });
 
             let itemPriceDivInner = itemPriceDiv.newDiv("/ID/item_price_inner", "inner");
             productData.then(function(data){
@@ -93,23 +98,27 @@ class drawCartList {
             });
 
             let ButtonsInner = buttonsEle.newDiv("/ID/buttons_inner", "inner");
-                // let bt_edit = new Button(ButtonsInner, "edit");
-                //     bt_edit.bindIcon("edit");
-                //     bt_edit.onclick = function(){
-                //         Project.CONVERTER_startProject(projectData.ProjectID, true);
-                //     }
-                //     bt_edit.button.setTooltip("bearbeiten", "top");
                     
-                // let bt_info = new Button(ButtonsInner, "info");
-                //     bt_info.bindIcon("info");
-                //     bt_info.onclick = function(){
-                //         Project.CONVERTER_startProject(projectData.ProjectID, true);
-                //     }
-                //     bt_info.button.setTooltip("details", "top");
+                let bt_info = new SPLINT.DOMElement.Button(ButtonsInner, "info");
+                    bt_info.bindIcon("info");
+                    bt_info.Class("info");
+                    bt_info.onclick = function(){
+                        projectData.then(async function(data){
+                            NavBar.grow();
+                            let p = new ProjectDetails(data, 1, document.body);
+                            p.onclose = function(){
+                                console.log("ok")
+                                NavBar.shrink();
+                            }
+                                p.show(true);
+                        });
+                        // Project.CONVERTER_startProject(projectData.ProjectID, true);
+                    }
+                    bt_info.button.setTooltip("details", "top");
                 let buttonEdit = new SPLINT.DOMElement.Button(ButtonsInner, "edit");
                     buttonEdit.bindIcon("edit");
                     buttonEdit.button.Class("edit");
-                    buttonEdit.button.setTooltip("bearbeiten", "top");
+                    buttonEdit.setTooltip("bearbeiten", "top");
                     buttonEdit.onclick = function(){
                         ProjectHelper.CONVERTER_startProject(item.ProjectID, true);
                     }
@@ -125,7 +134,7 @@ class drawCartList {
                     }
                     listElement.remove();
                 }.bind(this);
-                buttonRemove.button.setTooltip("entfernen", "top");
+                buttonRemove.setTooltip("entfernen", "top");
 
         }.bind(this);
         this.list.draw();

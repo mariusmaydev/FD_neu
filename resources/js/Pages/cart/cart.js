@@ -6,13 +6,13 @@ class drawCart extends Pages_template {
     draw(){
         let background = new drawBackground3D(document.body, "back3D", "medium");
             background.div.before(this.mainElement);
-        NavBar.grow();
         this.right = new drawCartRight(this.mainElement);
         this.list = new drawCartList(this.mainElement);
         
         // Footer.parent = this.mainElement;
         if(SPLINT.ViewPort.getSize() == "mobile-small"){
             Footer.mobile();
+            NavBar.grow();
         } else {
             Footer.desktop();
         }

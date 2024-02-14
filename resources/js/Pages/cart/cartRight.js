@@ -14,6 +14,9 @@ class drawCartRight {
                 conclusionDiv.setAttribute("loaded", true);
             }
             let sumBody = conclusionDiv.newDiv("conclusion_price_body", "sumBody");
+                let conclusionHeadline = new SPLINT.DOMElement.SpanDiv(sumBody, "conclusion_Headline", "Zusammenfassung");
+                    conclusionHeadline.Class("headline");
+                let horizontalLine = new SPLINT.DOMElement.HorizontalLine(sumBody);
                 let priceTable = new SPLINT.DOMElement.Table.Grid(sumBody, "conclusion_price_table", 3, 2);
                     new SPLINT.DOMElement.SpanDiv(priceTable.getData(0, 0), "fullPrice_label", "Zwischensumme");
                     new SPLINT.DOMElement.PriceDiv(priceTable.getData(0, 1), "fullPrice", this.price);

@@ -4,8 +4,6 @@
 @use '../../../../../Splint/scss/tools/tools' as S_tools;
 @use 'sass:color';
 @use '../mediaQueries';
-// @import 'mobile.scss';
-// @import 'desktop.scss';
 
 
 @mixin shadowHelper($dark, $darkColor, $light, $lightColor, $trans: null, $skew: 0deg){
@@ -160,10 +158,6 @@
                 left: 0;
                 // top: -1%;
                 height: 100%;
-                @include mediaQueries.forMediaBreakpoint(mobile-small){
-                    height: 90%;
-                    padding-bottom: 2.5%;
-                }
                 width: auto;
                 box-shadow: none;
                 border: none;
@@ -221,6 +215,10 @@
                         > .content {
                             box-shadow: none;
                             height: 100%;
+                            @include mediaQueries.forMediaBreakpoint(mobile-small){
+                                height: 90%;
+                                margin-bottom: 2.5%;
+                            }
                             width: max-content;
                             left: 0.75rem;
                             padding: 0.6rem;
@@ -307,13 +305,20 @@
                     top: 60%;
                     background-color: $color-primary;
                     border-radius: 50%;
-                    width: 1.5rem;
-                    height: 1.5rem;
+                    width: 1rem;
+                    height: 1rem;
                     aspect-ratio: 1/1;
                     display: flex;
                     justify-content: center;
                     > span {
-                        font-size: 2rem;
+                        font-size: 1rem;
+                    }
+                    @include mediaQueries.forMediaBreakpoint(mobile-small){
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        > span {
+                            font-size: 1.5rem;
+                        }
                     }
                 }
             }

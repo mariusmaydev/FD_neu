@@ -14,7 +14,7 @@
         @include mediaQueries.forMediaBreakpoint(desktop mobile){
             height: 50%;
             position: sticky;
-            top: calc(8vh + 0.5rem);
+            top: calc(11vh + 0.8rem);
             margin-top: 0 !important;
         }
         @include mediaQueries.forMediaBreakpoint(mobile-small){
@@ -50,33 +50,49 @@
                     margin-top: 0.5rem;
                 }
                 > .sumBody {
+                    > .headline {
+                        padding: 0.25rem;
+                        > span {
+                            font-size: 1.5rem;
+                            font-weight: 500;
+                        }
+                    }
+                    > hr {
+                        width: 100%;
+                        left: 0;
+                    }
                     > .Table2D {
                         > table {
                             width: 100%;
                             border-spacing: 0px 0.75rem;
                             > tr {
+                                height: 1.5rem;
                                 width: 100%;
                                 > td {
                                     &[col*='0']{
                                         > div {
                                             margin-left: 0.5rem;
+                                            > span {
+                                                font-size: 1rem;
+                                            }
                                         }
                                     }
                                     &[col*='1']{
                                         text-align: right;
                                         > div {
-                                            
                                             margin-right: 1rem;
+                                            > span {
+                                                font-size: 1.2rem;
+                                            }
                                         }
                                     }
                                 }
                                 &[row='1']{
-                                    font-weight: bold;
-                                    font-size: 1.2rem;
                                     > td {
                                         &[col*='0']{
                                             > div {
                                                 > span {
+                                                    font-size: 1rem;
                                                 }
                                             }
                                         }

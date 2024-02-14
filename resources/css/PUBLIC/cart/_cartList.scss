@@ -92,7 +92,7 @@
                     gap: 0rem;
                     // padding-top: 0.5rem;
                     @include mediaQueries.forMediaBreakpoint(desktop){
-                        padding-top: calc(8vh + 0.5rem);
+                        padding-top: calc(5vh + 0.5rem);
                         padding-bottom: 2vh;
                     }
                     @include mediaQueries.forMediaBreakpoint(mobile){
@@ -109,7 +109,7 @@
                     overflow: hidden;
                     overflow-x: hidden;
                     > .ListElement {
-                        height: 20rem;
+                        height: 15rem;
                         @include mediaQueries.forMediaBreakpoint(mobile-small){
                             font-size: 2rem;
                             height: 30rem;
@@ -128,6 +128,33 @@
                         transition: transform 0.5s ease 0.2s;
                         &[loaded='true']{
                             transform: translateX(0rem);
+                        }
+                        &.First {
+                            position: relative;
+                            margin: 0;
+                            padding: 0;
+                            width: fit-content;
+                            height: 100%;
+                            display: block;
+                            transform: none;
+                            margin: 0.5rem;
+                            margin-bottom: 0;
+                            margin-left: 1rem;
+                            border-radius: 0;
+                            background-color: transparent;
+                            box-shadow: none;
+                            > div {
+                                border-radius: 0;
+                                // @include Tmain.TContainer_basic();
+                                background-color: transparent;
+                                box-shadow: none;
+                                padding: 0.25rem;
+                                padding-inline: 0.5rem;
+                                > span {
+                                    font-size: 2.5rem;
+                                    font-weight: 400;
+                                }
+                            }
                         }
                         &:not(.First){
                             > div {
@@ -150,30 +177,7 @@
                                 &.right {
                                     position: relative;
                                     box-sizing: border-box;
-                                    // @include forMediaBreakpoint(desktop){
-                                        width: 100%;
-                                        // max-width: 100%;
-                                    //     display: inline-grid;
-                                    //     grid-template-columns: ;
-                                    //     // flex-direction: row;
-                                    //     justify-content: stretch;
-                                    //     gap: 1rem;
-                                    // }
-                                    // @include forMediaBreakpoint(desktop-small){
-                                    //     background-color: red;
-                                    //     width: 100%;
-                                    //     display: flex;
-                                    //     flex-direction: column;
-                                    //     justify-content: stretch;
-                                    //     gap: 1rem;
-                                    // }
-                                    // display: grid;
-                                    // // grid-template-columns: ;
-                                    // flex-wrap: wrap;
-                                    // flex-grow: 1;
-                                    // flex-shrink: 1;
-                                    // flex-basis: auto;
-                                    // align-items: stretch;
+                                    width: 100%;
                                     @include mediaQueries.forMediaBreakpoint(mobile-small){
 
                                         justify-content: stretch;
@@ -213,7 +217,7 @@
                                         justify-content: stretch;
                                         display: grid;
                                         grid-template-columns: auto 10em 9em;
-                                        column-gap: 1rem;
+                                        column-gap: 0rem;
                                         grid-template-rows: repeat(auto-fill, minmax(min-content, 1fr));
                                         grid-template-areas: 
                                             "info amount price"
@@ -225,17 +229,48 @@
                                         &.info {
                                             grid-area: info;
                                             > .inner {
-                                                padding-top: 1rem;
+                                                padding-top: 0rem;
+                                                padding-right: 0.5rem;
                                                 display: flex;
                                                 flex-direction: column;
                                                 > .text {
                                                     flex-grow: 1;
                                                     padding: 0.5rem;
+                                                    padding-right: 0;
+                                                    font-size: 1.6rem;
+                                                    @include mediaQueries.forMediaBreakpoint(mobile-small){
+                                                        font-size: 2.5rem;
+                                                    }
+                                                }
+                                                > .informationTableBody {
+                                                    flex-grow: 1;
+                                                    padding: 0.5rem;
+                                                    padding-right: 0;
+                                                    padding-top: 0;
+                                                    > div {
+                                                        > table {
+                                                            > tr {
+                                                                // &:first-of-type {
+                                                                //     display: none;
+                                                                // }
+                                                                > td {
+                                                                    padding-bottom: 0.25rem;
+                                                                    &[col*='1']{
+                                                                        padding-left: 1rem;
+                                                                    }
+
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                                 > .buttons {
                                                     height: max-content;
                                                     padding: 0.5rem;
                                                     overflow: visible;
+                                                    display: flex;
+                                                    flex-direction: row;
+                                                    justify-content: right;
                                                     > button {
                                                         margin-inline: 5%;
                                                         span {
@@ -282,6 +317,7 @@
                                                 flex-direction: column;
                                                 padding-top: 1.5rem;
                                                 align-items: center;
+                                                font-size: 1.25rem;
                                                 > div {
                                                     width: max-content;
                                                     max-width: 100%;
@@ -302,9 +338,9 @@
                                                 display: flex;
                                                 flex-direction: row;
                                                 justify-content: center;
-                                                padding-top: 1.5rem;
+                                                padding-top: 1rem;
                                                 align-items: left;
-                                                font-size: 2em;
+                                                font-size: 2.5em;
                                                 > div {
                                                     height: 100%;
                                                     width: fit-content;
@@ -322,15 +358,28 @@
                                                 display: flex;
                                                 // justify-content: right;
                                                 align-items: center;
+                                                display: flex;
+                                                flex-direction: row;
+                                                justify-content: right;
+                                                gap: 0.5rem;
                                                 > button {
-                                                    @include Tbuttons.T_button_Animated(true);
+                                                    @include Tmain.TButton_simple();
                                                     &.remove {
-                                                        // margin-left: auto;
-
                                                     }
-                                                    // align-self: flex-end;
                                                     > span {
-                                                        font-size: 3rem;
+                                                        font-size: 2.5rem;
+                                                    }
+                                                }
+                                                @include mediaQueries.forMediaBreakpoint(mobile-small){
+                                                    justify-content: space-around;
+                                                    > button {
+                                                        aspect-ratio: 1/1;
+                                                        @include Tmain.TButton_simple();
+                                                        &.remove {
+                                                        }
+                                                        > span {
+                                                            font-size: 4rem;
+                                                        }
                                                     }
                                                 }
                                             }

@@ -23,7 +23,6 @@ $skew               : vars.$general-skew;
     border: none;
     cursor: pointer;
     box-sizing: content-box;
-    overflow: hidden;
     > span {
         box-sizing: border-box;
     }
@@ -159,7 +158,7 @@ $skew               : vars.$general-skew;
         box-shadow: 2px 2px 0px 0px color.adjust($color-shadow-dark, $alpha: -0.1),
                     inset -1px 0px 0px 0px $color-hover-effect,
                     inset 0px -1px 0px 0px $color-hover-effect;
-        &:active {
+        &:active,&[state*='active'] {
             box-shadow: 1px 1px 0px 0px color.adjust($color-shadow-dark, $alpha: -0.1),
                         inset -1px 0px 0px 0px $color-hover-effect,
                         inset 0px -1px 0px 0px $color-hover-effect;
@@ -169,7 +168,7 @@ $skew               : vars.$general-skew;
         box-shadow: 3px 3px 0px 0px color.adjust($color-shadow-dark, $alpha: -0.1),
                     inset -1px 0px 0px 0px $color-hover-effect,
                     inset 0px -1px 0px 0px $color-hover-effect;
-        &:active {
+        &:active,&[state*='active'] {
             box-shadow: 2px 2px 0px 0px color.adjust($color-shadow-dark, $alpha: -0.1),
                         inset -1px 0px 0px 0px $color-hover-effect,
                         inset 0px -1px 0px 0px $color-hover-effect;
