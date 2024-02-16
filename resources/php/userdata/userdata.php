@@ -45,7 +45,6 @@
             $DataSet = new DataSet();
             $DataSet -> newEntry($type, $data);
             $DataSet -> newKey(UserDataDB::USER_ID, $UserID);
-            Debugg::log($DataSet);
             UserDataDB::edit($DataSet);
         }
         public static function copyFromGuest($UserID){

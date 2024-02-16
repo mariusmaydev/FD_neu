@@ -222,7 +222,7 @@ use Shopify\Auth\Session;
     }
 
     class TextDB extends DataBase {
-        public static $TBName     = "";
+        public static $TBName     = "_";
         public static $DBName     = "converter_texts";
         public static $keyName;
         public static $key;

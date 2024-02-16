@@ -3,9 +3,15 @@
     require_once $rootpath.'/fd/resources/php/CORE.php';
     require_once $rootpath.'/fd/resources/php/lexOffice/lexOffice.php';
 
-    $accessToken = "l2h4Kz9C_zf8Hmvs9wBqlWXCJkU";
+    $lexOfficeConfig = lexOffice_Helper::getConfig();
+    $accessToken = $lexOfficeConfig -> accessToken;
 
     class lexOffice_Helper {
+        public static function getConfig(){
+            global $accessToken;
+            $config = getSplintConfig("lexOffice.server");
+            return $config;
+        }
         public static function getFile($documentFileID){
             global $accessToken;
             $curl = curl_init();
@@ -57,7 +63,6 @@
                 error_log($curl);
             }
             curl_close($curl);
-            // return $result;
             return json_decode($result, true);
         }
     }

@@ -254,7 +254,7 @@
       }
 
     class ImageDB extends DataBase {
-        public static $TBName     = "";
+        public static $TBName     = "_";
         public static $DBName     = "converter_images";
         public static $keyName;
         public static $key;

@@ -1,0 +1,229 @@
+@use '../publicMain.scss';
+@use '../../themes/theme1/main' as Tmain;
+@use '../../general/3D.scss' as Drd;
+@use '../../general/NavigationBar/NavigationBar.scss';
+@use '../../general/Footer/FooterMobile.scss';
+@use '../../general/Footer/FooterDesktop.scss';
+@use '../../general/mediaQueries';
+
+
+@include mediaQueries.forMediaBreakpoint(desktop mobile){
+    @include FooterDesktop.FooterDesktop();
+    body {
+        height : 100vh!important;
+        top: 0!important;
+        overflow-y: auto !important;
+        ::-webkit-scrollbar {
+            display: none !important;
+        }
+        scroll-snap-type: none !important;
+    }
+}
+
+@include mediaQueries.forMediaBreakpoint(mobile-small){
+    @include FooterMobile.FooterMobile();
+    // body {
+    //     height : 100vh!important;
+    //     top: 0!important;
+    //     overflow-y: auto !important;
+    //     ::-webkit-scrollbar {
+    //         display: none !important;
+    //     }
+    // }
+}
+// .visible-scrollbar,
+// .invisible-scrollbar,
+// .mostly-customized-scrollbar {
+//   display: block;
+//   width: 10em;
+//   overflow: auto;
+//   height: 2em;
+// }
+
+// .invisible-scrollbar::-webkit-scrollbar {
+//   display: none;
+// }
+
+// /* Demonstrate a "mostly customized" scrollbar
+//  * (won't be visible otherwise if width/height is specified) */
+// .mostly-customized-scrollbar::-webkit-scrollbar {
+//   width: 5px;
+//   height: 8px;
+//   background-color: #aaa; /* or add it to the track */
+// }
+
+/* Add a thumb */
+body {
+    // @include converterStart_projectDetails;
+    box-sizing: border-box;
+    color: black !important;
+    &::-webkit-scrollbar {
+        display: default !important;
+        width: 2px;
+        height: 10px;
+        background-color: transparent; /* or add it to the track */
+    }
+    &::-webkit-scrollbar-thumb {
+        height: 10px;
+        // background: ;
+        width: 20px;
+        max-height: 50px !important;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    >.Pages_MAIN {
+        
+        scroll-snap-align: start;
+        
+        display: flex;
+        overflow: auto;
+        position: relative;
+        left: 0;
+        width: 100%;
+        // height: 50%;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: all;
+        > .content {
+            top: 0;
+            // min-width: 52rem;
+            height: max-content;
+            width: max-content;
+
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5rem;
+            // just
+            > .headline {
+                width: max-content;
+                box-shadow: none;
+                border-radius: 0;
+                background-color: transparent;
+                // @include Tmain.T_container();
+                > span {
+                    font-weight: 300;
+                    font-size: 4rem;
+                }
+            }
+            > button {
+                > span {
+                    font-size: 15rem;;
+                }
+            }
+        }
+    }
+}
+
+
+// In dieser Datei werden einfache Presets geladen, diese Datei kann
+// sofen das Projekt für ein wirkliches Projekt als Grundlage
+// dient einfach gelöscht werden.
+
+// :root {
+// 	--prime: 255, 110, 72;
+// 	--ciBlue: 0, 255, 241;
+// 	--ciRed: 255, 0, 170;
+// 	--ciWhite: 255, 255, 255;
+// 	--ciGreen: 70, 252, 180;
+// 	--ciSecond: 12, 16, 22;
+// }
+
+// $roboto: "Roboto";
+
+// @font-face {
+// 	font-family: $roboto;
+// 	src: url("https://assets.codepen.io/907368/Roboto-Bold.ttf");
+// 	font-weight: 700;
+// }
+
+// @font-face {
+// 	font-family: $roboto;
+// 	src: url("https://assets.codepen.io/907368/Roboto-Regular.ttf");
+// 	font-weight: 500;
+// }
+
+// @font-face {
+// 	font-family: $roboto;
+// 	src: url("https://assets.codepen.io/907368/Roboto-Light.ttf");
+// 	font-weight: 300;
+// }
+
+// body,
+// html {
+// 	width: 100%;
+// 	min-height: 100vh;
+// 	display: flex;
+// 	flex-direction: column;
+// 	justify-content: center;
+// 	align-items: center;
+// 	background-color: rgb(var(--ciSecond));
+// 	font-size: 20px;
+// 	margin: 0;
+// 	padding: 0;
+// 	color: rgb(var(--ciWhite));
+// 	font-family: $roboto;
+// 	overflow-x: hidden;
+// }
+
+// * {
+// 	box-sizing: border-box;
+// }
+
+// // Tutorial Start
+// main {
+// 	display: flex;
+// 	flex-direction: column;
+// 	align-items: center;
+// 	gap: 12rem;
+// 	padding: 5rem;
+// 	@media (max-width: 900px) {
+// 		gap: 2rem;
+// 		padding: 3.5rem;
+// 	}
+// 	.container {
+// 		width: 100%;
+// 		max-width: 1200px;
+// 		display: flex;
+// 		flex-direction: row;
+// 		justify-content: center;
+// 		align-items: center;
+// 		gap: 10rem;
+// 		@media (max-width: 900px) {
+// 			flex-direction: column;
+// 			gap: 2rem;
+// 		}
+// 		&:nth-child(2) {
+// 			@media (max-width: 900px) {
+// 				flex-direction: column-reverse;
+// 			}
+// 		}
+// 		div {
+//             background-color: red;
+// 			display: flex;
+// 			flex-direction: column;
+// 			align-items: flex-start;
+// 			justify-content: flex-start;
+// 			width: 50%;
+// 			@media (max-width: 900px) {
+// 				width: 100%;
+// 			}
+// 			&.content {
+// 				justify-content: center;
+// 			}
+
+// 			img {
+// 				width: 100%;
+// 				aspect-ratio: 4 / 5;
+// 				border-radius: 2rem;
+// 				object-fit: cover;
+// 			}
+// 		}
+// 	}
+// }
