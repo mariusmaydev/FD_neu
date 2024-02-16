@@ -25,11 +25,11 @@ export default class projectCommunication {
                 } else {
                     this.hideDimensions();
                 }
-            } else if(data.type == 'turn'){
+            } else if(data.type == 'zoom'){
                 if(data.value){
-                    this.inst.Animations.lighter_turn.start();
+                    this.inst.Animations.lighter_zoom.start();
                 } else {
-                    this.inst.Animations.lighter_turn.start(false)
+                    this.inst.Animations.lighter_zoom.start(false)
                 }
             }
         }.bind(this);

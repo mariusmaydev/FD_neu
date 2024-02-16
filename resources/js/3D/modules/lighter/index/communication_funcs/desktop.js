@@ -27,6 +27,9 @@ export default class indexCommunication_funcsDesktop {
                 case "smoothTurn" : {
                     return this.inst.compressedAnimations.toggleSmoothTurn(duration);
                 } break;
+                case "turnBack" : {
+                    return this.inst.compressedAnimations.turnBack();
+                } break;
                 case "wheel" : {
                     return Promise.resolve('');
                 } break;
@@ -57,6 +60,9 @@ export default class indexCommunication_funcsDesktop {
                 } break;
                 case "smoothTurn" : {
                     return this.inst.compressedAnimations.smoothTurnStop();
+                } break;
+                case "turnBack" : {
+                    return this.inst.compressedAnimations.turnBack();
                 } break;
                 case "wheel" : {
                     return Promise.resolve('');
@@ -93,6 +99,9 @@ export default class indexCommunication_funcsDesktop {
                 } break;
                 case "smoothTurn" : {
                     return this.inst.compressedAnimations.smoothTurnStart(duration, delay);
+                } break;
+                case "turnBack" : {
+                    return this.inst.compressedAnimations.turnBack();
                 } break;
                 case "wheel" : {
                     return Promise.resolve('');

@@ -22,7 +22,7 @@ class ADMIN_statistics extends ADMIN_DrawTemplate {
         let gh = new Object();
         ef.then(function(g){
             for(const key in g){
-                let t = S_Time.convertDateTimeToFormatedUnix(g[key].Time);
+                let t = SPLINT.Tools.DateTime.Helper.convertDateTimeToFormatedUnix(g[key].Time);
                 let ji = new formatUnix_S(t * 1000);
                 // console.dir(ji.date())
                 let da = ji.date();

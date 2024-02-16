@@ -35,6 +35,12 @@ class drawProjectList {
                   container.Class("container");
                   let lighter = new drawLighter3D(container, "new_" + this.name, drawLighter3D.PROJECT_NEW);
                   listElement.setAttribute("align", "left");
+                  listElement.onmouseenter = function(){
+                      lighter.send("zoom", true);
+                  }
+                  listElement.onmouseleave = function(){
+                      lighter.send("zoom", false);
+                  }
             }.bind(this);
           }
           this.table.func_drawListElement = async function(data, index, listElement){
@@ -107,10 +113,10 @@ class drawProjectList {
                 }
             
             listElement.onmouseenter = function(){
-                lighter.send("turn", true);
+                lighter.send("zoom", true);
             }
             listElement.onmouseleave = function(){
-                lighter.send("turn", false);
+                lighter.send("zoom", false);
             }
             let projectDetails = new ProjectDetails(data, index, listElement);
               listElement.onclick = function(){

@@ -1,4 +1,7 @@
 {
     "accessToken" : "access_token$production$p85g3qhd7jymj5hz$fe3c7ddb09e1b4621560dc0a1839027e",
-    "name" : "MariusMayTrading@gmx.de"
+    "name" : "MariusMayTrading@gmx.de",
+    "SANDBOX" : true,
+    "SANDBOX_CLIENT_ID" : "AR5cRdDPvZI198hAJoKXjYDXK19CT2ryZ_CyS0ZwlbHsgaScBSpncmrUT5ZqGqa5Pv7vLDvLrflgICJX",
+    "PROD_CLIENT_ID": ""
 }

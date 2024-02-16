@@ -72,6 +72,18 @@ $settings: (
                     width: 100%;
                     height: 100%;
                     overflow: hidden;
+                    > .svg-target {
+                        
+                        // position: sticky;
+                        z-index: 1;
+                        width: 45%;
+                        height: max-content;
+                        top: 40%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: start;
+                        margin-left: 5%;
+                    }
                     > .textBody {
                         position: sticky;
                         z-index: 1;

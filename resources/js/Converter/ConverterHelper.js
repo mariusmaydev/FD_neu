@@ -98,7 +98,7 @@ class ConverterHelper {
             }
         }
         call.onFinish = function(data){
-              DSImage.get(index).images.view = data.ImageViewPath + "?v=" + S_Time.getTime();
+              DSImage.get(index).images.view = data.ImageViewPath + "?v=" + SPLINT.Tools.DateTime.Helper.getTime();
               CONVERTER_STORAGE.canvasNEW.refreshData();
               
                 if(CONVERTER_STORAGE.toolBar.imageBar != undefined){

@@ -18,7 +18,7 @@ class ADMIN_order_list {
             }
             if(this.orderData != null){
                 for(const e of this.orderData){
-                    e.uTime = S_Time.convertDateTimeToFormatedUnix(e.Time);
+                    e.uTime = SPLINT.Tools.DateTime.Helper.convertDateTimeToFormatedUnix(e.Time);
                 }
                 SArray.assortInt(this.orderData, "uTime", true);
                 resolve(true);

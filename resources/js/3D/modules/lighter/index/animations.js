@@ -14,6 +14,7 @@ export default class compressedIndexAnimations {
         this.isFlame = false;
         this.doubleColorWasOpen = false;
         this.smoothTurn = false;
+        this.turnBack_f = false;
     }
     toggleSmoothTurn(duration, delay = 0){
         if(this.smoothTurn){
@@ -128,6 +129,17 @@ export default class compressedIndexAnimations {
             // }
         }.bind(this));
     }
+    turnBack(duration, delay = 0){
+        return new Promise(async function(resolve, reject){
+                SPLINT.Utils.sleep(delay).then(function(){
+                    let lighter = this.inst.setup.getLighterGroupe(this.inst.scene, 'lighter');
+                    let dif = lighter.rotation.z - lighter.rotationBase.z;
+                    this.inst.Animations.lighter_turn_Back.start(true, duration, undefined, false, lighter.rotation.z, dif, function(){
+                    }.bind(this));
+                    resolve(true);
+                }.bind(this));
+        }.bind(this));
+    }
     smoothTurnStart(duration, delay = 0){
         return new Promise(async function(resolve, reject){
             if(!this.smoothTurn){
@@ -162,7 +174,11 @@ export default class compressedIndexAnimations {
             if(!this.isFlame){
                 this.isFlame = true;
                 SPLINT.Utils.sleep(delay).then(function(){
-                    this.inst.Animations.lighter_flame.start(true);
+                    if(this.isOpen){
+                        this.inst.Animations.lighter_flame.start(true);
+                    } else {
+                        this.isFlame = false;
+                    }
                     callback(this.isFlame);
                     resolve(this.isFlame);
                 }.bind(this));

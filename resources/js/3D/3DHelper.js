@@ -4,7 +4,12 @@ class drawLighter3D {
   static INDEX                = "INDEX";
   static CONVERTER            = "CONVERTER";
   static PROJECT              = "PROJECT";
+    /** 
+    *   @deprecated
+    */
   static PROJECT_NEW          = "PROJECT_NEW";
+  static NEW_PROJECT         = "NEW_PROJECT";
+  
     constructor(parent, name = "", type = "", src = null, newContext = false, mouseEvents = false, color = null){
       this.parent       = parent;
       this.type         = type;

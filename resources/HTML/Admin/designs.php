@@ -23,6 +23,7 @@
         <s-part src="/js/3D/3DHelper.js"></s-part>
         <s-module src="/js/3D/modules/module_3D_init.js"></s-module>
         <s-loader src="/js/ADMIN/Eventhandler.js"></s-loader>
+        <s-part src="/js/assets/product/"></s-part>
 
         <s-part first src="/js/ADMIN/assets/AdminTemplate.js"></s-part>
         <script type="text/javascript" src="../../../../Splint/js/Splint.js" onload="SPLINT.start()"></script>

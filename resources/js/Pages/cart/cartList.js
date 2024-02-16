@@ -9,7 +9,6 @@ class drawCartList {
     }
     async draw(){
         this.data = (await ShoppingCart.get()).shoppingCart;
-        console.log(this.data);
         this.emptyBody = new SPLINT.DOMElement(this.id + "emptyBody", "div", this.mainElement);
         this.emptyBody.Class("emptyBody");
             let bt_emptyBody = new SPLINT.DOMElement.Button(this.emptyBody, "BT_EmptyBody");

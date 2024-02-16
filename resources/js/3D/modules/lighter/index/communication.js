@@ -34,7 +34,6 @@ export default class indexCommunication {
                         this.dataStack.push(JSON.stringify({close: {name : "engraving", delay: 0}, open: {name : null, delay: 0}, elements : []}));
                         this.dataStack.push(JSON.stringify({close: {name : "explosion", delay: 0}, open: {name : null, delay: 0}, elements : []}));
                     }
-                    this.dataStack.push(LighterData);
                 }
             }
         }.bind(this);

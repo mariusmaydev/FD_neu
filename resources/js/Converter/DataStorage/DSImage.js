@@ -24,8 +24,8 @@ class DataStorageImage_C {
             obj.ImagePosY   = parseInt(data.ImagePosY);
           }
           obj.images      = new Object();
-          obj.images.view     = data.ImageViewPath + "?v=" + S_Time.getTime();
-          obj.images.scale    = data.ImageScalePath + "?v=" + S_Time.getTime();
+          obj.images.view     = data.ImageViewPath + "?v=" + SPLINT.Tools.DateTime.Helper.getTime();
+          obj.images.scale    = data.ImageScalePath + "?v=" + SPLINT.Tools.DateTime.Helper.getTime();
           obj.ImageFilter = new Object();
           obj.ImageFilter   = data.ImageFilter;
       return obj;
@@ -38,10 +38,10 @@ class DataStorageImage_C {
     }
     setImages(index, data){
       if(data.ImageViewPath != undefined){
-        this.Storage[index].images.view   = data.ImageViewPath + "?v=" + parseInt(S_Time.getTime() + Math.random(1)*10);
+        this.Storage[index].images.view   = data.ImageViewPath + "?v=" + parseInt(SPLINT.Tools.DateTime.Helper.getTime() + Math.random(1)*10);
       }
       if(data.ImageScalePath != undefined){
-        this.Storage[index].images.scale  = data.ImageScalePath + "?v=" + parseInt(S_Time.getTime() + Math.random(1)*10);
+        this.Storage[index].images.scale  = data.ImageScalePath + "?v=" + parseInt(SPLINT.Tools.DateTime.Helper.getTime() + Math.random(1)*10);
       }
     }
     getImages(index){

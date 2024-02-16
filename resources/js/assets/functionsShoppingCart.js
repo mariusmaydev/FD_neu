@@ -23,7 +23,7 @@ class ShoppingCart {
   static async clear(){
     async function f(cart){
         for(const e of cart){
-            ProjectHelper.remove(e.ProjectID);
+            await ProjectHelper.remove(e.ProjectID);
         }
     }
     return new Promise(async function(resolve){
@@ -43,9 +43,13 @@ class ShoppingCart {
       if(typeof cart == 'object' && cart != null){
         if(cart.ShoppingCartFromGuest != ""){
           obj.shoppingCart_GUEST = JSON.parse(cart.ShoppingCartFromGuest);
+        } else {
+            obj.shoppingCart_GUEST = [];
         }
         if(cart.ShoppingCart != ""){
-          obj.shoppingCart = JSON.parse(cart.ShoppingCart);
+            obj.shoppingCart = JSON.parse(cart.ShoppingCart);
+        } else {
+            obj.shoppingCart = [];
         }
         resolve(obj);
       }

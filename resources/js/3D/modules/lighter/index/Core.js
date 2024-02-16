@@ -33,9 +33,15 @@ export class draw {
             this.draw();
             
             this.mouseHandler.onMove = function(event){
+                if(!this.raycaster2.doesHover){
+                    this.canvas.style.cursor = "default";
+                }
                 if(this.mouseHandler.mouseDown){
                     //    this.render();
-                    MODEL._rotate(this.setup.getLighterGroupe(this.scene), 0, 0, this.mouseHandler.dX);
+                    if(this.raycaster2.mouseDownFlag){
+                        // console.dir(this.setup.getLighterGroupe(this.scene))
+                        MODEL._rotate(this.setup.getLighterGroupe(this.scene), 0, 0, this.mouseHandler.dX);
+                    }
                 } else {
                 }
             }.bind(this);
@@ -56,7 +62,7 @@ export class draw {
         this.canvas.style.height = b + "px";
         if(SPLINT.ViewPort.getSize() == "mobile-small"){
             // this.renderer.setPixelRatio( Math.min(2, window.devicePixelRatio));
-            this.renderer.setPixelRatio( window.devicePixelRatio * 2);
+            this.renderer.setPixelRatio( window.devicePixelRatio * 0.6);
         } else {
             this.renderer.setPixelRatio( window.devicePixelRatio * 2);
         }
@@ -77,9 +83,10 @@ export class draw {
         this.Animations = new LighterAnimations(this);
         this.compressedAnimations = new CompressedAnimations(this);
         this.setupCamera();
-
+        this.renderer.physicallyCorrectLights  = true;
         this.renderer.toneMappingExposure = 1;
         this.raycaster = SPLINT.raycaster(this);
+        this.raycaster2 = SPLINT.raycaster(this);
         // this.setup.controls();
     }
     setupCamera(){
@@ -95,7 +102,9 @@ export class draw {
         this.camera.name = "camera";
         this.camera.rotation.set(-0.05, 0, 0);
         this.camera.zoom = 1.2;
-        this.camera.filmGauge = 20000;
+        this.camera.filmGauge = 20;
+        // this.camera.focus = 1;
+        // this.camera.filmOffset = 122;
         this.camera.positionBase = this.camera.position.clone();
         this.camera.FOVBase = this.camera.fov;
         this.camera.updateProjectionMatrix();
@@ -112,6 +121,7 @@ export class draw {
         this.compressedAnimations.isOpen = true;
         this.compressedAnimations.close(0);
         this.setupRaycaster();
+        this.setupRaycaster2();
 
         SPLINT.Utils.sleep(1000).then(function() {
             if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
@@ -120,7 +130,7 @@ export class draw {
                 this.compressedAnimations.flameIgnite(function(){}, 1000);
                 this.compressedAnimations.wheel(0.5, 500);
                 this.compressedAnimations.open();
-                this.compressedAnimations.smoothTurnStart();
+                // this.compressedAnimations.smoothTurnStart();
             }
             SPLINT.ViewPort.getSize().log();
         }.bind(this));
@@ -201,6 +211,9 @@ export class draw {
         this.raycaster.addObject("Innenleben11");
         this.raycaster.addObject("Rad1");
         this.raycaster.onMouseClick = function(element, name){
+            if(this.mouseHandler.hasMoved){
+                return;
+            }
             switch(name){
                 case "oberes_teil1" : {
                     // if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
@@ -226,5 +239,19 @@ export class draw {
                 } break;
             }
         }.bind(this);
+    }
+    setupRaycaster2(){
+        let groupe = this.setup.getLighterGroupe();
+        this.raycaster2.setScene(groupe);
+        for(const child of groupe.children){
+            this.raycaster2.addObject(child);
+        }
+        this.raycaster2.onMouseMove = function(){
+            this.canvas.style.cursor = "pointer";
+        }.bind(this);
+        this.raycaster2.onMouseDown = function(){
+        }
+        this.raycaster2.onMouseUp = function(){
+        }
     }
 }

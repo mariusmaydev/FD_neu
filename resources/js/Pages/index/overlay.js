@@ -24,6 +24,8 @@ class indexOverlay {
         this.calls = indexOverlay.calls;
         this.lastCall = null;
         this.waiters = [];
+        this.wait = new PromiseTimeout("test", 10, false);
+        this.base = 0;
     }
     draw(){
         this.drawPart1();
@@ -32,6 +34,7 @@ class indexOverlay {
         this.drawPart4();
     }
     drawPart1(){
+
         this.part1 = new indexOverlayPart(this.contentElement, "start");
         // this.part1.text = "Einzigartig, stilvoll und elegant. Das Feuerzeug fürs Leben. Das Feuerzeug für dich.";
         // this.part1.text = "Sei besonders, mit Funkendesign. ";
@@ -59,8 +62,9 @@ class indexOverlay {
 
             
         let button_test = new SPLINT.DOMElement.Button(this.part1.contentElement, "create", "jetzt entwerfen");
-            button_test.onclick = function(){                
-                this.call3D_toggle(this.calls.smoothTurn);
+            button_test.onclick = function(){           
+                this.call3D_toggle("turnBack");      
+                // this.call3D_toggle(this.calls.smoothTurn);
             }.bind(this);
     }
     drawPart2(){
@@ -130,7 +134,7 @@ class indexOverlay {
         this.lastCall = call;
     }
     animateScroll(indexBefore, index){
-        timeTools.sleep(500).then(function(){
+        timeTools.sleep(400).then(function(){
             if(index == this.activePart){
 
                 switch(index) {
@@ -139,21 +143,30 @@ class indexOverlay {
                         this.send("mouseTurn", true)
                         this.call3D();
                     } break;
-                    case 2 : {
+                    case 2 : {      
                         this.send("interaction", true)
                         this.send("mouseTurn", false)
                         this.send("smoothTurn", false);
-                        this.call3D(this.calls.colors_double, 0, 0);
+                        this.call3D_toggle("turnBack");
+                        setTimeout(function(){
+                            this.call3D(this.calls.colors_double, 0, 0);
+                        }.bind(this), 100)    
                     } break;
                     case 3 : {
                         this.send("interaction", false)
                         this.send("mouseTurn", true)
-                        this.call3D(this.calls.engraving, 0, 0);
+                        this.call3D_toggle("turnBack");
+                        setTimeout(function(){
+                            this.call3D(this.calls.engraving, 0, 0);
+                        }.bind(this), 100)    
                     } break;
                     case 4 : {
                         this.send("interaction", false)
                         this.send("mouseTurn", true)
-                        this.call3D(this.calls.explosion, 0, 0);
+                        this.call3D_toggle("turnBack");
+                        setTimeout(function(){
+                            this.call3D(this.calls.explosion, 0, 0);
+                        }.bind(this), 100)    
                     } break;
                 }
                 this.animate();
@@ -172,7 +185,6 @@ class indexOverlay {
             this.scrollDelta = parseInt(S_Math.divide(height, 20));
             this.scrollAim = parseInt(S_Math.multiply((index - 1), height));
         }
-        console.log(this.scrollAim, height, index);
         this.animate();
     }
     animate(){
@@ -223,6 +235,48 @@ class indexOverlay {
         }
         this.scrollFlag = 'up';
         this.animateScroll(index, this.activePart);
+    }
+    scrollBack(scrollFlag){
+        let index = parseInt(this.activePart);
+        this.scrollFlag = scrollFlag;
+        this.animateScroll(index, this.activePart);
+    }
+    dynamicScroll(rate){
+        if(this.wait.resolved){
+            let b = window.innerHeight / 100 * rate;
+            this.contentElement.scrollTop = this.base - (b);
+            if(rate > 60){
+                this.scrollUp();
+                this.wait = new PromiseTimeout("test", 300, false);
+                return true;
+            } else if(rate < -60) {
+                this.scrollDown();
+                this.wait = new PromiseTimeout("test", 300, false);
+                return true;
+            }
+            return false;
+        }
+        this.base = this.contentElement.scrollTop;
+        return true;
+    }
+    dynamicScrollStart(){
+        this.base = this.contentElement.scrollTop;
+    }
+    dynamicScrollEnd(){
+        let dif = this.base - this.contentElement.scrollTop;
+        let rate = -100 / window.innerHeight * (this.contentElement.scrollTop - this.base);
+        console.log(rate)
+        if(rate >= 30){
+            this.scrollUp();
+        } else if(rate <= -30) {
+            this.scrollDown();
+        } else {
+            if(rate >0){
+                this.scrollBack('down');
+            } else {
+                this.scrollBack('up');
+            }
+        }
     }
 
 }

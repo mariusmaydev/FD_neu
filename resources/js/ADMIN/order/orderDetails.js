@@ -17,7 +17,7 @@ class ADMIN_order_view {
             this.data = await order.get(this.orderID);
         }
         this.data = this.data[0];
-        this.data.uTime = S_Time.convertDateTimeToFormatedUnix(this.data.Time, false);
+        this.data.uTime = SPLINT.Tools.DateTime.Helper.convertDateTimeToFormatedUnix(this.data.Time, false);
         this.items = this.data.Items;
         this.draw();
     }

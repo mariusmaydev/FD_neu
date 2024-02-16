@@ -15,6 +15,20 @@ export default class LighterAnimations {
         this.instance.AnimationMixer = new SPLINT.AnimationMixer(this.instance);
     }
     define(){
+        this.lighter_turn_Back = this.#getAnimation(0.3);
+        this.lighter_turn_Back.onStart = function(model, name = 'lighter'){
+            return this.#getGroupe(model, name);
+        }.bind(this);
+        this.lighter_turn_Back.onTick = function(model, progress, groupe, base ,amount){
+            let f = SPLINT.AnimationFX.ease(progress, 1, "out");
+            let d = (f / 100) * amount;
+            groupe.rotation.z = base - d;
+        }.bind(this);
+        this.lighter_turn_Back.onStop = function(a,b,c,f){
+            this.progress = 0;
+            f[2]();
+        }
+
         this.lighterRotate = this.#getAnimation(0.5);
         this.lighterRotate.onStart = function(model, name = 'lighter'){
             // console.dir(model);
@@ -67,7 +81,6 @@ export default class LighterAnimations {
 
         this.cameraTo = this.#getAnimation(0.5);
         this.cameraTo.onStart = function(model, name = 'lighter'){
-            // console.dir(model);
             let groupe = this.#getGroupe(model, "camera");
             groupe.positionLast = groupe.position.clone();
             groupe.position_range = new Vector3();
@@ -94,7 +107,8 @@ export default class LighterAnimations {
             }
 
         this.lighter_color_double_close = this.#getAnimation(0.4);
-        this.lighter_color_double_close.onStart = function(model){
+        this.lighter_color_double_close.onStart = function(model, name, inst ){
+            inst.progress = 100;
             let obj = [];
                 obj[0] = this.#getGroupe(model, 'lighter');
                 obj[1] = this.#getGroupe(model, 'lighter2');
@@ -112,13 +126,17 @@ export default class LighterAnimations {
         }.bind(this);
 
         this.lighter_color_double_start = this.#getAnimation(0.3);
-        this.lighter_color_double_start.onStart = function(model){
+        this.lighter_color_double_start.onStart = function(model, name, inst){
+            inst.progress = 0;
             let obj = [];
                 obj[0] = this.#getGroupe(model, 'lighter');
                 obj[1] = this.#getGroupe(model, 'lighter2');
             return obj;
         }.bind(this);
         this.lighter_color_double_start.onTick = function(model, progress, g){
+            // let f = SPLINT.AnimationFX.ease(progress, 1, "in-out");
+            // let d = 0.5 - (f / 100);
+            // g[0].rotation.z = (30 * d) * (Math.PI / 180);
             let a = SPLINT.AnimationFX.ease(progress, 2, "in-out") * 0.01;
             if(a < 0 || a > 1){
                 return;
@@ -372,6 +390,17 @@ export default class LighterAnimations {
 
 
 
+        this.lighter_zoom = this.#getAnimation(0.2);
+        this.lighter_zoom.onStart = function(model, name = 'lighter'){
+            return this.#getGroupe(model, name);
+        }.bind(this);
+        this.lighter_zoom.onTick = function(model, progress, groupe){
+            let f = SPLINT.AnimationFX.ease(progress, 1, "in-out");
+            let d = (f / 100) * 0.05
+            this.instance.camera.zoom = 1 + d;
+            this.instance.camera.updateProjectionMatrix();
+        }.bind(this);
+
         this.lighter_turn = this.#getAnimation(0.1);
         this.lighter_turn.onStart = function(model, name = 'lighter'){
             return this.#getGroupe(model, name);
@@ -401,7 +430,8 @@ export default class LighterAnimations {
             }
 
         this.lever_close = this.#getAnimation(0.28);
-        this.lever_close.onStart = function(model, name = 'lighter'){
+        this.lever_close.onStart = function(model, name = 'lighter', inst){
+            inst.progress = 100;
             return this.#getGroupe(model, name);
         }.bind(this);
         this.lever_close.onTick = function(model, progress, groupe){
@@ -411,7 +441,8 @@ export default class LighterAnimations {
             }
 
         this.lever_open = this.#getAnimation(0.5);
-        this.lever_open.onStart = function(model, name = 'lighter'){
+        this.lever_open.onStart = function(model, name = 'lighter', inst){
+            inst.progress = 100;
             return this.#getGroupe(model, name);
         }.bind(this);
         this.lever_open.onTick = function(model, progress, groupe){
@@ -448,6 +479,8 @@ export default class LighterAnimations {
         this.instance.AnimationMixer.add(this.lighter_explosion_turn_mobile);
         this.instance.AnimationMixer.add(this.lighter_flame);
         this.instance.AnimationMixer.add(this.lighter_smooth_turn);
+        this.instance.AnimationMixer.add(this.lighter_turn_Back);
+        this.instance.AnimationMixer.add(this.lighter_zoom);
     }
     #getAnimation(duration){
         return new SPLINT.Animation(this.scene, duration, this.instance.AnimationMixer);

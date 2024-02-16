@@ -26,6 +26,9 @@ export default class indexCommunication_funcsMobile {
                 case "color" : {
                     return this.inst.compressedAnimations.toggleColor();
                 } break;
+                case "turnBack" : {
+                    return this.inst.compressedAnimations.turnBack();
+                } break;
                 case "flame" : {
                     return this.inst.compressedAnimations.toggleFlame();
                 } break;

@@ -12,6 +12,11 @@
 	"loader": {
 		"cachePath": "/fd/Splint/splintCache/"
 	},
+    "dataBase" : {
+        "hostname"  : "127.0.0.1",
+        "userName"  : "root",
+        "password"  : ""
+    },
 	"paths": {
 		"error_log": "/fd/Splint/logs/",
 		"project_root": "/fd/resources/",

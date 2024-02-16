@@ -1,26 +1,18 @@
-<?php
-    //     header("Access-Control-Allow-Origin: http://localhost:8012");
-    // require '../HTML_Core.php';
-?>
+
 <!DOCTYPE html>
 <html lang="de">
     <head>
         <title>Enflame</title>
         <meta charset="ISO-8859-1"/>
+        
         <s-style src="checkout.css"></s-style>
-        <script src='https://www.paypal.com/sdk/js?client-id=AcY69ITexNWNGhhjCZTpjHIyM-KiqjWbTaACjMNj5SLRvXd8fMKysveevIZ4fffuBXEevk5Jf_LDw0nw&components=buttons,marks,card-fields,applepay&enable-funding=giropay&disable-funding=paylater,blik,sepa,bancontact&currency=EUR'></script>
-        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
-    <?php 
 
-        // IMPLEMENT_PayPal();
-    ?>
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+
 
     </head>
     <body id="CheckoutBODY">
         <div div class="NavigationBar" id="NavigationBar"></div>
-    <!-- <div id="s-particleDiv"></div> -->
-        <!-- <div class="NavigationBar" id="NavigationBar" onload="NavigationBar()"></div> -->
-        <!-- <div id="GooglePayContainer"></div> -->
 
         <s-part src="/js/Pages/pagesHelper.js"></s-part>
         <s-part src="/js/manager/manager.js"></s-part>
@@ -44,10 +36,6 @@
         <s-part src="/js/Converter/ConverterHelper.js"></s-part>
         <s-part src="/js/Projects/ProjectsHelper.js"></s-part>
         <s-part src="/js/Orders/Order.js"></s-part>
-        <s-part src="/js/Orders/Order.js"></s-part>
-        <s-part src="/js/Orders/Order.js"></s-part>
-        <s-part src="/js/Payment/Paypal.js"></s-part>
-        <s-part src="/js/Checkout/"></s-part>
         <s-part src="/js/Checkout/"></s-part>
 
         <s-part src="/js/NavigationBar.js"></s-part>

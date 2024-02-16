@@ -29,8 +29,7 @@
         <!-- End Google Tag Manager (noscript) -->
         <div class="NavigationBar" id="NavigationBar" ></div>
 
-        <script src="../../../../Splint/lib/touchEmulator/touch-emulator.js"></script>
-        <!-- <script> TouchEmulator();</script> -->
+        <!-- <script src="../../../../Splint/js/Utils/TouchEmulator.js"></script> -->
             <!-- <script defer src = "projects_test.js"></script> -->
                     <s-part first src="/js/GLOBAL/Paths.js"></s-part>
         <s-part src="/js/assets/functionsShoppingCart.js"></s-part>
@@ -54,5 +53,6 @@
         <s-part src="/js/Footer.js"></s-part>
         <s-loader src="/js/Eventhandler.js"></s-loader>
         <script async src="../../../../Splint/js/Splint.js" onload="SPLINT.start()"></script>
+        <!-- <script> TouchEmulator();</script> -->
     </body>
 </html>

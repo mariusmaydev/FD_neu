@@ -33,7 +33,7 @@ export default class setup {
             this.inst.canvas.style.width = (a) + "px";
             this.inst.canvas.style.height = (b) + "px";
         if(setup.RENDERER == null || newFlag){
-            this.inst.renderer   = new WebGLRenderer({antialias: true, alpha: true});
+            this.inst.renderer   = new WebGLRenderer({antialias: true, alpha: true, precision: "lowp", powerPreference: "high-performance"});
             this.inst.renderer.shadowMap.enabled = true
             this.inst.renderer.shadowMap.type = THC.VSMShadowMap
             this.inst.renderer.shadowMap.soft = true;
@@ -43,11 +43,11 @@ export default class setup {
             // console.log(window.devicePixelRatio, this.inst.canvas.parentNode.clientWidth, this.inst.canvas.parentNode.clientHeight)
             if(SPLINT.ViewPort.getSize() == "mobile-small"){
                 // this.inst.renderer.setPixelRatio( Math.min(2, window.devicePixelRatio));
-                this.inst.renderer.setPixelRatio( window.devicePixelRatio * 2);
+                this.inst.renderer.setPixelRatio( window.devicePixelRatio * 0.6);
             } else {
                 this.inst.renderer.setPixelRatio( window.devicePixelRatio * 2);
             }
-            this.inst.renderer.setSize( this.inst.canvas.parentNode.clientWidth, this.inst.canvas.parentNode.clientHeight, false);
+            this.inst.renderer.setSize( this.inst.canvas.parentNode.clientWidth, this.inst.canvas.parentNode.clientHeight, true);
 
             this.inst.renderer.gammaOutput = false;
             this.inst.renderer.gammaInput = true;

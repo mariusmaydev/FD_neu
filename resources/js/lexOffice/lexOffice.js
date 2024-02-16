@@ -7,22 +7,16 @@ class lexOffice {
     
     static PATH = PATH.php.lexOffice;
 
-    static newContact(){
-
+    static async newInvoice(orderData, orderID){
+        let call = new SPLINT.CallPHP(this.PATH, this.NEW_INVOICE);
+            call.data.data = await lexOfficeObjectGenerator.newInvoiceData(orderData, orderID);
+            call.data.OrderID = orderID;
+        return call.send();
     }
-    static editContact(){
-        
-    }
-    static newInvoice(orderData, orderID){
-        let data = CallPHP_S.getCallObject(this.NEW_INVOICE);
-            data.data = newInvoiceData(orderData, orderID);
-            data.OrderID = orderID;
-        return CallPHP_S.call(this.PATH, data).text;
-    }
-    static newDeliveryNote(orderData, orderID){
-        let data = CallPHP_S.getCallObject(this.NEW_DELIVERY_NOTE);
-            data.data = newDeliveryData(orderData, orderID);
-            data.OrderID = orderID;
-        return CallPHP_S.call(this.PATH, data).text;
+    static async newDeliveryNote(orderData, orderID){
+        let call = new SPLINT.CallPHP(this.PATH, this.NEW_DELIVERY_NOTE);
+            call.data.data = await lexOfficeObjectGenerator.newDeliveryData(orderData, orderID);
+            call.data.OrderID = orderID;
+        return call.send();
     }
 }

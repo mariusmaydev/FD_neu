@@ -46,7 +46,7 @@ class Image_C {
       clone[0].ImageID          = response.ImageID;
       clone[0].ImagePosX          = parseFloat(clone[0].ImagePosX) + 20;
       clone[0].ImagePosY          = parseFloat(clone[0].ImagePosY) + 20;
-      clone[0].images.view      = response.ImageViewPath + "?v=" + S_Time.getTime();
+      clone[0].images.view      = response.ImageViewPath + "?v=" + SPLINT.Tools.DateTime.Helper.getTime();
       DSImage.Storage.push(clone[0]);
       DSImage.save();
       CONVERTER_STORAGE.canvasNEW.refreshData();

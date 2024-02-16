@@ -3,12 +3,15 @@
     <head>
         <title>Enflame</title>
         <meta charset="ISO-8859-1" />
+        <s-style style src="paymentComplete.css"></s-style>
 
     </head>
     
     <body id="PaymentCompleteBODY">
         <div class="NavigationBar" id="NavigationBar" ></div>
         
+
+
 
         <s-part src="/js/Pages/pagesHelper.js"></s-part>
         <s-part src="/js/manager/manager.js"></s-part>
@@ -35,8 +38,8 @@
         <s-part src="/js/Orders/Order.js"></s-part>
         <s-part src="/js/Orders/Order.js"></s-part>
         <s-part src="/js/Pages/paymentComplete/paymentComplete.js"></s-part>
-        <s-part src="/js/Payment/Paypal.js"></s-part>
         <s-part src="/js/Checkout/"></s-part>
+        <s-part src="/js/Footer.js"></s-part>
 
         <s-part src="/js/NavigationBar.js"></s-part>
         <s-loader src="/js/Eventhandler.js"></s-loader>

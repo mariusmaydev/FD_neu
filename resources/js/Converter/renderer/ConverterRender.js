@@ -260,7 +260,7 @@ class CanvasElement_C {
           o.offset.X = 0;
           o.offset.Y = 0;
           o.ID       = dataIn.ImageID;
-          o.time     = S_Time.getTimeFromURL(dataIn.images.view);
+          o.time     = SPLINT.Tools.DateTime.Helper.getTimeFromURL(dataIn.images.view);
           o.canvas   = new SPLINT.DOMElement(obj.id + "_" + dataIn.ImageID + "_IMG", "canvas", obj.parent);
           o.canvas.width = obj.canvas.width;
           o.canvas.height = obj.canvas.height;
@@ -315,7 +315,7 @@ class CanvasElement_C {
           o.reload = function(){
             o.src.src = "";
             img.src = dataIn.images.view;
-            o.time     = S_Time.getTimeFromURL(dataIn.images.view);
+            o.time     = SPLINT.Tools.DateTime.Helper.getTimeFromURL(dataIn.images.view);
           }
           DSImage.saveAsync();
       return o;
@@ -350,7 +350,7 @@ class CanvasElement_C {
         if(this.EPType != DSProject.Storage.EPType){
           this.stack[response.index].reload();
         }
-        if(S_Time.getTimeFromURL(data.images.view) != response.element.time){
+        if(SPLINT.Tools.DateTime.Helper.getTimeFromURL(data.images.view) != response.element.time){
           response.element.data = data;
           this.stack[response.index] = response.element;
           if(this.activeElement != null){
@@ -411,7 +411,7 @@ class CanvasElement_C {
           this.stack.splice(this.stack.indexOf(element), 1);
           return;
         }
-        if(S_Time.getTimeFromURL(data.images.view) != element.time){
+        if(SPLINT.Tools.DateTime.Helper.getTimeFromURL(data.images.view) != element.time){
           this.checkEdge(element);
           this.activeElement = element;
           this.setFirstInStack(element);

@@ -60,6 +60,11 @@ function init3D(){
                         SPLINT.threeJS.scenes.push(res.draw.get(element.firstChild));
                     })
                  } break;
+                 case '3D_Lighter_NEW_PROJECT' :       {
+                     import("./lighter/NewProject/Core.js").then(function(res){
+                         SPLINT.threeJS.scenes.push(res.draw.get(element.firstChild));
+                     })
+                  } break;
                 case '3D_Background' :       {
                     import("./background/Core.js").then(function(res){
                         SPLINT.threeJS.scenes.push(res.draw.get(element.firstChild));

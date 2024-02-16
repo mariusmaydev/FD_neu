@@ -47,7 +47,7 @@ class functionsCouponCodes {
         } else {
             let codeEle = new Object();
                 codeEle.code = (await this.get(code))[0];
-                codeEle.expTime = S_Time.getTime();
+                codeEle.expTime = SPLINT.Tools.DateTime.Helper.getTime();
             await SPLINT.SessionsPHP.set("CouponCode", codeEle);
         }
         SPLINT.SessionsPHP.showAll();

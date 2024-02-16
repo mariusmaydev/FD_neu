@@ -47,14 +47,31 @@ class drawProjectList_ADMIN {
                       ProjectHelper.new('ADMIN', "Lighter_Gold_custom", true, false).then(S_Location.goto(PATH.location.converter).setHash("ADMIN").call());
                   };
               let button_new_original = new SPLINT.DOMElement.Button(listElement, "addProject_original", "orginal erstellen");
-                  // button_new_original.bindIcon("add");
                   button_new_original.onclick = async function(){
-                      await SPLINT.SessionsPHP.set("USER_ID", "ADMIN", false);
-                      await SPLINT.SessionsPHP.set("USER_NAME", "ADMIN", false);
-                      await SPLINT.SessionsPHP.set("ADMIN", true, false);
-                      await SPLINT.SessionsPHP.set("GUEST", false, false);
-                      ProjectHelper.new('ADMIN', "Lighter_Gold_custom", true, true).then(S_Location.goto(PATH.location.converter).setHash("ADMIN").call());
-                  };
+                        let ele = new SPLINT.DOMElement.popupWindow("newOriginal", true);
+                            let products = await productHelper.getProducts();
+                                let value = null;
+                                let radio = new SPLINT.DOMElement.Button.Radio(ele.content, "radioProducts");
+                                    radio.Class("radioProducts");
+                                    for(const product of Object.entries(products)){
+                                        radio.dataObj.add(product[0], product[1].viewName, product[0]);
+                                    }
+                                    radio.preventLines = true;
+                                    radio.drawRadio();
+                                    radio.onChange = function(e){
+                                        value = e.target.value;
+                                    }
+
+                                let btSubmit = new SPLINT.DOMElement.Button(ele.content, "btSumbit", "auswählen");
+                                    btSubmit.Class("BTsubmit");
+                                    btSubmit.onclick = async function(){
+                                        await SPLINT.SessionsPHP.set("USER_ID", "ADMIN", false);
+                                        await SPLINT.SessionsPHP.set("USER_NAME", "ADMIN", false);
+                                        await SPLINT.SessionsPHP.set("ADMIN", true, false);
+                                        await SPLINT.SessionsPHP.set("GUEST", false, false);
+                                        ProjectHelper.new('ADMIN', value, true, true).then(S_Location.goto(PATH.location.converter).setHash("ADMIN").call());                    
+                                    }
+                    };
                 let typeSwitchButton = new SPLINT.DOMElement.Button.Radio(listElement, "typeSwitch");
                     typeSwitchButton.Class("typeSwitchButton");
                     typeSwitchButton.dataObj.add("original", "Originale");

@@ -46,5 +46,31 @@
                 position: relative;
             }
         }
+        > .CreditCardContainer {
+            > .content {
+                > .PPcontainer {
+                    position: relative;
+                    width: 100%;
+                    height: 4rem;
+                    max-height: 4rem;
+                    overflow: hidden;
+                    background-color: transparent;
+                    left: 0;
+                    top: 0;
+                    // > div {
+                    //     position: relative;
+                    //     height: 100% !important;
+                    //     * {
+                    //         position: relative;
+                    //         height: 100% !important;
+                    //     }
+                    // }
+                }
+                > button {
+                    display: none;
+                    // @include Tmain.TButton_simple();
+                }
+            }
+        }
     }
 }

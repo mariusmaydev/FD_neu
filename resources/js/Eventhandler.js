@@ -1,3 +1,5 @@
+// const TouchEmulator = require("hammer-touchemulator");
+
 var asyncProgress = false;
 
 let SVG_Loader = new SPLINT.SVG.Loader();
@@ -53,16 +55,32 @@ class Pages {
     new drawConverterStart();
   }
   index(){
+    if(SPLINT.ViewPort.isTouchDevice()){
+        SPLINT.Utils.TouchEmulator.start();
+    }
+    SPLINT.ViewPort.onViewPortChanged = function(){ 
+        if(SPLINT.ViewPort.isTouchDevice()){
+            SPLINT.Utils.TouchEmulator.start();
+        } else {
+            SPLINT.Utils.TouchEmulator.remove();
+        }
+    }
     new drawIndex();
   }
   cart(){
     new drawCart();
   }
-  checkout(){
+  async checkout(){
+    let cart = (await ShoppingCart.get());
+    console.log(cart)
+    if(cart.shoppingCart.length == 0){
+        SPLINT.Tools.Location.Direct(PATH.location.cart);
+    }
     NavBar.hide();
     new Checkout();
   }
   paymentComplete(){
+    NavBar.draw();
     new drawPaymentComplete();
   }
   imprint(){

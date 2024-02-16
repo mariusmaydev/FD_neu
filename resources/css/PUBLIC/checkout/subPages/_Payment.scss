@@ -55,6 +55,14 @@
 
                     }
                     > div {
+                        &[value*='CREDITCARD'] {
+                            > .labelDiv {
+                                width: 100%;
+                                > .displayDiv {
+                                    
+                                }
+                            }
+                        }
                         > div {
                             &.inputBody{
                                 > input {
