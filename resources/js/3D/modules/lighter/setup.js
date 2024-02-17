@@ -1,4 +1,4 @@
-// import * as THREE from 'three';
+import * as THREE from 'three';
 import SPLINT from 'SPLINT';
 import * as THC from "@THREE_ROOT_DIR/src/constants.js";
 import { OrbitControls } from '@SPLINT_MODULES_DIR/ThreeJS/animations/OrbitControls_Modified.js';
@@ -30,6 +30,7 @@ export default class setup {
                 this.inst.canvas.height = b * 2;
 
             }
+            console.log(window.devicePixelRatio)
             this.inst.canvas.style.width = (a) + "px";
             this.inst.canvas.style.height = (b) + "px";
         if(setup.RENDERER == null || newFlag){
@@ -38,18 +39,15 @@ export default class setup {
             this.inst.renderer.shadowMap.type = THC.VSMShadowMap
             this.inst.renderer.shadowMap.soft = true;
             this.inst.renderer.shadowMap.needsUpdate = true;
-            // this.inst.renderer.gammaFactor = 0.5;
-            // this.inst.renderer.outputEncoding = THREE.sRGBEncoding;
-            // console.log(window.devicePixelRatio, this.inst.canvas.parentNode.clientWidth, this.inst.canvas.parentNode.clientHeight)
+            // this.inst.renderer.gammaFactor = 10;
             if(SPLINT.ViewPort.getSize() == "mobile-small"){
-                // this.inst.renderer.setPixelRatio( Math.min(2, window.devicePixelRatio));
                 this.inst.renderer.setPixelRatio( window.devicePixelRatio * 0.6);
             } else {
                 this.inst.renderer.setPixelRatio( window.devicePixelRatio * 2);
             }
             this.inst.renderer.setSize( this.inst.canvas.parentNode.clientWidth, this.inst.canvas.parentNode.clientHeight, true);
 
-            this.inst.renderer.gammaOutput = false;
+            this.inst.renderer.gammaOutput = true;
             this.inst.renderer.gammaInput = true;
             this.inst.renderer.antialias = true;
             this.inst.renderer.alpha = true;

@@ -5,6 +5,7 @@
         <title>Enflame</title>
         <meta charset="ISO-8859-1" />
         <s-style style src="index.css"></s-style>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=10, minimum-scale=0.2, maximum-scale=0.4"/>
         <!-- Google tag (gtag.js) -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHPT2ZS9X2"></script>
     <script>

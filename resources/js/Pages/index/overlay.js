@@ -88,6 +88,20 @@ class indexOverlay {
         "Unsere Feuerzeuge bestehen fast komplett aus Metal, was für eine deutlich längere Haltbarkeit sorgt.<br>"+
         "Muss dennoch ein Bauteil getauscht werden, so ist dies durch den einfachen, modularen Aufbau schnell und einfach getan.<br>", 
         "part4_1");
+        let footer_body = new SPLINT.DOMElement("footer_body", "div", this.part4.contentElement);
+            footer_body.Class("footer");
+        let footer_imprint = new SPLINT.DOMElement.Button(footer_body, "footer_imprint", "Impressum");
+            footer_imprint.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_STANDARD);
+            footer_imprint.Class("imprint");
+            footer_imprint.onclick = function(){
+                S_Location.goto(PATH.location.imprint).call();
+            }
+        let footer_Contact = new SPLINT.DOMElement.Button(footer_body, "footer_contact", "Kontakt");
+            footer_Contact.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_STANDARD);
+            footer_Contact.Class("contact");
+            footer_Contact.onclick = function(){
+                S_Location.goto(PATH.location.imprint).call();
+            }
         // this.part4.drawNavigatorButtons();
 
         // this.part4.text =   "Reparieren statt wegschmeißen.<br>"+
@@ -222,7 +236,7 @@ class indexOverlay {
     }
     scrollDown(){
         let index = parseInt(this.activePart);
-        if(index < 5){
+        if(index < 4){
             this.activePart = index + 1;
         }
         this.scrollFlag = 'down';
@@ -307,6 +321,7 @@ class indexOverlayPart {
                     textContent.Class("content");
                     textContent.innerHTML = text;
             }
+        return textBody;
     }
     drawNavigatorButtons(){
         this.NavigatorBottomContainer = new SPLINT.DOMElement(this.id + "NavigatorBottomContainer", "div", this.mainElement);

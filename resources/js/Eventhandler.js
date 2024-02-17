@@ -94,3 +94,8 @@ class Pages {
 SPLINT.Events.onInitComplete = function(){
     new Pages();
 }.bind(this);
+
+SPLINT.Events.onLoadingComplete = function(){
+    SPLINT.Data.Cookies.requestUserPermision();
+}.bind(this);
+

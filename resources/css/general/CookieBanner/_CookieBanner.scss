@@ -1,0 +1,74 @@
+@use '../main' as Gmain;
+@use '../../themes/theme1/vars';
+@use '../../themes/theme1/main' as Tmain;
+@use '../../../../../Splint/scss/tools/tools' as S_tools;
+@use 'sass:color';
+@use '../mediaQueries';
+
+.CookieBanner {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    // transform: translateX(-50%) translateY(100%);
+    z-index: 3000;
+    width: max-content;
+    height: max-content;
+    overflow: visible;
+    transform: translateX(-50%) translateY(100%);
+    &[state*='active']{
+        transition: transform ease-in 0.5s;
+        transform: translateY(-60%) translateX(-50%);
+    }   
+    > .content {
+        position: relative;
+        width: max-content;
+        height: max-content;
+        overflow: hidden;
+        // @include Tmain.TContainer_basic();
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transform: translateX(-50%) translateY(-50%);
+        gap: 0.5rem;
+        > .headContainer {
+            position: relative;
+            width: max-content;
+            height: max-content;
+            > div {
+                position: relative;
+                width: max-content;
+                height: max-content;
+                > span {
+                    font-size: 1.2rem;
+                    font-weight: 400;
+                }
+            }
+        }
+        > .textContainer {
+            position: relative;
+            max-width: 100%;
+            width: fit-content;
+            height: max-content;
+            > span {
+                white-space: word-wrap;
+            }
+        }
+        > .buttonsContainer {
+            position: relative;
+            width: max-content;
+            height: max-content;
+            display: flex;
+            flex-direction: row;
+            gap: 0.5rem;
+            > button {
+                position: relative;
+                width: 50%;
+                @include Tmain.TButton_simple();
+                > span {
+    
+                }
+            }
+        }
+    }
+}

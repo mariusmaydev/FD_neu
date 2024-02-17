@@ -36,7 +36,6 @@ class drawIndex extends Pages_template {
         
                     let end = x;
                     let offsetEnd = y;
-                    console.log(offsetStart, offsetEnd)
                     rate = 100/ window.innerHeight * (offsetEnd - offsetStart);
                     if(this.overlay.dynamicScroll(rate) == true){
                         offsetStart = y;

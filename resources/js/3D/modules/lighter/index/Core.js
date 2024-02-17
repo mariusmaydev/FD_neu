@@ -1,4 +1,4 @@
-// import * as THREE from 'three';
+import * as THREE from 'three';
 // import { Fog } from "@THREE_ROOT_DIR/src/scenes/Fog.js";
 // import { PerspectiveCamera } from "@THREE_ROOT_DIR/src/cameras/PerspectiveCamera.js";
 // import { Color } from "@THREE_ROOT_DIR/src/math/Color.js";
@@ -27,12 +27,16 @@ export class draw {
         this.loaded = null;
         this.animationTime = 0;
         this.loadedTexture = false;
+        this.debuggMode = false;
         SPLINT.R_promise.then(function(){
             this.init();
             this.events();
             this.draw();
             
             this.mouseHandler.onMove = function(event){
+                if(this.debuggMode){
+                    return
+                }
                 if(!this.raycaster2.doesHover){
                     this.canvas.style.cursor = "default";
                 }
@@ -66,7 +70,7 @@ export class draw {
         } else {
             this.renderer.setPixelRatio( window.devicePixelRatio * 2);
         }
-        this.renderer.setSize( this.canvas.parentNode.clientWidth * 1, this.canvas.parentNode.clientHeight * 1, false);
+        this.renderer.setSize( this.canvas.parentNode.clientWidth, this.canvas.parentNode.clientHeight, false);
         this.camera.aspect = this.canvas.parentNode.clientWidth / this.canvas.parentNode.clientHeight;
         this.camera.updateProjectionMatrix();
         this.render();
@@ -78,21 +82,24 @@ export class draw {
         // this.thumbnailSRC_specularMap = SPLINT.resources.textures.lighter_engraving_specularMap.clone();
         // this.thumbnailSRC_displacementMap = SPLINT.resources.textures.lighter_engraving_displacementMap.clone();
         // console.log(SPLINT.resources.textures.lighter_engraving_thumbnail);
-        this.scene.fog = new Fog(0xffefe2, 4, 10);
+        this.scene.fog = new Fog(0xffffff, 6.5, 7.8);
         this.mouseHandler = SPLINT.MouseHandler( this.canvas );
         this.Animations = new LighterAnimations(this);
         this.compressedAnimations = new CompressedAnimations(this);
         this.setupCamera();
         this.renderer.physicallyCorrectLights  = true;
-        this.renderer.toneMappingExposure = 1;
+        this.renderer.toneMappingExposure = 0.5;
+        // this.renderer.toneMapping = 2;
+        this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        this.renderer.outputEncoding = THREE.sRGBEncoding;
+        this.renderer.needsUpdate = true;
         this.raycaster = SPLINT.raycaster(this);
         this.raycaster2 = SPLINT.raycaster(this);
         // this.setup.controls();
     }
     setupCamera(){
         if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
-            console.log("ok")
-            this.camera     = new PerspectiveCamera(50, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
+            this.camera     = new PerspectiveCamera(60, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
             // this.camera.position.set(0, 0.4, 4);
             this.camera.position.set(0, 0.18, 0.7);
         } else {
@@ -158,21 +165,15 @@ export class draw {
         this.scene.background = new Color( 0xffffff);
         let plane = SPLINT.object.Plane(1000, 1600, 1, 1);
         plane.get().geometry.translate(0, -799, 0);
-        // plane.position(0, 0, -15);
             plane.rotate(93, 0, 0);
             plane.plane.material = MATERIALS.other.indexBackground();
             plane.plane.receiveShadow = true;
         this.scene.add(plane.plane);
     }    
     async draw(){
-        
-        // if(SPLINT.resources.models.lighter_glb.sceneL == undefined){
-            // this.scene.background = null;
             this.drawBackground();
             this.light();
             this.scene.add( this.camera );
-            console.dir(this.scene)
-        // }
         return new Promise(async function(resolve){
             await MODEL.init(this, "lighter", 2);
             await MODEL.init(this, "lighter2", 2, false);
@@ -188,17 +189,10 @@ export class draw {
                 lighterGroupe2.children[14].rotation.y = (-106.5 +  1) * Math.PI / 180;
                 lighterGroupe2.children[0].children[0].rotation.z = (-133.7648) * Math.PI / 180;
                 lighterGroupe2.rotationBase = lighterGroupe2.rotation.clone();
-            
-//             setTimeout(async function(){
-//                 this.start();
-//             }.bind(this), 1000)
             this.onFinishLoading();
-                // lighterGroupe2.visible = false;
-            // console.log();
         }.bind(this));
     }
     events(){
-        // this.setup.events.onResize().initDefault();
         let flag = true;
         this.communication = new Communication(this);
 

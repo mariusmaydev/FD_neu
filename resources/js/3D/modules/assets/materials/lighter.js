@@ -13,6 +13,7 @@ import { MeshPhongMaterial } from "@THREE_ROOT_DIR/src/materials/MeshPhongMateri
 import SRC from '../Helper.js';
 // import S_materials from '@SPLINT_MODULES_DIR/ThreeJS/materials/M_materials.js';
 import MaterialHelper from '@SPLINT_MODULES_DIR/ThreeJS/materials/MaterialHelper.js';
+import { Vector2 } from "@THREE_ROOT_DIR/src/math/Vector2.js";
 
 export class Lighter {
     static Body(material = new MeshStandardMaterial()){
@@ -115,82 +116,78 @@ export class Lighter {
     }
     static async Engraving3(color = 0xffc400, src = null, onload = function(){}){
       let material = null;
-    //   let HELPER = new MaterialHelper("gold");
-      // if(HELPER.material != undefined){
-      //     material =  MaterialHelper.cloneMaterial(HELPER.material);
-      //     // material.color.set(0xffc400);
-      //     // material.needsUpdate = true;
-      //     onload(null, material);
-      //     return material;
-      // };
       let texture = null;
-      if(src != null){
-        texture = MaterialHelper.getTexture(src);
-      } else {
         texture = MaterialHelper.getTexture(SPLINT.resources.textures.lighter_engraving_thumbnail)
-      }
-      // let texture = SPLINT.resources.textures.lighter_engraving_thumbnail;
+      
           texture.wrapS = THC.RepeatWrapping;
           texture.wrapT = THC.RepeatWrapping;
-          // texture.repeat.set(1, 0.6156);
+          texture.repeat.set(1, 0.6156);
           texture.flipY = false;
           texture.mapping = THC.EquirectangularReflectionMapping;
           texture.generateMipmaps = true;
-          texture.magFilter = THC.NearestFilter;
+          texture.magFilter = THC.LinearFilter;
           texture.minFilter = THC.LinearMipmapLinearFilter;
-          texture.anisotropy = 16;
+          texture.anisotropy = 32;
           texture.premultiplyAlpha = false;
           texture.needsUpdate = true;
 
       // let bumpTexture = MaterialHelper.getTexture(SPLINT.resources.textures.lighter_engraving_bumpMap);
       let bumpTexture = null;
-      if(src != null){
-        bumpTexture = MaterialHelper.getTexture(src);
-      } else {
-        bumpTexture = MaterialHelper.getTexture(SPLINT.resources.textures.lighter_engraving_thumbnail)
-      }
-          bumpTexture.wrapS = THC.RepeatWrapping;
-          bumpTexture.wrapT = THC.RepeatWrapping;
-          // texture.repeat.set(1, 0.6156);
-          bumpTexture.flipY = false;
-          bumpTexture.mapping = THC.EquirectangularReflectionMapping;
-          bumpTexture.generateMipmaps = true;
-          bumpTexture.magFilter = THC.NearestFilter;
-          bumpTexture.minFilter = THC.LinearMipmapLinearFilter;
-          bumpTexture.anisotropy = 16;
-          bumpTexture.premultiplyAlpha = false;
-          bumpTexture.needsUpdate = true;
+    //   if(src != null){
+    //     bumpTexture = MaterialHelper.getTexture(src);
+    //   } else {
+    //     bumpTexture = MaterialHelper.getTexture(SPLINT.resources.textures.ligher_NormalMapEngraving)
+    //   }
+      let testTexture = MaterialHelper.getTexture(SPLINT.resources.textures.ligher_NormalMapEngraving)
+      testTexture.wrapS = THC.RepeatWrapping;
+      testTexture.wrapT = THC.RepeatWrapping;
+      testTexture.repeat.set(1, 0.6156);
+      testTexture.flipY = false;
+      testTexture.mapping = THC.EquirectangularReflectionMapping;
+      testTexture.generateMipmaps = true;
+      testTexture.magFilter = THC.LinearFilter;
+      testTexture.minFilter = THC.LinearMipmapLinearFilter;
+      testTexture.anisotropy = 32;
+      testTexture.premultiplyAlpha = false;
+      testTexture.needsUpdate = true;
+      testTexture.encoding = THC.LinearEncoding;
+
 
           material = new MeshPhysicalMaterial( {
             color: color,
             map: texture,
-            bumpMap: bumpTexture,
-            bumpScale: 10,
-            side: THC.FrontSide,
+            // bumpMap: bumpTexture,
+            // bumpScale: 0,
+            // emissiveMap: testTexture,
+            normalMap: testTexture,
+            normalScale: new Vector2(1, 1),
+            normalMapType: THC.TangentSpaceNormalMap ,
+            side: THC.DoubleSide,
             blending: THC.NormalBlending,
-            opacity: 2,
-            metalness: 1.6,   // between 0 and 1
-            roughness: 6, // between 0 and 1
-            // depthFunc: THC.LessEqualDepth,
+            opacity: 40,
+            metalness: 0.1,   // between 0 and 1
+            roughness: 0.2, // between 0 and 1
             depthTest: true,
             emissive: color,
-            emissiveIntensity: 0.8,
+            emissiveIntensity: 0.1,
             alphaToCoverage: false,
             transparent: true,
-            reflectivity: 0,
-            clearcoat: 1.1,
-            clearcoatRoughness: 0.8,
-            specularColor: 0x000000,
+            reflectivity: 10,
+            clearcoat: 0.1,
+            clearcoatRoughness: 10,
+            specularColor: 0x3d3d3d,
             specularIntensity: 0.1,
-            thickness: 0,
-            sheenColor: 0xffffff,
-            sheenRoughness: 0.5,
-            sheen: 0.2,
-            ior: 0,
-            transmission: 0,
+            thickness: 10,
+            sheenColor: color,
+            sheenRoughness: 0.1,
+            sheen: 0.4,
+            ior: 1,
+            fog: false,
+            transmission: 2,
             dithering: false,
             });
-            material.bumpMap.needsUpdate = true;
+            material.normalMap.needsUpdate = true;
+            // material.bumpMap.needsUpdate = true;
             material.color.convertSRGBToLinear();
       await onload(null, material);
       return material;

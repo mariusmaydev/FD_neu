@@ -23,47 +23,16 @@ export default class Model {
         // if(FLAG_sceneLoaded < loaderCount){
             let SRCscene = null;
             const pos = new Vector3( 0, 0, 0 );
-            // Model.loaded = new Promise(function(resolve){
-                
-            //     SRCscene = Model.load(SPLINT.resources.models.lighter_glb.scene.clone(), pos);
-            //     // instance.loadThumbnail(name, GoldFlag);     
-            //     let a = await instance.thumbnailSRC;         
-            //     SPLINT.resources.models.lighter_glb.scene = SRCscene;
-            //     Model.getThumbnail(SRCscene, instance, a, "gold", 0xe8b000, !GoldFlag);
-
-            //     Model.loaded = true;
-            // }.bind(this));
 
             if(Model.loaded){
                 SRCscene = SPLINT.resources.models.lighter_glb.scene.clone();
                 SRCscene.position.copy(pos);
             } else {
                 SRCscene = Model.load(SPLINT.resources.models.lighter_glb.scene.clone(), pos);
-                // Model.createThumbnailPlanes(SRCscene, instance, "gold", false)   
                 SPLINT.resources.models.lighter_glb.scene = SRCscene.clone();
-                // Model.getThumbnail(SRCscene, instance, a, "gold", 0xe8b000, !GoldFlag);
 
                 Model.loaded = true;
             }    
-            // instance.thumbnailSRC.then(async function(tex){
-            //     instance.scene.traverse(function(obj){
-            //         if(obj.name == "Thumbnail_gold"){
-            //             console.log(obj.material);
-            //             MATERIALS.Lighter.EngravingSetTexture(obj.material, tex);
-            //             obj.material.needsUpdate = true;
-            //         }
-            //     })
-            //     instance.render();
-            // });   
-            // if(loaderCount > 1){ 
-            //     SRCscene = Model.load(SPLINT.resources.models.lighter_glb.scene, pos);
-            //     // SPLINT.resources.models.lighter_glb.scene = SRCscene; 
-            // } else {
-            //     SRCscene = Model.load(SPLINT.resources.models.lighter_glb.scene, pos); 
-            //     // SPLINT.resources.models.lighter_glb.scene = SRCscene; 
-            // }  
-
-            // let gltfScene = SRCscene;
             SRCscene.name = name;
             SRCscene.rotation.x = Math.PI / 2;
             instance.scene.add(SRCscene);
@@ -120,6 +89,11 @@ export default class Model {
                 // element.children[0].material.dithering = false;
                 element.children[0].geometry.applyMatrix4( new Matrix4().makeTranslation( 1.919, 0, 0 ) );
                 // element.children[0].position.y = -0.001; 
+                let texture = element.children[0].material.map;
+                console.dir(texture);
+                    texture.anisotropy = 16;
+                    console.dir(texture);
+
                 element.children[0].position.x = -0.01919; 
                 //element.children[0].rotation.z = -134 * Math.PI / 180;
                 // this.setTextureScale(element, 2);
@@ -219,7 +193,7 @@ export default class Model {
             let flameMat = getFlameMaterial(true);
                 flameMaterials.push(flameMat);
             let flame = new Mesh(flameGeo, flameMat);
-            flame.position.set(0.0, 3.6, 0.00);
+            flame.position.set(0.0, 1.8, 0.00);
             flame.rotation.y = -45 *(Math.PI / 180);
             flame.name = "flame";
             flame.visible = false;
@@ -299,7 +273,8 @@ export default class Model {
                     plane2.get().material.needsUpdate = true;
                     material.map = material.map.clone();
                     // material.normalMap = material.normalMap.clone();
-                    material.bumpMap = material.bumpMap.clone();
+                    // material.bumpMap = material.bumpMap.clone();
+                    material.normalMap = material.normalMap.clone();
                     plane2.material = material;
                     plane2.setMapOffset(0, 0.3844);
                     plane2.setMapRepeat(1, 0.61599);
@@ -315,10 +290,10 @@ export default class Model {
                         plane1.get().material.opacity = 0;
                         plane2.get().material.opacity = 0;
                     }
-                if(double){
+                if(false){
                     let plane1_0 = SPLINT.object.Plane(3.4/1000, 1.976/1000, 1, 1);
                         plane1_0.rotate(0, 180, 180);
-                        plane1_0.position(1.92, 0.99, 0.668);
+                        plane1_0.position(1.92, 0.99, 0.67);
                         plane1_0.material = material.clone();
                         plane1_0.setMapOffset(0, 1);
                         plane1_0.setMapRepeat(1, 0.38401);

@@ -5,7 +5,8 @@ class Checkout {
                       sending         : 'sending',
                       paymentType     : 'paymentType',
                       progress        : 'progress',
-                      couponCode      : 'couponCode'
+                      couponCode      : 'couponCode',
+                      invoiceType     : 'invoiceType'
                     };
   constructor(parent = document.body){
     // SPLINT.API.Paypal.load();
@@ -174,37 +175,9 @@ class Checkout {
         radioPaymentMethod.dataObj.add("CREDITCARD", "Kreditkarte");
         radioPaymentMethod.drawRadio();
         radioPaymentMethod.onChange = async function(e){
-          // console.log(e.target.value);
           await SPLINT.SessionsPHP.set(Checkout.sessions.paymentType, e.target.value);
         }
         radioPaymentMethod.setValue(await SPLINT.SessionsPHP.get(Checkout.sessions.paymentType));
-        // radioPaymentMethod.onChange = async function(){
-        //     let displayDiv = radioPaymentMethod.getDisplayDiv(radioPaymentMethod.Value);
-        //     if(radioPaymentMethod.Value == "CREDITCARD"){
-        //         this.CreditCardContainer = new SPLINT.DOMElement("CreditCardContainer", "div", displayDiv);
-        //         this.CreditCardContainer.Class("CreditCardContainer");
-
-        //             let content = new SPLINT.DOMElement("CreditCardContainer_content", "div", this.CreditCardContainer);
-        //                 content.Class("content");
-
-        //                     let inpName_PPcontainer = new SPLINT.DOMElement("inpName_PPcontainer", "div", content);
-        //                         inpName_PPcontainer.Class("PPcontainer");
-
-        //                     let inpNumber_PPcontainer = new SPLINT.DOMElement("inpNumber_PPcontainer", "div", content);
-        //                         inpNumber_PPcontainer.Class("PPcontainer");
-
-        //                     let inpCVV_PPcontainer = new SPLINT.DOMElement("inpCVV_PPcontainer", "div", content);
-        //                         inpCVV_PPcontainer.Class("PPcontainer");
-
-        //                     let inpExpiry_PPcontainer = new SPLINT.DOMElement("inpExpiry_PPcontainer", "div", content);
-        //                         inpExpiry_PPcontainer.Class("PPcontainer");
-
-        //                 let bt = new SPLINT.DOMElement.Button(content, "BT_submit", "test");
-        //                     bt.Class("submit");
-        //                 SPLINT.API.Paypal.draw.Buttons.drawCard(bt.button, inpName_PPcontainer, inpNumber_PPcontainer, inpExpiry_PPcontainer, inpCVV_PPcontainer)
-        //     }
-        // }.bind(this);
-
 
     let radioInvoiceMethod = new S_radioButton(this.paymentMenuMainElement, "InvoiceMethod");
         radioInvoiceMethod.mainElement.Class("InvoiceMethodMain");
@@ -301,12 +274,6 @@ class Checkout {
         await drawSavedInformation.address(this.overviewMenuMainElement);
         await drawSavedInformation.sending(this.overviewMenuMainElement);
         await drawSavedInformation.payment(this.overviewMenuMainElement);
-
-        // Paypal.drawButtons(this.overviewMenuMainElement);
-
-        // let containerPaypal = new SPLINT.DOMElement(this.id + "paypalContainer", "div", this.overviewMenuMainElement);
-        //     containerPaypal.Class("paypalContainer");
-            // SPLINT.API.Paypal.draw.Buttons.draw(containerPaypal);
 
             let payment = null;
             let paymentType = await SPLINT.SessionsPHP.get(Checkout.sessions.paymentType);

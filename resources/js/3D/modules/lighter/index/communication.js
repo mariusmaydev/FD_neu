@@ -11,6 +11,9 @@ export default class indexCommunication {
     }
     init(){
         this.inst.canvas.S_toModule = function(event, data, LighterData){
+            if(this.inst.debuggMode){
+                return;
+            }
             if(data.type == "mouseTurn"){
                 this.inst.mouseHandler.active = data.value;
             } else if(data.type == "interaction"){

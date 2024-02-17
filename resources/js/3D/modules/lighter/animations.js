@@ -138,6 +138,7 @@ export default class LighterAnimations {
             // let d = 0.5 - (f / 100);
             // g[0].rotation.z = (30 * d) * (Math.PI / 180);
             let a = SPLINT.AnimationFX.ease(progress, 2, "in-out") * 0.01;
+
             if(a < 0 || a > 1){
                 return;
             } else {
@@ -224,7 +225,7 @@ export default class LighterAnimations {
             groupe.position.z = (0.4 * d);
             groupe.position.x = (0.1 * d);
             // console.log(10 + (60 * d))
-            // this.instance.camera.fov = 10 + (50 * d);
+            this.instance.camera.fov = 60 + (20 * d);
             // this.instance.camera.zoom = 1.2 + (0.5 * d);
             // this.instance.camera.position.z = 4 - (3.75 * d);
             // this.instance.camera.position.y = 0.4 - (0.15 * d);

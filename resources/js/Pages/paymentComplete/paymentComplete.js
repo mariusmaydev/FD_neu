@@ -18,6 +18,8 @@ class drawPaymentComplete extends Pages_template {
             let BTSymbol = new SPLINT.DOMElement.Button(this.contentDiv, "BTSymbol");
                 BTSymbol.bindIcon("done")
 
+                
+            this.#removeSessions();
             // let spinner = new SPLINT.DOMElement.Spinner(this.contentDiv, "spinner");
             //     spinner.show();
         // setTimeout(()=> {
@@ -26,5 +28,14 @@ class drawPaymentComplete extends Pages_template {
         //     SPLINT.Events.onLoadingComplete.dispatch();
 
         // }, 5000);
+    }
+    async #removeSessions(){
+        SPLINT.SessionsPHP.remove(Checkout.sessions.addresses);
+        SPLINT.SessionsPHP.remove(Checkout.sessions.invoiceAddress);
+        SPLINT.SessionsPHP.remove(Checkout.sessions.sending);
+        SPLINT.SessionsPHP.remove(Checkout.sessions.paymentType);
+        SPLINT.SessionsPHP.remove(Checkout.sessions.progress);
+        SPLINT.SessionsPHP.remove(Checkout.sessions.couponCode);
+        SPLINT.SessionsPHP.remove(Checkout.sessions.invoiceType);
     }
 }

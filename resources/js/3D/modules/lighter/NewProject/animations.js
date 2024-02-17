@@ -234,7 +234,7 @@ export default class compressedNewProjectAnimations {
                     }.bind(this);
                     this.inst.Animations.lighter_explosion_turn.start();
                 }
-            } else {
+            } else { 
                 resolve(this.isExploded);
             }
         }.bind(this));

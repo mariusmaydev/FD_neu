@@ -79,7 +79,7 @@ export class draw {
                 case "bright"   : color = 0xdfcbb7; break;
                 default         : color = 0xbfa182; break;
             }
-            plane.plane.material = MATERIALS.other.indexBackground(color);
+            plane.plane.material = MATERIALS.other.backgroundMain(color);
             plane.plane.receiveShadow = true;
         this.scene.add(plane.plane);
     }    

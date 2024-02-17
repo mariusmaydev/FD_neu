@@ -12,7 +12,8 @@ export class Lighter_textures {
       } else {
         texture = src.clone();
       }
-
+            let maxAnisotropy = instance.renderer.capabilities.getMaxAnisotropy();
+            console.log(maxAnisotropy);
           texture.wrapS = THC.RepeatWrapping;
           texture.wrapT = THC.RepeatWrapping;
           // texture.repeat.set(1, 0.6156);

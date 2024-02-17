@@ -5,7 +5,11 @@
             "lighter_inner_texture" : "data/3Dmodels/Lighter/textures/texture_chrome_new.png",
             "lighter_engraving_thumbnail" : "data/3Dmodels/Lighter/textures/thumbnail.png",
             "lighter_engraving_thumbnail_add" : "data/3Dmodels/Lighter/textures/thumbnail_add.png",
-            "lighter_engraving_thumbnail_chrome" : "data/3Dmodels/Lighter/textures/thumbnail_Chrome.png"
+            "lighter_engraving_thumbnail_chrome" : "data/3Dmodels/Lighter/textures/thumbnail_Chrome.png",
+            "lighter_MatcapMap" : "data/3Dmodels/Lighter/textures/matcap-white.jpg",
+            "lighter_reflectionENVMap" : "data/3Dmodels/Lighter/textures/reflectionENVMap.jpg",
+            "ligher_Map1" : "data/3Dmodels/Lighter/textures/DisplacementMap.png",
+            "ligher_NormalMapEngraving" : "data/3Dmodels/Lighter/textures/normalMap_Engraving.png"
             },
         "models" : {
             "lighter_glb"   : "data/3Dmodels/Lighter/Feuerzeug.glb"
