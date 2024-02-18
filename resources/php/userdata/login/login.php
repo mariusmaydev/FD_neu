@@ -16,6 +16,11 @@
                 if(!self::hasAccount($UserID)){
                     $UserID = self::newLogin();
                 }
+            } else if(Sessions::get(Sessions::USER_ID)){
+                $UserID = Sessions::get(Sessions::USER_ID);
+                if(!self::hasAccount($UserID)){
+                    $UserID = self::newLogin();
+                }
             } else {
                 $UserID = self::newLogin();
             }

@@ -55,6 +55,7 @@ class ConverterTouchEvents {
             ConverterTouchHandler.calcOffset.call(this, e);
             this.getElementForCoords();
           if(this.hoverElement != null){
+                
             if(this.hoverElement.type == "img"){
                 CONVERTER_STORAGE.toolBar.focusElement(Converter_ToolBar.TYPE_IMG, this.hoverElement.ID);
                 this.hoverElement.widthBase   = this.hoverElement.data.ImageWidth;

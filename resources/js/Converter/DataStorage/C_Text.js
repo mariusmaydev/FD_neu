@@ -8,23 +8,16 @@ class Text_C {
     static COPY   = "COPY";
   
     static async get(TextID = null){
-      let call = new SPLINT.CallPHP(Text_C.PATH, Text_C.GET);
-          call.onFinish = function(res){
-              DSText.add(res);
-              DSText.Storage.forEach(function(element, index) {
+        let call = new SPLINT.CallPHP(Text_C.PATH, Text_C.GET);
+            call.onFinish = function(res){
+                DSText.add(res);
+                DSText.Storage.forEach(function(element, index) {
                 if(element.TextValue == "" || element.TextValue == "NaN"){
-                  DSText.remove(index);
+                    DSText.remove(index);
                 }
-              });
-                // CONVERTER_STORAGE.canvasNEW.refreshData();
-              
-                // console.dir(CONVERTER_STORAGE.toolBar)
-                // CONVERTER_STORAGE.toolBar.update();
-                // CONVERTER_STORAGE.toolBar.blurAll();
-
-              
-          };
-          call.data.TextID   = TextID;
+            });
+        };
+        call.data.TextID   = TextID;
         return call.send();
     }
     static async new(callBack = function(){}){

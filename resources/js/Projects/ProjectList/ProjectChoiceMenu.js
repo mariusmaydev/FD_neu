@@ -71,19 +71,38 @@ class drawProjectChoiceMenu {
         this.bt_originals.setStyleTemplate(S_Button.STYLE_DEFAULT);
         this.bt_originals.button.state().setActive();
         this.bt_originals.button.onclick = function(){
-              // this.CategoryMenu_public.hide = true;
-              // this.CategoryMenu_originals.hide = false;
-              this.bt_originals.button.state().setActive();
-              this.bt_public.button.state().unsetActive();
-              this.bt_private.button.state().unsetActive();
-              S_Location.setHash("originals");
+            if(this.bt_originals.button.state().isActive()) {
+                this.bt_originals.button.setAttribute("hide", true);
+                this.bt_originals.button.state().unsetActive();
+                this.CategoryMenu_originals.hide = true;
+            } else {
+                this.bt_originals.button.setAttribute("hide", false);
+                this.bt_originals.button.state().setActive();
+                this.CategoryMenu_originals.hide = false;
+            }
+            //   this.bt_originals.button.state().setActive();
+            //   this.bt_public.button.state().unsetActive();
+            //   this.bt_private.button.state().unsetActive();
+              setTimeout(async function(){
+                  S_Location.setHash("originals");
+              }, 500);
             }.bind(this);
-        // if(SPLINT.Tools.Location.getHashes().includes("originals")){
-        //   this.CategoryMenu = new ProjectCategoryMenu(div_originals, true);
+
+        div_originals.onmouseenter = function(){
+            this.CategoryMenu_originals.hide = false;
+            this.CategoryMenu_originals.expandAll();
+            this.bt_originals.button.setAttribute("hide", true);
+        }.bind(this);
+        this.bt_originals.button.onmouseleave = function(){
+            if(!this.bt_originals.button.state().isActive()) {
+                this.CategoryMenu_originals.foldAll();
+                this.CategoryMenu_originals.hide = true;
+                this.bt_originals.button.setAttribute("hide", true);
+            }
+        }.bind(this);
           this.CategoryMenu_originals.callBack = function(data){
             this.public(true, data);
           }.bind(this);
-        // }
 
       let div_public = this.buttonContentDiv.newDiv("div_public", "public");
         this.bt_public = new SPLINT.DOMElement.Button(div_public, "project_public", "Vorlagen");
@@ -93,16 +112,33 @@ class drawProjectChoiceMenu {
         this.bt_public.setStyleTemplate(S_Button.STYLE_DEFAULT);
         this.bt_public.button.state().setActive();
         this.bt_public.button.onclick = function(){
-              // this.CategoryMenu_originals.hide = true;
-              // this.CategoryMenu_public.hide = false;
-            //   this.bt_public.button.state().setActive();
-            //   this.bt_originals.button.state().unsetActive();
-            //   this.bt_private.button.state().unsetActive();
-              S_Location.setHash("public");
-            }.bind(this);
-            // this.CategoryMenu_public.hide = true;
-        // if(SPLINT.Tools.Location.getHashes().includes("public")){
-        //   this.CategoryMenu = new ProjectCategoryMenu(div_public, false);
+            if(this.bt_public.button.state().isActive()) {
+                this.bt_public.button.setAttribute("hide", true);
+                this.bt_public.button.state().unsetActive();
+                this.CategoryMenu_public.hide = true;
+            } else {
+                this.bt_public.button.setAttribute("hide", false);
+                this.bt_public.button.state().setActive();
+                this.CategoryMenu_public.hide = false;
+            }
+            setTimeout(async function(){
+                S_Location.setHash("public");
+            }, 500);
+        }.bind(this);
+
+        this.bt_public.button.onmouseenter = function(){
+            this.CategoryMenu_public.hide = false;
+            this.bt_public.button.setAttribute("hide", false);
+            this.CategoryMenu_public.expandAll();
+        }.bind(this);
+
+        div_public.onmouseleave = function(){
+            if(!this.bt_public.button.state().isActive()) {
+                this.CategoryMenu_public.foldAll();
+                this.CategoryMenu_public.hide = true;
+                this.bt_public.button.setAttribute("hide", true);
+            }
+        }.bind(this);
           this.CategoryMenu_public.callBack = function(data){
             this.public(false, data);
           }.bind(this);
@@ -113,13 +149,25 @@ class drawProjectChoiceMenu {
           this.bt_private.setStyleTemplate(S_Button.STYLE_DEFAULT);
           this.bt_private.button.state().unsetActive();
           this.bt_private.onclick = function(){
-            // this.CategoryMenu_originals.hide = true;
-            // this.CategoryMenu_public.hide = true;
-            // this.bt_originals.button.state().unsetActive();
-            // this.bt_public.button.state().unsetActive();
-            // this.bt_private.button.state().setActive();
-                S_Location.setHash("private_storage");
+                if(this.bt_private.button.state().isActive()) {
+                    this.bt_private.button.setAttribute("hide", true);
+                } else {
+                    this.bt_private.button.setAttribute("hide", false);
+                }
+                setTimeout(async function(){
+                    S_Location.setHash("private_storage");
+                }, 500);
               }.bind(this);
+
+        this.bt_private.button.onmouseenter = function(){
+            this.bt_private.button.setAttribute("hide", false);
+            this.CategoryMenu_public.expandAll();
+        }.bind(this);
+        div_private.onmouseleave = function(){
+            if(!this.bt_private.button.state().isActive()) {
+                this.bt_private.button.setAttribute("hide", true);
+            }
+        }.bind(this);
 
         function changeViewPortSize(){
             let vp = SPLINT.ViewPort.getSize();
@@ -215,10 +263,10 @@ class drawProjectChoiceMenu {
           data = await ProjectHelper.getAllAdmin(true);
         }
         this.list_original = new drawProjectList(this.listBody, "ORIGINAL", data, true);
-          let head = new SPLINT.DOMElement("ORIGINAL_head", "div", this.list_original.mainElement);
-              head.before(this.list_original.table.mainElement);
-              let text = new SPLINT.DOMElement.SpanDiv(head, "ORIGINAL_head_span", "Orginale");
-              let hr = new SPLINT.DOMElement.HorizontalLine(head);
+        //   let head = new SPLINT.DOMElement("ORIGINAL_head", "div", this.list_original.mainElement);
+        //       head.before(this.list_original.table.mainElement);
+        //       let text = new SPLINT.DOMElement.SpanDiv(head, "ORIGINAL_head_span", "Orginale");
+        //       let hr = new SPLINT.DOMElement.HorizontalLine(head);
       } else {
         this.CategoryMenu_public.hide = false;
         this.CategoryMenu_originals.hide = true;
@@ -231,10 +279,10 @@ class drawProjectChoiceMenu {
           data = await ProjectHelper.getAllAdmin(false);
         }
         this.list_public = new drawProjectList(this.listBody, "PUBLIC", data, true);
-          let head = new SPLINT.DOMElement("PUBLIC_head", "div", this.list_public.mainElement);
-              head.before(this.list_public.table.mainElement);
-              let text = new SPLINT.DOMElement.SpanDiv(head, "PUBLIC_head_span", "Vorlagen");
-              let hr = new SPLINT.DOMElement.HorizontalLine(head);
+        //   let head = new SPLINT.DOMElement("PUBLIC_head", "div", this.list_public.mainElement);
+        //       head.before(this.list_public.table.mainElement);
+        //       let text = new SPLINT.DOMElement.SpanDiv(head, "PUBLIC_head_span", "Vorlagen");
+        //       let hr = new SPLINT.DOMElement.HorizontalLine(head);
       }
     }
   }

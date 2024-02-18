@@ -6,12 +6,8 @@ import { MeshStandardMaterial } from "@THREE_ROOT_DIR/src/materials/MeshStandard
 import { MeshMatcapMaterial } from "@THREE_ROOT_DIR/src/materials/MeshMatcapMaterial.js";
 import { MeshPhysicalMaterial } from "@THREE_ROOT_DIR/src/materials/MeshPhysicalMaterial.js";
 import { ShadowMaterial } from "@THREE_ROOT_DIR/src/materials/ShadowMaterial.js";
-// import {
-//     ShadowMaterial,
-//     MeshStandardMaterial,
-// } from 'three';
-// import { MeshPhongMaterial } from "@THREE_ROOT_DIR/src/materials/MeshPhongMaterial.js";
-// import SPLINT from 'SPLINT';
+import MaterialHelper from '@SPLINT_MODULES_DIR/ThreeJS/materials/MaterialHelper.js';
+
 
 export class other {
     static converterBackground(){
@@ -89,6 +85,7 @@ export class other {
             opacity: 1
           } );
     }
+    //d
     static materialChrome(){
         let matcapMap = SPLINT.resources.textures.lighter_reflectionENVMap;
 

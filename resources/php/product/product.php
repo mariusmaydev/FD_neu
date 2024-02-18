@@ -1,6 +1,7 @@
 <?php
 
 use GuzzleHttp\Psr7\Response;
+use Splint\File\File_DeepScan;
 
     $rootpath = realpath($_SERVER["DOCUMENT_ROOT"]);
     require_once $rootpath.'/fd/resources/php/CORE.php';
@@ -36,7 +37,16 @@ use GuzzleHttp\Psr7\Response;
             $dataSet = new DataSet();
             $dataSet -> newEntry(ProductDB::PRODUCT_ID, $_POST[ProductDB::PRODUCT_ID]);
             ProductDB::remove($dataSet);
+
+            $pathBase = PATHS::parsePath(PATH_Product::get($_POST[ProductDB::PRODUCT_ID]));
+            DataRemove($_SERVER['DOCUMENT_ROOT'] . $pathBase);
             Communication::sendBack($_POST[ProductDB::PRODUCT_ID], true, $sendBack);
+        }
+        public static function removeImage(string $ProductID, string $imageID, bool $sendBack = true) {
+            $pathBase = PATHS::parsePath( PATH_Product::get($ProductID));
+            $pathFull = $_SERVER["DOCUMENT_ROOT"] . $pathBase . $imageID . ".png";
+            DataRemove($pathFull);
+            Communication::sendBack(true, true, $sendBack);
         }
         public static function edit(bool $sendBack = true){
             $name           = $_POST[ProductDB::PRODUCT_NAME];
@@ -66,6 +76,15 @@ use GuzzleHttp\Psr7\Response;
             $res = ProductDB::get($dataSet);
             $res[ProductDB::PRODUCT_SIZE] = json_decode($res[ProductDB::PRODUCT_SIZE]);
             $res[ProductDB::PRODUCT_ATTRS] = json_decode($res[ProductDB::PRODUCT_ATTRS]);
+            
+            $pathBase = PATHS::parsePath(PATH_Product::get($res[ProductDB::PRODUCT_ID]));
+            $res["ImgPath"] = [];
+            if(file_exists($_SERVER["DOCUMENT_ROOT"] . $pathBase)){
+                $imgNames = File_DeepScan::scanDir($_SERVER["DOCUMENT_ROOT"] . $pathBase);
+                foreach(array_values($imgNames)[0] as $name){
+                    $res["ImgPath"][str_replace('.png','', $name)] = DOMAIN . $pathBase . $name;
+                }
+            }
             Communication::sendBack($res);
         }
         public static function get(bool $sendBack = true, bool $useParameters = false, string $viewName = null, string $name = null, float $price = null, string $productID = null){
@@ -100,7 +119,14 @@ use GuzzleHttp\Psr7\Response;
             $response = ProductDB::get($dataSet, DataBase::FORCE_ORDERED);
             if($response != null){
                 foreach($response as $key => $product){
-                    $response[$key]["ImgPath"] = PATHS::parsePath(PATH_Product::get($product[ProductDB::PRODUCT_ID]));
+                    $pathBase = PATHS::parsePath(PATH_Product::get($product[ProductDB::PRODUCT_ID]));
+                    $response[$key]["ImgPath"] = [];
+                    if(file_exists($_SERVER["DOCUMENT_ROOT"] . $pathBase)){
+                        $imgNames = File_DeepScan::scanDir($_SERVER["DOCUMENT_ROOT"] . $pathBase);
+                        foreach(array_values($imgNames)[0] as $name){
+                            $response[$key]["ImgPath"][str_replace('.png','', $name)] = DOMAIN . $pathBase . $name;
+                        }
+                    }
                     $response[$key][ProductDB::PRODUCT_SIZE] = json_decode($product[ProductDB::PRODUCT_SIZE]);
                     $response[$key][ProductDB::PRODUCT_ATTRS] = json_decode($product[ProductDB::PRODUCT_ATTRS]);
                 }

@@ -49,7 +49,7 @@ class login {
                 return "ADMIN";
             } else {
                 let call = new SPLINT.CallPHP(login.PATH, login.nLOGIN_GUEST);
-                    call.data.UserID = SPLINT.Data.Cookie.get(login.COOKIE_GUEST);
+                    // call.data.UserID = SPLINT.Data.Cookies.get(login.COOKIE_GUEST);
                 let res = SPLINT.Tools.parse.toJSON((await call.send()));
                 resolve(res);
                 return res;
@@ -59,7 +59,9 @@ class login {
             if(data == "ADMIN"){
                 return data;
             }
-            SPLINT.Data.Cookie.set(login.COOKIE_GUEST, data.UserID);
+            if(SPLINT.Data.Cookies.CookiesState){
+                // SPLINT.Data.Cookies.set(login.COOKIE_GUEST, data.UserID);
+            }
             return data;
         });
     }

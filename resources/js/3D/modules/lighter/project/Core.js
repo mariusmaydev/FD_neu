@@ -8,6 +8,7 @@ import LighterAnimations from '../animations.js';
 import SETUP from '../setup.js';
 import MODEL from '../model.js';
 import Communication from './communication.js';
+import * as THC from "@THREE_ROOT_DIR/src/constants.js";
 
 export class draw {
     static get(canvas){
@@ -45,70 +46,53 @@ export class draw {
     remove(){
         this.onResize = function(){};
         this.AnimationMixer.stop();
-        // this.AnimationMixer = null;
-        // this.renderer.renderLists.dispose()
-        // this.renderer.forceContextLoss();
-        // this.scene = null;
         this.loaded = false;
         // this.renderer = null;
     }
     clear(){
-        // this.stopAnimation()
-        // console.log(this.scene)
-        // this.scene.traverse(object => {
-        //   if (!object.isMesh) return
-        //   console.log(this)
-        //   this.deleteObject(object)
-        // })
       }
-    
-    // deleteObject(object){
-    //     object.geometry.dispose()
-    
-    //     if (object.material instanceof Array) {
-    //       object.material.forEach(material => material.dispose());
-    //     } else {
-    //         object.material.dispose();
-    //     }
-    //     object.removeFromParent()
-    //     this.scene.remove(object)
-    //   }
     init(){
-        // if(this.canvas.getAttribute("newContext") == "true"){
-        //     this.setup.renderer(true);
-        // } else {
             this.setup.renderer();
-        // }
         this.setup.scene("scene");
         this.scene.fog = new Fog(0xcccccc, 4, 10);
+        this.renderer.physicallyCorrectLights  = true;
+        this.renderer.toneMappingExposure = 0.5;
+        // this.renderer.toneMapping = 2;
+        this.renderer.toneMapping = THC.ACESFilmicToneMapping;
+        this.renderer.outputEncoding = THC.sRGBEncoding;
         if(this.canvas.parentElement.getAttribute("mouseEvents") == 'true'){
             // this.raycaster = SPLINT.raycaster(this);
             this.mouseHandler = SPLINT.MouseHandler( this.canvas );
         }
         this.Animations = new LighterAnimations(this);
+        // this.renderer.needsUpdate = true;
         this.setupCamera();
-        this.renderer.toneMappingExposure = 1;
         // this.setup.controls();
         // this.mouseHandler = SPLINT.MouseHandler( this.canvas );
     }
     async loadThumbnail(name, GoldFlag){
+        return new Promise(async function(resolve) {
         // this.setup.getLighterGroupe(this.scene, name);
-        this.thumbnailSRC = SPLINT.texture.loadFromRoot(this.canvas.getAttribute("thumbsrc"));
-        this.thumbnailSRC.then(async function(tex){
-            if(this.scene != null){
-                MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, name), this, tex, "gold", 0xe8b000, !GoldFlag);
-                MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, name), this, tex, "chrome", 0xc0c0c0, GoldFlag);
-            }
-            this.thumbnailSRC = null;
-            return true;
-        }.bind(this)).then(async function(){
-            this.canvas.parentElement.parentElement.parentElement.setAttribute("loaded", true);
-            this.render();
-        }.bind(this)).catch(function(){});
-        this.thumbnailSRC.catch(function(){
-            this.canvas.parentElement.parentElement.parentElement.setAttribute("loaded", true);
+            this.thumbnailSRC = SPLINT.texture.loadFromRoot(this.canvas.getAttribute("thumbsrc"));
+            this.thumbnailSRC.then(async function(tex){
+                if(this.scene != null){
+                    if(GoldFlag){
+                        MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, name), this, tex, null, "gold", 0xe8b000, !GoldFlag);
+                    } else {
+                        MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, name), this, tex, null, "chrome", 0xc0c0c0, GoldFlag);
+                    }
+                }
+                this.thumbnailSRC = null;
+                return true;
+            }.bind(this)).then(async function(){
+                this.canvas.parentElement.parentElement.parentElement.setAttribute("loaded", true);
+                this.render();
+                resolve();
+            }.bind(this)).catch(function(){});
+            this.thumbnailSRC.catch(function(){
+                this.canvas.parentElement.parentElement.parentElement.setAttribute("loaded", true);
+            }.bind(this));
         }.bind(this));
-        return true;
     }
     onResize(){
         let a = this.canvas.parentNode.clientWidth;

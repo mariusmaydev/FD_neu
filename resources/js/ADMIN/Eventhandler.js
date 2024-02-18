@@ -14,18 +14,6 @@ class Startup {
     static STRIPE_SUCCESS   = "Body_ADMIN_stripeSuccess";
     static {
         
-        // document.addEventListener("visibilitychange", async function(e){
-        //     if (document.visibilityState === 'hidden') {
-        //         SPLINT.SessionsPHP.set("ADMIN", false, false);
-        //         SPLINT.SessionsPHP.set("GUEST", true, false);
-        //         SPLINT.SessionsPHP.set("USER_ID", (await Cookie.get("COOKIE_GUEST")), false);
-        //     } else {
-        //         SPLINT.SessionsPHP.set("ADMIN", true, false);
-        //         SPLINT.SessionsPHP.set("GUEST", false, false);
-        //         SPLINT.SessionsPHP.set("USER_ID", 0, false);
-        //     }
-
-        // });
     }
     static check(){
         let body = document.getElementsByTagName("body")[0];   

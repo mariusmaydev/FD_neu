@@ -21,8 +21,8 @@ class ProjectCategoryMenu {
             this.data = await CategoryHelper.get_Examples();
             this.dataObjects = await ProjectHelper.getAllAdmin(false);
         }
-        let nestingElement = new SPLINT.DOMElement.Nesting(this.mainElement, this.id + "Nesting_", this.data);
-            nestingElement.callBack = function(ele, path, key, index, id, obj){
+        this.nestingElement = new SPLINT.DOMElement.Nesting(this.mainElement, this.id + "Nesting_", this.data);
+        this.nestingElement.callBack = function(ele, path, key, index, id, obj){
                 if(typeof obj[key].attr == 'object' && typeof obj[key].attr.data == 'object'){
                     let sign = new SPLINT.DOMElement.SpanDiv(ele, "sign", obj[key].attr.data.length);
                         sign.Class("sign");
@@ -52,7 +52,7 @@ class ProjectCategoryMenu {
                     this.activeCategory = c;
                     let path = c.split(".");
                         path.splice(0, 1);
-                    let last = nestingElement.obj;
+                    let last = this.nestingElement.obj;
                     for(const entry of path){
                         if(Object.hasOwn(last[entry], entry) && typeof last[entry] != 'object'){
                             last[entry] = new Object();
@@ -123,12 +123,30 @@ class ProjectCategoryMenu {
                     // ele.state().unsetActive();
                 }
             }.bind(this);
-            nestingElement.draw();
-
-            // let element = document.querySelector('[ivalue="' + this.activeCategory + '"]');
-            // if(element != null){
-            //   element.style.backgroundColor = "red";
-            // }
+            this.nestingElement.draw();
+            this.expandFirstColumn();
+    }
+    expandFirstColumn(){
+        for (let i = 0; i < this.nestingElement.mainElement.childNodes.length; i++) {
+            let child = this.nestingElement.mainElement.childNodes[i];
+            if(child.classList != undefined && child.classList.contains("extensible")){
+                child.state().setActive();
+            }
+        }
+    }
+    expandAll(){
+        allDescendants(this.mainElement, function(child){
+            if(child.classList != undefined && child.classList.contains("extensible")){
+                child.state().setActive();
+            }
+        })
+    }
+    foldAll(){
+        allDescendants(this.mainElement, function(child){
+            if(child.classList != undefined && child.classList.contains("extensible")){
+                child.state().unsetActive();
+            }
+        })
     }
     remove(){
         this.mainElement.remove();
@@ -137,3 +155,26 @@ class ProjectCategoryMenu {
         this.mainElement.setAttribute('isHidden', v);
     }
 }
+
+function allDescendants (node, callback = function(){}) {
+    for (var i = 0; i < node.childNodes.length; i++) {
+      var child = node.childNodes[i];
+      callback(child);
+      allDescendants(child, callback);
+    }
+}
+
+// function hasChildWithClass(element, className, callback = function(child){}){
+//     if(element.children == undefined){
+//         return false;
+//     }
+//     for(const child of element.children){
+//         if(child.className.includes(className)){
+//             callback(child);
+//             return;
+//         } else {
+//             hasChildWithClass(child, className, callback);
+//         }
+//     }
+//     return false;
+// }

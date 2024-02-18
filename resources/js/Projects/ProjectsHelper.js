@@ -1,52 +1,5 @@
 
-class ProjectHelper_Design{
-  static PATH     = PATH.php.project;
-  static {
-    SPLINT.CallPHP.Manager.bind2class(PATH.php.project, this);
-  }
-  constructor(projectID, userID){
-    this.userID = userID;
-    this.projectID = projectID;
-  }
-  addTags(...names){
-    let call = ProjectHelper_Design.callPHP(ProjectHelper.ADD_TO_DESIGN);
-        call.data.Categories  = [];
-        call.data.Hashtags    = [...names];
-        call.data.UserID      = this.userID;
-        call.data.ProjectID   = this.projectID;
-    return call.send();
-  }
-  removeTags(...names){
-    let call = ProjectHelper_Design.callPHP(ProjectHelper.REMOVE_FROM_DESIGN);
-        call.data.Categories  = [];
-        call.data.Hashtags    = [...names];
-        call.data.UserID      = this.userID;
-        call.data.ProjectID   = this.projectID;
-    return call.send();
-  }
-  addCategories(...names){
-      let call = ProjectHelper_Design.callPHP(ProjectHelper.ADD_TO_DESIGN);
-          call.data.Hashtags    = [];
-          call.data.Categories  = [...names];
-          call.data.UserID      = this.userID;
-          call.data.ProjectID   = this.projectID;
-      return call.send();
-  }
-  removeCategories(...names){
-      let call = ProjectHelper_Design.callPHP(ProjectHelper.REMOVE_FROM_DESIGN);
-          call.data.Hashtags    = [];
-          call.data.Categories  = [...names];
-          call.data.UserID      = this.userID;
-          call.data.ProjectID   = this.projectID;
-      return call.send();
-  }
-  #getDesignObj(){
-    let obj = new Object();
-        obj.Hashtags        = [];
-        obj.Categories  = [];
-    return obj;
-  }
-}
+
 class ProjectHelper extends SPLINT.CallPHP.Manager {
     static NEW                = "NEW";
     static EDIT               = "EDIT";
@@ -171,12 +124,11 @@ class ProjectHelper extends SPLINT.CallPHP.Manager {
     //   S_Location.goto(PATH.location.converter).call();
     }
     static async CONVERTER_closeProject(){
-      DSImage.save();
-      DSText.save();
-      DSProject.save();
-    //   await SPLINT.SessionsPHP.remove(SPLINT.SessionsPHP.CONVERTER_MODE, false);
-    //   await SPLINT.SessionsPHP.remove(SPLINT.SessionsPHP.PROJECT_ID, false);
-      await SPLINT.SessionsPHP.remove(SPLINT.SessionsPHP.PROJECT_NAME, false);
+        await DSController.createThumbnail();
+        await DSImage.save();
+        await DSText.save();
+        await DSProject.save();
+        await SPLINT.SessionsPHP.remove(SPLINT.SessionsPHP.PROJECT_NAME, false);
     }
     static getDesignObj(){
       let obj = new Object();

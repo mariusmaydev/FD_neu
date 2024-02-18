@@ -139,19 +139,18 @@ function AdjustSquareBorder(){
 
       SquareBorder.style.width    = (SQ.width * 0.9)  + "px";
       SquareBorder.style.height   = (SQ.height * 0.9) + "px";
-
-      // document.getElementById("drawLighter3D_ConverterLighter_main").style.width    = (SQ.width * 1.3)  + "px";
-      // document.getElementById("drawLighter3D_ConverterLighter_main").style.height   = (SQ.height * 1.3) + "px";
-
-      // Box.X = getAbsoluteWidth(SquareBorder) - parseInt(border) * 2;
-      // Box.Y = getAbsoluteHeight(SquareBorder) - parseInt(border) * 2;
             
   CONVERTER_STORAGE.canvasNEW.setSize();
   if(SPLINT.Events.onLoadingComplete.dispatched == true){
     DSController.saveAll();
     DSProject.saveAsync();
   };
-//   DSImage.saveAsync();
-//   DSText.saveAsync();
+
 }
+
+    window.addEventListener("beforeunload", async function(){
+        await DSController.createThumbnail();
+        await DSController.saveAll();
+    });
+
 

@@ -38,13 +38,11 @@ class TextTools {
       DSText.save();
     }
     async remove(){
-        console.log(CONVERTER_STORAGE);
       await DSText.remove(this.index);
       CONVERTER_STORAGE.canvasNEW.refreshData();
       await DSText.saveAsync();
       CONVERTER_STORAGE.toolBar.update();
       CONVERTER_STORAGE.toolBar.blurAll();
-      console.log(CONVERTER_STORAGE);
     }
     copy(){
       Text_C.copy(this.index);

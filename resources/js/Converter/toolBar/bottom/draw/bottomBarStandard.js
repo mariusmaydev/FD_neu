@@ -8,13 +8,10 @@ class BottomBar_Standard {
         this.mainElement.Class("conv_bottom_bar_std");
         this.parent.setAttribute("name", "std");
         this.buttonAddElement();
-        // this.buttonFromUnsplash();
         this.buttonNewText();
         this.buttonEPType();
         this.buttonProductInformation();
         this.buttonFinish();
-        // this.closeButtonsContainer = new SPLINT.DOMElement(this.id + "close_buttons_container", "div", this.mainElement);
-        // this.closeButtonsContainer.Class("close_buttons_container");
     } 
     buttonUploadImage(){
         this.button_UploadImage = new SPLINT.DOMElement.Button(this.mainElement, "button_UploadImage");
@@ -42,18 +39,12 @@ class BottomBar_Standard {
         this.button_NewText.Description = "Text hinzufügen";
         this.button_NewText.onclick = async function(){
             let res = await ConverterHelper.addText();
-            console.log(res);
             let SubWindow = new SPLINT.DOMElement.popupWindow("editText", true);
             SubWindow.buttonClose.bindIcon("check");
             SubWindow.Class("editText_mobile");
             SubWindow.onclose = function(){
                 CONVERTER_STORAGE.toolBar.focusElement("txt", res[0].TextID);
             }
-            // SubWindow.content.onclick = function(e){
-            //     if(e.srcElement.id == SubWindow.content.id){
-            //         SubWindow.close();
-            //     }
-            // }
             let headline = new SPLINT.DOMElement.SpanDiv(SubWindow.content, "headline", "Verfasse einen Text.");
                 headline.Class("headline");
             let textInput = new SPLINT.DOMElement.InputText(SubWindow.content, "editTextInputDiv", "test"); 
@@ -80,7 +71,6 @@ class BottomBar_Standard {
             let spanText_btUpload = new SPLINT.DOMElement(this.button_upload.button.id + "spanText", "span", this.button_upload.button);  
                 spanText_btUpload.Class("text");
                 spanText_btUpload.innerHTML = "Bild hochladen";
-        //   this.button_upload.button.insertBefore(span1, this.button_upload.span);
           this.button_upload.button.setTooltip("Bild hochladen", "top");
             this.button_upload.button.ontouchend = function(event){
                 event.preventDefault();
@@ -108,41 +98,39 @@ class BottomBar_Standard {
                 this.button_ImageMenu.button.click();
                 this.button_AddElement.button.state().unsetActive();
             }.bind(this);
-
-        //   this.button_NewText = new SPLINT.DOMElement.Button(t.content, "CreateText");
-        //   this.button_NewText.bindIcon("format_shapes");
-        //     let spanText_btNewText = new SPLINT.DOMElement(this.button_NewText.button.id + "spanText", "span", this.button_NewText.button);  
-        //         spanText_btNewText.Class("text");
-        //         spanText_btNewText.innerHTML = "Text einfügen";
-        //   this.button_NewText.button.setTooltip("Text einfügen", "top");
-        //   this.button_NewText.button.onclick = function(){
-        //     ConverterHelper.addText();
-        //   }
         }.bind(this);
     }
     buttonEPType(){
       this.button_EPType = new SPLINT.DOMElement.Button(this.mainElement, "ChangeEPtype_button");
       this.button_EPType.bindIcon("auto_awesome");
+      this.button_EPType.Class("EPType");
       this.button_EPType.Description = "Farbe";
       this.button_EPType.onclick = function(){
         let floatingDiv = new Converter_BottomBar_floatingDiv_block("buttons_EP");
             floatingDiv.body.before(this.button_EPType.span);
-          let bt_Gold     = new SPLINT.DOMElement.Button.Switch(floatingDiv.content, 'gold', "Gold");
-              bt_Gold.onactive = function(){
-                  ConverterHelper.setEPType("GOLD");
-                  bt_Chrome.unsetActive();
-              }.bind(this);
-              bt_Gold.onchange = function(){
-                floatingDiv.remove();
-              }
-          let bt_Chrome   = new SPLINT.DOMElement.Button.Switch(floatingDiv.content, 'chrome', "Chrome");
-              bt_Chrome.onactive = function(){
-                  ConverterHelper.setEPType("CHROME");
-                  bt_Gold.unsetActive();
-              }.bind(this);
-              bt_Chrome.onchange = function(){
-                floatingDiv.remove();
-              }
+            let div_Gold = new SPLINT.DOMElement(floatingDiv.content.id + "_BodyGold", "div", floatingDiv.content);
+                div_Gold.setAttribute("value", "GOLD");
+                let bt_Gold     = new SPLINT.DOMElement.Button.Switch(div_Gold, 'gold', "Gold");
+                    bt_Gold.onactive = function(){
+                        ConverterHelper.setEPType("GOLD");
+                        div_Chrome.state().unsetActive();
+                        bt_Chrome.unsetActive();
+                    }.bind(this);
+                    bt_Gold.onchange = function(state, e){
+                        e.stopPropagation();
+                    }
+
+            let div_Chrome = new SPLINT.DOMElement(floatingDiv.content.id + "_BodyChrome", "div", floatingDiv.content);
+                div_Chrome.setAttribute("value", "CHROME");
+                let bt_Chrome   = new SPLINT.DOMElement.Button.Switch(div_Chrome, 'chrome', "Chrome");
+                    bt_Chrome.onactive = function(){
+                        ConverterHelper.setEPType("CHROME");
+                        div_Gold.state().unsetActive();
+                        bt_Gold.unsetActive();
+                    }.bind(this);
+                    bt_Chrome.onchange = function(state, e){
+                        e.stopPropagation();
+                    }
 
             if(DSProject.Storage.EPType == "CHROME"){
                 bt_Chrome.setActive();

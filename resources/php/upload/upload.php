@@ -12,13 +12,24 @@
 
     class Upload {
         public static function Product_img(){
-            $imgID              = $_POST[ProductDB::PRODUCT_ID];
+            $imgID              = Image::newID();
+            $UploadFiles        = $_FILES['file']['tmp_name'];
+            $BoxX               = getimagesize($UploadFiles);
+
+            // $response = [];
+            // $Filter = Image::newFilterDataSet();
+            // $response[0] = UploadImage($UploadFiles, $BoxX[0], json_decode(json_encode($Filter), true));
+
+            // Debugger::log($response);
+            // Communication::sendBack($response);
             $UploadFiles        = file_get_contents($_FILES['file']['tmp_name']);
             
-            $path = PATH_Product::get(null);
+            $path = PATH_Product::get($_POST[ProductDB::PRODUCT_ID]);
+            Communication::sendBack($path);
+            // exit();
             DataEdit($path, PATH_Product::getFileName($imgID), $UploadFiles);
 
-            print_r($UploadFiles);
+            Communication::sendBack($UploadFiles);
         }
         public static function Unsplash_img(){
             $url = str_replace("blob:", "",$_POST["link"]);

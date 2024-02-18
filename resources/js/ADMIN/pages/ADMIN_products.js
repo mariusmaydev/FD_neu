@@ -1,5 +1,6 @@
 
 class ADMIN_products extends ADMIN_DrawTemplate {
+    static PRODUCT_IMG = "PRODUCT_IMG";
     constructor(){
         super("products");
         this.mainElement.Class("ADMIN_productsMain");
@@ -77,6 +78,61 @@ class ADMIN_products extends ADMIN_DrawTemplate {
                             this.draw();
                         }.bind(this);
                 }
+                let buttonUploadImage = new SPLINT.DOMElement.Button.FileUpload(buttonsDiv, "imageUpload", "image/*", ADMIN_products.PRODUCT_IMG, true);
+                    buttonUploadImage.bindIcon("upload_file");
+                    buttonUploadImage.Description = "Bild hochladen";
+                    buttonUploadImage.button.setTooltip("Bild hochladen", "right");
+                    buttonUploadImage.saveProductImages = function(productID){
+                        console.log(productID);
+                        for(const d of buttonUploadImage.file_data){
+                            let callback = function(res){
+
+                            }
+                            let form = new FormData();
+                                form.append("ID", productID);
+                            SPLINT.FileUpload.direct(d, ADMIN_products.PRODUCT_IMG, callback, form)
+                        }
+                    }
+                console.log(editProductData);
+                let buttonShowImages = new SPLINT.DOMElement.Button(buttonsDiv, "showImages", "Produktbilder verwalten");
+                    buttonShowImages.Class("showImages");
+                    buttonShowImages.onclick = function(){
+                        console.log(editProductData);
+                        let imgEle = [];
+                        let ImagesPopup = new SPLINT.DOMElement.popupWindow("EditProductImages", true, true);
+                            let id = ImagesPopup.id + "_";
+                            let container = new SPLINT.DOMElement(id + "_container", "div", ImagesPopup.content);
+                                container.Class("container");
+
+                            for(const [name, url] of Object.entries(editProductData.ImgPath)) {
+                                console.log(name, url)
+                                imgEle[name] = new Object();
+                                imgEle[name].Body = new SPLINT.DOMElement(id + "imgDiv_" + name, "div", container);
+                                imgEle[name].Body.Class("imgEleBody");
+                                    imgEle[name].image = new SPLINT.DOMElement(id + "imgEle_" + name, "img", imgEle[name].Body);
+                                    imgEle[name].image.src = url;
+
+                                    imgEle[name].btRemove = new SPLINT.DOMElement.Button(imgEle[name].Body, "remove_" + name);
+                                    imgEle[name].btRemove.bindIcon("delete");
+                                    imgEle[name].btRemove.Class("btRemove");
+                                    imgEle[name].btRemove.onclick = async function (){
+                                        let r = await productHelper.removeImage(editProductData.ID, name);
+                                        imgEle[name].Body.remove();
+                                        delete imgEle[name];
+                                        console.log(r);
+                                    }.bind(this);
+                            }
+                    }.bind(this);
+
+
+
+                //     console.log(editProductData);
+                // let bt_test = new SPLINT.DOMElement.Button(buttonsDiv, "test", "test");
+                //     bt_test.onclick = async function(){
+
+
+
+                //     }
                 let buttonClear = new SPLINT.DOMElement.Button(buttonsDiv, "clear", "löschen");
                     buttonClear.onclick = function(){
                         inputName.clear();
@@ -138,10 +194,12 @@ class ADMIN_products extends ADMIN_DrawTemplate {
                         }
                         if(flag){
                             if(editProductData != null){
+                                buttonUploadImage.saveProductImages(editProductData.ID);
                                 await productHelper.editProduct(editProductData.ID, price, name, description, size, viewName, attrs);
                                 this.draw();
                             } else {
                                 let productData = await productHelper.newProduct(price, name, description, size, viewName, attrs);
+                                buttonUploadImage.saveProductImages(productData);
                                 if(typeof productData != "string"){
                                     console.warn("Product with name " + productData[0].name + " already exists")
                                 } else {

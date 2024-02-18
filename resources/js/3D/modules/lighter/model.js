@@ -90,9 +90,7 @@ export default class Model {
                 element.children[0].geometry.applyMatrix4( new Matrix4().makeTranslation( 1.919, 0, 0 ) );
                 // element.children[0].position.y = -0.001; 
                 let texture = element.children[0].material.map;
-                console.dir(texture);
                     texture.anisotropy = 16;
-                    console.dir(texture);
 
                 element.children[0].position.x = -0.01919; 
                 //element.children[0].rotation.z = -134 * Math.PI / 180;
@@ -204,57 +202,16 @@ export default class Model {
         // flame(false);
         return flame(true);
     }
-    static createThumbnailPlanes(scene, instance, name, isHidden = false){
-        name = "Thumbnail_" + name;
-        let material = MATERIALS.Lighter.EngravingBase();
-        let plane1 = SPLINT.object.Plane(3.4/1000, 1.976/1000, 1, 1);
-            plane1.rotate(0, 180, 180);
-            plane1.position(1.92, 0.99, 0.668);
-            plane1.material = material.clone();
-            plane1.setMapOffset(0, 1);
-            plane1.setMapRepeat(1, 0.38401);
-
-            plane1.plane.scale.set(1000, 1000, 1000);
-            // plane1.plane.scale.set(10, 10, 10);
-            plane1.get().material.needsUpdate = true;
-            plane1.get().name = name;
-            scene.children[0].children[0].add(plane1.get()); 
-
-        let plane2 = SPLINT.object.Plane(3.4/1000, 3.169/1000, 1, 1);
-            plane2.rotate(0, 180, 180);
-            plane2.position(0, 1.845, 0.668);
-            plane2.get().material.needsUpdate = true;
-            if(material.map != null){
-                material.map = material.map.clone();
-            }
-            // material.normalMap = material.normalMap.clone();
-            if(material.bumpMap != null){
-                material.bumpMap = material.bumpMap.clone();
-            }
-            plane2.material = material;
-            plane2.setMapOffset(0, 0.3844);
-            plane2.setMapRepeat(1, 0.61599);
-
-            plane2.plane.scale.set(1000, 1000, 1000);
-            plane2.get().material.needsUpdate = true;
-            plane2.get().name = name;
-            // plane2.get().visible = false;
-            scene.children[1].children[0].add(plane2.get()); 
-            // requestAnimationFrame(instance.animate.bind(instance));
-            
-            if(isHidden){
-                plane1.get().material.opacity = 0;
-                plane2.get().material.opacity = 0;
-            }
-    }
-    static async getThumbnail(scene, instance, src , name = "", color = 0xe8b000, isHidden = false){
+    static async getThumbnail(scene, instance, src, src_normalMap, name = "", color = 0xe8b000, isHidden = false){
         let double = false;
         let material = null;
-            return MATERIALS.Lighter.Engraving3(color, src, async function(texture, mat = null){
+            return MATERIALS.Lighter.EngravingMain(color, src, src_normalMap, async function(texture, mat = null){
                 if(mat != null){
                     material = mat;
                 }      
                 let plane1 = SPLINT.object.Plane(3.4/1000, 1.976/1000, 1, 1);
+                    plane1.plane.castShadow = true;
+                    plane1.plane.receiveShadow = true;
                     plane1.rotate(0, 180, 180);
                     plane1.position(1.92, 0.99, 0.668);
                     plane1.material = material.clone();
@@ -266,7 +223,8 @@ export default class Model {
                     plane1.get().material.needsUpdate = true;
                     plane1.get().name = name;
                     scene.children[0].children[0].add(plane1.get()); 
-
+                    scene.children[0].children[0].children[0].geometry.computeTangents()
+                    scene.children[0].children[0].geometry.computeTangents()
                 let plane2 = SPLINT.object.Plane(3.4/1000, 3.169/1000, 1, 1);
                     plane2.rotate(0, 180, 180);
                     plane2.position(0, 1.845, 0.668);
@@ -274,23 +232,31 @@ export default class Model {
                     material.map = material.map.clone();
                     // material.normalMap = material.normalMap.clone();
                     // material.bumpMap = material.bumpMap.clone();
-                    material.normalMap = material.normalMap.clone();
+                    if(material.normalMap != null){
+                        material.normalMap = material.normalMap.clone();
+                    } 
+                    if(material.bumpMap != null){
+                        material.bumpMap = material.bumpMap.clone();
+                    }
                     plane2.material = material;
                     plane2.setMapOffset(0, 0.3844);
                     plane2.setMapRepeat(1, 0.61599);
-
                     plane2.plane.scale.set(1000, 1000, 1000);
                     plane2.get().material.needsUpdate = true;
                     plane2.get().name = name;
                     // plane2.get().visible = false;
-                    scene.children[1].children[0].add(plane2.get()); 
+                    let p2 = plane2.get();
+                    scene.children[1].children[0].add(p2); 
+                    p2.receiveShadow = true;
+                    p2.castShadow = true;
+                    p2.geometry.computeTangents()
                     // requestAnimationFrame(instance.animate.bind(instance));
                     
                     if(isHidden){
                         plane1.get().material.opacity = 0;
                         plane2.get().material.opacity = 0;
                     }
-                if(false){
+                if(double){
                     let plane1_0 = SPLINT.object.Plane(3.4/1000, 1.976/1000, 1, 1);
                         plane1_0.rotate(0, 180, 180);
                         plane1_0.position(1.92, 0.99, 0.67);
@@ -308,7 +274,7 @@ export default class Model {
                         plane2_0.position(0, 1.845, 0.668);
                         plane2_0.get().material.needsUpdate = true;
                         // material.normalMap = material.normalMap.clone();
-                        material.bumpMap = material.bumpMap.clone();
+                        // material.bumpMap = material.bumpMap.clone();
                         material.map = material.map.clone();
                         plane2_0.material = material;
                         plane2_0.setMapOffset(0, 0.3844);

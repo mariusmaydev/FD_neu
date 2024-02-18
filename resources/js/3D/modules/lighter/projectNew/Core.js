@@ -7,6 +7,7 @@ import LIGHT from './light.js';
 import LighterAnimations from '../animations.js';
 import SETUP from '../setup.js';
 import MODEL from '../model.js';
+import * as THC from "@THREE_ROOT_DIR/src/constants.js";
 
 export class draw {
     static get(canvas){
@@ -63,8 +64,13 @@ export class draw {
         this.setup.scene();
         this.scene.fog = new Fog(0xcccccc, 0.1, 30);
         // this.mouseHandler = SPLINT.MouseHandler( this.canvas );
+        this.renderer.physicallyCorrectLights  = true;
+        this.renderer.toneMappingExposure = 0.5;
+        // this.renderer.toneMapping = 2;
+        this.renderer.toneMapping = THC.ACESFilmicToneMapping;
+        this.renderer.outputEncoding = THC.sRGBEncoding;
         this.Animations = new LighterAnimations(this);
-        this.renderer.toneMappingExposure = 1;
+        // this.renderer.toneMappingExposure = 1;
         this.setupCamera();
         // this.setup.controls();
     }
@@ -80,8 +86,9 @@ export class draw {
         }
                 let tex = SPLINT.resources.textures.lighter_engraving_thumbnail_add;
                 if(this.scene != null){
-                    MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, 'lighter'), this, tex, "gold", 0xe8b000, !GoldFlag);
-                    MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, 'lighter2'), this, tex, "chrome", 0xc0c0c0, !GoldFlag);
+                        MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, "lighter"), this, tex, null, "gold", 0xe8b000, !GoldFlag);
+
+                        MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, "lighter2"), this, tex, null, "chrome", 0xc0c0c0, !GoldFlag);
                 }
                 this.canvas.parentElement.parentElement.parentElement.setAttribute("loaded", true);
                 this.render();
@@ -149,38 +156,6 @@ export class draw {
         this.scene.add(plane.plane);
     }
     events(){
-        // this.setup.events.onResizeInit();
-        let flag = true;
-        // this.canvas.S_toModule = function(event, element, LighterData){
-        //     LighterData = JSON.parse(LighterData);
-        //     if(LighterData.turn == true){
-                
-        //         // this.scene.rotation.z = (20 * Math.PI / 180);
-        //         this.Animations.lighter_turn.start();
-        //         // this.animate();
-        //     } else if(LighterData.turn == false){
-        //         this.Animations.lighter_turn.start(false)
-        //     }
-        //     // console.log(event, LighterData);
-        //     // let attr = JSON.parse(LighterData);
-        //     // if(flag){
-        //     //     this.Animations.lighter_close.stop();
-        //     //     this.Animations.lever_close.stop();
-        //     //     this.Animations.wheel_spinn.stop();
-        //     //     this.Animations.lighter_open.start(true);
-        //     //     this.Animations.wheel_spinn.start(true);
-        //     //     this.Animations.lever_open.start(false);
-        //     //     flag = false;
-        //     // } else {
-        //     //     this.Animations.lighter_open.stop();
-        //     //     this.Animations.lever_open.stop();
-        //     //     this.Animations.wheel_spinn.stop();
-        //     //     this.Animations.lighter_close.start(false);
-        //     //     this.Animations.wheel_spinn.start(true);
-        //     //     this.Animations.lever_close.start(true);
-        //     //     flag = true;
-        //     // }
-        //   }.bind(this);
     }
     onResize(){
         let a = this.canvas.parentNode.clientWidth;
@@ -195,7 +170,6 @@ export class draw {
         this.canvas.style.width = a + "px";
         this.canvas.style.height = b + "px";
         if(SPLINT.ViewPort.getSize() == "mobile-small"){
-            // this.renderer.setPixelRatio( Math.min(2, window.devicePixelRatio));
             this.renderer.setPixelRatio( window.devicePixelRatio * 2);
         } else {
             this.renderer.setPixelRatio( window.devicePixelRatio * 2);

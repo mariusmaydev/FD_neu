@@ -34,7 +34,7 @@ class Converter_closeButtons {
         }
     }
     drawButtonCreate(){
-        let a = new ConverterAdminBar();
+        // let a = new ConverterAdminBar();
         let nameInput = new SPLINT.DOMElement.InputDiv(this.contentElement, "Projektname", "name");
 
         let switchBt = new SPLINT.DOMElement.Button.Radio(this.contentElement, "creationType");
@@ -54,12 +54,9 @@ class Converter_closeButtons {
             button_create.Class("create");
             button_create.setStyleTemplate(S_Button.STYLE_NONE);
             button_create.onclick = async function(){
-                console.log(switchBt.Value);
                 await CONVERTER_STORAGE.canvasNEW.createTextData();
                 ProjectHelper.CONVERTER_closeProject();
-                // S_Location.back();
                 let sp = new SPLINT.DOMElement.Spinner(button_create.button, "test");
-                    // sp.
                 let Args = new Object();
                     Args.type = switchBt.Value;
                     Args.PointZero = new Object();
@@ -67,8 +64,6 @@ class Converter_closeButtons {
                     Args.PointZero.Y = DSProject.Storage[DSProject.SQUARE].PointZeroY;
                 let res = (await ConverterHelper.createData((await SPLINT.SessionsPHP.get("USER_ID", false)), DSProject.Storage.ProjectID, Args));
                 sp.remove();
-                // button_download_NC.button.disabled = false;
-                // button_startEngraving.button.disabled = false;
             }
 
             let button_download_NC = new SPLINT.DOMElement.Button(this.contentElement, "downloadNC", "Model herunterladen");

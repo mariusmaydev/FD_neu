@@ -16,7 +16,7 @@ class canvasPaths {
             if(index != -1){
                 element.paths.edges[index] = path2;
             }
-            element.ctx_S.fill(path2);
+            // element.ctx_S.fill(path2);
             element.ctx.fill(path2);
     }
     static updatePointPath(element, width, height, index){
@@ -69,7 +69,6 @@ class canvasPaths {
     }
     static updateImgPath(element){
         this.updatePointPath(element, element.data.ImageWidth, element.data.ImageHeight);
-        
         // element.ctx_S.translate(element.data.ImagePosX, element.data.ImagePosY);
         // element.ctx_S.rotate(element.data.ImageAlign * Math.PI/180);
         let mat = new DOMMatrix().translate(element.data.ImagePosX, element.data.ImagePosY).rotate(element.data.ImageAlign );
@@ -86,21 +85,21 @@ class canvasPaths {
     }
     static updateImg(element){
         let ctx = element.ctx;
-
         let scale = 2;
         let img = element.src;
         ctx.save();
         ctx.translate(element.data.ImagePosX, element.data.ImagePosY);
         ctx.scale(1/scale, 1/scale);
         ctx.rotate(element.data.ImageAlign * Math.PI/180);
-        ctx.filter = 'blur(1px)';
+        let color = DSProject.getColorFor(DSProject.Storage.EPType);
+        ctx.filter = 'blur(1px) drop-shadow(0px 0px 1px ' + color + ')';
         ctx.imageSmoothingEnabled = true;
         ctx.imageSmoothingQuality  = "high";
         ctx.globalAlpha = 1;
         // element.ctx.globalAlpha = 1;
         ctx.drawImage(img, 0, 0, parseInt(img.width), parseInt(img.height), -element.data.ImageWidth / (2/(scale)), -element.data.ImageHeight / (2/(scale)), element.data.ImageWidth * scale, element.data.ImageHeight * scale);
         ctx.drawImage(img, 0, 0, parseInt(img.width), parseInt(img.height), -element.data.ImageWidth / (2/(scale)), -element.data.ImageHeight / (2/(scale)), element.data.ImageWidth * scale, element.data.ImageHeight * scale);
-        ctx.drawImage(img, 0, 0, parseInt(img.width), parseInt(img.height), -element.data.ImageWidth / (2/(scale)), -element.data.ImageHeight / (2/(scale)), element.data.ImageWidth * scale, element.data.ImageHeight * scale);
+        // ctx.drawImage(img, 0, 0, parseInt(img.width), parseInt(img.height), -element.data.ImageWidth / (2/(scale)), -element.data.ImageHeight / (2/(scale)), element.data.ImageWidth * scale, element.data.ImageHeight * scale);
 
         // element.ctx.globalAlpha = 1;
         // // element.ctx.scale(10, 10);

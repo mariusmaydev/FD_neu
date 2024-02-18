@@ -7,6 +7,7 @@
 @use 'floatingDiv';
 @use 'image';
 @use 'text';
+@use 'sass:color';
 
 
 @mixin conv_BottomBar(){
@@ -122,6 +123,111 @@
                     &.button_NewText {
                         flex: 1;
                     }
+                    &.EPType {
+                        > div {
+                            width: calc(100vw) !important;
+                            margin-bottom: 0.5em;
+                            > div {
+                                width: 100%;
+                                display: flex !important;
+                                flex-direction: row !important;
+                                flex-wrap: nowrap !important;
+                                justify-content: space-between;
+                                > div {
+                                    &[state*='passive']{
+                                            background: #4f4f4f!important;
+                                        
+                                    }
+                                    margin-inline: 0.5rem;
+                                    // padding: 0.5em;
+                                    // &[state*='active']{
+                                    //     background-color: vars.$color-primary;
+                                    // }
+                                    // > span {
+                                    //     font-size: 2rem!important;
+                                    // }
+                                    width: calc(100% - 2px);
+                                    height: calc(100% - 2px);
+                                    // margin: 1px;
+                                    @include Tmain.clipEdgesAll(5px);
+                                    
+                                    &[value *= 'GOLD']{     
+                                        
+                                        background:   //linear-gradient(-50deg, $gold, 45%, rgb(255, 255, 255) ,55%, $gold ),
+                                                    radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+                                                    radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+                                        color: vars.$color-primary-text;
+                                        
+                                        > button {
+                                            $gold : color.adjust(vars.$color-gold, $alpha: -0.7);  
+                                            background:   linear-gradient(-50deg, $gold, 45%, rgb(255, 255, 255, 0.9) ,55%, $gold );
+                                            background-size: 200% 200%;
+                                            animation-name: AnimationEPtype2; 
+                                            animation-duration: 0.3s;
+                                            animation-timing-function: cubic-bezier(0.87, 0.57, 0.16, 0.77);
+                                            animation-fill-mode: forwards;
+                                        }
+                                        &:hover {
+                                            > button {
+                                                animation-name: AnimationEPtype; 
+                                                animation-duration: 0.3s;
+                                                animation-timing-function: cubic-bezier(0.16, 0.77, 0.87, 0.57);
+                                                animation-fill-mode: forwards;
+        
+                                            }
+                                        }
+                                    }         
+                                    &[value *= 'CHROME']{     
+                                        background: linear-gradient(
+                                          -50deg,
+                                          #999 5%,
+                                          #fff 10%,
+                                          #ccc 30%,
+                                          #ddd 50%,
+                                          #ccc 70%,
+                                          #fff 80%,
+                                          #999 95%
+                                        );
+                                        > button {
+                                            $chrome : color.adjust(vars.$color-chrome, $alpha: -0.9);  
+                                            background:   linear-gradient(-50deg, $chrome, 45%, rgb(255, 255, 255, 0.9) ,55%, $chrome );
+                                                                  
+                                            color: vars.$color-primary-text;
+        
+                                            background-size: 200% 200%;
+                                            animation-name: AnimationEPtype2; 
+                                            animation-duration: 0.3s;
+                                            animation-timing-function: cubic-bezier(0.87, 0.57, 0.16, 0.77);
+                                            animation-fill-mode: forwards;
+        
+                                        }
+                                        &:hover {
+                                            > button {
+                                                animation-name: AnimationEPtype; 
+                                                animation-duration: 0.3s;
+                                                animation-timing-function: cubic-bezier(0.16, 0.77, 0.87, 0.57);
+                                                animation-fill-mode: forwards;
+                                            }
+                                        }
+                                    }      
+                                    > button {
+                                        height: 100%;
+                                        width: 100%;
+                                        padding: 1rem;
+                                        mix-blend-mode: hard-light;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        > span {
+                                            font-size: 4rem;
+                                            opacity: 1;
+        
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                     &.finish {
                         &[state*='active'] {
                             background-color: red;
@@ -159,27 +265,6 @@
                                             }
                                         }
                                     }
-                                }
-                            }
-                        }
-                    }
-                    > div[name*='buttons_EP'] {
-                        width: calc(100vw - 1em) !important;
-                        margin-bottom: 0.5em;
-                        > div {
-                            width: 100%;
-                            display: flex !important;
-                            flex-direction: row !important;
-                            flex-wrap: nowrap !important;
-                            justify-content: space-evenly;
-                            > button {
-                                margin-inline: 0.5em;
-                                padding: 0.5em;
-                                &[state*='active']{
-                                    background-color: vars.$color-primary;
-                                }
-                                > span {
-                                    font-size: 2rem!important;
                                 }
                             }
                         }

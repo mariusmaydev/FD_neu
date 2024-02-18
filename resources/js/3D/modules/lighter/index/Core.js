@@ -1,7 +1,8 @@
-import * as THREE from 'three';
+
 // import { Fog } from "@THREE_ROOT_DIR/src/scenes/Fog.js";
 // import { PerspectiveCamera } from "@THREE_ROOT_DIR/src/cameras/PerspectiveCamera.js";
 // import { Color } from "@THREE_ROOT_DIR/src/math/Color.js";
+import * as THC from "@THREE_ROOT_DIR/src/constants.js";
 import SPLINT from 'SPLINT';
 import * as MATERIALS from '../../assets/materials/materials.js';
 import LIGHT from './light.js';
@@ -90,8 +91,8 @@ export class draw {
         this.renderer.physicallyCorrectLights  = true;
         this.renderer.toneMappingExposure = 0.5;
         // this.renderer.toneMapping = 2;
-        this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-        this.renderer.outputEncoding = THREE.sRGBEncoding;
+        this.renderer.toneMapping = THC.ACESFilmicToneMapping;
+        this.renderer.outputEncoding = THC.sRGBEncoding;
         this.renderer.needsUpdate = true;
         this.raycaster = SPLINT.raycaster(this);
         this.raycaster2 = SPLINT.raycaster(this);
@@ -118,8 +119,11 @@ export class draw {
     }
     async loadThumbnail(name, GoldFlag){
         if(this.scene != null){
-            MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, name), this, SPLINT.resources.textures.lighter_engraving_thumbnail, "gold", 0xe8b000, !GoldFlag);
-            MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, name), this, SPLINT.resources.textures.lighter_engraving_thumbnail_chrome, "chrome", 0xc0c0c0, GoldFlag);
+            if(GoldFlag){
+                MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, name), this, SPLINT.resources.textures.lighter_engraving_thumbnail, SPLINT.resources.textures.ligher_NormalMapEngraving, "gold", 0xe8b000, !GoldFlag);
+            } else{
+                MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, name), this, SPLINT.resources.textures.lighter_engraving_thumbnail_chrome, SPLINT.resources.textures.ligher_NormalMapEngraving, "chrome", 0xc0c0c0, GoldFlag);
+            }
 
         }
     }

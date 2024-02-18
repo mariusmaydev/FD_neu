@@ -28,13 +28,11 @@ export default class setup {
             } else {
                 this.inst.canvas.width = a * 2;
                 this.inst.canvas.height = b * 2;
-
             }
-            console.log(window.devicePixelRatio)
             this.inst.canvas.style.width = (a) + "px";
             this.inst.canvas.style.height = (b) + "px";
         if(setup.RENDERER == null || newFlag){
-            this.inst.renderer   = new WebGLRenderer({antialias: true, alpha: true, precision: "lowp", powerPreference: "high-performance"});
+            this.inst.renderer   = new WebGLRenderer({preserveDrawingBuffer:false, antialias: false, alpha: true, precision: "highp", powerPreference: "high-performance"});
             this.inst.renderer.shadowMap.enabled = true
             this.inst.renderer.shadowMap.type = THC.VSMShadowMap
             this.inst.renderer.shadowMap.soft = true;
@@ -61,14 +59,10 @@ export default class setup {
         } else {
             this.inst.renderer = setup.RENDERER;
         }
-        this.inst.context = this.inst.canvas.getContext("2d");
+        this.inst.context = this.inst.canvas.getContext("2d", {willReadFrequently: false ,desynchronized: false});
     }
     scene(sceneName = "scene"){
-        // if(SPLINT.resources.models.lighter_glb[sceneName] == undefined){
-            this.inst.scene      = new Scene();
-        // } else {
-        //     this.inst.scene = SPLINT.resources.models.lighter_glb[sceneName].clone();
-        // }
+        this.inst.scene      = new Scene();
     }
     controls(){
         this.inst.controls   = new OrbitControls( this.inst.camera, this.inst.canvas );

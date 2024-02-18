@@ -92,10 +92,10 @@
         public static function getFile(){
             return self::$FileName;
         }
-        public static function get($imgID = null, string $ext = ".png"){
+        public static function get(string $productID, $imgID = null, string $ext = ""){
             self::init();
             self::$FileName = self::getFileName($imgID, $ext);
-            return self::buildPath(self::$base, $GLOBALS['folder'], "data", "products") . self::$FileName;
+            return self::buildPath(self::$base, $GLOBALS['folder'], "data", "products" , $productID) . self::$FileName;
         }
     }
 

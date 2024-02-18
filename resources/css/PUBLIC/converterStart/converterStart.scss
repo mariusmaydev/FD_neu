@@ -100,7 +100,7 @@ body {
             position: relative;
             display: grid;
             // grid-template-columns: minmax(4rem, 14rem) minmax(40rem, 1fr) fit-content(14rem);
-            grid-auto-columns: minmax(10rem, 14rem) minmax(52rem, 78rem) minmax(0rem, 14rem);
+            grid-auto-columns: minmax(10rem, 16rem) minmax(52rem, 78rem) minmax(0rem, 14rem);
             grid-auto-flow: column;
             grid-template-rows: 100%;
                 justify-content: space-evenly;
@@ -152,65 +152,92 @@ body {
                     > div {
                         position: relative;
                         box-sizing: border-box;
-                        overflow: hidden;
+                        overflow: visible;
                         // @include T_container();
                         // background-color: rgb(230, 230, 230);
                         // box-shadow: none;
                         padding: 0;
-                        padding-top: 0.5em;
+                        padding-top: 0.25rem;
                         padding-bottom: 0em;
                         // border-top-right-radius: 0.5em;
                         border-radius: 0em;
                         // border-bottom-right-radius: 0.5em;
                         margin: 0;
-                        padding-right: 1em;
+                        padding-right: 0.25rem;
                         padding-left: 0em;
-                        margin-bottom: 0.5rem;
-                        margin-left: 0.5em;
+                        margin-bottom: 0.25rem;
+                        margin-left: 1rem;
                         transition: padding-left 0.2s ease;
+                        @include Tmain.TContainer_basic();
                         // overflow: hidden;
                         // height: 10px;
                         // transition: height 0.5s ease-in;
                         // &:has(button[state*='active']){
                         //     height: max-content;
                         // }
+                        &.private {
+                            padding-bottom: 0.25rem;
+                            margin-bottom: 0;
+                            > button {
+                                margin-bottom: 0;
+                            }
+                        }
                         > button {
-                            @include Gmain.box-shadow(0, black, 0.6);
-                            @include Tbuttons.T_button_Animated();
-                            -ms-transform: skewX(-20deg); /* IE 9 */
-                            -webkit-transform: skewX(-20deg); /* Safari */
-                            transform: skewX(-20deg);
+                            display: flex;
+                            flex-direction: row;
+                            // @include Gmain.box-shadow(0, black, 0.6);
+                            @include Tmain.TButton_simple();
+                            float: none;
                             border-radius: 0;
                             position: relative;
                             box-sizing: border-box;
-                            // box-shadow: none;
-                            // border-bottom: 1px solid black;
                             margin: 0;
-                            margin-left: 0.5em;
-                            // background-color: white;
-
-                            // padding: 0;
-                            width: 100%;
+                            margin-left: 0.25rem;
+                            width: calc(100% - 0.25rem);
                             height: 100%;
-                            // padding: 0;
-                            // padding-top: 0.5em;
-                            // padding-bottom: 0.25em;
-                            // border-top-right-radius: 1em;
-                            // border-bottom-right-radius: 1em;
-                            // margin: 0;
+                            padding: 0;
                             padding-right: 1em;
                             padding-left: 1em;
                             margin-bottom: 0.25rem;
+                            transition: transform 0.1s ease-in-out;
+                            color: vars.$color-primary-text;
+                            &::before{
+                                content: '';
+                                transition: transform 0.2s ease;;
+                                transform: translateX(-40%) translateY(calc(50% + 4px));
+                                border-left: 8px solid gray;
+                                border-top: 8px solid transparent;
+                                border-bottom: 8px solid transparent;
+                            }
                             &[state*='active']{
+                                &::before {
+                                    transform: translate(-40%, calc(50% + 4px)) rotate(90deg);
+                                }
                                 > span {
-                                    color: vars.$color-primary-Dark;
+                                    color: vars.$color-primary-text;
+                                }
+                            }
+                            &:hover {
+                                &::before {
+                                    transition: border 0.1s ease-in-out;
+                                    border-left: 8px solid vars.$color-primary-Dark;
+                                    // transform: translate(-50%, calc(50% + 3px)) rotate(90deg);
+                                }
+                                > span {
+                                    color: vars.$color-primary-text;
                                 }
                             }
                             > span {
-                                -ms-transform: skewX(20deg); /* IE 9 */
-                                -webkit-transform: skewX(20deg); /* Safari */
-                                transform: skewX(20deg);
+                                margin: 0.5rem;
+                                // -ms-transform: skewX(20deg); /* IE 9 */
+                                // -webkit-transform: skewX(20deg); /* Safari */
+                                // transform: skewX(20deg);
                                 font-size: 1.5em;
+                            }
+                            &[hide*='false']{
+                                &::before {
+                                    transform: translate(-40%, calc(50% + 4px)) rotate(90deg);
+                                }
                             }
                         }
                         > div {
@@ -230,12 +257,20 @@ body {
                             // margin-left: 0.4rem;
                             width: 100%;
                             z-index: 4;
+                            
                             &[ishidden*='true']{
                                 border-top: none;
                             
-                            }
+                            }   
                         }
                         @include desktopCategory.ProjectCategoryMenu-desktop();
+                        > div {   
+                            > .S-Nesting {
+                                .I_expander {
+                                    background-color: vars.$color-T_container !important;
+                                }
+                            }
+                        }
                     }
                 }
             }

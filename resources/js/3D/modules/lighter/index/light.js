@@ -17,7 +17,7 @@ export default function light(scene){
     let spot = lights.new.SpotLight(0xffd8b2, 100, 2, 0.3, 0.4, 0);
         spot.position.set(-0.7,0.5, 0.7);
         spot.target.position.set(0, 0.1, 0);
-        spot.castShadow = false;
+        spot.castShadow = true;
         spot.shadow.bias = -0.0005;
         spot.target.updateMatrixWorld();
         spot.power = 7;
@@ -27,7 +27,7 @@ export default function light(scene){
         spot1.position.set(1,0.7, 1);
         spot1.target.position.set(0, 0.1, 0);
         spot1.shadow.bias = -0.0005;
-        spot1.castShadow = false;
+        spot1.castShadow = true;
         spot1.shadow.mapSize.width = 128
         spot1.shadow.mapSize.height = 1024
         spot1.shadow.camera.near =0.05

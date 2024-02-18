@@ -7,20 +7,27 @@ export default function light(scene){
     const lights = new SPLINT.lights.lightCluster(groupe, false);
           lights.helper.size = 0.1;
 
-    let atmo = lights.new.AmbientLight(0xffffff, 1);
-        atmo.bind();
+    let atmo = lights.new.AmbientLight(0xffffff, 0.1);
+        // atmo.bind();
 
-    let hemi  = lights.new.HemisphereLight( 0x000000, 0xfff2e5, 5 );
-    hemi.helper.size = 0.8;
-    hemi.position.set(0,0,0)
-        hemi.bind();
+        let hemi  = lights.new.HemisphereLight( 0xffffff, 0x000000, 0 );
+        hemi.helper.size = 0.8;
+        hemi.position.set(0, 1,0)
 
         let r = 5;
         let bs = 10;
         let shadowMapSize = 1024;
         
+    let spot = lights.new.SpotLight(0xffd8b2, 100, 2, 0.3, 0.4, 0);
+        spot.position.set(-0.7,0.5, 0.7);
+        spot.target.position.set(0, 0.1, 0);
+        spot.castShadow = false;
+        spot.shadow.bias = -0.0005;
+        spot.target.updateMatrixWorld();
+        spot.power = 17;
+        spot.bind();
 
-    let directional1 = lights.new.DirectionalLight( 0xffe6cd, 6 );
+    let directional1 = lights.new.DirectionalLight( 0xffe6cd, 1 );
         directional1.position.set(-0.075, 0.3, 0.15);
         directional1.target.position.set( 0, 0, 0);
                     
@@ -41,7 +48,7 @@ export default function light(scene){
         // directional1.target.updateMatrixWorld();
         directional1.bind();
         
-    let directional2 = lights.new.DirectionalLight( 0xffe6cd, 6);
+    let directional2 = lights.new.DirectionalLight( 0xffe6cd, 1);
         directional2.position.set(0.075, 0.2, 0.4);
         directional2.target.position.set( 0, 0, 0);
         directional2.shadow.bias = -0.00001;

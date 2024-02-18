@@ -24,12 +24,29 @@ class ProjectDetails_Desktop {
         }.bind(this);
         this.contentElement = this.mainElement.content;
         this.contentElement.classList.add("converterStart");
-            let container = new SPLINT.DOMElement(this.id + "container", "div", this.contentElement);
-                container.Class("container");
                 let data = new SPLINT.Types.autoObject();
-            this.lighter = new drawLighter3D(container, this.id, drawLighter3D.PROJECT, this.data.Thumbnail, true, true);
-            this.lighter.canvas.setAttribute("showDimensions", false);
-            this.lighter.saveContext = false;
+
+            let ImageContainerMain = new SPLINT.DOMElement(this.id + "ImageContainerMain", "div", this.contentElement);
+                ImageContainerMain.Class("ImageContainerMain");
+                let ImageContainerScroll = new SPLINT.DOMElement(this.id + "ImageContainerScroll", "div", ImageContainerMain);
+                    ImageContainerScroll.Class("ImageContainerScroll");
+                    let ImageContainerInner = new SPLINT.DOMElement(this.id + "ImageContainerInner", "div", ImageContainerScroll);
+                        ImageContainerInner.Class("ImageContainerInner");
+
+                        console.log(this.productData);
+
+                        this.lighter = new drawLighter3D(ImageContainerInner, this.id, drawLighter3D.PROJECT, this.data.Thumbnail, true, true);
+                        this.lighter.canvas.setAttribute("showDimensions", false);
+                        this.lighter.saveContext = false;
+
+                        for(const [name, url] of Object.entries(this.productData.ImgPath)){
+                            console.log(name, url)
+                            let imgEleBody = new SPLINT.DOMElement(this.id + "imgDiv_" + name, "div", ImageContainerInner);
+                                imgEleBody.Class("imgEleBody");
+                                let imgEleImage = new SPLINT.DOMElement(this.id + "imgEle_" + name, "img", imgEleBody);
+                                    imgEleImage.src = url;
+
+                        }
             // this.lighter.canvas.setAttribute("showDimensions", true);
                 this.drawInformation();
                 if(drawButtons){
@@ -37,8 +54,15 @@ class ProjectDetails_Desktop {
                     // this.drawButtons();
                 }
                 
-                let buttonsContainer = new SPLINT.DOMElement(this.id + "buttonsContainer", "div", container);
+                let buttonsContainer = new SPLINT.DOMElement(this.id + "buttonsContainer", "div", ImageContainerMain);
                     buttonsContainer.Class("buttonsContainer");
+                //     let slideshow = new SPLINT.DOMElement.SlideShow(buttonsContainer, "productImageSlideShow");
+                //         slideshow.Class("productImage")
+
+                //         let image1 = new SPLINT.DOMElement(slideshow.id + "_img1", "img", document.body);
+                //             image1.Class("img1");
+                //             slideshow.appendElement(image1);
+
                     let buttonSize = new SPLINT.DOMElement.Button.Switch(buttonsContainer, "size", "Maße anzeigen");
                         buttonSize.Class("size");
                         buttonSize.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_DEFAULT)

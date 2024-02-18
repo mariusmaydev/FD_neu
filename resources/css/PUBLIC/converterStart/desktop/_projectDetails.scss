@@ -24,63 +24,116 @@
                     font-size: 3rem;
                 }
             }
-            > .container {
+            > .ImageContainerMain {
+                margin-bottom: 10%;
                 position: relative;
                 height: 100%;
-                aspect-ratio: vars.$LIGHTER-ratio;
-                box-sizing: border-box !important;
-                >.Lighter3D {
+                display: block;
+                max-width: 100%;
+                width: fit-content;
+                box-sizing: content-box !important;
+                overflow: hidden;
+                > .ImageContainerScroll {
                     position: relative;
-                    width: 100%;
-                    height: 100%;
+                    aspect-ratio: vars.$LIGHTER-ratio;
+                    height: 90%;
+                    // width: 100%;
+                    box-sizing: border-box !important;
                     overflow: hidden;
-                    box-sizing: content-box !important;
-                    transform: translateY(-8%);
-                    > canvas {
-                        transform: scale(1.12);
-                        -ms-transform: scale(1.12);
-                        -webkit-transform: scale(1.12);
-                        &[showdimensions*='true']{
-                            transform: scale(1);
-                            -ms-transform: scale(1);
-                            -webkit-transform: scale(1);
+                    > .ImageContainerInner {
+                        position: relative;
+                        height: 100%;
+                        scroll-snap-type: x mandatory;
+                        // scroll-snap-points-x: repeat(20%);
+                        box-sizing: border-box !important;
+                        width: 100%;
+                        justify-content: space-evenly;
+                        overflow: auto;
+                        display: flex;
+                        flex-direction: row;
+                        > div {
+                            padding: 2rem;
+                            scroll-snap-stop: always;
+                            scroll-behavior: smooth;
+                            scroll-snap-align: center;
                         }
-                        transition: transform 0.2s ease-in-out;
-                        box-sizing: content-box !important;
-                    }
+                        >.Lighter3D {
+                            user-select: none;
+                            aspect-ratio: vars.$LIGHTER-ratio;
+                            position: relative;
+                            // width: 100%;
+                            height: 100%;
+                            // overflow: hidden;
+                            box-sizing: content-box !important;
+                            // transform: translateY(-8%);
+                            > canvas {
+                                transform: scale(1.12);
+                                -ms-transform: scale(1.12);
+                                -webkit-transform: scale(1.12);
+                                &[showdimensions*='true']{
+                                    transform: scale(1);
+                                    -ms-transform: scale(1);
+                                    -webkit-transform: scale(1);
+                                }
+                                transition: transform 0.2s ease-in-out;
+                                box-sizing: content-box !important;
+                            }
+                        }
+                        > .imgEleBody {
+                            user-select: none;
+                            position: relative;
+                            height: 100%;
+                            aspect-ratio: vars.$LIGHTER-ratio;
+                            min-width: min-content;
+                            width: fit-content;
+                            overflow: hidden;
+                            box-sizing: border-box !important;
+                            padding: 1rem;
+                            > img {
+                                position: relative;
+                                box-sizing: border-box !important;
+                                // width: 100%;
+                                height: 100%;
+                                object-fit: scale-down;
+                                overflow: hidden;
+                            }
+                        }
+                        
+                    } 
                 }
-                > .buttonsContainer {
-                    position: absolute;
+            }
+            > .buttonsContainer {
+                display: none !important;
+                position: absolute;
+                bottom: 0;
+                border-radius: 0;
+                box-shadow: none;
+                width: calc(100% - 1rem);
+                margin: 0;
+                margin-bottom: 0.5rem;
+                display: flex;
+                flex-direction: row;
+                justify-content: left;
+                gap: 1rem;
+                > button {
+                    width: max-content;
+                    position: relative;
                     bottom: 0;
                     border-radius: 0;
+                    padding: 0.25rem;
                     box-shadow: none;
-                    width: calc(100% - 1rem);
+                    @include Tmain.TButton_Animated(false, false);
+                    // width: calc(100% - 1rem);
                     margin: 0;
-                    margin-bottom: 0.5rem;
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: left;
-                    gap: 1rem;
-                    > button {
-                        width: max-content;
-                        position: relative;
-                        bottom: 0;
-                        border-radius: 0;
-                        padding: 0.25rem;
-                        box-shadow: none;
-                        @include Tmain.TButton_Animated(false, false);
-                        // width: calc(100% - 1rem);
-                        margin: 0;
-                        > span {
-                            font-size: 1.8rem;
-                        }
+                    > span {
+                        font-size: 1.8rem;
                     }
-
                 }
-            } 
+
+            }
             > .informationDiv {
-                padding-right: 1em;
-                width: 100%;
+                padding-right: 0em;
+                width: auto;
                 height: 100%;
                 display: flex;
                 flex-direction: column;

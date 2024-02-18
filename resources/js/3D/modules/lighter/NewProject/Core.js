@@ -98,8 +98,11 @@ export class draw {
         this.thumbnailSRC = SPLINT.texture.loadFromRoot(this.canvas.getAttribute("thumbsrc"));
         this.thumbnailSRC.then(async function(tex){
             if(this.scene != null){
-                MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, name), this, tex, "gold", 0xe8b000, !GoldFlag);
-                MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, name), this, tex, "chrome", 0xc0c0c0, GoldFlag);
+                if(GoldFlag){
+                    MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, name), this, tex, null, "gold", 0xe8b000, !GoldFlag);
+                } else {
+                    MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, name), this, tex, null, "chrome", 0xc0c0c0, GoldFlag);
+                }
             }
             this.thumbnailSRC = null;
             return true;

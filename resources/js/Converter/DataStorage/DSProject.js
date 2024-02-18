@@ -44,7 +44,7 @@ class DataStorageProject_C {
       return SPLINT.Tools.ObjectTools.deepClone(this);
     }
     async saveAsync(){
-      let a = CONVERTER_STORAGE.canvasNEW.createData(1);
+      let a = await CONVERTER_STORAGE.canvasNEW.createData(1);
           a.then(function(img){
             this.Storage.Thumbnail = img;
             return img;

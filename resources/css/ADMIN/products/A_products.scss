@@ -6,6 +6,33 @@
 @use '../ADMIN.scss';
 
 body {
+    > .subWindow_MAIN {
+        > .background {
+
+        }
+        > .content {
+            > button {
+
+            }
+            > .container {
+                padding: 0.5rem;
+                position: relative;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: row;
+
+                > .imgEleBody {
+                    // height: max-content;
+                    width: 40vw;
+                    
+                    > img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
     >.popup_removeProduct {
         > .content {
             > .button_close {

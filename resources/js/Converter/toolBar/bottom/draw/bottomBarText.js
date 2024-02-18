@@ -104,6 +104,7 @@ class BottomBar_Text {
             let button_remove = new SPLINT.DOMElement.Button(buttonsDiv, "remove");
                 button_remove.bindIcon("delete");
                 button_remove.onclick = function(){
+                    console.log(this.TOOLS);
                     this.TOOLS.remove();
                 }.bind(this);
     }

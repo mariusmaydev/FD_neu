@@ -5,6 +5,7 @@ class productHelper {
     static EDIT     = "EDIT";
     static GET      = "GET";
     static GET_DATA = "GET_DATA";
+    static REMOVE_IMG = "REMOVE_IMG";
 
     static LIGHTER_GOLD     = "Lighter_Gold_custom";
     static LIGHTER_CHROME   = "Lighter_Chrome_custom";
@@ -73,6 +74,12 @@ class productHelper {
     static getProductData(name){
         let call = this.MANAGER.call(productHelper.GET_DATA);
             call.data.name = name;
+        return call.send();
+    }
+    static async removeImage(productID, imgID){
+        let call = this.MANAGER.call(productHelper.REMOVE_IMG);
+            call.data.ID       = productID;
+            call.data.ImageID  = imgID;
         return call.send();
     }
     static async remove(id){
