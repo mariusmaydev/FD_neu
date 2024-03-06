@@ -1,12 +1,15 @@
 @use '../../../general/main' as Gmain;
+@use '../../../themes/theme1/main' as Tmain;
+@use '../../../themes/theme1/vars';
 @use '../../../general/buttons' as Gbuttons;
+@use 'sass:color';
 
 @use 'converterToolBar_Text';
 @use 'converterToolBar_Image';
 @use 'converterToolBarHelper';
 
 @mixin ToolBar_Main() {
-    > .ToolBar_ActiveBody {
+    > .ToolBar_LighterSettingsBody {
         box-sizing: content-box;
         position: relative;
         overflow-x: visible;
@@ -25,6 +28,221 @@
             margin: 0.5em !important;
             margin-bottom: 0 !important;
             padding: 0.5em !important;
+            z-index: 0 !important;
+            @include Tmain.TContainer_basic();
+            position: relative;
+            width: calc(100% - 1em);
+            margin: 0.5em;
+            margin-top: 0 !important;
+            box-sizing: border-box;
+            >.expanderBody {
+                display: flex;
+                flex-direction: row;
+                justify-content: stretch;
+                align-items: center;
+                gap: 0.5rem;
+                cursor: pointer;
+                > button {
+
+                }
+                > .headline {
+                    width: 100%;
+                    > span {
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+            > hr {
+                width: 100%;
+                margin-top: 0.25rem;
+                margin-bottom: 0.25rem;
+                margin-inline: 0;
+                left: 0;
+            }
+            >.content {
+                overflow: hidden;
+                width: 100%;
+                height: max-content;
+                // padding: 0.5rem;
+                > .colorContainer {
+                    position: relative;
+                    width: 100%;
+                    padding: 0rem;
+                    display: flex;
+                    flex-direction: column;
+                    
+                    gap: 0.5rem;
+                    > .headline {
+                        > span {
+                            font-size: 1rem;
+                        }
+                    }
+                    > .contentElement {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: start;
+                        gap: 1rem;
+                        > button {
+                            height: 2rem;
+                            width: 4rem;
+                            border-radius: 5px;
+                        }
+                    }
+                }
+                > .EPTypeContainer {
+                    position: relative;
+                    width: 100%;
+                    padding: 0rem;
+                    display: flex;
+                    flex-direction: column;
+                    
+                    gap: 0.5rem;
+                    > .headline {
+                        > span {
+                            font-size: 1rem;
+                        }
+                    }
+                    > .contentElement {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: start;
+                        gap: 1rem;
+                        > div {
+                            &[state*='passive']{
+                                    background: #4f4f4f!important;
+                                
+                            }
+                            margin-inline: 0;
+                            // padding: 0.5em;
+                            // &[state*='active']{
+                            //     background-color: vars.$color-primary;
+                            // }
+                            // > span {
+                            //     font-size: 2rem!important;
+                            // }
+                            min-width: fit-content;
+                            max-width: 50%;
+                            width: 15rem;
+                            border: 1px solid gray;
+                            border-radius: 5px;
+                            // width: calc(100% - 2px);
+                            height: calc(100% - 2px);
+                            // margin: 1px;
+                            // @include Tmain.clipEdgesAll(5px);
+                            
+                            &[value *= 'GOLD']{     
+                                
+                                background:   //linear-gradient(-50deg, $gold, 45%, rgb(255, 255, 255) ,55%, $gold ),
+                                            radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+                                            radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+                                color: vars.$color-primary-text;
+                                
+                                > button {
+                                    $gold : color.adjust(vars.$color-gold, $alpha: -0.7);  
+                                    background:   linear-gradient(-50deg, $gold, 45%, rgb(255, 255, 255, 0.9) ,55%, $gold );
+                                    background-size: 200% 200%;
+                                    animation-name: AnimationEPtype2; 
+                                    animation-duration: 0.3s;
+                                    animation-timing-function: cubic-bezier(0.87, 0.57, 0.16, 0.77);
+                                    animation-fill-mode: forwards;
+                                }
+                                &:hover {
+                                    > button {
+                                        animation-name: AnimationEPtype; 
+                                        animation-duration: 0.3s;
+                                        animation-timing-function: cubic-bezier(0.16, 0.77, 0.87, 0.57);
+                                        animation-fill-mode: forwards;
+
+                                    }
+                                }
+                            }         
+                            &[value *= 'CHROME']{     
+                                background: linear-gradient(
+                                  -50deg,
+                                  #999 5%,
+                                  #fff 10%,
+                                  #ccc 30%,
+                                  #ddd 50%,
+                                  #ccc 70%,
+                                  #fff 80%,
+                                  #999 95%
+                                );
+                                > button {
+                                    $chrome : color.adjust(vars.$color-chrome, $alpha: -0.9);  
+                                    background:   linear-gradient(-50deg, $chrome, 45%, rgb(255, 255, 255, 0.9) ,55%, $chrome );
+                                                          
+                                    color: vars.$color-primary-text;
+
+                                    background-size: 200% 200%;
+                                    animation-name: AnimationEPtype2; 
+                                    animation-duration: 0.3s;
+                                    animation-timing-function: cubic-bezier(0.87, 0.57, 0.16, 0.77);
+                                    animation-fill-mode: forwards;
+
+                                }
+                                &:hover {
+                                    > button {
+                                        animation-name: AnimationEPtype; 
+                                        animation-duration: 0.3s;
+                                        animation-timing-function: cubic-bezier(0.16, 0.77, 0.87, 0.57);
+                                        animation-fill-mode: forwards;
+                                    }
+                                }
+                            }      
+                            > button {
+                                height: 100%;
+                                width: 100%;
+                                padding: 0.25rem;
+                                mix-blend-mode: hard-light;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                > span {
+                                    font-size: 1.1rem;
+                                    opacity: 1;
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &[state*='passive'] {
+                > hr {
+                    display: none;
+                }
+                > .content {
+                    height: 0;
+                }
+            }
+        }
+    }
+    > .ToolBar_ActiveBody {
+        box-sizing: content-box;
+        position: relative;
+        overflow-x: visible;
+        width: 100%;
+        top: 0;
+        margin: 0 !important;
+        padding: 0 !important;
+        z-index: 0 !important;
+        display: none;
+        &[state*='active']{
+            display: block;
+        }
+        > div {
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+            overflow: visible;
+            overflow-y: auto;
+            overflow-x: visible;
+            margin: 0.5em !important;
+            margin-bottom: 0 !important;
+            padding: 0.5em !important;
+            margin-top: 0 !important;
             z-index: 0 !important;
         }
         @include converterToolBarHelper.ToolBar_ListElement();

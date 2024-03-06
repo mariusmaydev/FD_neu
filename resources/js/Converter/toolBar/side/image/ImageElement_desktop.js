@@ -161,12 +161,14 @@ class ToolBar_ImageElement {
         this.mainElement.state().unsetActive();
         this.expander.unsetActive();
         document.getElementById("ConverterToolBar_Image_main").appendChild(this.mainElement);
+        document.getElementById("ConverterToolBar_activeBody").state().unsetActive();
     }
     focus(){
         CONVERTER_STORAGE.toolBar.blurElement("img");
         this.mainElement.state().setActive();
         this.expander.setActive();
         CONVERTER_STORAGE.canvasNEW.setActive(this.data, "img");
+        ToolBar_LighterSettings.blur();
 
 
         let ele = document.getElementById("ConverterToolBar_activeBody").childNodes[0];
@@ -181,6 +183,7 @@ class ToolBar_ImageElement {
             }
             document.getElementById("ConverterToolBar_activeBody").clear();
         }
+        document.getElementById("ConverterToolBar_activeBody").state().setActive();
         document.getElementById("ConverterToolBar_activeBody").appendChild(this.mainElement);
     }
     drawSpinner(){

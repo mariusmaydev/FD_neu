@@ -1,5 +1,4 @@
-import SPLINT from 'SPLINT';
-// import * as THREE from 'three';
+import  SPLINT  from 'SPLINT';
 import { Vector3 } from '@THREE_ROOT_DIR/src/math/Vector3.js';
 
 export default class compressedIndexAnimations {

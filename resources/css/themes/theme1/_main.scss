@@ -4,7 +4,7 @@
 @forward "helper";
 @use "../../../../../Splint/scss/tools/tools" as S_tools;
 @forward "container" show TContainer_basic;
-@forward "buttonNew" show TButton_basic, TButton_important_A, TButton_important_B, TButton_simple, TButton_Animated;
+@forward "buttonNew" show TButton_basic, TButton_important_A, TButton_important_B, TButton_simple, TButton_Animated, TButtonAnimation_simple;
 
 * {
     // transition: .1s ease;

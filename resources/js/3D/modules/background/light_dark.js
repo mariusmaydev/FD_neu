@@ -1,5 +1,5 @@
 
-import * as SPLINT from 'SPLINT';
+import SPLINT from 'SPLINT';
 
 export default function light(scene){
     let c1 = 0xffd7af;

@@ -1,6 +1,6 @@
 
 import { Group } from "@THREE_ROOT_DIR/src/objects/Group.js";
-import * as SPLINT from 'SPLINT';
+import SPLINT from 'SPLINT';
 
 export default function light(scene){
     let groupe = new Group();

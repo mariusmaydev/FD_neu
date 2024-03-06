@@ -226,6 +226,7 @@ class ToolBar_TextElement {
         this.mainElement.state().unsetActive();
         this.expander.unsetActive();
         document.getElementById("ConverterToolBar_Text_main").appendChild(this.mainElement);
+        document.getElementById("ConverterToolBar_activeBody").state().unsetActive();
     }
     focus(){
         CONVERTER_STORAGE.toolBar.blurElement("txt");
@@ -243,6 +244,7 @@ class ToolBar_TextElement {
             }
             document.getElementById("ConverterToolBar_activeBody").clear();
         }
+        document.getElementById("ConverterToolBar_activeBody").state().setActive();
         document.getElementById("ConverterToolBar_activeBody").appendChild(this.mainElement);
     }
 }

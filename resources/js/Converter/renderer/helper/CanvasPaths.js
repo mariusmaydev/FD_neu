@@ -16,7 +16,6 @@ class canvasPaths {
             if(index != -1){
                 element.paths.edges[index] = path2;
             }
-            // element.ctx_S.fill(path2);
             element.ctx.fill(path2);
     }
     static updatePointPath(element, width, height, index){
@@ -69,8 +68,6 @@ class canvasPaths {
     }
     static updateImgPath(element){
         this.updatePointPath(element, element.data.ImageWidth, element.data.ImageHeight);
-        // element.ctx_S.translate(element.data.ImagePosX, element.data.ImagePosY);
-        // element.ctx_S.rotate(element.data.ImageAlign * Math.PI/180);
         let mat = new DOMMatrix().translate(element.data.ImagePosX, element.data.ImagePosY).rotate(element.data.ImageAlign );
         
         let path = new Path2D();
@@ -83,34 +80,34 @@ class canvasPaths {
             element.ctx.fill(path2);
             
     }
+    static getColorFor(color){
+        if(color == "CHROME"){
+          return "#eff8ff";
+        }
+        return "#ffd700";
+      }
     static updateImg(element){
         let ctx = element.ctx;
         let scale = 2;
         let img = element.src;
+        let color = this.getColorFor(DSProject.Storage.EPType);
         ctx.save();
         ctx.translate(element.data.ImagePosX, element.data.ImagePosY);
         ctx.scale(1/scale, 1/scale);
         ctx.rotate(element.data.ImageAlign * Math.PI/180);
-        let color = DSProject.getColorFor(DSProject.Storage.EPType);
         ctx.filter = 'blur(1px) drop-shadow(0px 0px 1px ' + color + ')';
         ctx.imageSmoothingEnabled = true;
         ctx.imageSmoothingQuality  = "high";
         ctx.globalAlpha = 1;
-        // element.ctx.globalAlpha = 1;
         ctx.drawImage(img, 0, 0, parseInt(img.width), parseInt(img.height), -element.data.ImageWidth / (2/(scale)), -element.data.ImageHeight / (2/(scale)), element.data.ImageWidth * scale, element.data.ImageHeight * scale);
         ctx.drawImage(img, 0, 0, parseInt(img.width), parseInt(img.height), -element.data.ImageWidth / (2/(scale)), -element.data.ImageHeight / (2/(scale)), element.data.ImageWidth * scale, element.data.ImageHeight * scale);
         // ctx.drawImage(img, 0, 0, parseInt(img.width), parseInt(img.height), -element.data.ImageWidth / (2/(scale)), -element.data.ImageHeight / (2/(scale)), element.data.ImageWidth * scale, element.data.ImageHeight * scale);
 
-        // element.ctx.globalAlpha = 1;
-        // // element.ctx.scale(10, 10);
-        // ctx.rect(-element.data.ImageWidth / 2, -element.data.ImageHeight / 2, element.data.ImageWidth, element.data.ImageHeight);
         ctx.restore();
     }
     static updateTxtPath(element){
         this.updatePointPath(element, element.data.FrameWidth, element.data.FrameHeight, 8);
         
-        // element.ctx_S.translate(element.data.ImagePosX, element.data.ImagePosY);
-        // element.ctx_S.rotate(element.data.ImageAlign * Math.PI/180);
         let mat = new DOMMatrix().translate(element.data.TextPosX, element.data.TextPosY).rotate(element.data.TextAlign ).scale(2);
         
         let path = new Path2D();
@@ -123,20 +120,8 @@ class canvasPaths {
             element.ctx.fill(path2);
             
     }
-    static updateTxt(element, renderFlag = false, thumbnailFlag = false){
+    static updateTxt(element, renderFlag = false){
         let ctx = element.ctx;
-        // if(ctx == null){
-        //     if(renderFlag){
-        //       ctx = element.ctx_S;
-        //     } else {
-        //       ctx = element.ctx;
-        //       ctx.shadowColor = DSProject.getColorFor(DSProject.Storage.EPType);
-        //       ctx.shadowOffsetX = 0;
-        //       ctx.shadowOffsetY = 0;
-        //       ctx.shadowBlur = 2;
-        //       // ctx.filter = 'blur(0.5px)';
-        //     }
-        //   }
           ctx.save();
           ctx.translate(element.data.TextPosX, element.data.TextPosY);
           ctx.scale(2, 2);
@@ -145,11 +130,7 @@ class canvasPaths {
           ctx.imageSmoothingEnabled = true;
           ctx.imageSmoothingQuality = "high";
           ctx.textBaseline = "middle";
-          if(thumbnailFlag){
-              ctx.lineWidth = 1;
-          } else {
-              ctx.lineWidth = 1;
-          }
+          ctx.lineWidth = 1;
           ctx.strokeStyle = DSProject.getColorFor(DSProject.Storage.EPType);
           ctx.fillStyle = DSProject.getColorFor(DSProject.Storage.EPType);
           ctx.font = element.data.FontWeight + " " + element.data.FontStyle + " " + element.data.FontSize + "px " + element.data.FontFamily;

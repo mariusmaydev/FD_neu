@@ -7,12 +7,8 @@ import LIGHT from './light.js';
 import LighterAnimations from '../animations.js';
 import SETUP from '../setup.js';
 import MaterialsLighterGeneral from '../../assets/newMaterials/materialsLighterGeneral.js';
-import MODEL from '../model.js';
-import * as THC from "@THREE_ROOT_DIR/src/constants.js";
-import { CubeTextureLoader } from "@THREE_ROOT_DIR/src/loaders/CubeTextureLoader.js";
-import { WebGLCubeRenderTarget } from "@THREE_ROOT_DIR/src/renderers/WebGLCubeRenderTarget.js";
-import { RGBELoader } from "@THREE_ROOT_DIR/examples/jsm/loaders/RGBELoader.js";
-import { CubeCamera } from "@THREE_ROOT_DIR/src/cameras/CubeCamera.js";
+import LighterThumbnail from "../model/LighterThumbnail.js";
+import LighterModel from "../model/LighterModel.js";
 
 export class draw {
     static get(canvas){
@@ -24,23 +20,12 @@ export class draw {
         this.context = null;
         this.setup = new SETUP(this);
         this.materials = new Object();
+        this.thumbnail = new Object();
+        
+        this.lighterModel_1 = new LighterModel(this, "lighter");
+        this.lighterModel_2 = new LighterModel(this, "lighter2");
             this.init();
             this.draw();
-            // this.events();
-            
-            // this.mouseHandler.onMove = function(event){
-            //     if(this.mouseHandler.mouseDown){
-            //         this.renderer.setAnimationLoop( function(){
-            //            this.renderer.render( this.scene, this.camera );
-            //         }.bind(this));
-            //         // MODEL._rotate(SETUP.getLighterGroupe(this.scene), 0, 0, this.mouseHandler.dX);
-            //     } else {
-            //         this.renderer.setAnimationLoop( null);
-            //     }
-            // }.bind(this);
-            // this.loaded.then(function(){
-            //     // this.onFinishLoading();
-            // }.bind(this));
 
     }
     remove(){
@@ -75,8 +60,10 @@ export class draw {
             
             if(this.scene != null){
                 SPLINT.ResourceManager.textures.lighter_engraving_thumbnail_add.then(async function(texture){    
-                    await MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, "lighter"), this, texture, null, "gold", 0xe8b000, !GoldFlag)
-                    await MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, "lighter2"), this, texture, null, "chrome", 0xc0c0c0, !GoldFlag);
+                    this.thumbnail.lighter1 = new LighterThumbnail(this, "lighter");
+                    this.thumbnail.lighter1.loadThumbnailMaterial(texture, 0xe8b000);  
+                    this.thumbnail.lighter2 = new LighterThumbnail(this, "lighter2");
+                    this.thumbnail.lighter2.loadThumbnailMaterial(texture, 0xc0c0c0);
                     resolve(true)
                 }.bind(this));
             }
@@ -91,7 +78,7 @@ export class draw {
             this.scene.add( this.camera );
         // }
         return new Promise(async function(resolve){
-            let p1 = MODEL.init(this, "lighter", true, false);
+            let p1 = this.lighterModel_1.init();
                 p1.then(async function(){
                         this.Animations.lighter_close.start(false, 0, "lighter");
                         this.Animations.lever_close.start(true, 0, "lighter");
@@ -100,7 +87,7 @@ export class draw {
                         lighterGroupe1.rotationBase = lighterGroupe1.rotation.clone();
                 }.bind(this));
 
-            let p2 = MODEL.init(this, "lighter2", false, false);
+            let p2 = this.lighterModel_2.init();
                 p2.then(async function(){
                     this.Animations.lighter_close.start(false, 0, "lighter2");
                     this.Animations.lever_close.start(true, 0, "lighter2");
@@ -112,7 +99,7 @@ export class draw {
                 }.bind(this));
 
             Promise.all([p1, p2]).then(async function(){
-                await this.loadThumbnail("lighter", true);
+                await this.loadThumbnail();
             
                 this.onFinishLoading();
                 resolve("ok");

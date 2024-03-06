@@ -28,6 +28,9 @@
             if($Storage[ProjectDB::STATE] != null){
                 $DataSet -> newEntry(ProjectDB::STATE, $Storage[ProjectDB::STATE]);
             } 
+            if($Storage[ProjectDB::COLOR] != null){
+                $DataSet -> newEntry(ProjectDB::COLOR, $Storage[ProjectDB::COLOR]);
+            } 
             $DataSet -> newEntry(ProjectDB::EPTYPE, $Storage[ProjectDB::EPTYPE]);
             $DataSet -> newEntry(ProjectDB::PRODUCT, $Storage[ProjectDB::PRODUCT]);
             $DataSet -> newEntry(ProjectDB::SQUARE, json_encode($Storage[ProjectDB::SQUARE]));
@@ -38,7 +41,7 @@
                 $DataSet -> TBName(Sessions::get(Sessions::USER_ID));
             }
             AccessDB::edit(ProjectDB::getStruct(), $DataSet);
-            if($editThumbnail){
+            if($editThumbnail && $Storage["Thumbnail"] != null){
                 self::editImages(Sessions::get(Sessions::USER_ID), $Storage[ProjectDB::PROJECT_ID], $Storage["Thumbnail"]);
             }
             // Communication::sendBack(null);
@@ -146,7 +149,7 @@
             }
             
             $ProjectData = self::get($projectID, $FromUserID, false);
-            $NewProjectID = self::new($ProjectData[ProjectDB::PROJECT_NAME], $ProjectData[ProjectDB::PRODUCT], $UserID, $NewProjectID, false);
+            $NewProjectID = self::new($ProjectData[ProjectDB::PROJECT_NAME], $ProjectData[ProjectDB::PRODUCT], $ProjectData[ProjectDB::COLOR], $UserID, $NewProjectID, false);
             $ProjectData[ProjectDB::PROJECT_ID] = $NewProjectID;
             $ProjectData[ProjectDB::STATE] = ProjectDB::STATE_NORMAL;
             self::edit($ProjectData, false);
@@ -175,7 +178,7 @@
             Communication::sendBack($NewProjectID, false, $print);
             return $NewProjectID;
         }
-        static function new($projectName, $Product, $UserID = null, $NewProjectID = null, $setSessions = true, $Original = false){
+        static function new($projectName, $Product, $Color = null, $UserID = null, $NewProjectID = null, $setSessions = true, $Original = false){
             $Design = new stdClass();
             $Design -> Tags = [];
             $Design -> Categories = [];
@@ -197,6 +200,7 @@
                 $DataSet -> TBName($UserID);
             }
             
+            $DataSet -> newEntry(ProjectDB::COLOR,          $Color);
             $DataSet -> newEntry(ProjectDB::PROJECT_ID,     $ProjectID);
             $DataSet -> newEntry(ProjectDB::PROJECT_NAME,   $projectName);
             $DataSet -> newEntry(ProjectDB::STATE,          $State);
@@ -346,6 +350,7 @@
             $DataSet -> newEntry(ProjectArchiveDB::EPTYPE,         $data[ProjectDB::EPTYPE]);
             $DataSet -> newEntry(ProjectArchiveDB::ORIGINAL,       $data[ProjectDB::ORIGINAL]);
             $DataSet -> newEntry(ProjectArchiveDB::PRODUCT,        $data[ProjectDB::PRODUCT]);
+            $DataSet -> newEntry(ProjectArchiveDB::COLOR,          $data[ProjectDB::COLOR]);
             $DataSet -> newEntry(ProjectArchiveDB::SQUARE,         json_encode($data[ProjectDB::SQUARE]));
             $DataSet -> newEntry(ProjectArchiveDB::FIRST_TIME,     $data[ProjectDB::FIRST_TIME]);
             $DataSet -> newEntry(ProjectArchiveDB::LAST_TIME,      $data[ProjectDB::LAST_TIME]);
@@ -366,6 +371,7 @@
         const EPTYPE                = "EPType";
         const SQUARE                = "Square";
         const FIRST_TIME            = "First_Time";
+        const COLOR                 = "Color";
         const LAST_TIME             = "Last_Time";
         const PRODUCT               = "Product";
         const ORIGINAL              = "Original";
@@ -388,6 +394,7 @@
             $DS2 -> newEntry(ProjectDB::EPTYPE,        "VARCHAR(255)");
             $DS2 -> newEntry(ProjectDB::PRODUCT,       "VARCHAR(40)");
             $DS2 -> newEntry(ProjectDB::ORIGINAL,      "VARCHAR(40)");
+            $DS2 -> newEntry(ProjectDB::COLOR,         "VARCHAR(255)");
             $DS2 -> newEntry(ProjectDB::DESIGN,        "TEXT");
             $DS2 -> newEntry(ProjectDB::SQUARE,        "TEXT");
             $DS2 -> newEntry(ProjectDB::FIRST_TIME,    "DATETIME DEFAULT CURRENT_TIMESTAMP");

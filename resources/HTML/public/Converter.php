@@ -40,6 +40,7 @@
         <s-part src="/js/assets/functionsProduct.js"></s-part>
         <s-part src="/js/assets/product/productHelper.js"></s-part>
         <s-part src="/js/Projects/ProjectList/ProjectDetails.js"></s-part>
+        <s-part src="/js/Projects/ProjectList/Details/desktop/ProjectDetailsDesktop.js"></s-part>
         <s-part src="/js/assets/product/drawProductInformation.js"></s-part>
         <!-- <s-part src="/js/Converter/Upload.js"></s-part> -->
         <!-- <s-part src="/js/Converter/renderer/ConverterRender"></s-part> -->
@@ -49,7 +50,6 @@
         <s-part src="/js/Converter/"></s-part>
 
         <s-part src="/js/Converter/renderer/ConverterEvents.js"></s-part>
-        <s-part src="/js/Converter/renderer/ConverterRenderTexts.js"></s-part>
         <s-part src="/js/Converter/renderer/handler/ConverterMouseHandler.js"></s-part>
         <s-part src="/js/Converter/renderer/handler/ConverterTouchHandler.js"></s-part>
 
@@ -60,7 +60,6 @@
         <s-part src="/js/Converter/drawElements/drawDesktop.js"></s-part>
         <s-part src="/js/Converter/drawElements/drawMobile.js"></s-part>
         <!-- <s-part src="/js/manager/manager.js"></s-part> -->
-        <s-part src="/js/3D/Element3D.js"></s-part>
         <!-- <s-part src="/js/Converter/ConverterDOM.js"></s-part> -->
 
         <!-- <s-part src="/js/Designs/Hashtags/Hashtags.js"></s-part> -->

@@ -8,6 +8,16 @@ class drawIndex extends Pages_template {
 
     }
     _draw(){
+        
+        // let worker = new SPLINT.Worker.WebWorker("/js/WebWorker/_test/webworkertest.js");
+        //     worker.onReceive = function(){
+        //         console.log(arguments)
+        //     }
+        //     worker.send("message")
+
+
+        
+
         this.overlay = new indexOverlay(this);
         Footer.parent = this.overlay.contentElement;
         if(SPLINT.ViewPort.getSize() == "mobile-small"){

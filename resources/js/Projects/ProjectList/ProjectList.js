@@ -41,7 +41,7 @@ class drawProjectList {
             if(this.drawNew){
                 this.table.func_drawFirstListElement = async function(listElement){
                 listElement.onclick = async function(){
-                    await ProjectHelper.new("neues Projekt", "Lighter_Gold_custom", false, false);
+                    await ProjectHelper.new("neues Projekt", "Lighter_Gold_custom", false, false, false, "base");
                     S_Location.goto(PATH.location.converter).call();
                 }
                 let container = new SPLINT.DOMElement("new_" + this.name + "container", "div", listElement);
@@ -60,6 +60,15 @@ class drawProjectList {
                 let container = new SPLINT.DOMElement(index + "_" + this.name + "container", "div", listElement);
                     container.Class("container");
                 let lighter = new drawLighter3D(container, index + "_" + this.name, drawLighter3D.PROJECT, data.Thumbnail, false, false, data.EPType);
+                
+                    lighter.promise.then(async function(){
+                        let color = await productHelper.getColorForID(data.Color);
+                        if(color == null || color == undefined){
+                            color = "base";
+                            return;
+                        }
+                        lighter.send("changeColor", color);
+                    })
                 lighter.saveContext = true;
                     listElement.setAttribute("state", data.State);
 
@@ -131,7 +140,7 @@ class drawProjectList {
             listElement.onmouseleave = function(){
                 lighter.send("zoom", false);
             }
-            let projectDetails = new ProjectDetails(data, index, listElement);
+            let projectDetails = new ProjectDetails(data, index, listElement, lighter);
               listElement.onclick = function(){
                 projectDetails.show();
               }

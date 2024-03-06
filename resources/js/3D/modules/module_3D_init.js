@@ -1,25 +1,10 @@
 
 
 import SPLINT from 'SPLINT';
-// import test from '@SPLINT_MODULES_DIR/ThreeJS/loader/models.js';
-
 
 SPLINT.threeJS.scenes = new SPLINT.SArray();
 
-function init3D(){
-    SPLINT.preloadResources().then(function(){
-        
-    // // test.load(SPLINT.config.URIs.project + "/" + "data/3Dmodels/Lighter/Feuerzeug.glb")
-    // // test.load(SPLINT.config.URIs.project + "/" + "data/3Dmodels/Lighter/Feuerzeug.glb")
-    // // test.load(SPLINT.config.URIs.project + "/" + "data/3Dmodels/Lighter/Feuerzeug.glb")
-    // // test.load(SPLINT.config.URIs.project + "/" + "data/3Dmodels/Lighter/Feuerzeug.glb")
-    // // test.load(SPLINT.config.URIs.project + "/" + "data/3Dmodels/Lighter/Feuerzeug.glb")
-    // // test.load(SPLINT.config.URIs.project + "/" + "data/3Dmodels/Lighter/Feuerzeug.glb")
-    // debugger
-    });
-    // setTimeout(async function(){
-    //     SPLINT.Events.onLoadingComplete.dispatch();
-    // }, 5000);
+async function init3D(){
     function callback(records) {
         records.forEach(function (record) {
             record.removedNodes.forEach(function (node) {

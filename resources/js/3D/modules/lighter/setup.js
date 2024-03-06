@@ -17,8 +17,8 @@ export default class setup {
             let a = this.inst.canvas.parentNode.clientWidth;
             let b = this.inst.canvas.parentNode.clientHeight;
             if(SPLINT.ViewPort.getSize() == "mobile-small"){
-                this.inst.canvas.width = a *2;
-                this.inst.canvas.height = b *2;
+                this.inst.canvas.width = a * 2;
+                this.inst.canvas.height = b * 2;
             } else {
                 this.inst.canvas.width = a * 2;
                 this.inst.canvas.height = b * 2;
@@ -72,20 +72,6 @@ export default class setup {
         // this.controls.maxPolarAngle     = Math.PI / 2;
         this.inst.controls.update();
     }
-    // async draw(){
-    //     this.inst.drawBackground();
-    //     this.inst.light();
-    //     this.inst.scene.add( this.inst.camera );
-    //     // return new Promise(async function(resolve){
-    //     //     if(this.inst.canvas.getAttribute("color") == "CHROME"){
-    //     //         await MODEL.init(this.inst, "lighter", 1, false);
-    //     //     } else {
-    //     //         await MODEL.init(this.inst);
-    //     //     }
-    //     //     resolve('resolved');
-    //     //     this.inst.onFinishLoading();
-    //     // }.bind(this));
-    // }
     getLighterGroupe(scene = this.inst.scene, name = 'lighter'){
         
         if(this.inst.LighterGroupe[name] == undefined){
@@ -96,6 +82,12 @@ export default class setup {
     static getGroupe(scene, name = 'lighter'){
         return SPLINT.Utils.getObjByKey_Value(scene.children, "name", name);
     }
+    
+    rotateScene(dX, dY, dZ){
+        this.inst.scene.rotation.y += dY / 100;
+        this.inst.scene.rotation.x += dX / 100;
+        this.inst.scene.rotation.z += dZ / 100;
+    }
 } 
 
 class events {
@@ -105,7 +97,7 @@ class events {
             for(const sc of scenes){
                 sc.onResize();
             }
-        }, true);
+        }, false);
     }
     constructor(inst_setup, inst_core){
         this.inst_setup = inst_setup;

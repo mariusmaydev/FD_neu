@@ -59,7 +59,7 @@ class ConverterAdminBar {
                         DSProject.Storage[DSProject.SQUARE].width = amount *16.4;
                         DSProject.Storage[DSProject.SQUARE].widthMM = amount;
                         DSProject.save();
-                        AdjustSquareBorder();
+                        Converter.AdjustSquareBorder();
                     }.bind(this);
                 let labelInputX = new SPLINT.DOMElement.Label(inputXContainer, inputX.mainElement, "X" );
                     labelInputX.before();
@@ -72,14 +72,14 @@ class ConverterAdminBar {
                         DSProject.Storage[DSProject.SQUARE].height = amount *16.4;
                         DSProject.Storage[DSProject.SQUARE].heightMM = amount;
                         DSProject.save();
-                        AdjustSquareBorder();
+                        Converter.AdjustSquareBorder();
                     }
                 let labelInputY = new SPLINT.DOMElement.Label(inputYContainer, inputY.mainElement, "Y" );
                     labelInputY.before();
 
                 LighterWidth    = DSProject.Storage[DSProject.SQUARE].widthMM;
                 LighterHeight   = DSProject.Storage[DSProject.SQUARE].heightMM;
-                AdjustSquareBorder();
+                Converter.AdjustSquareBorder();
     }
     drawPointZero(parent = this.contentElement, name = ""){
         let id = this.id + "_" + name;

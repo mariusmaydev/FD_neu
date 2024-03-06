@@ -19,6 +19,8 @@
 
         <s-part first src="/js/ADMIN/assets/AdminTemplate.js"></s-part>
         <s-part src="/js/ADMIN/products/productList.js"></s-part>
+        <s-part src="/js/ADMIN/products/productColorMenu.js"></s-part>
+        <s-part src="/js/ADMIN/products/productEPTypeMenu.js"></s-part>
         <s-part src="/js/manager/manager.js"></s-part>
         <s-part src="/js/ADMIN/pages/ADMIN_products.js"></s-part>
         <s-part src="/js/assets/product/"></s-part>

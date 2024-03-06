@@ -124,7 +124,7 @@ class ConverterEvents {
             if(flag){
               this.activeElement = null;
             //   console.dir(CONVERTER_STORAGE);
-              CONVERTER_STORAGE.toolBar.blurAll();
+              CONVERTER_STORAGE.toolBar.blurAll(e);
               this.removeEdges();
             }
           }

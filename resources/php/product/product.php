@@ -19,8 +19,7 @@ use Splint\File\File_DeepScan;
             $price          = $_POST[ProductDB::PRODUCT_PRICE]; 
             $size           = json_encode($_POST[ProductDB::PRODUCT_SIZE]);
             $attrs          = json_encode($_POST[ProductDB::PRODUCT_ATTRS]);
-            $colorHex       = $_POST[ProductDB::PRODUCT_COLOR_HEX];
-            $colorName      = $_POST[ProductDB::PRODUCT_COLOR_NAME];
+            $colorName      = $_POST[ProductDB::PRODUCT_COLOR];
             $EPType         = $_POST[ProductDB::PRODUCT_EPTYPE];
 
             $dataSet = new DataSet();
@@ -30,8 +29,7 @@ use Splint\File\File_DeepScan;
             $dataSet -> newEntry(ProductDB::PRODUCT_PRICE, $price);
             $dataSet -> newEntry(ProductDB::PRODUCT_SIZE, $size);
             $dataSet -> newEntry(ProductDB::PRODUCT_ATTRS, $attrs);
-            $dataSet -> newEntry(ProductDB::PRODUCT_COLOR_HEX, $colorHex);
-            $dataSet -> newEntry(ProductDB::PRODUCT_COLOR_NAME, $colorName);
+            $dataSet -> newEntry(ProductDB::PRODUCT_COLOR, $colorName);
             $dataSet -> newEntry(ProductDB::PRODUCT_EPTYPE, $EPType);
             $dataSet -> newEntry(ProductDB::PRODUCT_DESCRIPTION, $description);
             $dataSet -> newEntry(ProductDB::PRODUCT_SALES, 0);
@@ -61,8 +59,7 @@ use Splint\File\File_DeepScan;
             $price          = $_POST[ProductDB::PRODUCT_PRICE]; 
             $size           = json_encode($_POST[ProductDB::PRODUCT_SIZE]);
             $attrs          = json_encode($_POST[ProductDB::PRODUCT_ATTRS]);
-            $colorName      = $_POST[ProductDB::PRODUCT_COLOR_NAME];
-            $colorHex       = $_POST[ProductDB::PRODUCT_COLOR_HEX];
+            $colorName      = $_POST[ProductDB::PRODUCT_COLOR];
             $EPType         = $_POST[ProductDB::PRODUCT_EPTYPE];
 
             $dataSet = new DataSet();
@@ -72,8 +69,7 @@ use Splint\File\File_DeepScan;
             $dataSet -> newEntry(ProductDB::PRODUCT_PRICE, $price);
             $dataSet -> newEntry(ProductDB::PRODUCT_SIZE, $size);
             $dataSet -> newEntry(ProductDB::PRODUCT_ATTRS, $attrs);
-            $dataSet -> newEntry(ProductDB::PRODUCT_COLOR_NAME, $colorName);
-            $dataSet -> newEntry(ProductDB::PRODUCT_COLOR_HEX, $colorHex);
+            $dataSet -> newEntry(ProductDB::PRODUCT_COLOR, $colorName);
             $dataSet -> newEntry(ProductDB::PRODUCT_EPTYPE, $EPType);
             $dataSet -> newEntry(ProductDB::PRODUCT_DESCRIPTION, $description);
             $dataSet -> newEntry(ProductDB::PRODUCT_SALES, 0);
@@ -83,7 +79,12 @@ use Splint\File\File_DeepScan;
         }
         public static function getData(){
             $dataSet = new DataSet();
-            $dataSet -> newKey(ProductDB::PRODUCT_NAME, $_POST[ProductDB::PRODUCT_NAME]);
+            if(isset($_POST[ProductDB::PRODUCT_NAME])) {
+                $dataSet -> newKey(ProductDB::PRODUCT_NAME, $_POST[ProductDB::PRODUCT_NAME]);
+            } else {
+                $dataSet -> newKey(ProductDB::PRODUCT_COLOR, $_POST[ProductDB::PRODUCT_COLOR]);
+                $dataSet -> newKey(ProductDB::PRODUCT_EPTYPE, $_POST[ProductDB::PRODUCT_EPTYPE]);
+            }
             $res = ProductDB::get($dataSet);
             $res[ProductDB::PRODUCT_SIZE] = json_decode($res[ProductDB::PRODUCT_SIZE]);
             $res[ProductDB::PRODUCT_ATTRS] = json_decode($res[ProductDB::PRODUCT_ATTRS]);
@@ -98,7 +99,7 @@ use Splint\File\File_DeepScan;
             }
             Communication::sendBack($res);
         }
-        public static function get(bool $sendBack = true, bool $useParameters = false, string $viewName = null, string $name = null, float $price = null, string $productID = null, $colorName = null, $EPType = null){
+        public static function get(bool $sendBack = true, bool $useParameters = false, string $viewName = null, string $name = null, float $price = null, string $productID = null, $color = null, $EPType = null){
             $dataSet = new DataSet();
             if($useParameters){
                 if($viewName != null){
@@ -113,8 +114,8 @@ use Splint\File\File_DeepScan;
                 if($productID != null){
                     $dataSet -> newKey(ProductDB::PRODUCT_ID, $productID);
                 }
-                if($colorName != null){
-                    $dataSet -> newKey(ProductDB::PRODUCT_COLOR_NAME, $colorName);
+                if($color != null){
+                    $dataSet -> newKey(ProductDB::PRODUCT_COLOR, $color);
                 }
                 if($EPType != null){
                     $dataSet -> newKey(ProductDB::PRODUCT_EPTYPE, $EPType);
@@ -132,8 +133,8 @@ use Splint\File\File_DeepScan;
                 if(isset($_POST[ProductDB::PRODUCT_ID]) && $_POST[ProductDB::PRODUCT_ID] != null){
                     $dataSet -> newKey(ProductDB::PRODUCT_ID, $_POST[ProductDB::PRODUCT_ID]);
                 }
-                if(isset($_POST[ProductDB::PRODUCT_COLOR_NAME]) && $_POST[ProductDB::PRODUCT_COLOR_NAME] != null){
-                    $dataSet -> newKey(ProductDB::PRODUCT_COLOR_NAME, $_POST[ProductDB::PRODUCT_COLOR_NAME]);
+                if(isset($_POST[ProductDB::PRODUCT_COLOR]) && $_POST[ProductDB::PRODUCT_COLOR] != null){
+                    $dataSet -> newKey(ProductDB::PRODUCT_COLOR, $_POST[ProductDB::PRODUCT_COLOR]);
                 }
                 if(isset($_POST[ProductDB::PRODUCT_EPTYPE]) && $_POST[ProductDB::PRODUCT_EPTYPE] != null){
                     $dataSet -> newKey(ProductDB::PRODUCT_EPTYPE, $_POST[ProductDB::PRODUCT_EPTYPE]);
@@ -172,8 +173,7 @@ use Splint\File\File_DeepScan;
         const CREATION_TIME         = "time";
         const PRODUCT_SIZE          = "size";
         const PRODUCT_ATTRS         = "attrs";
-        const PRODUCT_COLOR_NAME    = "colorName";
-        const PRODUCT_COLOR_HEX     = "colorHex";
+        const PRODUCT_COLOR         = "colorID";
         const PRODUCT_EPTYPE        = "EPType";
         const PRODUCT_SALES         = "sales";
       
@@ -190,8 +190,7 @@ use Splint\File\File_DeepScan;
           $dataset -> newEntry(self::PRODUCT_DESCRIPTION,   "TEXT");
           $dataset -> newEntry(self::PRODUCT_SIZE,          "VARCHAR(255)");
           $dataset -> newEntry(self::PRODUCT_ATTRS,         "VARCHAR(255)");
-          $dataset -> newEntry(self::PRODUCT_COLOR_HEX,     "VARCHAR(255)");
-          $dataset -> newEntry(self::PRODUCT_COLOR_NAME,    "VARCHAR(255)");
+          $dataset -> newEntry(self::PRODUCT_COLOR,         "VARCHAR(255)");
           $dataset -> newEntry(self::PRODUCT_EPTYPE,        "VARCHAR(255)");
           $dataset -> newEntry(self::PRODUCT_SALES,         "VARCHAR(255)");
           $dataset -> newEntry(self::CREATION_TIME,         "DATETIME DEFAULT CURRENT_TIMESTAMP");

@@ -20,6 +20,10 @@ export default class projectCommunication {
     init(){
         this.inst.canvas.S_toModule = function(event, data){
             if(data.type == "changeColor"){
+                if(data.value.name == "Basis"){
+                    this.inst.changeColor("base", data.value.hex.replace('0x', '#'));
+                    return;
+                }
                 this.inst.changeColor(data.value.name, data.value.hex.replace('0x', '#'));
 
             } if(data.type == "changeEPType"){

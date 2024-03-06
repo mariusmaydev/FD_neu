@@ -10,7 +10,7 @@ class AdminProductList {
     }
     async draw(){
         this.mainElement.innerHTML = "";
-        let dataIn = await productHelper.getProducts();
+        let dataIn = await productHelper.getProducts(null, null, true);
         console.log(dataIn);
         if(dataIn == null){
             return;
@@ -49,8 +49,10 @@ class AdminProductList {
                             sizeDeepLabel.before();
 
                 let colorBody = new SPLINT.DOMElement(this.table.getData(index, 4).id + "colorBody", "div", this.table.getData(index, 4));
-                    let colorName = new SPLINT.DOMElement.SpanDiv(colorBody, "color_name", data.colorName);
-                    let colorHex = new SPLINT.DOMElement.SpanDiv(colorBody, "color_hex", data.colorHex);
+                    let color = await productHelper.getColorForID(data.colorID);
+                    let colorID = new SPLINT.DOMElement.SpanDiv(colorBody, "color_ID", data.colorID);
+                    let colorName = new SPLINT.DOMElement.SpanDiv(colorBody, "color_name", color.name);
+                    let colorHex = new SPLINT.DOMElement.SpanDiv(colorBody, "color_hex", color.hex);
                     let EPType = new SPLINT.DOMElement.SpanDiv(colorBody, "EPType", data.EPType);
 
                 let attrBody = new SPLINT.DOMElement(this.table.getData(index, 5).id + "attrBody", "div", this.table.getData(index, 5));
@@ -79,8 +81,8 @@ class AdminProductList {
                                 buttonSubmit.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_DEFAULT)
                                 buttonSubmit.onclick = async function(){
                                     await productHelper.remove(data.ID);
-                                    popup.close();
                                     this.draw();
+                                    popup.close();
                                 }.bind(this);
                             // popup.content
                     }.bind(this);

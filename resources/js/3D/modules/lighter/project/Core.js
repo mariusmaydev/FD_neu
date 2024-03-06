@@ -6,16 +6,16 @@ import * as MATERIALS from '../../assets/materials/materials.js';
 import LIGHT from './light.js';
 import LighterAnimations from '../animations.js';
 import SETUP from '../setup.js';
-import MODEL from '../model.js';
 import MaterialsLighterGeneral from '../../assets/newMaterials/materialsLighterGeneral.js';
 import Communication from './communication.js';
 import * as THC from "@THREE_ROOT_DIR/src/constants.js";
-import { CubeTextureLoader } from "@THREE_ROOT_DIR/src/loaders/CubeTextureLoader.js";
 import { WebGLCubeRenderTarget } from "@THREE_ROOT_DIR/src/renderers/WebGLCubeRenderTarget.js";
-import { RGBELoader } from "@THREE_ROOT_DIR/examples/jsm/loaders/RGBELoader.js";
 import { CubeCamera } from "@THREE_ROOT_DIR/src/cameras/CubeCamera.js";
 import { Color } from "@THREE_ROOT_DIR/src/math/Color.js";
 import MaterialHelper from "@SPLINT_MODULES_DIR/ThreeJS/materials/MaterialHelper.js";
+import LighterThumbnail from "../model/LighterThumbnail.js";
+import LighterModel from "../model/LighterModel.js";
+import workerInterface from "../../assets/workerInterface.js";
 
 export class draw {
     static get(canvas){
@@ -28,7 +28,7 @@ export class draw {
         this.context = null;
         this.setup = new SETUP(this);
         this.materials = new Object();
-        this.events();
+        this.lighterModel = new LighterModel(this);
         this.init();
         this.draw();
             
@@ -36,7 +36,7 @@ export class draw {
                 this.mouseHandler.onMove = function(event){
                     if(this.mouseHandler.mouseDown){
                         this.render();
-                        MODEL._rotate(this.setup.getLighterGroupe(this.scene), 0, 0, this.mouseHandler.dX);
+                        this.lighterModel.rotate(0, 0, this.mouseHandler.dX);
                         
                     } else {
                     }
@@ -99,42 +99,28 @@ export class draw {
     }
     async changeEngravingColor(color){
         let group = this.setup.getLighterGroupe(this.scene, "lighter")
-        let mesh = group.children[0].children[0].children[0];
-        let mesh2 = group.children[1].children[0].children[0];
         let Gold = new Color(0xe8b000);
         let Chrome = new Color(0xc0c0c0);
         if(color == "GOLD"){
-            mesh.material.color = Gold;
-            mesh.material.sheenColor = Gold;
-            mesh.material.emissive = Gold;
-            mesh.material.needsUpdate = true;
-
-            mesh2.material.color = Gold;
-            mesh2.material.sheenColor = Gold;
-            mesh2.material.emissive = Gold;
-            mesh2.material.needsUpdate = true;
+            this.thumbnail.setColor(Gold);
 
         } else {
-            mesh.material.color = Chrome;
-            mesh.material.sheenColor = Chrome;
-            mesh.material.emissive = Chrome;
-            mesh.material.needsUpdate = true;
-
-            mesh2.material.color = Chrome;
-            mesh2.material.sheenColor = Chrome;
-            mesh2.material.emissive = Chrome;
-            mesh2.material.needsUpdate = true;
+            this.thumbnail.setColor(Chrome);
         }
         this.render();
     }
     async loadThumbnail(name, GoldFlag){
+        
+        
         return new Promise(async function(resolve){
             if(this.scene != null){
                 SPLINT.ResourceManager.loadTextureAsync(this.canvas.getAttribute("thumbsrc").split('/').at(-2), this.canvas.getAttribute("thumbsrc").substr(4)).then(async function(texture){    
+                    
+                    this.thumbnail = new LighterThumbnail(this, "lighter");
                     if(GoldFlag){
-                        await MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, name), this, texture, null, "gold", 0xe8b000, !GoldFlag);
+                        this.thumbnail.loadThumbnailMaterial(texture, 0xe8b000);  
                     } else {
-                        await MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, name), this, texture, null, "chrome", 0xc0c0c0, GoldFlag); 
+                        this.thumbnail.loadThumbnailMaterial(texture, 0xc0c0c0, true);  
                     }
                     resolve(true);
                 }.bind(this));   
@@ -177,23 +163,28 @@ export class draw {
         //     };
         // }.bind(this));
         if(this.scene != null){
+            this.canvas.parentElement.parentElement.parentElement.setAttribute("loaded", true);
+            this.canvas.setAttribute("loaded", true);
+
+            this.canvas.Storage = new Object();
+            this.canvas.Storage.type = "loaded";
+            this.canvas.Storage.value = "value";
+
+            this.communication = new Communication(this);
+            this.canvas.dispatchEvent(SPLINT_EVENTS.toCommonJS);
             setTimeout(async function(){
-                this.render();
-                this.canvas.parentElement.parentElement.parentElement.setAttribute("loaded", true);
-                this.canvas.setAttribute("loaded", true);
-
-                this.canvas.Storage = new Object();
-                this.canvas.Storage.type = "loaded";
-                this.canvas.Storage.value = "value";
-
-                this.canvas.dispatchEvent(SPLINT_EVENTS.toCommonJS);
                 // console.dir(this.canvas)
-                this.communication = new Communication(this);
                 if(this.canvas.getAttribute("showDimensions") == 'true'){
                     this.communication.showDimensions();
                 }
                 this.onResize();
+                this.render();
             }.bind(this), 100);
+
+            workerInterface.createNormalMap(SPLINT.projectRootPath + "../" + this.canvas.getAttribute("thumbsrc").substr(4)).then(async function(texture){
+                this.thumbnail.loadNormalMap(texture)
+                this.render();
+            }.bind(this))
         }
     }
     setupCamera(){
@@ -232,11 +223,10 @@ export class draw {
         this.light();
         this.scene.add( this.camera );
         return new Promise(async function(resolve){
+            await this.lighterModel.init();
             if(this.canvas.getAttribute("color") == "CHROME"){
-                await MODEL.init(this, "lighter", false, false);
                 await this.loadThumbnail("lighter", false);
             } else {
-                await MODEL.init(this, "lighter", true, false);
                 await this.loadThumbnail("lighter", true);
             }
             this.Animations.lighter_close.start(false, 0);
@@ -287,79 +277,6 @@ export class draw {
     }
     events(){
         SPLINT.Events.onLoadingComplete = function(){
-        }.bind(this);
-        // this.canvas.S_toModule = function(event, element, LighterData){
-        //     LighterData = JSON.parse(LighterData);
-        //     if(LighterData.turn == true){
-                
-        //         // this.scene.rotation.z = (20 * Math.PI / 180);
-        //         this.Animations.lighter_turn.start();
-        //         // this.animate();
-        //     } else if(LighterData.turn == false){
-        //         this.Animations.lighter_turn.start(false)
-        //     }
-        //     // console.log(event, LighterData);
-        //     // let attr = JSON.parse(LighterData);
-        //     // if(flag){
-        //     //     this.Animations.lighter_close.stop();
-        //     //     this.Animations.lever_close.stop();
-        //     //     this.Animations.wheel_spinn.stop();
-        //     //     this.Animations.lighter_open.start(true);
-        //     //     this.Animations.wheel_spinn.start(true);
-        //     //     this.Animations.lever_open.start(false);
-        //     //     flag = false;
-        //     // } else {
-        //     //     this.Animations.lighter_open.stop();
-        //     //     this.Animations.lever_open.stop();
-        //     //     this.Animations.wheel_spinn.stop();
-        //     //     this.Animations.lighter_close.start(false);
-        //     //     this.Animations.wheel_spinn.start(true);
-        //     //     this.Animations.lever_close.start(true);
-        //     //     flag = true;
-        //     // }
-        //   }.bind(this);
-    }
-    setupRaycaster(){
-        let lOpen = false;
-        let groupe = this.setup.getLighterGroupe();
-        this.raycaster.setScene(groupe);
-        this.raycaster.addObject("oberes_teil1");
-        this.raycaster.addObject("unteres_teil1");
-        this.raycaster.addObject("Innenleben11");
-        this.raycaster.addObject("Rad1");
-        this.raycaster.onMouseClick = function(element, name){
-            // switch(name){
-            //     case "oberes_teil1" : {
-            //         if(lOpen){
-            //             this.Animations.lighter_close.start(false);
-            //             this.Animations.lever_close.start(true);
-            //             lOpen = false;
-            //         } else {
-            //             this.Animations.lighter_open.start(true);
-            //             this.Animations.lever_open.start(false);
-            //             lOpen = true;
-            //         }
-            //         // this.compressedAnimations.toggleOpen();
-            //     } break;
-            //     case "unteres_teil1" : {
-            //         if(lOpen){
-            //             this.Animations.lighter_close.start(false);
-            //             this.Animations.lever_close.start(true);
-            //             lOpen = false;
-            //         } else {
-            //             this.Animations.lighter_open.start(true);
-            //             this.Animations.lever_open.start(false);
-            //             lOpen = true;
-            //         }
-            //     } break;
-            //     case "Innenleben11" : {
-            //         // this.compressedAnimations.toggleFlame();
-            //     } break;
-            //     case "Rad1" : {
-            //         // this.compressedAnimations.flameIgnite(function(){}, 500);
-            //         // this.compressedAnimations.wheel(0.5);
-            //     } break;
-            // }
         }.bind(this);
     }
 }

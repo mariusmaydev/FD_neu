@@ -10,7 +10,14 @@ export default class indexCommunication {
         this.inst.canvas.S_toModule = function(event, element, LighterData){
             // this.dataStack.push(JSON.stringify({type: "delay", time: 1000}));
             let data = JSON.parse(LighterData);
-            if(data.type == "addImage"){
+            if(element.type == "changeColor"){
+                if(element.value.name == "Basis"){
+                    this.inst.changeColor("base", element.value.hex.replace('0x', '#'));
+                    return;
+                }
+                this.inst.changeColor(element.value.name, element.value.hex.replace('0x', '#'));
+
+            } else if(data.type == "addImage"){
                 for(const index in data.data){
                     let img = data.data[index];
                     this.inst.renderImages.addImage(img);

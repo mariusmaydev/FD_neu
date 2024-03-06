@@ -11,16 +11,17 @@ class productHelper {
     static LIGHTER_CHROME   = "Lighter_Chrome_custom";
 
     static PATH     = PATH.php.product;
-    static LIST;
+    static LIST     = null;
+    static COLOR_LIST = null;
+    static EPTYPE_LIST = null;
     static {
-        this.LIST = new Object();
         this.MANAGER = new SPLINT.CallPHP.Manager(this.PATH, this);
     }
     constructor(){
 
     }
     static async getByName(name){
-        if(productHelper.LIST[name] == undefined){
+        if(productHelper.LIST == null || productHelper.LIST[name] == undefined){
             await this.getProducts()        
         }
         return productHelper.LIST[name];
@@ -31,7 +32,7 @@ class productHelper {
             obj.price = price;
         return obj;
     }
-    static async newProduct(price, name, description, size, viewName, color, EPType, attrs = []){
+    static async newProduct(price, name, description, size, viewName, colorID, EPType, attrs = []){
         let call = this.MANAGER.call(productHelper.NEW);
             call.data.price       = price;
             call.data.description = description;
@@ -39,12 +40,14 @@ class productHelper {
             call.data.viewName    = viewName;
             call.data.size        = size;
             call.data.attrs       = attrs;
-            call.data.colorHex    = color.hex;
-            call.data.colorName   = color.name;
+            call.data.colorID     = colorID;
             call.data.EPType      = EPType;
         return call.send();
     }
-    static getProducts(price, name){
+    static async getProducts(price, name, reload = false){
+        if(this.LIST != null && !reload) {
+            return this.LIST;
+        }
         let call = this.MANAGER.call(productHelper.GET);
             call.data.price      = price;
             call.data.name       = name;
@@ -55,6 +58,7 @@ class productHelper {
                     return this.LIST;
                 }
                 this.LIST = new Object();
+
                 for(const e of res){
                     this.LIST[e.name] = e;
                     delete e.name;
@@ -63,7 +67,7 @@ class productHelper {
             return this.LIST;
         }.bind(this));
     }
-    static async editProduct(ID, price, name, description, size, viewName, color, EPType, attrs = []){
+    static async editProduct(ID, price, name, description, size, viewName, colorID, EPType, attrs = []){
         let call = this.MANAGER.call(productHelper.EDIT);
             call.data.price       = price;
             call.data.description = description;
@@ -71,11 +75,26 @@ class productHelper {
             call.data.viewName    = viewName;
             call.data.size        = size;
             call.data.attrs       = attrs;
-            call.data.colorHex    = color.hex;
-            call.data.colorName   = color.name;
+            call.data.colorID     = colorID;
             call.data.EPType      = EPType;
             call.data.ID          = ID;
         return call.send();
+    }
+    static async getProduct_ColorEPType(colorID, eptype){
+        if(this.LIST != null){
+            for(const [key, value] of Object.entries(this.LIST)){
+                if(value.EPType == eptype && value.colorID == colorID){
+                    value.name = key;
+                    return value;
+                }
+            }
+            return false;
+        } else {
+            let call = this.MANAGER.call(productHelper.GET_DATA);
+                call.data.colorName  = colorID;
+                call.data.EPType     = eptype;
+            return call.send();
+        }
     }
     static getProductData(name){
         let call = this.MANAGER.call(productHelper.GET_DATA);
@@ -92,5 +111,32 @@ class productHelper {
         let call = this.MANAGER.call(productHelper.REMOVE);
             call.data.ID       = id;
         return call.send();
+    }
+    
+    static async getColors(reload = false){
+        if(reload || productHelper.COLOR_LIST == null) {
+            productHelper.COLOR_LIST = SPLINT.DataStorage.get("/productData/colors.json");
+        }
+        return productHelper.COLOR_LIST;
+    }
+    static saveColors(data){
+        return SPLINT.DataStorage.edit("/productData/colors.json", JSON.stringify(data));
+    }
+    static async getColorForID(colorID){
+        let r = await productHelper.getColors();
+        return r[colorID];
+    }
+    static async getEPTypes(reload = false){
+        if(reload || productHelper.EPTYPE_LIST == null) {
+            productHelper.EPTYPE_LIST = SPLINT.DataStorage.get("/productData/EPtype.json");
+        }
+        return productHelper.EPTYPE_LIST;
+    }
+    static saveEPTypes(data){
+        return SPLINT.DataStorage.edit("/productData/EPtype.json", JSON.stringify(data));
+    }
+    static async getEPTypeForID(EPTypeID){
+        let r = await productHelper.getEPType();
+        return r[EPTypeID];
     }
 }

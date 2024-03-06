@@ -2,6 +2,9 @@
 class DSController {
     static PATH = PATH.php.converter;
     static #ThumbnailCreationLoopFlag = false;
+    static {
+        this.saveAll_promise = null;
+    }
     static startThumbnailCreationLoop(delay){
         if(!this.#ThumbnailCreationLoopFlag){
             this.#ThumbnailCreationLoopFlag = true;
@@ -21,19 +24,25 @@ class DSController {
         return DSProject.Storage.Thumbnail;
     }
     static async saveAll(){
-        return new Promise(async function(resolve){
-        let imgData = DSImage.parse();
-        let textData = DSText.parse();
-        let projectData = DSProject.get();
-        let call = new SPLINT.CallPHP(this.PATH, "SAVE.ALL");
-            call.data.img = imgData;
-            call.data.txt = textData;
-            call.data.project = projectData;
-            call.keepalive = false;
-        
-            let res = await call.send();
-            resolve(res);    
+        if(this.saveAll_promise != null){
+            return this.saveAll_promise;
+        }
+        this.saveAll_promise = new Promise(async function(resolve){
+            let imgData = DSImage.parse();
+            let textData = DSText.parse();
+            await this.createThumbnail();
+            let projectData = DSProject.get();
+            let call = new SPLINT.CallPHP(this.PATH, "SAVE.ALL");
+                call.data.img = imgData;
+                call.data.txt = textData;
+                call.data.project = projectData;
+                call.keepalive = false;
+                
+                let res = await call.send();
+                this.saveAll_promise = null;
+                resolve(res);    
         }.bind(this));
+        return this.saveAll_promise;
     }
     static async getAll(){
         return new Promise(async function(resolve){

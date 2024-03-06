@@ -7,6 +7,9 @@ class Converter_ToolBar_side {
         this.parent = parent;
         this.id = "ConverterToolBar_";
         this.type = "side";
+        this.lighterSettingsBody = new SPLINT.DOMElement(this.id + "lighterSettingsBody", "div", this.parent);
+        this.lighterSettingsBody.Class("ToolBar_LighterSettingsBody");
+        this.lighterSettings = new ToolBar_LighterSettings(this.lighterSettingsBody);
         this.activeBody = new SPLINT.DOMElement(this.id + "activeBody", "div", this.parent);
         this.activeBody.Class("ToolBar_ActiveBody");
         this.mainElement = new SPLINT.DOMElement(this.id + "main", "div", this.parent);
@@ -42,9 +45,14 @@ class Converter_ToolBar_side {
             this.textBar.blurElement(ID);
         }
     }
-    blurAll(){
+    blurAll(event = null){
         this.imageBar.blurElement();
         this.textBar.blurElement();
+        if(event == null || !event.srcElement.hasParentWithClass("ToolBar_LighterSettingsBody")){
+            this.lighterSettings.blur();
+        } else if(event.srcElement.hasParentWithClass("expanderBody")){
+
+        }
     }
     update(){
         this.textBar.clear();

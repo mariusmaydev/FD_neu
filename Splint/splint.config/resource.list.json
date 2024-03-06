@@ -3,12 +3,14 @@
         "textures": {
             "lighter_body_bumpMap"   : "data/3Dmodels/Lighter/textures/bumpMap_Body.png",
             "lighter_inner_texture" : "data/3Dmodels/Lighter/textures/texture_chrome_new.png",
-            "lighter_engraving_thumbnail" : "data/3Dmodels/Lighter/textures/thumbnail_small.jpg",
+            "lighter_engraving_thumbnail" : "data/3Dmodels/Lighter/textures/thumbnail_wide.webp",
+            "lighter_engraving_thumbnail_1024" : "data/3Dmodels/Lighter/textures/thumbnail_2048.png",
             "lighter_engraving_thumbnail_add" : "data/3Dmodels/Lighter/textures/thumbnail_add.png",
             "lighter_engraving_thumbnail_chrome" : "data/3Dmodels/Lighter/textures/thumbnail_Chrome_small.jpg",
             "lighter_MatcapMap" : "data/3Dmodels/Lighter/textures/matcap-white.jpg",
             "lighter_reflectionENVMap" : "data/3Dmodels/Lighter/textures/envMapTest1.jpg",
-            "ligher_NormalMapEngraving" : "data/3Dmodels/Lighter/textures/normalMap_Engraving_small.png",
+            "ligher_NormalMapEngraving" : "data/3Dmodels/Lighter/textures/normalMap_Engraving_test.png",
+            "ligher_NormalMapEngraving_preload" : "data/3Dmodels/Lighter/textures/normalMap_Engraving_wide_preload.webp",
             "ligher_Chrome" : "data/3Dmodels/Lighter/textures/rahmen.png",
             "floor_1" : "data/3Dmodels/Lighter/textures/floor/FloorsCheckerboard_S_Diffuse.jpg",
             "floor_1_normalMap" : "data/3Dmodels/Lighter/textures/floor/FloorsCheckerboard_S_Normal.jpg",
@@ -17,7 +19,8 @@
             "steel_aoMap" : "data/3Dmodels/Lighter/textures/metal/steel_ao.png"
             },
         "cubeTextures": {
-            "swedishRoyalCastle" : "data/3Dmodels/Lighter/textures/cube/SwedishRoyalCastle/"
+            "swedishRoyalCastle" : "data/3Dmodels/Lighter/textures/cube/SwedishRoyalCastle/",
+            "sky" : "data/3Dmodels/Lighter/textures/cube/sky/"
         },
         "dataTextures": {
             "indexBackground": "data/3Dmodels/Lighter/textures/equirectangular/blouberg_sunrise_2_1k.hdr"

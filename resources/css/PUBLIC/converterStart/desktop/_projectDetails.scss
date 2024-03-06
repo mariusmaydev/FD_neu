@@ -1,7 +1,10 @@
 @use '../../../themes/theme1/vars';
 @use '../../../themes/theme1/main' as Tmain;
+@use '../../../themes/theme1/buttons' as Tbuttons;
 @use '../../../../../../Splint/scss/tools/tools' as S_tools;
+@use '../../converter/elements/LeftBar';
 @use "sass:color";
+
 
 @mixin projectDetails-desktop(){
     >.subWindow_MAIN {
@@ -14,8 +17,8 @@
             margin-top: 3.5vh;
             height: calc(90% - 4vh);
             animation: translateProjectDetails 0.3s ease;
-            width: 100%;
-            max-width: 95%;
+            width: 95%;
+            max-width: 90rem;
             display: flex;
             border-radius: 0;
             flex-direction: column;
@@ -334,18 +337,146 @@
                         }
                         > .colorContainer {
                             position: relative;
-                            width: 100%;
-                            > button {
-                                height: 3rem;
-                                width: 3rem;
+                            width: calc(100% - 1rem);
+                            padding: 0.5rem;
+                            display: flex;
+                            flex-direction: column;
+                            
+                            gap: 0.5rem;
+                            > .headline {
+                                > span {
+                                    font-size: 1.5rem;
+                                }
+                            }
+                            > .contentElement {
+                                width: 100%;
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: start;
+                                gap: 1rem;
+                                > button {
+                                    height: 2rem;
+                                    width: 4rem;
+                                    border-radius: 5px;
+                                }
                             }
                         }
                         > .EPTypeContainer {
                             position: relative;
-                            width: 100%;
-                            > button {
-                                height: 3rem;
-                                width: 3rem;
+                            width: calc(100% - 1rem);
+                            padding: 0.5rem;
+                            display: flex;
+                            flex-direction: column;
+                            
+                            gap: 0.5rem;
+                            > .headline {
+                                > span {
+                                    font-size: 1.5rem;
+                                }
+                            }
+                            > .contentElement {
+                                width: 100%;
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: start;
+                                gap: 1rem;
+                                > div {
+                                    &[state*='passive']{
+                                            background: #4f4f4f!important;
+                                        
+                                    }
+                                    margin-inline: 0;
+                                    // padding: 0.5em;
+                                    // &[state*='active']{
+                                    //     background-color: vars.$color-primary;
+                                    // }
+                                    // > span {
+                                    //     font-size: 2rem!important;
+                                    // }
+                                    min-width: fit-content;
+                                    max-width: 50%;
+                                    width: 15rem;
+                                    border: 1px solid gray;
+                                    border-radius: 5px;
+                                    // width: calc(100% - 2px);
+                                    height: calc(100% - 2px);
+                                    // margin: 1px;
+                                    // @include Tmain.clipEdgesAll(5px);
+                                    
+                                    &[value *= 'GOLD']{     
+                                        
+                                        background:   //linear-gradient(-50deg, $gold, 45%, rgb(255, 255, 255) ,55%, $gold ),
+                                                    radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+                                                    radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+                                        color: vars.$color-primary-text;
+                                        
+                                        > button {
+                                            $gold : color.adjust(vars.$color-gold, $alpha: -0.7);  
+                                            background:   linear-gradient(-50deg, $gold, 45%, rgb(255, 255, 255, 0.9) ,55%, $gold );
+                                            background-size: 200% 200%;
+                                            animation-name: AnimationEPtype2; 
+                                            animation-duration: 0.3s;
+                                            animation-timing-function: cubic-bezier(0.87, 0.57, 0.16, 0.77);
+                                            animation-fill-mode: forwards;
+                                        }
+                                        &:hover {
+                                            > button {
+                                                animation-name: AnimationEPtype; 
+                                                animation-duration: 0.3s;
+                                                animation-timing-function: cubic-bezier(0.16, 0.77, 0.87, 0.57);
+                                                animation-fill-mode: forwards;
+        
+                                            }
+                                        }
+                                    }         
+                                    &[value *= 'CHROME']{     
+                                        background: linear-gradient(
+                                          -50deg,
+                                          #999 5%,
+                                          #fff 10%,
+                                          #ccc 30%,
+                                          #ddd 50%,
+                                          #ccc 70%,
+                                          #fff 80%,
+                                          #999 95%
+                                        );
+                                        > button {
+                                            $chrome : color.adjust(vars.$color-chrome, $alpha: -0.9);  
+                                            background:   linear-gradient(-50deg, $chrome, 45%, rgb(255, 255, 255, 0.9) ,55%, $chrome );
+                                                                  
+                                            color: vars.$color-primary-text;
+        
+                                            background-size: 200% 200%;
+                                            animation-name: AnimationEPtype2; 
+                                            animation-duration: 0.3s;
+                                            animation-timing-function: cubic-bezier(0.87, 0.57, 0.16, 0.77);
+                                            animation-fill-mode: forwards;
+        
+                                        }
+                                        &:hover {
+                                            > button {
+                                                animation-name: AnimationEPtype; 
+                                                animation-duration: 0.3s;
+                                                animation-timing-function: cubic-bezier(0.16, 0.77, 0.87, 0.57);
+                                                animation-fill-mode: forwards;
+                                            }
+                                        }
+                                    }      
+                                    > button {
+                                        height: 100%;
+                                        width: 100%;
+                                        padding: 0.25rem;
+                                        mix-blend-mode: hard-light;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        > span {
+                                            font-size: 1.1rem;
+                                            opacity: 1;
+        
+                                        }
+                                    }
+                                }
                             }
                         }
                         > .descBody {
@@ -354,9 +485,15 @@
                             height: fit-content;
                             width: 100%;
                             padding: 0.5rem;
+                            > .headline {
+                                width: 100%;
+                                > span {
+                                    font-size: 1.5rem;;
+                                }
+                            }
                             > .descContent {
                                 > span {
-
+                                    font-size: 1rem;
                                 }
                             }
                         }
@@ -444,9 +581,10 @@
                             gap: 0.5rem;
                             > .buttonContainer_cart {
                             
-                                flex: 1;
+                                flex: 0;
                                 transform: translateX(0px) skewX(-20deg);
-                                width: 100%;
+                                height: fit-content;
+                                aspect-ratio: 1/1;
                                 transition: transform 0.4s ease-out;
                                 visibility: visible;
                                 box-shadow: none;
@@ -471,7 +609,7 @@
                                     flex-direction: row;
                                     justify-content: center;
                                     
-                                    background-color: vars.$color-primary-Dark;
+                                    background-color: vars.$color-T_container-Medium;
                                     box-shadow: none;
                                     @include S_tools.SPLINT-border-inset(vars.$color-primary-complementary-Dark, 2px, false, false, true, true);
                                     transition: box-shadow cubic-bezier(0, 0.52, 1, 1) 1s;

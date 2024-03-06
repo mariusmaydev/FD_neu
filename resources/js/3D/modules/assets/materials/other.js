@@ -1,9 +1,7 @@
 
-// import * as THREE from 'three';
 import SPLINT from 'SPLINT';
 import * as THC from "@THREE_ROOT_DIR/src/constants.js";
 import { MeshStandardMaterial } from "@THREE_ROOT_DIR/src/materials/MeshStandardMaterial.js";
-import { MeshMatcapMaterial } from "@THREE_ROOT_DIR/src/materials/MeshMatcapMaterial.js";
 import { MeshPhysicalMaterial } from "@THREE_ROOT_DIR/src/materials/MeshPhysicalMaterial.js";
 import { ShadowMaterial } from "@THREE_ROOT_DIR/src/materials/ShadowMaterial.js";
 import MaterialHelper from '@SPLINT_MODULES_DIR/ThreeJS/materials/MaterialHelper.js';

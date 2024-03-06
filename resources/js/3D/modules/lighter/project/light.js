@@ -1,4 +1,4 @@
-import * as SPLINT from 'SPLINT';
+import SPLINT from 'SPLINT';
 import { Group } from "@THREE_ROOT_DIR/src/objects/Group.js";
 
 export default function light(scene){

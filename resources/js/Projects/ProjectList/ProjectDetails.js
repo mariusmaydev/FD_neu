@@ -1,6 +1,7 @@
 
 class ProjectDetails {
-    constructor(data, index, parent){
+    constructor(data, index, parent, lighterParent = null){
+        this.lighterParent = lighterParent;
         this.parent = parent;
         this.id = "ProjectDetails_" + "_";
         this.data = data;
@@ -13,9 +14,9 @@ class ProjectDetails {
     }
     async show(drawButtons = true){
         if(SPLINT.ViewPort.getSize() == "mobile-small"){
-            this.ele = new ProjectDetails_Mobile(this.data, 0, this.parent);
+            this.ele = new ProjectDetails_Mobile(this.data, 0, this.parent, this.lighterParent);
         } else {
-            this.ele = new ProjectDetails_Desktop(this.data, 0, this.parent);
+            this.ele = new ProjectDetails_Desktop(this.data, 0, this.parent, this.lighterParent);
         }
         await this.ele.show(drawButtons);
         this.ele.onclose = this._onclose;

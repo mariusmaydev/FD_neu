@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "sourceMap": true,
-    "module": "commonjs",
+    "module": "ES6",
     "target": "ESNext",
     "allowJs": true,
     "checkJs": false,
@@ -33,5 +33,5 @@
       ]
     }
   },
-  "include": ["resources/js/**/*", "../Splint/js/**/*"]
+  "include": ["resources/js/**/*", "../Splint/js/**/*", "../Splint/lib/imageTracerJS/**/*"]
 }

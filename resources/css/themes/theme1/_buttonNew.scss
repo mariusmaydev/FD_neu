@@ -12,12 +12,31 @@ $color-shadow-light : vars.$color-header-Dark;
 
 $skew               : vars.$general-skew;
 
-@mixin TButton_simple() {
+@mixin TButtonAnimation_simple($color: $color-main) {
+    transition: background-color .1s ease-in ;
+    > span {
+        box-sizing: border-box;
+    }
+    &[state*='active'] {
+        // background-color: vars.$color-button-active;
+    }
+    &[state*='passive'] {
+        // background-color: vars.$color-button-passive;
+    }
+    &:hover {
+        background-color: color.adjust($color, $lightness: -10%);
+    }
+    &:active:hover {
+        // background-color: orange;
+    }
+}
+
+@mixin TButton_simple($color: $color-main) {
     
     box-shadow: none ;
 
     border-radius: 0px;
-    background-color: $color-main;
+    background-color: $color;
     color: white;
     padding: 0.5rem;
     border: none;

@@ -2,7 +2,7 @@
     require_once 'project.php';
 
     switch(Communication::getAccess()){
-        case "NEW"              : Project::new($_POST[ProjectDB::PROJECT_NAME], $_POST[ProjectDB::PRODUCT], null, null, true, $_POST[ProjectDB::ORIGINAL]); break;
+        case "NEW"              : Project::new($_POST[ProjectDB::PROJECT_NAME], $_POST[ProjectDB::PRODUCT], $_POST[ProjectDB::COLOR], null, null, true, $_POST[ProjectDB::ORIGINAL]); break;
         case "REMOVE"           : Project::remove($_POST[ProjectDB::PROJECT_ID]); break;
         case "EDIT"             : Project::edit($_POST["Storage"]); break;
         case "GET"              : Project::get($_POST[ProjectDB::PROJECT_ID], $_POST[Converter::USER_ID]); break;

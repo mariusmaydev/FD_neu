@@ -36,7 +36,7 @@
         <s-part src="/js/assets/functionsShoppingCart.js"></s-part>
 
         <s-part src="/js/manager/"></s-part>
-        <s-part src="/js/3D/Element3D.js"></s-part>
+        <!-- <s-part src="/js/3D/Element3D.js"></s-part> -->
         <s-module src="/js/3D/modules/module_3D_init.js"></s-module>
         
         <s-part src="/js/assets/UserData.js"></s-part>

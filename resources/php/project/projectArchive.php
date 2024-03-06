@@ -15,6 +15,7 @@
             }
             $response = $ProjectData;
             $response[ProjectArchiveDB::SQUARE] = json_decode($ProjectData[ProjectArchiveDB::SQUARE]);
+            $response[ProjectArchiveDB::COLOR]  = $ProjectData[ProjectArchiveDB::COLOR];
             // $response = array_merge($response, self::getImages($ProjectData[ProjectDB::PROJECT_ID]));
 
             $PATH = new PATH_Project($UserID, $ProjectID);
@@ -117,6 +118,7 @@
         const LAST_TIME             = "Last_Time";
         const PRODUCT               = "Product";
         const ORIGINAL              = "Original";
+        const COLOR                 = "Color";
         const DESIGN                = "Design";
         const STATE                 = "State";
             const STATE_NORMAL          = "NORMAL";
@@ -135,6 +137,7 @@
             $DS2 -> newEntry(ProjectDB::STATE,         "VARCHAR(40)"); 
             $DS2 -> newEntry(ProjectDB::EPTYPE,        "VARCHAR(255)");
             $DS2 -> newEntry(ProjectDB::PRODUCT,       "VARCHAR(40)");
+            $DS2 -> newEntry(ProjectDB::COLOR,         "VARCHAR(255)");
             $DS2 -> newEntry(ProjectDB::ORIGINAL,      "VARCHAR(40)");
             $DS2 -> newEntry(ProjectDB::DESIGN,        "TEXT");
             $DS2 -> newEntry(ProjectDB::SQUARE,        "TEXT");

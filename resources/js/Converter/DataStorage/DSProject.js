@@ -8,6 +8,7 @@ class DataStorageProject_C {
     static EPTYPE_CHROME  = "CHROME";
     static THUMBNAIL      = "Thumbnail";
     static SQUARE         = "Square";
+    static COLOR          = "Color";
 
     PROJECT_ID    = DataStorageProject_C.PROJECT_ID;
     PROJECT_NAME  = DataStorageProject_C.PROJECT_NAME;
@@ -17,6 +18,7 @@ class DataStorageProject_C {
     EPTYPE_GOLD   = DataStorageProject_C.EPTYPE_GOLD;
     EPTYPE_CHROME = DataStorageProject_C.EPTYPE_CHROME;
     THUMBNAIL     = DataStorageProject_C.THUMBNAIL;
+    COLOR         = DataStorageProject_C.COLOR;
     SQUARE        = DataStorageProject_C.SQUARE;
 
     constructor(){
@@ -26,8 +28,11 @@ class DataStorageProject_C {
       return this.Storage;
     }
     add(data){
-      this.Storage = data;
-      return this;
+        this.Storage = data;
+        if(this.Storage != false){
+            this.Storage.ThumbnailPath = data.Thumbnail;
+        }
+        return this;
     }
     log(){
       console.log(this.Storage);
@@ -50,10 +55,11 @@ class DataStorageProject_C {
             return img;
           }.bind(this))
           .then(async function(){
-            let call = new SPLINT.CallPHP(ProjectHelper.PATH, ProjectHelper.EDIT);
-                call.data.Storage = this.Storage;
-                call.keepalive = false;
-                call.send();
+            ProjectHelper.edit(this.Storage)
+            // let call = new SPLINT.CallPHP(ProjectHelper.PATH, ProjectHelper.EDIT);
+            //     call.data.Storage = this.Storage;
+            //     call.keepalive = false;
+            //     call.send();
                 return true;
           }.bind(this))
     }
@@ -65,10 +71,11 @@ class DataStorageProject_C {
                 return img;
             }.bind(this))
             .then(async function(){
-                let call = new SPLINT.CallPHP(ProjectHelper.PATH, ProjectHelper.EDIT);
-                    call.data.Storage = this.Storage;
-                    call.keepalive = false;
-                    call.sendInSequence();
+                ProjectHelper.edit(this.Storage, true);
+                // let call = new SPLINT.CallPHP(ProjectHelper.PATH, ProjectHelper.EDIT);
+                //     call.data.Storage = this.Storage;
+                //     call.keepalive = false;
+                //     call.sendInSequence();
                     resolve();
                     return true;
 

@@ -12,7 +12,7 @@ body {
     padding: 0 !important;
     font-size: 1em;
     margin: 0;
-    top: calc(5vh + 0.5rem);
+    top: 3.2rem;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -23,18 +23,26 @@ body {
         display: flex;
         background-color: vars.$color-primary-Dark ;
         top: 0;
-        height: 5vh;
+        height: 3rem;
         width: 100%;
         overflow: hidden;
         z-index: 20;
-        margin: 0.5em;
-        margin-bottom: 0.2em;
+        margin: 0.2rem;
+        margin-bottom: 0;
         padding: 0;
-        width: calc(100% - 1em);
+        width: calc(100% - 0.4rem);
         @include Gmain.box-shadow();
-        > .back {
-            @include Tmain.T_container();
+        > button {
             margin: 0.2rem;
+            @include Tmain.TButton_simple();
+            @include Tmain.TButtonAnimation_simple();
+        }
+        > .back {
+            // @include Tmain.T_container();
+            margin: 0.2rem;
+            @include Tmain.TButton_simple();
+            @include Tmain.TButtonAnimation_simple();
+            margin-right: 1rem;
             // border-radius: 50%;
         }
         > .loginContainer {

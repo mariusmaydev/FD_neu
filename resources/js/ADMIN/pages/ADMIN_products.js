@@ -3,9 +3,30 @@ class ADMIN_products extends ADMIN_DrawTemplate {
     static PRODUCT_IMG = "PRODUCT_IMG";
     constructor(){
         super("products");
+        this.colors = null;
+        this.EPTypes = null;
         this.mainElement.Class("ADMIN_productsMain");
+        this.drawHead();
     }
-    draw(editProductData = null){
+    async getEPTypes(){
+        if(this.EPTypes == null){
+            this.EPTypes = await productHelper.getEPTypes();
+        }
+        return this.EPTypes;
+    }
+    async getColors(){
+        if(this.colors == null){
+            this.colors = await productHelper.getColors();
+        }
+        return this.colors;
+    }
+    drawHead(){
+        this.ColorMenu  = new AdminProductColorMenu(this);
+        this.EPTypeMenu = new AdminProductEPTypeMenu(this);
+    }
+    async draw(editProductData = null){
+        await this.getColors();
+        await this.getEPTypes();
         this.newProductMain = new SPLINT.DOMElement("newProductBody", "div", this.mainElement);
         this.newProductMain.Class("newProductBody");
             this.newProductMain.clear();
@@ -35,16 +56,22 @@ class ADMIN_products extends ADMIN_DrawTemplate {
             
             let colorBody = new SPLINT.DOMElement("newProdcutColor", "div", this.newProductMain);
                 colorBody.Class("colorBody");
-                let inputColorName = new SPLINT.EX.DOMElement.Input(colorBody, "Name der Farbe");
-                    inputColorName.onEnter = function(){buttonSubmit.click()};
+                let ddColor = new SPLINT.DOMElement.InputDropDown(colorBody, "EditProduct_Color", "Farbe");
+                    ddColor.closeDropDown();
+                    for(const [key, value] of Object.entries(this.colors)){
+                        let entry = ddColor.addEntry(key, value.name);
+                            entry.div.style.backgroundColor = value.hex.replace('0x', '#');
+                    }
 
-                let inputColorHex = new SPLINT.EX.DOMElement.Input(colorBody, "HEX-code");
-                    inputColorHex.onEnter = function(){buttonSubmit.click()};
+                let ddEPType = new SPLINT.DOMElement.InputDropDown(colorBody, "EditProduct_EPType", "Galvanisierung");
+                    ddEPType.closeDropDown();
+                    for(const [key, value] of Object.entries(this.EPTypes)){
+                        let entry = ddEPType.addEntry(key, value.name);
+                            entry.div.style.backgroundColor = value.hex.replace('0x', '#');
+                    }
             
-            let EPTypeBody = new SPLINT.DOMElement("newProdcutEPType", "div", this.newProductMain);
-                EPTypeBody.Class("EPTypeBody");
-                let inputEPType = new SPLINT.EX.DOMElement.Input(EPTypeBody, "Galvanisierung");
-                    inputEPType.onEnter = function(){buttonSubmit.click()};
+            // let EPTypeBody = new SPLINT.DOMElement("newProdcutEPType", "div", this.newProductMain);
+            //     EPTypeBody.Class("EPTypeBody");
 
             let descriptionBody = new SPLINT.DOMElement("newProductDescription", "div", this.newProductMain);
                 descriptionBody.Class("descriptionBody");
@@ -72,6 +99,7 @@ class ADMIN_products extends ADMIN_DrawTemplate {
                 l1.draw();
 
                 if(editProductData != null){
+                    console.log(editProductData)
                     inputName.readOnly = true;
                     inputName.value = editProductData.name;
                     inputViewName.value = editProductData.viewName;
@@ -79,9 +107,8 @@ class ADMIN_products extends ADMIN_DrawTemplate {
                     sizeHeight.value = editProductData.size.height;
                     sizeWidth.value = editProductData.size.width;
                     sizeDeep.value = editProductData.size.deep;
-                    inputColorName.value = editProductData.colorName;
-                    inputColorHex.value = editProductData.colorHex;
-                    inputEPType.value = editProductData.EPType;
+                    ddColor.value = this.colors[editProductData.colorID].name;
+                    ddEPType.value = this.EPTypes[editProductData.EPType].name;
 
                     descriptionInput.setValue(editProductData.description);
                     for(const key in editProductData.attrs){
@@ -166,6 +193,8 @@ class ADMIN_products extends ADMIN_DrawTemplate {
                         inputColorHex.clear();
                         descriptionInput.setValue("");
                         inputEPType.clear();
+                        ddColor.value = "";
+                        ddEPType.value = "";
                         l1.clear();
                     }.bind(this);
 
@@ -191,12 +220,37 @@ class ADMIN_products extends ADMIN_DrawTemplate {
                             size.width  = sizeWidth.value;
                             size.height = sizeHeight.value;
                             size.deep   = sizeDeep.value;
-                        let color = new Object();
-                            color.name  = inputColorName.value;
-                            color.hex   = inputColorHex.value;
-                        let EPType = inputEPType.value;
+                        let colorID = null;
+                        let EPType  = null;
 
                         let flag = true;
+                        
+                        if(ddColor.value == ""){
+                            flag = false;
+                        } else {
+                            for(const [key, value] of Object.entries(this.colors)){
+                                if(value.name == ddColor.value) {
+                                    colorID = key;
+                                    break;
+                                }
+                            }
+                            if(colorID == null){
+                                flag = false;
+                            }
+                        }
+                        if(ddEPType.value == ""){
+                            flag = false;
+                        } else {
+                            for(const [key, value] of Object.entries(this.EPTypes)){
+                                if(value.name == ddEPType.value) {
+                                    EPType = key;
+                                    break;
+                                }
+                            }
+                            if(EPType == null){
+                                flag = false;
+                            }
+                        }
                         if(viewName == ""){
                             inputViewName.invalid();
                             flag = false;
@@ -221,29 +275,29 @@ class ADMIN_products extends ADMIN_DrawTemplate {
                             sizeDeep.invalid();
                             flag = false;
                         }
-                        if(color.name == ""){
-                            inputColorName.invalid();
-                            flag = false;
-                        }
-                        if(color.hex == ""){
-                            inputColorHex.invalid();
-                            flag = false;
-                        }
-                        if(EPType == ""){
-                            inputEPType.invalid();
-                            flag = false;
-                        }
+                        let nameOUT = "LIGHTER_" + colorID.toUpperCase() + "_" + EPType.toUpperCase() + "_" + name;
                         if(flag){
                             if(editProductData != null){
+                                console.log(editProductData.ID, price, nameOUT, description, size, viewName, colorID, EPType, attrs)
                                 buttonUploadImage.saveProductImages(editProductData.ID);
-                                await productHelper.editProduct(editProductData.ID, price, name, description, size, viewName, color, EPType, attrs);
+                                await productHelper.editProduct(editProductData.ID, price, nameOUT, description, size, viewName, colorID, EPType, attrs);
                                 this.draw();
                             } else {
-                                let productData = await productHelper.newProduct(price, name, description, size, viewName, color, EPType, attrs);
-                                buttonUploadImage.saveProductImages(productData);
+                                let productData = await productHelper.newProduct(price, nameOUT, description, size, viewName, colorID, EPType, attrs);
                                 if(typeof productData != "string"){
+                                    let popup = new SPLINT.DOMElement.popupWindow("productExist", true, false);
+                                        popup.Class("alertPopup", "productAlreadyExist");
+                                        let text = new SPLINT.DOMElement.SpanDiv(popup.content, "alert", "Das Produkt existiert bereits");
+                                            text.Class("alert");
+
+                                        let buttonSubmit = new SPLINT.DOMElement.Button(popup.content, "closeProductExist", "schließen");
+                                            buttonSubmit.Class("buttonSubmit");
+                                            buttonSubmit.onclick = function(){
+                                                popup.close();
+                                            }.bind(this);
                                     console.warn("Product with name " + productData[0].name + " already exists")
                                 } else {
+                                    buttonUploadImage.saveProductImages(productData);
                                     this.productList.draw();
                                 }
                             }

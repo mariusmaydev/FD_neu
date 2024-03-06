@@ -10,9 +10,10 @@ class drawCartRight {
     }
     draw(){
         let conclusionDiv = this.rightBody.newDiv("conclusion", "conclusion");
-            SPLINT.Events.onLoadingComplete = function(){
+            // SPLINT.Events.onLoadingComplete = function(){
                 conclusionDiv.setAttribute("loaded", true);
-            }
+            // }
+            // SPLINT.Events.onLoadingComplete.dispatch();
             let sumBody = conclusionDiv.newDiv("conclusion_price_body", "sumBody");
                 let conclusionHeadline = new SPLINT.DOMElement.SpanDiv(sumBody, "conclusion_Headline", "Zusammenfassung");
                     conclusionHeadline.Class("headline");

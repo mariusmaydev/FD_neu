@@ -1,10 +1,4 @@
-// import * as THREE from 'three';
-// import * as THC from "@THREE_ROOT_DIR/src/constants.js";
-// import { Scene } from "@THREE_ROOT_DIR/src/scenes/Scene.js";
-// import { Fog } from "@THREE_ROOT_DIR/src/scenes/Fog.js";
-// import { PerspectiveCamera } from "@THREE_ROOT_DIR/src/cameras/PerspectiveCamera.js";
-// import { Color } from "@THREE_ROOT_DIR/src/math/Color.js";
-import { Fog } from "@THREE_ROOT_DIR/src/scenes/Fog.js";
+
 import SPLINT from 'SPLINT';
 import * as MATERIALS from '../assets/materials/materials.js';
 import LIGHT_Dark from './light_dark.js';

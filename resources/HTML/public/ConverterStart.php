@@ -20,7 +20,6 @@
         </div>
         <s-loader src="/js/Eventhandler.js"></s-loader>
 
-        <s-part src="/js/3D/Element3D.js"></s-part>
         <s-part src="/js/3D/3DHelper.js"></s-part>
         <s-module src="/js/3D/modules/module_3D_init.js"></s-module>
 
@@ -33,7 +32,8 @@
         <s-part src="/js/Projects/ProjectList/ProjectCategoryMenu.js"></s-part>
         <s-part src="/js/Projects/ProjectList/ProjectChoiceMenu.js"></s-part>
         <s-part src="/js/Projects/ProjectList/ProjectList.js"></s-part>
-        <s-part src="/js/Projects/ProjectList/Details/ProjectDetailsDesktop.js"></s-part>
+        <s-part src="/js/Projects/ProjectList/Details/desktop/ProjectDetailsDesktop.js"></s-part>
+        <s-part src="/js/Projects/ProjectList/Details/desktop/ProjectDetailsHelper.js"></s-part>
         <s-part src="/js/Projects/ProjectList/Details/ProjectDetailsMobile.js"></s-part>
         <s-part src="/js/Projects/ProjectList/ProjectDetails.js"></s-part>
         <!-- <s-part src="/js/Designs/Hashtags/Hashtags.js"></s-part> -->

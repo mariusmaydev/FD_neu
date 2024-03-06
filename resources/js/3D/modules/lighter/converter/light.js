@@ -1,5 +1,5 @@
 
-import * as SPLINT from 'SPLINT';
+import SPLINT from 'SPLINT';
 
 export default function light(scene){
     let c1 = 0xffd7af;
@@ -7,7 +7,7 @@ export default function light(scene){
           lights.helper.size = 0.1;
 
     let atmo = lights.new.AmbientLight(0xffffff, 1);
-        atmo.bind();
+        // atmo.bind();
 
     let hemi  = lights.new.HemisphereLight( 0x000000, 0xfff2e5, 5 );
     hemi.helper.size = 0.8;
@@ -18,7 +18,7 @@ export default function light(scene){
     let bs = 20;
     let shadowMapSize = 1024;
 
-    let directional1 = lights.new.DirectionalLight( 0xffe6cd, 3 );
+    let directional1 = lights.new.DirectionalLight( 0xffe6cd, 1 );
         directional1.position.set(-0.03, 0.2, 0.4);
         // directional1.target.updateMatrixWorld();
         directional1.target.position.set( 0, 0, 0);
@@ -40,7 +40,7 @@ export default function light(scene){
         // directional1.target.updateMatrixWorld();
         directional1.bind();
         
-    let directional2 = lights.new.DirectionalLight( 0xffe6cd, 3 );
+    let directional2 = lights.new.DirectionalLight( 0xffe6cd, 1 );
         directional2.position.set(0.03, 0.2, 0.4);
         directional2.target.updateMatrixWorld();
         directional2.target.position.set( 0, 0, 0);

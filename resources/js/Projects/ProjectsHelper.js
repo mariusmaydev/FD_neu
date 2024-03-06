@@ -46,13 +46,14 @@ class ProjectHelper extends SPLINT.CallPHP.Manager {
           call.data.OrderID   = orderID;
       return call.send();
     }
-    static async new(ProjectName = 'unbenannt', Product = 'Test', isAdmin = false, isOriginal = false, isExperimental = false){
+    static async new(ProjectName = 'unbenannt', Product = 'Test', isAdmin = false, isOriginal = false, isExperimental = false, color = "base"){
       let call = this.callPHP(this.NEW);
           call.data.Experimental = isExperimental;
           call.data.Original     = isOriginal;
           call.data.ProjectName  = ProjectName;
           call.data.Product      = Product;
           call.data.isAdmin      = isAdmin;
+          call.data.Color        = color; 
       return call.send();
     }
     static async get(ProjectID = null, UserID = null){
@@ -71,14 +72,19 @@ class ProjectHelper extends SPLINT.CallPHP.Manager {
           call.data.Original = original;
       return call.send();
     }
-    static edit(projectID = null, projectName = null, EPType = null, Product = 'Test', State = null){
-      let call = this.callPHP(this.EDIT);
-          call.data.ProjectID    = projectID;
-          call.data.ProjectName  = projectName;
-          call.data.EPType       = EPType;
-          call.data.Product      = Product;
-          call.data.State        = State;
-      return call.send();
+    static async edit(StorageIn, async = false){
+        let Storage = SPLINT.Tools.ObjectTools.deepClone(StorageIn);
+        if(Storage.Thumbnail != null && Storage.Thumbnail.substring(0, 4) != "data"){
+            Storage.Thumbnail = null;
+        }
+        let call = new SPLINT.CallPHP(ProjectHelper.PATH, ProjectHelper.EDIT);
+            call.data.Storage = Storage;
+            call.keepalive = false;
+            if(async == true){
+                return call.sendInSequence();
+            } else {
+                return call.send();
+            }
     }
     static async copy(ProjectID, FromUserID = null){
       let call = this.callPHP(this.COPY);
