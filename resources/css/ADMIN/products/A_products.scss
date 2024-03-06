@@ -64,13 +64,13 @@ body {
     > .main {
         margin-top: 1rem !important;
         height: calc(100% - 1.5rem);
-        max-width:70rem;
-        margin-left:auto;
+        max-width: 100%;
+        margin-left: auto;
         margin-right: auto;
         box-sizing: border-box;
         overflow: hidden;
         overflow-y: scroll;
-        > .newProductBody{
+        > .newProductBody {
             box-sizing: border-box;
             height: max-content;
             padding: 0.5rem;
@@ -98,7 +98,14 @@ body {
                 > s-input {
                     width: 50%;
                     margin: 0.5rem;
-
+                }
+            }
+            > .colorBody {
+                display: flex;
+                width: 100%;
+                > s-input {
+                    width: 50%;
+                    margin: 0.5rem;
                 }
             }
             > .descriptionBody {
@@ -142,6 +149,18 @@ body {
                 align-items: center;
                 > button {
                     @include Tbuttons.T_button_Animated(true);
+                    &.uploadImage {
+                        display: flex;
+                        justify-content: space;
+                        align-items: center;
+                        gap: 0.25rem;
+                        > span {
+                            font-size: 1rem;
+                            &:first-of-type {
+                                font-size: 1.1rem;
+                            }
+                        }
+                    }
                     // // box-sizing: border-box;
                     // position: relative;
                     // display: block;
@@ -154,6 +173,9 @@ body {
                     // &:hover {
                     //     background-color: vars.$color-primary-Dark;
                     // }
+                }
+                > input {
+                    display: none;
                 }
 
             }

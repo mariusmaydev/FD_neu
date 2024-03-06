@@ -9,6 +9,7 @@
         case "CREATE_LITHOPHANE"             : Converter::createLithopane(); break;
         case "SAVE.ALL"                      : DSController::saveAll(); break;
         case "GET.ALL"                       : DSController::getAll(); break;
+        case "GEN_FRAME"                     : Converter::genFrame($_POST[Converter::USER_ID], $_POST[Converter::PROJECT_ID]); break;
         default: print_r("METHOD_ERROR"); exit;
     }
 ?>

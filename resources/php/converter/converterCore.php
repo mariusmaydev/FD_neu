@@ -26,139 +26,139 @@
         return $imgBlob;
     }
 
-    function QueryImage($img){
-        $black = imagecolorsforindex($img, imagecolorallocate($img, 0, 0, 0))["red"];
-        $img_out = imagecreatetruecolor(imagesx($img), imagesy($img));
-        $img_out2 = imagecreatetruecolor(imagesx($img), imagesy($img));
-        //$img_array = array(array(), array());
-        $array = array(array(), array());
-        $count = 0;
-        for ($x = 5; $x < imagesx($img) - 5; $x++){
-            for ($y = 5; $y < imagesy($img) - 5; $y++) { 
-                imagesetpixel($img_out, $x, $y, imagecolorallocate($img_out, 255, 255, 255));
-                $array[$x][$y] = 0;
-                $counter = 0;
-                if (getValueforPixel($img, $x, $y) == $black) {
-                    for ($x1 = -5; $x1 <= 5; $x1++) {
-                        for ($y1 = -5; $y1 <= 5; $y1++) {
-                            if (getValueforPixel($img, $x + $x1, $y + $y1) == $black) {
-                                $counter ++;
-                                // if(!isset($array[$x + $x1][$y + $y1])){
-                                //     $array[$x + $x1][$y + $y1] = 0;
-                                // }
-                                if ($x1 == -5 || $x1 == 5 || $y1 == -5 || $y1 == 5) {
-                                    $array[$x][$y] += 0.03125;
-                                } elseif (($x1 == -4 && $y1 <= 4 && $y1 >= -4) || ($y1 == -4 && $x1 <= 4 && $x1 >= -4) || ($x1 == 4 && $y1 <= 4 && $y1 >= -4) || ($y1 == 4 && $x1 <= 4 && $x1 >= -4)) {
-                                    $array[$x][$y] += 0.0625;
-                                } elseif (($x1 == -3 && $y1 <= 3 && $y1 >= -3) || ($y1 == -3 && $x1 <= 3 && $x1 >= -3) || ($x1 == 3 && $y1 <= 3 && $y1 >= -3) || ($y1 == 3 && $x1 <= 3 && $x1 >= -3)) {
-                                    $array[$x][$y] += 0.125;
-                                } elseif (($x1 == -2 && $y1 <= 2 && $y1 >= -2) || ($y1 == -2 && $x1 <= 2 && $x1 >= -2) || ($x1 == 2 && $y1 <= 2 && $y1 >= -2) || ($y1 == 2 && $x1 <= 2 && $x1 >= -2)) {
-                                    $array[$x][$y] += 0.25;
-                                } elseif (($x1 == -1 && $y1 <= 1 && $y1 >= -1) || ($y1 == -1 && $x1 <= 1 && $x1 >= -1) || ($x1 == 1 && $y1 <= 1 && $y1 >= -1) || ($y1 == 1 && $x1 <= 1 && $x1 >= -1)) {
-                                    $array[$x][$y] += 0.5;
-                                } else {
-                                    $array[$x][$y] += 1;
-                                }
-                            } else {
-                                //$array[$x1][$y1+2] = 0;
-                            }
-                        }
-                    }
-                    if ($counter > 0) {
-                        $array[$x][$y] /= $counter;
-                    }
-                }
-            }
-        }
-        $array2 = array(array(), array());
-        for ($x = 13; $x < imagesx($img) - 13; $x++){
-            for ($y = 13; $y < imagesy($img) - 13; $y++) { 
-                if ($array[$x][$y] != 0) {
-                    $a = 0;
-                    $flag = false;
-                    $flag2 = false;
-                    $x2 = 0;
-                    $y2 = 0;
-                    $save = 0;
-                    $v = 0;
-                    for ($x1 = -1; $x1 <= 1; $x1++) {
-                        for ($y1 = -1; $y1 <= 1; $y1++) {
-                            $v += $array[$x + $x1][$y + $y1];
-                            // if ($array[$x + $x1][$y + $y1] > $array[$x][$y]) {
-                            //     $flag = false;
+    // function QueryImage($img){
+    //     $black = imagecolorsforindex($img, imagecolorallocate($img, 0, 0, 0))["red"];
+    //     $img_out = imagecreatetruecolor(imagesx($img), imagesy($img));
+    //     $img_out2 = imagecreatetruecolor(imagesx($img), imagesy($img));
+    //     //$img_array = array(array(), array());
+    //     $array = array(array(), array());
+    //     $count = 0;
+    //     for ($x = 5; $x < imagesx($img) - 5; $x++){
+    //         for ($y = 5; $y < imagesy($img) - 5; $y++) { 
+    //             imagesetpixel($img_out, $x, $y, imagecolorallocate($img_out, 255, 255, 255));
+    //             $array[$x][$y] = 0;
+    //             $counter = 0;
+    //             if (getValueforPixel($img, $x, $y) == $black) {
+    //                 for ($x1 = -5; $x1 <= 5; $x1++) {
+    //                     for ($y1 = -5; $y1 <= 5; $y1++) {
+    //                         if (getValueforPixel($img, $x + $x1, $y + $y1) == $black) {
+    //                             $counter ++;
+    //                             // if(!isset($array[$x + $x1][$y + $y1])){
+    //                             //     $array[$x + $x1][$y + $y1] = 0;
+    //                             // }
+    //                             if ($x1 == -5 || $x1 == 5 || $y1 == -5 || $y1 == 5) {
+    //                                 $array[$x][$y] += 0.03125;
+    //                             } elseif (($x1 == -4 && $y1 <= 4 && $y1 >= -4) || ($y1 == -4 && $x1 <= 4 && $x1 >= -4) || ($x1 == 4 && $y1 <= 4 && $y1 >= -4) || ($y1 == 4 && $x1 <= 4 && $x1 >= -4)) {
+    //                                 $array[$x][$y] += 0.0625;
+    //                             } elseif (($x1 == -3 && $y1 <= 3 && $y1 >= -3) || ($y1 == -3 && $x1 <= 3 && $x1 >= -3) || ($x1 == 3 && $y1 <= 3 && $y1 >= -3) || ($y1 == 3 && $x1 <= 3 && $x1 >= -3)) {
+    //                                 $array[$x][$y] += 0.125;
+    //                             } elseif (($x1 == -2 && $y1 <= 2 && $y1 >= -2) || ($y1 == -2 && $x1 <= 2 && $x1 >= -2) || ($x1 == 2 && $y1 <= 2 && $y1 >= -2) || ($y1 == 2 && $x1 <= 2 && $x1 >= -2)) {
+    //                                 $array[$x][$y] += 0.25;
+    //                             } elseif (($x1 == -1 && $y1 <= 1 && $y1 >= -1) || ($y1 == -1 && $x1 <= 1 && $x1 >= -1) || ($x1 == 1 && $y1 <= 1 && $y1 >= -1) || ($y1 == 1 && $x1 <= 1 && $x1 >= -1)) {
+    //                                 $array[$x][$y] += 0.5;
+    //                             } else {
+    //                                 $array[$x][$y] += 1;
+    //                             }
+    //                         } else {
+    //                             //$array[$x1][$y1+2] = 0;
+    //                         }
+    //                     }
+    //                 }
+    //                 if ($counter > 0) {
+    //                     $array[$x][$y] /= $counter;
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     $array2 = array(array(), array());
+    //     for ($x = 13; $x < imagesx($img) - 13; $x++){
+    //         for ($y = 13; $y < imagesy($img) - 13; $y++) { 
+    //             if ($array[$x][$y] != 0) {
+    //                 $a = 0;
+    //                 $flag = false;
+    //                 $flag2 = false;
+    //                 $x2 = 0;
+    //                 $y2 = 0;
+    //                 $save = 0;
+    //                 $v = 0;
+    //                 for ($x1 = -1; $x1 <= 1; $x1++) {
+    //                     for ($y1 = -1; $y1 <= 1; $y1++) {
+    //                         $v += $array[$x + $x1][$y + $y1];
+    //                         // if ($array[$x + $x1][$y + $y1] > $array[$x][$y]) {
+    //                         //     $flag = false;
                                 
-                            //     //imagesetpixel($img_out, $x + $x1, $y + $y1, imagecolorallocate($img_out, 0, 0, 0));
-                            //     break 2;
-                            // }
-                            //$a += $array[$x + $x1][$y + $y1];
-                        }
-                    }
-                    if($v / 8 <= $array[$x][$y]){
-                        $flag = true;
-                    }
-                    if ($flag) {
-                        imagesetpixel($img_out, $x, $y, imagecolorallocate($img_out, 0, 0, 0));
-                    //imagesetpixel($img_out2, $x, $y, imagecolorallocate($img_out2, 0, 0, 0));
-                    } else {
-                        imagesetpixel($img_out, $x, $y, imagecolorallocate($img_out, 255, 100, 255));
-                        //imagesetpixel($img_out2, $x, $y, imagecolorallocate($img_out2, 255, 255, 255));
-                    }
-                }
-            }       
-        }
-        // for ($x = 4; $x < imagesx($img) - 4; $x++){
-        //     for ($y = 4; $y < imagesy($img) - 4; $y++) { 
-        //         $a = 0;
-        //         $flag = true;
-        //         $flag2 = false;
-        //         $counter = 0;
-        //         for ($x1 = -1; $x1 <= 1; $x1++) {
-        //             for ($y1 = -1; $y1 <= 1; $y1++) {
-        //                 if($x1 != 0 && $y1 != 0 && getValueforPixel($img_out, $x + $x1, $y + $y1) == $black){
-        //                     $counter++;
-        //                 }
-        //                 //$a += $array[$x + $x1][$y + $y1];
-        //             }
-        //         }
-        //         if($counter >= 3){
-        //             imagesetpixel($img_out2, $x, $y, imagecolorallocate($img_out2, 0, 0, 0));
-        //         }
-        //     }       
-        // }
-        return $img_out;
-    }
+    //                         //     //imagesetpixel($img_out, $x + $x1, $y + $y1, imagecolorallocate($img_out, 0, 0, 0));
+    //                         //     break 2;
+    //                         // }
+    //                         //$a += $array[$x + $x1][$y + $y1];
+    //                     }
+    //                 }
+    //                 if($v / 8 <= $array[$x][$y]){
+    //                     $flag = true;
+    //                 }
+    //                 if ($flag) {
+    //                     imagesetpixel($img_out, $x, $y, imagecolorallocate($img_out, 0, 0, 0));
+    //                 //imagesetpixel($img_out2, $x, $y, imagecolorallocate($img_out2, 0, 0, 0));
+    //                 } else {
+    //                     imagesetpixel($img_out, $x, $y, imagecolorallocate($img_out, 255, 100, 255));
+    //                     //imagesetpixel($img_out2, $x, $y, imagecolorallocate($img_out2, 255, 255, 255));
+    //                 }
+    //             }
+    //         }       
+    //     }
+    //     // for ($x = 4; $x < imagesx($img) - 4; $x++){
+    //     //     for ($y = 4; $y < imagesy($img) - 4; $y++) { 
+    //     //         $a = 0;
+    //     //         $flag = true;
+    //     //         $flag2 = false;
+    //     //         $counter = 0;
+    //     //         for ($x1 = -1; $x1 <= 1; $x1++) {
+    //     //             for ($y1 = -1; $y1 <= 1; $y1++) {
+    //     //                 if($x1 != 0 && $y1 != 0 && getValueforPixel($img_out, $x + $x1, $y + $y1) == $black){
+    //     //                     $counter++;
+    //     //                 }
+    //     //                 //$a += $array[$x + $x1][$y + $y1];
+    //     //             }
+    //     //         }
+    //     //         if($counter >= 3){
+    //     //             imagesetpixel($img_out2, $x, $y, imagecolorallocate($img_out2, 0, 0, 0));
+    //     //         }
+    //     //     }       
+    //     // }
+    //     return $img_out;
+    // }
     
-    function ChangeColor($img, $EPType, $ClearFlag){
-        $img_out = imagecreatetruecolor(imagesx($img),imagesy($img));
-        imagefill($img_out, 0, 0, imagecolorallocatealpha($img_out, 255, 255, 255, 127));
-        $black = imagecolorsforindex($img, imagecolorallocate($img, 0, 0, 0))["red"];
-        $white = imagecolorsforindex($img, imagecolorallocate($img, 255, 255, 255))["red"];
-        if($EPType == "Gold"){
-            $black_out = imagecolorallocate($img_out, 255, 215, 0);
-        } else {
-            $black_out = imagecolorallocate($img_out, 239, 248, 255);
-        }
-        if($ClearFlag){
-            $white_out = imagecolorallocatealpha($img_out, 255, 255, 255, 127);
-        } else {
-            $white_out = imagecolorallocatealpha($img_out, 255, 255, 255, 0);
-        }
-        $counter = 0;
-        for($y = 0; $y < imagesy($img); $y++){
-            for($x = 0; $x < imagesx($img); $x++){
-                if(/*$x+1<imagesx($img)&&*/getValueforPixel($img, $x, $y) == $black){
-                    imagesetpixel($img_out, $x, $y, $black_out);
-                    $counter++;
-                } else {
-                    imagesetpixel($img_out, $x, $y, $white_out);
-                }
-            }
-        }
-        if($counter > (imagesy($img_out) * imagesx($img_out)) / 2){
-            imagefilter($img_out, IMG_FILTER_NEGATE);
-        }
-        return $img_out;
-    }
+    // function ChangeColor($img, $EPType, $ClearFlag){
+    //     $img_out = imagecreatetruecolor(imagesx($img),imagesy($img));
+    //     imagefill($img_out, 0, 0, imagecolorallocatealpha($img_out, 255, 255, 255, 127));
+    //     $black = imagecolorsforindex($img, imagecolorallocate($img, 0, 0, 0))["red"];
+    //     $white = imagecolorsforindex($img, imagecolorallocate($img, 255, 255, 255))["red"];
+    //     if($EPType == "Gold"){
+    //         $black_out = imagecolorallocate($img_out, 255, 215, 0);
+    //     } else {
+    //         $black_out = imagecolorallocate($img_out, 239, 248, 255);
+    //     }
+    //     if($ClearFlag){
+    //         $white_out = imagecolorallocatealpha($img_out, 255, 255, 255, 127);
+    //     } else {
+    //         $white_out = imagecolorallocatealpha($img_out, 255, 255, 255, 0);
+    //     }
+    //     $counter = 0;
+    //     for($y = 0; $y < imagesy($img); $y++){
+    //         for($x = 0; $x < imagesx($img); $x++){
+    //             if(/*$x+1<imagesx($img)&&*/getValueforPixel($img, $x, $y) == $black){
+    //                 imagesetpixel($img_out, $x, $y, $black_out);
+    //                 $counter++;
+    //             } else {
+    //                 imagesetpixel($img_out, $x, $y, $white_out);
+    //             }
+    //         }
+    //     }
+    //     if($counter > (imagesy($img_out) * imagesx($img_out)) / 2){
+    //         imagefilter($img_out, IMG_FILTER_NEGATE);
+    //     }
+    //     return $img_out;
+    // }
 
     // function resize_image($img_or_blob, $w, $h, $crop=FALSE) {
     //     $src        = "";
@@ -206,361 +206,294 @@
         return $log_a;
     }
 
-    function Fillelements($img){
-        $img_out = imagecreate(imagesx($img),imagesy($img));
-        imagefill($img_out, 0, 0, imagecolorallocate($img_out, 255, 255, 255));
-        $black = imagecolorsforindex($img, imagecolorallocate($img, 0, 0, 0))["red"];
-        $white = imagecolorsforindex($img, imagecolorallocate($img, 255, 255, 255))["red"];
-        $black_out = imagecolorallocate($img_out, 0, 0, 0);
-        $white_out = imagecolorallocate($img_out, 255, 255, 255);
-        for($y = 0; $y < imagesy($img); $y++){
-            for($x = 0; $x < imagesx($img); $x++){
-                if(getValueforPixel($img, $x, $y) == $black){
-                    imagesetpixel($img_out, $x, $y, $black_out);
+    // function Fillelements($img){
+    //     $img_out = imagecreate(imagesx($img),imagesy($img));
+    //     imagefill($img_out, 0, 0, imagecolorallocate($img_out, 255, 255, 255));
+    //     $black = imagecolorsforindex($img, imagecolorallocate($img, 0, 0, 0))["red"];
+    //     $white = imagecolorsforindex($img, imagecolorallocate($img, 255, 255, 255))["red"];
+    //     $black_out = imagecolorallocate($img_out, 0, 0, 0);
+    //     $white_out = imagecolorallocate($img_out, 255, 255, 255);
+    //     for($y = 0; $y < imagesy($img); $y++){
+    //         for($x = 0; $x < imagesx($img); $x++){
+    //             if(getValueforPixel($img, $x, $y) == $black){
+    //                 imagesetpixel($img_out, $x, $y, $black_out);
 
-                    imagesetpixel($img_out, $x + 1, $y, $black_out);
-                } 
-            }
-        }
-        return $img_out;
-    }
+    //                 imagesetpixel($img_out, $x + 1, $y, $black_out);
+    //             } 
+    //         }
+    //     }
+    //     return $img_out;
+    // }
 
-    function BlackWhite($img){
-        $img_out = imagecreate(imagesx($img),imagesy($img));
-        imagefill($img_out, 0,0, imagecolorallocate($img_out, 255, 255, 255));
-        $black = imagecolorsforindex($img, imagecolorallocate($img, 0, 0, 0))["red"];
-        $white = imagecolorsforindex($img, imagecolorallocate($img, 255, 255, 255))["red"];
-        $black_out = imagecolorallocate($img_out, 0, 0, 0);
-        $white_out = imagecolorallocate($img_out, 255, 255, 255);
-        $counter = 0;
-        for($y = 0; $y < imagesy($img); $y++){
-            for($x = 0; $x < imagesx($img); $x++){
-                if(/*$x+1<imagesx($img)&&*/getValueforPixel($img, $x, $y) == $black){
-                    imagesetpixel($img_out, $x, $y, $black_out);
-                    $counter++;
-                } else {
-                    imagesetpixel($img_out, $x, $y, $white_out);
-                }
-            }
-        }
-        if($counter > (imagesy($img_out)*imagesx($img_out))/2){
-            imagefilter($img_out, IMG_FILTER_NEGATE);
-        }
-        return $img_out;
-    }
+    // function BlackWhite($img){
+    //     $img_out = imagecreate(imagesx($img),imagesy($img));
+    //     imagefill($img_out, 0,0, imagecolorallocate($img_out, 255, 255, 255));
+    //     $black = imagecolorsforindex($img, imagecolorallocate($img, 0, 0, 0))["red"];
+    //     $white = imagecolorsforindex($img, imagecolorallocate($img, 255, 255, 255))["red"];
+    //     $black_out = imagecolorallocate($img_out, 0, 0, 0);
+    //     $white_out = imagecolorallocate($img_out, 255, 255, 255);
+    //     $counter = 0;
+    //     for($y = 0; $y < imagesy($img); $y++){
+    //         for($x = 0; $x < imagesx($img); $x++){
+    //             if(/*$x+1<imagesx($img)&&*/getValueforPixel($img, $x, $y) == $black){
+    //                 imagesetpixel($img_out, $x, $y, $black_out);
+    //                 $counter++;
+    //             } else {
+    //                 imagesetpixel($img_out, $x, $y, $white_out);
+    //             }
+    //         }
+    //     }
+    //     if($counter > (imagesy($img_out)*imagesx($img_out))/2){
+    //         imagefilter($img_out, IMG_FILTER_NEGATE);
+    //     }
+    //     return $img_out;
+    // }
 
-    function dilate_fx($img, $value){
-        $img_out = imagecreate(imagesx($img),imagesy($img));
-        imagefill($img_out, 0,0, imagecolorallocate($img_out, 255, 255, 255));
-        $black = imagecolorsforindex($img, imagecolorallocate($img, 0, 0, 0))["red"];
-        $white = imagecolorsforindex($img, imagecolorallocate($img, 255, 255, 255))["red"];
-        $black_out = imagecolorallocate($img_out, 0, 0, 0);
-        $white_out = imagecolorallocate($img_out, 255, 255, 255);
-        for($y = 0; $y < imagesy($img); $y++){
-            for($x = 0; $x < imagesx($img); $x++){
-                if(getValueforPixel($img, $x, $y) == $white){
-                    if($x - 1 >= 0 && $y + 1 < imagesy($img) && $x + 1 < imagesx($img) && $y - 1 >= 0){
-                        $counter = 0;
-                        if(getValueforPixel($img, $x - 1, $y) == $black){
-                            $counter++;
-                        }
-                        if(getValueforPixel($img, $x, $y + 1) == $black){
-                            $counter++;         
-                        }
-                        if(getValueforPixel($img, $x + 1, $y) == $black){
-                            $counter++;
-                        }
-                        if(getValueforPixel($img, $x , $y - 1) == $black){
-                            $counter++;
-                        }
-                        //imagesetpixel($img_out, $x, $y, $black_out);
-                        if ($counter == $value) {
-                            imagesetpixel($img_out, $x, $y, $black_out);
-                            // imagesetpixel($img_out, $x+1, $y, $black_out);
-                            // imagesetpixel($img_out, $x-1, $y, $black_out);
-                            // imagesetpixel($img_out, $x, $y+1, $black_out);
-                            // imagesetpixel($img_out, $x, $y-1, $black_out);
-                        }
-                    }
-                } else {
-                    imagesetpixel($img_out, $x, $y, $black_out);
-                }
-            }
-        }
-        return $img_out;
-    }
+    // function dilate_fx($img, $value){
+    //     $img_out = imagecreate(imagesx($img),imagesy($img));
+    //     imagefill($img_out, 0,0, imagecolorallocate($img_out, 255, 255, 255));
+    //     $black = imagecolorsforindex($img, imagecolorallocate($img, 0, 0, 0))["red"];
+    //     $white = imagecolorsforindex($img, imagecolorallocate($img, 255, 255, 255))["red"];
+    //     $black_out = imagecolorallocate($img_out, 0, 0, 0);
+    //     $white_out = imagecolorallocate($img_out, 255, 255, 255);
+    //     for($y = 0; $y < imagesy($img); $y++){
+    //         for($x = 0; $x < imagesx($img); $x++){
+    //             if(getValueforPixel($img, $x, $y) == $white){
+    //                 if($x - 1 >= 0 && $y + 1 < imagesy($img) && $x + 1 < imagesx($img) && $y - 1 >= 0){
+    //                     $counter = 0;
+    //                     if(getValueforPixel($img, $x - 1, $y) == $black){
+    //                         $counter++;
+    //                     }
+    //                     if(getValueforPixel($img, $x, $y + 1) == $black){
+    //                         $counter++;         
+    //                     }
+    //                     if(getValueforPixel($img, $x + 1, $y) == $black){
+    //                         $counter++;
+    //                     }
+    //                     if(getValueforPixel($img, $x , $y - 1) == $black){
+    //                         $counter++;
+    //                     }
+    //                     //imagesetpixel($img_out, $x, $y, $black_out);
+    //                     if ($counter == $value) {
+    //                         imagesetpixel($img_out, $x, $y, $black_out);
+    //                         // imagesetpixel($img_out, $x+1, $y, $black_out);
+    //                         // imagesetpixel($img_out, $x-1, $y, $black_out);
+    //                         // imagesetpixel($img_out, $x, $y+1, $black_out);
+    //                         // imagesetpixel($img_out, $x, $y-1, $black_out);
+    //                     }
+    //                 }
+    //             } else {
+    //                 imagesetpixel($img_out, $x, $y, $black_out);
+    //             }
+    //         }
+    //     }
+    //     return $img_out;
+    // }
 
-    function dilate($imgIn, $value){
-        imagepng($imgIn, "buffer.png");
-        $img = imagecreatefrompng("buffer.png");
-        $img_out = imagecreate(imagesx($img),imagesy($img));
-        imagefill($img_out, 0,0, imagecolorallocate($img_out, 255, 255, 255));
-        $black = imagecolorsforindex($img, imagecolorexact($img, 0, 0, 0))["red"];
-        error_log($black);
-        $white = imagecolorsforindex($img, imagecolorexact($img, 255, 255, 255))["red"];
-        error_log($white);
-        $black_out = imagecolorallocate($img_out, 0, 0, 0);
-        $white_out = imagecolorallocate($img_out, 255, 255, 255);
-        for($y = 0; $y < imagesy($img); $y++){
-            for($x = 0; $x < imagesx($img); $x++){
-                if(getValueforPixel($img, $x, $y) == $black){
-                    imagesetpixel($img_out, $x, $y, $black_out);
-                    imagesetpixel($img_out, $x + 1, $y, $black_out);
-                    imagesetpixel($img_out, $x - 1, $y, $black_out);
-                    imagesetpixel($img_out, $x, $y + 1, $black_out);
-                    imagesetpixel($img_out, $x, $y - 1, $black_out);
-                } 
-            }
-        }
-        return $img_out;
-    }
-    function fix($imgIn){
-        // imagepng($imgIn, "buffer.png");
-        // $img = imagecreatefrompng("buffer.png");
-        // unlink("buffer.png");
-        $img = imagecreatetruecolor(imagesx($imgIn),imagesy($imgIn));
-        imagefill($img, 0,0, imagecolorallocate($img, 255, 255, 255));
-        imagecopy($img, $imgIn, 0, 0, 0, 0, imagesx($imgIn), imagesy($imgIn));
-        $black = imagecolorsforindex($img, imagecolorallocate($img, 0, 0, 0))["red"];
-        $white = imagecolorsforindex($img, imagecolorallocate($img, 255, 255, 255))["red"];
-        for($y = 0; $y < imagesy($img); $y++){
-            for($x = 0; $x < imagesx($img); $x++){
-                $counter = 0;
-                if(getValueforPixel($img, $x, $y) == $white){
-                    if(getValueforPixel($img, $x + 1, $y) == $black){
-                        if(!isAround($fArray, $x + 1, $y)){
-                            $counter++;
-                        }
-                    }
-                    if(getValueforPixel($img, $x - 1, $y) == $black){
-                        if(!isAround($fArray, $x - 1, $y)){
-                            $counter++;
-                        }
-                    }
-                    if(getValueforPixel($img, $x, $y + 1) == $black){
-                        if (!isAround($fArray, $x, $y + 1)) {
-                            $counter++;
-                        }
-                    }
-                    if(getValueforPixel($img, $x, $y - 1) == $black){
-                        if(!isAround($fArray, $x, $y - 1)){
-                            $counter++;
-                        }
-                    }
-                    if($counter == 2){
-                        imagesetpixel($img, $x, $y, $black);
-                    }
-                } else {
-                    imagesetpixel($img, $x, $y, $black);
-                }
-            }
-        }
-        return $img;
-    }
+    // function dilate($imgIn, $value){
+    //     imagepng($imgIn, "buffer.png");
+    //     $img = imagecreatefrompng("buffer.png");
+    //     $img_out = imagecreate(imagesx($img),imagesy($img));
+    //     imagefill($img_out, 0,0, imagecolorallocate($img_out, 255, 255, 255));
+    //     $black = imagecolorsforindex($img, imagecolorexact($img, 0, 0, 0))["red"];
+    //     error_log($black);
+    //     $white = imagecolorsforindex($img, imagecolorexact($img, 255, 255, 255))["red"];
+    //     error_log($white);
+    //     $black_out = imagecolorallocate($img_out, 0, 0, 0);
+    //     $white_out = imagecolorallocate($img_out, 255, 255, 255);
+    //     for($y = 0; $y < imagesy($img); $y++){
+    //         for($x = 0; $x < imagesx($img); $x++){
+    //             if(getValueforPixel($img, $x, $y) == $black){
+    //                 imagesetpixel($img_out, $x, $y, $black_out);
+    //                 imagesetpixel($img_out, $x + 1, $y, $black_out);
+    //                 imagesetpixel($img_out, $x - 1, $y, $black_out);
+    //                 imagesetpixel($img_out, $x, $y + 1, $black_out);
+    //                 imagesetpixel($img_out, $x, $y - 1, $black_out);
+    //             } 
+    //         }
+    //     }
+    //     return $img_out;
+    // }
+    // function fix($imgIn){
+    //     // imagepng($imgIn, "buffer.png");
+    //     // $img = imagecreatefrompng("buffer.png");
+    //     // unlink("buffer.png");
+    //     $img = imagecreatetruecolor(imagesx($imgIn),imagesy($imgIn));
+    //     imagefill($img, 0,0, imagecolorallocate($img, 255, 255, 255));
+    //     imagecopy($img, $imgIn, 0, 0, 0, 0, imagesx($imgIn), imagesy($imgIn));
+    //     $black = imagecolorsforindex($img, imagecolorallocate($img, 0, 0, 0))["red"];
+    //     $white = imagecolorsforindex($img, imagecolorallocate($img, 255, 255, 255))["red"];
+    //     for($y = 0; $y < imagesy($img); $y++){
+    //         for($x = 0; $x < imagesx($img); $x++){
+    //             $counter = 0;
+    //             if(getValueforPixel($img, $x, $y) == $white){
+    //                 if(getValueforPixel($img, $x + 1, $y) == $black){
+    //                     if(!isAround($fArray, $x + 1, $y)){
+    //                         $counter++;
+    //                     }
+    //                 }
+    //                 if(getValueforPixel($img, $x - 1, $y) == $black){
+    //                     if(!isAround($fArray, $x - 1, $y)){
+    //                         $counter++;
+    //                     }
+    //                 }
+    //                 if(getValueforPixel($img, $x, $y + 1) == $black){
+    //                     if (!isAround($fArray, $x, $y + 1)) {
+    //                         $counter++;
+    //                     }
+    //                 }
+    //                 if(getValueforPixel($img, $x, $y - 1) == $black){
+    //                     if(!isAround($fArray, $x, $y - 1)){
+    //                         $counter++;
+    //                     }
+    //                 }
+    //                 if($counter == 2){
+    //                     imagesetpixel($img, $x, $y, $black);
+    //                 }
+    //             } else {
+    //                 imagesetpixel($img, $x, $y, $black);
+    //             }
+    //         }
+    //     }
+    //     return $img;
+    // }
 
-    function checkXY($img, $x, $y){
-        if($x >= 0 && $x < imagesx($img)){
-            if($y >= 0 && $y < imagesy($img)){
-                return true;
-            }
-        }
-        return false;
-    }
+    // function checkXY($img, $x, $y){
+    //     if($x >= 0 && $x < imagesx($img)){
+    //         if($y >= 0 && $y < imagesy($img)){
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
 
-    function isAround(fixedArray &$fArray, int $x, int $y) : bool {
-        $black = 1;
-        $white = 0;
-
-        $counter = 0;
-        if($fArray -> get($x + 1, $y) == $black){
-            $counter++;
-        }
-        if($fArray -> get($x - 1, $y) == $black){
-            $counter++;
-        }
-        if($fArray -> get($x, $y + 1) == $black){
-            $counter++;
-        }
-        if($fArray -> get($x, $y - 1) == $black){
-            $counter++;
-        }
-        if($counter >= 2){
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    function erode_fx($img){
-        $img_out = imagecreate(imagesx($img),imagesy($img));
-        imagefill($img_out, 0,0, imagecolorallocate($img_out, 255, 255, 255));
-        $black = imagecolorsforindex($img, imagecolorallocate($img, 0, 0, 0))["red"];
-        $white = imagecolorsforindex($img, imagecolorallocate($img, 255, 255, 255))["red"];
-        $black_out = imagecolorallocate($img_out, 0, 0, 0);
-        $white_out = imagecolorallocate($img_out, 255, 255, 255);
-        for($y = 0; $y < imagesy($img); $y++){
-            for($x = 0; $x < imagesx($img); $x++){
-                $counter = 0;
-                if(getValueforPixel($img, $x, $y) == $black){
-                    imagesetpixel($img_out, $x, $y, $black_out);
-                    if(getValueforPixel($img, $x + 1, $y) == $black){
-                        $counter++;
-                    }
-                    if(getValueforPixel($img, $x - 1, $y) == $black){
-                        $counter++;
-                    }
-                    if(getValueforPixel($img, $x, $y + 1) == $black){
-                        $counter++;
-                    }
-                    if(getValueforPixel($img, $x, $y - 1) == $black){
-                        $counter++;
-                    }
-                    if(getValueforPixel($img, $x + 1, $y + 1) == $black){
-                        $counter++;
-                    }
-                    if(getValueforPixel($img, $x - 1, $y - 1) == $black){
-                        $counter++;
-                    }
-                    if(getValueforPixel($img, $x - 1, $y + 1) == $black){
-                        $counter++;
-                    }
-                    if(getValueforPixel($img, $x + 1, $y - 1) == $black){
-                        $counter++;
-                    }
-                    if($counter == 3){
-                        if(CheckWhiteEdges($img, $x, $y)){
-                            imagesetpixel($img_out, $x, $y, $white_out);
-                        } else {
-                            imagesetpixel($img_out, $x, $y, $black_out);
-                        }
-                    }
-                }
-            }
-        }
-        return $img_out;
-    }
-
-    function CheckWhiteEdges(fixedArray $fArray, int $x, int $y){
-        $matrix  =  [
-                        [
-                            [0,0,0],
-                            [0,1,1],
-                            [0,1,1]
-                        ],
-                        [
-                            [0,0,0],
-                            [1,1,0],
-                            [1,1,0]
-                        ],
-                        [
-                            [1,1,0],
-                            [1,1,0],
-                            [0,0,0]
-                        ],
-                        [
-                            [0,1,1],
-                            [0,1,1],
-                            [0,0,0]
-                        ]
-                    ];
-        $counter    = [];
-        $counter[0] = 0;
-        $counter[1] = 0;
-        $counter[2] = 0;
-        $counter[3] = 0;
-        $white = 0;
-        for ($y1 = 0; $y1 <= 2; $y1++) {
-            for ($x1 = 0; $x1 <= 2; $x1++) {
-                for ($i = 0; $i <= 3; $i++) {
-                    if ($matrix[$i][$y1][$x1] == 0 && $fArray -> get($x + $x1 - 1, $y + $y1 - 1) == $white) {
-                        $counter[$i]++;
-                    }
-                }
-            }
-        }
-        for($i = 0; $i <= 3; $i++){
-            if($counter[$i] == 5){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    function erode($img, $value, $easyModeFlag){
-        $img_out = imagecreate(imagesx($img),imagesy($img));
-        imagefill($img_out, 0,0, imagecolorallocate($img_out, 255, 255, 255));
-        $black = imagecolorsforindex($img, imagecolorallocate($img, 0, 0, 0))["red"];
-        $white = imagecolorsforindex($img, imagecolorallocate($img, 255, 255, 255))["red"];
-        $black_out = imagecolorallocate($img_out, 0, 0, 0);
-        $white_out = imagecolorallocate($img_out, 255, 255, 255);
-        for($y = 0; $y < imagesy($img); $y++){
-            for($x = 0; $x < imagesx($img); $x++){
-                $counter = 0;
-                if(getValueforPixel($img, $x, $y) == $black){
-                    if(getValueforPixel($img, $x + 1, $y) == $black){
-                        $counter++;
-                    }
-                    if(getValueforPixel($img, $x - 1, $y) == $black){
-                        $counter++;
-                    }
-                    if(getValueforPixel($img, $x, $y + 1) == $black){
-                        $counter++;
-                    }
-                    if(getValueforPixel($img, $x, $y - 1) == $black){
-                        $counter++;
-                    }
-                    if(!$easyModeFlag){
-                        if(getValueforPixel($img, $x + 1, $y + 1) == $black){
-                            $counter++;
-                        }
-                        if(getValueforPixel($img, $x - 1, $y - 1) == $black){
-                            $counter++;
-                        }
-                        if(getValueforPixel($img, $x - 1, $y + 1) == $black){
-                            $counter++;
-                        }
-                        if(getValueforPixel($img, $x + 1, $y - 1) == $black){
-                            $counter++;
-                        }
-                    }
-                
-                    if($counter >= $value){
-                        imagesetpixel($img_out, $x, $y, $black_out);
-                    }
-                }
-            }
-        }
-        return $img_out;
-    }
-
-    function getValueforPixel($img, $x, $y){
-        if (checkXY($img, $x, $y)) {
-            return imagecolorsforindex($img, imagecolorat($img, $x, $y))["red"];
-        } else {
-            return false;
-        }
-    }
-
-    function imageSaturation(&$image, $saturationPercentage) {
-        $width = imagesx($image);
-        $height = imagesy($image);
     
-        for($x = 0; $x < $width; $x++) {
-            for($y = 0; $y < $height; $y++) {
-                $rgb = imagecolorat($image, $x, $y);
-                $r = ($rgb >> 16) & 0xFF;
-                $g = ($rgb >> 8) & 0xFF;
-                $b = $rgb & 0xFF;            
-                $alpha = ($rgb & 0x7F000000) >> 24;
-                list($h, $s, $l) = rgb2hsl($r, $g, $b);         
-                $s = $s * (100 + $saturationPercentage ) /100;
-                $l = $l*0.75;
-                if($s > 1) $s = 1;
-                list($r, $g, $b) = hsl2rgb($h, $s, $l);            
-                imagesetpixel($image, $x, $y, imagecolorallocatealpha($image, $r, $g, $b, $alpha));
-            }
-        }
-    }
+
+    // function erode_fx($img){
+    //     $img_out = imagecreate(imagesx($img),imagesy($img));
+    //     imagefill($img_out, 0,0, imagecolorallocate($img_out, 255, 255, 255));
+    //     $black = imagecolorsforindex($img, imagecolorallocate($img, 0, 0, 0))["red"];
+    //     $white = imagecolorsforindex($img, imagecolorallocate($img, 255, 255, 255))["red"];
+    //     $black_out = imagecolorallocate($img_out, 0, 0, 0);
+    //     $white_out = imagecolorallocate($img_out, 255, 255, 255);
+    //     for($y = 0; $y < imagesy($img); $y++){
+    //         for($x = 0; $x < imagesx($img); $x++){
+    //             $counter = 0;
+    //             if(getValueforPixel($img, $x, $y) == $black){
+    //                 imagesetpixel($img_out, $x, $y, $black_out);
+    //                 if(getValueforPixel($img, $x + 1, $y) == $black){
+    //                     $counter++;
+    //                 }
+    //                 if(getValueforPixel($img, $x - 1, $y) == $black){
+    //                     $counter++;
+    //                 }
+    //                 if(getValueforPixel($img, $x, $y + 1) == $black){
+    //                     $counter++;
+    //                 }
+    //                 if(getValueforPixel($img, $x, $y - 1) == $black){
+    //                     $counter++;
+    //                 }
+    //                 if(getValueforPixel($img, $x + 1, $y + 1) == $black){
+    //                     $counter++;
+    //                 }
+    //                 if(getValueforPixel($img, $x - 1, $y - 1) == $black){
+    //                     $counter++;
+    //                 }
+    //                 if(getValueforPixel($img, $x - 1, $y + 1) == $black){
+    //                     $counter++;
+    //                 }
+    //                 if(getValueforPixel($img, $x + 1, $y - 1) == $black){
+    //                     $counter++;
+    //                 }
+    //                 if($counter == 3){
+    //                     if(CheckWhiteEdges($img, $x, $y)){
+    //                         imagesetpixel($img_out, $x, $y, $white_out);
+    //                     } else {
+    //                         imagesetpixel($img_out, $x, $y, $black_out);
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return $img_out;
+    // }
+
+
+    // function erode($img, $value, $easyModeFlag){
+    //     $img_out = imagecreate(imagesx($img),imagesy($img));
+    //     imagefill($img_out, 0,0, imagecolorallocate($img_out, 255, 255, 255));
+    //     $black = imagecolorsforindex($img, imagecolorallocate($img, 0, 0, 0))["red"];
+    //     $white = imagecolorsforindex($img, imagecolorallocate($img, 255, 255, 255))["red"];
+    //     $black_out = imagecolorallocate($img_out, 0, 0, 0);
+    //     $white_out = imagecolorallocate($img_out, 255, 255, 255);
+    //     for($y = 0; $y < imagesy($img); $y++){
+    //         for($x = 0; $x < imagesx($img); $x++){
+    //             $counter = 0;
+    //             if(getValueforPixel($img, $x, $y) == $black){
+    //                 if(getValueforPixel($img, $x + 1, $y) == $black){
+    //                     $counter++;
+    //                 }
+    //                 if(getValueforPixel($img, $x - 1, $y) == $black){
+    //                     $counter++;
+    //                 }
+    //                 if(getValueforPixel($img, $x, $y + 1) == $black){
+    //                     $counter++;
+    //                 }
+    //                 if(getValueforPixel($img, $x, $y - 1) == $black){
+    //                     $counter++;
+    //                 }
+    //                 if(!$easyModeFlag){
+    //                     if(getValueforPixel($img, $x + 1, $y + 1) == $black){
+    //                         $counter++;
+    //                     }
+    //                     if(getValueforPixel($img, $x - 1, $y - 1) == $black){
+    //                         $counter++;
+    //                     }
+    //                     if(getValueforPixel($img, $x - 1, $y + 1) == $black){
+    //                         $counter++;
+    //                     }
+    //                     if(getValueforPixel($img, $x + 1, $y - 1) == $black){
+    //                         $counter++;
+    //                     }
+    //                 }
+                
+    //                 if($counter >= $value){
+    //                     imagesetpixel($img_out, $x, $y, $black_out);
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return $img_out;
+    // }
+
+    // function getValueforPixel($img, $x, $y){
+    //     if (checkXY($img, $x, $y)) {
+    //         return imagecolorsforindex($img, imagecolorat($img, $x, $y))["red"];
+    //     } else {
+    //         return false;
+    //     }
+    // }
+
+    // function imageSaturation(&$image, $saturationPercentage) {
+    //     $width = imagesx($image);
+    //     $height = imagesy($image);
+    
+    //     for($x = 0; $x < $width; $x++) {
+    //         for($y = 0; $y < $height; $y++) {
+    //             $rgb = imagecolorat($image, $x, $y);
+    //             $r = ($rgb >> 16) & 0xFF;
+    //             $g = ($rgb >> 8) & 0xFF;
+    //             $b = $rgb & 0xFF;            
+    //             $alpha = ($rgb & 0x7F000000) >> 24;
+    //             list($h, $s, $l) = rgb2hsl($r, $g, $b);         
+    //             $s = $s * (100 + $saturationPercentage ) /100;
+    //             $l = $l*0.75;
+    //             if($s > 1) $s = 1;
+    //             list($r, $g, $b) = hsl2rgb($h, $s, $l);            
+    //             imagesetpixel($image, $x, $y, imagecolorallocatealpha($image, $r, $g, $b, $alpha));
+    //         }
+    //     }
+    // }
 
     function rgb2hsl($r, $g, $b) {
         $var_R = ($r / 255);
@@ -618,26 +551,26 @@
          return array($r, $g, $B);
      }
 
-     function imagehue(&$image, $angle) {
-        if($angle % 360 == 0) return;
-        $width = imagesx($image);
-        $height = imagesy($image);
+    //  function imagehue(&$image, $angle) {
+    //     if($angle % 360 == 0) return;
+    //     $width = imagesx($image);
+    //     $height = imagesy($image);
     
-        for($x = 0; $x < $width; $x++) {
-            for($y = 0; $y < $height; $y++) {
-                $rgb = imagecolorat($image, $x, $y);
-                $r = ($rgb >> 16) & 0xFF;
-                $g = ($rgb >> 8) & 0xFF;
-                $b = $rgb & 0xFF;            
-                $alpha = ($rgb & 0x7F000000) >> 24;
-                list($h, $s, $l) = rgb2hsl($r, $g, $b);
-                $h += $angle / 360;
-                if($h > 1) $h--;
-                list($r, $g, $b) = hsl2rgb($h, $s, $l);            
-                imagesetpixel($image, $x, $y, imagecolorallocatealpha($image, $r, $g, $b, $alpha));
-            }
-        }
-    }
+    //     for($x = 0; $x < $width; $x++) {
+    //         for($y = 0; $y < $height; $y++) {
+    //             $rgb = imagecolorat($image, $x, $y);
+    //             $r = ($rgb >> 16) & 0xFF;
+    //             $g = ($rgb >> 8) & 0xFF;
+    //             $b = $rgb & 0xFF;            
+    //             $alpha = ($rgb & 0x7F000000) >> 24;
+    //             list($h, $s, $l) = rgb2hsl($r, $g, $b);
+    //             $h += $angle / 360;
+    //             if($h > 1) $h--;
+    //             list($r, $g, $b) = hsl2rgb($h, $s, $l);            
+    //             imagesetpixel($image, $x, $y, imagecolorallocatealpha($image, $r, $g, $b, $alpha));
+    //         }
+    //     }
+    // }
 
     function hex2hsl($RGB, $ladj = 0) {
         //have we got an RGB array or a string of hex RGB values (assume it is valid!)
@@ -696,26 +629,18 @@
             return $hslstr;
         }
 
-    function base64_to_png($base64_string) {
-        $data = explode( ',', $base64_string );
-        if(count($data) > 1){
-            return base64_decode( $data[ 1 ] ); 
-        } else {
-            return base64_decode( $data[ 0 ] ); 
-        }
-    }
 
-    function getColorForPixel(GdImage $img, int $x, int $y) : stdClass {
-        $rgb = imagecolorat($img, $x, $y);
-        $r = ($rgb >> 16) & 0xFF;
-        $g = ($rgb >> 8) & 0xFF;
-        $b = $rgb & 0xFF;
-        $res = new stdClass();
-        $res -> r = $r;
-        $res -> g = $g;
-        $res -> b = $b;
-        return $res;
-    }
+    // function getColorForPixel(GdImage $img, int $x, int $y) : stdClass {
+    //     $rgb = imagecolorat($img, $x, $y);
+    //     $r = ($rgb >> 16) & 0xFF;
+    //     $g = ($rgb >> 8) & 0xFF;
+    //     $b = $rgb & 0xFF;
+    //     $res = new stdClass();
+    //     $res -> r = $r;
+    //     $res -> g = $g;
+    //     $res -> b = $b;
+    //     return $res;
+    // }
     function RGB2Hex(stdClass $rgb){
         $R = $rgb -> r;
         $G = $rgb -> g;

@@ -33,8 +33,8 @@ class ConverterComputeEdges {
                 let x = Math.cos(S_Math.toRadians(this.align))*(-this.imgSize.base.X/2)-Math.sin(S_Math.toRadians(this.align))*(-this.imgSize.base.Y/2)
                 let y = Math.sin(S_Math.toRadians(this.align))*(-this.imgSize.base.X/2)+Math.cos(S_Math.toRadians(this.align))*(-this.imgSize.base.Y/2)
                 let vec = this.#calculate(x, y);
-                console.log(this.imgSize.base.X, x , vec.X);
-                console.log(this.imgSize.base.Y, y , vec.Y)
+                // console.log(this.imgSize.base.X, x , vec.X);
+                // console.log(this.imgSize.base.Y, y , vec.Y)
                 let width = Math.abs(this.imgSize.base.X / x * vec.X);
                 let height = Math.abs(this.imgSize.base.Y / y * vec.Y);
                 size = {width: width, height: height};
@@ -144,7 +144,7 @@ class ConverterComputeEdges {
         return size;
     }
     static #calculate(x, y){
-        console.dir(this.element);
+        // console.dir(this.element);
         // console.log(this.mouse.offset.X, x)
         // console.log(this.mouse.offset.Y, y)
         let gFx = x / Math.abs(this.mouse.offset.X);

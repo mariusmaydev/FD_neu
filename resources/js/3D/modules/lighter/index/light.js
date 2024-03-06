@@ -9,7 +9,7 @@ export default function light(scene){
     let atmo = lights.new.AmbientLight(0xffd8b2 , 3);
         // atmo.bind();
 
-    let hemi  = lights.new.HemisphereLight( 0xffffff, 0x000000, 0 );
+    let hemi  = lights.new.HemisphereLight( 0xffffff, 0x000000, 1 );
     hemi.helper.size = 0.8;
     hemi.position.set(0, 1,0)
         // hemi.bind();
@@ -24,7 +24,7 @@ export default function light(scene){
         spot.bind();
         
     let spot1 = lights.new.SpotLight(0xffc285, 100, 2, 0.3, 0.4, 0);
-        spot1.position.set(1,0.7, 1);
+        spot1.position.set(1,1.7, 1);
         spot1.target.position.set(0, 0.1, 0);
         spot1.shadow.bias = -0.0005;
         spot1.castShadow = true;
@@ -42,7 +42,7 @@ export default function light(scene){
         
 
     let directional1 = lights.new.DirectionalLight( 0xf8e5d1, 2 );
-        directional1.position.set(-0.8, 0.6, 0.8);
+        directional1.position.set(-0.8, 1.6, 0.8);
         directional1.target.updateMatrixWorld();
         directional1.target.position.set( 0, 0.1, 0);
         directional1.shadow.bias = -0.0005;
@@ -62,7 +62,7 @@ export default function light(scene){
         // console.log(directional1)
         
     let directional2 = lights.new.DirectionalLight( 0xffe6cd, 1 );
-        directional2.position.set(0.4, 0.3, 0.4);
+        directional2.position.set(0.4, 1.3, 0.4);
         directional2.target.updateMatrixWorld();
         directional2.target.position.set( 0, 0.1, 0);
         directional2.shadow.bias = -0.0005;

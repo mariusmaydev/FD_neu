@@ -1033,7 +1033,7 @@ class Imagick implements Iterator
      * @param int $height
      * @param string $map
      * @param int $STORAGE
-     * @return bool
+     * @return bool|array
      */
     public function exportImagePixels($x, $y, $width, $height, $map, $STORAGE)
     {

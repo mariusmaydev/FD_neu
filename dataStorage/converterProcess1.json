@@ -1,0 +1,85 @@
+{
+    "digits": 4,
+    "engraving": {
+        "fastTravel": {
+            "F": 1200,
+            "height": 23,
+            "S": null
+        },
+        "workTravel": {
+            "F": 60,
+            "height": 25.25,
+            "S": null
+        },
+        "zero": {
+            "X": 0,
+            "Y": 0
+        }
+    },
+    "laser": {
+        "fastTravel": {
+            "F": 1500,
+            "S": 6
+        },
+        "M4orM3": "M3",
+        "workTravel": {
+            "F": 1500,
+            "S": 100
+        },
+        "zero": {
+            "X": 0,
+            "Y": 0
+        }
+    },
+    "laser_dose": {
+        "fastTravel": {
+            "F": 3000,
+            "S": 0
+        },
+        "workTravel": {
+            "F": 1500,
+            "S": 1000
+        },
+        "zero": {
+            "X": 100,
+            "Y": 98
+        }
+    },
+    "laserFlat": {
+        "fastTravel": {
+            "F": 6000,
+            "S": 0
+        },
+        "intensity": {
+            "max": 450,
+            "min": 150
+        },
+        "M4orM3": "M3",
+        "quality_PpMM": 10,
+        "workTravel": {
+            "F": 6000,
+            "S": 100
+        },
+        "zero": {
+            "X": 0,
+            "Y": 0
+        }
+    },
+    "SVG": {
+        "fastTravel": {
+            "F": 1200,
+            "height": 23,
+            "S": null
+        },
+        "workTravel": {
+            "F": 60,
+            "height": 25.25,
+            "S": null
+        },
+        "zero": {
+            "X": 0,
+            "Y": 0
+        }
+    },
+    "type": "laser"
+}

@@ -196,15 +196,15 @@ export default class LighterAnimations {
             // groupe.rotation.z = (10 * (progress / 100)) * (Math.PI / 180);
             let f = SPLINT.AnimationFX.ease(progress, 2, "in-out");
             let d = (f / 100);
-            this.instance.camera.fov = 10 + (5 * (d));
+            this.instance.camera.fov = 45 + (5 * (d));
             groupe.rotation.y = (25 * d) * (Math.PI / 180);
             groupe.rotation.x = Math.PI / 2 - (30 * d) * (Math.PI / 180);
             groupe.position.y = (0.05 * d);
             // groupe.position.z = (3.2 * d);
             groupe.position.x = (0.01 * d);
-            // console.log(10 + (60 * d))
-            this.instance.camera.position.z = 3.5 - (2.0 * d);
-            this.instance.camera.position.y = 0.35 + (0.05 * d);
+            // console.log(10 + (60 * d))(-0.15, 0.18, 1)
+            this.instance.camera.position.z = 1 - (0.65 * d);
+            this.instance.camera.position.y = 0.18 + (0.09 * d);
             this.instance.camera.rotation.x = -0.05 - (0.1 * d);
             // this.instance.camera.position.y = 0.35 + (0.17 * d);
             this.instance.camera.updateProjectionMatrix();
@@ -260,23 +260,23 @@ export default class LighterAnimations {
         this.lighter_explosion_split.onTick = function(model, progress, groupe){
             let f = SPLINT.AnimationFX.ease(progress, 2, "in-out");
             let d = (f / 100);
-            groupe.inner.position.z = -0.001        -(0.078 * d);
-            groupe.bolt_wheel.position.z = -0.0425  -(0.078 * d);
-            groupe.bolt_hinge.position.z = -0.03805 -(0.078 * d);
-            groupe.hinge.position.z = -0.038        -(0.078 * d);
-            groupe.wheel.position.z = -0.0425       -(0.078 * d);
-            groupe.stone_base1.position.z = -0.0357 -(0.078 * d);
+            groupe.inner.position.z = -0.001                    -(0.088 * d);
+            groupe.bolt_wheel.position.z = -0.0425              -(0.088 * d);
+            groupe.bolt_hinge.position.z = -0.03805             -(0.088 * d);
+            groupe.hinge.position.z = -0.038                    -(0.088 * d);
+            groupe.wheel.position.z = -0.0425                   -(0.088 * d);
+            groupe.stone_base1.position.z = -0.0357             -(0.088 * d);
 
-            groupe.wick.position.z = -0.003         -(0.05 * d);
-            groupe.feather.position.z = -0.007      -(0.032 * d);
-            groupe.screw.position.z = -0.001        -(0.027 * d);
-            groupe.stone_base2.position.z = -0.0327 -(0.0385 * d);
-            groupe.stone.position.z = -0.03725      -(0.04 * d);
+            groupe.wick.position.z = -0.003                     -(0.055 * d);
+            groupe.feather.position.z = -0.007                  -(0.037 * d);
+            groupe.screw.position.z = -0.001                    -(0.032 * d);
+            groupe.stone_base2.position.z = -0.0327             -(0.0435 * d);
+            groupe.stone.position.z = -0.03725                  -(0.045 * d);
 
-            groupe.box_top.position.z = -0.04817    +(0.01 * d);
-            groupe.box_bottom.position.z =          +(0.01 * d);
-            groupe.connection_top.position.z = -0.02335          +(0.01 * d);
-            groupe.connection_bottom.position.z = -0.0208         +(0.01 * d);
+            groupe.box_top.position.z = -0.04817                +(0.01 * d);
+            groupe.box_bottom.position.z =                      +(0.01 * d);
+            groupe.connection_top.position.z = -0.02335         +(0.01 * d);
+            groupe.connection_bottom.position.z = -0.0208       +(0.01 * d);
 
             groupe.stick.position.z = -0.0343      +(0.01 * d);
         }.bind(this);
@@ -311,11 +311,13 @@ export default class LighterAnimations {
             groupe.rotation.y = (65 * d) * (Math.PI / 180);
             groupe.rotation.x = Math.PI / 2 - (40 * d) * (Math.PI / 180);
             groupe.position.y = (0.3 * d);
-            // groupe.position.z = -(0.4 * d);
-            groupe.position.x = (0.1 * d);
-            this.instance.camera.position.z = 3.5 + (1 * d);
-            this.instance.camera.position.y = 0.35 + (0.25 * d);
-            this.instance.camera.rotation.x = -0.05 - (0.01 * d);
+            // groupe.position.z = -(0.4 * d);(-0.15, 0.18, 1);
+            groupe.position.x = (0.15 * d);
+            this.instance.camera.zoom = 1.2 + (1.5 * d);
+            this.instance.camera.fov = 45 + (10 * d);
+            this.instance.camera.position.z = 1 + (0.5 * d);
+            this.instance.camera.position.y = 0.18 + (0.15 * d);
+            this.instance.camera.rotation.x = -0.05 + (0.05 * d);
             this.instance.camera.updateProjectionMatrix();
         }.bind(this);
 
@@ -418,6 +420,7 @@ export default class LighterAnimations {
             let a =  360 - SPLINT.AnimationFX.easeOutBounce((progress) * 3.6, 0, 360, 360) * 0.45;
             let b = -(133.7648 +  a) * Math.PI / 180;
             groupe.children[0].children[0].rotation.z = b;
+            groupe.children[10].children[0].rotation.x = -b;
         }
 
         this.lighter_close = this.#getAnimation(0.25);
@@ -428,6 +431,7 @@ export default class LighterAnimations {
                 let a =  SPLINT.AnimationFX.linear(progress * 3.6, false) * 0.45;
                 let b = (-133.7648 +  a) * Math.PI / 180;
                 groupe.children[0].children[0].rotation.z = b;
+                groupe.children[10].children[0].rotation.x = -b;
             }
 
         this.lever_close = this.#getAnimation(0.28);

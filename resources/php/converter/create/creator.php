@@ -1,474 +1,348 @@
 <?php    
     $rootpath = realpath($_SERVER["DOCUMENT_ROOT"]);
     require_once $rootpath.'/fd/resources/php/CORE.php';
+    require_once $rootpath.'/fd/resources/php/converter/NC/NCLaserCodeFlat.php';
+    require_once $rootpath.'/fd/resources/php/converter/create/doImage.php';
+    require_once $rootpath.'/fd/resources/php/converter/create/PathElements/PathObject2D.php';
+    require_once $rootpath.'/fd/resources/php/converter/create/PathElements/PathObject3D.php';
     require_once 'creatorHelper.php';
 
-    // function create_START_TEST(){
-    //     global $rootpath;
-    //     $img = new Imagick();
-    //     $img -> readImage($rootpath.'/fd/data/images/converterTest/6.png');
-    //     $img -> setImageFormat("png");
+    class ConverterCreator {
+        public static function createLaserFrame($ProjectData, $UserID, $args){
+            $square = $ProjectData[ProjectDB::SQUARE];
+            $width = $square -> widthMM;
+            $height = $square -> heightMM;
+            $pathObject = new PathObject2D();
+            $pathElement = new PathElement2D();
 
-    //     $img_out = new Imagick();
-    //     $img_out -> newImage($img -> getImageWidth(), $img -> getImageHeight(), new ImagickPixel('white'));
-    //     $img_out -> setImageFormat("png");
-    //     $m = [['x' => 3, 'y' => 3], ['x' => 3, 'y' => 3]];
-    //     // print_r($m[1]['x']);
-    //     $imgMatrix = c1::getImageMatrix($img, [['x' => 1, 'y' => 1], ['x' => 5, 'y' => 5]]);
+            $pathElement -> addStep(0, 0);
+            $pathElement -> addStep(0, $height);
+            $pathElement -> addStep($width, $height);
+            $pathElement -> addStep($width, 0);
+            $pathElement -> addStep(0, 0);
+            $pathObject -> addElement($pathElement);
+            if($args -> innerFrame["active"] == "true") {
+                $left = $args -> innerFrame["left"];
+                $right = $args -> innerFrame["right"];
+                $top = $args -> innerFrame["top"];
+                $bottom = $args -> innerFrame["bottom"];
 
-    //     // $last = [];
-    //     // $pA = array(array(), array());
-    //     // $last['x'] = -1;
-    //     // $last['y'] = -1;
-    //     // for($y = -1; $y <= 1; $y++){
-    //     //     for($x = -1; $x <= 1; $x++){
-    //     //         if(inSearch($last, $x, $y)){
-    //     //             $pA[$x + 1][$y + 1] = 1;
-    //     //         } else {
-    //     //             $pA[$x + 1][$y + 1] = 2;
-    //     //         }
-    //     //     }
-    //     // }
-    //     // outputArray($pA, "output.txt");
-    //     $mac = new matrix(['x' => 5, 'y' => 5]);
-    //     analyseMatrix_5x5($mac);
-    //     // print_r($imgMatrix -> count());
-    //     $b = 0;
-    //     while($b < 1){
-    //         for($y = 0; $y < $img -> getImageHeight(); $y++){
-    //             for($x = 0; $x < $img -> getImageWidth(); $x++){
-    //                 if(c1::isPixelBlack($img, $x, $y) && $imgMatrix -> get()[$x][$y] > 0){
-    //                     c1::goPath($imgMatrix, $img_out, $x, $y);
-    //                     $b++;
-    //                     continue 3;
-    //                 }
-    //             }
-    //         }
-    //         break;
-    //     }
-    //     // outputArray($imgMatrix -> get(), "output.txt");
-    //     // print_r(array_multisum($imgMatrix -> get()));
-    //     file_put_contents("testI.png", $img_out);
-    //     $img_out -> destroy();
-    //     outputArray($imgMatrix -> get(), "output.txt");
-    // }
+                $pathElement_inner = new PathElement2D();
+                $pathElement_inner -> addStep($left, $top);
+                $pathElement_inner -> addStep($left, $height - $bottom);
+                $pathElement_inner -> addStep($width - $right, $height - $bottom);
+                $pathElement_inner -> addStep($width - $right, $top);
+                $pathElement_inner -> addStep($left, $top);
+                $pathObject -> addElement($pathElement_inner);
+            }
 
-    // function analyseMatrix_5x5(matrix $matrixIn){
-    //     $height = $matrixIn -> height;
-    //     $width  = $matrixIn -> width;
-    //     for($y = -$height; $y <= $height; $y++){
-    //         for($x = -$width; $x <= $width; $x++){
-    //             if((abs($y) == 0 && abs($x) == 1) || (abs($y) == 1 && abs($x) == 0)){
-    //                 if($matrixIn -> get($x, $y) == 1){
+            $cfg = ConverterConfig::get();
+            if($args -> PointZero -> X === null){
+                $args -> PointZero -> X = $cfg -> laser -> zero -> X;
+                $args -> PointZero -> Y = $cfg -> laser -> zero -> Y;
+            }
+            $model = new NCLaserModel($pathObject, $cfg);
+            $model -> scale = 1;
+            $model -> xNull = $args -> PointZero -> X;
+            $model -> yNull = $args -> PointZero -> Y + $ProjectData[ProjectDB::SQUARE] -> heightMM;
+            $path = PATH_Project::get(PATH_Project::FRAME, $ProjectData[ProjectDB::PROJECT_ID], $UserID);
+            $model -> save($path);
+        }
+        public static function createLaserFlatData($ProjectData, $UserID, $args, PathObject3D $PathObject){
+            $cfg = ConverterConfig::get();
+            if($args -> PointZero -> X === null){
+                $args -> PointZero -> X = $cfg -> laserFlat -> zero -> X;
+                $args -> PointZero -> Y = $cfg -> laserFlat -> zero -> Y;
+            }
+            $model = new NCLaserModel_Flat($PathObject, $cfg);
+            $model -> scale = 0.02;
+            $model -> xNull = $args -> PointZero -> X;
+            $model -> yNull = $args -> PointZero -> Y + $ProjectData[ProjectDB::SQUARE] -> heightMM;
+            $path = PATH_Project::get(PATH_Project::NC, $ProjectData[ProjectDB::PROJECT_ID], $UserID);
+            $model -> save($path);
+        }
+        public static function createSVGData($ProjectData, $UserID, $args, PathObject2D $PathObject){
+            $cfg = ConverterConfig::get();
+            if($args -> PointZero -> X === null){
+                $args -> PointZero -> X = $cfg -> SVG -> zero -> X;
+                $args -> PointZero -> Y = $cfg -> SVG -> zero -> Y;
+            }
+            $model = new SVGModel($PathObject);
+            $model -> scale = 0.02;
+            $model -> xNull = $args -> PointZero -> X;
+            $model -> yNull = $args -> PointZero -> Y + $ProjectData[ProjectDB::SQUARE] -> heightMM;
+            $path = PATH_Project::get(PATH_Project::NC, $ProjectData[ProjectDB::PROJECT_ID], $UserID);
+            $model -> save($path);
+        }
+        public static function createEngravingData($ProjectData, $UserID, $args, PathObject2D $PathObject){
+            $cfg = ConverterConfig::get();
+            if($args -> PointZero -> X === null){
+                $args -> PointZero -> X = $cfg -> engraving -> zero -> X;
+                $args -> PointZero -> Y = $cfg -> engraving -> zero -> Y;
+            }
+            $model = new NCEngravingModel($PathObject);
+            $model -> scale = 0.02;
+            $model -> xNull = $args -> PointZero -> X;
+            $model -> yNull = $args -> PointZero -> Y + $ProjectData[ProjectDB::SQUARE] -> heightMM;
+            $path = PATH_Project::get(PATH_Project::NC, $ProjectData[ProjectDB::PROJECT_ID], $UserID);
+            $model -> save($path);
+        }
+        public static function createLaserData($ProjectData, $UserID, $args, PathObject2D $PathObject) {
+            $cfg = ConverterConfig::get();
+            if($args -> PointZero -> X === null){
+                $args -> PointZero -> X = $cfg -> laser -> zero -> X;
+                $args -> PointZero -> Y = $cfg -> laser -> zero -> Y;
+            }
+            $model = new NCLaserModel($PathObject, $cfg);
+            $model -> scale = 0.02;
+            $model -> xNull = $args -> PointZero -> X;
+            $model -> yNull = $args -> PointZero -> Y + $ProjectData[ProjectDB::SQUARE] -> heightMM;
 
-    //                 }
-    //             }
-    //             if(abs($y) == 2 || abs($x) == 2){
-    //                 $matrixIn -> set($x, $y, "n");
-    //             } else {
-    //                 $matrixIn -> set($x, $y, "d");
-    //             }
-    //         }
-    //     }
-    //     print_r($matrixIn -> get());
-    //     outputArray($matrixIn -> get(), "output2.txt");
-    // }
-
-    // function array_getMaxCoords(array $array, array $last){
-    //     // outputArray($array);
-    //     $coords = [];
-    //     $flag = 1;
-    //     // do{
-    //         $max = 0;
-    //         foreach($array as $x_p => $array1){
-    //             foreach($array1 as $y_p => $data){
-    //                 $x = $x_p - 1;
-    //                 $y = $y_p - 1;
-    //                 if($flag == 1){
-    //                     if($data != 0 && inSearch($last, $x, $y)){
-    //                         // error_log(json_encode($last) . "    " . $x . " " . $y);
-    //                         if($data > $max){
-    //                             $max = $data;
-    //                             $coords['x'] = $x;
-    //                             $coords['y'] = $y;
-    //                         } else if($data == $max){
-    //                             // array_push($coords, ['x' => $x, 'y' => $y]);
-    //                         }
-    //                     }
-    //                 } else {
-    //                     // if($data != 0 && inSearch($last, $x, $y)){
-    //                     //     // error_log(json_encode($last) . "    " . $x . " " . $y);
-    //                     //     if(abs($data) > $max){
-    //                     //         $max = $data;
-    //                     //         $coords = [];
-    //                     //         array_push($coords, ['x' => $x, 'y' => $y]);
-    //                     //     } else if($data == $max){
-    //                     //         // array_push($coords, ['x' => $x, 'y' => $y]);
-    //                     //     }
-    //                     // }
-    //                 }
-    //             }
-    //         }
-    //     //     $flag++;
-    //     // } while(count($coords) == 0 && $flag <= 1);
-    //     return $coords;
-    // }
-    // function inSearch(array $last, int $x, int $y){
-    //     if(count($last) == 0){
-    //         return true;
-    //     }
-    //     if($x == 0 && $y == 0){
-    //         return false;
-    //     }
-    //     if($last['x'] == $x && $last['y'] == $y){
-    //         return false;
-    //     }
-    //     if(abs($last['x']) == 1 && abs($last['y']) == 1){
-    //         if($x == -($last['x']) && $y == (-$last['y'])){
-    //             return true;
-    //         }
-    //         if($x == -($last['x']) && $y == 0){
-    //             return true;
-    //         }
-    //         if($y == -($last['y']) && $x == 0){
-    //             return true;
-    //         }
-    //     } else {
-    //         if($x == -($last['x']) || $y == -($last['y'])){
-    //             return true;
-    //         }
-    //     }
-
-
-
-
-    //     // if(abs($last['x']) == 0 && ($y == -($last['y']) || $y == 0)){
-    //     //     return true;
-    //     // }
-    //     // if(abs($last['y']) == 0 && ($x == -($last['x']) || $x == 0)){
-    //     //     return true;
-    //     // }
-    //     // // error_log("OTHER");
-    //     // // // error_log($x . "  " . $y . " | " . $last['x'] . "  " . $last['y']);
-
-    //     // if(abs($last['x']) == 1 && abs($last['y']) == 1){
-    //     //     if($x == -($last['x']) || $y == -($last['y'])){
-    //     //         return true;
-    //     //     }
-    //     // }
-    //     return false;
-    // }
-
-
-    // function outputArray($array, string $path){
-    //     $fp = fopen($path, "w+");
-    //     for($y = 0; $y < count($array[0]); $y++){
-    //         for($x = 0; $x < count($array) ; $x++){  
-    //             if($array[$x][$y] == 0){
-    //                 fwrite($fp, str_pad("+0", 4, ' ', STR_PAD_RIGHT));
-    //             } else {
-    //                 fwrite($fp, str_pad($array[$x][$y], 4, ' ', STR_PAD_RIGHT));
-    //             }
-    //         }
-    //         fwrite($fp, "\n");
-    //     }
-    //     fclose($fp);
-    // }
-
-    // class matrix {
-    //     public $width;
-    //     public $height;
-    //     public function __construct(array $dimensions){
-    //         $this -> dimensions = $dimensions;
-    //         $this -> width = ($dimensions['x'] - 1) / 2;
-    //         $this -> height = ($dimensions['y'] - 1) / 2;
-    //         $this -> counter = 0;
-    //     }
-    //     public function add(int $x, int $y, $value){
-    //         $this -> storage[intval($x + $this -> width)][intval($y + $this -> height)] = $value;
-    //         $this -> counter += $value;
-    //     }
-    //     public function set(int $x, int $y, $value){
-    //         $this -> storage[intval($x + $this -> width)][intval($y + $this -> height)] = $value;
-    //     }
-    //     public function get(int $x = null, int $y = null) : array{
-    //         if($x == null && $y == null){
-    //             return $this -> storage;
-    //         }
-    //         return $this -> storage[$x + $this -> width][$y + $this -> height];
-    //     }
-    //     public function count(){
-    //         return $this -> counter;
-    //     }
-    // }
-    // $co = 0;
-    // class c2 {
-    //     public static function setPixel(Imagick &$img, int $x, int $y, $color = null){
-    //         global $co;
-    //         $imageIterator = $img->getPixelRegionIterator($x, 0, 1, $y + 2);
-    //         $imageIterator->setIteratorRow($y);
-    //         $pixels = $imageIterator->getCurrentIteratorRow();
-    //         foreach ($pixels as $pixel) {
-    //             $co++;
-    //             $pixel->setColor("rgba(" .( 20 + ($co) ) .  ", 0, 0, 0)");
-    //             // if($co){
-    //             //     $pixel->setColor("rgba(" .( 20 + (50) ) .  ", 0, 0, 0)");
-    //             //     $co = false;
-    //             // } else {
-    //             //     $pixel->setColor("rgba(" .( 20 + (100) ) .  ", 0, 0, 0)");
-    //             //     $co = true;
-    //             // }
-    //         }
-    //         $imageIterator->syncIterator();
-    //     }
-    // }
-    // $a = 0;
-    // class c1 {
-    //     public $img;
-    //     public function __construct(Imagick $img){
-    //         $this -> img = $img;
-    //     } 
-    //     public static  function goPath(matrix &$ImageMatrix, Imagick &$img_out, int $x, int $y){
-    //         c2::setPixel($img_out, $x , $y);
-    //         // $ImageMatrix -> add($x, $y, 0/*-abs($ImageMatrix -> get()[$x][$y])*/);
-    //         $coords = [];
-    //         $coords_last = [];
-    //         do {
-    //             $matrix = c1::getMatrix_ofMatrix($ImageMatrix, $x , $y , ['x' => 3, 'y' => 3]);
-    //             $coords = array_getMaxCoords($matrix -> get(), $coords_last);
-    //             if(count($coords_last) != null){
-    //                 if(abs($coords_last['x']) == 1 && abs($coords_last['y']) == 1){
-    //                     $e = -$coords_last['x'];
-    //                     $f = $coords_last['y'];
-    //                     $ImageMatrix -> add($x + ($e), $y + ($f), -abs(8));
-    //                     $e = $coords_last['x'];
-    //                     $f = -$coords_last['y'];
-    //                     $ImageMatrix -> add($x + ($e), $y + ($f), -abs(8));
-    //                 } else if(abs($coords_last['x']) == 1 && abs($coords_last['y']) == 0){
-    //                     $e = $coords_last['x'];
-    //                     $f = -1;
-    //                     $ImageMatrix -> add($x + ($e), $y + ($f), -abs(8));
-    //                     $e = $coords_last['x'];
-    //                     $f = 1;
-    //                     $ImageMatrix -> add($x + ($e), $y + ($f), -abs(8));
-    //                 } else if(abs($coords_last['x']) == 0 && abs($coords_last['y']) == 1){
-    //                     $e = 1;
-    //                     $f = $coords_last['y'];
-    //                     $ImageMatrix -> add($x + ($e), $y + ($f), -abs(8));
-    //                     $e = -1;
-    //                     $f = $coords_last['y'];
-    //                     $ImageMatrix -> add($x + ($e), $y + ($f), -abs(8));
-    //                 }
-    //             }
-    //             if(count($coords) > 0){
-    //                 if(abs($coords['x']) == 1 && abs($coords['y']) == 1){
-    //                     $ImageMatrix -> add($x, $y + $coords['y'], -3);
-    //                     $ImageMatrix -> add($x + $coords['x'], $y, -3);
-    //                 }
-
-    //                 $ImageMatrix -> add($x, $y, -1);
-    //                 c2::setPixel($img_out, $x , $y);
-    //                 $x += $coords['x'];
-    //                 $y += $coords['y'];
-    //                 $ImageMatrix -> add($x, $y, -2);
-    //                 $coords_last['x'] = -$coords['x'];
-    //                 $coords_last['y'] = -$coords['y'];
-    //             }
-    //         } while(count($coords) > 0);
-    //     }
-
-    //     public static function getPixelColor(Imagick $img, int $x, int $y) : array|bool {
-    //         if($x >= 0 && $y >= 0 && $x < $img -> getImageWidth() && $y < $img -> getImageHeight()){
-    //             return $img -> getImagePixelColor($x, $y) -> getColor();
-    //         }
-    //         return false;
-    //     }
-    //     public static function getMatrix(Imagick $img, int $xIn, int $yIn, array $dimensions) : matrix{
-    //         $width = ($dimensions[0]['x'] - 1) / 2;
-    //         $height = ($dimensions[0]['y'] - 1) / 2;
-    //         $matrix = new matrix($dimensions[0]);
-    //         for($y = -$height; $y <= $height ; $y++){
-    //             for($x = -$width; $x <= $width; $x++){
-    //                 $matrix -> add($x, $y, self::countBlack_inMatrix($img, $xIn + $x, $yIn + $y, $dimensions[1]));
-    //             }
-    //         }
-    //         //dX x dY Matrix : Feld = (Anzahl schwarz in 3x3);
-    //         return $matrix;
-    //     }
-    //     public static function getImageMatrix(Imagick $img, array $dimensions) : matrix {
-    //         $width = $img -> getImageWidth();
-    //         $height = $img -> getImageHeight();
-    //         $matrix = new matrix(['x' => 1, 'y' => 1]);
-    //         for($y = 0; $y < $height; $y++){
-    //             for($x = 0; $x < $width; $x++){
-    //                 // if(self::isPixelBlack($img, $x, $y)){
-    //                     $size = 0;
-    //                     if(self::isPixelBlack($img, $x, $y)){
-    //                         $size = round(self::getMatrix($img, $x , $y , $dimensions) -> count() /*/ ($dimensions[0]['x'] * $dimensions[0]['y'])*/, 5);
-    //                     } else {
-    //                         $size = 0;
-    //                     }
-    //                     $matrix -> add($x, $y, $size);
-    //                 // } else {
-    //                 //     $matrix -> add($x, $y, 0);
-    //                 // }
-    //             }
-    //         }
-    //         return $matrix;
-    //     }
-    //     public static function isPixelBlack(Imagick $img, int $x, int $y) : bool{
-    //         $color = self::getPixelColor($img, $x, $y);
-    //         if($color && $color['r'] == 0 && $color['g'] == 0 && $color['b'] == 0){
-    //             return true;
-    //         }
-    //         return false;
-    //     }
-    //     public static function getMatrix_ofMatrix(matrix &$matrixIn, int $xIn, int $yIn, array $dimensions) : matrix{
-    //         $width = ($dimensions['x'] - 1) / 2;
-    //         $height = ($dimensions['y'] - 1) / 2;
-    //         $matrix     = new matrix($dimensions);
-    //         for($x = -$width; $x <= $width; $x++){
-    //             for($y = -$height; $y <= $height; $y++){
-    //                 if($xIn + $x >= 0 && $yIn + $y >= 0 && $xIn + $x < count($matrixIn -> get()) && $yIn + $y < count($matrixIn -> get()[0])){
-    //                     $matrix -> add($x, $y, $matrixIn -> get()[$xIn + $x][$yIn + $y]);
-    //                     // $matrixIn -> add($xIn + $x, $yIn + $y, -abs($matrixIn -> get()[$xIn + $x][$yIn + $y]));
-    //                 }
-    //             }
-    //         }
-    //         return $matrix;
-    //     }
-    //     public static function sumOfMatrix(array $matrix, array $dimensions) : int{
-    //         return array_multisum($matrix);
-    //     }
-    //     private static function countBlack_inMatrix(Imagick $img, int $xIn, int $yIn, array $dimensions) : float {
-    //         $width = ($dimensions['x'] - 1) / 2;
-    //         $height = ($dimensions['y'] - 1) / 2;
-    //         $counter = 0;
-    //         for($x = -$width; $x <= $width; $x++){
-    //             for($y = -$height; $y <= $height; $y++){
-    //                 if(self::isPixelBlack($img, $xIn + $x, $yIn + $y)){
-    //                     // $counter += 1 / (1 + abs($x)+ abs($y));
-    //                     $counter++;
-    //                 }
-    //             }
-    //         }
-    //         // $counter /= ($dimensions['x'] * $dimensions['y']);
-    //         return $counter;
-    //     }
-    // }
-
-    // function create_START($ProjectData, $ImgData = null, $TextData = null){
+            $path = PATH_Project::get(PATH_Project::NC, $ProjectData[ProjectDB::PROJECT_ID], $UserID);
+            $model -> save($path);
+        }
+        public static function createPathObject($ProjectData, $UserID, $args, $ImgData = null, $TextData = null) : PathObject2D {
+            $ProjectID = $ProjectData[ProjectDB::PROJECT_ID];
+            
+            $PathObjectOut = new PathObject2D();
+            if($TextData != null){
+                foreach($TextData as $i => $data){
+                    $PathObject = new PathObject2D();
+                    $img = Text::getTextImg($data[TextDB::TEXT_ID], $ProjectID, $UserID);
+                    $img -> brightnessContrastImage(0, 100);
+                    $img -> edgeImage(1);
+                    $img -> modulateImage(0, 0, 100);
+                    $img -> setImageFormat('png');
+                    $transformData = new stdClass();
+                    $transformData -> scale = new stdClass();
+                    $transformData -> scale -> x = ($data[TextDB::TEXT_FRAME_WIDTH] * 2) / $img -> getImageWidth();
+                    $transformData -> scale -> y = ($data[TextDB::TEXT_FRAME_HEIGHT] * 2) / $img -> getImageHeight();
+                    $transformData -> addValue = new stdClass();
+                    $transformData -> addValue -> x = $data[TextDB::TEXT_POS_X];
+                    $transformData -> addValue -> y = $data[TextDB::TEXT_POS_Y];
+                    $transformData -> offsetCenter = new stdClass();
+                    $transformData -> offsetCenter -> x =($data[TextDB::TEXT_FRAME_WIDTH] * 2) / 2;
+                    $transformData -> offsetCenter -> y =($data[TextDB::TEXT_FRAME_HEIGHT] * 2) / 2;
+                    $transformData -> align = new stdClass();
+                    $transformData -> align -> sin = sin(deg2rad($data[TextDB::TEXT_ALIGN]));
+                    $transformData -> align -> cos = cos(deg2rad($data[TextDB::TEXT_ALIGN]));
         
-    //     error_log("a   " . json_encode($TextData));
-    //     error_log("b   " . json_encode($ImgData));
-    //     error_log("c   " . json_encode($ProjectData));
-
-    //     $LighterHeight  = ProjectDB::LIGHTER_HEIGHT * 2 * 10;
-    //     $LighterWidth   = ProjectDB::LIGHTER_WIDTH * 2 * 10;
+                    $fArray = creatorHelper::img2fArray($img, true);
+                    $img -> destroy();
+                    creatorHelper::checkImgArray($fArray);
+                    // $gh = $fArray -> getArray();
+                    // creatorHelper::farray2file($fArray, "test" . random_int(0, 9) . ".txt");
+                    // $imgGD = creatorHelper::fArray2img($fArray);
+                    // imagepng($imgGD, "test_2.png");
+                    // $offsetCenter['x'] = ($data[TextDB::TEXT_FRAME_WIDTH]*2) / 2;
+                    // $offsetCenter['y'] = ($data[TextDB::TEXT_FRAME_HEIGHT]*2) / 2;
+                    // $align['sin'] = sin(deg2rad($data[TextDB::TEXT_ALIGN]));
+                    // $align['cos'] = cos(deg2rad($data[TextDB::TEXT_ALIGN]));
         
-    //     $SquareWidth    = $ProjectData[ProjectDB::SQUARE]["width"];
-    //     $SquareHeight   = $ProjectData[ProjectDB::SQUARE]["height"]; 
+                    ConverterCreator_doImage::work($PathObject, $fArray);
+
+                    $PathObject = PathHelper::sortPath1($PathObject, true);
+                    $PathObject = PathHelper::smoothPaths($PathObject, 5, false, 1);
+                    $PathObject = PathHelper::smoothPaths($PathObject, 7, true, 0.5);
+                    $PathObject = PathHelper::sortPath1($PathObject, true);
+                    $PathObject = PathHelper::shortPaths($PathObject);
+                    $PathObject = PathHelper::closePaths($PathObject);
+                    $PathObject = PathHelper::smoothPaths($PathObject, 9, true, 0.5);
+                    $PathObject = PathHelper::translatePathObject($PathObject, $transformData);
+                    $PathObject = PathHelper::fixElements($PathObject, $args -> lighterSize);
+                    $PathObjectOut -> combinePathObject($PathObject);
+                }
+            }
+            if($ImgData !=null){
+                foreach($ImgData as $i => $data){
+                    $PathObject = new PathObject2D();
+                    $img = getSingleProjectImage($UserID, $ProjectID, $data[ImageDB::IMAGE_ID], PATH_Project::IMG_VIEW);
+                    $img -> setImageFormat('png');
+                    $transformData = new stdClass();
+                    $transformData -> scale = new stdClass();
+                    $transformData -> scale -> x = $data[ImageDB::IMAGE_WIDTH] / $img -> getImageWidth();
+                    $transformData -> scale -> y = $data[ImageDB::IMAGE_HEIGHT] / $img -> getImageHeight();
+                    $transformData -> addValue = new stdClass();
+                    $transformData -> addValue -> x = $data[ImageDB::IMAGE_POS_X];
+                    $transformData -> addValue -> y = $data[ImageDB::IMAGE_POS_Y];
+                    $transformData -> offsetCenter = new stdClass();
+                    $transformData -> offsetCenter -> x = $data[ImageDB::IMAGE_WIDTH] / 2;
+                    $transformData -> offsetCenter -> y = $data[ImageDB::IMAGE_HEIGHT] / 2;
+                    $transformData -> align = new stdClass();
+                    $transformData -> align -> sin = sin(deg2rad($data[ImageDB::IMAGE_ALIGN]));
+                    $transformData -> align -> cos = cos(deg2rad($data[ImageDB::IMAGE_ALIGN]));
         
-    //     $UserID         = Sessions::get(Sessions::USER_ID);
-    //     $ProjectID      = Sessions::get(Sessions::PROJECT_ID);
-    //     $EPType         = $ProjectData[ProjectDB::EPTYPE]; 
-    //     $ScaleFactor    = $LighterWidth / $SquareWidth;
+                    $fArray = creatorHelper::img2fArray($img, true);
+                    $img -> destroy();
+                    creatorHelper::checkImgArray($fArray);
+        
+                    // $gh = $fArray -> getArray();
+                    // creatorHelper::farray2file($fArray, "test" . random_int(0, 9) . ".txt");
+                    // TIMER -> print();
+                    // file_put_contents ("test_1.png", $img); // works, or:
+                    // $img-> writeImage(fopen ("test_2.jpg", "wb")); //also works
+                    // $imgGD = creatorHelper::fArray2img($fArray);
+                    // imagepng($imgGD, "test_2.png");
+        
+                    
+                    ConverterCreator_doImage::work($PathObject, $fArray);
+                    $PathObject = PathHelper::sortPath1($PathObject, true);
+                    $PathObject = PathHelper::smoothPaths($PathObject, 5, false, 1);
+                    $PathObject = PathHelper::smoothPaths($PathObject, 7, true, 0.5);
+                    $PathObject = PathHelper::sortPath1($PathObject, true);
+                    $PathObject = PathHelper::shortPaths($PathObject);
+                    $PathObject = PathHelper::closePaths($PathObject);
+                    $PathObject = PathHelper::smoothPaths($PathObject, 9, true, 0.5);
+                    $PathObject = PathHelper::translatePathObject($PathObject, $transformData);
+                    $PathObject = PathHelper::fixElements($PathObject, $args -> lighterSize);
+                    $PathObjectOut -> combinePathObject($PathObject);
+                }
+            }
+            $PathObjectOut = PathHelper::sortPath1($PathObjectOut, false);
+            return $PathObjectOut;
+        }
+        public static function createPathObjectLaserFlat($ProjectData, $UserID, $args, $ImgData = null, $TextData = null) : PathObject3D {
 
-    //     $img_out = imagecreatetruecolor($LighterWidth * 2, $LighterHeight * 2);
-    //     imagefill($img_out, 0, 0, imagecolorallocatealpha($img_out, 255, 255, 255, 127));
-    //     imagealphablending($img_out, true);
-    //     imagesavealpha($img_out, true);
+            $min = $args -> intensity -> min;
+            $max = $args -> intensity -> max;
+            $dif = $max - $min;
+            //1900 x 2880
+            $ProjectID = $ProjectData[ProjectDB::PROJECT_ID];
+            $imgBase = new Imagick();
+            // $LIGHTER_WIDTH / 50 / 0.1;
+            $quality = $args -> quality_PpMM / 1 / 50;
+            // $imgBase -> newimage(intval($LIGHTER_WIDTH * 16.4 / 0.9/5), intval($LIGHTER_HEIGHT * 16.4 / 0.9/2/5), "none", 'png');
+            $imgBase -> newimage(intval($args -> lighterSize -> width * $quality), intval($args -> lighterSize -> height * $quality), "none", 'png');
 
-    //     if($ImgData != null){
-    //         foreach($ImgData as $data){
-    //             $img = new Imagick();
-    //             $img -> readImage(PATH_Project::get(PATH_Userdata::IMG_VIEW, $ProjectID, $UserID, $data[ImageDB::IMAGE_ID]));
+            if($TextData != null){
+                foreach($TextData as $i => $data){
+                    $img = Text::getTextImg($data[TextDB::TEXT_ID], $ProjectID, $UserID);
+                    $img -> brightnessContrastImage(0, 100, Imagick::CHANNEL_ALL);
+                    // $img -> br(100, 0);
+                    $img -> edgeImage(1);
+                    $img -> modulateImage(100, 0, 0);
+                    $img -> setImageFormat('png');
 
-    //             $color = new \ImagickPixel("rgb(0, 0, 0)");
+                    $xAdd = $data[TextDB::TEXT_POS_X];
+                    $yAdd = $data[TextDB::TEXT_POS_Y];
+                    $xScale = ($data[TextDB::TEXT_FRAME_WIDTH] * 2);
+                    $yScale = ($data[TextDB::TEXT_FRAME_HEIGHT] * 2);
+                    $img -> setImageFormat ('png');
+                    $img -> resizeImage(intval($xScale * $quality), intval($yScale * $quality), imagick::FILTER_UNDEFINED, -1, true);
+                    
+                    $img -> rotateImage("transparent", $data[TextDB::TEXT_ALIGN]);
+                    $width = $img -> getImageWidth();
+                    $height = $img -> getImageHeight();
+                    
+                    $img -> setImageMatte(TRUE);
+                    $img -> setImageVirtualPixelMethod(Imagick::VIRTUALPIXELMETHOD_TRANSPARENT);
+                    $imgBase -> compositeImage($img -> getImage(), Imagick::COMPOSITE_DEFAULT, intval(($xAdd * $quality) - ($width/2)), intval(($yAdd * $quality) - ($height/2)), Imagick::CHANNEL_ALL);
+                    
+                    $img -> destroy();
+                }
+            }
+            if($ImgData != null){
+                foreach($ImgData as $i => $data){
+                    // $PathObject = new PathObject();
+                    $img = getSingleProjectImage($UserID, $ProjectID, $data[ImageDB::IMAGE_ID], PATH_Project::IMG_VIEW);
 
-    //             $img -> colorizeImage($color, new \ImagickPixel("rgba(255, 255, 255, 0)"));
-    //             $img -> resizeImage($data[ImageDB::IMAGE_WIDTH] * 2 * $ScaleFactor, $data[ImageDB::IMAGE_HEIGHT] * 2 * $ScaleFactor, imagick::FILTER_UNDEFINED, 0);
-    //             $img -> setImageMatte(1);
-    //             $img -> rotateImage(new ImagickPixel("#00000000"), $data[ImageDB::IMAGE_ALIGN]);
-    //             $img -> setImageFormat("png");
-    //             $blob = $img -> getImageBlob();
-    //             $img -> destroy();
+                    // $xScale = $data[ImageDB::IMAGE_WIDTH] / $img -> getImageWidth();
+                    // $yScale = $data[ImageDB::IMAGE_HEIGHT] / $img -> getImageHeight();
+        
+                    $xAdd = $data[ImageDB::IMAGE_POS_X];
+                    $yAdd = $data[ImageDB::IMAGE_POS_Y];
+        
+                    $img -> setImageFormat ('png');
+                    $img -> resizeImage(intval($data[ImageDB::IMAGE_WIDTH] * $quality), intval($data[ImageDB::IMAGE_HEIGHT] * $quality), imagick::FILTER_UNDEFINED, 2);
+                    $img -> rotateImage("transparent", $data[ImageDB::IMAGE_ALIGN]);
+                    $width = $img -> getImageWidth();
+                    $height = $img -> getImageHeight();
+                    
+                    // ImagickHelper::setColorTransparent($img, 'white');
+                    $img -> setImageMatte(TRUE);
+                    $img -> setImageVirtualPixelMethod(Imagick::VIRTUALPIXELMETHOD_TRANSPARENT);
+                    $imgBase -> compositeImage($img -> getImage(), Imagick::COMPOSITE_DEFAULT, intval(($xAdd * $quality) - ($width/2)), intval(($yAdd * $quality) - ($height/2)), Imagick::CHANNEL_ALL);
+                    // imagecopyresampled($imgBase, $img, $xAdd, $yAdd, 0, 0, $width, $height, $width, $height);
+                    $img -> destroy();
+                }
+            }
+            
+            // $k = $imgBase -> getImagePixelColor(0, 0) -> getColor(true);
+            $pathObj = new PathObject3D();
+            $pathEle = null;
+            // $imgBase->resizeImage(950, 1440, imagick::FILTER_GAUSSIAN    , 0);
+            // file_put_contents ("test_1.png", $imgBase);
 
-    //             $img = imagecreatefromstring($blob);
-    //             imagecopyresampled(
-    //                 $img_out,
-    //                 $img,
-    //                 Intval($data[ImageDB::IMAGE_POS_X]) * $ScaleFactor * 2 - imagesx($img) / 2,
-    //                 Intval($data[ImageDB::IMAGE_POS_Y]) * $ScaleFactor * 2 - imagesy($img) / 2,
-    //                 0,
-    //                 0,
-    //                 imagesx($img),
-    //                 imagesy($img),
-    //                 imagesx($img),
-    //                 imagesy($img)
-    //             );
-    //             imagepng($img_out, "test.png");
-    //             $imgArray = creatorHelper::img2array($img_out);
-    //             creatorHelper::checkImgArray($imgArray);
-    //             // $fp = fopen("testArray.txt", "w+");
-    //             // fwrite($fp, $imgArray);
-    //             // fclose($fp);
+            for($y = 0; $y < $args -> lighterSize -> height * $quality; $y++){
+                for($x = 0; $x < $args -> lighterSize -> width * $quality; $x++){
+                    $color = $imgBase -> getImagePixelColor($x, $y) -> getHSL();
 
-    //             imagedestroy($img);
-    //         }
-    //     }
-    //     if($TextData != null){
-    //         foreach($TextData as $data){
-    //             $img = new Imagick();
-    //             $img -> readImageBlob(base64_to_png($data[TextDB::TEXT_IMG]));
-    //             error_log(json_encode($data));
-    //             $img -> scaleImage($data[TextDB::TEXT_FRAME_WIDTH] * 2 / $ScaleFactor, $data[TextDB::TEXT_FRAME_HEIGHT] * 2 * $ScaleFactor);
-    //             $img -> edgeImage(1);
-    //             if($EPType == 'GOLD'){
-    //                 $color = new \ImagickPixel("rgb(255, 215, 0)");
-    //             } else {
-    //                 $color = new \ImagickPixel("rgb(239, 248, 255)");
-    //             }
-    //             $img -> colorizeImage($color, new \ImagickPixel("rgba(255, 255, 255, 0)"));
-    //             $img -> setImageMatte(1);
-    //             $img -> rotateImage(new ImagickPixel("#00000000"), $data[TextDB::TEXT_ALIGN]);
-    //             $img -> setImageFormat("png");
-    //             $blob = $img -> getImageBlob();
-    //             $img -> destroy();
+                    if($color['luminosity'] > 0 && $color['luminosity'] < 1){
+                        if($pathEle == null){
+                            $pathEle = new PathElement3D();
+                        }
 
-    //             $img = imagecreatefromstring($blob);
-    //             imagepng($img, "text.png");
-    //             imagecopyresampled(
-    //                 $img_out,
-    //                 $img,
-    //                 Intval($data[TextDB::TEXT_POS_X]) * $ScaleFactor * 2 - imagesx($img) / 2,
-    //                 Intval($data[TextDB::TEXT_POS_Y]) * $ScaleFactor * 2 - imagesy($img) / 2,
-    //                 0,
-    //                 0,
-    //                 imagesx($img),
-    //                 imagesy($img),
-    //                 imagesx($img),
-    //                 imagesy($img)
-    //             );
-    //             imagedestroy($img);       
-    //         }
-    //     }
-    //     imagefilter($img_out, IMG_FILTER_CONTRAST, -1000000);
+                        $s = $min + ((1 - $color['luminosity']) * $dif);
+                        $pathEle -> addStep($x / $quality, $y / $quality, $s);
+                        // continue;
+                    } else {
+                        if($pathEle != null && $pathEle -> stepCount() > 0){
+                            $pathObj -> addElement($pathEle);
+                        }
+                        $pathEle = null;
+                    }
+                }
+            }
+            function f1_k($last, $step, $lastDiv_in){
+                $lastDiv = new stdClass();
+                $lastDiv -> x = $last['x'] - $step['x'];
+                $lastDiv -> y = $last['y'] - $step['y'];
 
-    //     $img_bg = imagecreatetruecolor($LighterWidth * 2, $LighterHeight * 2);
-    //     imagefill($img_bg, 0, 0, imagecolorallocatealpha($img_bg, 50, 50, 50, 0));
+                $res = new stdClass();
+                $res -> res = false;
+                $res -> div = $lastDiv;
+                if($lastDiv_in -> x === null || /*(abs($lastDiv -> x) > 0.05 && abs($lastDiv -> y) > 0.05) ||*/$lastDiv_in -> x == $lastDiv -> x && $lastDiv_in -> y == $lastDiv -> y && $last['z'] == $step['z']){
+                    $res -> res = true;
+                    return $res;
+                }
+                return $res;
+            }
+            $pathElements = $pathObj -> getElements();
+            $pathObjOut = new PathObject3D();
+            foreach($pathElements as $pathElement){
+                $pathElementOut = new PathElement3D();
 
-    //     imagealphablending($img_bg, true);
-    //     imagesavealpha($img_bg, true);
-
-    //     imagecopy($img_bg, $img_out, 0, 0, 0, 0, imagesx($img_out), imagesy($img_out));
-    //     //imagepng($img_bg, "test5.png");
-    //     ob_start(); 
-    //         imagepng($img_bg, "test1.png");
-    //         $imgBlob = base64_encode(ob_get_contents()); 
-    //     ob_end_clean(); 
-    //     Project::editImages($UserID, $ProjectID, $imgBlob);
-
-    //     imagedestroy($img_bg);
-    //     imagedestroy($img_out);
-    // }
+                $steps = $pathElement -> getSteps();
+                $last = $steps[0];
+                $lastDiv = new stdClass();
+                $lastDiv -> x = null;
+                $lastDiv -> y = null;
+                $lastDiv -> z = null;
+                foreach ($steps as $key => $step) {
+                    if($key == 0 || $key === count($steps) -1){
+                        $pathElementOut -> addStep($step['x'] , $step['y'], $step['z']);
+                        $last['x'] = $step['x'];
+                        $last['y'] = $step['y'];
+                        $last['z'] = $step['z'];
+                        continue;
+                    }
+                    $res = f1_k($last, $step, $lastDiv);
+                    if($res -> res == true){
+                        $last['x'] = $step['x'];
+                        $last['y'] = $step['y'];
+                        $last['z'] = $step['z'];
+                    } else {
+                        if($key != 0 && $key != count($steps) -1){
+                            $pathElementOut -> addStep($step['x'] , $step['y'], $step['z'] );
+                        }
+                        $last['x'] = $step['x'];
+                        $last['y'] = $step['y'];
+                        $last['z'] = $step['z'];
+                    }
+                    $lastDiv = $res -> div;
+                }
+                $pathObjOut -> addElement($pathElementOut);
+            }
+            return $pathObjOut;
+        }
+    }

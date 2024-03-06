@@ -11,6 +11,9 @@ class ADMIN_products extends ADMIN_DrawTemplate {
             this.newProductMain.clear();
             let headline = new SPLINT.DOMElement.SpanDiv(this.newProductMain, "headline", "Produkt hinzufügen");
                 headline.Class("head");
+                if(editProductData != null) {
+                    headline.value = "Produkt bearbeiten";
+                }
             let infoBody = new SPLINT.DOMElement("newProductInfo", "div", this.newProductMain);
                 infoBody.Class("infoBody");
                 let inputName = new SPLINT.EX.DOMElement.Input(infoBody, "Name");   
@@ -29,6 +32,19 @@ class ADMIN_products extends ADMIN_DrawTemplate {
                     sizeWidth.onEnter = function(){buttonSubmit.click()};
                 let sizeDeep = new SPLINT.EX.DOMElement.Input(sizeBody, "Tiefe");
                     sizeDeep.onEnter = function(){buttonSubmit.click()};
+            
+            let colorBody = new SPLINT.DOMElement("newProdcutColor", "div", this.newProductMain);
+                colorBody.Class("colorBody");
+                let inputColorName = new SPLINT.EX.DOMElement.Input(colorBody, "Name der Farbe");
+                    inputColorName.onEnter = function(){buttonSubmit.click()};
+
+                let inputColorHex = new SPLINT.EX.DOMElement.Input(colorBody, "HEX-code");
+                    inputColorHex.onEnter = function(){buttonSubmit.click()};
+            
+            let EPTypeBody = new SPLINT.DOMElement("newProdcutEPType", "div", this.newProductMain);
+                EPTypeBody.Class("EPTypeBody");
+                let inputEPType = new SPLINT.EX.DOMElement.Input(EPTypeBody, "Galvanisierung");
+                    inputEPType.onEnter = function(){buttonSubmit.click()};
 
             let descriptionBody = new SPLINT.DOMElement("newProductDescription", "div", this.newProductMain);
                 descriptionBody.Class("descriptionBody");
@@ -63,6 +79,9 @@ class ADMIN_products extends ADMIN_DrawTemplate {
                     sizeHeight.value = editProductData.size.height;
                     sizeWidth.value = editProductData.size.width;
                     sizeDeep.value = editProductData.size.deep;
+                    inputColorName.value = editProductData.colorName;
+                    inputColorHex.value = editProductData.colorHex;
+                    inputEPType.value = editProductData.EPType;
 
                     descriptionInput.setValue(editProductData.description);
                     for(const key in editProductData.attrs){
@@ -80,10 +99,12 @@ class ADMIN_products extends ADMIN_DrawTemplate {
                 }
                 let buttonUploadImage = new SPLINT.DOMElement.Button.FileUpload(buttonsDiv, "imageUpload", "image/*", ADMIN_products.PRODUCT_IMG, true);
                     buttonUploadImage.bindIcon("upload_file");
+                    buttonUploadImage.Class("uploadImage");
                     buttonUploadImage.Description = "Bild hochladen";
-                    buttonUploadImage.button.setTooltip("Bild hochladen", "right");
                     buttonUploadImage.saveProductImages = function(productID){
-                        console.log(productID);
+                        if(buttonUploadImage.file_data == null){
+                            return;
+                        }
                         for(const d of buttonUploadImage.file_data){
                             let callback = function(res){
 
@@ -140,8 +161,11 @@ class ADMIN_products extends ADMIN_DrawTemplate {
                         inputPrice.clear()
                         sizeHeight.clear()
                         sizeWidth.clear()
-                        sizeDeep.clear()
+                        sizeDeep.clear();
+                        inputColorName.clear();
+                        inputColorHex.clear();
                         descriptionInput.setValue("");
+                        inputEPType.clear();
                         l1.clear();
                     }.bind(this);
 
@@ -167,6 +191,11 @@ class ADMIN_products extends ADMIN_DrawTemplate {
                             size.width  = sizeWidth.value;
                             size.height = sizeHeight.value;
                             size.deep   = sizeDeep.value;
+                        let color = new Object();
+                            color.name  = inputColorName.value;
+                            color.hex   = inputColorHex.value;
+                        let EPType = inputEPType.value;
+
                         let flag = true;
                         if(viewName == ""){
                             inputViewName.invalid();
@@ -192,13 +221,25 @@ class ADMIN_products extends ADMIN_DrawTemplate {
                             sizeDeep.invalid();
                             flag = false;
                         }
+                        if(color.name == ""){
+                            inputColorName.invalid();
+                            flag = false;
+                        }
+                        if(color.hex == ""){
+                            inputColorHex.invalid();
+                            flag = false;
+                        }
+                        if(EPType == ""){
+                            inputEPType.invalid();
+                            flag = false;
+                        }
                         if(flag){
                             if(editProductData != null){
                                 buttonUploadImage.saveProductImages(editProductData.ID);
-                                await productHelper.editProduct(editProductData.ID, price, name, description, size, viewName, attrs);
+                                await productHelper.editProduct(editProductData.ID, price, name, description, size, viewName, color, EPType, attrs);
                                 this.draw();
                             } else {
-                                let productData = await productHelper.newProduct(price, name, description, size, viewName, attrs);
+                                let productData = await productHelper.newProduct(price, name, description, size, viewName, color, EPType, attrs);
                                 buttonUploadImage.saveProductImages(productData);
                                 if(typeof productData != "string"){
                                     console.warn("Product with name " + productData[0].name + " already exists")

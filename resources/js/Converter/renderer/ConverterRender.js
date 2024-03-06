@@ -77,6 +77,8 @@ class CanvasElement_C {
     });
     this.lines.canvas.width = width;
     this.lines.canvas.height = height;
+    
+    // this.initLines();
   }
   setActive(data, type){
     if(data == undefined){
@@ -136,7 +138,7 @@ class CanvasElement_C {
           postEle.data.TextPosX = (canvas.width ) / (scale );
           postEle.data.TextPosY = (canvas.height) / (scale );
           postEle.ctx = ctx;
-        CanvasHelper.Text().draw(postEle, false, true);
+        CanvasHelper.Text().draw(postEle, false, true, true);
         element.data.TextImg = canvas.toDataURL("image/png", 1);
         element.data.TextPosX = a;
         element.data.TextPosY = b;
@@ -387,18 +389,18 @@ class CanvasElement_C {
     }
     this.EPType = DSProject.Storage.EPType;
   }
-  /**
-   * @deprecated
-   * */
-  #applyStack(){
-    this.stack = [];
-    for(let i = 0; i < DSImage.length(); i++){
-      this.stack.push(this.#newStackObj("img", DSImage.get(i)));
-    }
-    for(let i = 0; i < DSText.length(); i++){
-      this.stack.push(this.#newStackObj("txt", DSText.get(i)));
-    }
-  }
+//   /**
+//    * @deprecated
+//    * */
+//   #applyStack(){
+//     this.stack = [];
+//     for(let i = 0; i < DSImage.length(); i++){
+//       this.stack.push(this.#newStackObj("img", DSImage.get(i)));
+//     }
+//     for(let i = 0; i < DSText.length(); i++){
+//       this.stack.push(this.#newStackObj("txt", DSText.get(i)));
+//     }
+//   }
   #update(){
     this.stack.forEach(element => {
       if(element.type == "img"){
@@ -563,6 +565,14 @@ class CanvasElement_C {
       // CanvasHelper.Line(0, LighterMid * CanvasElement_C.SCALE, this.canvas.width, LighterMid * CanvasElement_C.SCALE, this.lines.ctx);
     }
   }
+//   initLines(){
+    
+//     ConverterLinesHelper.ctx = this.lines.ctx;
+//     let t = new ConverterLine(0, 900, this.canvas.width, 900, "test");
+//         t.scheme.color = "red";
+//         t.scheme.lineWidth = 0.5;
+//     ConverterLinesHelper.addLine(t);
+//   }
   drawLine(x, y, data){
     let space = 25;
     let f1 = false;
@@ -575,7 +585,7 @@ class CanvasElement_C {
     let fB = false;
     let xO = x;
     let yO = y;
-    let g = this.canvas.getBoundingClientRect();
+    // let g = this.canvas.getBoundingClientRect();
     //right
     if(data.ImageAlign == 0 || data.ImageAlign == 90 || data.ImageAlign == 180 || data.ImageAlign == 270 || data.ImageAlign == 360){
         let xF = data.ImageWidth / 2 + x;
@@ -617,12 +627,20 @@ class CanvasElement_C {
       yO = ((LighterHeight - LighterMid)/ 2 + LighterMid) * CanvasElement_C.SCALE;
     }
     this.clearLine();
-    if(f1 === true){
-      CanvasHelper.Line(this.canvas.width/2, 0, this.canvas.width/2, this.canvas.height, this.lines.ctx);
-    }
+    // ConverterLinesHelper.drawAllLines();
+    // ConverterLinesHelper.ctx = this.lines.ctx;
+    // let g = ConverterLinesHelper.checkLines(x  , y , data)
+    // if(g != undefined){
+    //     xO = g[0];
+    //     yO = g[1];
+    // }
+
     let scheme = { 
-        lineWidth : 2,
-        color : "white"
+        lineWidth : 1.5,
+        color : "orange"
+    }
+    if(f1 === true){
+      CanvasHelper.Line(this.canvas.width/2, 0, this.canvas.width/2, this.canvas.height, this.lines.ctx, scheme);
     }
     if(fR === true){
       CanvasHelper.Line(this.canvas.width-5, 0, this.canvas.width-5, this.canvas.height, this.lines.ctx, scheme);
@@ -637,13 +655,13 @@ class CanvasElement_C {
       CanvasHelper.Line(0, this.canvas.height-5, this.canvas.width, this.canvas.height-5, this.lines.ctx, scheme);
     }
     if(f2 === true){
-      CanvasHelper.Line(0, LighterMid * CanvasElement_C.SCALE, this.canvas.width, LighterMid * CanvasElement_C.SCALE, this.lines.ctx);
+      CanvasHelper.Line(0, LighterMid * CanvasElement_C.SCALE, this.canvas.width, LighterMid * CanvasElement_C.SCALE, this.lines.ctx, scheme);
     }
     if(f3 === true){
-      CanvasHelper.Line(0, (LighterMid / 2) * CanvasElement_C.SCALE, this.canvas.width, LighterMid * CanvasElement_C.SCALE / 2, this.lines.ctx);
+      CanvasHelper.Line(0, (LighterMid / 2) * CanvasElement_C.SCALE, this.canvas.width, LighterMid * CanvasElement_C.SCALE / 2, this.lines.ctx, scheme);
     }
     if(f4 === true){
-      CanvasHelper.Line(0,((LighterHeight - LighterMid)/ 2 + LighterMid) * CanvasElement_C.SCALE, this.canvas.width, ((LighterHeight - LighterMid)/ 2 + LighterMid) * CanvasElement_C.SCALE, this.lines.ctx);
+      CanvasHelper.Line(0,((LighterHeight - LighterMid)/ 2 + LighterMid) * CanvasElement_C.SCALE, this.canvas.width, ((LighterHeight - LighterMid)/ 2 + LighterMid) * CanvasElement_C.SCALE, this.lines.ctx, scheme);
     }
     f1 = false;
     f2 = false;
@@ -685,89 +703,89 @@ class CanvasHelper {
     //     // element.ctx.fill(n);
     // }
     return element.ctx;
-    let ctx = element.ctx;
-    let t = function(element, x, y, width, height){
-        console.dir(index)
-        let path = new Path2D();
-            path.rect(x, y, width, height);
-            if(index != -1){
-                element.paths.edges[index] = path;
-            }
-            console.dir(element);
-            element.ctx.fill(path);
-    }.bind(this);
-    let size = 48;
-    ctx.fillStyle = 'black';
-    switch(index){
-      case 0: t(element, -width / 2 - size, -height / 2 - size, size, size, 0); break;
-      case 1: t(element, 0 - size / 2, -height / 2 - size, size, size); break;
-      case 2: t(element, width / 2 , -height / 2 - size, size, size); break;
-      case 3: t(element, width / 2, 0 - size / 2, size, size); break;
-      case 4: t(element, width / 2 , height / 2, size, size); break;
-      case 5: t(element, 0 - size / 2, height / 2, size, size); break;
-      case 6: t(element, -width / 2 - size, height / 2, size, size); break;
-      case 7: t(element, -width / 2 - size, 0 - size / 2, size, size); break;
-      case 8: {
-        ctx.drawImage(SVG_Loader.SVG.turn.src,0 - size , -height - size , size*2, size*2); 
+    // let ctx = element.ctx;
+    // let t = function(element, x, y, width, height){
+    //     console.dir(index)
+    //     let path = new Path2D();
+    //         path.rect(x, y, width, height);
+    //         if(index != -1){
+    //             element.paths.edges[index] = path;
+    //         }
+    //         console.dir(element);
+    //         element.ctx.fill(path);
+    // }.bind(this);
+    // let size = 48;
+    // ctx.fillStyle = 'black';
+    // switch(index){
+    //   case 0: t(element, -width / 2 - size, -height / 2 - size, size, size, 0); break;
+    //   case 1: t(element, 0 - size / 2, -height / 2 - size, size, size); break;
+    //   case 2: t(element, width / 2 , -height / 2 - size, size, size); break;
+    //   case 3: t(element, width / 2, 0 - size / 2, size, size); break;
+    //   case 4: t(element, width / 2 , height / 2, size, size); break;
+    //   case 5: t(element, 0 - size / 2, height / 2, size, size); break;
+    //   case 6: t(element, -width / 2 - size, height / 2, size, size); break;
+    //   case 7: t(element, -width / 2 - size, 0 - size / 2, size, size); break;
+    //   case 8: {
+    //     ctx.drawImage(SVG_Loader.SVG.turn.src,0 - size , -height - size , size*2, size*2); 
 
-      } break; //ctx.fillRect(0 - size / 2, -height / 2 - size - 40, size, size); break;
-      default: {
-        t(element, -width / 2 - size, -height / 2 - size, size, size, 0);
-        t(element, width / 2 , -height / 2 - size, size, size, 1);
+    //   } break; //ctx.fillRect(0 - size / 2, -height / 2 - size - 40, size, size); break;
+    //   default: {
+    //     t(element, -width / 2 - size, -height / 2 - size, size, size, 0);
+    //     t(element, width / 2 , -height / 2 - size, size, size, 1);
         
-        t(element, -width / 2 - size, height / 2, size, size, 2);
-        t(element, width / 2 , height / 2, size, size, 3);
+    //     t(element, -width / 2 - size, height / 2, size, size, 2);
+    //     t(element, width / 2 , height / 2, size, size, 3);
       
-        t(element, 0 - size / 2, -height / 2 - size, size, size);
-        t(element, 0 - size / 2, height / 2, size, size);
+    //     t(element, 0 - size / 2, -height / 2 - size, size, size);
+    //     t(element, 0 - size / 2, height / 2, size, size);
         
-        t(element, width / 2, 0 - size / 2, size, size);
-        t(element, -width / 2 - size, 0 - size / 2, size, size);
+    //     t(element, width / 2, 0 - size / 2, size, size);
+    //     t(element, -width / 2 - size, 0 - size / 2, size, size);
 
-        ctx.drawImage(SVG_Loader.SVG.turn.src,0 - size , -height - size , size*2, size*2); 
-      } break;
-    }
-    return ctx;
+    //     ctx.drawImage(SVG_Loader.SVG.turn.src,0 - size , -height - size , size*2, size*2); 
+    //   } break;
+    // }
+    // return ctx;
   }
   static drawEdgesInteractive(element, width, height, index = -1){
     canvasPaths.updatePointPath(element, width, height, index)
     console.dir(element);
     return element.ctx;
 
-    let size = 48;
-    console.dir(ctx);
-    ctx.save();
-    ctx.beginPath();
-    switch(index){
-      case 0: ctx.rect(-width / 2 - size, -height / 2 - size, size, size); break;
-      case 1: ctx.rect(0 - size / 2, -height / 2 - size, size, size); break;
-      case 2: ctx.rect(width / 2 , -height / 2 - size, size, size); break;
-      case 3: ctx.rect(width / 2, 0 - size / 2, size, size); break;
-      case 4: ctx.rect(width / 2 , height / 2, size, size); break;
-      case 5: ctx.rect(0 - size / 2, height / 2, size, size); break;
-      case 6: ctx.rect(-width / 2 - size, height / 2, size, size); break;
-      case 7: ctx.rect(-width / 2 - size, 0 - size / 2, size, size); break;
-      case 8: ctx.rect(0 - size, -height  - size, (size*2), (size*2)); break;
-      default: {
-        ctx.rect(-width / 2 - size, -height / 2 - size, size, size);
-        ctx.rect(width / 2 , -height / 2 - size, size, size);
+    // let size = 48;
+    // console.dir(ctx);
+    // ctx.save();
+    // ctx.beginPath();
+    // switch(index){
+    //   case 0: ctx.rect(-width / 2 - size, -height / 2 - size, size, size); break;
+    //   case 1: ctx.rect(0 - size / 2, -height / 2 - size, size, size); break;
+    //   case 2: ctx.rect(width / 2 , -height / 2 - size, size, size); break;
+    //   case 3: ctx.rect(width / 2, 0 - size / 2, size, size); break;
+    //   case 4: ctx.rect(width / 2 , height / 2, size, size); break;
+    //   case 5: ctx.rect(0 - size / 2, height / 2, size, size); break;
+    //   case 6: ctx.rect(-width / 2 - size, height / 2, size, size); break;
+    //   case 7: ctx.rect(-width / 2 - size, 0 - size / 2, size, size); break;
+    //   case 8: ctx.rect(0 - size, -height  - size, (size*2), (size*2)); break;
+    //   default: {
+    //     ctx.rect(-width / 2 - size, -height / 2 - size, size, size);
+    //     ctx.rect(width / 2 , -height / 2 - size, size, size);
         
-        ctx.rect(-width / 2 - size, height / 2, size, size);
-        ctx.rect(width / 2 , height / 2, size, size);
+    //     ctx.rect(-width / 2 - size, height / 2, size, size);
+    //     ctx.rect(width / 2 , height / 2, size, size);
       
-        ctx.rect(0 - size / 2, -height / 2 - size, size, size);
-        ctx.rect(0 - size / 2, height / 2, size, size);
+    //     ctx.rect(0 - size / 2, -height / 2 - size, size, size);
+    //     ctx.rect(0 - size / 2, height / 2, size, size);
         
-        ctx.rect(width / 2, 0 - size / 2, size, size);
-        ctx.rect(-width / 2 - size, 0 - size / 2, size, size);
+    //     ctx.rect(width / 2, 0 - size / 2, size, size);
+    //     ctx.rect(-width / 2 - size, 0 - size / 2, size, size);
 
-        ctx.rect(0 - size, -height - size, (size*2), (size*2));
-      } break;
-    }
+    //     ctx.rect(0 - size, -height - size, (size*2), (size*2));
+    //   } break;
+    // }
 
-    ctx.closePath();
-    ctx.restore();
-    return ctx;
+    // ctx.closePath();
+    // ctx.restore();
+    // return ctx;
   }
   static Text(ctx = null){
     function obj(ctx){
@@ -778,94 +796,94 @@ class CanvasHelper {
           CanvasHelper.drawEdges(element, element.data.FrameWidth, element.data.FrameHeight, index);
         }
       }
-      this.draw = function(element, pointFlag = true, thumbnailFlag = false){
+      this.draw = function(element, pointFlag = true, thumbnailFlag = false, renderFlag = false){
         if(pointFlag){
             canvasPaths.updatePointPath(element, element.data.FrameWidth, element.data.FrameHeight, 8);
         }
-        canvasPaths.updateTxt(element);
+        canvasPaths.updateTxt(element, renderFlag, thumbnailFlag);
         return;
-        if(ctx == null){
-          if(renderFlag){
-            ctx = element.ctx_S;
-          } else {
-            ctx = element.ctx;
-            ctx.shadowColor = DSProject.getColorFor(DSProject.Storage.EPType);
-            ctx.shadowOffsetX = 0;
-            ctx.shadowOffsetY = 0;
-            ctx.shadowBlur = 2;
-            // ctx.filter = 'blur(0.5px)';
-          }
-        }
-        ctx.save();
-        ctx.beginPath();
-        ctx.translate(element.data.TextPosX, element.data.TextPosY);
-        ctx.scale(2, 2);
-        ctx.rotate(S_Math.toRadians(element.data.TextAlign));
-        element.ctx.globalAlpha = 1;
-        ctx.imageSmoothingEnabled = true;
-        ctx.imageSmoothingQuality = "high";
-        ctx.textBaseline = "middle";
-        if(thumbnailFlag){
-            ctx.lineWidth = 1;
-        } else {
-            ctx.lineWidth = 0.5;
-        }
-        ctx.strokeStyle = DSProject.getColorFor(DSProject.Storage.EPType);
-        ctx.fillStyle = DSProject.getColorFor(DSProject.Storage.EPType);
-        ctx.font = element.data.FontWeight + " " + element.data.FontStyle + " " + element.data.FontSize + "px " + element.data.FontFamily;
-        let metrics     = 0;
-        let max_width   = 0;
-        let height      = 0;
-        console.log(element.data.TextLineHeight);
-        let max_height  = 0;
-        let lines = element.data.TextValue.split('\n');
-        for(let i = 0; i < lines.length; i++){
-          metrics = ctx.measureText(lines[i]);
-          height = metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent + parseInt(element.data.TextLineHeight);
-          let width = metrics.width;
-          if(width > max_width){
-            max_width = width;
-          }
-          if(height > max_height){
-            max_height = height;
-          }
-        }
-        ctx.textAlign = element.data.TextOrientation;
-        ctx.textRendering  = "optimizeSpeed";
-        let C_width = max_width / 2;
-        let C_height = -((lines.length-1) * max_height) / 2;
+        // if(ctx == null){
+        //   if(renderFlag){
+        //     ctx = element.ctx_S;
+        //   } else {
+        //     ctx = element.ctx;
+        //     ctx.shadowColor = DSProject.getColorFor(DSProject.Storage.EPType);
+        //     ctx.shadowOffsetX = 0;
+        //     ctx.shadowOffsetY = 0;
+        //     ctx.shadowBlur = 2;
+        //     // ctx.filter = 'blur(0.5px)';
+        //   }
+        // }
+        // ctx.save();
+        // ctx.beginPath();
+        // ctx.translate(element.data.TextPosX, element.data.TextPosY);
+        // ctx.scale(2, 2);
+        // ctx.rotate(S_Math.toRadians(element.data.TextAlign));
+        // element.ctx.globalAlpha = 1;
+        // ctx.imageSmoothingEnabled = true;
+        // ctx.imageSmoothingQuality = "high";
+        // ctx.textBaseline = "middle";
+        // if(thumbnailFlag){
+        //     ctx.lineWidth = 1;
+        // } else {
+        //     ctx.lineWidth = 0.5;
+        // }
+        // ctx.strokeStyle = DSProject.getColorFor(DSProject.Storage.EPType);
+        // ctx.fillStyle = DSProject.getColorFor(DSProject.Storage.EPType);
+        // ctx.font = element.data.FontWeight + " " + element.data.FontStyle + " " + element.data.FontSize + "px " + element.data.FontFamily;
+        // let metrics     = 0;
+        // let max_width   = 0;
+        // let height      = 0;
+        // console.log(element.data.TextLineHeight);
+        // let max_height  = 0;
+        // let lines = element.data.TextValue.split('\n');
+        // for(let i = 0; i < lines.length; i++){
+        //   metrics = ctx.measureText(lines[i]);
+        //   height = metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent + parseInt(element.data.TextLineHeight);
+        //   let width = metrics.width;
+        //   if(width > max_width){
+        //     max_width = width;
+        //   }
+        //   if(height > max_height){
+        //     max_height = height;
+        //   }
+        // }
+        // ctx.textAlign = element.data.TextOrientation;
+        // ctx.textRendering  = "optimizeSpeed";
+        // let C_width = max_width / 2;
+        // let C_height = -((lines.length-1) * max_height) / 2;
         
-        let drawFunc = function(){ctx.strokeText(...arguments)};
-        if(renderFlag){
-            drawFunc = function(){ctx.fillText(...arguments)};
-        }
-        for(let i = 0; i < lines.length; i++){
-          if(element.data.TextOrientation == 'center'){
-            drawFunc(lines[i], 0,  C_height + ((i ) * max_height) );
-            drawFunc(lines[i], 0,  C_height + ((i ) * max_height) );
-            // ctx.filter = 'blur(0.5px)';
-            // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
-            // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
-            // // ctx.filter = 'blur(1px)';
-            // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
-          } else if(element.data.TextOrientation == 'right'){
-            drawFunc(lines[i], +C_width,  C_height + ((i ) * max_height) );
-            drawFunc(lines[i], +C_width,  C_height + ((i ) * max_height) );
-          } else {
-            drawFunc(lines[i], -C_width,  C_height + ((i ) * max_height) );
-            drawFunc(lines[i], -C_width,  C_height + ((i ) * max_height) );
-          }
-        }
-        // ctx.strokeStyle = "red";
-        ctx.rect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
-        // ctx.strokeRect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
+        // let drawFunc = function(){ctx.strokeText(...arguments)};
+        // if(renderFlag){
+        //     drawFunc = function(){ctx.fillText(...arguments)};
+        // }
+        // for(let i = 0; i < lines.length; i++){
+        //   if(element.data.TextOrientation == 'center'){
+        //     drawFunc(lines[i], 0,  C_height + ((i ) * max_height) );
+        //     drawFunc(lines[i], 0,  C_height + ((i ) * max_height) );
+        //     // ctx.filter = 'blur(0.5px)';
+        //     // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
+        //     // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
+        //     // // ctx.filter = 'blur(1px)';
+        //     // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
+        //   } else if(element.data.TextOrientation == 'right'){
+        //     drawFunc(lines[i], +C_width,  C_height + ((i ) * max_height) );
+        //     drawFunc(lines[i], +C_width,  C_height + ((i ) * max_height) );
+        //   } else {
+        //     drawFunc(lines[i], -C_width,  C_height + ((i ) * max_height) );
+        //     drawFunc(lines[i], -C_width,  C_height + ((i ) * max_height) );
+        //   }
+        // }
+        // // ctx.strokeStyle = "red";
+        // ctx.rect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
+        // // ctx.strokeRect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
         
-        element.data.FrameHeight     = ((lines.length) * (max_height));
-        element.data.FrameWidth      = max_width;
-        // element.data.TextLineHeight  = max_height;
+        // element.data.FrameHeight     = ((lines.length) * (max_height));
+        // element.data.FrameWidth      = max_width;
+        // // element.data.TextLineHeight  = max_height;
 
-        ctx.closePath();
-        ctx.restore();
+        // ctx.closePath();
+        // ctx.restore();
         
       }
     }

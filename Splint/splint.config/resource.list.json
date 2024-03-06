@@ -3,15 +3,25 @@
         "textures": {
             "lighter_body_bumpMap"   : "data/3Dmodels/Lighter/textures/bumpMap_Body.png",
             "lighter_inner_texture" : "data/3Dmodels/Lighter/textures/texture_chrome_new.png",
-            "lighter_engraving_thumbnail" : "data/3Dmodels/Lighter/textures/thumbnail_wide.png",
+            "lighter_engraving_thumbnail" : "data/3Dmodels/Lighter/textures/thumbnail_small.jpg",
             "lighter_engraving_thumbnail_add" : "data/3Dmodels/Lighter/textures/thumbnail_add.png",
-            "lighter_engraving_thumbnail_chrome" : "data/3Dmodels/Lighter/textures/thumbnail_Chrome.png",
+            "lighter_engraving_thumbnail_chrome" : "data/3Dmodels/Lighter/textures/thumbnail_Chrome_small.jpg",
             "lighter_MatcapMap" : "data/3Dmodels/Lighter/textures/matcap-white.jpg",
-            "lighter_reflectionENVMap" : "data/3Dmodels/Lighter/textures/reflectionENVMap.jpg",
-            "ligher_Map1" : "data/3Dmodels/Lighter/textures/DisplacementMap.png",
-            "ligher_NormalMapEngraving" : "data/3Dmodels/Lighter/textures/normalMap_Engraving_wide.png",
-            "ligher_NormalMapEngraving2" : "data/3Dmodels/Lighter/textures/normalMap_Engraving2.png"
+            "lighter_reflectionENVMap" : "data/3Dmodels/Lighter/textures/envMapTest1.jpg",
+            "ligher_NormalMapEngraving" : "data/3Dmodels/Lighter/textures/normalMap_Engraving_small.png",
+            "ligher_Chrome" : "data/3Dmodels/Lighter/textures/rahmen.png",
+            "floor_1" : "data/3Dmodels/Lighter/textures/floor/FloorsCheckerboard_S_Diffuse.jpg",
+            "floor_1_normalMap" : "data/3Dmodels/Lighter/textures/floor/FloorsCheckerboard_S_Normal.jpg",
+            "steel_metalicMap" : "data/3Dmodels/Lighter/textures/metal/steel_metalic.png",
+            "steel_roughnessMap" : "data/3Dmodels/Lighter/textures/metal/steel_roughness.png",
+            "steel_aoMap" : "data/3Dmodels/Lighter/textures/metal/steel_ao.png"
             },
+        "cubeTextures": {
+            "swedishRoyalCastle" : "data/3Dmodels/Lighter/textures/cube/SwedishRoyalCastle/"
+        },
+        "dataTextures": {
+            "indexBackground": "data/3Dmodels/Lighter/textures/equirectangular/blouberg_sunrise_2_1k.hdr"
+        },
         "models" : {
             "lighter_glb"   : "data/3Dmodels/Lighter/Feuerzeug.glb"
         },

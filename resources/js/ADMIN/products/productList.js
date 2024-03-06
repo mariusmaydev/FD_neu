@@ -11,6 +11,7 @@ class AdminProductList {
     async draw(){
         this.mainElement.innerHTML = "";
         let dataIn = await productHelper.getProducts();
+        console.log(dataIn);
         if(dataIn == null){
             return;
         }
@@ -23,9 +24,10 @@ class AdminProductList {
         gen(this.table.getData2Head(1), "", "Name");
         gen(this.table.getData2Head(2), "", "Preis");
         gen(this.table.getData2Head(3), "", "Abmaße (in mm)");
-        gen(this.table.getData2Head(4), "", "andere Eigenschaften");
-        gen(this.table.getData2Head(5), "", "Verkäufe");
-        gen(this.table.getData2Head(6), "", "");
+        gen(this.table.getData2Head(4), "", "Farbe");
+        gen(this.table.getData2Head(5), "", "andere Eigenschaften");
+        gen(this.table.getData2Head(6), "", "Verkäufe");
+        gen(this.table.getData2Head(7), "", "");
         this.table.draw();
         let index = 0;
         for(const entry in dataIn){
@@ -46,15 +48,20 @@ class AdminProductList {
                         let sizeDeepLabel = new SPLINT.DOMElement.Label(sizeBody, sizeDeep.div, "Tiefe");
                             sizeDeepLabel.before();
 
-                let attrBody = new SPLINT.DOMElement(this.table.getData(index, 4).id + "attrBody", "div", this.table.getData(index, 4));
+                let colorBody = new SPLINT.DOMElement(this.table.getData(index, 4).id + "colorBody", "div", this.table.getData(index, 4));
+                    let colorName = new SPLINT.DOMElement.SpanDiv(colorBody, "color_name", data.colorName);
+                    let colorHex = new SPLINT.DOMElement.SpanDiv(colorBody, "color_hex", data.colorHex);
+                    let EPType = new SPLINT.DOMElement.SpanDiv(colorBody, "EPType", data.EPType);
+
+                let attrBody = new SPLINT.DOMElement(this.table.getData(index, 5).id + "attrBody", "div", this.table.getData(index, 5));
                     let attrTable = new SPLINT.DOMElement.Table.TextTable(attrBody, "attrs_" + index);
                     for(const e of data.attrs){
                         attrTable.addRow(e.name, e.value);
                     }
 
-                    gen(this.table.getData(index, 5), "sales", data.sales);
+                    gen(this.table.getData(index, 6), "sales", data.sales);
                 
-                let buttonRemove = new SPLINT.DOMElement.Button(this.table.getData(index, 6), "remove");
+                let buttonRemove = new SPLINT.DOMElement.Button(this.table.getData(index, 7), "remove");
                     buttonRemove.bindIcon("delete");
                     buttonRemove.setTooltip("Produkt entfernen", "bottom");
                     buttonRemove.onclick = function(){
@@ -79,7 +86,7 @@ class AdminProductList {
                     }.bind(this);
                 
                 
-                let buttonEdit = new SPLINT.DOMElement.Button(this.table.getData(index, 6), "edit");
+                let buttonEdit = new SPLINT.DOMElement.Button(this.table.getData(index, 7), "edit");
                     buttonEdit.bindIcon("edit");
                     buttonEdit.setTooltip("bearbeiten", "bottom");
                     buttonEdit.onclick = function(){

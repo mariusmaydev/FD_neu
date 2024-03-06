@@ -1,135 +1,181 @@
 
 import SPLINT from 'SPLINT';
 import * as MATERIALS from '../assets/materials/materials.js';
+import MaterialsEngraving from '../assets/newMaterials/materialsEngraving.js';
+import MaterialsLighterGeneral from '../assets/newMaterials/materialsLighterGeneral.js';
 import S_MATERIALS from '@SPLINT_THREE_DIR/materials/M_materials.js';
-import { Cache } from "@THREE_ROOT_DIR/src/loaders/Cache.js";
+import { CanvasTexture } from "@THREE_ROOT_DIR/src/textures/CanvasTexture.js";
 import { Vector3 } from "@THREE_ROOT_DIR/src/math/Vector3.js";
+import { Vector2 } from "@THREE_ROOT_DIR/src/math/Vector2.js";
 import { Matrix4 } from "@THREE_ROOT_DIR/src/math/Matrix4.js";
 import { SphereGeometry } from "@THREE_ROOT_DIR/src/geometries/SphereGeometry.js";
 import { Box3 } from "@THREE_ROOT_DIR/src/math/Box3.js";
 import { Mesh } from "@THREE_ROOT_DIR/src/objects/Mesh.js";
 import * as THC from "@THREE_ROOT_DIR/src/constants.js";
 import { ShaderMaterial } from "@THREE_ROOT_DIR/src/materials/ShaderMaterial.js";
+import { MeshLambertMaterial } from "@THREE_ROOT_DIR/src/materials/MeshLambertMaterial.js";
+import { CubeTextureLoader } from "@THREE_ROOT_DIR/src/loaders/CubeTextureLoader.js";
+import { BufferGeometryLoader } from "@THREE_ROOT_DIR/src/loaders/BufferGeometryLoader.js";
+import * as BufferGeometryUtils from "@THREE_ROOT_DIR/examples/jsm/utils/BufferGeometryUtils.js";
+import MaterialHelper from '@SPLINT_THREE_DIR/materials/MaterialHelper.js';
+import { MeshPhongMaterial, MeshStandardMaterial } from 'three';
+import { Color } from "@THREE_ROOT_DIR/src/math/Color.js";
 
 
-var FLAG_sceneLoaded = 0;
 
 export default class Model {
     static textureScale = 2;
     static loaded = false;
-
-    static async init(instance, name = "lighter", loaderCount = 1, GoldFlag = true){
-        Cache.enabled = false;
-        // if(FLAG_sceneLoaded < loaderCount){
-            let SRCscene = null;
-            const pos = new Vector3( 0, 0, 0 );
-
-            if(Model.loaded){
-                SRCscene = SPLINT.resources.models.lighter_glb.scene.clone();
-                SRCscene.position.copy(pos);
-            } else {
-                SRCscene = Model.load(SPLINT.resources.models.lighter_glb.scene.clone(), pos);
-                SPLINT.resources.models.lighter_glb.scene = SRCscene.clone();
-
-                Model.loaded = true;
-            }    
-            SRCscene.name = name;
-            SRCscene.rotation.x = Math.PI / 2;
-            instance.scene.add(SRCscene);
-            await instance.loadThumbnail(name, GoldFlag);    
-
-            // SPLINT.resources.models.lighter_glb.scene = instance.scene.clone();
-            // FLAG_sceneLoaded = parseInt(FLAG_sceneLoaded) + 1;
-        // }
-        Model.getFlame(instance, instance.setup.getLighterGroupe(instance.scene, name));
-        // if(FLAG_sceneLoaded >= loaderCount){
-            // instance.onFinishLoading(name);
-        // }
-        return true;
-        
+    static SRCscene = null;
+    static isStarted = false;
+    static async init(instance, name = "lighter", GoldFlag = true, thumbnailFlag = true){
+        return new Promise(async function(resolve, reject){
+            Model.isStarted = true;
+            SPLINT.ResourceManager.models.lighter_glb.then(async function(data){
+                    const pos = new Vector3( 0, 0, 0 );
+                    
+                    if(Model.loaded){
+                        Model.SRCscene = Model.SRCscene.clone();
+                        Model.SRCscene.position.copy(pos);
+                    } else {
+                        Model.SRCscene = await Model.load(data.scene.clone(), pos, null, instance);
+                        Model.loaded = true;
+                    }    
+                    Model.SRCscene.name = name;
+                    Model.SRCscene.rotation.x = Math.PI / 2;
+                    instance.scene.add(Model.SRCscene.clone());
+                    if(thumbnailFlag){
+                        await instance.loadThumbnail(name, GoldFlag);    
+                    }
+                Model.getFlame(instance, instance.setup.getLighterGroupe(instance.scene, name));
+                return true;
+            }.bind(this)).then(async function(){
+                resolve(true);
+            });
+        }.bind(this));
     }
     static _rotate(obj, dX, dY, dZ){
         obj.rotation.y += dY / 100;
         obj.rotation.x += dX / 100;
         obj.rotation.z += dZ / 100;
     }
-
-    static load(scene, pos, rotate = true){
-        for(const element of scene.children){
-            scene.position.copy(pos);
-            scene.scale.set(5, 5, 5);
-                this.#loadParts(element);
-            element.children[0].castShadow = true;
-            element.children[0].receiveShadow = true;
-          }
-          scene.receiveShadow = true;
-          scene.castShadow = true;
-        return scene;
+    static p = null;
+    static async load(scene, pos, rotate = true, instance = null){
+        if(this.p == null){
+            this.p = new Promise(async function(resolve){
+                
+                    scene.position.copy(pos);
+                    scene.scale.set(5, 5, 5);
+                let material = scene.children[0].children[0].material.clone();
+                    material.name = "lighterBlackRough";
+                MaterialHelper.set(material);
+                for(const element of scene.children){
+                        this.#loadParts(element, scene, instance);
+                    element.children[0].castShadow = true;
+                    element.children[0].receiveShadow = true;
+                }
+                scene.receiveShadow = true;
+                scene.castShadow = true;
+                console.dir(scene)
+                resolve(scene);
+                return scene;
+            }.bind(this));
+        }
+        return this.p;
     }
-    static #loadParts(element){
+    static async #loadParts(element, scene = null, instance = null){
         switch(element.name){
             case 'unteres_teil1'        : {
-                // // assignUVs(element.children[0].geometry);
-
-                // element.children[0].material = MATERIALS.Lighter.Body(element.children[0].material);
-                // const bumpTexture = new THREE.TextureLoader().load("../../../../fd/data/3Dmodels/Lighter/normalMap_lighterBody.png");
-                //         material.normalMap = bumpTexture
-                //         material.normalMap.repeat.x = 2;
-                //         material.normalMap.repeat.y = 2;
-                //         material.normalScale.set(1, 1);
-                //         material.normalMap.wrapS = THREE.RepeatWrapping;
-                //         material.normalMap.wrapT = THREE.RepeatWrapping;
-                        // material.bumpMap.repeat.y = 0.5;
-                        // material.bumpScale = 0
-                        // console.log(material)
+                element.children[0].material.name = "body";
              } break;
             case 'oberes_teil1'         : {
-                // element.children[0].material.roughness = 0;
-                // element.children[0].material.metalness = 0.5;
-                // element.children[0].material.dithering = false;
                 element.children[0].geometry.applyMatrix4( new Matrix4().makeTranslation( 1.919, 0, 0 ) );
-                // element.children[0].position.y = -0.001; 
-                let texture = element.children[0].material.map;
-                    texture.anisotropy = 16;
 
                 element.children[0].position.x = -0.01919; 
-                //element.children[0].rotation.z = -134 * Math.PI / 180;
-                // this.setTextureScale(element, 2);
-                // element.children[0].material = MATERIALS.Lighter.Body(element.children[0].material);
+                element.children[0].material.name = "body";
              } break;
             case 'stab1'                : {
-                // element.children[0].material = S_MATERIALS.chrome();
+                element.children[0].material.name = "body";
             }  break;
             case 'verbindung_oben1'     : {
-                // element.children[0].geometry.applyMatrix4( new THREE.Matrix4().makeTranslation( 1.919, 0, 0 ) );
-                // // element.children[0].position.y = -0.001; 
-                // element.children[0].position.x = -0.01919; 
                 element.children[0].geometry.applyMatrix4( new Matrix4().makeTranslation( 0, -2.08, -0.475 ) );
                 element.children[0].position.z = 0.00475; 
                 element.children[0].position.y = 0.0208; 
-                let boundingBox = new Box3().setFromObject(element.children[0])
-                element.children[0].rotation.x = -135 * Math.PI / 180;
+                element.children[0].rotation.x = 135 * Math.PI / 180;
+                element.children[0].material.name = "body";
             } break;
             case 'verbindung_unten1'    : {
-                // element.children[0].geometry.applyMatrix4( new THREE.Matrix4().makeTranslation( 0, -2.08, -0.475 ) );
-                // element.children[0].position.z = 0.00475; 
-                // element.children[0].position.y = 0.0208; 
-
-            } break; element.children[0].material = MATERIALS.chrome; break;
+                element.children[0].material.name = "body";
+            } break;
             case 'Innenleben11'          : {
-                // this.setTextureScale(element, 2);
-                // element.children[0].material = MATERIALS.chrome3;
                 let mesh = element.children[0];
-                let geo = mesh.geometry;
+                element.children[0].geometry = BufferGeometryUtils.mergeVertices(mesh.geometry, 0.01);
+                element.children[0].geometry.computeVertexNormals();
+
+				// // let path = '../../../../../../Splint/lib/threeJS/examples/textures/cube/SwedishRoyalCastle/';
+				// // let format = '.jpg';
+				// // let urls = [
+				// // 	path + 'px' + format, path + 'nx' + format,
+				// // 	path + 'py' + format, path + 'ny' + format,
+				// // 	path + 'pz' + format, path + 'nz' + format
+				// // ];//new CubeTextureLoader().load( urls );
+				// let refractionCube = await SPLINT.ResourceManager.cubeTextures.swedishRoyalCastle;
+				// refractionCube.mapping = THC.CubeRefractionMapping;
+
+                // let g2 = await SPLINT.ResourceManager.textures.steel_metalicMap;
+                // let g = await SPLINT.ResourceManager.textures.steel_roughnessMap;
+                // let g1 = await SPLINT.ResourceManager.textures.steel_aoMap;
+
+                // // g.repeat.set(1, 1);
+                // g.flipY = false;
+                // g.generateMipmaps = true;
+                // g.mapping = THC.UVMapping  ;
+                // g.magFilter = THC.LinearFilter;
+                // g.minFilter = THC.LinearMipmapLinearFilter;
+                // g.anisotropy = 16;
+                // g.premultiplyAlpha = false;
+                // g.needsUpdte = true;
+                // g.matrixAutaoUpdate = true;
+                // g.wrapS = THC.ClampToEdgeWrapping;
+                // g.wrapT = THC.ClampToEdgeWrapping;
+                // g.repeat.set(20, 20);
+
+                // // let d = MaterialHelper.getTexture(instance.scene.enviroment);
+                // let mP = new MeshPhongMaterial({
+                //     color: 0x9a9a9a,
+                //     // aoMap: g1,
+                //     // aoMapIntensity: 0,
+                //     opacity: 0.4,
+                //     envMap: refractionCube,
+                //     alphaToCoverage: true,
+                //     emissive: 0x000000,
+                //     side: THC.FrontSide,
+                //     vertexColors: false,
+                //     blending: THC.NormalBlending  ,
+                //     dithering: false,
+                //     emissiveIntensity: 0.2,
+                //     specular: 0xa6a6a6,
+                //     shininess: 50,
+                //     combine: THC.MixOperation,
+                //     reflectivity: 0.2,
+                //     refractionRatio: 0.3,
+                //     fog: false
+                // })
+                // mP.aoMap.needsUpdate = true;
+                // mP.color.convertSRGBToLinear();
+                // mP.needsUpdate = true;
+                // let c = await SPLINT.ResourceManager.textures.lighter_inner_texture;
+                // this.setTextureScale(element.children[0], 2);
+                element.children[0].material = instance.materials.chrome;//S_MATERIALS.chrome(0xffffff, g, c);
+                element.children[0].material.needsUpdate = true;
+                // element.children[0].material.needsUpdate = true;
                     // geo.faces.map(f => f.vertexNormals = []);
-                // mesh.geometry = BufferGeometryUtils.mergeVertices(mesh.geometry, 0.01);
-                // mesh.geometry.computeVertexNormals();
-                // mesh.geometry = mg;
-                mesh.material = S_MATERIALS.chrome();
-                mesh.material.needsUpdate = true;
-                // mesh.material.shading = 2;
+                // SPLINT.ResourceManager.textures.lighter_reflectionENVMap.then(async function(data){
+                //     console.log(data)
+                // }.bind(this));
+                // 
                 // mesh.geometry.attributes.normal.needsUpdate = true;
-                // const mergedGeometry = THREE.BufferGeometryLoader.mergeVertices(mesh.geometry);
+                // const mergedGeometry = BufferGeometryLoader.mergedGeometry(mesh.geometry);
                 // mergedGeometry.computeVertexNormals();
                 // mesh.geometry = mergedGeometry;
                 // material.color.setHex(0xffffff)
@@ -137,35 +183,26 @@ export default class Model {
                 // element.children[0].material.needsUpdate = true;
             } break;
             case 'Rad1'                 : {
-                // let material = element.children[0].material;
-                //     material.map.repeat.x = 1;
-                //     material.map.repeat.y = 1;
-                //     material.metalness = 0.2;
-                //     material.roughness = 0.5;
-
-                //     material.normalMap.repeat.x = 2;
-                //     material.normalMap.repeat.y = 2;
-                //     material.normalScale.x = 8;
-                //     material.normalScale.y = 8;
-                // element.children[0].material = MATERIALS.gray;
+                element.children[0].material.name = "wheelStd";
+                element.children[0].material.needsUpdate = true;
                 element.children[0].rotation.y = -100 * Math.PI / 180;
             } break;
-            case 'Bolzen_Rad1'          : element.children[0].material = S_MATERIALS.chrome(); break;
-            case 'Bolzen_Rad2'          : element.children[0].material = S_MATERIALS.chrome(); break;
-            case 'Bolzen_Scharnier2'          : element.children[0].material = S_MATERIALS.chrome(); ; break;
-            case 'Feuersteinauflage1'          : element.children[0].material = S_MATERIALS.chrome(); break;
-            case 'Feuersteinhalter1'          : element.children[0].material = S_MATERIALS.chrome(); break;
-            case 'Schraube1'          : element.children[0].material = S_MATERIALS.chrome(); break;
+            case 'Bolzen_Rad1'          : element.children[0].material = instance.materials.chrome; break;
+            case 'Bolzen_Rad2'          : element.children[0].material = instance.materials.chrome; break;
+            case 'Bolzen_Scharnier2'          : element.children[0].material = instance.materials.chrome; ; break;
+            case 'Feuersteinauflage1'          : element.children[0].material = instance.materials.chrome; break;
+            case 'Feuersteinhalter1'          : element.children[0].material = instance.materials.chrome; break;
+            case 'Schraube1'          : element.children[0].material = instance.materials.chrome; break;
             case 'Feder1'          : {  
-                element.children[0].children[0].material = S_MATERIALS.chrome();
+                element.children[0].children[0].material = instance.materials.chrome;
                 element.children[0].children[0].castShadow = true;
-                element.children[0].children[1].material = S_MATERIALS.chrome();
+                element.children[0].children[1].material = instance.materials.chrome;
                 element.children[0].children[1].castShadow = true;
-                element.children[0].material = S_MATERIALS.chrome();
+                element.children[0].material = instance.materials.chrome;
             } break;
-            case 'Feuerstein1'          : element.children[0].material = S_MATERIALS.chrome(); break;
+            case 'Feuerstein1'          : element.children[0].material = instance.materials.chrome; break;
             case 'Scharnier1'          : {
-                element.children[0].material = S_MATERIALS.chrome(0xc2c2c2);
+                element.children[0].material = instance.materials.chrome;
                 element.children[0].geometry.applyMatrix4( new Matrix4().makeTranslation( 7.573, 0, -11.183 ) );
                 element.children[0].rotation.y = 105 * Math.PI / 180;
                 element.position.x = -0.0135; 
@@ -176,10 +213,8 @@ export default class Model {
         }
     }
     static setTextureScale(element){
-        for(const index in element.children){
-            element.children[index].material.map.repeat.x *= this.textureScale;
-            element.children[index].material.map.repeat.y *= this.textureScale;
-        }
+            element.material.map.repeat.x *= this.textureScale;
+            element.material.map.repeat.y *= this.textureScale;
     }
     static getFlame(instance, scene){
         let wick = instance.setup.getLighterGroupe(scene, 'docht1').children[0];
@@ -205,13 +240,29 @@ export default class Model {
     static async getThumbnail(scene, instance, src, src_normalMap, name = "", color = 0xe8b000, isHidden = false){
         let double = false;
         let material = null;
-            return MATERIALS.Lighter.EngravingMain(color, src, src_normalMap, async function(texture, mat = null){
+        if(color == 0xe8b000){
+            src = MaterialHelper.getTransparentTexture(src, {r: 255, g: 247, b: 214, a: 100}, function(data, color, i){
+                return data[i] <= color.r
+                && data[i + 1] <= color.g
+                && data[i + 2] <= color.b
+                && data[i + 3] >= color.a;
+            });
+        } else {
+            src = MaterialHelper.getTransparentTexture(src, {r: 100, g: 100, b: 100, a: 100}, function(data, color, i){
+                return data[i] >= color.r
+                && data[i + 1] >= color.g
+                && data[i + 2] >= color.b
+                && data[i + 3] >= color.a;
+            });
+        }
+            
+            return MaterialsEngraving.EngravingMain(color, src, src_normalMap, async function(texture, mat = null){
                 if(mat != null){
                     material = mat;
                 }      
                 let plane1 = SPLINT.object.Plane(3.4/1000, 1.976/1000, 1, 1);
-                    plane1.plane.castShadow = true;
-                    plane1.plane.receiveShadow = true;
+                    plane1.plane.castShadow = false;
+                    plane1.plane.receiveShadow = false;
                     plane1.rotate(0, 180, 180);
                     plane1.position(1.92, 0.99, 0.668);
                     plane1.material = material.clone();
@@ -223,8 +274,6 @@ export default class Model {
                     plane1.get().material.needsUpdate = true;
                     plane1.get().name = name;
                     scene.children[0].children[0].add(plane1.get()); 
-                    scene.children[0].children[0].children[0].geometry.computeTangents()
-                    scene.children[0].children[0].geometry.computeTangents()
                 let plane2 = SPLINT.object.Plane(3.4/1000, 3.169/1000, 1, 1);
                     plane2.rotate(0, 180, 180);
                     plane2.position(0, 1.845, 0.668);
@@ -247,9 +296,8 @@ export default class Model {
                     // plane2.get().visible = false;
                     let p2 = plane2.get();
                     scene.children[1].children[0].add(p2); 
-                    p2.receiveShadow = true;
-                    p2.castShadow = true;
-                    p2.geometry.computeTangents()
+                    p2.receiveShadow = false;
+                    p2.castShadow = false;
                     // requestAnimationFrame(instance.animate.bind(instance));
                     
                     if(isHidden){

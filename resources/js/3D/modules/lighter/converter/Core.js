@@ -2,13 +2,14 @@
 import SPLINT from 'SPLINT';
 import * as MATERIALS from '../../assets/materials/materials.js';
 import LIGHT from './light.js';
+import * as THC from "@THREE_ROOT_DIR/src/constants.js";
 import CompressedAnimations from './animations.js';
 import LighterAnimations from '../animations.js';
 import SETUP from '../setup.js';
-import SRC from '../../assets/Helper.js';
 import MODEL from '../model.js';
 import Communication from './communication.js';
 // import IMAGES from './images.js';
+import MaterialsLighterGeneral from '../../assets/newMaterials/materialsLighterGeneral.js';
 import { Fog } from "@THREE_ROOT_DIR/src/scenes/Fog.js";
 import { PerspectiveCamera } from "@THREE_ROOT_DIR/src/cameras/PerspectiveCamera.js";
 
@@ -23,8 +24,9 @@ export class draw {
         this.setup = new SETUP(this);
         this.loaded = null;
         this.animationTime = 0;
-        this.imgsrc = SPLINT.URIs.project + "/" + SRC().lighter.engraving.thumbnail;
-        SPLINT.R_promise.then(function(){
+        this.materials = new Object();
+        // this.imgsrc = SPLINT.URIs.project + "/" + SRC().lighter.engraving.thumbnail;
+        // SPLINT.R_promise.then(function(){
             this.init();
             this.events();
             this.draw();
@@ -39,7 +41,7 @@ export class draw {
             //         this.renderer.setAnimationLoop( null);
             //     }
             // }.bind(this);
-        }.bind(this));
+        // }.bind(this));
 
     }
     remove(){
@@ -54,6 +56,8 @@ export class draw {
 
     }
     init(){
+        SPLINT.GUI.hide();
+        SPLINT.Events.onLoadingComplete.dispatch()
         // console.log(SPLINT.resources.textures.lighter_engraving_thumbnail);
         this.setup.scene();
         // this.scene.fog = new Fog(0xff0000, 10, 300);
@@ -83,7 +87,6 @@ export class draw {
         this.Animations.lever_close.start(true, 0);
         this.Animations.lighter_close.start(false, 0);
         this.animate();
-        SPLINT.Events.onLoadingComplete.dispatch()
     }
     light(){
         LIGHT(this.scene);
@@ -101,7 +104,23 @@ export class draw {
         let domE = this.renderer.domElement;
         this.context.drawImage(domE, 0, 0, domE.width, domE.height, 0, 0, this.canvas.width, this.canvas.height);
     }
-    drawBackground(){
+    async drawBackground(){
+        
+        // let t1 = await SPLINT.ResourceManager.dataTextures.indexBackground;
+        // t1.mapping = THC.EquirectangularReflectionMapping;
+        // console.log(t1);
+        
+        // this.scene.background = t1;
+        // this.scene.enviroment = t1;
+
+
+        // this.cubeRenderTarget = new WebGLCubeRenderTarget( 256 );
+        // this.cubeRenderTarget.texture.type = THC.HalfFloatType;
+        // this.cubeCamera = new CubeCamera( 1, 1000, this.cubeRenderTarget );
+
+        this.materials.chrome = MaterialsLighterGeneral.chrome(this);
+        this.materials.chrome.needsUpdate = true;
+
         let plane = SPLINT.object.Plane(1, 20, 1, 1);
             plane.rotate(90, 0, 0);
             plane.position(0, 0, 0.01);
@@ -115,7 +134,7 @@ export class draw {
             this.scene.add( this.camera );
         
         return new Promise(async function(resolve) {
-            await MODEL.init(this, "lighter", 1);
+            await MODEL.init(this, "lighter");
                 // lighterGroupe2.visible = false;
             // console.log();
             resolve("ok");

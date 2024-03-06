@@ -121,7 +121,7 @@
         static function editImages($UserID, $ProjectID, $thumbnail = null, $FullNC = null, $SVG = null){
             $PATH = new PATH_Project($UserID, $ProjectID);
             if($thumbnail != null){                
-                DataEdit($PATH -> get(PATH_Project::NONE), $PATH -> getFileName(PATH_Project::THUMBNAIL), base64_to_png($thumbnail));
+                DataEdit($PATH -> get(PATH_Project::NONE), $PATH -> getFileName(PATH_Project::THUMBNAIL), Image::base64_to_png($thumbnail));
               }
               if($FullNC != null){
                 DataEdit($PATH -> get(PATH_Project::NONE), $PATH -> getFileName(PATH_Project::NC), $FullNC);

@@ -108,6 +108,7 @@
         const NONE              = "NONE";
         const SVG               = "SVG";
         const NC                = "FullNC";
+        const FRAME             = "FrameNC";
         const THUMBNAIL         = "thumbnail";
         const IMG_SCALE         = "Image_Scale";
         const IMG_VIEW          = "Image_View";
@@ -128,6 +129,7 @@
                 case self::IMG_SCALE        : return $type . "_" . $arg . $ext;
                 case self::IMG_VIEW         : return $type . "_" . $arg . $ext;
                 case self::NC               : return "Full.nc";
+                case self::FRAME            : return "Frame.nc";
                 case self::SVG              : return "SVG.svg";
                 default : return "";
             }
@@ -135,7 +137,7 @@
         private static function folder($type){
             if($type == self::TEXT_N){
                 return "texts/";
-            } else if($type != self::THUMBNAIL && $type != self::NONE && $type != self::NC && $type != self::SVG){
+            } else if($type != self::THUMBNAIL && $type != self::NONE && $type != self::NC && $type != self::SVG&& $type != self::FRAME){
                 return "images/";
             }
             return "";

@@ -96,5 +96,5 @@ SPLINT.Events.onInitComplete = function(){
 }.bind(this);
 
 SPLINT.Events.onLoadingComplete = function(){
-    SPLINT.Data.Cookies.requestUserPermision();
+    // SPLINT.Data.Cookies.requestUserPermision();
 }.bind(this);

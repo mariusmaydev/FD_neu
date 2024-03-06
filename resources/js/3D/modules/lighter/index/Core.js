@@ -3,18 +3,26 @@
 // import { PerspectiveCamera } from "@THREE_ROOT_DIR/src/cameras/PerspectiveCamera.js";
 // import { Color } from "@THREE_ROOT_DIR/src/math/Color.js";
 import * as THC from "@THREE_ROOT_DIR/src/constants.js";
-import SPLINT from 'SPLINT';
 import * as MATERIALS from '../../assets/materials/materials.js';
+import MaterialsLighterGeneral from '../../assets/newMaterials/materialsLighterGeneral.js';
 import LIGHT from './light.js';
 import CompressedAnimations from './animations.js';
 import LighterAnimations from '../animations.js';
 import SETUP from '../setup.js';
 import MODEL from '../model.js';
+import { CubeCamera } from "@THREE_ROOT_DIR/src/cameras/CubeCamera.js";
 import Communication from './communication.js';
 import { PerspectiveCamera } from "@THREE_ROOT_DIR/src/cameras/PerspectiveCamera.js";
 import { Fog } from "@THREE_ROOT_DIR/src/scenes/Fog.js";
 import { Color } from "@THREE_ROOT_DIR/src/math/Color.js";
+import { MeshLambertMaterial } from "@THREE_ROOT_DIR/src/materials/MeshLambertMaterial.js";
+import { CubeTextureLoader } from "@THREE_ROOT_DIR/src/loaders/CubeTextureLoader.js";
+import { WebGLCubeRenderTarget } from "@THREE_ROOT_DIR/src/renderers/WebGLCubeRenderTarget.js";
+import Stats from "@THREE_ROOT_DIR/examples/jsm/libs/stats.module.js";
 
+import { PMREMGenerator } from "@THREE_ROOT_DIR/src/extras/PMREMGenerator.js";
+import SPLINT from 'SPLINT';
+import MaterialHelper from "@SPLINT_MODULES_DIR/ThreeJS/materials/MaterialHelper.js";
 export class draw {
     static get(canvas){
         return new draw(canvas);
@@ -23,35 +31,28 @@ export class draw {
         this.context = null;
         this.id = "Lighter3D_";
         this.canvas = canvas;
-        // this.thumbnailSRC = SPLINT.URIs.project + "/" + SRC().lighter.engraving.thumbnail;
         this.setup = new SETUP(this);
-        this.loaded = null;
         this.animationTime = 0;
-        this.loadedTexture = false;
         this.debuggMode = false;
-        SPLINT.R_promise.then(function(){
-            this.init();
-            this.events();
-            this.draw();
+        this.materials = new Object();
+        this.init();
+        this.events();
+        this.draw();
             
-            this.mouseHandler.onMove = function(event){
-                if(this.debuggMode){
-                    return
+        this.mouseHandler.onMove = async function(event){
+            if(this.debuggMode){
+                return
+            }
+            if(!this.raycaster2.doesHover){
+                this.canvas.style.cursor = "default";
+            }
+            if(this.mouseHandler.mouseDown){
+                if(this.raycaster2.mouseDownFlag){
+                    MODEL._rotate(this.setup.getLighterGroupe(this.scene), 0, 0, this.mouseHandler.dX);
                 }
-                if(!this.raycaster2.doesHover){
-                    this.canvas.style.cursor = "default";
-                }
-                if(this.mouseHandler.mouseDown){
-                    //    this.render();
-                    if(this.raycaster2.mouseDownFlag){
-                        // console.dir(this.setup.getLighterGroupe(this.scene))
-                        MODEL._rotate(this.setup.getLighterGroupe(this.scene), 0, 0, this.mouseHandler.dX);
-                    }
-                } else {
-                }
-            }.bind(this);
-        }.bind(this));
-
+            } else {
+            }
+        }.bind(this);
     }
     onResize(){
         let a = this.canvas.parentNode.clientWidth;
@@ -77,35 +78,29 @@ export class draw {
         this.render();
     }
     init(){
+        SPLINT.Events.onLoadingComplete.dispatch();
         this.setup.renderer(true);
         this.setup.scene();
-        this.thumbnailSRC = SPLINT.resources.textures.lighter_engraving_thumbnail.clone();
-        // this.thumbnailSRC_specularMap = SPLINT.resources.textures.lighter_engraving_specularMap.clone();
-        // this.thumbnailSRC_displacementMap = SPLINT.resources.textures.lighter_engraving_displacementMap.clone();
-        // console.log(SPLINT.resources.textures.lighter_engraving_thumbnail);
-        this.scene.fog = new Fog(0xffffff, 6.5, 7.8);
+        // this.scene.fog = new Fog(0xffffff, 1, 1.1);
         this.mouseHandler = SPLINT.MouseHandler( this.canvas );
         this.Animations = new LighterAnimations(this);
         this.compressedAnimations = new CompressedAnimations(this);
         this.setupCamera();
-        this.renderer.physicallyCorrectLights  = true;
-        this.renderer.toneMappingExposure = 0.5;
-        // this.renderer.toneMapping = 2;
-        this.renderer.toneMapping = THC.ACESFilmicToneMapping;
-        this.renderer.outputEncoding = THC.sRGBEncoding;
-        this.renderer.needsUpdate = true;
         this.raycaster = SPLINT.raycaster(this);
         this.raycaster2 = SPLINT.raycaster(this);
         // this.setup.controls();
+        // Stats
+        // console.dir(Stats)
+        // this.stats = new Stats();
+		// 		document.body.appendChild( this.stats.dom );
     }
     setupCamera(){
         if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
             this.camera     = new PerspectiveCamera(60, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
-            // this.camera.position.set(0, 0.4, 4);
             this.camera.position.set(0, 0.18, 0.7);
         } else {
-            this.camera     = new PerspectiveCamera(10, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
-            this.camera.position.set(-0.15, 0.35, 3.5);
+            this.camera     = new PerspectiveCamera(45, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
+            this.camera.position.set(-0.15, 0.18, 1);
         }
         this.camera.name = "camera";
         this.camera.rotation.set(-0.05, 0, 0);
@@ -120,14 +115,35 @@ export class draw {
     async loadThumbnail(name, GoldFlag){
         if(this.scene != null){
             if(GoldFlag){
-                MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, name), this, SPLINT.resources.textures.lighter_engraving_thumbnail, SPLINT.resources.textures.ligher_NormalMapEngraving, "gold", 0xe8b000, !GoldFlag);
+                SPLINT.ResourceManager.textures.lighter_engraving_thumbnail.then(async function(texture){        
+                    SPLINT.ResourceManager.textures.ligher_NormalMapEngraving.then(async function(texture1){               
+                        MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, name), this, texture, texture1, "gold", 0xe8b000, !GoldFlag);
+                    }.bind(this));      
+                }.bind(this))     
             } else{
-                MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, name), this, SPLINT.resources.textures.lighter_engraving_thumbnail_chrome, SPLINT.resources.textures.ligher_NormalMapEngraving, "chrome", 0xc0c0c0, GoldFlag);
+                SPLINT.ResourceManager.textures.lighter_engraving_thumbnail_chrome.then(async function(texture){         
+                    SPLINT.ResourceManager.textures.ligher_NormalMapEngraving.then(async function(texture1){ 
+                        MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, name), this, texture, texture1, "chrome", 0xc0c0c0, GoldFlag);
+                    }.bind(this));      
+                }.bind(this));   
             }
 
         }
     }
     async onFinishLoading(){
+        this.scene.traverse(function(object) {
+            if(object.type === 'Mesh') {
+                if(object.material.name == "chrome"){
+                    // object.material = MaterialsLighterGeneral.chrome1(this);
+                } else if(object.material.name == "body"){
+                    // object.material = MaterialsLighterGeneral.bodyColor(this, 0x006800);
+                    object.material.needsUpdate = true
+                } else if(object.material.name == "wheelStd") {
+                    object.material = MaterialsLighterGeneral.wheel(this, object.material);
+                    object.material.needsUpdate = true
+                }
+            };
+        }.bind(this));
         this.startAnimationLoop();
         this.compressedAnimations.isOpen = true;
         this.compressedAnimations.close(0);
@@ -143,10 +159,12 @@ export class draw {
                 this.compressedAnimations.open();
                 // this.compressedAnimations.smoothTurnStart();
             }
-            SPLINT.ViewPort.getSize().log();
         }.bind(this));
-        SPLINT.Events.onLoadingComplete.dispatch();
-
+        // SPLINT.GUI.hide();
+        // SPLINT.GUI.loadObj(this.camera).onChange(function(){
+        //     this.camera.updateProjectionMatrix();
+        // }.bind(this));
+        // SPLINT.GUI.show();
     }
     light(){
         LIGHT(this.scene);
@@ -160,17 +178,39 @@ export class draw {
          }.bind(this));
     }
     render(){
+        this.cubeCamera.update(this.renderer, this.scene);
         this.renderer.render(this.scene, this.camera);
         this.context.clearRect(0, 0, this.canvas.parentNode.clientWidth*2, this.canvas.parentNode.clientHeight*2);
         let domE = this.renderer.domElement;
         this.context.drawImage(domE, 0, 0, domE.width, domE.height, 0, 0, this.canvas.width, this.canvas.height);
+        // this.stats.update();
     }
-    drawBackground(){
-        this.scene.background = new Color( 0xffffff);
-        let plane = SPLINT.object.Plane(1000, 1600, 1, 1);
-        plane.get().geometry.translate(0, -799, 0);
-            plane.rotate(93, 0, 0);
-            plane.plane.material = MATERIALS.other.indexBackground();
+    async drawBackground(){
+                
+        let t1 = (await SPLINT.ResourceManager.dataTextures.indexBackground);
+        // let clone = t1.SPLINT.ThreeClone();
+            t1.mapping = THC.EquirectangularRefractionMapping;
+        this.scene.background = t1;
+        this.scene.enviroment = t1;
+
+        this.cubeRenderTarget = new WebGLCubeRenderTarget( 256 );
+        this.cubeRenderTarget.texture.type = THC.HalfFloatType;
+        this.cubeCamera = new CubeCamera( 1, 200, this.cubeRenderTarget );
+        
+
+        // this.pmremGenerator = new PMREMGenerator(this.renderer);
+        // this.envMap = this.pmremGenerator.fromScene(this.scene).texture;
+        this.materials.chrome = MaterialsLighterGeneral.chrome(this);
+        this.materials.chrome.needsUpdate = true;
+
+        // this.scene.enviroment = envMap;
+        // this.scene.background = new Color( 0xffffff);
+        let floor1         = await SPLINT.ResourceManager.textures.floor_1;
+        let floor1Normal   = await SPLINT.ResourceManager.textures.floor_1_normalMap;
+        let plane = SPLINT.object.Plane(5, 5, 1, 1);
+            plane.get().geometry.translate(0, -1, 0);
+            plane.rotate(87, 0, 0);
+            plane.plane.material = await MATERIALS.other.indexBackground(floor1, floor1Normal, this.cubeRenderTarget.texture);
             plane.plane.receiveShadow = true;
         this.scene.add(plane.plane);
     }    
@@ -179,11 +219,12 @@ export class draw {
             this.light();
             this.scene.add( this.camera );
         return new Promise(async function(resolve){
-            await MODEL.init(this, "lighter", 2);
-            await MODEL.init(this, "lighter2", 2, false);
+            await MODEL.init(this, "lighter", true, false);
+            await MODEL.init(this, "lighter2", false, false);
             let lighterGroupe1 = this.setup.getLighterGroupe(this.scene);
                 lighterGroupe1.rotation.z = 0.2618;
                 lighterGroupe1.rotationBase = lighterGroupe1.rotation.clone();
+                this.loadThumbnail("lighter", true);
                 resolve('resolved');
 
             let lighterGroupe2 = this.setup.getLighterGroupe(this.scene, 'lighter2');
@@ -194,12 +235,11 @@ export class draw {
                 lighterGroupe2.children[0].children[0].rotation.z = (-133.7648) * Math.PI / 180;
                 lighterGroupe2.rotationBase = lighterGroupe2.rotation.clone();
             this.onFinishLoading();
+            this.loadThumbnail("lighter2", false);
         }.bind(this));
     }
     events(){
-        let flag = true;
         this.communication = new Communication(this);
-
     }
     setupRaycaster(){
         let groupe = this.setup.getLighterGroupe();

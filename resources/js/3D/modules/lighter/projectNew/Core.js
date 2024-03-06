@@ -6,8 +6,13 @@ import * as MATERIALS from '../../assets/materials/materials.js';
 import LIGHT from './light.js';
 import LighterAnimations from '../animations.js';
 import SETUP from '../setup.js';
+import MaterialsLighterGeneral from '../../assets/newMaterials/materialsLighterGeneral.js';
 import MODEL from '../model.js';
 import * as THC from "@THREE_ROOT_DIR/src/constants.js";
+import { CubeTextureLoader } from "@THREE_ROOT_DIR/src/loaders/CubeTextureLoader.js";
+import { WebGLCubeRenderTarget } from "@THREE_ROOT_DIR/src/renderers/WebGLCubeRenderTarget.js";
+import { RGBELoader } from "@THREE_ROOT_DIR/examples/jsm/loaders/RGBELoader.js";
+import { CubeCamera } from "@THREE_ROOT_DIR/src/cameras/CubeCamera.js";
 
 export class draw {
     static get(canvas){
@@ -18,12 +23,9 @@ export class draw {
         this.canvas = canvas;
         this.context = null;
         this.setup = new SETUP(this);
-        this.loaded = false;
-        this.loadedTexture = false;
-        SPLINT.R_promise.then(async function(){
+        this.materials = new Object();
             this.init();
-            await this.draw();
-            this.loaded = true;
+            this.draw();
             // this.events();
             
             // this.mouseHandler.onMove = function(event){
@@ -39,38 +41,27 @@ export class draw {
             // this.loaded.then(function(){
             //     // this.onFinishLoading();
             // }.bind(this));
-        }.bind(this));
 
     }
     remove(){
         this.onResize = function(){};
         this.AnimationMixer.stop();
-        // this.AnimationMixer = null;
-        // this.renderer.renderLists.dispose()
-        // this.renderer.forceContextLoss();
-        // this.renderer = null;
-        // this.scene = null;
-        this.loaded = false;
 
     }
-    async onFinishLoading(name){
+    async onFinishLoading(){
         if(this.scene != null){
-            // this.animate();        
-            SPLINT.Events.onLoadingComplete.dispatch();
+            setTimeout(async function(){
+                this.canvas.parentElement.parentElement.parentElement.setAttribute("loaded", true);
+                this.render();
+            }.bind(this), 100)    
         }
     }
     init(){
+        SPLINT.Events.onLoadingComplete.dispatch();
         this.setup.renderer(true);
         this.setup.scene();
         this.scene.fog = new Fog(0xcccccc, 0.1, 30);
-        // this.mouseHandler = SPLINT.MouseHandler( this.canvas );
-        this.renderer.physicallyCorrectLights  = true;
-        this.renderer.toneMappingExposure = 0.5;
-        // this.renderer.toneMapping = 2;
-        this.renderer.toneMapping = THC.ACESFilmicToneMapping;
-        this.renderer.outputEncoding = THC.sRGBEncoding;
         this.Animations = new LighterAnimations(this);
-        // this.renderer.toneMappingExposure = 1;
         this.setupCamera();
         // this.setup.controls();
     }
@@ -80,20 +71,16 @@ export class draw {
         this.camera.rotation.set(0, 0, 0);
     }
     async loadThumbnail(name, GoldFlag){
-        if(this.loadedTexture == false){
-            this.loadedTexture = true;
-            return;
-        }
-                let tex = SPLINT.resources.textures.lighter_engraving_thumbnail_add;
-                if(this.scene != null){
-                        MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, "lighter"), this, tex, null, "gold", 0xe8b000, !GoldFlag);
-
-                        MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, "lighter2"), this, tex, null, "chrome", 0xc0c0c0, !GoldFlag);
-                }
-                this.canvas.parentElement.parentElement.parentElement.setAttribute("loaded", true);
-                this.render();
-        
-        return true;
+        return new Promise(async function(resolve, reject){
+            
+            if(this.scene != null){
+                SPLINT.ResourceManager.textures.lighter_engraving_thumbnail_add.then(async function(texture){    
+                    await MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, "lighter"), this, texture, null, "gold", 0xe8b000, !GoldFlag)
+                    await MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, "lighter2"), this, texture, null, "chrome", 0xc0c0c0, !GoldFlag);
+                    resolve(true)
+                }.bind(this));
+            }
+        }.bind(this));
     }
     async draw(){
         
@@ -104,27 +91,37 @@ export class draw {
             this.scene.add( this.camera );
         // }
         return new Promise(async function(resolve){
-            await MODEL.init(this, "lighter");
-            this.Animations.lighter_close.start(false, 0, "lighter");
-            this.Animations.lever_close.start(true, 0, "lighter");
-            await MODEL.init(this, "lighter2");
-            this.Animations.lighter_close.start(false, 0, "lighter2");
-            this.Animations.lever_close.start(true, 0, "lighter2");
-            let lighterGroupe1 = this.setup.getLighterGroupe(this.scene);
-                lighterGroupe1.rotation.z = 10 * (Math.PI / 180);
-                lighterGroupe1.rotationBase = lighterGroupe1.rotation.clone();
+            let p1 = MODEL.init(this, "lighter", true, false);
+                p1.then(async function(){
+                        this.Animations.lighter_close.start(false, 0, "lighter");
+                        this.Animations.lever_close.start(true, 0, "lighter");
+                    let lighterGroupe1 = this.setup.getLighterGroupe(this.scene);
+                        lighterGroupe1.rotation.z = 10 * (Math.PI / 180);
+                        lighterGroupe1.rotationBase = lighterGroupe1.rotation.clone();
+                }.bind(this));
 
-                resolve('resolved');
-            let lighterGroupe2 = this.setup.getLighterGroupe(this.scene, 'lighter2');
-                lighterGroupe2.rotation.z = 10 * (Math.PI / 180);
-                lighterGroupe2.position.x = 0.08;
-                lighterGroupe2.position.z = -0.07;
-                lighterGroupe2.rotationBase = lighterGroupe2.rotation.clone();
+            let p2 = MODEL.init(this, "lighter2", false, false);
+                p2.then(async function(){
+                    this.Animations.lighter_close.start(false, 0, "lighter2");
+                    this.Animations.lever_close.start(true, 0, "lighter2");
+                    let lighterGroupe2 = this.setup.getLighterGroupe(this.scene, 'lighter2');
+                        lighterGroupe2.rotation.z = 10 * (Math.PI / 180);
+                        lighterGroupe2.position.x = 0.08;
+                        lighterGroupe2.position.z = -0.07;
+                        lighterGroupe2.rotationBase = lighterGroupe2.rotation.clone();
+                }.bind(this));
+
+            Promise.all([p1, p2]).then(async function(){
+                await this.loadThumbnail("lighter", true);
             
-            resolve("ok");
-            this.onFinishLoading();
+                this.onFinishLoading();
+                resolve("ok");
+                return true;
+            }.bind(this))
+            // await this.loadThumbnail("lighter", true);
+
+                // resolve('resolved');
             
-            return true;
         }.bind(this));
     }
     light(){
@@ -146,7 +143,10 @@ export class draw {
         let domE = this.renderer.domElement;
         this.context.drawImage(domE, 0, 0, domE.width, domE.height, 0, 0, this.canvas.width, this.canvas.height);
     }
-    drawBackground(){
+    async drawBackground(){
+
+        this.materials.chrome = MaterialsLighterGeneral.chrome(this);
+        this.materials.chrome.needsUpdate = true;
         let plane = SPLINT.object.Plane(180, 1600, 1, 1);
         plane.get().geometry.translate(0, 799, 0);
         // plane.position(0, 0, -15);

@@ -7,6 +7,7 @@ import { MeshMatcapMaterial } from "@THREE_ROOT_DIR/src/materials/MeshMatcapMate
 import { MeshPhysicalMaterial } from "@THREE_ROOT_DIR/src/materials/MeshPhysicalMaterial.js";
 import { ShadowMaterial } from "@THREE_ROOT_DIR/src/materials/ShadowMaterial.js";
 import MaterialHelper from '@SPLINT_MODULES_DIR/ThreeJS/materials/MaterialHelper.js';
+import { Vector2 } from "@THREE_ROOT_DIR/src/math/Vector2.js";
 
 
 export class other {
@@ -35,35 +36,100 @@ export class other {
             opacity: 1
           } );
     }
-    static indexBackground(color = 0xddb997){
-        return new MeshPhysicalMaterial( {
-            color: 0xffffff,
-            opacity: 0.7,
-            metalness: 0,   
-            roughness: 0.1, 
-            depthFunc: THC.LessEqualDepth,
-            depthTest: true,
-            emissive: 0xffffff,
-            emissiveIntensity: 0.1,
-            alphaToCoverage: true,
-            transparent: true,
-            reflectivity: 5,
-            side: THC.BackSide,
-            clearcoat: 0.2,
-            clearcoatRoughness: 0,
-            specularColor: 0x000000,
-            specularIntensity: 0.1,
-            sheenColor: 0xffffff,
-            sheenRoughness: 10,
-            sheen: 2,
-            // ior: 0,
-            fog: true,
-            transmission: 0
-            // attenuationDistance: 0.00001,
-            // attenuationColor: 0xff0000
-            } );
+    static async indexBackground(map = null, normalMap = null, envMap = null){
+        let material = null;
+        if(map != null && normalMap != null){
+            let texture = MaterialHelper.getTexture(map);
+                texture.wrapS = THC.RepeatWrapping;
+                texture.wrapT = THC.RepeatWrapping;
+                texture.repeat.set(10, 10);
+                texture.flipY = false;
+                texture.mapping = THC.UVMapping;
+                texture.generateMipmaps = true;
+                texture.magFilter = THC.NearestFilter;
+                texture.minFilter = THC.LinearMipmapLinearFilter;
+                texture.anisotropy = 32;
+                texture.premultiplyAlpha = true;
+                texture.needsUpdate = true;
+
+            let NormalTexture = MaterialHelper.getTexture(normalMap);
+                NormalTexture.wrapS = THC.RepeatWrapping;
+                NormalTexture.wrapT = THC.RepeatWrapping;
+                texture.repeat.set(10, 10);
+                NormalTexture.flipY = false;
+                NormalTexture.mapping = THC.UVMapping;
+                NormalTexture.generateMipmaps = true;
+                NormalTexture.magFilter = THC.NearestFilter;
+                NormalTexture.minFilter = THC.LinearMipmapLinearFilter;
+                NormalTexture.anisotropy = 32;
+                NormalTexture.premultiplyAlpha = false;
+                NormalTexture.needsUpdate = true;
+                
+            material = new MeshPhysicalMaterial( {
+                color: 0x878787 ,
+                map: texture,
+                envMap: envMap,
+                envMapIntensity:0.1,
+                opacity: 0.2,
+                normalMap: NormalTexture,
+                normalScale: new Vector2(1, 1),
+                normalMapType: THC.ObjectSpaceNormalMap,
+                metalness: 0,   
+                roughness: 0, 
+                depthFunc: THC.LessEqualDepth,
+                depthTest: true,
+                emissive: 0x000000,
+                emissiveIntensity: 0,
+                alphaToCoverage: true,
+                transparent: false,
+                reflectivity: 1,
+                side: THC.DoubleSide,
+                clearcoat: 0,
+                clearcoatRoughness: 0,
+                specularColor: 0xffffff,
+                specularIntensity: 1,
+                sheenColor: 0x793600,
+                sheenRoughness: 0,
+                sheen: 0,
+                // ior: 0,
+                fog: false,
+                transmission: 0
+                // attenuationDistance: 0.00001,
+                // attenuationColor: 0xff0000
+                } );
+                material.normalMap.needsUpdate = true;
+                material.map.needsUpdate = true;
+                material.color.convertSRGBToLinear();
+        } else {
+            material = new MeshPhysicalMaterial( {
+                color: 0xffffff,
+                opacity: 1,
+                metalness: 0,   
+                roughness: 3, 
+                depthFunc: THC.LessEqualDepth,
+                depthTest: true,
+                emissive: 0xffffff,
+                emissiveIntensity: 0.1,
+                alphaToCoverage: true,
+                transparent: true,
+                reflectivity: 5,
+                side: THC.BackSide,
+                clearcoat: 0.2,
+                clearcoatRoughness: 0,
+                specularColor: 0x000000,
+                specularIntensity: 0.1,
+                sheenColor: 0xffffff,
+                sheenRoughness: 10,
+                sheen: 2,
+                // ior: 0,
+                fog: true,
+                transmission: 0
+                // attenuationDistance: 0.00001,
+                // attenuationColor: 0xff0000
+                } );
+        }
         
-        
+        return material;
         // // 0xffd7af
         // return new MeshStandardMaterial({
         //     color: 0xcdcdcd,

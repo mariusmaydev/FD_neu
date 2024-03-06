@@ -7,6 +7,7 @@ class ConverterHelper {
   static PATH = PATH.php.converter;
   static CREATE_THUMBNAIL       = "CREATE_THUMBNAIL";
   static FILTER                 = "FILTER";
+  static GEN_FRAME              = "GEN_FRAME";
   static FLIP                   = "FLIP";
     static VERTICAL               = "VERTICAL";
     static HORIZONTAL             = "HORIZONTAL";
@@ -77,6 +78,13 @@ class ConverterHelper {
         console.log(output);
         DSImage.setImages(index, output);
         CONVERTER_STORAGE.canvasNEW.refreshData();
+  }
+  static async genFrame(UserID, ProjectID, Args = null){
+    let call = new SPLINT.CallPHP(ConverterHelper.PATH, ConverterHelper.GEN_FRAME);
+        call.data.UserID             = UserID;
+        call.data.ProjectID          = ProjectID;
+        call.data.Args               = Args;
+        return call.send();
   }
   static async filerGrayscale(active = true){
     for(const index in DSImage.Storage){

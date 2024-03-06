@@ -11,6 +11,7 @@ class NavigationBar {
             await this.drawCart();
             this.mainElement.setAttribute("loaded", true);
         }.bind(this);
+        SPLINT.Events.onLoadingComplete.dispatch();
         this.draw();
     }
     hide(){

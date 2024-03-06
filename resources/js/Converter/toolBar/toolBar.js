@@ -43,10 +43,3 @@ class Converter_ToolBar {
 
     }
 }
-// static drawBottomBar(parent){
-//     let bottomBar = new SPLINT.DOMElement("ConverterBottomBar", "div", parent);
-//         bottomBar.Class("converter-bottom-bar");
-        
-//         CONVERTER_STORAGE.toolBar = new Converter_ToolBar_bottom();
-//         CONVERTER_STORAGE.toolBar.blurAll();
-// }

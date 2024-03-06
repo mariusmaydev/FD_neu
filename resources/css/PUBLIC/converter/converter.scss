@@ -2,6 +2,8 @@
 @use 'elements/LeftBar';
 @use '../../general/main';
 @use '../../themes/theme1/vars';
+@use '../../themes/theme1/main' as Tmain;
+@use "../../../../../Splint/scss/tools/tools" as S_tools;
 @use '../../general/buttons.scss';
 @use '../../general/NavigationBar/NavigationBar.scss';
 @use '../../general/Footer/FooterMobile.scss';
@@ -322,6 +324,205 @@ body {
                         background-color: vars.$color-primary;
                     }
                 }
+            }
+        }
+    }
+}
+
+.genFramePopup {
+    > .content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: stretch;
+        width: max-content;
+        > * {
+            padding: 0.5rem;
+        }
+        > div {
+            flex-grow: 1;
+            margin: 0.25rem;
+            @include Tmain.TContainer_basic();
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            // width: 100%;
+            > .label {
+                font-size: 1.1rem;
+                padding-bottom: 0rem;
+            }
+            > .inputContainer {
+                // padding-bottom: 0.25rem;
+            }
+        }
+        > .genFrameHeadContainer {
+            gap: 0rem;
+            > .headline {
+                font-size: 1.5rem;
+            }
+            > .n_RadioButton {
+                > div {
+                    display: flex;
+                    flex-direction: row;
+                    > hr {
+                        display: none;
+                    }
+                    > div {
+                        cursor: pointer;
+                        &[state*='active'] {
+                            @include S_tools.SPLINT-border-inset(vars.$color-primary, 3px, false, false, true, false);
+                        }
+                        // > .inputBody {
+                        //     display: none;
+                        // }
+                        > .labelDiv {
+                            width: 100%;
+                            > .name {
+                                padding: 0.5rem;
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: start;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        > .ContainerManagement {
+            width: 100%;
+            > .headline {
+                font-size: 1.3rem;
+            }
+            > .TableMain {
+                max-height: 20rem;
+                > .ListMain {
+                    flex-direction: column;
+                    justify-content: start;
+                    flex-wrap: nowrap;
+                    overflow-x: hidden;
+                    overflow-y: scroll;
+                    > .ListElement {
+                        border-bottom: 1px solid gray;
+                        width: 100%;
+                        display: flex;
+                        height: 100%;
+                        margin-top: 0;
+                        margin-bottom: 0;
+                        padding: 0.35rem;
+                        flex-direction: row;
+                        &[state*='active'] {
+                            background-color: vars.$color-primary-light;
+                        }
+                        > div {
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: center;
+                            align-items: center;
+                            width: 50%;
+                            overflow: hidden;
+                            height: 100%;
+                            vertical-align: bottom;
+                            line-height: 200%;
+                            > span {
+                                font-size: 1.1rem;
+                                position: relative;
+                                height: 100%;
+                                width: 100%;
+                            }
+                        }
+                        > button {
+                            @include Tmain.TButton_simple();
+                            padding: 0.25rem; 
+                            margin-right: 3rem;
+                            > span {
+                                color: vars.$color-primary-text;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        > .containerOther {
+            > .n_RadioButton {
+                > div {
+                    display: flex;
+                    flex-direction: row;
+                    > hr {
+                        display: none;
+                    }
+                    > div {
+                        cursor: pointer;
+                        &[state*='active'] {
+                            @include S_tools.SPLINT-border-inset(vars.$color-primary, 3px, false, false, true, false);
+                        }
+                        > .inputBody {
+                            // display: none;
+                        }
+                        > .labelDiv {
+                            width: 100%;
+                            > .name {
+                                padding: 0.5rem;
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: stretch;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        > .offsetFrameContainer {
+            // width: 150%;
+            // height: 150%;
+            @include Tmain.TContainer_basic();
+            > .buttonsContainer {
+                position: relative;
+                overflow: hidden;
+                box-sizing: border-box;
+                width: 100%;
+                > button {
+                    position: relative;
+                    box-sizing: border-box;
+                    width: calc(100% - 1rem);
+                    @include Tmain.TButton_simple();
+                    background-color: vars.$color-T_container-Medium ;
+                    @include S_tools.SPLINT-border-inset(red, 4px, false, false, true, false);
+                    &[state*='active']{
+                        @include S_tools.SPLINT-border-inset(rgb(0, 178, 0), 4px, false, false, true, false);
+                    }
+                    > span {
+                        color: vars.$color-primary-text;
+                    }
+                }
+            }
+            > .inputContainer {
+                &[disabled*='true']{
+                    pointer-events: none;
+                    opacity: 0.5;
+                }
+            }
+            .AmountDiv {
+            }
+        }
+        > .buttonsContainer {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            width: 100%;
+            justify-self: end;
+            > button {
+                @include Tmain.TButton_simple();
+                background-color: vars.$color-primary;
+                min-width: 20%;
+                > span {
+                    color: vars.$color-primary-text;
+                }
+            }
+        }
+        .AmountDiv {
+            width: 100%;
+            > div {
+                width: 5rem;
             }
         }
     }

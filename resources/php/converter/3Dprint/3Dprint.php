@@ -218,7 +218,7 @@
     }
     class print3D {
 
-        public static function f1($imgScale, int $width, int $height) : PathObject {
+        public static function f1($imgScale, int $width, int $height) : PathObject2D {
             // error_log("f1");
             imagefilter($imgScale, IMG_FILTER_GRAYSCALE);
             $imgArray = array(array());
@@ -248,12 +248,12 @@
             $r = rgb2hsl($color['red'], $color['green'], $color['blue']);
             return $r[2];
         }
-        public static function f2(array $imgArray, $min, $max) : PathObject{
+        public static function f2(array $imgArray, $min, $max) : PathObject2D {
             // error_log("f2");
             $layerCount = 10;
             $layerHeight = ($max - $min) / ($layerCount);
             $count = 1;
-            $PathObject = new PathObject();
+            $PathObject = new PathObject2D();
             while($count <= $layerCount){
                 $img = imagecreatetruecolor(count($imgArray), count($imgArray[0]));
                 imagefill($img, 0, 0, imagecolorallocate($img, 255, 255, 255));
@@ -275,7 +275,7 @@
             }
             return $PathObject;
         }
-        public static function f3(array $imgArray, $min, $max) : PathObject{
+        public static function f3(array $imgArray, $min, $max) : PathObject2D{
             // error_log("f3");
             function fin($x, $y, &$PathElement, &$imgArray, $layerHeight, &$saveArray){
                 $PathElement -> addStep($x, $y);
@@ -300,7 +300,7 @@
             $layerCount = 10;
             $layerHeight = ($max - $min) / ($layerCount);
             $count = 1;
-            $PathObject = new PathObject();
+            $PathObject = new PathObject2D();
             while($count <= $layerCount){
                 $PathElement = new PathElement2D();
                 $saveArray = array();
@@ -325,7 +325,7 @@
 
             return $PathObject;
         }
-        public static function PathObject2Img(PathObject $PathObject, string $ImgPath, int $width, int $height){
+        public static function PathObject2Img(PathObject2D $PathObject, string $ImgPath, int $width, int $height){
             // error_log("img");
             $pathElements = $PathObject -> getElements();
 

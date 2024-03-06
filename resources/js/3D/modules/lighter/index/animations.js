@@ -414,9 +414,9 @@ export default class compressedIndexAnimations {
                     this.flameEx();
                     this.explosion_wasOpen = true;
                 }
-                let translation = new Vector3(0.01, 0.2, 0.35);
-                this.inst.Animations.cameraTo.start(true, 0.2, undefined, false, translation, true);
                 if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
+                    let translation = new Vector3(0.01, 0.3, -0.1);
+                    this.inst.Animations.cameraTo.start(true, 0.2, undefined, false, translation, true);
                     this.inst.Animations.lighter_explosion_turn_mobile.onStop = function(){
                         this.inst.Animations.lighter_explosion_split.onStop = function(){
                             this.isExploded = true;
@@ -448,7 +448,7 @@ export default class compressedIndexAnimations {
         return new Promise(async function(resolve, reject){
             if(this.isExploded){
                 if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
-                    let translation = new Vector3(0.01, 0.2, 0.35);
+                    let translation = new Vector3(0.01, 0.3, -0.1);
                     this.inst.Animations.cameraTo.start(true, 0.2, undefined, false, translation, false);
                     this.inst.Animations.lighter_explosion_split.onStop = function(){
                         this.inst.Animations.lighter_explosion_turn_mobile.onStop = function(){

@@ -40,10 +40,12 @@ class Converter {
     console.dir(DSText)
     console.dir(DSProject)
     
-    DSProject.Storage[DSProject.SQUARE].width = LighterWidth * 16.4;
-    DSProject.Storage[DSProject.SQUARE].widthMM = LighterWidth;
-    DSProject.Storage[DSProject.SQUARE].height = LighterHeight * 16.4;
-    DSProject.Storage[DSProject.SQUARE].heightMM = LighterHeight;
+    if(DSProject.Storage[DSProject.SQUARE].widthMM == undefined){
+        DSProject.Storage[DSProject.SQUARE].width = LighterWidth * 16.4;
+        DSProject.Storage[DSProject.SQUARE].widthMM = LighterWidth;
+        DSProject.Storage[DSProject.SQUARE].height = LighterHeight * 16.4;
+        DSProject.Storage[DSProject.SQUARE].heightMM = LighterHeight;
+    }
         this.draw();
         this.init();
         this.initEvents();
@@ -84,6 +86,7 @@ class Converter {
     if(hashes == "ADMIN"){
       NavBar.hide();
     } else if(hashes == "ADMINPLUS"){
+        SPLINT.DataStorage.get("/converterSettings/" + name + ".json");
     //   NavBar.hide();
       NavBar.clear();
     }

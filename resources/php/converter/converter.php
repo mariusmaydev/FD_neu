@@ -5,12 +5,9 @@
     require_once $rootpath.'/fd/resources/php/converter/image/image.php'; 
     require_once $rootpath.'/fd/resources/php/converter/converterConfig.php'; 
     require_once $rootpath.'/fd/resources/php/converter/create/creator.php';
-    require_once $rootpath.'/fd/resources/php/converter/SVG/StartGeneratingSVG.php';
-    require_once $rootpath.'/fd/resources/php/converter/SVG/generateLaserData.php';
     require_once $rootpath.'/fd/resources/php/converter/3Dprint/3Dprint.php';
     require_once $rootpath.'/fd/resources/php/converter/3Dprint/3DprintVase.php';
     require_once $rootpath.'/fd/resources/php/converter/3mf/3mfConverter.php';
-    require_once $rootpath.'/fd/resources/php/converter/laser/laserGCodeHelper.php';
     require_once $rootpath.'/fd/resources/php/project/project.php';
 
     class Converter {
@@ -30,6 +27,29 @@
         //     }
         //     createThumbnail($StorageProject, $StorageImg, $StorageText);
         // }
+        public static function genFrame($UserID, $ProjectID,bool $sendBack = true){
+
+            $args = new stdClass();
+            $args -> type = "laser";
+            $args -> PointZero = new stdClass();
+            $args -> PointZero -> X = null;
+            $args -> PointZero -> Y = null;
+            if(isset($_POST["Args"])){
+                $args = $_POST["Args"];
+                $args = new stdClass();
+                $args -> PointZero = new stdClass();
+                $args -> PointZero -> X = $_POST["Args"]["PointZero"]["X"] / 16.4;
+                $args -> PointZero -> Y = $_POST["Args"]["PointZero"]["Y"] / 16.4;
+                $args -> innerFrame = $_POST["Args"]["innerFrame"];
+                Communication::sendBack($args);
+            }
+            
+            $ProjectData = Project::get($ProjectID, $UserID, false);
+            $args -> lighterSize = new stdClass();
+            $args -> lighterSize -> height = $ProjectData[ProjectDB::SQUARE] -> heightMM * 50;
+            $args -> lighterSize -> width = $ProjectData[ProjectDB::SQUARE] -> widthMM * 50;
+            ConverterCreator::createLaserFrame($ProjectData, $UserID, $args);
+        }
         public static function filter(){
             $ImageData  = $_POST["Storage"];
             $Filter     = $ImageData[ImageDB::IMAGE_FILTER]; 
@@ -84,10 +104,6 @@
 
         }
         public static function create($UserID, $ProjectID){
-            global $rootpath;
-            global $LIGHTER_HEIGHT;
-            global $LIGHTER_WIDTH;
-            global $LIGHTER_MULTIPLY;
 
             $args = new stdClass();
             $args -> type = "laser";
@@ -102,10 +118,39 @@
                 $args -> PointZero -> X = $_POST["Args"]["PointZero"]["X"] / 16.4;
                 $args -> PointZero -> Y = $_POST["Args"]["PointZero"]["Y"] / 16.4;
                 Communication::sendBack($args);
-                
             }
             
-            $g = ConverterConfig::get(false);
+            $ProjectData = Project::get($ProjectID, $UserID, false);
+            
+            $ImageData = Image::get(null, $ProjectID, $UserID, false);
+            $TextData = Text::get(null, $UserID, $ProjectID, false);
+            $args -> lighterSize = new stdClass();
+            $args -> lighterSize -> height = $ProjectData[ProjectDB::SQUARE] -> heightMM * 50;
+            $args -> lighterSize -> width = $ProjectData[ProjectDB::SQUARE] -> widthMM * 50;
+            switch($args -> type){
+                case "laserFlat": {
+                    $cfg = ConverterConfig::get(false);
+                    $args -> intensity = new stdClass();
+                    $args -> intensity -> min = $cfg -> laserFlat -> intensity -> min;
+                    $args -> intensity -> max = $cfg -> laserFlat -> intensity -> max;
+                    $args -> quality_PpMM = $cfg -> laserFlat -> quality_PpMM;
+                    $pathObject = ConverterCreator::createPathObjectLaserFlat($ProjectData, $UserID, $args, $ImageData, $TextData);
+                    ConverterCreator::createLaserFlatData($ProjectData, $UserID, $args, $pathObject);
+                } break;
+                case "laser": {
+                    $pathObject = ConverterCreator::createPathObject($ProjectData, $UserID, $args, $ImageData, $TextData);
+                    ConverterCreator::createLaserData($ProjectData, $UserID, $args, $pathObject);
+                } break;
+                case "engraving": {
+                    $pathObject = ConverterCreator::createPathObject($ProjectData, $UserID, $args, $ImageData, $TextData);
+                    ConverterCreator::createEngravingData($ProjectData, $UserID, $args, $pathObject);
+                } break;
+                case "SVG": {
+                    $pathObject = ConverterCreator::createPathObject($ProjectData, $UserID, $args, $ImageData, $TextData);
+                    ConverterCreator::createSVGData($ProjectData, $UserID, $args, $pathObject);
+                } break;
+            }
+
             // $Storage = [];
             // $Storage["IMG"] = $_POST["StorageImg"];
             // $Storage["TXT"] = $_POST["StorageText"];
@@ -115,29 +160,6 @@
             // $vase -> draw();
             // $vase -> getNC();
             // start_3mf();
-            $ProjectData = Project::get($ProjectID, $UserID, false);
-            
-            $ImageData = Image::get(null, $ProjectID, $UserID, false);
-            $TextData = Text::get(null, $UserID, $ProjectID, false);
-            // Communication::sendBack($TextData);
-            if($args -> type == "laserFlat"){
-                // $LIGHTER_HEIGHT = ($ProjectData[ProjectDB::SQUARE] -> height / 16.4) * 0.9 * 5.36 * 2 * 2 * 2;//ProjectDB::LIGHTER_HEIGHT;
-                // $LIGHTER_WIDTH = ($ProjectData[ProjectDB::SQUARE] -> width / 16.4) * 0.9 * 5.36  * 2 * 2 * 2;
-                $LIGHTER_HEIGHT = $ProjectData[ProjectDB::SQUARE] -> heightMM * 50;
-                $LIGHTER_WIDTH = $ProjectData[ProjectDB::SQUARE] -> widthMM * 50;
-                $LIGHTER_MULTIPLY = 1;//61.29;//66.08;
-                laserGCodeHelper::genProjectImage($ProjectData, $UserID, $ImageData, $TextData, $args);
-            } else if($args -> type == "laser" || $args -> type == "engraving" || $args -> type == "SVG"){
-                $LIGHTER_HEIGHT = $ProjectData[ProjectDB::SQUARE] -> heightMM * 50;
-                $LIGHTER_WIDTH = $ProjectData[ProjectDB::SQUARE] -> widthMM * 50;
-                $LIGHTER_MULTIPLY = 1;//61.29;//66.08;
-                start($ProjectData, $UserID, $ImageData, $TextData, $args);
-            } else if($args -> type == "SVG"){
-                
-            }
-            // start_generatingLaserData($_POST["StorageProject"], checkIsset($_POST["StorageImg"]), checkIsset($_POST["StorageText"]));
-
-
             // debugg("start");
             // $imgScale = imagecreatefrompng($rootpath . "/fd/data/3Dprint/testFlorian2.png");
             // $print = new print3DImage();

@@ -37,6 +37,51 @@
             ob_end_clean(); 
             return $imgBlob;
         }
+        public function CheckWhiteEdges(fixedArray $fArray, int $x, int $y){
+            $matrix  =  [
+                            [
+                                [0,0,0],
+                                [0,1,1],
+                                [0,1,1]
+                            ],
+                            [
+                                [0,0,0],
+                                [1,1,0],
+                                [1,1,0]
+                            ],
+                            [
+                                [1,1,0],
+                                [1,1,0],
+                                [0,0,0]
+                            ],
+                            [
+                                [0,1,1],
+                                [0,1,1],
+                                [0,0,0]
+                            ]
+                        ];
+            $counter    = [];
+            $counter[0] = 0;
+            $counter[1] = 0;
+            $counter[2] = 0;
+            $counter[3] = 0;
+            $white = 0;
+            for ($y1 = 0; $y1 <= 2; $y1++) {
+                for ($x1 = 0; $x1 <= 2; $x1++) {
+                    for ($i = 0; $i <= 3; $i++) {
+                        if ($matrix[$i][$y1][$x1] == 0 && $fArray -> get($x + $x1 - 1, $y + $y1 - 1) == $white) {
+                            $counter[$i]++;
+                        }
+                    }
+                }
+            }
+            for($i = 0; $i <= 3; $i++){
+                if($counter[$i] == 5){
+                    return true;
+                }
+            }
+            return false;
+        }
         public function dilate(){
             $fArray_out = new fixedArray($this -> fArray -> x, $this -> fArray -> y);
             $fArray_out -> array = clone $this -> fArray -> array;
@@ -133,7 +178,7 @@
                             $counter++;
                         }
                         if($counter == 3){
-                            if(CheckWhiteEdges($this -> fArray, $x, $y)){
+                            if($this -> CheckWhiteEdges($this -> fArray, $x, $y)){
                                 $fArray_out -> set($x, $y, $white);
                             } else {
                                 $fArray_out -> set($x, $y, $black);
@@ -143,6 +188,29 @@
                 }
             }
             $this -> fArray -> array = $fArray_out -> array;
+        } 
+        public function isAround(fixedArray &$fArray, int $x, int $y) : bool {
+            $black = 1;
+            $white = 0;
+    
+            $counter = 0;
+            if($fArray -> get($x + 1, $y) == $black){
+                $counter++;
+            }
+            if($fArray -> get($x - 1, $y) == $black){
+                $counter++;
+            }
+            if($fArray -> get($x, $y + 1) == $black){
+                $counter++;
+            }
+            if($fArray -> get($x, $y - 1) == $black){
+                $counter++;
+            }
+            if($counter >= 2){
+                return true;
+            } else {
+                return false;
+            }
         } 
         public function fix(){
             $fArray_out = new fixedArray($this -> fArray -> x, $this -> fArray -> y);
@@ -154,22 +222,22 @@
                     $counter = 0;
                     if($this -> fArray -> get($x, $y) == $white){
                         if($this -> fArray -> get($x + 1, $y) == $black){
-                            if(!isAround($this -> fArray, $x + 1, $y)){
+                            if(!$this -> isAround($this -> fArray, $x + 1, $y)){
                                 $counter++;
                             }
                         }
                         if($this -> fArray -> get($x - 1, $y) == $black){
-                            if(!isAround($this -> fArray, $x - 1, $y)){
+                            if(!$this -> isAround($this -> fArray, $x - 1, $y)){
                                 $counter++;
                             }
                         }
                         if($this -> fArray -> get($x, $y + 1) == $black){
-                            if (!isAround($this -> fArray, $x, $y + 1)) {
+                            if(!$this -> isAround($this -> fArray, $x, $y + 1)) {
                                 $counter++;
                             }
                         }
                         if($this -> fArray -> get($x, $y - 1) == $black){
-                            if(!isAround($this -> fArray, $x, $y - 1)){
+                            if(!$this -> isAround($this -> fArray, $x, $y - 1)){
                                 $counter++;
                             }
                         }
@@ -190,7 +258,7 @@
         }
         public function ImagickFilter($func) : Imagick{
             $img = new Imagick();
-            $img -> newImage($this -> fArray -> x, $this -> fArray -> y, new ImagickPixel('white'));
+            $img -> newImage($this -> fArray -> x, $this -> fArray -> y, new ImagickPixel('white'), 'png');
             foreach($this -> fArray -> array as $key => $element){
                 if($element == 1){
                     $array = $this -> fArray -> getCoordsForIndex($key);
@@ -202,12 +270,12 @@
             $img -> setImageFormat("png");
             return $img;
         }
-        private function transparent(Array $color, GdImage $img) : GdImage {
-            $this -> color = $color;
-            $color = imagecolorexact($img, $color[0], $color[1], $color[2]);
-            imagecolortransparent($img, $color);
-            return $img;
-        }
+        // private function transparent(Array $color, GdImage $img) : GdImage {
+        //     $this -> color = $color;
+        //     $color = imagecolorexact($img, $color[0], $color[1], $color[2]);
+        //     imagecolortransparent($img, $color);
+        //     return $img;
+        // }
     }
 
     class ImagickHelper {
@@ -249,7 +317,7 @@
         }
         public static function fArray2img(fixedArray &$fArray, bool $transparent = false) : Imagick{
             $img = new Imagick();
-            $img -> newImage($fArray -> x, $fArray -> y, new ImagickPixel('white'));
+            $img -> newImage($fArray -> x, $fArray -> y, new ImagickPixel('white'), 'png');
             foreach($fArray -> array as $key => $element){
                 if($element == 1){
                     $array = $fArray -> getCoordsForIndex($key);

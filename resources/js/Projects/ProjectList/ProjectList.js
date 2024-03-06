@@ -23,9 +23,8 @@ class drawProjectList {
         }
     }
     async draw(){
-        console.log(this.data);
         this.clear();
-        if(this.data == null){
+        if(false && this.data == null){
             this.emptyBody = new SPLINT.DOMElement(this.id + "emptyBody", "div", this.mainElement);
             this.emptyBody.Class("emptyBody");
                 let headline = new SPLINT.DOMElement.SpanDiv(this.emptyBody, "headline", "Hier ist nichts");

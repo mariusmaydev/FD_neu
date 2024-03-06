@@ -1,15 +1,9 @@
-import * as THREE from 'three';
+
 import SPLINT from 'SPLINT';
 import * as THC from "@THREE_ROOT_DIR/src/constants.js";
 import { OrbitControls } from '@SPLINT_MODULES_DIR/ThreeJS/animations/OrbitControls_Modified.js';
-// import {
-    // Scene,
-    // WebGLRenderer
-// } from 'three';
 import { Scene } from "@THREE_ROOT_DIR/src/scenes/Scene.js";
 import { WebGLRenderer } from "@THREE_ROOT_DIR/src/renderers/WebGLRenderer.js";
-// import { OrbitControls } from '@THREE_MODULES_DIR/controls/OrbitControls.js';
-import MODEL from './model.js';
 
 export default class setup {
     static RENDERER = null;
@@ -50,6 +44,9 @@ export default class setup {
             this.inst.renderer.antialias = true;
             this.inst.renderer.alpha = true;
             this.inst.renderer.physicallyCorrectLights = true;
+            this.inst.renderer.toneMapping = THC.ACESFilmicToneMapping;
+            this.inst.renderer.outputEncoding = THC.sRGBEncoding;
+            this.inst.renderer.toneMappingExposure = 1;
             this.inst.renderer.setClearColor(0x000000, 0);
             // this.inst.renderer.powerPreference = "high-performance";
             this.inst.renderer.autoClear = true;
@@ -75,20 +72,20 @@ export default class setup {
         // this.controls.maxPolarAngle     = Math.PI / 2;
         this.inst.controls.update();
     }
-    async draw(){
-        this.inst.drawBackground();
-        this.inst.light();
-        this.inst.scene.add( this.inst.camera );
-        return new Promise(async function(resolve){
-            if(this.inst.canvas.getAttribute("color") == "CHROME"){
-                await MODEL.init(this.inst, "lighter", 1, false);
-            } else {
-                await MODEL.init(this.inst);
-            }
-            resolve('resolved');
-            this.inst.onFinishLoading();
-        }.bind(this));
-    }
+    // async draw(){
+    //     this.inst.drawBackground();
+    //     this.inst.light();
+    //     this.inst.scene.add( this.inst.camera );
+    //     // return new Promise(async function(resolve){
+    //     //     if(this.inst.canvas.getAttribute("color") == "CHROME"){
+    //     //         await MODEL.init(this.inst, "lighter", 1, false);
+    //     //     } else {
+    //     //         await MODEL.init(this.inst);
+    //     //     }
+    //     //     resolve('resolved');
+    //     //     this.inst.onFinishLoading();
+    //     // }.bind(this));
+    // }
     getLighterGroupe(scene = this.inst.scene, name = 'lighter'){
         
         if(this.inst.LighterGroupe[name] == undefined){

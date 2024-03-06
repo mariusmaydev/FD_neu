@@ -14,6 +14,14 @@
 
             return $Filter;
         }
+        public static function base64_to_png($base64_string) {
+            $data = explode( ',', $base64_string );
+            if(count($data) > 1){
+                return base64_decode( $data[ 1 ] ); 
+            } else {
+                return base64_decode( $data[ 0 ] ); 
+            }
+        }
         public static function newFilterDataSet(float $a = 8, float $b = 10, float $c = 3, float $d = 0, bool $edges = true) : stdClass { 
             $Filter = new stdClass();
             $Filter -> contrast     = $a;

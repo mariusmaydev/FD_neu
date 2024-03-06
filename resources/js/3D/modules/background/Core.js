@@ -14,12 +14,14 @@ import SETUP from '../lighter/setup.js';
 import { PerspectiveCamera } from "@THREE_ROOT_DIR/src/cameras/PerspectiveCamera.js";
 import { Scene } from "@THREE_ROOT_DIR/src/scenes/Scene.js";
 import { Color } from "@THREE_ROOT_DIR/src/math/Color.js";
+import * as THC from "@THREE_ROOT_DIR/src/constants.js";
 
 export class draw {
     static get(canvas){
         return new draw(canvas);
     }
     constructor(canvas){
+        console.time();
         this.id = "background3D_";
         this.canvas = canvas;
         this.loaded = true;
@@ -35,6 +37,7 @@ export class draw {
         // this.scene.fog = new Fog(0xd7d7d7, 0.05, 20);
         this.setupCamera();
 
+        this.renderer.toneMapping = THC.LinearToneMapping;
         this.renderer.toneMappingExposure = 1;
         // this.setup.controls();
     }
@@ -62,6 +65,7 @@ export class draw {
     }
     render(){
         this.renderer.render(this.scene, this.camera);
+        console.timeEnd()
         this.context.clearRect(0, 0, this.canvas.parentNode.clientWidth*2, this.canvas.parentNode.clientHeight*2);
         let domE = this.renderer.domElement;
         this.context.drawImage(domE, 0, 0, domE.width, domE.height, 0, 0, this.canvas.width, this.canvas.height);

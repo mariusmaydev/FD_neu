@@ -15,7 +15,7 @@
         }
         public static function get(bool $print = false){
             if(self::isForceReload()){
-                $processData = DataStorage::get("/converterProcess.json", false);
+                $processData = DataStorage::get("/converterSettings/converterProcess.json", false);
                 if($processData == false){
                     Debugger::error("converterProcess file not found");
                     Communication::sendBack("converterProcess file not found", true, $print);
@@ -34,7 +34,7 @@
             }
             $processData = S_shmop::read("converterProcessData");
             if($processData == null || self::isForceReload()){
-                $processData = DataStorage::get("/converterProcess.json", false);
+                $processData = DataStorage::get("/converterSettings/converterProcess.json", false);
                 if($processData == false){
                     Debugger::error("converterProcess file not found");
                     Communication::sendBack("converterProcess file not found", true, $print);

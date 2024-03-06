@@ -31,7 +31,7 @@ class productHelper {
             obj.price = price;
         return obj;
     }
-    static async newProduct(price, name, description, size, viewName, attrs = []){
+    static async newProduct(price, name, description, size, viewName, color, EPType, attrs = []){
         let call = this.MANAGER.call(productHelper.NEW);
             call.data.price       = price;
             call.data.description = description;
@@ -39,6 +39,9 @@ class productHelper {
             call.data.viewName    = viewName;
             call.data.size        = size;
             call.data.attrs       = attrs;
+            call.data.colorHex    = color.hex;
+            call.data.colorName   = color.name;
+            call.data.EPType      = EPType;
         return call.send();
     }
     static getProducts(price, name){
@@ -60,7 +63,7 @@ class productHelper {
             return this.LIST;
         }.bind(this));
     }
-    static async editProduct(ID, price, name, description, size, viewName, attrs = []){
+    static async editProduct(ID, price, name, description, size, viewName, color, EPType, attrs = []){
         let call = this.MANAGER.call(productHelper.EDIT);
             call.data.price       = price;
             call.data.description = description;
@@ -68,6 +71,9 @@ class productHelper {
             call.data.viewName    = viewName;
             call.data.size        = size;
             call.data.attrs       = attrs;
+            call.data.colorHex    = color.hex;
+            call.data.colorName   = color.name;
+            call.data.EPType      = EPType;
             call.data.ID          = ID;
         return call.send();
     }

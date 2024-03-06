@@ -19,7 +19,13 @@ export default class projectCommunication {
     }
     init(){
         this.inst.canvas.S_toModule = function(event, data){
-            if(data.type == 'showDimensions'){
+            if(data.type == "changeColor"){
+                this.inst.changeColor(data.value.name, data.value.hex.replace('0x', '#'));
+
+            } if(data.type == "changeEPType"){
+                this.inst.changeEngravingColor(data.value);
+
+            }else if(data.type == 'showDimensions'){
                 if(data.value){
                     this.showDimensions();
                 } else {

@@ -11,6 +11,13 @@
 @use '../../general/Footer/FooterDesktop.scss';
 @use '../../general/mediaQueries';
 
+.lil-gui {
+    // position: absolute !important;
+    z-index: 5000 !important;
+    // height: 50vh !important;
+    // width: 50vw !important;
+}
+
 @include mediaQueries.forMediaBreakpoint(desktop mobile){
     @include FooterDesktop.FooterDesktop();
     body {

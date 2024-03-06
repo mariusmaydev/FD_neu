@@ -10,7 +10,6 @@ import { MeshPhongMaterial } from "@THREE_ROOT_DIR/src/materials/MeshPhongMateri
 //     MeshStandardMaterial,
 //     MeshPhysicalMaterial
 // } from 'three';
-import SRC from '../Helper.js';
 // import S_materials from '@SPLINT_MODULES_DIR/ThreeJS/materials/M_materials.js';
 import MaterialHelper from '@SPLINT_MODULES_DIR/ThreeJS/materials/MaterialHelper.js';
 import { Vector2 } from "@THREE_ROOT_DIR/src/math/Vector2.js";
@@ -349,90 +348,90 @@ export class Lighter {
       await onload(null, material);
       return material;
     }
-    static Engraving( instance, src = null, srcMap = SPLINT.URIs.project + "/" + SRC().lighter.engraving.normalMap, color, onload = function(){}){
+    // static Engraving( instance, src = null, srcMap = SPLINT.URIs.project + "/" + SRC().lighter.engraving.normalMap, color, onload = function(){}){
       
-      let material = null;
-      let HELPER = new MaterialHelper("gold");
-      // if(HELPER.material != undefined){
-      //     material =  MaterialHelper.cloneMaterial(HELPER.material);
-      //     // material.color.set(0xffc400);
-      //     // material.needsUpdate = true;
-      //     onload(null, material);
-      //     return material;
-      // };
-      let texture = null;
-      if(src != null){
-        texture = MaterialHelper.getTexture(src);
-      } else {
-        texture = MaterialHelper.getTexture(SPLINT.resources.textures.lighter_engraving_thumbnail)
-      }
-      // let texture = SPLINT.resources.textures.lighter_engraving_thumbnail;
-          texture.wrapS = THC.RepeatWrapping;
-          texture.wrapT = THC.RepeatWrapping;
-          // texture.repeat.set(1, 0.6156);
-          texture.flipY = false;
-          texture.mapping = THC.EquirectangularReflectionMapping;
-          texture.generateMipmaps = true;
-          texture.magFilter = THC.NearestFilter;
-          texture.minFilter = THC.LinearMipmapLinearFilter;
-          texture.anisotropy = 16;
-          texture.premultiplyAlpha = true;
-          texture.needsUpdate = true;
+    //   let material = null;
+    //   let HELPER = new MaterialHelper("gold");
+    //   // if(HELPER.material != undefined){
+    //   //     material =  MaterialHelper.cloneMaterial(HELPER.material);
+    //   //     // material.color.set(0xffc400);
+    //   //     // material.needsUpdate = true;
+    //   //     onload(null, material);
+    //   //     return material;
+    //   // };
+    //   let texture = null;
+    //   if(src != null){
+    //     texture = MaterialHelper.getTexture(src);
+    //   } else {
+    //     texture = MaterialHelper.getTexture(SPLINT.resources.textures.lighter_engraving_thumbnail)
+    //   }
+    //   // let texture = SPLINT.resources.textures.lighter_engraving_thumbnail;
+    //       texture.wrapS = THC.RepeatWrapping;
+    //       texture.wrapT = THC.RepeatWrapping;
+    //       // texture.repeat.set(1, 0.6156);
+    //       texture.flipY = false;
+    //       texture.mapping = THC.EquirectangularReflectionMapping;
+    //       texture.generateMipmaps = true;
+    //       texture.magFilter = THC.NearestFilter;
+    //       texture.minFilter = THC.LinearMipmapLinearFilter;
+    //       texture.anisotropy = 16;
+    //       texture.premultiplyAlpha = true;
+    //       texture.needsUpdate = true;
 
-      // let bumpTexture = MaterialHelper.getTexture(SPLINT.resources.textures.lighter_engraving_bumpMap);
-      let bumpTexture = null;
-      if(src != null){
-        bumpTexture = MaterialHelper.getTexture(src);
-      } else {
-        bumpTexture = MaterialHelper.getTexture(SPLINT.resources.textures.lighter_engraving_thumbnail)
-      }
-          bumpTexture.wrapS = THC.RepeatWrapping;
-          bumpTexture.wrapT = THC.RepeatWrapping;
-          // texture.repeat.set(1, 0.6156);
-          bumpTexture.flipY = false;
-          bumpTexture.mapping = THC.EquirectangularReflectionMapping;
-          bumpTexture.generateMipmaps = true;
-          bumpTexture.magFilter = THC.NearestFilter;
-          bumpTexture.minFilter = THC.LinearMipmapLinearFilter;
-          bumpTexture.anisotropy = 16;
-          bumpTexture.premultiplyAlpha = true;
-          bumpTexture.needsUpdate = true;
+    //   // let bumpTexture = MaterialHelper.getTexture(SPLINT.resources.textures.lighter_engraving_bumpMap);
+    //   let bumpTexture = null;
+    //   if(src != null){
+    //     bumpTexture = MaterialHelper.getTexture(src);
+    //   } else {
+    //     bumpTexture = MaterialHelper.getTexture(SPLINT.resources.textures.lighter_engraving_thumbnail)
+    //   }
+    //       bumpTexture.wrapS = THC.RepeatWrapping;
+    //       bumpTexture.wrapT = THC.RepeatWrapping;
+    //       // texture.repeat.set(1, 0.6156);
+    //       bumpTexture.flipY = false;
+    //       bumpTexture.mapping = THC.EquirectangularReflectionMapping;
+    //       bumpTexture.generateMipmaps = true;
+    //       bumpTexture.magFilter = THC.NearestFilter;
+    //       bumpTexture.minFilter = THC.LinearMipmapLinearFilter;
+    //       bumpTexture.anisotropy = 16;
+    //       bumpTexture.premultiplyAlpha = true;
+    //       bumpTexture.needsUpdate = true;
 
-          material = new MeshPhysicalMaterial( {
-            color: 0xffc400,
-            map: texture,
-            bumpMap: bumpTexture,
-            bumpScale: 10,
-            side: THC.FrontSide,
-            blending: THC.NormalBlending,
-            opacity: 2,
-            metalness: 1.6,   // between 0 and 1
-            roughness: 6, // between 0 and 1
-            // depthFunc: THC.LessEqualDepth,
-            depthTest: true,
-            emissive: 0xffc400,
-            emissiveIntensity: 0.8,
-            alphaToCoverage: false,
-            transparent: true,
-            reflectivity: 0,
-            clearcoat: 1.1,
-            clearcoatRoughness: 0.8,
-            specularColor: 0x000000,
-            specularIntensity: 0.1,
-            thickness: 0,
-            sheenColor: 0x7b5e00,
-            sheenRoughness: 0.5,
-            sheen: 0.2,
-            ior: 0,
-            transmission: 0,
-            dithering: false
-            } );
-            material.bumpMap.needsUpdate = true;
-            material.color.convertSRGBToLinear();
-        HELPER.material = material.clone();
-      onload(null, material);
-      return material;
-    }
+    //       material = new MeshPhysicalMaterial( {
+    //         color: 0xffc400,
+    //         map: texture,
+    //         bumpMap: bumpTexture,
+    //         bumpScale: 10,
+    //         side: THC.FrontSide,
+    //         blending: THC.NormalBlending,
+    //         opacity: 2,
+    //         metalness: 1.6,   // between 0 and 1
+    //         roughness: 6, // between 0 and 1
+    //         // depthFunc: THC.LessEqualDepth,
+    //         depthTest: true,
+    //         emissive: 0xffc400,
+    //         emissiveIntensity: 0.8,
+    //         alphaToCoverage: false,
+    //         transparent: true,
+    //         reflectivity: 0,
+    //         clearcoat: 1.1,
+    //         clearcoatRoughness: 0.8,
+    //         specularColor: 0x000000,
+    //         specularIntensity: 0.1,
+    //         thickness: 0,
+    //         sheenColor: 0x7b5e00,
+    //         sheenRoughness: 0.5,
+    //         sheen: 0.2,
+    //         ior: 0,
+    //         transmission: 0,
+    //         dithering: false
+    //         } );
+    //         material.bumpMap.needsUpdate = true;
+    //         material.color.convertSRGBToLinear();
+    //     HELPER.material = material.clone();
+    //   onload(null, material);
+    //   return material;
+    // }
 //     static Engraving2( instance, src = SPLINT.URIs.project + "/" + SRC().lighter.engraving.thumbnail, srcMap = SPLINT.URIs.project + "/" + SRC().lighter.engraving.normalMap, color, onload = function(){}){
       
 //       let texture = SPLINT.resources.textures.lighter_engraving_thumbnail;

@@ -13,6 +13,7 @@ class drawLighter3D {
     constructor(parent, name = "", type = "", src = null, newContext = false, mouseEvents = false, color = null){
       this.parent       = parent;
       this.type         = type;
+      this.promise      = null;
       this._saveContext  = false;
       this.id = "drawLighter3D_" + name + "_";
       if(document.getElementById(this.id + "main") != null){
@@ -48,6 +49,15 @@ class drawLighter3D {
       }
       drawLighter3D.STORAGE.push(this);
     }
+    onLoad(){
+        // return new Promise(async function(resolve){
+            
+        // }.bind(this));
+        if(this.canvas.getAttribute("loaded") == true){
+            return true;
+        }
+        return false;
+    }
     set saveContext(value){
       this._saveContext = value;
       this.div.setAttribute("saveContext", value);
@@ -80,15 +90,19 @@ class drawLighter3D {
       this.canvas.dispatchEvent(SPLINT_EVENTS.toModule);
     }
     getFromRenderer(){
-      this.canvas.S_toCommonJS = function(e, b, c){
-        let data = JSON.parse(c);
-        if(data.type == "loaded"){
-          let obj = new Object();
-              obj.type = "addImage";
-              obj.data = DSImage.Storage;
-          this.sendToRenderer(obj)
-        }
-      }.bind(this);
+        this.promise = new Promise(function(resolve){
+            this.canvas.S_toCommonJS = function(e, c){
+              Promise.resolve(this.loadPromise);
+              let data = c;
+              if(data.type == "loaded"){
+                  resolve("test");
+              //   let obj = new Object();
+              //       obj.type = "addImage";
+              //       obj.data = DSImage.Storage;
+              //   this.sendToRenderer(obj)
+              }
+            }.bind(this);
+        }.bind(this));
     }
   }
 

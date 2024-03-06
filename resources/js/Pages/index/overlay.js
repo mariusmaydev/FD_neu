@@ -36,36 +36,8 @@ class indexOverlay {
     drawPart1(){
 
         this.part1 = new indexOverlayPart(this.contentElement, "start");
-        // this.part1.text = "Einzigartig, stilvoll und elegant. Das Feuerzeug fürs Leben. Das Feuerzeug für dich.";
-        // this.part1.text = "Sei besonders, mit Funkendesign. ";
-        // this.part1.text = "Zeige wer du bist, mit deinem persönlichen Feuerzeug.";
-        // this.part1.text =   "Praktisch. Stilvoll. Einzigartig.<br>"+
-        //                     "Entwerfe jetzt das Feuerzeug, dass du schon immer ";
         
         this.part1.addText("part1_1", "Ein Feuerzeug. Nur ganz anders.", null, "part1_1");
-        // this.part1.drawNavigatorButtons();
-
-        // this.part1.text = "Einzigartige Accessoires für einzigartige Persönlichkeiten.";
-        // this.part1.text = "Vervollständige deinen style mit deinem persönlichen Feuerzeug.";
-        // this.part1.text = "Dein Leben <br> Dein Charakter <br> Dein Feuerzeug";
-        // this.part1.text = "Dein Feuerzeug. <br> Nach deinem Geschmack.";
-        // this.part1.text = "Einzigartig. Stilvoll. Zuverflässig. ";
-
-
-        // this.part1_buttons = new SPLINT.DOMElement(this.id  + "part1_buttonsContainer", "div", this.part1.contentElement);
-        // this.part1_buttons.Class("buttons");
-
-        // let button_test = new SPLINT.DOMElement.Button(this.part1_buttons, "create", "jetzt entwerfen");
-        //     button_test.onclick = function(){                
-        //         this.call3D_toggle(this.calls.smoothTurn);
-        //     }.bind(this);
-
-            
-        let button_test = new SPLINT.DOMElement.Button(this.part1.contentElement, "create", "jetzt entwerfen");
-            button_test.onclick = function(){           
-                this.call3D_toggle("turnBack");      
-                // this.call3D_toggle(this.calls.smoothTurn);
-            }.bind(this);
     }
     drawPart2(){
         this.part2 = new indexOverlayPart(this.contentElement, "colors");

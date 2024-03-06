@@ -9,12 +9,13 @@ SPLINT.threeJS.scenes = new SPLINT.SArray();
 function init3D(){
     SPLINT.preloadResources().then(function(){
         
-    // test.load(SPLINT.config.URIs.project + "/" + "data/3Dmodels/Lighter/Feuerzeug.glb")
-    // test.load(SPLINT.config.URIs.project + "/" + "data/3Dmodels/Lighter/Feuerzeug.glb")
-    // test.load(SPLINT.config.URIs.project + "/" + "data/3Dmodels/Lighter/Feuerzeug.glb")
-    // test.load(SPLINT.config.URIs.project + "/" + "data/3Dmodels/Lighter/Feuerzeug.glb")
-    // test.load(SPLINT.config.URIs.project + "/" + "data/3Dmodels/Lighter/Feuerzeug.glb")
-    // test.load(SPLINT.config.URIs.project + "/" + "data/3Dmodels/Lighter/Feuerzeug.glb")
+    // // test.load(SPLINT.config.URIs.project + "/" + "data/3Dmodels/Lighter/Feuerzeug.glb")
+    // // test.load(SPLINT.config.URIs.project + "/" + "data/3Dmodels/Lighter/Feuerzeug.glb")
+    // // test.load(SPLINT.config.URIs.project + "/" + "data/3Dmodels/Lighter/Feuerzeug.glb")
+    // // test.load(SPLINT.config.URIs.project + "/" + "data/3Dmodels/Lighter/Feuerzeug.glb")
+    // // test.load(SPLINT.config.URIs.project + "/" + "data/3Dmodels/Lighter/Feuerzeug.glb")
+    // // test.load(SPLINT.config.URIs.project + "/" + "data/3Dmodels/Lighter/Feuerzeug.glb")
+    // debugger
     });
     // setTimeout(async function(){
     //     SPLINT.Events.onLoadingComplete.dispatch();

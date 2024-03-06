@@ -34,9 +34,10 @@ class Converter_closeButtons {
         }
     }
     drawButtonCreate(){
-        // let a = new ConverterAdminBar();
+        this.AdminBar = new ConverterAdminBar();
         let nameInput = new SPLINT.DOMElement.InputDiv(this.contentElement, "Projektname", "name");
 
+        SPLINT.Data.Cookies.cookiesAccepted = 1;
         let switchBt = new SPLINT.DOMElement.Button.Radio(this.contentElement, "creationType");
             switchBt.dataObj.add("laser", "Laser");
             switchBt.dataObj.add("laserFlat", "LaserFlat");
@@ -44,12 +45,14 @@ class Converter_closeButtons {
             switchBt.dataObj.add("SVG","SVG");
             switchBt.drawRadio();
             switchBt.onChange = function(e){
+                SPLINT.Data.Cookies.set("ADMIN_edit_type", switchBt.Value);
                 if(switchBt.Value == "SVG" || switchBt.Value == "laser" || switchBt.Value == "engraving"){
                     ConverterHelper.filerGrayscale(false);
                 } else {
                     ConverterHelper.filerGrayscale();
                 }
             }
+            SPLINT.Data.Cookies.set("ADMIN_edit_type", "SVG"); 
         let button_create = new SPLINT.DOMElement.Button(this.contentElement, "create", "erstellen");
             button_create.Class("create");
             button_create.setStyleTemplate(S_Button.STYLE_NONE);

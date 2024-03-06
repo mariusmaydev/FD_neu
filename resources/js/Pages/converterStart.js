@@ -21,8 +21,14 @@ class drawConverterStart extends Pages_template {
         // this.linkImprint.onclick = function(){
         //     S_Location.goto(PATH.location.imprint).call();
         // }
+        setTimeout(async function(){
+            console.dir(SPLINT.Events.onLoadingComplete);
+        }, 10000)
         SPLINT.Events.onLoadingComplete = function(){
             this.mainElement.setAttribute("loaded", true);
         }.bind(this);
+        if(SPLINT.Events.onLoadingComplete.dispatched == true){
+            this.mainElement.setAttribute("loaded", true);
+        }
     }
 }

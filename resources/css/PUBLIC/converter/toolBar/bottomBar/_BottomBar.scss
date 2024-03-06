@@ -33,7 +33,7 @@
             max-height: 10rem;
             > .conv_bottom_bar_std {
                 // @include Tmain.TContainer_basic();
-                background-color: vars.$color-primary-complementary-light;
+                background-color: vars.$color-T_container;
                 box-shadow: none;
 
                 width: calc(100%);
@@ -59,7 +59,7 @@
                     }
                     background-color: transparent;
                     &[state*='active'] {
-                        background-color: vars.$color-primary-complementary;
+                        background-color: vars.$color-T_container;
                     }
                     > span {
                         font-size: 6rem;
