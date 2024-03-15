@@ -59,7 +59,7 @@ export default class projectCommunication {
         }
         this.DimensionsLoaded = true;
         const loader = new FontLoader();
-        loader.load( window.location.origin + '/fd/resources/fonts/Arial_Regular.json', function ( font ) {
+        loader.load( window.location.origin + '/fd/resources/fonts/arial/Arial_Regular.json', function ( font ) {
             this.font = font;
             let points;
             this.LighterGroup = this.inst.setup.getLighterGroupe(this.inst.scene, 'lighter');

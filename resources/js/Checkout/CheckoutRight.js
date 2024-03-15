@@ -28,19 +28,24 @@ class CheckoutRightBar {
     for(const index in this.cartData){
       let item = this.cartData[index];
       let projectData = (await ProjectHelper.get(item.ProjectID));
-      let product;
-      if(projectData.EPType == "GOLD"){
-        product = await productHelper.getByName(productHelper.LIGHTER_GOLD);
-      } else if(projectData.EPType == "CHROME"){
-        product = await productHelper.getByName(productHelper.LIGHTER_CHROME);
-      }
+      let product = await productHelper.getByName(projectData.Product);
       this.price += product.price;
       let listElement = new SPLINT.DOMElement(this.id + "listElement_" + index, "div", this.listMain);
           listElement.Class("listElement");
-          let lighter = new drawLighter3D(listElement, "lighter_right_" + index, drawLighter3D.PROJECT, projectData.Thumbnail)
-          SPLINT.Events.onLoadingComplete = function(){
-            lighter.sendToRenderer({"turn": true})
-          }
+            let lighter = new drawLighter3D(listElement, "lighter_right_" + index, drawLighter3D.PROJECT, projectData.Thumbnail, false, false, projectData.EPType)
+            SPLINT.Events.onLoadingComplete = function(){
+                lighter.sendToRenderer({"turn": true})
+            }
+          
+                lighter.promise.then(async function(){
+                    let color = await productHelper.getColorForID(projectData.Color);
+                    if(color == null || color == undefined){
+                        color = "base";
+                        return;
+                    }
+                    lighter.send("changeColor", color);
+                })
+                lighter.saveContext = true;
               let amountDiv = new SPLINT.DOMElement.SpanDiv(lighter.div, this.id + "amountDiv_" + index, item.amount);
 
           let informationDiv = new SPLINT.DOMElement(this.id + "informationDiv" + index, "div", listElement);

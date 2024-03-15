@@ -68,5 +68,16 @@ class drawFooter {
                 let imgPaypal = new SPLINT.DOMElement("imgPaypal", "img", PayingMethodsContainer);
                     imgPaypal.src = PATH.images.PaypalLogo;
     }
+    drawFooterAsBox(parent){
+        let BTContainer = new SPLINT.DOMElement("FooterBTContainer", "div", parent);
+            BTContainer.Class("FooterBTContainer");
+            let BTContact = new SPLINT.DOMElement.Button(BTContainer, "BTContact", "Kontakt");
+                BTContact.Class("BTContact");
+            let BTImprint = new SPLINT.DOMElement.Button(BTContainer, "BTImprint", "Impressum");
+                BTImprint.Class("BTImprint");
+                BTImprint.onclick = function(){
+                    S_Location.goto(PATH.location.imprint).call();
+                }
+    }
 }
 const Footer = new drawFooter();

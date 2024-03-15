@@ -15,7 +15,6 @@
         
 
         <s-part src="/js/manager/manager.js"></s-part>
-        <s-part src="/js/3D/Element3D.js"></s-part>
         <s-module src="/js/3D/modules/module_3D_init.js"></s-module>
         
         <s-part pre src="/js/GLOBAL/Paths.js"></s-part>

@@ -20,6 +20,9 @@ class Converter_LeftBar {
     let hr3 = new SPLINT.DOMElement.HorizontalLine(this.contentElement);
     // this.buttonEPType();
     this.buttonProductInformation();
+    
+        
+    // Footer.desktop();
     //this.blockEPType();
   }
   buttonImageMenu(){
@@ -76,19 +79,13 @@ class Converter_LeftBar {
     this.button_ProductInformation.bindIcon("info");
     this.button_ProductInformation.Description = "Informationen";
     this.button_ProductInformation.button.onclick = async function(){
+       await DSController.createThumbnail();
+        await ProjectHelper.edit(DSProject.Storage, false);
         let data = await ProjectHelper.get();
+            data.Thumbnail = data.Thumbnail + "?" + Math.round(Math.random() * 1000);
+            
         let projectDetails = new ProjectDetails(data, 0, document.body);
             projectDetails.show();
-        // let UserID = (await SPLINT.SessionsPHP.get("USER_ID", false));
-        // let data = DSProject.Storage;
-            // data.Thumbnail = ProjectHelper.getPath2Project(UserID, DSProject.Storage.ProjectID, false) + "/thumbnail.png";
-        // let p = new ProjectDetails(data, null, document.body);
-            // p.show(false);
-        // let projectDetails = new ProjectDetails(data, index, listElement);
-        //   listElement.onclick = function(){
-        //     projectDetails.show();
-        //   }
-        // let productInformation = new ProductInformation("converter");
     }
   }
   blockEPType(){

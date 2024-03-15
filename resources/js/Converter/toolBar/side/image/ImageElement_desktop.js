@@ -189,13 +189,14 @@ class ToolBar_ImageElement {
             this.sl_rotation.hideSign();
             this.sl_sharpness.hideSign();
         }
+        // debugger
     }
     focus(){
+        ToolBar_LighterSettings.blur();
         CONVERTER_STORAGE.toolBar.blurElement("img");
         this.mainElement.state().setActive();
         this.expander.setActive();
         CONVERTER_STORAGE.canvasNEW.setActive(this.data, "img");
-        ToolBar_LighterSettings.blur();
 
 
         let ele = document.getElementById("ConverterToolBar_activeBody").childNodes[0];

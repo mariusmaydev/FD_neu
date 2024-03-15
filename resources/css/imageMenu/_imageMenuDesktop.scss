@@ -18,77 +18,76 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
         user-select: all;
         pointer-events: all;
         z-index: 1001;
-        top: 8vh;
+        top: 7vh;
         left: 5%;
         width: 90%;
-        height: calc(100% - 8vh);
+        height: calc(100% - 7vh);
         padding: 0;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: stretch;
         align-items: center;
         overflow: visible;
         > .ImageMenuFilter {
-            @include Tmain.TContainer_basic();
-            order: 1;
+            background-color: transparent;
+            display: flex;
+            flex-direction: row;
+            order: 0;
             flex-grow: 0;
             flex-shrink: 3;
-            padding: 0.5rem;
+            padding: 0rem;
             position: relative;
-            width: 100%;
+            width: 102%;
+            left: 0;
             margin: 0;
-            margin-left: 0.5rem;
+            margin-left: 4.2rem;
             margin-top: 0.5rem;
             margin-bottom: 0;
-            height: 90%;
+            height: max-content;
             z-index: 1001;
-            > .bt_help {
-                background-color: green;
-                > .dropdown {
-                    position: absolute;
-                    left: 50%;
-                    top: 100%;
-                    transform: translateX(-50%);
-                    min-width: 200%;
-                    min-height: 200%;
-                    margin-left: 0;
-                    width: max-content;
-                    height: max-content;
-                    background-color: yellow;
-                    > .test {
-                        background-color: red;
+            > .buttonCloseContainer {
+                order: 1;
+                @include Tmain.TContainer_basic();
+                padding: 0;
+                > .closeBT {
+                    margin: 0.25rem;
+                    @include Tmain.TButton_secondary(1);
+                    aspect-ratio: 1/1;
+                    width: auto;
+                    height: calc(100% - 0.5rem);
+                    > span {
+                        font-size: 2rem;
                     }
                 }
             }
-            .ModeSwitch {
-                position: relative;
-                display: inline-block;
-                width: 98%;
-                height: max-content;
-                margin: 1%;
-                margin-top: 1em;
-                overflow: hidden;
-                > div {
-                    display: flex;
-                    justify-content: stretch;
-                    align-items: stretch;
-                    padding: 0.2em;
-                    gap: 1%;
-                    button {
-                        @include Gmain.box-shadow();
-                        width: 100%;
-                        // padding: 0.2em;
-                        // margin-inline: 1em;
-                        border-radius: vars.$border-radius;
-                        border: none;
-                        position: relative;
-                        &:hover{
-                            background-color: vars.$color-primary;
+            .n_inputDiv {
+                @include Tmain.TContainer_basic();
+                order: 0;
+                width: calc(100% - 0.5rem);
+                margin-top: 0;
+                margin-bottom: 0;
+                    margin-left: 0rem;
+                    padding-left: 0.5rem;
+                > .inputBody {
+                    > input {
+                        padding-top: 1.5rem;
+                        margin-bottom: 0.25rem;
+                    }
+                    > button {
+                        margin: 0.25rem;
+                        @include Tmain.TButton_secondary(1);
+                        order: 1;
+                        aspect-ratio: 1/1;
+                        width: auto;
+                        height: calc(100% - 0.5rem);
+                        > span {
+                            font-size: 2rem;
                         }
                     }
+                    > label {
+                        padding-left: 0.5rem;
+                    }
                 }
-            }
-            .InputDivMain {
                 > button {
                     &:hover {
                         background-color: vars.$color-primary;
@@ -97,59 +96,34 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
         
             } 
         }
-        > .hintBody {
-            // background-color: red;
-            height: 100%;
-            width: 98%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            > button {
-                color: white;
-                user-select: none;
-                pointer-events: none;
-                > span {
-                    font-size: 20em;
-                    &.description {
-                        font-size: 2rem;
-                        text-decoration: none;
-                    }
-                }
-
-            }
-        }
         @include S_adaptTable.AdaptiveTableStyle(vars.$border-radius);
         >.AdaptiveTableMain {
             > .ListMain {
                 margin-top: 0.5rem;
                 > .column {
-                    width: 40%;
+                    width: 30%;
                     -webkit-box-orient: horizontal;
                     box-sizing: border-box;
+                    padding-inline: 0.25rem;
                     > .ListElement {
-                        padding: 0.3rem;
-                        transition: box-shadow 250ms ease;
-                        @include Tmain.clipEdgesAll(10px);
+                        padding: 0.15rem;
+                        @include Tmain.TContainer_basic();
+                        background-color: transparent;
+                        transition: background-color 0.2s ease-out ;
                         &:hover {
-                            // @include Tmain.TContainer_basic();
+                            background-color: vars.$NEW-color-container-background;
+                            // background-color: vars.$NEW-color-container-background;
                             > .bottomDiv {
-                                height: 3.5rem;
-                                box-shadow: 1px 1px 0px 0px vars.$color-T_container,
-                                            1px -1px 0px 0px vars.$color-T_container,
-                                            -1px 1px 0px 0px vars.$color-T_container,
-                                            -1px -1px 0px 0px vars.$color-T_container;
-                            }
-                            > img {
-                                box-shadow: 1px 1px 0px 0px vars.$color-T_container,
-                                            1px -1px 0px 0px vars.$color-T_container,
-                                            -1px 1px 0px 0px vars.$color-T_container,
-                                            -1px -1px 0px 0px vars.$color-T_container;
-                                // @include S_tools.SPLINT-border-inset(vars.$color-T_container, 5px);
+                                @include Tmain.TContainer_basic();
+                                background-color: transparent;
+                                box-shadow: none;
+                                border-top-right-radius: 0;
+                                border-top-left-radius: 0;
+                                height: 2.6rem;
                             }
                         }
                         > img {
-                            @include Gmain.box-shadow(0, rgba(255, 255, 255, 0.705), 0.4);
-                            border-radius: vars.$border-radius;
+                            border-radius: vars.$NEW-border-radius-main;
                         }
                         > .hoverDiv {
                             margin: 0.3rem;
@@ -158,57 +132,56 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
                             height: calc(100% - 0.3rem);
                             box-shadow: none !important;
                             background-color: transparent !important;;
-                            transition: opacity 100ms linear 200ms;
+                            transition: opacity 100ms linear 100ms;
                             > .buttonDiv {
                                 display: flex;
                                 flex-direction: row;
-                                justify-content: space-evenly;
+                                justify-content: stretch;
                                 position: absolute;
                                 margin-top: auto;
                                 bottom: 0.3rem;
+                                box-sizing: border-box;
                                 width: 100%;
-                                height: 3.5rem;
-                                padding-bottom: 0;
-                                background-color: vars.$color-T_container;
+                                height: max-content;
+                                padding: 0rem;
+                                // background-color: vars.$color-T_container;
+                                background-color: transparent;
                                 > button {
-                                    &:hover {
+                                    box-sizing: border-box;
+                                    width: 100%;
+                                    @include Tmain.TButton_primary(1);
+                                    &.use {
                                         > span {
-                                            &:not(.description) {
-                                                text-shadow: 2px 2px 0px color.adjust(vars.$color-primary );
-                                                transition-duration: 300ms;
-                                                // color: vars.$color-primary;
-                                            }
+                                            // font-size: 1rem;
                                         }
-                                    }
-                                    > span {
-                                        text-shadow: 0px 0px 0px transparent;
-                                        transition: text-shadow cubic-bezier(0, 0.52, 1, 1) 2s;
-                                        color: vars.$color-primary-text;
-                                        font-size: 3rem;
                                     }
                                 }
                                 > .likeDiv {
+                                    display: none;
                                     position: relative;
                                     width: min-content;
                                     overflow: hidden;
                                     height: 100%;
                                     > button {
-                                        width: 100%;
+                                        width: auto;
                                         height: 100%;
+                                        @include Tmain.TButton_secondary(1.5);
+                                        aspect-ratio: 1/1;
                                         &:hover {
                                             > span {
                                                 &:not(.description) {
-                                                    text-shadow: 2px 2px 0px color.adjust(vars.$color-primary );
-                                                    transition-duration: 300ms;
+                                                    // text-shadow: 2px 2px 0px color.adjust(vars.$color-primary );
+                                                    transition-duration: 200ms;
                                                     // color: vars.$color-primary;
                                                 }
                                             }
                                         }
                                         > span {
-                                            text-shadow: 0px 0px 0px transparent;
-                                            transition: text-shadow cubic-bezier(0, 0.52, 1, 1) 2s;
-                                            color: vars.$color-primary-text;
-                                            font-size: 3rem;
+                                            font-size: 2rem;
+                                            // text-shadow: 0px 0px 0px transparent;
+                                            // transition: text-shadow cubic-bezier(0, 0.52, 1, 1) 2s;
+                                            // color: vars.$color-primary-text;
+                                            // font-size: 3rem;
                                         }
                                     }
                                     > .likePoint {
@@ -229,39 +202,39 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
                                     }
                                 }
                             }
-                            > .tagsDiv {
-                                position: absolute;
-                                bottom: 3.5rem;
-                                display: flex;
-                                flex-direction: row;
-                                justify-content: left;
-                                margin: 0.35rem;
-                                > Button {
-                                    @include Tmain.TButton_simple();
-                                    background-color: transparent !important;
-                                    padding: 0.1rem;
-                                    margin: 0.2rem;
-                                    margin-inline: 0.1rem;
-                                    &:hover {
-                                        >span {
-                                            text-decoration: underline;
-                                            &::before {
-                                                content: "#";
-                                                text-decoration: underline;
-                                            }
+                            // > .tagsDiv {
+                            //     position: absolute;
+                            //     bottom: 3.5rem;
+                            //     display: flex;
+                            //     flex-direction: row;
+                            //     justify-content: left;
+                            //     margin: 0.35rem;
+                            //     > Button {
+                            //         @include Tmain.TButton_simple();
+                            //         background-color: transparent !important;
+                            //         padding: 0.1rem;
+                            //         margin: 0.2rem;
+                            //         margin-inline: 0.1rem;
+                            //         &:hover {
+                            //             >span {
+                            //                 text-decoration: underline;
+                            //                 &::before {
+                            //                     content: "#";
+                            //                     text-decoration: underline;
+                            //                 }
 
-                                        }
-                                    }
-                                    > span {
-                                        // color: black;
-                                        font-size: 1rem;
-                                        mix-blend-mode: exclusion;
-                                        &::before {
-                                            content: "#";
-                                        }
-                                    }
-                                }
-                            }
+                            //             }
+                            //         }
+                            //         > span {
+                            //             // color: black;
+                            //             font-size: 1rem;
+                            //             mix-blend-mode: exclusion;
+                            //             &::before {
+                            //                 content: "#";
+                            //             }
+                            //         }
+                            //     }
+                            // }
                         }
                         > .bottomDiv {
                             background-color: vars.$color-T_container;

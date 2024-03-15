@@ -26,7 +26,7 @@
             overflow-x: visible;
             margin: 0.5em !important;
             margin-bottom: 0 !important;
-            padding: 0.5em !important;
+            padding: 0.5rem !important;
             z-index: 0 !important;
             @include Tmain.TContainer_basic();
             position: relative;
@@ -39,6 +39,7 @@
                 flex-direction: row;
                 justify-content: stretch;
                 align-items: center;
+                padding: 0.5rem;
                 gap: 0.5rem;
                 cursor: pointer;
                 > button {
@@ -59,11 +60,15 @@
                 left: 0;
             }
             >.content {
+                padding: 0.5rem;
+                padding-top: 0rem;
                 overflow: hidden;
                 width: 100%;
+                box-sizing: border-box;
                 height: max-content;
                 // padding: 0.5rem;
                 > .colorContainer {
+                    margin-top: 0.5rem;
                     position: relative;
                     width: 100%;
                     padding: 0rem;
@@ -74,6 +79,7 @@
                     > .headline {
                         > span {
                             font-size: 1rem;
+                            font-weight: 500;
                         }
                     }
                     > .contentElement {
@@ -83,13 +89,15 @@
                         justify-content: start;
                         gap: 1rem;
                         > button {
+                            @include Tmain.TButton_primary();
                             height: 2rem;
                             width: 4rem;
-                            border-radius: 5px;
+                            // border-radius: 5px;
                         }
                     }
                 }
                 > .EPTypeContainer {
+                    margin-top: 0.5rem;
                     position: relative;
                     width: 100%;
                     padding: 0rem;
@@ -100,6 +108,7 @@
                     > .headline {
                         > span {
                             font-size: 1rem;
+                            font-weight: 500;
                         }
                     }
                     > .contentElement {
@@ -191,6 +200,9 @@
                                 }
                             }      
                             > button {
+                                // @include Tmain.TButton_primary();
+                                // background-color: transparent;
+                                border-radius: vars.$NEW-border-radius-main;
                                 height: 100%;
                                 width: 100%;
                                 padding: 0.25rem;
@@ -199,7 +211,7 @@
                                 justify-content: center;
                                 align-items: center;
                                 > span {
-                                    font-size: 1.1rem;
+                                    font-size: 1rem;
                                     opacity: 1;
 
                                 }
@@ -214,6 +226,7 @@
                 }
                 > .content {
                     height: 0;
+                    padding: 0;
                 }
             }
         }
@@ -240,7 +253,7 @@
             overflow-x: visible;
             margin: 0.5em !important;
             margin-bottom: 0 !important;
-            padding: 0.5em !important;
+            padding: 1rem !important;
             margin-top: 0 !important;
             z-index: 0 !important;
         }

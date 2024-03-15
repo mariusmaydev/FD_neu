@@ -38,24 +38,24 @@ class drawProjectList {
         }
 
         this.table = new SPLINT.DOMElement.Table(this.mainElement, "Projects_" + this.name, this.data);
-            if(this.drawNew){
-                this.table.func_drawFirstListElement = async function(listElement){
-                listElement.onclick = async function(){
-                    await ProjectHelper.new("neues Projekt", "Lighter_Gold_custom", false, false, false, "base");
-                    S_Location.goto(PATH.location.converter).call();
-                }
-                let container = new SPLINT.DOMElement("new_" + this.name + "container", "div", listElement);
-                    container.Class("container");
-                    let lighter = new drawLighter3D(container, "new_" + this.name, drawLighter3D.PROJECT_NEW);
-                    listElement.setAttribute("align", "left");
-                    listElement.onmouseenter = function(){
-                        lighter.send("zoom", true);
-                    }
-                    listElement.onmouseleave = function(){
-                        lighter.send("zoom", false);
-                    }
-                }.bind(this);
-            }
+            // if(this.drawNew){
+            //     this.table.func_drawFirstListElement = async function(listElement){
+            //     listElement.onclick = async function(){
+            //         await ProjectHelper.new("neues Projekt", "LIGHTER_BASE_GOLD_custom", false, false, false, "base");
+            //         S_Location.goto(PATH.location.converter).call();
+            //     }
+            //     let container = new SPLINT.DOMElement("new_" + this.name + "container", "div", listElement);
+            //         container.Class("container");
+            //         let lighter = new drawLighter3D(container, "new_" + this.name, drawLighter3D.PROJECT_NEW);
+            //         listElement.setAttribute("align", "left");
+            //         listElement.onmouseenter = function(){
+            //             lighter.send("zoom", true);
+            //         }
+            //         listElement.onmouseleave = function(){
+            //             lighter.send("zoom", false);
+            //         }
+            //     }.bind(this);
+            // }
             this.table.func_drawListElement = async function(data, index, listElement){
                 let container = new SPLINT.DOMElement(index + "_" + this.name + "container", "div", listElement);
                     container.Class("container");

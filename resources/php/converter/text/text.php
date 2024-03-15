@@ -82,7 +82,7 @@ use Shopify\Auth\Session;
             $DataSet -> newEntry(TextDB::TEXT_LINE_HEIGHT,  20);
             $DataSet -> newEntry(TextDB::TEXT_ORIENTATION,  "left");
 
-            $DataSet -> newEntry(TextDB::FONT_FAMILY,       "Arial");
+            $DataSet -> newEntry(TextDB::FONT_FAMILY,       "O-Arial");
             $DataSet -> newEntry(TextDB::FONT_SIZE,         150);
             $DataSet -> newEntry(TextDB::FONT_WEIGHT,       100);
             $DataSet -> newEntry(TextDB::FONT_STYLE,        "normal");

@@ -33,26 +33,40 @@
     $skew                       : vars.$header-skew;
 
     &[state*='active']{
-        // $color-main: red;
+        background-color: vars.$NEW-color-container-background;//(255, 255, 255, 0.648);
+        margin-top: 0;
         > .content {
+            margin-top: 0.250rem;
+            margin-bottom: 0.250rem;
             > .Logo {
-                > .inner {
-                    background-color: $color-main-active !important;
+                >.inner {
+                    width: max-content !important;
                     > .inner1 {
-                        // background-color: $color-main-active !important;
+                        width: max-content !important;
                     }
                 }
             }
-            > .Cart {
-                background-color: $color-main-active !important;
-            }
-            > .Original {
-                background-color: $color-main-active !important;
-            }
-            > .Design {
-                background-color: $color-main-active !important;
-            }
         }
+        // $color-main: red;
+        // > .content {
+        //     > .Logo {
+        //         > .inner {
+        //             background-color: $color-main-active !important;
+        //             > .inner1 {
+        //                 // background-color: $color-main-active !important;
+        //             }
+        //         }
+        //     }
+        //     > .Cart {
+        //         background-color: $color-main-active !important;
+        //     }
+        //     > .Original {
+        //         background-color: $color-main-active !important;
+        //     }
+        //     > .Design {
+        //         background-color: $color-main-active !important;
+        //     }
+        // }
     }
 
     // $shadow-size-base           : 3px;
@@ -127,6 +141,7 @@
         // justify-content: safe;
         align-items: stretch;
         padding: 0;
+        transition: margin 0.2s ease-in ;
         @include mediaQueries.forMediaBreakpoint(mobile-small){
             height: calc(vars.$NavBar-height-mobile-small - 0.5rem);
         }
@@ -281,7 +296,7 @@
                     -ms-transform: skewX($skew); /* IE 9 */
                     -webkit-transform: skewX($skew); /* Safari */
                     transform: skewX($skew);
-                        font-size: 2rem;
+                        font-size: 1.6rem;
                         @include mediaQueries.forMediaBreakpoint(mobile-small){
                             font-size: 3rem;
                         }
@@ -305,13 +320,13 @@
                     top: 60%;
                     background-color: $color-primary;
                     border-radius: 50%;
-                    width: 1rem;
-                    height: 1rem;
+                    width: 0.8rem;
+                    height: 0.8rem;
                     aspect-ratio: 1/1;
                     display: flex;
                     justify-content: center;
                     > span {
-                        font-size: 1rem;
+                        font-size: 0.8rem;
                     }
                     @include mediaQueries.forMediaBreakpoint(mobile-small){
                         width: 1.5rem;
@@ -364,10 +379,10 @@
                         -webkit-transform: skewX($skew); /* Safari */
                         transform: skewX($skew);
                         color: $color-text;
-                        font-size: 1.6rem;
+                        font-size: 1.25rem;
 
                         @include mediaQueries.forMediaBreakpoint(mobile-small){
-                            font-size: 2.5rem;
+                            font-size: 1.5rem;
                         }
                     }
                     &:hover {
@@ -417,7 +432,7 @@
                         -webkit-transform: skewX($skew); /* Safari */
                         transform: skewX($skew);
                         color: black;
-                        font-size: 1.6rem;
+                        font-size: 1.25rem;
                         @include mediaQueries.forMediaBreakpoint(mobile-small){
                             font-size: 2.5rem;
                         }

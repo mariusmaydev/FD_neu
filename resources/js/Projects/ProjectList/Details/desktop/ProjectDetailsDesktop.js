@@ -15,7 +15,6 @@ class ProjectDetails_Desktop {
     async show(drawButtons = true){
         this.colorList = await productHelper.getColors();
         this.productDataFull = await productHelper.getProducts();
-        console.dir(this.productDataFull);
         // console.dir(this.data.Product)
         this.productData = this.productDataFull[this.data.Product]
         this.mainElement = new SPLINT.DOMElement.popupWindow(this.id, true)
@@ -117,8 +116,11 @@ class ProjectDetails_Desktop {
             let ImageContainerInner = new SPLINT.DOMElement(this.id + "ImageContainerInner", "div", ImageContainerScroll);
                 ImageContainerInner.Class("ImageContainerInner");
 
-                console.dir(this.productData);
-
+                console.dir(this.data);
+                if(this.lighter != undefined) {
+                    this.lighter.div.remove();
+                    this.lighter = undefined;
+                }
                 this.lighter = new drawLighter3D(ImageContainerInner, this.id, drawLighter3D.PROJECT, this.data.Thumbnail, true, true, this.data.EPType);
                 this.lighter.canvas.setAttribute("showDimensions", false);
                 this.lighter.canvas.setAttribute("changeColor", "base");
@@ -126,7 +128,6 @@ class ProjectDetails_Desktop {
                 this.lighter.div.state().setActive();
 
                 this.lighter.promise.then(function(){
-                    console.log(this.colorList)
                     let color = this.colorList[this.data.Color];//await productHelper.getColorForID(this.data.Color);
                     if(color == null || color == undefined){
                         color = "base";

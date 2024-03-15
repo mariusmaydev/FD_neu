@@ -71,7 +71,7 @@ class DataStorageProject_C {
                 return img;
             }.bind(this))
             .then(async function(){
-                ProjectHelper.edit(this.Storage, true);
+                await ProjectHelper.edit(this.Storage, true);
                 // let call = new SPLINT.CallPHP(ProjectHelper.PATH, ProjectHelper.EDIT);
                 //     call.data.Storage = this.Storage;
                 //     call.keepalive = false;

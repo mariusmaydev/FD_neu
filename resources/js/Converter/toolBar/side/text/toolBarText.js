@@ -45,7 +45,7 @@ class ToolBar_Text {
                 if(element.TextID == TextID){
                     element.focus();
                 } else {
-                    element.blur();
+                    // element.blur();
                 }
             }
         }

@@ -104,9 +104,10 @@ class ImageMenu {
                         
                     let buttonDiv = new SPLINT.DOMElement("buttonDiv_" + index, "div", hoverDiv);
                         buttonDiv.Class("buttonDiv");
-                        let buttonUse = new SPLINT.DOMElement.Button(buttonDiv, "use");
-                            buttonUse.bindIcon("add_photo_alternate");
-                            buttonUse.setTooltip("verwenden", "top");
+                        let buttonUse = new SPLINT.DOMElement.Button(buttonDiv, "use", "verwenden");
+                            buttonUse.Class("use");
+                            // buttonUse.bindIcon("add_photo_alternate");
+                            // buttonUse.setTooltip("verwenden", "top");
                             buttonUse.button.onclick = function(){
                             unsplash.download(data);
                             this.close();

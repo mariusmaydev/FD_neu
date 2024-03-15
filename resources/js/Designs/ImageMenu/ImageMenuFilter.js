@@ -11,12 +11,14 @@ class ImageMenuFilter {
     this.draw();
   }
   draw(){
-    let buttonClose = new SPLINT.DOMElement.Button(this.mainElement, this.id + "close");
-        buttonClose.bindIcon("close");
-        buttonClose.Class("closeBT");
-        buttonClose.onclick = function(){
-            this.ImageMenuInstance.close();
-        }.bind(this);
+    let buttonCloseContainer = new SPLINT.DOMElement(this.id + "closeContainer", "div", this.mainElement);
+        buttonCloseContainer.Class("buttonCloseContainer");
+        let buttonClose = new SPLINT.DOMElement.Button(buttonCloseContainer, this.id + "close");
+            buttonClose.bindIcon("close");
+            buttonClose.Class("closeBT");
+            buttonClose.onclick = function(){
+                this.ImageMenuInstance.close();
+            }.bind(this);
     this.searchBar = new SPLINT.DOMElement.InputDiv(this.mainElement, "searchBar", "suche");
     this.searchBar.type = "text";
     this.searchBar.input.autocomplete = true;

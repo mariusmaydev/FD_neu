@@ -220,6 +220,32 @@ body {
         @include LeftBar.conv_LeftBar();
         @include EditorFrame.conv_EditorFrame();
         @include RightBar.conv_RightBar();
+        
+        > .FooterBTContainer {
+            z-index: 1001;
+            position: absolute;
+            height: max-content;
+            left: 0;
+
+            bottom: 1vh;
+            width: 100px;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            gap: 1rem;
+            > button {
+                > span {
+                    color: gray;
+                }
+            }
+            > .BTContact {
+
+            }
+            > .BTImprint {
+                
+            }
+        }
     
       }
 }

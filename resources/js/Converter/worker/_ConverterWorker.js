@@ -13,50 +13,62 @@ class ConverterWorker {
                 let i = await ConverterWorker.createThumbnail(e.data.data.canvas, e.data.data.stack, e.data.data.size)
                 self.postMessage(i);
             } break;
-            case 'createTextData' : {
-                let i = await ConverterWorker.createTextData(e.data.data.canvas, e.data.data.stack, e.data.data.size)
-                self.postMessage(i);
-            } break;
+            // case 'createTextData' : {
+            //     let i = await ConverterWorker.createTextData(e.data.data.canvas, e.data.data.stack, e.data.data.size, e.data.data.fontStorage)
+            //     self.postMessage(i);
+            // } break;
         }
     }
-    static async createTextData(canvas, stack, size) {
-        for(const element of stack){
-            if(element.type == "txt"){
-                let postEle = JSON.parse(JSON.stringify( element));
-                    postEle.data.TextAlign = 0;
-
-                    canvas.width  = (postEle.data.FrameWidth * size.scale) + 10;
-                    canvas.height = (postEle.data.FrameHeight * size.scale) + 10;
-
-                let ctx     = canvas.getContext('2d');
-                    ctx.fillStyle = "transparent";
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
-                    ctx.scale(size.scale / 2, size.scale / 2);
-
-                let a = postEle.data.TextPosX;
-                let b = postEle.data.TextPosY;
-
-                    postEle.data.TextPosX = (canvas.width ) / (size.scale );
-                    postEle.data.TextPosY = (canvas.height) / (size.scale );
-                    postEle.ctx = ctx;
-
-                ConverterWorkerHelper.drawTextForData(postEle, true);
+    // static async createTextData(canvas, stack, size, fontStorage) {
+    //     for(const element of stack){
+    //         if(element.type == "txt"){
                 
-                element.data.TextImg = await ctx.getImageData(0, 0, canvas.width, canvas.height);//canvas.toDataURL("image/png", 1);
-                element.data.TextPosX = a;
-                element.data.TextPosY = b;
-            }
-        }
-        return stack;
-    }
+    //             for(const ele of fontStorage){
+    //                 if(ele.name == element.data.FontFamily && ele.weight == element.data.FontWeight){
+    //                     let fontFace = new FontFace(ele.name, "url(" + ele.url + ")")
+    //                     let res = await fontFace.load().then(function(data){
+    //                         return data
+    //                     })
+    //                     self.fonts.add(res);
+    //                 }
+    //             }
+
+    //             let postEle = JSON.parse(JSON.stringify( element));
+    //                 postEle.data.TextAlign = 0;
+
+    //                 canvas.width  = (postEle.data.FrameWidth * size.scale) + 10;
+    //                 canvas.height = (postEle.data.FrameHeight * size.scale) + 10;
+
+    //             let ctx     = canvas.getContext('2d');
+    //                 ctx.fillStyle = "transparent";
+    //                 ctx.fillRect(0, 0, canvas.width, canvas.height);
+    //                 ctx.scale(size.scale / 2, size.scale / 2);
+
+    //             let a = postEle.data.TextPosX;
+    //             let b = postEle.data.TextPosY;
+
+    //                 postEle.data.TextPosX = (canvas.width ) / (size.scale );
+    //                 postEle.data.TextPosY = (canvas.height) / (size.scale );
+    //                 postEle.ctx = ctx;
+
+    //             ConverterWorkerHelper.drawTextForData(postEle, true);
+                
+    //             element.data.TextImg = await ctx.getImageData(0, 0, canvas.width, canvas.height);//canvas.toDataURL("image/png", 1);
+    //             element.data.TextPosX = a;
+    //             element.data.TextPosY = b;
+    //         }
+    //     }
+    //     return stack;
+    // }
     static async createThumbnail(canvas, stack, size){
+        
             canvas.width  = size.x;
             canvas.height = size.y;
         let ctx     = canvas.getContext('2d', { willReadFrequently: true });
             ctx.fillStyle = "transparent";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.scale(size.scale, size.scale);
-            
+
         for(const element of stack){
               if(element.type == "img"){
                 const source = await createImageBitmap(element.blob);
@@ -64,8 +76,17 @@ class ConverterWorker {
                 element.ctx = ctx;
                 ConverterWorkerHelper.drawThumbnailImg(element)
               } else {
-                element.ctx = ctx;
-                ConverterWorkerHelper.drawThumbnailTxt(element)
+            //     for(const ele of fontStorage){
+            //         if(ele.name == element.data.FontFamily && ele.weight == element.data.FontWeight){
+            //             let fontFace = new FontFace(ele.name, "url(" + ele.url + ")")
+            //             let res = await fontFace.load().then(function(data){
+            //                 return data
+            //             })
+            //             self.fonts.add(res);
+            //         }
+            //     }
+            //     element.ctx = ctx;
+            //     ConverterWorkerHelper.drawThumbnailTxt(element)
               }
         };
         let canvasOut = new OffscreenCanvas(1024, 1024);

@@ -8,9 +8,9 @@
     > .ToolBar_ListElement {
         @include Tmain.TContainer_basic();
         position: relative;
-        padding: 0.5em;
-        width: calc(100% - 1em);
-        margin: 0.5em;
+        padding: 1rem;
+        width: calc(100% - 1rem);
+        margin: 0.5rem;
         box-sizing: border-box;
         >.expanderBody {
             display: none;
@@ -65,8 +65,10 @@
                     height: 2.5rem;
                     display: flex;
                     align-items: end;
-                    width: 100%;
+                    // width: calc(100% - 1rem);
                     overflow: hidden;
+                    // padding-inline: 0.5rem;
+
                     > .sliderBody {
                         order: 1;
                         height: 1rem;

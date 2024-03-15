@@ -430,7 +430,6 @@ export default class LighterAnimations {
         this.lighter_close.onTick = function(model, progress, groupe){
                 let a =  SPLINT.AnimationFX.linear(progress * 3.6, false) * 0.45;
                 let b = (-133.7648 +  a) * Math.PI / 180;//7648
-                console.log(b);
                 groupe.children[0].children[0].rotation.z = b;
                 groupe.children[10].children[0].rotation.x = -b;
             }

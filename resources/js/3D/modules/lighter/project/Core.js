@@ -110,11 +110,18 @@ export class draw {
         this.render();
     }
     async loadThumbnail(name, GoldFlag){
-        
-        
+        let thumbSRC = this.canvas.getAttribute("thumbsrc");
+        if(thumbSRC == null){
+            return
+        }
+        let nameT = thumbSRC.split('/').at(-2);
+        let num = parseInt(thumbSRC.split('?').at(-1));
+        if(!isNaN(num)){
+            nameT = thumbSRC.split('/').at(-2) + "_" + num;
+        }
         return new Promise(async function(resolve){
             if(this.scene != null){
-                SPLINT.ResourceManager.loadTextureAsync(this.canvas.getAttribute("thumbsrc").split('/').at(-2), this.canvas.getAttribute("thumbsrc").substr(4)).then(async function(texture){    
+                SPLINT.ResourceManager.loadTextureAsync(nameT, this.canvas.getAttribute("thumbsrc").substr(4)).then(async function(texture){    
                     
                     this.thumbnail = new LighterThumbnail(this, "lighter");
                     if(GoldFlag){

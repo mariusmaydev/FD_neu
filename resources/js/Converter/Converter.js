@@ -78,6 +78,7 @@ class Converter {
       converter_drawDesktop.draw();
       let rightElement = new SPLINT.DOMElement("Converter_rightBar", "div", ConverterHelper.ELE_MAIN);
           rightElement.Class("Conv_RightBar");
+          
       // Converter_ToolBar.init(rightElement);
     } else if(this.screenSize == "desktop-small") {
       converter_drawDesktop.draw();

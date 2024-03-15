@@ -25,16 +25,16 @@ export default class workerInterface {
             console.log(arguments)
         }
         this.worker.onmessage = async function(e) {
-            if(e.data.id == this.id){
-                console.log("ok")
-            } else {
-                console.log("nok")
-            }
+            // if(e.data.id == this.id){
+            //     console.log("ok")
+            // } else {
+            //     console.log("nok")
+            // }
             workerInterface.size -= 1;
             // console.log(e)
-            let type = e.data.type;//await blobToBase64(e.data);
-            let content = e.data.content;//await blobToBase64(e.
-            console.log(content, type);
+            // let type = e.data.type;//await blobToBase64(e.data);
+            // let content = e.data.content;//await blobToBase64(e.
+            // console.log(content, type);
             this.resolveCall(this.compFunc(e.data.content));
             this.worker.terminate();
             // // let g = S_Tools.base64ToSrc(bmp)

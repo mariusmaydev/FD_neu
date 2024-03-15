@@ -2,31 +2,31 @@
     /* Verdana */
     @font-face {
         font-family: 'O-Verdana';
-        src: url('../../fonts/verdana/Verdana.eot');
+        // src: url('../../fonts/verdana/Verdana.eot');
         src: local('Verdana'),
-            url('../../fonts/verdana/Verdana.eot?#iefix') format('embedded-opentype'),
-            url('../../fonts/verdana/Verdana.woff2') format('woff2'),
-            url('../../fonts/verdana/Verdana.woff') format('woff'),
-            url('../../fonts/verdana/Verdana.ttf') format('truetype');
+            // url('../../fonts/verdana/Verdana.eot?#iefix') format('embedded-opentype'),
+            url('../../fonts/verdana/Verdana.woff2') format('woff2');//,
+            // url('../../fonts/verdana/Verdana.woff') format('woff'),
+            // url('../../fonts/verdana/Verdana.ttf') format('truetype');
         font-weight: 400;
         font-style: normal;
     }
     
     @font-face {
         font-family: 'O-Verdana';
-        src: url('../../fonts/verdana/Verdana-Bold.eot');
+        // src: url('../../fonts/verdana/Verdana-Bold.eot');
         src: local('Verdana Bold'), local('Verdana-Bold'),
-            url('../../fonts/verdana/Verdana-Bold.eot?#iefix') format('embedded-opentype'),
-            url('../../fonts/verdana/Verdana-Bold.woff2') format('woff2'),
-            url('../../fonts/verdana/Verdana-Bold.woff') format('woff'),
-            url('../../fonts/verdana/Verdana-Bold.ttf') format('truetype');
+            // url('../../fonts/verdana/Verdana-Bold.eot?#iefix') format('embedded-opentype'),
+            url('../../fonts/verdana/Verdana-Bold.woff2') format('woff2');//,
+            // url('../../fonts/verdana/Verdana-Bold.woff') format('woff'),
+            // url('../../fonts/verdana/Verdana-Bold.ttf') format('truetype');
         font-weight: 700;
         font-style: normal;
     }
 
     /* TimesNewRoman */
     @font-face {
-        font-family:"O-Times_New_Roman";
+        font-family: 'O-Times_New_Roman';
         src: 
             local("Times New Roman"),
             url('../../fonts/timesNewRoman/TimesNewRoman.ttf') format('truetype');
@@ -34,7 +34,7 @@
         font-style: normal;
     }
     @font-face {
-        font-family:"O-Times_New_Roman";
+        font-family: 'O-Times_New_Roman';
         src: 
             local("Times New Roman bold"),
             url('../../fonts/timesNewRoman/TimesNewRomanBold.ttf') format('truetype');
@@ -44,13 +44,13 @@
 
     /* Trebuchet MS */
     @font-face {
-        font-family:"O-Trebuchet_MS";
+        font-family: 'O-Trebuchet_MS';
         src: local("Trebuchet MS");//url("../../fonts/ArialMT.woff2") format("");
         font-weight: 400;
         font-style: normal;
     }
     @font-face {
-        font-family:"O-Trebuchet_MS";
+        font-family: 'O-Trebuchet_MS';
         src: local("Trebuchet MS bold");//url("../../fonts/ArialMT.woff2") format("");
         font-weight: 700;
         font-style: normal;
@@ -58,13 +58,14 @@
   
     /* Arial */
     @font-face {
-        font-family:"O-Arial";
-        src: local("arial");//url("../../fonts/ArialMT.woff2") format("");
+        font-family: 'O-Arial';
+        src: local("arial"),
+        url("../../fonts/ArialMT.woff2") format("");
         font-weight: 400;
         font-style: normal;
     }
     @font-face {
-        font-family:"O-Arial";
+        font-family: 'O-Arial';
         src: 
             local("arial bold"),
             url("../../fonts/arial/Arial-BoldMT.woff2") format("woff2");
@@ -72,7 +73,7 @@
         font-style: normal;
     }
     @font-face {
-        font-family:"O-Arial";
+        font-family: 'O-Arial';
         src: url("../../fonts/arial/ariblk.ttf") format("truetype");
         font-weight: 900;
         font-style: normal;

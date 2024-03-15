@@ -89,7 +89,7 @@
                     display: flex;
                     flex-direction: column;
                     flex-wrap: nowrap;
-                    gap: 0rem;
+                    gap: 0.5rem;
                     // padding-top: 0.5rem;
                     @include mediaQueries.forMediaBreakpoint(desktop){
                         padding-top: calc(8vh + 0.5rem);
@@ -350,7 +350,7 @@
                                             grid-area: buttons;
                                             height: 100%;
                                             justify-content: flex-end;
-                                            >.inner {
+                                            > .inner {
                                                 padding-left: 0.75rem;
                                                 width: calc(100% - 1.5rem);
                                                 height: 100%;
@@ -362,11 +362,13 @@
                                                 justify-content: right;
                                                 gap: 0.5rem;
                                                 > button {
-                                                    @include Tmain.TButton_simple();
+                                                    
+                                                    @include Tmain.TButton_secondary(1);
+                                                    // @include Tmain.TButton_simple();
                                                     &.remove {
                                                     }
                                                     > span {
-                                                        font-size: 2.5rem;
+                                                        font-size: 1.8rem;
                                                     }
                                                 }
                                                 @include mediaQueries.forMediaBreakpoint(mobile-small){

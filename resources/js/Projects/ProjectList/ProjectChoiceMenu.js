@@ -56,12 +56,23 @@ class drawProjectChoiceMenu {
       let headlineDiv = new SPLINT.DOMElement.SpanDiv(this.mainElement, "headline", "Entwürfe");
           headlineDiv.div.Class("headline");
           
+        let buttonCreateContainer = new SPLINT.DOMElement("ContainerButtonCreate", "div", headlineDiv.div);
+            buttonCreateContainer.Class("buttonCreateContainer");
+            let buttonCreate = new SPLINT.DOMElement.Button(buttonCreateContainer, "create", "erstellen");
+                buttonCreate.Class("buttonCreate");
+                buttonCreate.onclick = async function(){
+                    await ProjectHelper.new("neues Projekt", "LIGHTER_BASE_GOLD_custom", false, false, false, "base");
+                    S_Location.goto(PATH.location.converter).call();
+            }.bind(this);
+          
         this.buttonDiv = new SPLINT.DOMElement(this.id + "buttonDiv", "div", this.mainElement);
         this.buttonDiv.Class("buttons");
             this.buttonContentDiv = new SPLINT.DOMElement(this.id + "buttonContentDiv", "div", this.buttonDiv);
             this.buttonContentDiv.Class("buttonsContent");
             let buttonsCategoryMenuDiv = new SPLINT.DOMElement(this.id + "buttonsCategoryMenuDiv", "div", this.buttonDiv);
                 buttonsCategoryMenuDiv.Class("buttonsCategoryContainer");
+
+            Footer.drawFooterAsBox(this.buttonDiv);
                 // buttonsCategoryMenuDiv.
       let div_originals = this.buttonContentDiv.newDiv("div_originals", "originals");
         this.bt_originals = new SPLINT.DOMElement.Button(div_originals, "project_originals", "Orginale");
@@ -91,7 +102,7 @@ class drawProjectChoiceMenu {
         div_originals.onmouseenter = function(){
             this.CategoryMenu_originals.hide = false;
             this.CategoryMenu_originals.expandAll();
-            this.bt_originals.button.setAttribute("hide", true);
+            this.bt_originals.button.setAttribute("hide", false);
         }.bind(this);
         this.bt_originals.button.onmouseleave = function(){
             if(!this.bt_originals.button.state().isActive()) {

@@ -119,8 +119,8 @@ class ShoppingCart {
         cartData[index].ProductName = productName;
       }
     }
-    NavBar.updateCart(cartData);
-    ShoppingCart.set(JSON.stringify(cartData));
+    await NavBar.updateCart(cartData);
+    await ShoppingCart.set(JSON.stringify(cartData));
     return cartData;
   }
   static async removeItem(projectID){

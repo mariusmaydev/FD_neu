@@ -78,6 +78,7 @@ class ToolBar_TextElement {
                     // this.fontFamilyDropDown.addEntry("Brush Script MT", "Brush Script MT", f);
 
                     this.fontFamilyDropDown.onValueChange = function(v){
+                        console.log(v)
                             this.TOOLS.fontFamily(v);
                             this.fontFamilyDropDown.input.input.style.fontFamily = v;
                             if(this.sl_fontWeight != undefined){
@@ -292,6 +293,8 @@ class ToolBar_TextElement {
         this.mainElement.state().setActive();
         this.expander.setActive();
         CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt");
+        ToolBar_LighterSettings.blur();
+        
         let ele = document.getElementById("ConverterToolBar_activeBody").childNodes[0];
         if(document.getElementById("ConverterToolBar_activeBody").childNodes.length > 0){
             if(ele.getAttribute("ele-type") == "txt"){

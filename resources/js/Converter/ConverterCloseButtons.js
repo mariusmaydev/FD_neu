@@ -178,55 +178,39 @@ class Converter_CloseOperations {
   
     }
     static async toCart(){
-      let projectID = DSProject.Storage.ProjectID;
-      CONVERTER_STORAGE.canvasNEW.createTextData();
-      DSText.save();
-      if(DSProject.get().State != ProjectHelper.STATE_CART){
-        projectID = await ProjectHelper.copy(DSProject.Storage.ProjectID);
-        await ProjectHelper.changeState(projectID, ProjectHelper.STATE_CART);
-      }
-      if(DSProject.Storage.EPType == "GOLD"){
-        ShoppingCart.addItem(projectID, productHelper.LIGHTER_GOLD, 1);
-      } else {
-        ShoppingCart.addItem(projectID, productHelper.LIGHTER_CHROME, 1);
-      }
+        let projectID = DSProject.Storage.ProjectID;
+        await CONVERTER_STORAGE.canvasNEW.createTextData();
+        DSText.save();
+        DSProject.save();
+        DSImage.save();
+        if(DSProject.get().State != ProjectHelper.STATE_CART){
+            projectID = await ProjectHelper.copy(DSProject.Storage.ProjectID);
+            await ProjectHelper.changeState(projectID, ProjectHelper.STATE_CART);
+        }
+        await ShoppingCart.addItem(projectID, DSProject.Storage.Product, 1);
     }
     static async Buy(){
-      let projectID = DSProject.Storage.ProjectID;
-      CONVERTER_STORAGE.canvasNEW.createTextData();
-    //   CONVERTER_STORAGE.canvasNEW.createData();
-    //   await DSController.saveAll();
-    //   await DSText.save();
-      DSText.save();
-    //   CONVERTER_STORAGE.canvasNEW.createData(1);
-      
-      DSImage.save();
-    //   DSText.save();
-      DSProject.save();
-            if(DSProject.get().State != ProjectHelper.STATE_CART){
-                projectID = (await ProjectHelper.copy(DSProject.Storage.ProjectID));
-                await ProjectHelper.changeState(projectID, ProjectHelper.STATE_CART);
-            }
-            if(DSProject.Storage.EPType == "GOLD"){
-                await ShoppingCart.addItem(projectID, productHelper.LIGHTER_GOLD, 1);
-            } else {
-                await ShoppingCart.addItem(projectID, productHelper.LIGHTER_CHROME, 1);
-            }
-    ShoppingCart.callLocation();
+        let projectID = DSProject.Storage.ProjectID;
+        await CONVERTER_STORAGE.canvasNEW.createTextData();
+        await CONVERTER_STORAGE.canvasNEW.createData();
+        DSText.save();      
+        DSImage.save();
+        DSProject.save();
+        if(DSProject.get().State != ProjectHelper.STATE_CART){
+            projectID = (await ProjectHelper.copy(DSProject.Storage.ProjectID));
+            await ProjectHelper.changeState(projectID, ProjectHelper.STATE_CART);
+        }
+        await ShoppingCart.addItem(projectID, DSProject.Storage.Product, 1);
+        ShoppingCart.callLocation();
 
   
     }
     static async save(){
-      let projectID = DSProject.Storage.ProjectID;
-      CONVERTER_STORAGE.canvasNEW.createTextData();
-      DSText.save();
-      ProjectHelper.CONVERTER_closeProject();
-      if(DSProject.Storage.EPType == "GOLD"){
-        await ShoppingCart.editItem(projectID, productHelper.LIGHTER_GOLD);
-      } else {
-        await ShoppingCart.editItem(projectID, productHelper.LIGHTER_CHROME);
-      }
-      ShoppingCart.callLocation();
+        let projectID = DSProject.Storage.ProjectID;
+        await CONVERTER_STORAGE.canvasNEW.createTextData();
+        await ProjectHelper.CONVERTER_closeProject();
+        await ShoppingCart.editItem(projectID, DSProject.Storage.Product);
+        ShoppingCart.callLocation();
   
     }
   }

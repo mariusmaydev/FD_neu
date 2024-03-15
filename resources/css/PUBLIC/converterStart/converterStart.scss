@@ -125,18 +125,21 @@ body {
             // @include SPLINT-border-inset(red, 1px);
             // @include T_container();
             >.buttons {
+                @include Tmain.TContainer_basic();
                 transform: translateX(-14rem);
                 transition: transform 0.3s ease-out;
                 position: sticky;
                 box-sizing: content-box;
                 width: 100%;//fit-content;
                 min-width: 10rem;
-                max-width: 14rem;
+                max-width: 30rem;
                 // height: calc(100% - 15%);
                 margin: 0;
-                height: max-content !important;
-                max-height: 50%;
-                padding: 0;
+                height: calc(100% - 7vh);
+                // height: max-content !important;
+                // max-height: 50%;
+                padding-top: 7vh;
+                // padding: 0;
                 // justify-self: right;
                 justify-self: center;
                 top: 7vh;
@@ -144,6 +147,27 @@ body {
                 // grid-row: 1;
                 grid-column: 1;
                 // padding-top: calc(1rem + 8vh);
+                > .FooterBTContainer {
+                    position: absolute;
+                    height: max-content;
+                    bottom: 0;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-evenly;
+                    > button {
+
+                        > span {
+                            color: gray;
+                        }
+                    }
+                    > .BTContact {
+
+                    }
+                    > .BTImprint {
+                        
+                    }
+                }
                 > .buttonsContent {
                     position: relative;
                     width: 100%;
@@ -164,9 +188,10 @@ body {
                         // border-bottom-right-radius: 0.5em;
                         margin: 0;
                         padding-right: 0.25rem;
-                        padding-left: 0em;
-                        margin-bottom: 0.25rem;
+                        padding-left: 0rem;
+                        margin-bottom: 0.75rem;
                         margin-left: 1rem;
+                        margin-right: 1rem;
                         transition: padding-left 0.2s ease;
                         @include Tmain.TContainer_basic();
                         // overflow: hidden;
@@ -186,7 +211,8 @@ body {
                             display: flex;
                             flex-direction: row;
                             // @include Gmain.box-shadow(0, black, 0.6);
-                            @include Tmain.TButton_simple();
+                            // @include Tmain.TButton_simple();
+                            background-color: vars.$NEW-color-container-background;
                             float: none;
                             border-radius: 0;
                             position: relative;
@@ -201,6 +227,7 @@ body {
                             margin-bottom: 0.25rem;
                             transition: transform 0.1s ease-in-out;
                             color: vars.$color-primary-text;
+                            box-shadow: none;
                             &::before{
                                 content: '';
                                 transition: transform 0.2s ease;;
@@ -267,7 +294,7 @@ body {
                         > div {   
                             > .S-Nesting {
                                 .I_expander {
-                                    background-color: vars.$color-T_container !important;
+                                    background-color: vars.$NEW-color-container-background !important;
                                 }
                             }
                         }
@@ -305,6 +332,22 @@ body {
                 // display: none;
                 > span {
                     visibility: hidden;
+                }
+                > .buttonCreateContainer {
+                    position: sticky;
+                    top: 90%;
+                    left: 100%;
+                    right: 0;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    > button {
+                        @include Tmain.TButton_primary(2);
+                        > span {
+
+                        }
+                    }
                 }
             }
         }

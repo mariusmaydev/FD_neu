@@ -95,11 +95,6 @@ class CanvasElement_C {
     }
   }
   async createData(scale = 1){
-    // this.createTextData();
-    // if(this.generateThumbnailTime >= Date.now() - 1000){
-    //     // return Promise.resolve();
-    //   }
-    //   this.generateThumbnailTime = Date.now();
         let offscreen  = document.createElement("canvas").transferControlToOffscreen();
         let size = {
             x: this.canvas.width * scale,
@@ -130,73 +125,74 @@ class CanvasElement_C {
             }
             stackOut.push(elem)
         }
+        // let FontStorage = await SPLINT.Tools.Fonts.getLoadedFonts();
         let imageData = await Converter.workerCreateThumbnail.sendInPromise("createThumbnail", { canvas: offscreen, stack: stackOut, size: size}, [offscreen]);
-        let base64 = await SPLINT.Tools.CanvasTools.ImageData2base64(imageData);
+        
+        let canvasTxT = document.createElement("canvas");
+            canvasTxT.width = size.x;
+            canvasTxT.height = size.y;
+        let ctxTxT     = canvasTxT.getContext('2d', { willReadFrequently: true });
+            ctxTxT.fillStyle = "transparent";
+            ctxTxT.fillRect(0, 0, canvasTxT.width, canvasTxT.height);
+            ctxTxT.scale(size.scale, size.scale);
+            for(const ele of this.stack) {
+                if(ele.type == "txt"){
+                let elem = new Object();
+                    elem.data = ele.data;
+                    elem.type = ele.type
+                    elem.ctx = ctxTxT;
+                    canvasPaths.drawThumbnailTxt(elem);
+                }
+            }
+            
+        let canvasOut = document.createElement("canvas")
+            canvasOut.width = 1024;
+            canvasOut.height = 1024;
+        let ctxOut = canvasOut.getContext("2d");
+            ctxOut.save();
+            ctxOut.putImageData(imageData, 0, 0)
+            ctxOut.restore();
+            ctxOut.save();
+            ctxOut.drawImage(canvasTxT, 0, 0, canvasTxT.width, canvasTxT.height, 0, 0, 1024, 1024);
+            ctxOut.restore();
+
+        let base64 = canvasOut.toDataURL("image/png", 1);
         return base64;
   }
   async createTextData(scale = 1){
-    
-    
-    let offscreen  = document.createElement("canvas").transferControlToOffscreen();
     let size = {
         x: this.canvas.width * scale,
         y: this.canvas.height * scale,
         scale: scale
     }
-    let stackOut = [];
-    for(const ele of this.stack){
-        let elem = new Object();
+    for(const element of this.stack){
+        if(element.type == "txt"){
 
-        if(ele.type == "txt"){
-            elem.data = ele.data;
-            elem.data.TextAlign = 0;
+            let postEle = JSON.parse(JSON.stringify( element));
+                postEle.data.TextAlign = 0;
+            let canvas = document.createElement("canvas");
+                canvas.width  = (postEle.data.FrameWidth * size.scale) + 10;
+                canvas.height = (postEle.data.FrameHeight * size.scale) + 10;
 
-            elem.type = ele.type;
-        } else {
-            elem.data = ele.data;
-            elem.type = ele.type;
+            let ctx     = canvas.getContext('2d');
+                ctx.fillStyle = "transparent";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.scale(size.scale / 2, size.scale / 2);
 
-            if(!SPLINT.CacheStorage.has(ele.ID)){
-                let ob = new Object();
-                    ob.blob = await SPLINT.Tools.CanvasTools.loadImageAsBlob(ele.data.images.view);
-                    ob.time = ele.time
+            let a = postEle.data.TextPosX;
+            let b = postEle.data.TextPosY;
 
-                SPLINT.CacheStorage.add(ele.ID, ob);
-                elem.blob = ob.blob;
-            } else {
-                elem.blob = SPLINT.CacheStorage.get(ele.ID).blob;
-            }
+                postEle.data.TextPosX = (canvas.width ) / (size.scale );
+                postEle.data.TextPosY = (canvas.height) / (size.scale );
+                postEle.ctx = ctx;
+
+            canvasPaths.drawTextForData(postEle, true);
+            
+            element.data.TextImg = await canvas.toDataURL("image/png", 1);
+            element.data.TextPosX = a;
+            element.data.TextPosY = b;
         }
-        stackOut.push(elem)
     }
-    console.log(this.stack, stackOut)
-
-    // let worker = Converter.workerManager.connect("ju", false, false);
-    let b = await Converter.workerTextRendering.sendInPromise("createTextData", { canvas: offscreen, stack: stackOut, size: size}, [offscreen]);
-    console.log(b);
-    // for(const element of this.stack){
-    //   if(element.type == "txt"){
-    //     let postEle = JSON.parse(JSON.stringify( element));
-    //     postEle.data.TextAlign = 0;
-    //   let canvas  = document.createElement("canvas");
-    //       canvas.width  = (postEle.data.FrameWidth * scale) + 10;
-    //       canvas.height = (postEle.data.FrameHeight * scale) + 10;
-    //   let ctx     = canvas.getContext('2d');
-    //       ctx.fillStyle = "transparent";
-    //       ctx.fillRect(0, 0, canvas.width, canvas.height);
-    //       ctx.scale(scale / 2, scale / 2);
-    //       let a = postEle.data.TextPosX;
-    //       let b = postEle.data.TextPosY;
-    //       postEle.data.TextPosX = (canvas.width ) / (scale );
-    //       postEle.data.TextPosY = (canvas.height) / (scale );
-    //       postEle.ctx = ctx;
-    //     CanvasHelper.Text().draw(postEle, false, true, true);
-    //     element.data.TextImg = canvas.toDataURL("image/png", 1);
-    //     element.data.TextPosX = a;
-    //     element.data.TextPosY = b;
-
-    //   }
-    // }
   }
   getElementForCoords(){
     let ele = null;
@@ -566,7 +562,7 @@ class CanvasElement_C {
         }
     }
     this.dragElement = null;
-    this.activeElement = null;
+    // this.activeElement = null;
     DSController.saveAll();
   }
   clearLine(full = false){

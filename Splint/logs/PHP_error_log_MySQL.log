@@ -1,0 +1,216 @@
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/7efac3b471/projects/d8bcc836f7/texts/Text_8ccdb...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:30
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:57
+> C:\xampp\htdocs\fd\resources\php\project\project.php:122
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:11
+</S-trace>
+<S-time>2024-03-15 09:39:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/7efac3b471/projects/d8bcc836f7/texts/Text_8ccdb...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:302
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2024-03-15 09:39:37</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/7efac3b471/projects/d8bcc836f7/texts/Text_8ccdb...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:30
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:57
+> C:\xampp\htdocs\fd\resources\php\project\project.php:122
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:11
+</S-trace>
+<S-time>2024-03-15 09:40:48</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/7efac3b471/projects/d8bcc836f7/texts/Text_8ccdb...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:302
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2024-03-15 09:40:48</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/7efac3b471/projects/d8bcc836f7/texts/Text_8ccdb...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:30
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:57
+> C:\xampp\htdocs\fd\resources\php\project\project.php:122
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:11
+</S-trace>
+<S-time>2024-03-15 09:40:55</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/7efac3b471/projects/d8bcc836f7/texts/Text_8ccdb...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:302
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2024-03-15 09:40:55</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/7efac3b471/projects/d8bcc836f7/texts/Text_8ccdb...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:30
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:57
+> C:\xampp\htdocs\fd\resources\php\project\project.php:122
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:11
+</S-trace>
+<S-time>2024-03-15 09:40:58</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/7efac3b471/projects/d8bcc836f7/texts/Text_8ccdb...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:302
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2024-03-15 09:40:59</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/7efac3b471/projects/d8bcc836f7/texts/Text_8ccdb...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:30
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:57
+> C:\xampp\htdocs\fd\resources\php\project\project.php:122
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:11
+</S-trace>
+<S-time>2024-03-15 09:41:07</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/7efac3b471/projects/d8bcc836f7/texts/Text_8ccdb...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:302
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2024-03-15 09:41:07</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/7efac3b471/projects/5597fd5499/texts/Text_0aef1...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:30
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:57
+> C:\xampp\htdocs\fd\resources\php\project\project.php:122
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:11
+</S-trace>
+<S-time>2024-03-15 14:58:44</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/7efac3b471/projects/5597fd5499/texts/Text_0aef1...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:302
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2024-03-15 14:58:44</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/7efac3b471/projects/5597fd5499/texts/Text_0aef1...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:30
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:57
+> C:\xampp\htdocs\fd\resources\php\project\project.php:122
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:11
+</S-trace>
+<S-time>2024-03-15 14:59:40</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/7efac3b471/projects/5597fd5499/texts/Text_0aef1...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:302
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2024-03-15 14:59:40</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/7efac3b471/projects/5597fd5499/texts/Text_3e083...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:30
+> C:\xampp\htdocs\Splint\php\DataBase\DataBaseAccess.php:57
+> C:\xampp\htdocs\fd\resources\php\project\project.php:122
+> C:\xampp\htdocs\fd\resources\php\project\projectAccess.php:11
+</S-trace>
+<S-time>2024-03-15 15:02:44</S-time></S-error>
+<S-error>
+<S-msg>
+     
+     mysqli::query(): (42000/1064): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'C:/xampp/htdocs/fd/data/Users/7efac3b471/projects/5597fd5499/texts/Text_3e083...' at line 1
+</S-msg>
+<S-type>ERROR</S-type>
+<S-trace>
+> C:\xampp\htdocs\Splint\php\DataBase\DataBase.php:103
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:302
+> C:\xampp\htdocs\fd\resources\php\userdata\userdata.php:48
+> C:\xampp\htdocs\fd\resources\php\userdata\userdataAccess.php:11
+</S-trace>
+<S-time>2024-03-15 15:02:44</S-time></S-error>

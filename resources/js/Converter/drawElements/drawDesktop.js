@@ -8,7 +8,7 @@ class converter_drawDesktop {
         this.mainElement = new SPLINT.DOMElement("ConverterMainElement", "div", parent);
         this.mainElement.Class("Conv_MAIN");
         
-        Footer.desktop();
+        Footer.drawFooterAsBox(this.mainElement);
         this.EditorFrameElement = new SPLINT.DOMElement("ConverterEditorFrame", "div", this.mainElement);
         this.EditorFrameElement.Class("EditorFrame");
     

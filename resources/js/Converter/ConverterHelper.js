@@ -40,11 +40,11 @@ class ConverterHelper {
   }
 
   static async setEPType(type){
-    if(type == "GOLD"){
-        DSProject.Storage.Product = "Lighter_Gold_custom";
-    } else {
-        DSProject.Storage.Product = "Lighter_Chrome_custom";
-    }
+    // if(type == "GOLD"){
+    //     DSProject.Storage.Product = "Lighter_Gold_custom";
+    // } else {
+    //     DSProject.Storage.Product = "Lighter_Chrome_custom";
+    // }
     DSProject.Storage.EPType = type;
     DSProject.save();
     CONVERTER_STORAGE.canvasNEW.refreshData();

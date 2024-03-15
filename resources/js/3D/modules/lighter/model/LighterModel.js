@@ -37,7 +37,6 @@ export default class LighterModel {
             LighterModel.isStarted = true;
             SPLINT.ResourceManager.models.lighter_glb.then(async function(data){
                     const pos = new Vector3( 0, 0, 0 );
-                    console.dir(data)
                     if(LighterModel.loaded){
                         LighterModel.SRCscene = LighterModel.SRCscene.clone();
                         LighterModel.SRCscene.position.copy(pos);

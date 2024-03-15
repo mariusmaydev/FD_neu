@@ -63,7 +63,7 @@ class ToolBar_Image {
                 if(element.ImageID == ImageID){
                     element.focus();
                 } else {
-                    element.blur();
+                    // element.blur();
                 }
             }
         }

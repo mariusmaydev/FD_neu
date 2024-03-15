@@ -40,7 +40,6 @@ class drawCartList {
                 header.Class("headline_cart");
         }
         this.list.func_drawListElement = function(item, index, listElement){
-            console.log(item)
             let projectData     = ProjectHelper.get(item.ProjectID);
             let productData     = productHelper.getByName(item.ProductName);
             let lighterEle      = listElement.newDiv(null, "lighter");
@@ -53,6 +52,16 @@ class drawCartList {
             
             projectData.then(function(data){
                 let lighter = new drawLighter3D(lighterEle, lighterEle.id, "PROJECT", data.Thumbnail, false, false, data.EPType);
+                
+                    lighter.promise.then(async function(){
+                        let color = await productHelper.getColorForID(data.Color);
+                        if(color == null || color == undefined){
+                            color = "base";
+                            return;
+                        }
+                        lighter.send("changeColor", color);
+                    })
+                lighter.saveContext = true;
             })
 
             let infoDivInner = infoEle.newDiv("/ID/info_inner", "inner");
@@ -67,8 +76,8 @@ class drawCartList {
                         informationTable.Class("informationTable");
                         // informationTable.addRow("erstellt", this.data.First_Time);
                         // informationTable.addRow("zuletzt bearbeitet", this.data.Last_Time);
+
                         productData.then(function(data){
-                            console.dir(data);
                             for(const e of data.attrs){
                                 informationTable.addRow(e.name + " ", e.value);
                             }
@@ -118,8 +127,8 @@ class drawCartList {
                     buttonEdit.bindIcon("edit");
                     buttonEdit.button.Class("edit");
                     buttonEdit.setTooltip("bearbeiten", "top");
-                    buttonEdit.onclick = function(){
-                        ProjectHelper.CONVERTER_startProject(item.ProjectID, true);
+                    buttonEdit.onclick = async function(){
+                        await ProjectHelper.CONVERTER_startProject(item.ProjectID, true);
                     }
                 let buttonRemove = new SPLINT.DOMElement.Button(ButtonsInner, "remove");
                 buttonRemove.bindIcon("delete");
