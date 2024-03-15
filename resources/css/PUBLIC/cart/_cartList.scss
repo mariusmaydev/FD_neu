@@ -409,7 +409,7 @@
                     transform: translateX(0rem);
                 }
                 position: relative;
-                @include Tmain.T_container();
+                @include Tmain.TContainer_basic();
                 padding-top: 0;
                 padding-bottom: 0;
                 display: flex;

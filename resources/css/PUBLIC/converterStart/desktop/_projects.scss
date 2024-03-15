@@ -104,7 +104,6 @@ $color-project-hover         : rgba(64, 64, 64, 0.219);
                 box-shadow: none;
                 border-radius: 0;
                 background-color: transparent;
-                // @include Tmain.T_container();
                 > span {
                     font-weight: 300;
                     font-size: 4rem;
@@ -128,7 +127,7 @@ $color-project-hover         : rgba(64, 64, 64, 0.219);
         // max-width: 30%;
         // min-width: 8em;
         // flex: 1 1 20%;
-        @include Tmain.T_container();
+        @include Tmain.TContainer_basic();
         padding:    0.5em;
         margin:     1em;
         height: max-content;

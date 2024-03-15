@@ -1,7 +1,6 @@
 @use '../../../themes/theme1/vars';
 @use 'sass:color';
 @use '../../../themes/theme1/main' as Tmain;
-@use '../../../themes/theme1/buttons' as Tbuttons;
 @use '../../../../../../Splint/scss/tools/tools' as S_tools;
 
 @mixin projectDetails-mobile(){
@@ -159,7 +158,7 @@
                         }
                     }
                     > .buttonSize {
-                        @include Tbuttons.T_button_Animated(false, false);
+                        @include Tmain.TButton_Animated(false, false);
                         &[state*='active']{
                             box-shadow: 2px 2px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1),
                                         inset -2px 0px 0px 0px vars.$color-primary-Dark,
@@ -238,7 +237,7 @@
                             @include S_tools.SPLINT-border-inset(vars.$color-T_container-Dark-M  , 2px, true, true, true, true);
                             > button {
                                 box-sizing: border-box;
-                                @include Tbuttons.T_button_Animated(true);
+                                @include Tmain.TButton_Animated(true);
                                 height: calc(100% - 0.5rem);
                                 position: relative;
                                 width: 20% !important;
@@ -384,7 +383,7 @@
                     right: 0;
                     top: 15rem;
                     > button {
-                        @include Tbuttons.T_button_Animated(false, false);
+                        @include Tmain.TButton_Animated(false, false);
                         &[state*='active']{
                             box-shadow: 2px 2px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1),
                                         inset -2px 0px 0px 0px vars.$color-primary-Dark,

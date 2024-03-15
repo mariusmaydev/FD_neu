@@ -13,8 +13,11 @@ class Converter_LeftBar {
     this.contentElement = new SPLINT.DOMElement("LeftBar_content_div", "div", this.mainElement);
     this.contentElement.Class("content");
     this.buttonImageMenu();
+    let hr1 = new SPLINT.DOMElement.HorizontalLine(this.contentElement);
     this.buttonImageUpload();
+    let hr2 = new SPLINT.DOMElement.HorizontalLine(this.contentElement);
     this.buttonNewText();
+    let hr3 = new SPLINT.DOMElement.HorizontalLine(this.contentElement);
     // this.buttonEPType();
     this.buttonProductInformation();
     //this.blockEPType();

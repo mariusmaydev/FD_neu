@@ -19,7 +19,7 @@ body {
         flex-direction: column;
         gap: 1vh;
         > .newBody {
-            @include Tmain.T_container();
+            @include Tmain.TContainer_basic();
             box-sizing: border-box;
             position: relative;
             width: 100%;

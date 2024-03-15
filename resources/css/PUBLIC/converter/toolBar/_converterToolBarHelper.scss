@@ -16,9 +16,9 @@
             display: none;
         }
         >.toolsBody{
-            .S-SliderMain {
-                margin-top: 0.4em;
-                margin-bottom: 0.4em;
+            .S-SliderMain, .S-RangeSliderMain {
+                margin-top: 1rem;
+                margin-bottom: 0.4rem;
                 height: auto;
                 max-height: max-content;
                 overflow: visible;
@@ -54,50 +54,87 @@
                     display: inline-block;
                     box-sizing: border-box;
                     text-align: left;
+                    > span {
+                        font-weight: 500;
+                    }
                     // > span {
             
                     // }
                 }
                 > .contentBody {
-                    height: 1em;
+                    height: 2.5rem;
                     display: flex;
+                    align-items: end;
                     width: 100%;
+                    overflow: hidden;
                     > .sliderBody {
                         order: 1;
-                        height: 100%;
+                        height: 1rem;
                         width: 100%;
+                        > .signBody {
+                            position: absolute;
+                            background-color: transparent;
+                            width: max-content;
+                            height: 1.5rem;
+                            transform: translateX(-50%);
+                            display: none;
+                            > div {
+                                position: relative;
+                                height: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                justify-content: center;
+                                > span {
+                                    top: 0;
+                                    display: block;
+                                    height: max-content;
+                                    line-height: 100%;
+                                    font-size: 0.75rem;
+                                    color: vars.$NEW-color-text-secondary;
+                                }
+                            }
+                            &[state*='active'] {
+                                display: block;
+                            }
+                        }
                         > input[type="range"] {
+                            -webkit-appearance: none;
+                            appearance: none;
                             width: 100%;
+                            cursor: pointer;
                             position: relative;
                             font-size: 1em;
                             height: 100%;
                             display: inline-block;
                             outline: none;
-                            background-color: transparent;
-                            -webkit-appearance: none;
                             transition: box-shadow 0.2s ease;
+                            overflow: hidden;
+
                             &::-webkit-slider-runnable-track {
                                 box-sizing: border-box;
                                 width: 100%;
-                                height: 0.15em;
-                                background-color: vars.$color-primary-Dark;
+                                height: 4px;//0.15rem;
+                                background-color: vars.$NEW-color-text-secondary;//.$color-primary-Dark;
                                 transition: background-color 0.2s ease;
-                                box-shadow: 1px 1px 1px 0px vars.$color-slider-thumb;
+                                box-shadow: none;//1px 1px 1px 0px vars.$color-slider-thumb;
                                 border: none;
                                 border-radius: 10px;
                             }
                             &::-webkit-slider-thumb {
                                 -webkit-appearance: none;
                                 appearance: none;
+                                border-radius: 50%;
+                                background-color: vars.$NEW-color-primary;
                                 border: none;
                                 vertical-align: baseline;
-                                height: 1em;
-                                width: 0.5em;
-                                margin-top: -0.425em;
-                                background: vars.$color-slider-thumb;
-                                box-shadow: 1px 1px 0px 0px vars.$color-slider-thumb-Dark;
+                                height: 16px;
+                                // width: 8px;
+                                margin-top: -6px;//-0.425em;
+                                // background: vars.$color-slider-thumb;
+                                // box-shadow: 1px 1px 0px 0px vars.$color-slider-thumb-Dark;
                                 box-sizing: border-box;
-                                transition: box-shadow 0.2s ease;
+                                // transition: box-shadow 0.2s ease;
                             }
                             &:focus {
                                 &::-webkit-slider-thumb {

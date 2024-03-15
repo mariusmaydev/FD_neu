@@ -218,7 +218,7 @@ body {
     overflow: hidden;
     > .CategoryMenuMain {
         box-sizing: content-box;
-        @include Tmain.T_container();
+        @include Tmain.TContainer_basic();
         // padding: 0;
         top: 1rem;
         margin-left: 0.5rem;
@@ -251,7 +251,7 @@ body {
                 position: relative;
                 height: 20rem;
                 width: calc(100% - 2rem);
-                @include Tmain.T_container();
+                @include Tmain.TContainer_basic();
                 padding: 1rem;
                 margin: 1rem;;
                 box-sizing: border-box;

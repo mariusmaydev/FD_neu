@@ -75,7 +75,7 @@
                         display: none;
                         position: relative;
                         cursor: pointer;
-                        @include Tmain.T_container();
+                        @include Tmain.TContainer_basic();
                         border: none;
                         margin: 1em;
                         user-select: auto;
@@ -246,7 +246,7 @@
                                     border-radius: 0;
                                     gap: 2rem;
                                     > .toCart {
-                                        @include Tmain.T_container();
+                                        @include Tmain.TContainer_basic();
                                         @include Tmain.clipEdgesAll(5px);
                                         > button {
                                             > span {
@@ -255,7 +255,7 @@
                                         }
                                     }
                                     > .buy {
-                                        @include Tmain.T_container();
+                                        @include Tmain.TContainer_basic();
                                         @include Tmain.clipEdgesAll(5px);
                                         > button {
                                             display: flex;
@@ -284,7 +284,7 @@
                         right: 0.2em;
                         bottom: 0.2em;
                         width: 20vw;
-                        @include Tmain.T_container();
+                        @include Tmain.TContainer_basic();
                         @include Gmain.box-shadow(0, rgb(82, 82, 82), 0.7);
                         padding: 0;
                         overflow: hidden;

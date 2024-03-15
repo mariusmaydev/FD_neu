@@ -1,5 +1,5 @@
 
-// @import '../general/NavigationBar.scss';
+
 @use '../../../general/main' as Gmain;
 @use '../../../themes/theme1/main' as Tmain;
 @use '../../../themes/theme1/vars';
@@ -103,7 +103,7 @@ $color-project-hover         : rgba(64, 64, 64, 0.219);
         // max-width: 30%;
         // min-width: 8em;
         // flex: 1 1 20%;
-        @include Tmain.T_container();
+        @include Tmain.TContainer_basic();
         padding:    0.5em;
         margin:     1em;
         height: max-content;

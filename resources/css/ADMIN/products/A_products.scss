@@ -142,16 +142,6 @@ body {
     }
     > .head {
         display: flex;
-        // > button {
-        //     @include Tmain.TButton_simple();
-        //     @include Tmain.TButtonAnimation_simple();
-        // }
-        // > .btColors {
-        //     @include Tmain.TButton_simple();
-        // }
-        // > .btEPType {
-
-        // }
     }
     > .main {
         margin-top: 0rem !important;
@@ -246,7 +236,7 @@ body {
                 gap: 0.5rem;
                 align-items: center;
                 > button {
-                    @include Tbuttons.T_button_Animated(true);
+                    @include Tmain.TButton_Animated(true);
                     &.uploadImage {
                         display: flex;
                         justify-content: space;

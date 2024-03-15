@@ -127,7 +127,7 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
 }
 
 .ImageMenuFilter {
-    @include Tmain.T_container();
+    @include Tmain.TContainer_basic();
     order: 1;
     flex-grow: 0;
     flex-shrink: 3;
@@ -208,7 +208,7 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
             flex-direction: column;
             overflow: visible;
             > .DesignListImageElement{
-                @include Tmain.T_container();
+                @include Tmain.TContainer_basic();
                 // @include box-shadow(0, black, 0.5);
                 border-radius: vars.$border-radius;
                 position: relative;

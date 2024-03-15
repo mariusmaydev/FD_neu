@@ -65,16 +65,29 @@
             transition: max-height 0.3s ease-in-out;
             overflow: hidden;
             > .firstToolContainer {
+                
+                // display: grid;
+                // height: 8rem;
+                // grid-template-columns: fit-content 1fr;//repeat(auto-fit, minmax(50%, 8rem));
+                // grid-auto-flow: row dense;
+                // justify-content: center;
+                // align-content: end;
+
+                // width: 100%;
+                // overflow: hidden;
                 width: 100%;
                 display: flex;
                 flex-direction: row;
                 flex-flow: row;;
                 flex-wrap: wrap ;
+                justify-content: center;
+
+                align-items: stretch;
                 grid-gap: 0rem;
                 > .buttonsDiv {
-                    flex-grow: 1;
+                    flex-grow: 0;
                     display: flex;
-                    justify-content: space-evenly;
+                    justify-content: space-between;
                     align-items: center;
                     width: max-content;
                     margin-top: 0.5em;
@@ -85,214 +98,176 @@
                         border: 1px solid lightgray;
                         gap: 0.5em;
                         border-radius: vars.$border-radius;
-                        margin: 0.5em;
+                        margin: 0em;
+                        padding: 0.25rem;
                         > button {
-                            @include Tbuttons.T_button_Animated(true);
-                            &[state*='active']{
-                                box-shadow: 1px 1px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1),
-                                            inset -1px 0px 0px 0px vars.$color-primary-Dark,
-                                            inset 0px -1px 0px 0px vars.$color-primary-Dark;
-                                transform: translateX(1px) translateY(1px);
-                            }
-                            display: flex;
-                            align-items: center;
-                            flex-direction: row;
-                            flex-wrap: nowrap;
-                            font-size: 1.7rem;
-                            padding: 0.2em;
-                            aspect-ratio: 1/1;
-                            > span {
-                                font-size: 1em;
-                            }
+                            @include Tmain.TButton_secondary(1.5);
                         }
                     }
                     > button {
-                        @include Tmain.TButton_simple();
-                        &[state*='active']{
-                            // box-shadow: 1px 1px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1),
-                            //             inset -1px 0px 0px 0px vars.$color-primary-Dark,
-                            //             inset 0px -1px 0px 0px vars.$color-primary-Dark;
-                            // transform: translateX(1px) translateY(1px);
-                            @include S_tools.SPLINT-border-inset(vars.$color-primary, 1px);
-                        }
-                        display: flex;
-                        align-items: center;
-                        flex-direction: row;
-                        flex-wrap: nowrap;
-                        font-size: 1.7rem;
-                        padding: 0.2em;
-                        aspect-ratio: 1/1;
-                        &:hover {
-                            > span {
-                                &:not(.description) {
-                                    text-shadow: 1px 1px 0px color.adjust(vars.$color-primary );
-                                    transition-duration: 200ms;
-                                    // color: vars.$color-primary;
-                                }
-                            }
-                        }
-                        > span {
-                            text-shadow: 0px 0px 0px transparent;
-                            transition: text-shadow cubic-bezier(0, 0.52, 1, 1) 0.5s;
-                            color: vars.$color-primary-text;
-                            font-size: 1em;
-                        }
+                        @include Tmain.TButton_secondary(1.5);
                     }
                 }
-                >.DropDownInputMain_S {
-                    flex-grow: 0;
-                    flex-shrink: 1;
-                    max-width: 40%;
-                    margin-top: 0em;
-                    margin-bottom: 0em;
-                    > div {
-                        &.DropDown_expander {
-                            @include Tmain.preventSelect();
-                            > div {
-                                cursor: pointer;
-                                > span {
-                                    font-size: 1em;
-                                    transition: font-size 0.2s ease-in-out;
-                                }
-                                &:hover {
-                                    > span {
-                                        font-size: 1.25em;
-                                    }
-                                    background-color: vars.$color-hover;
-                                }
-                            }
-                        }
+                > .FontFamilyContainer {
+                    flex: 1;
+                    min-width: 7rem;
+                    width: 100%;
+                    >.DropDownInputMain_S {
+                        width: 100%;
+                        margin-top: 0em;
+                        margin-bottom: 0em;
                         > div {
-                            > input {
+                            &.DropDown_expander {
                                 @include Tmain.preventSelect();
-                            }
-                            > label {
-                                @include Tmain.preventSelect();
-
-                            }
-                        }
-                    }
-                }
-            }
-            .S-SliderMain {
-                margin-top: 0.4em;
-                margin-bottom: 0.4em;
-                height: auto;
-                max-height: max-content;
-                overflow: visible;
-                transition: all 0.3s ease-in;
-                &[drawDivider='true']{
-                    &::after {
-                        content: "";
-                        display: block;
-                        width: 100%;
-                        height: 0px;
-                        background: transparent;
-                        border-bottom: 1px solid vars.$color-devider;
-                        left: 0;
-                        margin-top: 0.25em;
-                        position: relative;
-                    }
-                    &::before {
-                        content: "";
-                        display: block;
-                        width: 100%;
-                        height: 0px;
-                        background: transparent;
-                        border-top: 1px solid vars.$color-devider;
-                        left: 0;
-                        margin-bottom: 0.2em;
-                        position: relative;
-                    }
-                }
-                > .label {
-                    position: relative;
-                    width: 100%;
-                    display: inline-block;
-                    box-sizing: border-box;
-                    text-align: left;
-                    // > span {
-            
-                    // }
-                }
-                > .contentBody {
-                    height: 1em;
-                    display: flex;
-                    width: 100%;
-                    > .sliderBody {
-                        order: 1;
-                        height: 100%;
-                        width: 100%;
-                        > input[type="range"] {
-                            width: 100%;
-                            position: relative;
-                            font-size: 1em;
-                            height: 100%;
-                            display: inline-block;
-                            outline: none;
-                            background-color: transparent;
-                            -webkit-appearance: none;
-                            transition: box-shadow 0.2s ease;
-                            &::-webkit-slider-runnable-track {
-                                box-sizing: border-box;
-                                width: 100%;
-                                height: 0.15em;
-                                background-color: vars.$color-primary-Dark;
-                                transition: background-color 0.2s ease;
-                                box-shadow: 1px 1px 1px 0px vars.$color-slider-thumb;
-                                border: none;
-                                border-radius: 10px;
-                            }
-                            &::-webkit-slider-thumb {
-                                -webkit-appearance: none;
-                                appearance: none;
-                                border: none;
-                                vertical-align: baseline;
-                                height: 1em;
-                                width: 0.5em;
-                                margin-top: -0.425em;
-                                background: vars.$color-slider-thumb;
-                                box-shadow: 1px 1px 0px 0px vars.$color-slider-thumb-Dark;
-                                box-sizing: border-box;
-                                transition: box-shadow 0.2s ease;
-                            }
-                            &:focus {
-                                &::-webkit-slider-thumb {
-                                    @include Gmain.box-shadow(0, vars.$color-primary-Dark, 0.7);
+                                > div {
+                                    cursor: pointer;
+                                    > span {
+                                        font-size: 1em;
+                                        transition: font-size 0.2s ease-in-out;
+                                    }
+                                    &:hover {
+                                        > span {
+                                            font-size: 1.25em;
+                                        }
+                                        background-color: vars.$color-hover;
+                                    }
                                 }
-                                outline: none;
                             }
-                            &:hover::-webkit-slider-runnable-track {
-                                background-color: vars.$color-primary;
+                            > div {
+                                > input {
+                                    @include Tmain.preventSelect();
+                                }
+                                > label {
+                                    @include Tmain.preventSelect();
+    
+                                }
                             }
                         }
-                        > datalist {
-                            display: none;
-                            // > option {
-
-                            // }
-                        }
-                    }
-                    > .valueOutput {
-                        position: relative;
-                        order: 2;
-                        font-size: 1.1em;
-                        height: max-content;
-                        &[hidden='true']{
-                            display: none;
-                        }
-                        top: -0.1em;
-                        width: 1.5em;
-                        display: inline-block;
-                        box-sizing: border-box;
-                        text-align: center;
-                        margin-top: auto;
-                        // > span {
-
-                        // }
                     }
                 }
+                
             }
+            // .S-SliderMain, .S-RangeSliderMain {
+            //     margin-top: 0.4em;
+            //     margin-bottom: 0.4em;
+            //     height: auto;
+            //     max-height: max-content;
+            //     overflow: visible;
+            //     transition: all 0.3s ease-in;
+            //     &[drawDivider='true']{
+            //         &::after {
+            //             content: "";
+            //             display: block;
+            //             width: 100%;
+            //             height: 0px;
+            //             background: transparent;
+            //             border-bottom: 1px solid vars.$color-devider;
+            //             left: 0;
+            //             margin-top: 0.25em;
+            //             position: relative;
+            //         }
+            //         &::before {
+            //             content: "";
+            //             display: block;
+            //             width: 100%;
+            //             height: 0px;
+            //             background: transparent;
+            //             border-top: 1px solid vars.$color-devider;
+            //             left: 0;
+            //             margin-bottom: 0.2em;
+            //             position: relative;
+            //         }
+            //     }
+            //     > .label {
+            //         position: relative;
+            //         width: 100%;
+            //         display: inline-block;
+            //         box-sizing: border-box;
+            //         text-align: left;
+            //         // > span {
+            
+            //         // }
+            //     }
+            //     > .contentBody {
+            //         height: 1em;
+            //         display: flex;
+            //         width: 100%;
+            //         > .sliderBody {
+            //             order: 1;
+            //             height: 100%;
+            //             width: 100%;
+            //             > input[type="range"] {
+            //                 width: 100%;
+            //                 position: relative;
+            //                 font-size: 1em;
+            //                 height: 100%;
+            //                 display: inline-block;
+            //                 outline: none;
+            //                 background-color: transparent;
+            //                 -webkit-appearance: none;
+            //                 transition: box-shadow 0.2s ease;
+            //                 &::-webkit-slider-runnable-track, &::-moz-range-track {
+            //                     box-sizing: border-box;
+            //                     width: 100%;
+            //                     height: 0.15em;
+            //                     background-color: vars.$color-primary-Dark;
+            //                     transition: background-color 0.2s ease;
+            //                     box-shadow: 1px 1px 1px 0px vars.$color-slider-thumb;
+            //                     border: none;
+            //                     border-radius: 10px;
+            //                 }
+            //                 &::-webkit-slider-thumb, &::-moz-range-thumb {
+            //                     -webkit-appearance: none;
+            //                     appearance: none;
+            //                     border: none;
+            //                     vertical-align: baseline;
+            //                     height: 1em;
+            //                     width: 0.5em;
+            //                     margin-top: -0.425em;
+            //                     background: vars.$color-slider-thumb;
+            //                     box-shadow: 1px 1px 0px 0px vars.$color-slider-thumb-Dark;
+            //                     box-sizing: border-box;
+            //                     transition: box-shadow 0.2s ease;
+            //                 }
+            //                 &:focus {
+            //                     &::-webkit-slider-thumb, &::-moz-range-thumb {
+            //                         @include Gmain.box-shadow(0, vars.$color-primary-Dark, 0.7);
+            //                     }
+            //                     outline: none;
+            //                 }
+            //                 &:hover {
+            //                     &::-webkit-slider-runnable-track, &::-moz-range-track {
+            //                         background-color: vars.$color-primary;
+            //                     }
+            //                 }
+            //             }
+            //             > datalist {
+            //                 display: none;
+            //                 // > option {
+
+            //                 // }
+            //             }
+            //         }
+            //         > .valueOutput {
+            //             position: relative;
+            //             order: 2;
+            //             font-size: 1.1em;
+            //             height: max-content;
+            //             &[hidden='true']{
+            //                 display: none;
+            //             }
+            //             top: -0.1em;
+            //             width: 1.5em;
+            //             display: inline-block;
+            //             box-sizing: border-box;
+            //             text-align: center;
+            //             margin-top: auto;
+            //             // > span {
+
+            //             // }
+            //         }
+            //     }
+            // }
             > .rotationBody {
                 position: relative;
                 display: block;
@@ -308,7 +283,8 @@
                             padding: 0;
                             margin: 0.1em;
                             margin-inline: 0.5em;
-                            @include Tbuttons.T_button_Animated(true);
+                            // @include Tbuttons.T_button_Animated(true);
+                            @include Tmain.TButton_primary();
                             width: 100%;
                         }
                     }

@@ -4,7 +4,7 @@
 @forward "helper";
 @use "../../../../../Splint/scss/tools/tools" as S_tools;
 @forward "container" show TContainer_basic;
-@forward "buttonNew" show TButton_basic, TButton_important_A, TButton_important_B, TButton_simple, TButton_Animated, TButtonAnimation_simple;
+@forward "buttonNew" show TButton_primary, TButton_secondary, TButton_basic, TButton_simple, TButton_Animated;
 
 * {
     // transition: .1s ease;
@@ -18,9 +18,6 @@ body {
         padding: 0;
     }
 }
-
-
-
 
 @mixin clipEdges_t1($size){
     clip-path: polygon(
@@ -50,18 +47,18 @@ body {
     );
 }
 
-@mixin T_container(){
-    // box-shadow: transparentize(black, calc(1 -  0.15)) 0px 0px 3px, transparentize(black, calc(1 - 0.11)) 0px 0px 3px;
-    // border-radius: vars.$border-radius;
-    background-color: vars.$color-T_container;
-    // box-shadow: 2px 2px 0px 0px vars.$color-T_container-Dark, 
-    //             inset -1px 0px 0px 0px vars.$color-primary,
-    //             inset 0px -1px 0px 0px vars.$color-primary;
-    // box-shadow: 3px 3px 0px 0px vars.$color-T_container-Dark;
-    // @include S_tools.SPLINT-border-inset(vars.$color-primary, 1px, false, false, true, true);
-    padding: 0.5em;
+// @mixin T_container(){
+//     // box-shadow: transparentize(black, calc(1 -  0.15)) 0px 0px 3px, transparentize(black, calc(1 - 0.11)) 0px 0px 3px;
+//     // border-radius: vars.$border-radius;
+//     background-color: vars.$color-T_container;
+//     // box-shadow: 2px 2px 0px 0px vars.$color-T_container-Dark, 
+//     //             inset -1px 0px 0px 0px vars.$color-primary,
+//     //             inset 0px -1px 0px 0px vars.$color-primary;
+//     // box-shadow: 3px 3px 0px 0px vars.$color-T_container-Dark;
+//     // @include S_tools.SPLINT-border-inset(vars.$color-primary, 1px, false, false, true, true);
+//     padding: 0.5em;
 
-}
+// }
 
 .Slider_main {
     > .Slider_inputBody {

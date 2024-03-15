@@ -84,6 +84,7 @@ export class draw {
         this.setupCamera();
         this.raycaster = SPLINT.raycaster(this);
         this.raycaster2 = SPLINT.raycaster(this);
+        // this.setup.controls();
     }
     setupCamera(){
         if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
@@ -148,37 +149,37 @@ export class draw {
                 this.compressedAnimations.open();
                 // this.compressedAnimations.smoothTurnStart();
             }
-            workerInterface.createNormalMap(SPLINT.config.URIs.project + "../" + SPLINT.ResourceManager.textures.lighter_engraving_thumbnail_1024_path).then(async function(texture){
-                console.log("load")
+            // workerInterface.createNormalMap(SPLINT.config.URIs.project + "../" + SPLINT.ResourceManager.textures.lighter_engraving_thumbnail_1024_path).then(async function(texture){
+            //     console.log("load")
 
-                // let t = await SPLINT.Tools.CanvasTools.ImageData2base64(texture.source.data);
-                // console.log(t);
-                this.thumbnail.lighter1.loadNormalMap(texture)
-                this.thumbnail.lighter1.loadNormalMap(texture)
-            }.bind(this))
+            //     let t = await SPLINT.Tools.CanvasTools.ImageData2base64(texture.source.data);
+            //     console.log(t);
+            //     this.thumbnail.lighter1.loadNormalMap(texture)
+            //     this.thumbnail.lighter1.loadNormalMap(texture)
+            // }.bind(this))
             
                 let worker = new Worker(SPLINT.projectRootPath + "/js/_WebWorker/SVGGeneratorWorker.js") 
                     worker.onmessage = async function(e) {
                         console.log(e.data)    
                     }
-            SPLINT.ResourceManager.textures.lighter_engraving_thumbnail_1024.then(async function(texture){
-                    console.dir(texture.source.data)
-                    let img  =new Image();
-                        img.onload = function(){
-                            let imageData = SPLINT.Tools.CanvasTools.imageToImageData(img);
-                            console.dir(imageData)
-                            worker.postMessage(imageData);
-                        }
-                        img.src = SPLINT.config.URIs.project + "../" + SPLINT.ResourceManager.textures.lighter_engraving_thumbnail_chrome_path;
-                    
-
-            })
-            // SPLINT.ResourceManager.textures.ligher_NormalMapEngraving.then(async function(texture){ 
-            //     // this.thumbnail.lighter1.loadEnvMap(this.cubeRenderTarget.texture);
-            //     this.thumbnail.lighter1.loadNormalMap(texture);
-            //     // this.thumbnail.lighter2.loadEnvMap(this.cubeRenderTarget.texture);
-            //     // this.thumbnail.lighter2.loadNormalMap(texture);
-            // }.bind(this));
+            // SPLINT.ResourceManager.textures.lighter_engraving_thumbnail_1024.then(async function(texture){
+                    // console.dir(texture.source.data)
+                    // let img  =new Image();
+                        // img.onload = function(){
+                            // let imageData = SPLINT.Tools.CanvasTools.imageToImageData(img);
+                            // console.dir(imageData)
+                            // worker.postMessage(imageData);
+                        // }
+                        // img.src = SPLINT.config.URIs.project + "../" + SPLINT.ResourceManager.textures.lighter_engraving_thumbnail_chrome_path;
+                    // 
+// 
+            // })
+            SPLINT.ResourceManager.textures.ligher_NormalMapEngraving.then(async function(texture){ 
+                // this.thumbnail.lighter1.loadEnvMap(this.cubeRenderTarget.texture);
+                this.thumbnail.lighter1.loadNormalMap(texture);
+                // this.thumbnail.lighter2.loadEnvMap(this.cubeRenderTarget.texture);
+                this.thumbnail.lighter2.loadNormalMap(texture);
+            }.bind(this));
             
         // console.log(SPLINT.ResourceManager.textures.lighter_engraving_thumbnail_1024_data)
         }.bind(this));

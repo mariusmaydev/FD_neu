@@ -75,7 +75,7 @@ body {
 
             max-width: 100%;
             > div {
-                @include Tmain.T_container();
+                @include Tmain.TContainer_basic();
                 &.headline {
                     > span {
                         font-size: 2em;

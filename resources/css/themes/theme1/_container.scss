@@ -6,10 +6,15 @@
 $color-background   : vars.$color-T_container;
 $color-border       : vars.$color-T_container-Medium;
 
+// @mixin TContainer_basicN
+
 @mixin TContainer_basic($clip: true) {
-    background-color: $color-background;//map.get($colorMap, "colorABC");
-    @if ($clip){
-        @include helper.clipEdgesAll(5px);
-    }
-    @include S_tools.SPLINT-border-inset($color-border, 1px, true, true, true, true);
+    background-color: white;
+    border-radius: 8px;  
+    box-shadow: 0px 2px 10px rgba(100,100,100,0.3);
+    // background-color: $color-background;//map.get($colorMap, "colorABC");
+    // @if ($clip){
+    //     @include helper.clipEdgesAll(5px);
+    // }
+    // @include S_tools.SPLINT-border-inset($color-border, 1px, true, true, true, true);
 }

@@ -48,7 +48,7 @@ body {
 
 .SavedInformationMain {
     position: relative;
-    @include Tmain.T_container();
+    @include Tmain.TContainer_basic();
     // background-color: white;
     margin: 0.5em;
     box-sizing: border-box;
@@ -220,7 +220,7 @@ body {
             }
             
             > .productOverviewBody {
-                @include Tmain.T_container();
+                @include Tmain.TContainer_basic();
                 position: relative;
                 display: none;
                 height: min-content;

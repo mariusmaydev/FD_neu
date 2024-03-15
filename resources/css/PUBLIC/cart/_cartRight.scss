@@ -107,7 +107,7 @@
                     }
                 }
                 > .buttonBody {
-                    @include Tmain.TButton_important_B();
+                    @include Tmain.TButton_primary();
 
                 }
                 > .mwstBody {

@@ -31,6 +31,46 @@
                 overflow: hidden;
             }
             > .topDiv {
+                width: 100%;
+                >.imgDiv {
+                    display: block;
+                    box-sizing: border-box;
+                    position: relative;
+                    width: 100%;
+                    @include Tmain.TContainer_basic();
+                    > img {
+                        box-sizing: border-box;
+                        position: relative;
+                        width: 100%;
+                        display: block;
+                    }
+                    > .spinner {
+                        margin: 0;
+                        position: absolute;
+                        z-index: 1;
+                        box-sizing: border-box;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: transparent;
+                        &[state*='active']{
+                            visibility: visible;
+                        }
+                        > div {
+                            top: 50%; 
+                            left: 50%;
+                            transform: translate(-50%,-50%);
+                            position: relative;
+                            aspect-ratio: 1/1;
+                            display: block;
+                            width: auto;
+                            height: auto;
+                            max-height: 100%;
+                            max-width: 100%;;
+                        }
+                    }
+                }
                 > .buttonsDiv {
                     display: none;
                 }
@@ -45,111 +85,120 @@
                 width: 100%;
                 flex-grow: 1;
                 align-items: stretch;
-                overflow: hidden;
+                justify-content: space-between;
+                overflow: visible;
+                gap: 0.5rem;
                 >.imgDiv {
-                    display: flex;
-                    flex-direction: row;
-                    overflow: hidden;
-                    align-items: center;
-                    justify-content: center;
+                    display: block;
                     box-sizing: border-box;
                     position: relative;
-                    background-color: vars.$color-T_container-Medium;
-                    height: 100%;
-                    max-height: 100%;
-                    max-width: 100%;
-                    width: min-content;
-                    box-shadow: none;
-                    padding: 1px;
-                        @include Tmain.clipEdgesAll(5px);
+                    width: max-content;
+                    padding: 0px;//0.5rem;
+                        // padding: 0.25rem;
+                    // @include Gmain.box-shadow();
                     > img {
-                        @include Tmain.clipEdgesAll(5px);
-                        @include Tmain.preventSelect();
+                        @include Tmain.TContainer_basic();
                         box-sizing: border-box;
                         position: relative;
                         height: 100%;
-                        width: auto;
+                        display: block;
+                        overflow: hidden;
+                    }
+                    > .spinner {
+                        margin: 0;
+                        position: absolute;
+                        z-index: 1;
+                        box-sizing: border-box;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: transparent;
+                        &[state*='active']{
+                            visibility: visible;
+                        }
+                        > div {
+                            top: 50%; 
+                            left: 50%;
+                            transform: translate(-50%,-50%);
+                            position: relative;
+                            aspect-ratio: 1/1;
+                            display: block;
+                            width: auto;
+                            height: auto;
+                            max-height: 100%;
+                            max-width: 100%;;
+                        }
                     }
                 }
                 > .buttonsDiv {
-                    flex-grow: 1;
-                    display: flex;
-                    flex-direction: row;
-                    margin-top: 0.8vh;
-                    margin-bottom: 0.5vh;
-                    height: 100%;
+                    display: grid;
+                    height: 8rem;
+                    grid-template-columns: repeat(auto-fit, minmax(50%, 8rem));
+                    grid-auto-flow: row dense;
+                    justify-content: center;
+                    align-content: end;
+
+                    width: 100%;
                     overflow: hidden;
-                    transition: all 0.2s ease-in;
-                    > button {
-                        height: max-content;
-                        width: max-content;
-                        padding: 0.5em;
-                        margin: 0 5px ;
-                        aspect-ratio: 1/1;
-                        background-color: vars.$color-T_container-Medium;
-                        box-shadow: none;
-                        box-shadow: 3px 3px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1),
-                                    inset -1px 0px 0px 0px vars.$color-primary-Dark,
-                                    inset 0px -1px 0px 0px vars.$color-primary-Dark;
-                        transition: box-shadow 50ms ease, transform 50ms ease;
-                        &:active {
-                            // box-shadow: 2px 2px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1),
+                    // transition: all 0.2s ease-in;
+                    // gap: 0.5rem;
+                    > div {
+                        padding-top: 2.5%;
+                        padding-bottom: 2.5%;
+                        position: relative;
+                        min-width: calc(50%);
+                        width: 100%;
+                        display: flex;
+                        flex-direction: row;
+                        height: 100%;
+                        justify-content: space-around;
+                        align-items: center;
+                        box-sizing: border-box;
+                        overflow: hidden;
+                        // gap: 0.5rem;
+
+                        // flex-wrap: wrap;
+                        &.BTinner1 {
+
+                        }
+                        &.BTinner2 {
+
+                        }
+                        > button {
+                            flex: 1;
+                            display: block !important;
+                            @include Tmain.TButton_primary(1.5);
+                            // padding: 0;
+                            position: relative;
+                            box-sizing: border-box;
+                            max-width: min(calc(50% - 5%), 64px);
+                            // height: calc(max-content - 0.5rem);
+                            // max-height: calc(100% - 0.5rem);
+                            aspect-ratio: 1/1;
+                            // background-color: vars.$color-T_container-Medium;
+                            // box-shadow: none;
+                            // box-shadow: 3px 3px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1),
                             //             inset -1px 0px 0px 0px vars.$color-primary-Dark,
                             //             inset 0px -1px 0px 0px vars.$color-primary-Dark;
-                            @include S_tools.SPLINT-border-inset(vars.$color-primary, 2px);
-                            // transform: translateX(1px) translateY(1px);
+                            // transition: box-shadow 50ms ease, transform 50ms ease;
+                            // &:active {
+                            //     // box-shadow: 2px 2px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1),
+                            //     //             inset -1px 0px 0px 0px vars.$color-primary-Dark,
+                            //     //             inset 0px -1px 0px 0px vars.$color-primary-Dark;
+                            //     @include S_tools.SPLINT-border-inset(vars.$color-primary, 2px);
+                            //     // transform: translateX(1px) translateY(1px);
+                            // }
+                            // &:hover {
+                            //     > span {
+                            //         color: color.adjust(vars.$color-primary-Dark);
+                            //     }
+                            // }
+                            // > span {
+                            //     font-size: 2em;
+                            //     transition: color 50ms ease;
+                            // }
                         }
-                        &:hover {
-                            > span {
-                                color: color.adjust(vars.$color-primary-Dark);
-                            }
-                        }
-                        > span {
-                            font-size: 2em;
-                            transition: color 50ms ease;
-                        }
-                    }
-                }
-            }
-        }
-        > .topDiv {
-            width: 100%;
-            >.imgDiv {
-                display: block;
-                box-sizing: border-box;
-                position: relative;
-                width: 100%;
-                @include Gmain.box-shadow();
-                > img {
-                    box-sizing: border-box;
-                    position: relative;
-                    width: 100%;
-                    display: block;
-                }
-                > .spinner {
-                    margin: 0;
-                    position: absolute;
-                    z-index: 1;
-                    box-sizing: border-box;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background-color: transparent;
-                    &[state*='active']{
-                        visibility: visible;
-                    }
-                    > div {
-                        top: 50%; 
-                        left: 50%;
-                        transform: translate(-50%,-50%);
-                        position: relative;
-                        aspect-ratio: 1/1;
-                        display: block;
-                        width: auto;
-                        height: auto;
-                        max-height: 100%;
-                        max-width: 100%;;
                     }
                 }
             }
@@ -185,7 +234,7 @@
                             padding: 0;
                             margin: 0.1em;
                             margin-inline: 0.5rem;
-                            @include Tmain.TButton_simple();
+                            @include Tmain.TButton_primary();
                             width: 100%;
                         }
                     }

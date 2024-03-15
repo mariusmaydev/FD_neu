@@ -1,6 +1,7 @@
 
 @use '../../themes/theme1/vars';
 @use '../../themes/theme1/buttons' as Tbuttons;
+@use '../../themes/theme1/main' as Tmain;
 @use '../../../../../Splint/scss/tools/tools' as S_tools;
 @use '../../general/mediaQueries';
 // @use '../../themes/theme1/main' as Tmain;
@@ -49,7 +50,7 @@ $settings: (
                                 z-index: 2;
                                 top: 85%;
                                 left: 40%;
-                                @include Tbuttons.T_button_4();
+                                @include Tmain.TButton_primary();
                                 background-color: vars.$color-primary-Dark;
                                 > span {
                                     font-size: 3rem;
@@ -160,7 +161,7 @@ $settings: (
                                 z-index: 2;
                                 top: 85%;
                                 left: 40%;
-                                @include Tbuttons.T_button_4();
+                                @include Tmain.TButton_primary();
                                 background-color: vars.$color-primary-Dark;
                                 > span {
                                     font-size: 3rem;

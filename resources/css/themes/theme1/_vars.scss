@@ -1,9 +1,16 @@
-@use '../../general/fonts.scss';
+// @use '../../general/fonts.scss';
 
 //NavBar
 $NavBar-height-mobile-small : 6vh; 
 $NavBar-height-mobile       : 7vh;
 $NavBar-height-desktop      : 7vh;
+
+$NEW-color-primary: #D69D00;
+$NEW-color-primary-active: #ebac00;
+
+$NEW-color-text-secondary: rgb(115, 115, 115);
+
+$NEW-border-radius-main: 8px;
 
 
 $--IMPORTANT            : "!important";
@@ -12,7 +19,7 @@ $size__site_content_width: 1024px;
 $LIGHTER-ratio          : 0.6609; // 38/57.5;
 $LIGHTER-ratio2         : 1.5131;
 
-$font-family-main       : "G-Roboto";
+$font-family-main       : "Inter";
 $font-weight-main       : 400;
 
 $general-skew           : 0deg;

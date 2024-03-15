@@ -74,40 +74,57 @@ class ToolBar_ImageElement {
         
         this.buttonsDiv = new SPLINT.DOMElement(this.ImageID + "_buttonsDiv", "div", this.topDiv);
         this.buttonsDiv.Class("buttonsDiv");
-            this.PARTS.BT_remove(this.buttonsDiv);
-            this.PARTS.BT_copy(this.buttonsDiv);
-            this.PARTS.BT_flip("HORIZONTAL", this.buttonsDiv);
-            this.PARTS.BT_flip("VERTICAL", this.buttonsDiv);
+            let btDiv1 = new SPLINT.DOMElement(this.ImageID + "_buttonsDivInner1", "div", this.buttonsDiv);
+                btDiv1.Class("BTinner1");
+                this.PARTS.BT_remove(btDiv1);
+                this.PARTS.BT_copy(btDiv1);
+            let btDiv2 = new SPLINT.DOMElement(this.ImageID + "_buttonsDivInner2", "div", this.buttonsDiv);
+                btDiv2.Class("BTinner2");
+                this.PARTS.BT_flip("HORIZONTAL", btDiv2);
+                this.PARTS.BT_flip("VERTICAL", btDiv2);
     }
     drawSlider(){
         //Contrast
-        this.sl_contrast = new SPLINT.DOMElement.Slider(this.toolsBody, "contrast_" + this.ImageID, "Kontrast");
+        this.sl_contrast = new SPLINT.DOMElement.RangeSlider(this.toolsBody, "contrast_" + this.ImageID, "Kontrast");
         this.sl_contrast.drawTickMarks = false;
         this.sl_contrast.min    = 0;
         this.sl_contrast.max    = 10;
+        this.sl_contrast.valueExtension = "%";
+        // this.sl_contrast.drawValueOutput = false;
         this.sl_contrast.value  = this.data.ImageFilter.contrast;
+        this.sl_contrast.onDrawSign = function(signContent){
+            signContent.value = SPLINT.Tools.Math.roundFX(this.sl_contrast.valuePercent, 0, true) + this.sl_contrast.valueExtension;
+        }.bind(this);
         this.sl_contrast.oninputFinished = function(value){
             this.data.ImageFilter.contrast = value;
             ConverterHelper.filter(DSImage.getIndex(this.ImageID));
         }.bind(this);
  
         //Antialiasing
-        this.sl_antialiasing = new SPLINT.DOMElement.Slider(this.toolsBody, "antialiasing_" + this.ImageID, "Glättung");
+        this.sl_antialiasing = new SPLINT.DOMElement.RangeSlider(this.toolsBody, "antialiasing_" + this.ImageID, "Glättung");
         this.sl_antialiasing.drawTickMarks = false;
         this.sl_antialiasing.min    = 0;
         this.sl_antialiasing.max    = 10;
+        this.sl_antialiasing.valueExtension = "%";
         this.sl_antialiasing.value  = this.data.ImageFilter.antialiasing;
+        this.sl_antialiasing.onDrawSign = function(signContent){
+            signContent.value = SPLINT.Tools.Math.roundFX(this.sl_antialiasing.valuePercent, 0, true) + this.sl_antialiasing.valueExtension;
+        }.bind(this);
         this.sl_antialiasing.oninputFinished = function(value){
             this.data.ImageFilter.antialiasing = value;
             ConverterHelper.filter(DSImage.getIndex(this.ImageID));
         }.bind(this);
 
         //Sharpness
-        this.sl_sharpness = new SPLINT.DOMElement.Slider(this.toolsBody, "sharpness_" + this.ImageID, "Schärfe");
+        this.sl_sharpness = new SPLINT.DOMElement.RangeSlider(this.toolsBody, "sharpness_" + this.ImageID, "Schärfe");
         this.sl_sharpness.drawTickMarks = false;
         this.sl_sharpness.min    = 0;
         this.sl_sharpness.max    = 10;
+        this.sl_sharpness.valueExtension = "%";
         this.sl_sharpness.value  = this.data.ImageFilter.sharpness;
+        this.sl_sharpness.onDrawSign = function(signContent){
+            signContent.value = SPLINT.Tools.Math.roundFX(this.sl_sharpness.valuePercent, 0, true) + this.sl_sharpness.valueExtension;
+        }.bind(this);
         this.sl_sharpness.oninputFinished = function(value){
             this.data.ImageFilter.sharpness = value;
             ConverterHelper.filter(DSImage.getIndex(this.ImageID));
@@ -116,11 +133,15 @@ class ToolBar_ImageElement {
         //Align
         this.sl_rotationBody = new SPLINT.DOMElement(this.ImageID + "_rotationDiv", "div", this.toolsBody);
         this.sl_rotationBody.Class("rotationBody");
-            this.sl_rotation = new SPLINT.DOMElement.Slider(this.sl_rotationBody, "rotation_" + this.ImageID, "Drehung");
+            this.sl_rotation = new SPLINT.DOMElement.RangeSlider(this.sl_rotationBody, "rotation_" + this.ImageID, "Drehung");
             this.sl_rotation.drawTickMarks = false;
             this.sl_rotation.min    = -180;
             this.sl_rotation.max    = 180;
+            this.sl_rotation.valueExtension = "deg";
             this.sl_rotation.value  = this.data.ImageAlign;
+            this.sl_rotation.onDrawSign = function(signContent){
+                signContent.value = this.sl_rotation.value + this.sl_rotation.valueExtension;
+            }.bind(this);
             this.sl_rotation.oninput = function(value){
                 this.data.ImageAlign = value;
                 CONVERTER_STORAGE.canvasNEW.refreshData();
@@ -162,6 +183,12 @@ class ToolBar_ImageElement {
         this.expander.unsetActive();
         document.getElementById("ConverterToolBar_Image_main").appendChild(this.mainElement);
         document.getElementById("ConverterToolBar_activeBody").state().unsetActive();
+        if(this.sl_contrast != undefined){
+            this.sl_contrast.hideSign();
+            this.sl_antialiasing.hideSign();
+            this.sl_rotation.hideSign();
+            this.sl_sharpness.hideSign();
+        }
     }
     focus(){
         CONVERTER_STORAGE.toolBar.blurElement("img");
@@ -185,6 +212,10 @@ class ToolBar_ImageElement {
         }
         document.getElementById("ConverterToolBar_activeBody").state().setActive();
         document.getElementById("ConverterToolBar_activeBody").appendChild(this.mainElement);
+        this.sl_contrast.updateSign();
+        this.sl_sharpness.updateSign();
+        this.sl_rotation.updateSign();
+        this.sl_antialiasing.updateSign();
     }
     drawSpinner(){
         this.spinnerBody = new SPLINT.DOMElement(this.ImageID + "_Spinner", "div", this.imgEle);

@@ -35,13 +35,13 @@ body {
         > button {
             margin: 0.2rem;
             @include Tmain.TButton_simple();
-            @include Tmain.TButtonAnimation_simple();
+            @include Tmain.TButton_primary();
         }
         > .back {
-            // @include Tmain.T_container();
+            // @include Tmain.TContainer_basic();
             margin: 0.2rem;
             @include Tmain.TButton_simple();
-            @include Tmain.TButtonAnimation_simple();
+            @include Tmain.TButton_primary();
             margin-right: 1rem;
             // border-radius: 50%;
         }
@@ -52,7 +52,7 @@ body {
             margin-left: auto;
             height: 100%;
             > button {
-                @include Tmain.T_container();
+                @include Tmain.TContainer_basic();
                 margin: 0.2rem;
                 > span {
 

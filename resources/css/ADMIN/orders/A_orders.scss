@@ -21,7 +21,7 @@
                 display: none;
             }
             > div {
-                @include Tmain.T_container();
+                @include Tmain.TContainer_basic();
                 margin: 0.2rem;
                 height: calc(100% - 1.4rem);
                 cursor: pointer;
@@ -61,7 +61,7 @@
     height: 100%;
     > .listElement {
         margin: 0.5rem;
-        @include Tmain.T_container();
+        @include Tmain.TContainer_basic();
         // @include border();
         display: flex;
         box-sizing: border-box;
@@ -245,7 +245,7 @@
         justify-content: space-between;
 
         > div {
-            @include Tmain.T_container();
+            @include Tmain.TContainer_basic();
             margin-inline: 0.5em;
             > div {
                 > table {
@@ -265,7 +265,7 @@
             }
         }
         > button {
-            @include Tmain.T_container();
+            @include Tmain.TContainer_basic();
             margin: 0;
             margin-inline: 1em;
             background-color: vars.$color-primary;
@@ -487,7 +487,7 @@
                 position: relative;
                 height: max-content;
                 .AddressListElement {  
-                    @include Tmain.T_container();  
+                    @include Tmain.TContainer_basic();  
                     margin-top: 0.5em;     
                     display: flex;
                     flex-direction: row;
@@ -554,7 +554,7 @@
             right: 1rem;
             width: 20%;
             // margin: 0.5em;
-            @include Tmain.T_container();
+            @include Tmain.TContainer_basic();
             margin: 0.5rem;
             padding: 0;
         }

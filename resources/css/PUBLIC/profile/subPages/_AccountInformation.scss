@@ -3,7 +3,7 @@
 @mixin profile_AccountInformation(){
     .AccountInformationMain {
         position: relative;
-        @include T_container();
+        // @include TContainer_basic();
         // display: flex;
         // justify-content: space-between;
         > .userDataDiv{

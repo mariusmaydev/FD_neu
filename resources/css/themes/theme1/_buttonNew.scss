@@ -12,22 +12,52 @@ $color-shadow-light : vars.$color-header-Dark;
 
 $skew               : vars.$general-skew;
 
-@mixin TButtonAnimation_simple($color: $color-main) {
-    transition: background-color .1s ease-in ;
+
+@mixin TButton_primary($size-offset: 1) {
+    $color-background : vars.$NEW-color-primary;
+    $color-active : vars.$NEW-color-primary-active;
+    $color-hover : vars.$NEW-color-primary-active;
+    $color-text: white;
+
+
+    box-shadow: none;
+    border-radius: vars.$NEW-border-radius-main;
+    background-color: $color-background;
+    border: none;
+    padding: calc(0.5rem * $size-offset);
+    transition: background-color 0.2s;
     > span {
-        box-sizing: border-box;
-    }
-    &[state*='active'] {
-        // background-color: vars.$color-button-active;
-    }
-    &[state*='passive'] {
-        // background-color: vars.$color-button-passive;
+        font-size: calc(1rem * $size-offset);
+        color: $color-text;
     }
     &:hover {
-        background-color: color.adjust($color, $lightness: -10%);
+        background-color: $color-hover;
     }
-    &:active:hover {
-        // background-color: orange;
+    &[state*='active']{
+        background-color: $color-active;
+    }
+}
+
+@mixin TButton_secondary($size-offset: 1) {
+    $color-background : transparent;
+    $color-active : vars.$NEW-color-primary-active;
+    $color-hover : vars.$NEW-color-primary-active;
+    $color-text: vars.$NEW-color-text-secondary;
+
+    border-radius: vars.$NEW-border-radius-main;
+    background-color: $color-background;
+    border: calc(2px * $size-offset) solid $color-text;
+    padding: calc(0.5rem * $size-offset);
+    transition: border-color 0.2s;
+    > span {
+        font-size: calc(1rem * $size-offset);
+        color: $color-text;
+    }
+    &:hover {
+        border-color: $color-hover;
+    }
+    &[state*='active']{
+        border-color: $color-active;
     }
 }
 
@@ -59,91 +89,6 @@ $skew               : vars.$general-skew;
     }
 }
 
-@mixin TButton_important_B(){
-    position: relative;
-    width: 100%;
-    box-sizing: border-box;
-    background-color: vars.$color-header;
-    box-shadow: 3px 3px 0px 0px vars.$color-header-Dark;
-    transition: box-shadow 100ms ease, transform 100ms ease;
-    &:hover {
-        box-shadow: 5px 5px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1);//, 3px 3px 2px 0px color.adjust(vars.$color-primary-light);
-        transform: translateX(-2px) translateY(-2px);
-        color: vars.$color-primary-text;
-    }
-    > button {
-        @include helper.preventSelect();
-        > span:first-of-type{
-            margin-right: 0.2em;
-        }
-        width: 100%;
-        padding: 0.5em;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        margin: 0;
-        border-radius: 0;
-        background-color: vars.$color-primary-Dark;
-        box-shadow: none;
-        @include S_tools.SPLINT-border-inset(vars.$color-primary-complementary-Dark, 2px, false, false, true, true);
-        transition: box-shadow cubic-bezier(0, 0.52, 1, 1) 1s;
-        &:hover {
-            @include S_tools.SPLINT-border-inset(vars.$color-primary-complementary-Dark, 4px, false, false, true, true);
-            > span {
-                color: vars.$color-primary-text;
-            }
-        }
-        > span {
-            font-size: 1.5em;
-        }
-    }
-}
-
-@mixin TButton_important_A(){
-    flex: 1;
-    transform: translateX(0px) skewX(-($skew));
-    &:not([loaded*='true']){
-        visibility: hidden;
-        transform: translateX(40rem);
-    }
-    transition: transform 0.4s ease-out;
-    visibility: visible;
-    box-shadow: none;
-    background-color: vars.$color-header;
-    box-shadow: 3px 3px 0px 0px vars.$color-header-Dark;
-    transition: box-shadow 100ms ease, transform 100ms ease;
-    &:hover {
-        box-shadow: 5px 5px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1);
-        transform: skewX(-($skew)) translateX(-2px) translateY(-2px);
-        color: vars.$color-primary-text;
-    }
-    > button {
-        @include helper.preventSelect();
-        width: 100%;
-        padding: 0.75rem;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        
-        background-color: vars.$color-primary-Dark;
-        box-shadow: none;
-        @include S_tools.SPLINT-border-inset(vars.$color-primary-complementary-Dark, 2px, false, false, true, true);
-        transition: box-shadow cubic-bezier(0, 0.52, 1, 1) 1s;
-        &:hover {
-            @include S_tools.SPLINT-border-inset(vars.$color-primary-complementary-Dark, 4px, false, false, true, true);
-            > span {
-                color: vars.$color-primary-text;
-            }
-        }
-        > span {
-            -ms-transform: skewX($skew); /* IE 9 */
-            -webkit-transform: skewX($skew); /* Safari */
-            transform: skewX($skew);
-            font-size: 2rem;
-        }
-    }
-}
 
 @mixin TButton_basic(){
     position: relative;

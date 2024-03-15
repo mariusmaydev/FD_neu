@@ -3,7 +3,7 @@
 @use '../../themes/theme1/main' as Tmain;
 @mixin couponCodeList(){
     >.listCodeBody {
-        @include Tmain.T_container();
+        @include Tmain.TContainer_basic();
         > .Table2D {
             > table {
                 width: 100%;

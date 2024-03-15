@@ -242,7 +242,7 @@ body {
                         }
                         > div {
                             box-sizing: border-box;
-                            @include Tmain.T_container();
+                            @include Tmain.TContainer_basic();
                             // @include box-shadow(0, black, 0.6);
                             // background-color: white;
                             overflow: hidden;
@@ -370,7 +370,6 @@ body {
             // margin-left: auto;
             // margin-right: auto;
             // @include SPLINT-border-inset(red, 1px);
-            // @include T_container();
             >.buttons { 
                 order: 1;
                 transform: translateX(-30rem);
@@ -428,7 +427,6 @@ body {
                         box-sizing: border-box;
                         overflow: hidden;
                         // height: ;
-                        // @include T_container();
                         // background-color: rgb(230, 230, 230);
                         // box-shadow: none;
                         padding: 0;
@@ -477,7 +475,7 @@ body {
                         }
                         > .ProjectCategoryMenu {
                             box-sizing: border-box;
-                            @include Tmain.T_container();
+                            @include Tmain.TContainer_basic();
                             // @include box-shadow(0, black, 0.6);
                             // background-color: white;
                             overflow: hidden;

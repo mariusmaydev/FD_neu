@@ -11,13 +11,13 @@ body {
     }
 }
 
-@mixin T_container(){
-    box-shadow: transparentize(black, calc(1 -  0.15)) 0px 0px 3px, transparentize(black, calc(1 - 0.11)) 0px 0px 3px;
-    border-radius: $border-radius;
-    background-color: white;
-    padding: 0.5em;
+// @mixin T_container(){
+//     box-shadow: transparentize(black, calc(1 -  0.15)) 0px 0px 3px, transparentize(black, calc(1 - 0.11)) 0px 0px 3px;
+//     border-radius: $border-radius;
+//     background-color: white;
+//     padding: 0.5em;
 
-}
+// }
 
 .Slider_main {
     > .Slider_inputBody {
