@@ -2,15 +2,13 @@
 import SPLINT from 'SPLINT';
 import * as MATERIALS from '../../assets/materials/materials.js';
 import LIGHT from './light.js';
-
+import * as THREE from "@THREE";
 import CompressedAnimations from './animations.js';
 import LighterAnimations from '../animations.js';
 import SETUP from '../setup.js';
 import Communication from './communication.js';
 import MaterialsLighterGeneral from '../../assets/newMaterials/materialsLighterGeneral.js';
-import { Matrix4 } from "@THREE_ROOT_DIR/src/math/Matrix4.js";
 
-import { PerspectiveCamera } from "@THREE_ROOT_DIR/src/cameras/PerspectiveCamera.js";
 import LighterModel from '../model/LighterModel.js';
 import MaterialHelper from '@SPLINT_MODULES_DIR/ThreeJS/materials/MaterialHelper.js';
 
@@ -21,7 +19,7 @@ export class draw {
     constructor(canvas){
         this.id = "Lighter3D_";
         this.canvas = canvas;
-        this.context = null;
+        this.context = canvas.getContext("bitmaprenderer");
         this.setup = new SETUP(this);
         this.loaded = null;
         this.animationTime = 0;
@@ -56,9 +54,31 @@ export class draw {
         }.bind(this));
         this.render();
     }
+    setupOffscreen(){
+        this.context = this.canvas.getContext("bitmaprenderer");
+        this.offscreencanvas = new OffscreenCanvas(this.canvas.width, this.canvas.height);
+        this.context_off = this.offscreencanvas.getContext("2d");
+
+    }
+    async animate(){
+        if(this.renderer.domElement.width > 0){
+            this.render();
+        } else {
+            requestAnimationFrame(this.animate.bind(this));
+        }
+    }
+    async render(){
+        this.context_off.clearRect(0, 0, this.canvas.parentNode.clientWidth*2, this.canvas.parentNode.clientHeight*2);
+        this.renderer.render(this.scene, this.camera);
+        let domE = this.renderer.domElement;
+        this.context_off.drawImage(domE, 0, 0, domE.width, domE.height, 0, 0, this.canvas.width, this.canvas.height);
+
+        this.bitmap = this.offscreencanvas.transferToImageBitmap();
+        this.context.transferFromImageBitmap(this.bitmap);
+    }
     init(){
         
-        SPLINT.GUI.hide();
+        // SPLINT.GUI.hide();
         this.setup.renderer(true);
         this.setup.scene();
         this.Animations = new LighterAnimations(this);
@@ -77,7 +97,7 @@ export class draw {
 
     }
     setupCamera(){
-        this.camera     = new PerspectiveCamera(24, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.1, 100);
+        this.camera     = new THREE.PerspectiveCamera(24, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.1, 100);
         this.camera.position.set(0, 0.135, 0.97);
         // this.camera.zoom = 1.1;
         this.camera.updateProjectionMatrix();
@@ -87,6 +107,7 @@ export class draw {
     }
     async loadThumbnail(name, GoldFlag){}
     async onFinishLoading(){
+        this.setupOffscreen();
         // this.Animations.lever_close.start(true, 0);
         // this.Animations.lighter_close.start(false, 0);
         this.animate();
@@ -99,19 +120,6 @@ export class draw {
         this.canvas.Storage.value = "value";
 
         this.canvas.dispatchEvent(SPLINT_EVENTS.toCommonJS);
-    }
-    async animate(){
-        if(this.renderer.domElement.width > 0){
-            this.render();
-        } else {
-            requestAnimationFrame(this.animate.bind(this));
-        }
-    }
-    async render(){
-        this.context.clearRect(0, 0, this.canvas.parentNode.clientWidth*2, this.canvas.parentNode.clientHeight*2);
-        this.renderer.render(this.scene, this.camera);
-        let domE = this.renderer.domElement;
-        this.context.drawImage(domE, 0, 0, domE.width, domE.height, 0, 0, this.canvas.width, this.canvas.height);
     }
     async drawBackground(){
         
@@ -209,7 +217,7 @@ export class draw {
                 case 'unteres_teil1'       : {
                 } break;
                 case 'oberes_teil1'        : {
-                    element.children[0].geometry.applyMatrix4( new Matrix4().makeTranslation( 0, 0.002, 0 ) );
+                    element.children[0].geometry.applyMatrix4( new THREE.Matrix4().makeTranslation( 0, 0.002, 0 ) );
                     element.children[0].rotation.z = -2.33463
                 } break;
                 case 'stab1'               : {

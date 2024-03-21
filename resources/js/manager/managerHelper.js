@@ -11,8 +11,6 @@ class ManagerHelper {
             if(location.href.includes("/HTML/ADMIN/")){
                 return;
             }
-            let f = new managerObject();
-            console.log(f)
             // this.#getPage();
             // this.STORAGE.TimeStart = new Date();
             // document.addEventListener("visibilitychange", function(e){

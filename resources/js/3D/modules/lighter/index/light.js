@@ -1,9 +1,10 @@
-
 import SPLINT from 'SPLINT';
+import * as THREE from '@THREE';
 
 export default function light(scene){
+    let groupe = new THREE.Group();
     let c1 = 0xffd7af;
-    const lights = new SPLINT.lights.lightCluster(scene, false);
+    const lights = new SPLINT.lights.lightCluster(groupe, false);
           lights.helper.size = 0.1;
 
     let atmo = lights.new.AmbientLight(0xffd8b2 , 3);
@@ -76,6 +77,7 @@ export default function light(scene){
         directional2.shadow.camera.top = 1;
         directional2.shadow.camera.bottom = -1;
         directional2.bind();
+        scene.add(groupe);
     // let directional1 = lights.new.DirectionalLight( 0xfff8e0, 2 );
     //     directional1.position.set( 0.3, 1.5, 0.3);
     //     directional1.target.updateMatrixWorld();

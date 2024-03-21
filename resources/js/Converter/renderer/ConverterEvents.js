@@ -147,7 +147,7 @@ class ConverterEvents {
           }
           if(flag){
             this.dragElement = null;
-            this.dragStop();
+            this.dragStop.callFromIdle(1000, this);
           }
     }
 }

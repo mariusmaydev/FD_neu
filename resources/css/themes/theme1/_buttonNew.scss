@@ -24,7 +24,7 @@ $skew               : vars.$general-skew;
     border-radius: vars.$NEW-border-radius-main;
     background-color: $color-background;
     border: none;
-    padding: calc(0.5rem * $size-offset);
+    padding: calc(1rem * $size-offset);
     transition: background-color 0.2s;
     > span {
         font-size: calc(1rem * $size-offset);
@@ -47,7 +47,7 @@ $skew               : vars.$general-skew;
     border-radius: vars.$NEW-border-radius-main;
     background-color: $color-background;
     border: calc(2px * $size-offset) solid $color-text;
-    padding: calc(0.5rem * $size-offset);
+    padding: calc(1rem * $size-offset);
     transition: border-color 0.2s;
     > span {
         font-size: calc(1rem * $size-offset);
@@ -55,6 +55,9 @@ $skew               : vars.$general-skew;
     }
     &:hover {
         border-color: $color-hover;
+        > span {
+            color: $color-hover;
+        }
     }
     &[state*='active']{
         border-color: $color-active;

@@ -1,9 +1,9 @@
-
+// import * as THC from "@THREE_ROOT_DIR/src/constants.js";
 import SPLINT from 'SPLINT';
-import * as THC from "@THREE_ROOT_DIR/src/constants.js";
-import { OrbitControls } from '@SPLINT_MODULES_DIR/ThreeJS/animations/OrbitControls_Modified.js';
-import { Scene } from "@THREE_ROOT_DIR/src/scenes/Scene.js";
-import { WebGLRenderer } from "@THREE_ROOT_DIR/src/renderers/WebGLRenderer.js";
+import { OrbitControls } from '@THREE_ADDONS/controls/OrbitControls.js';
+// import { Scene } from "@THREE_ROOT_DIR/src/scenes/Scene.js";
+import * as THREE from "@THREE";//@THREE_ROOT_DIR/build/three.module.min.js";
+// import { WebGLRenderer } from "@THREE_ROOT_DIR/src/renderers/WebGLRenderer.js";
 
 export default class setup {
     static RENDERER = null;
@@ -26,12 +26,12 @@ export default class setup {
             this.inst.canvas.style.width = (a) + "px";
             this.inst.canvas.style.height = (b) + "px";
         if(setup.RENDERER == null || newFlag){
-            this.inst.renderer   = new WebGLRenderer({preserveDrawingBuffer:false, antialias: false, alpha: true, precision: "highp", powerPreference: "high-performance"});
-            this.inst.renderer.shadowMap.enabled = true
-            this.inst.renderer.shadowMap.type = THC.VSMShadowMap
+            this.inst.renderer   = new THREE.WebGLRenderer({preserveDrawingBuffer:false, antialias: false, alpha: true, precision: "highp", powerPreference: "high-performance"});
+            this.inst.renderer.shadowMap.enabled = true;
+            // this.inst.renderer.shadowMap.type = THREE.VSMShadowMap
             this.inst.renderer.shadowMap.soft = true;
             this.inst.renderer.shadowMap.needsUpdate = true;
-            // this.inst.renderer.gammaFactor = 10;
+            this.inst.renderer.gammaFactor = 10;
             if(SPLINT.ViewPort.getSize() == "mobile-small"){
                 this.inst.renderer.setPixelRatio( window.devicePixelRatio * 0.6);
             } else {
@@ -44,11 +44,11 @@ export default class setup {
             this.inst.renderer.antialias = true;
             this.inst.renderer.alpha = true;
             this.inst.renderer.physicallyCorrectLights = true;
-            this.inst.renderer.toneMapping = THC.ACESFilmicToneMapping;
-            this.inst.renderer.outputEncoding = THC.sRGBEncoding;
+            this.inst.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+            this.inst.renderer.outputEncoding = 3001;
             this.inst.renderer.toneMappingExposure = 1;
             this.inst.renderer.setClearColor(0x000000, 0);
-            // this.inst.renderer.powerPreference = "high-performance";
+            this.inst.renderer.powerPreference = "high-performance";
             this.inst.renderer.autoClear = true;
             if(newFlag == false){
                 setup.RENDERER = this.inst.renderer;
@@ -59,7 +59,7 @@ export default class setup {
         this.inst.context = this.inst.canvas.getContext("2d", {willReadFrequently: false ,desynchronized: false});
     }
     scene(sceneName = "scene"){
-        this.inst.scene      = new Scene();
+        this.inst.scene      = new THREE.Scene();
     }
     controls(){
         this.inst.controls   = new OrbitControls( this.inst.camera, this.inst.canvas );

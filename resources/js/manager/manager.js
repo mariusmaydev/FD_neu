@@ -1,60 +1,66 @@
 
-
 class manager extends SPLINT.autoObject {
     static {
-        this.STORAGE = new SPLINT.autoObject(false);
-        this.STORAGE.Page.TimeStart;
-        this.STORAGE.Page.TimeEnd;
-        this.STORAGE.Page.name;
-        this.STORAGE.interactions.click = [];
+        this.initWorker();
+        this.fullyLoaded = Promise.allSettled([
+            SPLINT.require('@PROJECT_ROOT/manager/managerHelper.js'),
+            SPLINT.require('@PROJECT_ROOT/manager/managerCallPHP.js'),
+            SPLINT.require('@PROJECT_ROOT/manager/managerObject.js')
+        ]);
+        this.fullyLoaded.then(async function(){
+            this.managerObject = new managerObject();
+        }.bind(this))
     }
+    static initWorker(){
+        // let a = SPLINT.API.WebWorkerAPI.defineWorker({
+        //     name : "testW",
+        //     src  : {
+        //         url: "@SPLINT_ROOT/WebWorker/WebWorkerManager.js"
+        //     },
+        //     maxInstances : 5
+        // })
+        // console.log(a);
+        // let h = a.getHandle();
+        // console.dir(h)
+        // this.WORKER = new SPLINT.Worker.WebWorker("js/manager/_managerWorker.js", true, false);
+        // this.WORKER.onReceive = async function(event) {
+        //     console.log("receive", event.data)
+        // }
+    }
+    static sendClickToWorker(element, x, y){
+        // this.WORKER.send("click", {x: x, y: y});
+    }
+    // static 
+    // static {
+    //     this.WORKER = new SPLINT.Worker.WebWorker("js/manager/_managerWorker.js", true, false);
+    //     this.WORKER.onReceive = async function(event) {
+    //         console.log("receive", event.data)
+    //     }
+    //     // this.WORKER.onInitComplete = function(){
+    //     //     SPLINT.Worker.WorkerHelper.updateSplint(this.WORKER);
+    //     // }.bind(this);
+    //     this.STORAGE = new SPLINT.autoObject(false);
+    //     this.STORAGE.Page.TimeStart;
+    //     this.STORAGE.Page.TimeEnd;
+    //     this.STORAGE.Page.name;
+    //     this.STORAGE.interactions.click = [];
+    //     this.mo = new managerObject();
+    //     console.log(this.mo)
+    // }
     static async dir(){
         console.dir(this.prototype.parseToObject.call(this))
     }
     static async log(){
         console.log(this.prototype.parseToObject.call(this))
     }
-    static registerClick(element, x, y){
-        let obj = new Object();
-            obj.element = new Object();
-            obj.element.ID = element.id;
-            obj.element.pos = new Object();
-            obj.element.pos.x = x;
-            obj.element.pos.y = y;
-            obj.time = S_DateTime.parseToMySqlDateTime((new Date()));
-            obj.screenSize = new Object();
-            obj.screenSize.x = window.innerWidth;
-            obj.screenSize.y = window.innerHeight;
-        this.STORAGE.interactions.click.push(obj);
+    static async registerClick(element, x, y){
+        // this.sendClickToWorker(element, x, y);
+        // Function.prototype.test = function(){
+        //     return "ok"
+        // }
     }
     
 }
-// let a = document.getElementById("elementId")
-//     a.onclick
-// Object.defineProperty(HTMLElement.prototype, "_onclick", {
-//     value : function(event){}
-// })
-// Object.defineProperty(HTMLElement.prototype, "onclick", {
-//     set : function(func){
-//         this._onclick = func;
-//         this.addEventListener('click', function(event) {
-//             // if (/* your disabled check here */) {
-//               // Kill the event
-//               event.preventDefault();
-//               event.stopPropagation();
-//             // }
-//             manager.registerClick(event.target, event.x, event.y);
-//             func(event);
-        
-//             // Doing nothing in this method lets the event proceed as normal
-//           },
-//           true  // Enable event capturing!
-//         );
-//     },
-//     get : function(){
-//         return this._onclick;
-//     }
-// })
-
-        // SPLINT.require('@PROJECT_ROOT/manager/managerCallPHP.js');
-        // SPLINT.require('@PROJECT_ROOT/manager/managerHelper.js');
+window.addEventListener("click", async function(event){
+    // manager.registerClick(event.target, event.x, event.y);
+}, true);

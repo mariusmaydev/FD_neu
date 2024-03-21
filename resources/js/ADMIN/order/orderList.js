@@ -163,8 +163,8 @@ class ADMIN_order_list {
                 button_View.button.setTooltip("öffnen", "bottom");
                 button_View.button.onclick = function(){
                     S_Location.setHash(ADMIN_orders.VIEW, data.OrderID, this.fromArchive);
-                    let newMain = new ADMIN_orders();
-                        newMain.locationBack = PATH_A.location.orders;
+                    // let newMain = new ADMIN_orders();
+                        // newMain.locationBack = PATH_A.location.orders;
                 }.bind(this);
 
             if(!this.fromArchive){
@@ -208,6 +208,7 @@ class ADMIN_order_list {
                 gen(tableElement.getData2Head(3), "", "beschichtet");
                 gen(tableElement.getData2Head(4), "", "Modell");
                 //tableElement.addRow("Galvanik", "Preis", "Laser");
+                    console.dir(items)
             for(const index in items){
                 let item = items[index];
                 let projectID = item.ProjectID;
@@ -244,7 +245,7 @@ class ADMIN_order_list {
                         tableElement.getRow(index-1).state().setActive();
                     }
                 }
-                if(SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc", true)){
+                if(await SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc")){
                     let bt = new SPLINT.DOMElement.Button(tableElement.getData(index, 4), "bt");
                         bt.button.setAttribute("projectID", projectID)
                         bt.span.setAttribute("projectID", projectID)

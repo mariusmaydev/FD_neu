@@ -40,34 +40,14 @@ class ConverterHelper {
   }
 
   static async setEPType(type){
-    // if(type == "GOLD"){
-    //     DSProject.Storage.Product = "Lighter_Gold_custom";
-    // } else {
-    //     DSProject.Storage.Product = "Lighter_Chrome_custom";
-    // }
     DSProject.Storage.EPType = type;
-    DSProject.save();
     CONVERTER_STORAGE.canvasNEW.refreshData();
   }
-
-  // static createThumbnail(){
-  //   let data = CallPHP_S.getCallObject(ConverterHelper.CREATE_THUMBNAIL);
-  //       data.StorageImg     = DSImage.Storage;
-  //       data.StorageText    = DSText.Storage;
-  //       data.StorageProject = DSProject.Storage;
-  //   CallPHP_S.call(ConverterHelper.PATH, data, "POST", false);
-  // }
   static async createData(UserID, ProjectID, Args = null){
-    // let RenderImage = CONVERTER_STORAGE.canvasNEW.createData();
-    // CONVERTER_STORAGE.canvasNEW.getTextImg();
     let call = new SPLINT.CallPHP(ConverterHelper.PATH, ConverterHelper.CREATE);
         call.data.UserID             = UserID;
         call.data.ProjectID          = ProjectID;
         call.data.Args               = Args;
-        // data.StorageImg         = DSImage.Storage;
-        // data.StorageText        = DSText.Storage;
-        // data.StorageProject     = DSProject.Storage;
-        // data.StorageRenderImage = RenderImage;
     return call.send();
   }
   static async flip(index, type){
@@ -75,7 +55,6 @@ class ConverterHelper {
         call.data.ImageID = DSImage.get(index).ImageID;
         call.data.FLIP_TYPE = type;
     let output = await call.send();
-        console.log(output);
         DSImage.setImages(index, output);
         CONVERTER_STORAGE.canvasNEW.refreshData();
   }

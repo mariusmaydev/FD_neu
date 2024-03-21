@@ -43,11 +43,6 @@ class canvasPaths {
             if(element.data.TextOrientation == 'center'){
               drawFunc(lines[i], 0,  C_height + ((i ) * max_height) );
               drawFunc(lines[i], 0,  C_height + ((i ) * max_height) );
-              // ctx.filter = 'blur(0.5px)';
-              // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
-              // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
-              // // ctx.filter = 'blur(1px)';
-              // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
             } else if(element.data.TextOrientation == 'right'){
               drawFunc(lines[i], +C_width,  C_height + ((i ) * max_height) );
               drawFunc(lines[i], +C_width,  C_height + ((i ) * max_height) );
@@ -56,17 +51,14 @@ class canvasPaths {
               drawFunc(lines[i], -C_width,  C_height + ((i ) * max_height) );
             }
           }
-          // ctx.strokeStyle = "red";
           ctx.rect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
-        //   ctx.strokeRect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
           
           element.data.FrameHeight     = ((lines.length) * (max_height));
           element.data.FrameWidth      = max_width;
-          // element.data.TextLineHeight  = max_height;
   
           ctx.restore();
     }
-    static drawThumbnailTxt(element){
+    static async drawThumbnailTxt(element){
         let ctx = element.ctx;
         ctx.save();
         ctx.translate(element.data.TextPosX, element.data.TextPosY);
@@ -102,18 +94,10 @@ class canvasPaths {
           let C_height = -((lines.length-1) * max_height) / 2;
           
           let drawFunc = function(){ctx.strokeText(...arguments)};
-        //   if(renderFlag){
-        //       drawFunc = function(){ctx.fillText(...arguments)};
-        //   }
           for(let i = 0; i < lines.length; i++){
             if(element.data.TextOrientation == 'center'){
               drawFunc(lines[i], 0,  C_height + ((i ) * max_height) );
               drawFunc(lines[i], 0,  C_height + ((i ) * max_height) );
-              // ctx.filter = 'blur(0.5px)';
-              // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
-              // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
-              // // ctx.filter = 'blur(1px)';
-              // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
             } else if(element.data.TextOrientation == 'right'){
               drawFunc(lines[i], +C_width,  C_height + ((i ) * max_height) );
               drawFunc(lines[i], +C_width,  C_height + ((i ) * max_height) );
@@ -122,15 +106,13 @@ class canvasPaths {
               drawFunc(lines[i], -C_width,  C_height + ((i ) * max_height) );
             }
           }
-          // ctx.strokeStyle = "red";
           ctx.rect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
-        //   ctx.strokeRect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
           
           element.data.FrameHeight     = ((lines.length) * (max_height));
-          element.data.FrameWidth      = max_width;
-          // element.data.TextLineHeight  = max_height;
+          element.data.FrameWidth      = max_width
   
           ctx.restore();
+          return true
     }
     static #getPointPath(element, x, y, width, height, index) {
         let mat;

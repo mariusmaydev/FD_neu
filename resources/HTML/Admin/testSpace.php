@@ -15,7 +15,7 @@
         <s-part src="/js/manager/manager.js"></s-part>
         <s-loader src="/js/ADMIN/Eventhandler.js"></s-loader>
         <s-part src="/js/Designs/CategoryHelper.js"></s-part>
-        <s-part src="/js/Projects/ProjectsHelper.js"></s-part>
+        <s-part src="/js/Helper/ProjectsHelper.js"></s-part>
         <s-part src="/js/Projects/ProjectList/ProjectCategoryMenu.js"></s-part>
         <s-part src="/js/Projects/ProjectList/ProjectChoiceMenu.js"></s-part>
 

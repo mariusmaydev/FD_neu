@@ -79,6 +79,7 @@ class ADMIN_order_view {
             } else {
                 projectPATH = ProjectHelper.getPath2Project(this.data.UserID, project.ProjectID);
             }
+            this.fileExist = await SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc");
 
             let listElement = new SPLINT.DOMElement(this.id + "project_listElement_" + index, "div", this.projectDiv);
                 listElement.Class("listElement");
@@ -136,8 +137,8 @@ class ADMIN_order_view {
                                             button_download_NC.button.disabled = false;
                                             button_startEngraving.button.disabled = false;
                                         }.bind(this);
-                                        
-                                        if(SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc", true)){
+                                   
+                                        if(this.fileExist){
                                             button_render.span.innerHTML = "Model erneut erstellen";
                                         }
                             }
@@ -146,14 +147,14 @@ class ADMIN_order_view {
                                 let button_download_NC = new SPLINT.DOMElement.Button(buttonsContainer, "downloadNC", "Model herunterladen");
                                     button_download_NC.setStyleTemplate(S_Button.STYLE_NONE);
                                     button_download_NC.button.onclick = function(){
-                                        if(SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc", true)){
+                                        if(this.fileExist){
                                             download_S.download(projectPATH + "/Full.nc", this.orderID + "_" + (parseInt(index) + 1) + "_Model.nc");
                                         } else {
                                             ConverterHelper.createData(this.data.UserID, project.ProjectID);
                                             download_S.download(projectPATH + "/Full.nc", this.orderID + "_" + (parseInt(index) + 1) + "_Model.nc");
                                         }
-                                    }.bind(this);
-                                    if(!SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc", true)){
+                                    }.bind(this);     
+                                    if(!this.fileExist){
                                         button_download_NC.button.disabled  = true;
                                     } else {
                                         button_download_NC.button.disabled  = false;
@@ -162,7 +163,7 @@ class ADMIN_order_view {
                                 let button_startEngraving = new SPLINT.DOMElement.Button(buttonsContainer, "startEngraving", "Model Fräsen");
                                     button_startEngraving.setStyleTemplate(S_Button.STYLE_NONE);
                                     button_startEngraving.button.onclick = async function(){
-                                        if(SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc", true)){
+                                        if(this.fileExist){
                                             
                                             let res = await SPLINT.API.Moonraker.printFile(projectPATH + "/Full.nc");
                                             // let name = this.orderID + "_" + (parseInt(index) + 1) + "_Model";
@@ -172,7 +173,7 @@ class ADMIN_order_view {
                                             // console.log(code);
                                         }
                                     }.bind(this);
-                                    if(!SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc", true)){
+                                    if(!this.fileExist){
                                         button_startEngraving.button.disabled  = true;
                                     } else {
                                         button_startEngraving.button.disabled  = false;

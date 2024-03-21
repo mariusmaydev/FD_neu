@@ -58,6 +58,29 @@
             fclose($fp);
         }
     }
+    // function DataEdit_context($path, $file, $content = null){
+    //     $data = http_build_query($data);
+
+    //     $context_options = array (
+    //             'http' => array (
+    //                 'method' => 'POST',
+    //                 'header'=> "Content-type: application/x-www-form-urlencoded\r\n"
+    //                     . "Content-Length: " . strlen($data) . "\r\n",
+    //                 'content' => $data
+    //                 )
+    //             );
+
+    //     $context = stream_context_create($context_options);
+    //     $fp = fopen('https://url', 'r', false, $context);
+    //     if (!file_exists($path)) {
+    //         mkdir($path, 0777, true);
+    //     }
+    //     if ($content != null) {
+    //         $fp = fopen($path . "/" . $file, "w");
+    //         fwrite($fp, $content);
+    //         fclose($fp);
+    //     }
+    // }
 
 
 

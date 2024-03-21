@@ -109,7 +109,6 @@ class lexOfficeObjectGenerator {
             response.remark = "Vielen Dank für Ihren Einkauf";
             //response.files = new Object();
             //response.files.documentFileId = "234234234";
-            console.log(response)
         return response;
     }
 

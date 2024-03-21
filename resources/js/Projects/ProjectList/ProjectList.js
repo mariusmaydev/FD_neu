@@ -24,7 +24,7 @@ class drawProjectList {
     }
     async draw(){
         this.clear();
-        if(false && this.data == null){
+        if(this.data == null){
             this.emptyBody = new SPLINT.DOMElement(this.id + "emptyBody", "div", this.mainElement);
             this.emptyBody.Class("emptyBody");
                 let headline = new SPLINT.DOMElement.SpanDiv(this.emptyBody, "headline", "Hier ist nichts");
@@ -34,6 +34,7 @@ class drawProjectList {
 
             SPLINT.Events.onLoadingComplete.dispatch();
                 
+            this.table = new SPLINT.DOMElement.Table(this.mainElement, "Projects_" + this.name, this.data);
             return;
         }
 
@@ -109,6 +110,10 @@ class drawProjectList {
                         }
                         ShoppingCart.addItem(projectID, data.Product, 1);
                     }.bind(this);
+                    if(!(await productHelper.isAvailable(data.Product))){
+                        button_toCart.disabled = true;
+                        button_toCart.setTooltip("ausverkauft", "bottom")
+                    }
                     if(data.State == ProjectHelper.STATE_NORMAL){
                         let button_copy = new SPLINT.DOMElement.Button(buttonDiv, index + "_copy");
                             button_copy.bindIcon("content_copy");
@@ -140,7 +145,7 @@ class drawProjectList {
             listElement.onmouseleave = function(){
                 lighter.send("zoom", false);
             }
-            let projectDetails = new ProjectDetails(data, index, listElement, lighter);
+            let projectDetails = new ProjectDetails(data, listElement, lighter);
               listElement.onclick = function(){
                 projectDetails.show();
               }

@@ -1,6 +1,7 @@
 
 
 class managerCallPHP {
+    static referrer = "about:client";
     /**
      * @param {Date} timeStart 
      * @param {Date?} timeEnd 
@@ -69,9 +70,8 @@ class managerCallPHP {
         let call = new SPLINT.CallPHP(PATH.php.manager, "IP.WRITE");
             call.data = data;
             call.data.UserID = UserID;
+            // call.referrer = managerCallPHP.referrer;
         return call.send();
     }
-
-
 }
 // SPLINT.require('@PROJECT_ROOT/manager/manager.js');

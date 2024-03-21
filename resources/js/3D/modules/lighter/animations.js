@@ -1,7 +1,8 @@
 import SPLINT from 'SPLINT';
-// import * as THREE from 'three';
-import { Vector3 } from "@THREE_ROOT_DIR/src/math/Vector3.js";
-// import { Vector3 } from "three";
+import * as THREE from '@THREE';
+// THREE.THREE.Vector3
+// import { THREE.Vector3 } from "@THREE_ROOT_DIR/src/math/THREE.Vector3.js";
+// import { THREE.Vector3 } from "three";
 
 
 export default class LighterAnimations {
@@ -34,7 +35,7 @@ export default class LighterAnimations {
             // console.dir(model);
             let groupe = this.#getGroupe(model, name);
             groupe.rotationLast = groupe.rotation.clone();
-            groupe.rotation_range = new Vector3();
+            groupe.rotation_range = new THREE.Vector3();
             groupe.rotation_range.x = parseFloat(groupe.rotationBase.x) - parseFloat(groupe.rotationLast.x);
             groupe.rotation_range.y = parseFloat(groupe.rotationBase.y) - parseFloat(groupe.rotationLast.y);
             groupe.rotation_range.z = parseFloat(groupe.rotationBase.z) - parseFloat(groupe.rotationLast.z);
@@ -83,7 +84,7 @@ export default class LighterAnimations {
         this.cameraTo.onStart = function(model, name = 'lighter'){
             let groupe = this.#getGroupe(model, "camera");
             groupe.positionLast = groupe.position.clone();
-            groupe.position_range = new Vector3();
+            groupe.position_range = new THREE.Vector3();
             groupe.position_range.x = parseFloat(groupe.positionBase.x) - parseFloat(groupe.positionLast.x);
             groupe.position_range.y = parseFloat(groupe.positionBase.y) - parseFloat(groupe.positionLast.y);
             groupe.position_range.z = parseFloat(groupe.positionBase.z) - parseFloat(groupe.positionLast.z);
@@ -346,7 +347,7 @@ export default class LighterAnimations {
         this.lighter_explosion_turn_mobile.onStart = function(model, name = 'lighter'){
             let groupe = this.#getGroupe(model, name);
             // this.instance.camera.positionLast = this.instance.camera.position.clone();
-            // this.instance.camera.position_range = new THREE.Vector3();
+            // this.instance.camera.position_range = new THREE.THREE.Vector3();
             // this.instance.camera.position_range.x = parseFloat(this.instance.camera.positionBase.x) - parseFloat(this.instance.camera.positionLast.x);
             // this.instance.camera.position_range.y = parseFloat(this.instance.camera.positionBase.y) - parseFloat(this.instance.camera.positionLast.y);
             // this.instance.camera.position_range.z = parseFloat(this.instance.camera.positionBase.z) - parseFloat(this.instance.camera.positionLast.z);

@@ -1,34 +1,30 @@
 
 import SPLINT from 'SPLINT';
-import * as THC from "@THREE_ROOT_DIR/src/constants.js";
-import { MeshStandardMaterial } from "@THREE_ROOT_DIR/src/materials/MeshStandardMaterial.js";
-import { MeshPhysicalMaterial } from "@THREE_ROOT_DIR/src/materials/MeshPhysicalMaterial.js";
-import { ShadowMaterial } from "@THREE_ROOT_DIR/src/materials/ShadowMaterial.js";
+import * as THREE from "@THREE";
 import MaterialHelper from '@SPLINT_MODULES_DIR/ThreeJS/materials/MaterialHelper.js';
-import { Vector2 } from "@THREE_ROOT_DIR/src/math/Vector2.js";
 
 
 export class other {
     static converterBackground(){
-        return new MeshStandardMaterial( {
+        return new THREE.MeshStandardMaterial( {
             color: 0xe6e6e6,
-            side: THC.DoubleSide,
+            side: THREE.DoubleSide,
             roughness: 0.8,
             metalness: 0.2,
             opacity: 0.1
           } );
     }
     static converterBackgroundTransparent(){
-        return new ShadowMaterial( {
+        return new THREE.ShadowMaterial( {
             color: 0x515151,
-            side: THC.DoubleSide,
+            side: THREE.DoubleSide,
             opacity: 0.8
           } );
     }
     static projectBackground(){
-        return new MeshStandardMaterial( {
+        return new THREE.MeshStandardMaterial( {
             color: 0xe6e6e6,
-            side: THC.DoubleSide,
+            side: THREE.DoubleSide,
             roughness: 0.1,
             metalness: 0.1,
             opacity: 1
@@ -38,50 +34,50 @@ export class other {
         let material = null;
         if(map != null && normalMap != null){
             let texture = MaterialHelper.getTexture(map);
-                texture.wrapS = THC.RepeatWrapping;
-                texture.wrapT = THC.RepeatWrapping;
+                texture.wrapS = THREE.RepeatWrapping;
+                texture.wrapT = THREE.RepeatWrapping;
                 texture.repeat.set(10, 10);
                 texture.flipY = false;
-                texture.mapping = THC.UVMapping;
+                texture.mapping = THREE.UVMapping;
                 texture.generateMipmaps = true;
-                texture.magFilter = THC.NearestFilter;
-                texture.minFilter = THC.LinearMipmapLinearFilter;
+                texture.magFilter = THREE.NearestFilter;
+                texture.minFilter = THREE.LinearMipmapLinearFilter;
                 texture.anisotropy = 32;
                 texture.premultiplyAlpha = true;
                 texture.needsUpdate = true;
 
             let NormalTexture = MaterialHelper.getTexture(normalMap);
-                NormalTexture.wrapS = THC.RepeatWrapping;
-                NormalTexture.wrapT = THC.RepeatWrapping;
+                NormalTexture.wrapS = THREE.RepeatWrapping;
+                NormalTexture.wrapT = THREE.RepeatWrapping;
                 texture.repeat.set(10, 10);
                 NormalTexture.flipY = false;
-                NormalTexture.mapping = THC.UVMapping;
+                NormalTexture.mapping = THREE.UVMapping;
                 NormalTexture.generateMipmaps = true;
-                NormalTexture.magFilter = THC.NearestFilter;
-                NormalTexture.minFilter = THC.LinearMipmapLinearFilter;
+                NormalTexture.magFilter = THREE.NearestFilter;
+                NormalTexture.minFilter = THREE.LinearMipmapLinearFilter;
                 NormalTexture.anisotropy = 32;
                 NormalTexture.premultiplyAlpha = false;
                 NormalTexture.needsUpdate = true;
                 
-            material = new MeshPhysicalMaterial( {
+            material = new THREE.MeshPhysicalMaterial( {
                 color: 0x878787 ,
                 map: texture,
                 envMap: envMap,
                 envMapIntensity:0.1,
                 opacity: 0.2,
                 normalMap: NormalTexture,
-                normalScale: new Vector2(1, 1),
-                normalMapType: THC.ObjectSpaceNormalMap,
+                normalScale: new THREE.Vector2(1, 1),
+                normalMapType: THREE.ObjectSpaceNormalMap,
                 metalness: 0,   
                 roughness: 0, 
-                depthFunc: THC.LessEqualDepth,
+                depthFunc: THREE.LessEqualDepth,
                 depthTest: true,
                 emissive: 0x000000,
                 emissiveIntensity: 0,
                 alphaToCoverage: true,
                 transparent: false,
                 reflectivity: 1,
-                side: THC.DoubleSide,
+                side: THREE.DoubleSide,
                 clearcoat: 0,
                 clearcoatRoughness: 0,
                 specularColor: 0xffffff,
@@ -99,19 +95,19 @@ export class other {
                 material.map.needsUpdate = true;
                 material.color.convertSRGBToLinear();
         } else {
-            material = new MeshPhysicalMaterial( {
+            material = new THREE.MeshPhysicalMaterial( {
                 color: 0xffffff,
                 opacity: 1,
                 metalness: 0,   
                 roughness: 3, 
-                depthFunc: THC.LessEqualDepth,
+                depthFunc: THREE.LessEqualDepth,
                 depthTest: true,
                 emissive: 0xffffff,
                 emissiveIntensity: 0.1,
                 alphaToCoverage: true,
                 transparent: true,
                 reflectivity: 5,
-                side: THC.BackSide,
+                side: THREE.BackSide,
                 clearcoat: 0.2,
                 clearcoatRoughness: 0,
                 specularColor: 0x000000,
@@ -131,7 +127,7 @@ export class other {
         // // 0xffd7af
         // return new MeshStandardMaterial({
         //     color: 0xcdcdcd,
-        //     side: THC.BackSide,
+        //     side: THREE.BackSide,
         //     fog: true,
         //     emissive: 0x000000,
         //     roughness: 0,
@@ -141,9 +137,9 @@ export class other {
     }
     static backgroundMain(color = 0xddb997){
         // 0xffd7af
-        return new MeshStandardMaterial( {
+        return new THREE.MeshStandardMaterial( {
             color: color,
-            side: THC.BackSide,
+            side: THREE.BackSide,
             roughness: 0.2,
             metalness: 0.5,
             opacity: 1
@@ -153,7 +149,7 @@ export class other {
     static materialChrome(){
         let matcapMap = SPLINT.resources.textures.lighter_reflectionENVMap;
 
-        let material =  new MeshStandardMaterial( {
+        let material =  new THREE.MeshStandardMaterial( {
             color: "#555",
             metalness: 2.0,
             roughness: 0.0,
@@ -165,14 +161,14 @@ export class other {
             // // opacity: 0,
             // metalness: 1,   
             // roughness: 0.68, 
-            // // depthFunc: THC.LessEqualDepth,
+            // // depthFunc: THREE.LessEqualDepth,
             // // depthTest: true,
             // emissive: 0x000000,
             // emissiveIntensity: 0.0,
             // alphaToCoverage: true,
             // transparent: false,
             // reflectivity: 0,
-            // side: THC.BackSide,
+            // side: THREE.BackSide,
             // clearcoat: 0.8,
             // clearcoatRoughness: 1,
             // specularColor: 0x000000,
@@ -190,9 +186,9 @@ export class other {
     }
     
     static shadowCatcher(){
-        let material = new ShadowMaterial({
+        let material = new THREE.ShadowMaterial({
             // color: 0xffffff,
-            side: THC.BackSide,
+            side: THREE.BackSide,
             opacity : 0.5
         });
         return material;

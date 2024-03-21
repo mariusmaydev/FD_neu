@@ -14,7 +14,7 @@ async function init3D(){
                         for(const ele of elements){
                             for(const i in SPLINT.threeJS.scenes){
                                 if(ele.firstChild.id == SPLINT.threeJS.scenes[i].canvas.id){
-                                    // console.log(ele);
+                                    console.dir(SPLINT);
                                     SPLINT.threeJS.scenes[i].remove();
                                     SPLINT.threeJS.scenes.splice(i, 1);
                                 }
@@ -40,11 +40,11 @@ async function init3D(){
                         SPLINT.threeJS.scenes.push(res.draw.get(element.firstChild));
                     })
                  } break;
-                case '3D_Lighter_PROJECT_NEW' :       {
-                    import("./lighter/projectNew/Core.js").then(function(res){
-                        SPLINT.threeJS.scenes.push(res.draw.get(element.firstChild));
-                    })
-                 } break;
+                // case '3D_Lighter_PROJECT_NEW' :       {
+                //     import("./_old/projectNew/Core.js").then(function(res){
+                //         SPLINT.threeJS.scenes.push(res.draw.get(element.firstChild));
+                //     })
+                //  } break;
                 //  case '3D_Lighter_NEW_PROJECT' :       {
                 //      import("./lighter/NewProject/Core.js").then(function(res){
                 //          SPLINT.threeJS.scenes.push(res.draw.get(element.firstChild));

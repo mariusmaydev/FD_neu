@@ -23,17 +23,17 @@
         <s-part src="/js/3D/3DHelper.js"></s-part>
         <s-module src="/js/3D/modules/module_3D_init.js"></s-module>
 
-        <s-part first src="/js/Pages/pagesHelper.js"></s-part>
+        <s-part first src="/js/Pages/pagesTemplate.js"></s-part>
         <s-part first src="/js/GLOBAL/Paths.js"></s-part>
         <s-part src="/js/Login/LoginHelper.js"></s-part>
         <s-part src="/js/assets/functionsShoppingCart.js"></s-part>
         <s-part src="/js/Projects/Projects.js"></s-part>
-        <s-part src="/js/Projects/ProjectsHelper.js"></s-part>
+        <s-part src="/js/Helper/ProjectsHelper.js"></s-part>
         <s-part src="/js/Projects/ProjectList/ProjectCategoryMenu.js"></s-part>
         <s-part src="/js/Projects/ProjectList/ProjectChoiceMenu.js"></s-part>
         <s-part src="/js/Projects/ProjectList/ProjectList.js"></s-part>
-        <s-part src="/js/Projects/ProjectList/Details/desktop/ProjectDetailsDesktop.js"></s-part>
-        <s-part src="/js/Projects/ProjectList/Details/desktop/ProjectDetailsHelper.js"></s-part>
+        <s-part src="/js/Projects/ProjectList/Details/ProjectDetailsHelper.js"></s-part>
+        <s-part src="/js/Projects/ProjectList/Details/ProjectDetailsDesktop.js"></s-part>
         <s-part src="/js/Projects/ProjectList/Details/ProjectDetailsMobile.js"></s-part>
         <s-part src="/js/Projects/ProjectList/ProjectDetails.js"></s-part>
         <!-- <s-part src="/js/Designs/Hashtags/Hashtags.js"></s-part> -->
@@ -41,7 +41,7 @@
         <s-part src="/js/assets/product/"></s-part>
         <s-part src="/js/Pages/converterStart.js"></s-part>
         <s-part src="/js/assets/functionsProduct.js"></s-part>
-        <s-part src="/js/manager/"></s-part>
+        <s-part src="/js/manager/manager.js"></s-part>
         <s-part src="/js/NavigationBar.js"></s-part>
         <s-part src="/js/Footer.js"></s-part>
 

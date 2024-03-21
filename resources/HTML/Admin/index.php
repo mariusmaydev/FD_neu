@@ -12,7 +12,7 @@
         <s-part src="/js/ADMIN/assets/"></s-part>
         <s-part src="/js/manager/manager.js"></s-part>
         <s-part src="/js/ADMIN/pages/ADMIN_index.js"></s-part>
-        <s-part src="/js/Projects/ProjectsHelper.js"></s-part>
+        <s-part src="/js/Helper/ProjectsHelper.js"></s-part>
         <s-part src="/js/Orders/Order.js"></s-part>
         <s-loader src="/js/ADMIN/Eventhandler.js"></s-loader>
 

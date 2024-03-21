@@ -113,7 +113,7 @@ class drawCartList {
                     bt_info.onclick = function(){
                         projectData.then(async function(data){
                             NavBar.grow();
-                            let p = new ProjectDetails(data, 1, document.body);
+                            let p = new ProjectDetails(data, document.body);
                             p.onclose = function(){
                                 console.log("ok")
                                 NavBar.shrink();

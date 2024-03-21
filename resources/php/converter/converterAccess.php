@@ -1,7 +1,7 @@
 <?php
     require_once 'converter.php';
     require_once 'DSController.php';
-
+    
     switch(Communication::getAccess()){
         case "FILTER"                        : Converter::filter(); break;
         case "FLIP"                          : Converter::flip(); break;

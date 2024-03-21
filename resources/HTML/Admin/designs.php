@@ -17,7 +17,7 @@
         <s-part src="/js/manager/manager.js"></s-part>
         <s-part src="/js/ADMIN/pages/ADMIN_designs.js"></s-part>
         <s-part src="/js/Projects/Projects.js"></s-part>
-        <s-part src="/js/Projects/ProjectsHelper.js"></s-part>
+        <s-part src="/js/Helper/ProjectsHelper.js"></s-part>
         <s-part src="/js/Designs/"></s-part>
         <s-part src="/js/assets/functionsHashtag.js"></s-part>
         <s-part src="/js/3D/3DHelper.js"></s-part>

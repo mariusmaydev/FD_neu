@@ -72,19 +72,19 @@ class ProjectHelper extends SPLINT.CallPHP.Manager {
           call.data.Original = original;
       return call.send();
     }
-    static async edit(StorageIn, async = false){
-        let Storage = SPLINT.Tools.ObjectTools.deepClone(StorageIn);
-        if(Storage.Thumbnail != null && Storage.Thumbnail.substring(0, 4) != "data"){
+    static async edit(StorageIn){
+        let Storage = Object.assign({}, StorageIn);
+        Storage.Thumbnail = null;
+        console.log(Storage)
+        if(StorageIn.Thumbnail instanceof Blob){
+            Storage.Thumbnail = null;
+        } else if(Storage.Thumbnail != null && Storage.Thumbnail.substring(0, 4) != "data"){
             Storage.Thumbnail = null;
         }
         let call = new SPLINT.CallPHP(ProjectHelper.PATH, ProjectHelper.EDIT);
             call.data.Storage = Storage;
             call.keepalive = false;
-            if(async == true){
-                return call.sendInSequence();
-            } else {
-                return call.send();
-            }
+        return call.send();
     }
     static async copy(ProjectID, FromUserID = null){
       let call = this.callPHP(this.COPY);

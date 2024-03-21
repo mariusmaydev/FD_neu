@@ -7,7 +7,7 @@
     require_once $rootpath.'/fd/resources/php/project/project.php';
 
     class DSController {
-        public static function saveAll(){
+        public static function saveAll(){  
             if(isset($_POST["img"])){
                 Image::edit($_POST["img"], false);
             }

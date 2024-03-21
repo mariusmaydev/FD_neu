@@ -14,7 +14,6 @@
     <body id="CheckoutBODY">
         <div div class="NavigationBar" id="NavigationBar"></div>
 
-        <s-part src="/js/Pages/pagesHelper.js"></s-part>
         <s-part src="/js/manager/manager.js"></s-part>
         <s-module src="/js/3D/modules/module_3D_init.js"></s-module>
 
@@ -25,7 +24,7 @@
         <s-part src="/js/assets/functionsShoppingCart.js"></s-part>
         <s-part src="/js/3D/3DHelper.js"></s-part>
         <s-part src="/js/3D/commonJS/drawDOMElement_3D.js"></s-part>
-        <s-part src="/js/Pages/pagesHelper.js"></s-part>
+        <s-part src="/js/Pages/pagesTemplate.js"></s-part>
         <s-part src="/js/Pages/cart/"></s-part>
         <s-part src="/js/assets/functionsProduct.js"></s-part>
         <s-part src="/js/assets/functionsCouponCode.js"></s-part>
@@ -33,7 +32,7 @@
         <s-part src="/js/Projects/Projects.js"></s-part>
         <s-part src="/js/lexOffice/"></s-part>
         <s-part src="/js/Converter/ConverterHelper.js"></s-part>
-        <s-part src="/js/Projects/ProjectsHelper.js"></s-part>
+        <s-part src="/js/Helper/ProjectsHelper.js"></s-part>
         <s-part src="/js/Orders/Order.js"></s-part>
         <s-part src="/js/Checkout/"></s-part>
 

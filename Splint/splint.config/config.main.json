@@ -39,7 +39,8 @@
 				"css": false,
 				"fileTree": false,
                 "converterProcessing": false
-			}
+			},
+            "indexdDB" : true
 		},
 		"debugging": {
 			"error": true,

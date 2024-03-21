@@ -69,9 +69,14 @@ class ADMIN_products extends ADMIN_DrawTemplate {
                         let entry = ddEPType.addEntry(key, value.name);
                             entry.div.style.backgroundColor = value.hex.replace('0x', '#');
                     }
-            
-            // let EPTypeBody = new SPLINT.DOMElement("newProdcutEPType", "div", this.newProductMain);
-            //     EPTypeBody.Class("EPTypeBody");
+
+                let AvailableAmountInput = new SPLINT.DOMElement.InputAmount(colorBody, "AvailableAmountInput", 0);
+                    AvailableAmountInput.min = 0;
+                    AvailableAmountInput.oninput = function(amount){
+                        // if(amount < 0) {
+                        //     amount = 0;
+                        // }
+                    }.bind(this);
 
             let descriptionBody = new SPLINT.DOMElement("newProductDescription", "div", this.newProductMain);
                 descriptionBody.Class("descriptionBody");
@@ -109,6 +114,8 @@ class ADMIN_products extends ADMIN_DrawTemplate {
                     sizeDeep.value = editProductData.size.deep;
                     ddColor.value = this.colors[editProductData.colorID].name;
                     ddEPType.value = this.EPTypes[editProductData.EPType].name;
+                    AvailableAmountInput.value = editProductData.AvailableAmount;
+                    console.dir(productHelper.isAvailable(editProductData.name))
 
                     descriptionInput.setValue(editProductData.description);
                     for(const key in editProductData.attrs){
@@ -145,7 +152,6 @@ class ADMIN_products extends ADMIN_DrawTemplate {
                 let buttonShowImages = new SPLINT.DOMElement.Button(buttonsDiv, "showImages", "Produktbilder verwalten");
                     buttonShowImages.Class("showImages");
                     buttonShowImages.onclick = function(){
-                        console.log(editProductData);
                         let imgEle = [];
                         let ImagesPopup = new SPLINT.DOMElement.popupWindow("EditProductImages", true, true);
                             let id = ImagesPopup.id + "_";
@@ -153,7 +159,6 @@ class ADMIN_products extends ADMIN_DrawTemplate {
                                 container.Class("container");
 
                             for(const [name, url] of Object.entries(editProductData.ImgPath)) {
-                                console.log(name, url)
                                 imgEle[name] = new Object();
                                 imgEle[name].Body = new SPLINT.DOMElement(id + "imgDiv_" + name, "div", container);
                                 imgEle[name].Body.Class("imgEleBody");
@@ -195,6 +200,7 @@ class ADMIN_products extends ADMIN_DrawTemplate {
                         inputEPType.clear();
                         ddColor.value = "";
                         ddEPType.value = "";
+                        AvailableAmountInput.value = 0;
                         l1.clear();
                     }.bind(this);
 
@@ -222,6 +228,7 @@ class ADMIN_products extends ADMIN_DrawTemplate {
                             size.deep   = sizeDeep.value;
                         let colorID = null;
                         let EPType  = null;
+                        let AvailableAmount = AvailableAmountInput.value;
 
                         let flag = true;
                         
@@ -278,12 +285,12 @@ class ADMIN_products extends ADMIN_DrawTemplate {
                         let nameOUT = "LIGHTER_" + colorID.toUpperCase() + "_" + EPType.toUpperCase() + "_" + name;
                         if(flag){
                             if(editProductData != null){
-                                console.log(editProductData.ID, price, nameOUT, description, size, viewName, colorID, EPType, attrs)
+                                // console.log(editProductData.ID, price, nameOUT, description, size, viewName, colorID, EPType, AvailableAmount, attrs)
                                 buttonUploadImage.saveProductImages(editProductData.ID);
-                                await productHelper.editProduct(editProductData.ID, price, nameOUT, description, size, viewName, colorID, EPType, attrs);
+                                await productHelper.editProduct(editProductData.ID, price, nameOUT, description, size, viewName, colorID, EPType, AvailableAmount, attrs);
                                 this.draw();
                             } else {
-                                let productData = await productHelper.newProduct(price, nameOUT, description, size, viewName, colorID, EPType, attrs);
+                                let productData = await productHelper.newProduct(price, nameOUT, description, size, viewName, colorID, EPType, AvailableAmount, attrs);
                                 if(typeof productData != "string"){
                                     let popup = new SPLINT.DOMElement.popupWindow("productExist", true, false);
                                         popup.Class("alertPopup", "productAlreadyExist");

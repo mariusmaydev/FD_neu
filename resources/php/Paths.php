@@ -122,9 +122,9 @@
             self::$GLOBALS      = $GLOBALS;
             self::$base         = $GLOBALS['SSL1'].($_SERVER["DOCUMENT_ROOT"]);
         }
-        public static function getFileName($type, $arg = null, string $ext = ".blob"){
+        public static function getFileName($type, $arg = null, string $ext = ".binImg"){
             switch($type){
-                case self::THUMBNAIL        : return "thumbnail.png";
+                case self::THUMBNAIL        : return "thumbnail.binImg";
                 case self::TEXT             : return $type . "_" . $arg . $ext;
                 case self::IMG_SCALE        : return $type . "_" . $arg . $ext;
                 case self::IMG_VIEW         : return $type . "_" . $arg . $ext;

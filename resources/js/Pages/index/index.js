@@ -4,19 +4,8 @@ class drawIndex extends Pages_template {
         super("index");
         this.id = "Index_";
         this._draw();
-        
-
     }
-    _draw(){
-        
-        // let worker = new SPLINT.Worker.WebWorker("/js/WebWorker/_test/webworkertest.js");
-        //     worker.onReceive = function(){
-        //         console.log(arguments)
-        //     }
-        //     worker.send("message")
-
-
-        
+    _draw(){       
 
         this.overlay = new indexOverlay(this);
         Footer.parent = this.overlay.contentElement;

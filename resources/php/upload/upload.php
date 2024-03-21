@@ -11,6 +11,18 @@
     require_once '../project/project.php';
 
     class Upload {
+        public static function Thumbnail(){
+
+            $data        = file_get_contents('php://input');
+            
+            $PATH = new PATH_Project(Sessions::get(Sessions::USER_ID), Sessions::get(Sessions::PROJECT_ID));    
+                DataEdit($PATH -> get(PATH_Project::NONE), $PATH -> getFileName(PATH_Project::THUMBNAIL), $data);
+                $h = file_get_contents($PATH -> get(PATH_Project::NONE) . $PATH -> getFileName(PATH_Project::THUMBNAIL), 'r+');
+                // new BinaryImage($h);
+                // DataEdit(realpath($_SERVER["DOCUMENT_ROOT"]) . "/fd/data/3Dmodels/Lighter/test", "test.blob", $data);
+
+            Communication::sendBack(true);
+        }
         public static function Product_img(){
             $imgID              = Image::newID();
             $UploadFiles        = $_FILES['file']['tmp_name'];

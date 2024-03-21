@@ -107,7 +107,7 @@ class ToolBar_LighterSettings {
                             CONVERTER_STORAGE.lighter3D.send("changeColor", colors[value.colorID]);
                             DSProject.Storage.Product = value.name;
                             DSProject.Storage.Color = value.colorID;
-                            await DSProject.saveAsync();
+                            DSProject.save();
                             this.drawColorMenu();
                             for(const ele of parent.children) {
                                 ele.state().unsetActive();

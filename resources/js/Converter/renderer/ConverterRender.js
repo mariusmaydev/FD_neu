@@ -47,6 +47,7 @@ class CanvasElement_C {
         this.setListeners();
     }.bind(this);
   }
+  ThumbnailCreator = new ConverterRenderThumbnail(this);
   setListeners(){
     if(SPLINT.ViewPort.getSize() == "mobile-small"){
         window.addEventListener("touchstart", ConverterTouchHandler.touchStart.bind(this));
@@ -93,71 +94,6 @@ class CanvasElement_C {
       this.setFirstInStack(this.activeElement);
       this.checkEdge(this.activeElement);
     }
-  }
-  async createData(scale = 1){
-        let offscreen  = document.createElement("canvas").transferControlToOffscreen();
-        let size = {
-            x: this.canvas.width * scale,
-            y: this.canvas.height * scale,
-            scale: scale
-        }
-        let stackOut = [];
-        for(const ele of this.stack){
-            let elem = new Object();
-
-            if(ele.type == "txt"){
-                elem.data = ele.data;
-                elem.type = ele.type;
-            } else {
-                elem.data = ele.data;
-                elem.type = ele.type;
-
-                if(!SPLINT.CacheStorage.has(ele.ID)){
-                    let ob = new Object();
-                        ob.blob = await SPLINT.Tools.CanvasTools.loadImageAsBlob(ele.data.images.view);
-                        ob.time = ele.time
-
-                    SPLINT.CacheStorage.add(ele.ID, ob);
-                    elem.blob = ob.blob;
-                } else {
-                    elem.blob = SPLINT.CacheStorage.get(ele.ID).blob;
-                }
-            }
-            stackOut.push(elem)
-        }
-        // let FontStorage = await SPLINT.Tools.Fonts.getLoadedFonts();
-        let imageData = await Converter.workerCreateThumbnail.sendInPromise("createThumbnail", { canvas: offscreen, stack: stackOut, size: size}, [offscreen]);
-        
-        let canvasTxT = document.createElement("canvas");
-            canvasTxT.width = size.x;
-            canvasTxT.height = size.y;
-        let ctxTxT     = canvasTxT.getContext('2d', { willReadFrequently: true });
-            ctxTxT.fillStyle = "transparent";
-            ctxTxT.fillRect(0, 0, canvasTxT.width, canvasTxT.height);
-            ctxTxT.scale(size.scale, size.scale);
-            for(const ele of this.stack) {
-                if(ele.type == "txt"){
-                let elem = new Object();
-                    elem.data = ele.data;
-                    elem.type = ele.type
-                    elem.ctx = ctxTxT;
-                    canvasPaths.drawThumbnailTxt(elem);
-                }
-            }
-            
-        let canvasOut = document.createElement("canvas")
-            canvasOut.width = 1024;
-            canvasOut.height = 1024;
-        let ctxOut = canvasOut.getContext("2d");
-            ctxOut.save();
-            ctxOut.putImageData(imageData, 0, 0)
-            ctxOut.restore();
-            ctxOut.save();
-            ctxOut.drawImage(canvasTxT, 0, 0, canvasTxT.width, canvasTxT.height, 0, 0, 1024, 1024);
-            ctxOut.restore();
-
-        let base64 = canvasOut.toDataURL("image/png", 1);
-        return base64;
   }
   async createTextData(scale = 1){
     let size = {
@@ -295,6 +231,25 @@ class CanvasElement_C {
           o.canvas.width = obj.canvas.width;
           o.canvas.height = obj.canvas.height;
           o.ctx      = o.canvas.getContext('2d', {desynchronized: true});
+
+
+
+        //   o.canvas_off1 = new SPLINT.DOMElement(obj.id + "_" + dataIn.ImageID + "_IMG_OFF", "canvas", obj.parent);
+        //   o.canvas_off1.width = o.canvas.width;
+        //   o.canvas_off1.height = o.canvas.height;
+        //   o.ctx_off = o.canvas_off1.getContext("bitmaprenderer");
+        //   o.canvas_off2 = new OffscreenCanvas(o.canvas_off1.width, o.canvas_off1.height);
+        //   o.WORKER = new SPLINT.Worker.WebWorker("/js/_WebWorker/_common/_converterWorker/_ConverterRenderWorker.js", false, false);
+        //   o.WORKER.init().then(function(){
+        //     o.WORKER.send("init", {canvas: o.canvas_off2}, [o.canvas_off2]);
+        //     o.WORKER.onReceive = function(e){
+        //       if(e.data.msg == "render"){
+        //           o.ctx_off.transferFromImageBitmap(e.data.bitmap);
+        //       }
+        //     }
+        //   })
+
+
           o.paths       = new Object();
           o.paths.edges = [];
           o.src = new Image();
@@ -334,7 +289,6 @@ class CanvasElement_C {
                 o.src.height = Math.abs(img.height);
                 o.src.onload = function(){
                   obj.#update();
-                  
                     canvasPaths.updateImgPath(o);
                 //   canvasPaths.updatePointPath(element, x, y, width, height, index)
                   obj.draw(o);
@@ -403,15 +357,6 @@ class CanvasElement_C {
       if(response != false){
           response.element.data = data;
           this.stack[response.index] = response.element;
-        //   if(this.activeElement != null){
-        //     this.activeElement.reload();
-        //   }
-        //   if(this.dragElement != null){
-        //     this.dragElement.reload();
-        //   }
-        //   if(this.hoverElement != null){
-        //     this.hoverElement.reload();
-        //   }
       } else {
         this.stack.push(this.#newStackObj("txt", data));
       }
@@ -470,8 +415,6 @@ class CanvasElement_C {
         }
         if(element.drawEdge){
           this.focusCanvas(element);
-        //   CanvasHelper.Image().draw(element, false);
-        } else {
         }
         CanvasHelper.Image().draw(element, element.drawEdge);
       } else if(element.type == "txt"){
@@ -481,11 +424,6 @@ class CanvasElement_C {
         }
         if(element.drawEdge){
           this.focusCanvas(element);
-          // CanvasHelper.Text().edge(element, false, 2);
-        //   CanvasHelper.Text().edge(element, false, 8);
-          // element.input.unHide();
-        } else {
-          // element.input.hide();
         }
         CanvasHelper.Text().draw(element, element.drawEdge);
       }
@@ -562,8 +500,7 @@ class CanvasElement_C {
         }
     }
     this.dragElement = null;
-    // this.activeElement = null;
-    DSController.saveAll();
+    DSController.saveAll.callFromIdle(1000, DSController);
   }
   clearLine(full = false){
     this.lines.ctx.clearRect(0, 0, this.lines.canvas.width, this.lines.canvas.height);

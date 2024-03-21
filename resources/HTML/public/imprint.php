@@ -24,10 +24,10 @@
         <s-part src="/js/assets/functionsShoppingCart.js"></s-part>
         <s-part src="/js/3D/3DHelper.js"></s-part>
         <s-part src="/js/3D/commonJS/drawDOMElement_3D.js"></s-part>
-        <s-part first src="/js/Pages/pagesHelper.js"></s-part>
+        <s-part first src="/js/Pages/pagesTemplate.js"></s-part>
         <s-part src="/js/Pages/imprint.js"></s-part>
         <s-part src="/js/Projects/Projects.js"></s-part>
-        <s-part src="/js/Projects/ProjectsHelper.js"></s-part>
+        <s-part src="/js/Projects/Helper/ProjectsHelper.js"></s-part>
 
         <s-part src="/js/NavigationBar.js"></s-part>
         <s-part src="/js/Footer.js"></s-part>

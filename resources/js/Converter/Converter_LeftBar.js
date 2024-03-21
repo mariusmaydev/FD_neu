@@ -79,12 +79,13 @@ class Converter_LeftBar {
     this.button_ProductInformation.bindIcon("info");
     this.button_ProductInformation.Description = "Informationen";
     this.button_ProductInformation.button.onclick = async function(){
-       await DSController.createThumbnail();
-        await ProjectHelper.edit(DSProject.Storage, false);
+    //    let g = await DSController.createThumbnail();
+    //    console.dir(g)
+    //     await ProjectHelper.edit(DSProject.Storage, false);
         let data = await ProjectHelper.get();
             data.Thumbnail = data.Thumbnail + "?" + Math.round(Math.random() * 1000);
             
-        let projectDetails = new ProjectDetails(data, 0, document.body);
+        let projectDetails = new ProjectDetails(data, document.body);
             projectDetails.show();
     }
   }

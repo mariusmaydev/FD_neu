@@ -1,10 +1,7 @@
 import SPLINT from "SPLINT";
-import { Vector3 } from "@THREE_ROOT_DIR/src/math/Vector3.js";
+import * as THREE from '@THREE';
 import MaterialHelper from "@SPLINT_MODULES_DIR/ThreeJS/materials/MaterialHelper.js";
 import MaterialsLighterGeneral from "../../assets/newMaterials/materialsLighterGeneral.js";
-import { Matrix4 } from "@THREE_ROOT_DIR/src/math/Matrix4.js";
-import { SphereGeometry } from "@THREE_ROOT_DIR/src/geometries/SphereGeometry.js";
-import { Mesh } from "@THREE_ROOT_DIR/src/objects/Mesh.js";
 
 export default class LighterModel {
     static promiseLoading = null;
@@ -36,7 +33,7 @@ export default class LighterModel {
         return new Promise(async function(resolve, reject){
             LighterModel.isStarted = true;
             SPLINT.ResourceManager.models.lighter_glb.then(async function(data){
-                    const pos = new Vector3( 0, 0, 0 );
+                    const pos = new THREE.Vector3( 0, 0, 0 );
                     if(LighterModel.loaded){
                         LighterModel.SRCscene = LighterModel.SRCscene.clone();
                         LighterModel.SRCscene.position.copy(pos);
@@ -67,7 +64,6 @@ export default class LighterModel {
                 
                     scene.position.copy(pos);
                     scene.scale.set(5, 5, 5);
-                    console.dir(scene)
                 let material = scene.children[0].children[0].material.clone();
                     material.name = "lighterBlackRough";
                 MaterialHelper.set(material);
@@ -91,7 +87,7 @@ export default class LighterModel {
                 MESH.material.name = "body";
              } break;
             case 'oberes_teil1'        : {
-                MESH.geometry.applyMatrix4( new Matrix4().makeTranslation( 1.92, -0.003, 0 ) );
+                MESH.geometry.applyMatrix4( new THREE.Matrix4().makeTranslation( 1.92, -0.003, 0 ) );
                 MESH.position.x = -0.01919; 
                 MESH.material.name = "body";
              } break;
@@ -100,7 +96,7 @@ export default class LighterModel {
             }  break;
             case 'verbindung_oben1'    : {
 
-                MESH.geometry.applyMatrix4( new Matrix4().makeTranslation( 0, -2.08, -0.475 ) );
+                MESH.geometry.applyMatrix4( new THREE.Matrix4().makeTranslation( 0, -2.08, -0.475 ) );
                 MESH.position.z = 0.00475; 
                 MESH.position.y = 0.0208; 
                 MESH.rotation.x = 135 * Math.PI / 180;
@@ -122,7 +118,7 @@ export default class LighterModel {
             } break;
             case 'Bolzen_Rad1'        : { MESH.material = LighterModel.materials.chrome; } break;
             case 'Bolzen_Rad2'        : { MESH.material = LighterModel.materials.chrome; } break;
-            case 'Bolzen_Scharnier2'  : { MESH.material = LighterModel.materials.chrome; } ; break;
+            case 'Bolzen_Scharnier2'  : { MESH.material = LighterModel.materials.chrome; } break;
             case 'Feuersteinauflage1' : { MESH.material = LighterModel.materials.chrome; } break;
             case 'Feuersteinhalter1'  : { MESH.material = LighterModel.materials.chrome; } break;
             case 'Schraube1'          : { MESH.material = LighterModel.materials.chrome; } break;
@@ -136,7 +132,7 @@ export default class LighterModel {
             case 'Feuerstein1'         : { MESH.material = LighterModel.materials.chrome; } break;
             case 'Scharnier1'          : {
                 MESH.material = LighterModel.materials.chrome;
-                MESH.geometry.applyMatrix4( new Matrix4().makeTranslation( 7.573, 0, -11.183 ) );
+                MESH.geometry.applyMatrix4( new THREE.Matrix4().makeTranslation( 7.573, 0, -11.183 ) );
                 MESH.rotation.y = 105 * Math.PI / 180;
                 element.position.x = -0.0135; 
                 element.position.z = -0.038; 
@@ -155,11 +151,11 @@ export default class LighterModel {
         // flame
         var flameMaterials = [];
         function flame(isFrontSide){
-            let flameGeo = new SphereGeometry(0.5, 32, 32);
+            let flameGeo = new THREE.SphereGeometry(0.5, 32, 32);
                 flameGeo.translate(0, 0.5, 0);
             let flameMat = MaterialsLighterGeneral.FlameMaterial(true);
                 flameMaterials.push(flameMat);
-            let flame = new Mesh(flameGeo, flameMat);
+            let flame = new THREE.Mesh(flameGeo, flameMat);
             flame.position.set(0.0, 1.8, 0.00);
             flame.rotation.y = -45 *(Math.PI / 180);
             flame.name = "flame";

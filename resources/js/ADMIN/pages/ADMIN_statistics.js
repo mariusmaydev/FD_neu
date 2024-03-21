@@ -10,36 +10,30 @@ class ADMIN_statistics extends ADMIN_DrawTemplate {
     async draw(){
         // let t1 = new Date();
         // let mg = new managerObject();
+        this.ContentMain = new SPLINT.DOMElement(this.id + "contentMain", "div", this.mainElement);
+        this.ContentMain.Class("contentMain");
+
         let userData = await managerCallPHP.getUserData();
-        console.dir(userData);
         let pUserData = statisticsHelper.parseUserData(userData);
         let lastPages = statisticsHelper.getLastPages(pUserData);
         let visitDuration = statisticsHelper.getVisitDurations(pUserData);
-        let orderValues = (await statisticsHelper.getOrderValues(await order.get()));
-        // let orderAmount = (await statisticsHelper.getOrderAmount(await order.get()));
-        console.log(order.get(), order.getFromArchive())
-        let ef = order.get();
-        let gh = new Object();
-        ef.then(function(g){
-            for(const key in g){
-                let t = SPLINT.Tools.DateTime.Helper.convertDateTimeToFormatedUnix(g[key].Time);
+        let orderData = await order.get();
+        let orderValues = (await statisticsHelper.getOrderValues(orderData));
+
+
+        let orderAmountObj = new Object();
+            for(const key in orderData){
+                let t = SPLINT.Tools.DateTime.Helper.convertDateTimeToFormatedUnix(orderData[key].Time);
                 let ji = new formatUnix_S(t * 1000);
-                // console.dir(ji.date())
                 let da = ji.date();
-                if(gh[da] != undefined){
-                    gh[da] += 1;
+                if(orderAmountObj[da] != undefined){
+                    orderAmountObj[da] += 1;
                 } else {
-                    gh[da] = 1;
+                    orderAmountObj[da] = 1;
                 }
             }
 
-            this.drawChart("orderAmount", "Anzahl Bestellung", gh)
-            // console.log(g)
-        }.bind(this));
-        console.log(gh)
-        this.ContentMain = new SPLINT.DOMElement(this.id + "contentMain", "div", this.mainElement);
-        this.ContentMain.Class("contentMain"); 
-
+        this.drawChart("orderAmount", "Anzahl Bestellung", orderAmountObj)
         this.drawChart("visit_duration", "Besuchdauer", visitDuration)
         this.drawChart("lastPage", "Abbruchseite", lastPages)
         this.drawChart("orderValues", "Umsatz pro Bestellung", orderValues)

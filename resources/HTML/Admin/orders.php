@@ -24,7 +24,7 @@
         <s-part src="/js/ADMIN/order/"></s-part>
         <s-part src="/js/Orders/Order.js"></s-part>
         
-        <s-part src="/js/Projects/"></s-part>
+        <s-part src="/js/Helper/"></s-part>
         <s-part src="/js/Converter/ConverterHelper.js"></s-part>
 
         <script type="text/javascript" src="../../../../Splint/js/Splint.js" onload="SPLINT.start()"></script>

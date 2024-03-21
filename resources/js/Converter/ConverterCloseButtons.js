@@ -73,7 +73,7 @@ class Converter_closeButtons {
                 button_download_NC.setStyleTemplate(S_Button.STYLE_NONE);
                 let projectPATH = ProjectHelper.getPath2AdminProject(DSProject.Storage.ProjectID);
                 button_download_NC.button.onclick = async function(){
-                    if(SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc", true)){
+                    if(await SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc", false)){
                         if(switchBt.Value == "SVG"){
                             download_S.download(projectPATH + "/Full.nc", "SVG_" + nameInput.value + "_Model.svg");
                         } else if(switchBt.Value == "laser"){
@@ -114,7 +114,7 @@ class Converter_closeButtons {
                 S_Location.back();
             }
     }
-    drawButtonToCart(){
+    async drawButtonToCart(){
         
         let button_toCart_Div = new SPLINT.DOMElement("bt_toCart_div", "div", this.contentElement);
             button_toCart_Div.Class("toCart");
@@ -131,8 +131,12 @@ class Converter_closeButtons {
                 if(SPLINT.Events.onLoadingComplete.dispatched){
                     button_toCart_Div.setAttribute("loaded", true);
                 }
+                if(!(await productHelper.isAvailable(DSProject.Storage.Product))){
+                    button_toCart.disabled = true;
+                    button_toCart.setTooltip("ausverkauft", "top")
+                }
     }
-    drawButtonBuy(){
+    async drawButtonBuy(){
         let button_finish_Div = new SPLINT.DOMElement("bt_finish_div", "div", this.contentElement);
             button_finish_Div.Class("buy");
             let button_finish = new SPLINT.DOMElement.Button(button_finish_Div, "finish", "Kaufen");
@@ -152,6 +156,10 @@ class Converter_closeButtons {
                 };
                 if(SPLINT.Events.onLoadingComplete.dispatched){
                     button_finish_Div.setAttribute("loaded", true);
+                }
+                if(!(await productHelper.isAvailable(DSProject.Storage.Product))){
+                    button_finish.disabled = true;
+                    button_finish.setTooltip("ausverkauft", "top")
                 }
     }
     drawButtonSave_editCartItem(){
@@ -179,10 +187,8 @@ class Converter_CloseOperations {
     }
     static async toCart(){
         let projectID = DSProject.Storage.ProjectID;
+        DSController.saveAll();
         await CONVERTER_STORAGE.canvasNEW.createTextData();
-        DSText.save();
-        DSProject.save();
-        DSImage.save();
         if(DSProject.get().State != ProjectHelper.STATE_CART){
             projectID = await ProjectHelper.copy(DSProject.Storage.ProjectID);
             await ProjectHelper.changeState(projectID, ProjectHelper.STATE_CART);
@@ -192,10 +198,7 @@ class Converter_CloseOperations {
     static async Buy(){
         let projectID = DSProject.Storage.ProjectID;
         await CONVERTER_STORAGE.canvasNEW.createTextData();
-        await CONVERTER_STORAGE.canvasNEW.createData();
-        DSText.save();      
-        DSImage.save();
-        DSProject.save();
+        DSController.saveAll();
         if(DSProject.get().State != ProjectHelper.STATE_CART){
             projectID = (await ProjectHelper.copy(DSProject.Storage.ProjectID));
             await ProjectHelper.changeState(projectID, ProjectHelper.STATE_CART);

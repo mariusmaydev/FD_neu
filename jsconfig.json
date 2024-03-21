@@ -13,8 +13,20 @@
       "splint": [
         "../Splint/js/modules/ThreeJS/CORE.js"
       ],
-      "three": [
-        "../Splint/lib/threeJS/build/three.module.js"
+    //   "three": [
+    //     "https://unpkg.com/three@v0.162.0/build/three.module.js"
+    //   ],
+      "@THREE_ADDONS/*": [
+        "../Splint/node_modules/three/examples/jsm/*"
+      ],
+      "@THREE_SRC/*": [
+        "../Splint/node_modules/three/src/*"
+      ],
+      "@THREE": [
+        "../Splint/node_modules/three/build/three.module.js"///threeJS/build/three.module.js"
+      ],
+      "three/*": [
+        "../Splint/node_modules/three/build/three.module.js"///threeJS/build/three.module.js"
       ],
       "threeJS": [
         "../Splint/lib/threeJS/build/three.module.js"

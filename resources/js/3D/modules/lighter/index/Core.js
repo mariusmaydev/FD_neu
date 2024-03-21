@@ -1,5 +1,4 @@
 
-import * as THC from "@THREE_ROOT_DIR/src/constants.js";
 import * as MATERIALS from '../../assets/materials/materials.js';
 import MaterialsLighterGeneral from '../../assets/newMaterials/materialsLighterGeneral.js';
 import LIGHT from './light.js';
@@ -7,19 +6,32 @@ import CompressedAnimations from './animations.js';
 import LighterAnimations from '../animations.js';
 import SETUP from '../setup.js';
 import LighterModel from "../model/LighterModel.js";
-import { CubeCamera } from "@THREE_ROOT_DIR/src/cameras/CubeCamera.js";
+// import { CubeCamera } from "@THREE_SRC/cameras/CubeCamera.js";
 import Communication from './communication.js';
-import { PerspectiveCamera } from "@THREE_ROOT_DIR/src/cameras/PerspectiveCamera.js";
-import { WebGLCubeRenderTarget } from "@THREE_ROOT_DIR/src/renderers/WebGLCubeRenderTarget.js";
+// import { WebGLCubeRenderTarget } from "@THREE_ROOT_DIR/src/renderers/WebGLCubeRenderTarget.js";
+import * as THREE from "@THREE";
 import LighterThumbnail from "../model/LighterThumbnail.js";
 import SPLINT from 'SPLINT';
-import workerInterface from "../../assets/workerInterface.js";
+import MaterialHelper from '@SPLINT_MODULES_DIR/ThreeJS/materials/MaterialHelper.js';
+import workerInterfaceNew from "../../assets/workerInterfaceNew.js";
+
+SPLINT.BinaryImage
 
 export class draw {
     static get(canvas){
         return new draw(canvas);
     }
     constructor(canvas){
+        this.StorageManager = new SPLINT.IndexedDB.Manager("StaticData", true)
+        this.renderWorker = new Worker(location.origin + "/fd/resources/js/3D/modules/lighter/index/_indexRenderWorker.js");//SPLINT.Worker.WebWorker("/js/3D/modules/lighter/index/_indexRenderWorker.js", false, false);
+        // this.renderWorker.options = {
+        //     type: "module"
+        // }
+        this.renderWorker.onerror = function(){
+            console.dir(arguments)
+        }
+        // this.renderWorker.init();
+        console.dir(this.renderWorker)
         this.context = null;
         this.id = "Lighter3D_";
         this.canvas = canvas;
@@ -77,6 +89,7 @@ export class draw {
     }
     init(){
         this.setup.renderer(true);
+        this.setupOffscreen();
         this.setup.scene();
         this.mouseHandler = SPLINT.MouseHandler( this.canvas );
         this.Animations = new LighterAnimations(this);
@@ -84,14 +97,15 @@ export class draw {
         this.setupCamera();
         this.raycaster = SPLINT.raycaster(this);
         this.raycaster2 = SPLINT.raycaster(this);
+        this.setupOffscreen();
         // this.setup.controls();
     }
     setupCamera(){
         if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
-            this.camera     = new PerspectiveCamera(60, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
+            this.camera     = new THREE.PerspectiveCamera(60, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
             this.camera.position.set(0, 0.18, 0.7);
         } else {
-            this.camera     = new PerspectiveCamera(45, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
+            this.camera     = new THREE.PerspectiveCamera(45, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
             this.camera.position.set(-0.15, 0.18, 1);
         }
         this.camera.name = "camera";
@@ -106,25 +120,35 @@ export class draw {
     }
     async loadThumbnail(name, GoldFlag){
         if(this.scene != null){
-            if(GoldFlag){
-                SPLINT.ResourceManager.textures.lighter_engraving_thumbnail_1024.then(async function(texture){     
-                    this.thumbnail.lighter1 = new LighterThumbnail(this, "lighter");   
-                    this.thumbnail.lighter1.loadThumbnailMaterial(texture, 0xe8b000);
-                }.bind(this))     
-            } else{
-                SPLINT.ResourceManager.textures.lighter_engraving_thumbnail_1024.then(async function(texture){         
-                    this.thumbnail.lighter2 = new LighterThumbnail(this, "lighter2");   
-                    this.thumbnail.lighter2.loadThumbnailMaterial(texture, 0xc0c0c0, false);
-                }.bind(this));   
+            let binaryImg = await this.StorageManager.get("ThumbnailIndex");
+            if(binaryImg == undefined){
+                binaryImg = await SPLINT.BinaryImage.fromURL(location.origin + "/fd/data/3Dmodels/Lighter/test/test.binImg");
+                this.StorageManager.set("ThumbnailIndex", binaryImg);
             }
-
+            if(GoldFlag){
+                let bb = await binaryImg.export_imageData();
+                let texture = new THREE.Texture(bb);
+                this.thumbnail.lighter1 = new LighterThumbnail(this, "lighter");   
+                this.thumbnail.lighter1.loadThumbnailMaterial(texture, 0xe8b000, false);
+                this.thumbnail.lighter1.loadAlphaMap(texture);
+            } else {      
+                // let binaryImg = await SPLINT.BinaryImage.fromURL(location.origin + "/fd/data/3Dmodels/Lighter/test/test.binImg");
+                let bb = await binaryImg.export_imageData();
+                
+                let texture = new THREE.Texture(bb);
+                this.thumbnail.lighter2 = new LighterThumbnail(this, "lighter2");   
+                this.thumbnail.lighter2.loadThumbnailMaterial(texture, 0xc0c0c0, false);
+                this.thumbnail.lighter1.loadAlphaMap(texture);
+            }
         }
     }
+
     async onFinishLoading(){
         this.scene.traverse(function(object) {
             if(object.type === 'Mesh') {
                 if(object.material.name == "chrome"){
                     object.material = MaterialsLighterGeneral.chrome(this);
+                    object.material.needsUpdate = true;
                 } else if(object.material.name == "body"){
                     // object.material = MaterialsLighterGeneral.bodyColor(this, 0x006800);
                     object.material.needsUpdate = true
@@ -149,89 +173,119 @@ export class draw {
                 this.compressedAnimations.open();
                 // this.compressedAnimations.smoothTurnStart();
             }
-            // workerInterface.createNormalMap(SPLINT.config.URIs.project + "../" + SPLINT.ResourceManager.textures.lighter_engraving_thumbnail_1024_path).then(async function(texture){
-            //     console.log("load")
-
-            //     let t = await SPLINT.Tools.CanvasTools.ImageData2base64(texture.source.data);
-            //     console.log(t);
-            //     this.thumbnail.lighter1.loadNormalMap(texture)
-            //     this.thumbnail.lighter1.loadNormalMap(texture)
-            // }.bind(this))
             
-                let worker = new Worker(SPLINT.projectRootPath + "/js/_WebWorker/SVGGeneratorWorker.js") 
-                    worker.onmessage = async function(e) {
-                        console.log(e.data)    
-                    }
-            // SPLINT.ResourceManager.textures.lighter_engraving_thumbnail_1024.then(async function(texture){
-                    // console.dir(texture.source.data)
-                    // let img  =new Image();
-                        // img.onload = function(){
-                            // let imageData = SPLINT.Tools.CanvasTools.imageToImageData(img);
-                            // console.dir(imageData)
-                            // worker.postMessage(imageData);
-                        // }
-                        // img.src = SPLINT.config.URIs.project + "../" + SPLINT.ResourceManager.textures.lighter_engraving_thumbnail_chrome_path;
-                    // 
-// 
-            // })
-            SPLINT.ResourceManager.textures.ligher_NormalMapEngraving.then(async function(texture){ 
-                // this.thumbnail.lighter1.loadEnvMap(this.cubeRenderTarget.texture);
+            let normalMapData = await this.StorageManager.get("ThumbnailIndex_normalMap");
+            
+            if(normalMapData == undefined){
+                let binaryImg = await this.StorageManager.get("ThumbnailIndex");
+                if(binaryImg == undefined){
+                    binaryImg = await SPLINT.BinaryImage.fromURL(location.origin + "/fd/data/3Dmodels/Lighter/test/test.binImg");
+                    this.StorageManager.set("ThumbnailIndex", binaryImg);
+                }
+                let d = await binaryImg.export_imageData();
+                workerInterfaceNew.createNormalMap(this.drawID, d).then(async function(imageData){
+                    this.StorageManager.set("ThumbnailIndex_normalMap", imageData);
+                    let texture = new THREE.Texture(imageData);
+                        texture.needsUpdate = true;
+
+                    this.thumbnail.lighter1.loadEnvMap(this.cubeRenderTarget.texture);
+                    this.thumbnail.lighter2.loadEnvMap(this.cubeRenderTarget.texture);
+                    this.thumbnail.lighter1.loadNormalMap(texture);
+                    this.thumbnail.lighter2.loadNormalMap(texture);
+                    this.thumbnail.lighter1.setColor(new THREE.Color(0xe8b000))
+                    this.render();
+                }.bind(this));
+            } else {
+                let texture = new THREE.Texture(normalMapData);
+                    texture.needsUpdate = true;
+                // console.dir("b")
+                this.thumbnail.lighter1.loadEnvMap(this.cubeRenderTarget.texture);
+                this.thumbnail.lighter2.loadEnvMap(this.cubeRenderTarget.texture);
+
                 this.thumbnail.lighter1.loadNormalMap(texture);
-                // this.thumbnail.lighter2.loadEnvMap(this.cubeRenderTarget.texture);
                 this.thumbnail.lighter2.loadNormalMap(texture);
-            }.bind(this));
+                this.thumbnail.lighter1.setColor(new THREE.Color(0xe8b000))
+                this.render();
+            }
             
         // console.log(SPLINT.ResourceManager.textures.lighter_engraving_thumbnail_1024_data)
         }.bind(this));
     }
 
-    animate(){}
+    setupOffscreen(){
+        return
+        this.context = this.canvas.getContext("bitmaprenderer");
+        this.offscreencanvas = new OffscreenCanvas(this.canvas.width, this.canvas.height);
+        
+
+        this.renderWorker.onmessage = function(e){
+            this.context.transferFromImageBitmap(e.data.bitmap);
+        }.bind(this)
+    }
+    async animate(){
+        if(this.renderer.domElement.width > 0){
+            this.render();
+        } else {
+            requestAnimationFrame(this.animate.bind(this));
+        }
+    }
+    // async render(){
+    //     // this.context_off.clearRect(0, 0, this.canvas.parentNode.clientWidth * 2, this.canvas.parentNode.clientHeight * 2);
+    //     // this.renderer.render(this.scene, this.camera);
+    //     // this.cubeCamera.update(this.renderer, this.scene);
+    //     // let domE = this.renderer.domElement;
+    //     // this.context_off.drawImage(domE, 0, 0, domE.width, domE.height, 0, 0, this.canvas.width, this.canvas.height);
+
+    //     // this.context.transferFromImageBitmap(this.bitmap);
+    // }
+
+    // animate(){}
     startAnimationLoop(){
+        // this.renderWorker.postMessage({msg: "init", canvas : this.offscreencanvas}, [this.offscreencanvas]);
         this.renderer.setAnimationLoop( async function(){
             this.render();
             this.AnimationMixer.tick();
          }.bind(this));
     }
     render(){
-        this.cubeCamera.update(this.renderer, this.scene);
         this.renderer.render(this.scene, this.camera);
+        this.cubeCamera.update(this.renderer, this.scene);
         this.context.clearRect(0, 0, this.canvas.parentNode.clientWidth*2, this.canvas.parentNode.clientHeight*2);
         let domE = this.renderer.domElement;
         this.context.drawImage(domE, 0, 0, domE.width, domE.height, 0, 0, this.canvas.width, this.canvas.height);
         // this.stats.update();
     }
     async drawBackground(){
-        
-        SPLINT.ResourceManager.dataTextures.indexBackground.then(function(texture){
+        SPLINT.ResourceManager.dataTextures.indexBackground.then(async function(texture){
+            console.dir(texture)
             // let t1 = (await SPLINT.ResourceManager.dataTextures.indexBackground);
             // let clone = t1.SPLINT.ThreeClone();
-                texture.mapping = THC.EquirectangularRefractionMapping;
-                // texture.mapping = THC.CubeReflectionMapping;
+                // texture.mapping = THREE.EquirectangularReflectionMapping;
+                texture.mapping = THREE.CubeReflectionMapping;
             this.scene.background = texture;
             this.scene.enviroment = texture;
         }.bind(this))
 
-        this.cubeRenderTarget = new WebGLCubeRenderTarget( 256 );
-        this.cubeRenderTarget.texture.type = THC.HalfFloatType;
-        this.cubeCamera = new CubeCamera( 1, 200, this.cubeRenderTarget );
-        
+        this.cubeRenderTarget = new THREE.WebGLCubeRenderTarget( 256,{ generateMipmaps: true, minFilter: THREE.LinearMipmapLinearFilter } );
+        this.cubeRenderTarget.texture.type = THREE.HalfFloatType;
+        this.cubeCamera = new THREE.CubeCamera( 1, 200, this.cubeRenderTarget );
+        this.scene.add( this.cubeCamera );
+        this.pmremGenerator = new THREE.PMREMGenerator(this.renderer);
+        this.envMap = this.pmremGenerator.fromScene(this.scene).texture;
 
-        // this.pmremGenerator = new PMREMGenerator(this.renderer);
-        // this.envMap = this.pmremGenerator.fromScene(this.scene).texture;
-
-        // this.scene.enviroment = envMap;
-        // this.scene.background = new Color( 0xffffff);
+        this.scene.enviroment = this.envMap;
+        this.scene.background = this.envMap;//new THREE.Color( 0xffffff);
         let floor1         = await SPLINT.ResourceManager.textures.floor_1;
         let floor1Normal   = await SPLINT.ResourceManager.textures.floor_1_normalMap;
         let plane = SPLINT.object.Plane(5, 5, 1, 1);
             plane.get().geometry.translate(0, -1, 0);
             plane.rotate(87, 0, 0);
-            plane.plane.material = await MATERIALS.other.indexBackground(floor1, floor1Normal, this.cubeRenderTarget.texture);
+            plane.plane.material = await MATERIALS.other.indexBackground(floor1, floor1Normal);//, this.cubeRenderTarget.texture);
             plane.plane.receiveShadow = true;
         this.scene.add(plane.plane);
     }    
     async draw(){
-            await this.drawBackground();
+             this.drawBackground();
             LIGHT(this.scene);
             this.scene.add( this.camera );
         return new Promise(async function(resolve){
@@ -243,7 +297,7 @@ export class draw {
                 lighterGroupe1.rotation.z = 0.2618;
                 lighterGroupe1.rotationBase = lighterGroupe1.rotation.clone();
                 this.loadThumbnail("lighter", true);
-                resolve('resolved');
+                // resolve('resolved');
 
             let lighterGroupe2 = this.setup.getLighterGroupe(this.scene, 'lighter2');
                 lighterGroupe2.rotation.z = 10 * (Math.PI / 180);
@@ -311,230 +365,3 @@ export class draw {
         }
     }
 }
-
-
-
-
-// initWorker(){
-//     // let g1 = SPLINT.file.loadFromProjectAsync();
-//     // console.dir(SPLINT.config.URIs.project + "/" + SPLINT.ResourceManager.textures.lighter_engraving_thumbnail_1024_data)
-//     let worker = new Worker(SPLINT.projectRootPath + "/js/_WebWorker/normalMapWorker.js", { type: "module"});
-    
-//     worker.onmessage = async function(e) {
-//         console.log(e)
-//         let bmp = e.data;//await blobToBase64(e.data);
-        
-//         let t = new Texture(bmp);
-//         t.needsUpdate = true;
-//         // let g = S_Tools.base64ToSrc(bmp)
-//         this.thumbnail.lighter1.loadNormalMap(t);
-//         // this.thumbnail.lighter1.loadThumbnailMaterial(t, 0xe8b000);
-//         console.log(t)
-//     }.bind(this);
-// //     worker.onerror = function(e) {
-// //         console.log(e)
-// //     }.bind(this);
-
-//     // SPLINT.ResourceManager.textures.lighter_engraving_thumbnail_1024_data.then(async function(texture){     
-//         worker.postMessage(SPLINT.config.URIs.project + "/" + SPLINT.ResourceManager.textures.lighter_engraving_thumbnail_1024_data);
-//         console.log("post")
-//     // }.bind(this))  
-// }
-
-// // startup();
-//     var input, output, ctx_i, ctx_o, w, h;
-
-//     function startup() {
-//         var img;
-
-//         input = document.createElement("canvas");
-//         ctx_i = input.getContext("2d", { willReadFrequently: true});
-//         ctx_i.clearRect(0, 0,input.width, input.height);
-
-//         img = new Image();
-//         img.crossOrigin = "Anonymous";
-
-        
-//         SPLINT.ResourceManager.textures.lighter_engraving_thumbnail_1024.then(async function(texture){     
-//             console.dir(texture)
-//             img.src = texture.source.data.src;
-//             // let r = startup(texture);
-//             // console.log(r);
-//         }.bind(this))  
-
-//         //img.src = "https://i.imgur.com/a4N2Aj4.jpg"; //128x128 - Tiny but fast.
-//         // img.src = "https://i.imgur.com/wFe4EG7.jpg"; //256x256 - Takes about a minute.
-//         //img.src = "https://i.imgur.com/bm4pXrn.jpg"; //512x512 - May take 5 or 10 minutes.
-//         // img.src = "https://i.imgur.com/aUIdxHH.jpg"; //original - Don't do it! It'll take hours.
-//         img.onload = async function () {
-//             w = img.width - 1;
-//             h = img.height - 1;
-//             input.width = w + 1;
-//             input.height = h + 1;
-//             ctx_i.drawImage(img, 0, 0);
-
-//             output = document.createElement("canvas");
-//             ctx_o = output.getContext("2d");
-//             output.width = w + 1;
-//             output.height = h + 1;
-//             totallyNormal();
-//             let f = await output.toDataURL("image/png", 1);
-//             console.log(f);
-//         };
-//     }
-
-//     function totallyNormal() {
-//         var pixel, x_vector, y_vector;
-
-//         for (var y = 0; y < w + 1; y += 1) {
-//             for (var x = 0; x < h + 1; x += 1) {
-//                 var data = 
-//                 [
-//                     0, 0, 0, 0,
-//                     x > 0, x < w, y > 1, y < h, 
-//                     x - 1, x + 1, x, x, 
-//                     y, y, y - 1, y + 1
-//                 ];
-//                 for (var z = 0; z < 4; z +=1) {
-//                     if (data[z + 4]) {
-//                         pixel = ctx_i.getImageData(data[z + 8], data[z + 12], 1, 1);
-//                         data[z] = ((0.299 * (pixel.data[0] / 100)) + (0.587 * (pixel.data[1] / 100)) + (0.114 * (pixel.data[2] / 100)) / 3);
-//                     } else {
-//                         pixel = ctx_i.getImageData(x, y, 1, 1);
-//                         data[z] = ((0.299 * (pixel.data[0] / 100)) + (0.587 * (pixel.data[1] / 100)) + (0.114 * (pixel.data[2] / 100)) / 3);
-//                     }
-//                 }
-//                 x_vector = parseFloat((Math.abs(data[0] - data[1]) + 1) * 0.5) * 255;
-//                 y_vector = parseFloat((Math.abs(data[2] - data[3]) + 1) * 0.5) * 255;
-//                 ctx_o.fillStyle = "rgba(" + x_vector + "," + y_vector + ",255,255)";
-//                 ctx_o.fillRect(x, y, 1, 1);
-//             }
-//         }
-//         console.log("finisehd");
-//     }
-
-// async function startup(texture) {
-//     return new Promise(async function(resolve){
-//     let input, output, ctx_i, ctx_o, w, h;
-//     let img;
-//     img = texture.source.data;//new Image();//MaterialHelper.getTexture(SPLINT.resources.textures.lighter_engraving_thumbnail).source.data;;
-//     img.crossOrigin = "Anonymous";
-//     //img.src = "https://i.imgur.com/a4N2Aj4.jpg"; //128x128 - Tiny but fast.
-//     // img.src = "http://localhost/fd/data/3Dmodels/Lighter/textures/thumbnail.png"; //256x256 - Takes about a minute.
-//     input = document.createElement("canvas");
-
-//     //img.src = "https://i.imgur.com/bm4pXrn.jpg"; //512x512 - May take 5 or 10 minutes.
-//     //img.src = "https://i.imgur.com/aUIdxHH.jpg"; //original - Don't do it! It'll take hours.
-//     // img.onload = function () {
-//         ctx_i = input.getContext("2d");
-//         ctx_i.fillStyle = "#000000";
-//         ctx_i.fillRect(0, 0, input.width, input.height);
-//         if(img.height > img.width){
-//             w = img.height;
-//             h = img.height;
-//         } else { 
-//             w = img.width;
-//             h = img.width;
-//         }
-//         w = (w) - 1;
-//         h = (h) - 1;
-//         input.width = w + 1;
-//         input.height = h + 1;
-//         ctx_i.save();
-//         ctx_i.imageSmoothingEnabled = true;
-//         ctx_i.imageSmoothingQuality  = "high";
-//         ctx_i.globalAlpha = 0.5;
-//         ctx_i.drawImage(img, 0, 0, img.width, img.height, 0, 0, w, h);
-//         ctx_i.restore();
-//         // ctx_i.scale(0.25, 0.25)
-//         output = document.createElement("canvas");
-//         ctx_o = output.getContext("2d");
-//         output.width = w + 1;
-//         output.height = h + 1;
-//         await totallyNormal();
-
-        
-//         let img;
-
-//         let input = document.createElement("canvas");
-//         let ctx_i = input.getContext("2d");
-//             ctx_i.clearRect(0, 0,input.width, input.height);
-
-//         img = new Image();
-//         img.crossOrigin = "Anonymous";
-//         //img.src = "https://i.imgur.com/a4N2Aj4.jpg"; //128x128 - Tiny but fast.
-//         img.src = "https://i.imgur.com/wFe4EG7.jpg"; //256x256 - Takes about a minute.
-//         //img.src = "https://i.imgur.com/bm4pXrn.jpg"; //512x512 - May take 5 or 10 minutes.
-//         //img.src = "https://i.imgur.com/aUIdxHH.jpg"; //original - Don't do it! It'll take hours.
-//         img.onload = function () {
-//             w = img.width - 1;
-//             h = img.height - 1;
-//             input.width = w + 1;
-//             input.height = h + 1;
-//             ctx_i.drawImage(img, 0, 0);
-
-//             output = document.getElementById("output");
-//             ctx_o = output.getContext("2d");
-//             output.width = w + 1;
-//             output.height = h + 1;
-//         };
-
-
-
-
-
-
-
-
-
-
-
-
-
-//         // input.width = img.width;
-//         // input.height = img.height;
-//         // ctx_i.clearRect(0, 0,input.width, input.height);
-//         // ctx_i.drawImage(output, 0, 0, w*4, h*4);
-//         // let im = new Image();
-//         //     im.src = await output.toDataURL("image/png", 1);
-//         //     im.onload = function(){
-//             let e = await output.toDataURL("image/png", 1);
-//             console.log(e)
-//                 let im = new Image();
-//                     let t = new Texture();
-//                         t.image = im;
-//                     im.onload = function(){
-//                         t.needsUpdate = true;
-//                         resolve(t);
-//                     }
-//                     im.src = e;
-
-//             // }
-//             async function totallyNormal() {
-//                 let pixel, x_vector, y_vector;
-            
-//                 for (let y = 0; y < w + 1; y += 1) {
-//                   for (let x = 0; x < h + 1; x += 1) {
-//                     let data = [0, 0, 0, 0, x > 0, x < w, y > 1, y < h, x - 1, x + 1, x, x, y, y, y - 1, y + 1];
-//                     for (let z = 0; z < 4; z +=1) {
-//                       if (data[z + 4]) {
-//                         pixel = ctx_i.getImageData(data[z + 8], data[z + 12], 1, 1);
-//                         data[z] = ((0.299 * (pixel.data[0] / 100)) + (0.587 * (pixel.data[1] / 100)) + (0.114 * (pixel.data[2] / 100)) / 3);
-//                       } else {
-//                         pixel = ctx_i.getImageData(x, y, 1, 1);
-//                         data[z] = ((0.299 * (pixel.data[0] / 100)) + (0.587 * (pixel.data[1] / 100)) + (0.114 * (pixel.data[2] / 100)) / 3);
-//                       }
-//                     }
-//                     x_vector = parseFloat((Math.abs(data[0] - data[1]) + 1) * 0.5) * 255;
-//                     y_vector = parseFloat((Math.abs(data[2] - data[3]) + 1) * 0.5) * 255;
-//                     ctx_o.fillStyle = "rgba(" + x_vector + "," + y_vector + ",255,255)";
-//                     ctx_o.fillRect(x, y, 1, 1);
-//                   }
-//                 }
-//                 return true;
-//             }
-            
-//     });
-//     // };
-// }
-

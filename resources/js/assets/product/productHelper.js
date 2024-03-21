@@ -1,11 +1,12 @@
 
 class productHelper {
-    static NEW      = "NEW";
-    static REMOVE   = "REMOVE";
-    static EDIT     = "EDIT";
-    static GET      = "GET";
-    static GET_DATA = "GET_DATA";
-    static REMOVE_IMG = "REMOVE_IMG";
+    static NEW              = "NEW";
+    static REMOVE           = "REMOVE";
+    static EDIT             = "EDIT";
+    static GET              = "GET";
+    static GET_DATA         = "GET_DATA";
+    static REMOVE_IMG       = "REMOVE_IMG";
+    static CURRENT_AMOUNT   = "CURRENT_AMOUNT";
 
     static LIGHTER_GOLD     = "Lighter_Gold_custom";
     static LIGHTER_CHROME   = "Lighter_Chrome_custom";
@@ -32,16 +33,31 @@ class productHelper {
             obj.price = price;
         return obj;
     }
-    static async newProduct(price, name, description, size, viewName, colorID, EPType, attrs = []){
+    static async getCurrentAmount(name = null, ID = null){
+        let call = this.MANAGER.call(productHelper.CURRENT_AMOUNT);
+            call.keepalive = false;
+            call.data.name          = name;
+            call.data.ID            = ID;
+        return call.send();
+    }
+    static async isAvailable(name = null, ID = null){
+        let res = await this.getCurrentAmount(name, ID)
+            if(res > 0){
+                return true;
+            }
+            return false;
+    }
+    static async newProduct(price, name, description, size, viewName, colorID, EPType, AvailableAmount, attrs = []){
         let call = this.MANAGER.call(productHelper.NEW);
-            call.data.price       = price;
-            call.data.description = description;
-            call.data.name        = name;
-            call.data.viewName    = viewName;
-            call.data.size        = size;
-            call.data.attrs       = attrs;
-            call.data.colorID     = colorID;
-            call.data.EPType      = EPType;
+            call.data.price             = price;
+            call.data.description       = description;
+            call.data.name              = name;
+            call.data.viewName          = viewName;
+            call.data.size              = size;
+            call.data.attrs             = attrs;
+            call.data.colorID           = colorID;
+            call.data.EPType            = EPType;
+            call.data.AvailableAmount   = AvailableAmount;
         return call.send();
     }
     static async getProducts(price, name, reload = false){
@@ -67,17 +83,18 @@ class productHelper {
             return this.LIST;
         }.bind(this));
     }
-    static async editProduct(ID, price, name, description, size, viewName, colorID, EPType, attrs = []){
+    static async editProduct(ID, price, name, description, size, viewName, colorID, EPType, AvailableAmount, attrs = []){
         let call = this.MANAGER.call(productHelper.EDIT);
-            call.data.price       = price;
-            call.data.description = description;
-            call.data.name        = name;
-            call.data.viewName    = viewName;
-            call.data.size        = size;
-            call.data.attrs       = attrs;
-            call.data.colorID     = colorID;
-            call.data.EPType      = EPType;
-            call.data.ID          = ID;
+            call.data.price             = price;
+            call.data.description       = description;
+            call.data.name              = name;
+            call.data.viewName          = viewName;
+            call.data.size              = size;
+            call.data.attrs             = attrs;
+            call.data.colorID           = colorID;
+            call.data.EPType            = EPType;
+            call.data.ID                = ID;
+            call.data.AvailableAmount   = AvailableAmount;
         return call.send();
     }
     static async getProduct_ColorEPType(colorID, eptype){

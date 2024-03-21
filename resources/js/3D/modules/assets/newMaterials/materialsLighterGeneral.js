@@ -1,13 +1,6 @@
-import * as THC from "@THREE_ROOT_DIR/src/constants.js";
-import { MeshStandardMaterial } from "@THREE_ROOT_DIR/src/materials/MeshStandardMaterial.js";
-import { MeshLambertMaterial } from "@THREE_ROOT_DIR/src/materials/MeshLambertMaterial.js";
-import { MeshPhongMaterial } from "@THREE_ROOT_DIR/src/materials/MeshPhongMaterial.js";
-import { MeshPhysicalMaterial } from "@THREE_ROOT_DIR/src/materials/MeshPhysicalMaterial.js";
+import * as THREE from "@THREE";
 import MaterialHelper from '@SPLINT_MODULES_DIR/ThreeJS/materials/MaterialHelper.js';
-import { Vector2 } from "@THREE_ROOT_DIR/src/math/Vector2.js";
 import SPLINT from 'SPLINT';
-import { Color } from "@THREE_ROOT_DIR/src/math/Color.js";
-import { ShaderMaterial } from "@THREE_ROOT_DIR/src/materials/ShaderMaterial.js";
 
 export default class MaterialsLighterGeneral {
     static BODY_COLOR_LIST = new Object();
@@ -20,21 +13,21 @@ export default class MaterialsLighterGeneral {
             return MaterialHelper.get("bodyColor_" + color);
         }
         let material = MaterialHelper.cloneMaterial(MaterialHelper.get("lighterBlackRough"));
-        material.color = new Color(color);
+        material.color = new THREE.Color(color);
         material.roughness = 0.34;
         material.metalness = 0.88;
         material.emissive = 0x000000;
         material.emissiveIntensity = 0.5;
         material.map.dispose();
         material.map = null;
-        material.normalScale = new Vector2(0.05, 0.05);
+        material.normalScale = new THREE.Vector2(0.05, 0.05);
         material.name = "bodyColor_" + color;
 
-        if(instance.cubeRenderTarget != undefined){
-            material.envMap = instance.cubeRenderTarget.texture;
-            material.envMapIntensity= 0.98;
+        // if(instance.cubeRenderTarget != undefined){
+        //     material.envMap = instance.cubeRenderTarget.texture;
+        //     material.envMapIntensity= 0.98;
             material.needsUpdate = true;
-        }
+        // }
 
         SPLINT.GUI.loadObj(material);
         material.color.convertSRGBToLinear();
@@ -48,7 +41,7 @@ export default class MaterialsLighterGeneral {
         }
         console.dir(materialBase)
         let material = MaterialHelper.cloneMaterial(materialBase);
-        material.color = new Color(0xffffff);
+        material.color = new THREE.Color(0xffffff);
         material.roughness = 0.61;
         material.metalness = 0.5;
         material.emissive = 0x000000;
@@ -56,23 +49,23 @@ export default class MaterialsLighterGeneral {
         // material.map.dispose();
         // material.map = null;
         material.map.repeat.set(2.4, 0.8);
-        material.map.wrapT = THC.RepeatWrapping;
-        material.map.wrapS = THC.RepeatWrapping;
+        material.map.wrapT = THREE.RepeatWrapping;
+        material.map.wrapS = THREE.RepeatWrapping;
         // let nTexture = material.normalMap;//MaterialHelper.getTexture(MaterialHelper.get("lighterBlackRough").normalMap).clone();
-        material.normalMap.wrapT = THC.RepeatWrapping;
-        material.normalMap.wrapS = THC.RepeatWrapping;
+        material.normalMap.wrapT = THREE.RepeatWrapping;
+        material.normalMap.wrapS = THREE.RepeatWrapping;
         material.normalMap.repeat.set(2.4, 0.8)
         material.normalMap.flipY = false;
-        material.normalMap.mapping = THC.EquirectangularReflectionMapping;
+        material.normalMap.mapping = THREE.EquirectangularReflectionMapping;
         material.normalMap.generateMipmaps = true;
-        material.normalMap.magFilter = THC.NearestFilter;
-        material.normalMap.minFilter = THC.LinearMipmapLinearFilter;
+        material.normalMap.magFilter = THREE.NearestFilter;
+        material.normalMap.minFilter = THREE.LinearMipmapLinearFilter;
         material.normalMap.needsUpdate = true;
-        material.normalScale = new Vector2(10, 10);
+        material.normalScale = new THREE.Vector2(10, 10);
         material.name = "wheel";
 
-        material.envMap = instance.cubeRenderTarget.texture;
-        material.envMapIntensity= 0.98;
+        // material.envMap = instance.cubeRenderTarget.texture;
+        // material.envMapIntensity= 0.98;
         material.normalMap.needsUpdate = true;
         material.needsUpdate = true;
 
@@ -86,30 +79,30 @@ export default class MaterialsLighterGeneral {
         if(MaterialHelper.get("chrome") != false){
             return MaterialHelper.get("chrome");
         }
-        let material = new MeshStandardMaterial({
-            color: 0xe3e3e3,
+        let material = new THREE.MeshStandardMaterial({
+            // color: 0xd4d4d4,
             // metalnessMap: g2,
             // roughnessMap: g,
-            blending: THC.NormalBlending,
-            opacity: 1,
-            fog: false,
-            vertexColors: false,
+            // blending: THREE.NormalBlending,
+            // opacity: 1,
+            // fog: false,
+            // vertexColors: false,
             // aoMap: g1,
             // aoMapIntensity: 3,
-            roughness: 0.15,
-            alphaToCoverage: true,
-            metalness: 0.9,
+            roughness: 0.5,
+            // alphaToCoverage: true,
+            metalness: 1.5,
             emissive: 0x000000,
-            emissiveIntensity: 0.5,
+            emissiveIntensity: 1,
 
         });
         material.name = "chrome";
-        // reflectionCube.mapping = THC.CubeReflectionMapping;
-        if(instance != null) {
-            material.envMap = instance.cubeRenderTarget.texture;
-            material.envMapIntensity= 1;
+        // reflectionCube.mapping = THREE.CubeReflectionMapping;
+        // if(instance != null) {
+        //     material.envMap = instance.cubeRenderTarget.texture;
+        //     material.envMapIntensity= 1;
             material.needsUpdate = true;
-        }
+        // }
         // SPLINT.ResourceManager.cubeTextures.swedishRoyalCastle.then(async function(data){
             // material.envMap = data;
             // material.envMapIntensity= 0.71;
@@ -131,18 +124,18 @@ export default class MaterialsLighterGeneral {
         if(MaterialHelper.get("chrome1") != false){
             return MaterialHelper.get("chrome1");
         }
-        let material = new MeshLambertMaterial( { 
+        let material = new THREE.MeshLambertMaterial( { 
             color: 0xffffff, 
             refractionRatio: 2 ,
             reflectivity: 1,
             emissive: 0x000000,
             emissiveIntensity: 1,
-            combine: THC.MixOperation,
+            combine: THREE.MixOperation,
             fog: false
         } );
         material.name = "chrome1";
         SPLINT.ResourceManager.cubeTextures.swedishRoyalCastle.then(async function(data){
-            data.mapping = THC.CubeRefractionMapping;
+            data.mapping = THREE.CubeRefractionMapping;
             material.envMap = data;
             material.needsUpdate = true;
             SPLINT.GUI.loadObj(material);
@@ -158,35 +151,35 @@ export default class MaterialsLighterGeneral {
             return MaterialHelper.get("chrome2");
         }
         // let n = MaterialHelper.cloneMaterial(MaterialHelper.get("lighterBlackRough")).normalMap;
-        //     n.wrapT = THC.RepeatWrapping;
-        //     n.wrapS = THC.RepeatWrapping;
+        //     n.wrapT = THREE.RepeatWrapping;
+        //     n.wrapS = THREE.RepeatWrapping;
         //     n.repeat.set(0.1, 1)
-        let material = new MeshPhongMaterial({
+        let material = new THREE.MeshPhongMaterial({
             color: 0x9a9a9a,
             // aoMap: g1,
             // aoMapIntensity: 0,
             // map: n,
             // normalMap: n,
-            // normalScale: new Vector2(0, 0),
+            // normalScale: new THREE.Vector2(0, 0),
             opacity: 1,
             // wireframe: true,
             alphaToCoverage: false,
             emissive: 0x000000,
-            side: THC.FrontSide,
+            side: THREE.FrontSide,
             vertexColors: false,
-            blending: THC.NormalBlending  ,
+            blending: THREE.NormalBlending  ,
             dithering: false,
             emissiveIntensity: 0,
             specular: 0xa6a6a6,
             shininess: 0,
-            combine: THC.MixOperation,
+            combine: THREE.MixOperation,
             reflectivity: 0.47,
             refractionRatio: 1.25,
             fog: false
         })
         material.name = "chrome2";
         SPLINT.ResourceManager.cubeTextures.swedishRoyalCastle.then(async function(data){
-            data.mapping = THC.CubeReflectionMapping;
+            data.mapping = THREE.CubeReflectionMapping;
             material.envMap = data;
             material.envMapIntensity = 0.2;
             material.needsUpdate = true;
@@ -199,8 +192,8 @@ export default class MaterialsLighterGeneral {
     }
     
     static FlameMaterial(isFrontSide){
-        let side = isFrontSide ? THC.FrontSide : THC.BackSide;
-        return new ShaderMaterial({
+        let side = isFrontSide ? THREE.FrontSide : THREE.BackSide;
+        return new THREE.ShaderMaterial({
         uniforms: {
             time: {value: 0}
         },
@@ -286,16 +279,16 @@ export default class MaterialsLighterGeneral {
     //         return  MaterialHelper.cloneMaterial(MaterialHelper.get("chrome4"));
     //     }
     //     // let n = MaterialHelper.cloneMaterial(MaterialHelper.get("lighterBlackRough")).normalMap;
-    //     //     n.wrapT = THC.RepeatWrapping;
-    //     //     n.wrapS = THC.RepeatWrapping;
+    //     //     n.wrapT = THREE.RepeatWrapping;
+    //     //     n.wrapS = THREE.RepeatWrapping;
     //     //     n.repeat.set(0.1, 1)
     //     let material = new MeshPhysicalMaterial( {
     //         color: 0xd4d4d4,
     //         // bumpMap: bumpTexture,
     //         // bumpScale: 0,
     //         // emissiveMap: NormalMapTexture,
-    //         side: THC.DoubleSide,
-    //         blending: THC.NormalBlending,
+    //         side: THREE.DoubleSide,
+    //         blending: THREE.NormalBlending,
     //         opacity: 1,
     //         metalness: 0.6,  
     //         roughness: 1, 
@@ -321,7 +314,7 @@ export default class MaterialsLighterGeneral {
     //     });
     //     material.name = "chrome4";
     //     SPLINT.ResourceManager.cubeTextures.swedishRoyalCastle.then(async function(data){
-    //         data.mapping = THC.CubeReflectionMapping;
+    //         data.mapping = THREE.CubeReflectionMapping;
     //         material.envMap = data;
     //         material.envMapIntensity = 1;
     //         material.needsUpdate = true;

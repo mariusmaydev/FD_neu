@@ -27,17 +27,14 @@
         <!-- <script> TouchEmulator();</script> -->
         <s-part first src="/js/GLOBAL/Paths.js"></s-part>
 
-        <s-part src="/js/Pages/pagesHelper.js"></s-part>
+        <s-part src="/js/manager/manager.js"></s-part>
+        <s-part src="/js/Pages/pagesTemplate.js"></s-part>
         <s-part src="/js/Login/LoginHelper.js"></s-part>
         <s-part src="/js/assets/functionsShoppingCart.js"></s-part>
         <s-module src="/js/3D/modules/module_3D_init.js"></s-module>
         <s-part src="/js/3D/3DHelper.js"></s-part>
         <s-part src="/js/Projects/Projects.js"></s-part>
-        <s-part src="/js/Projects/ProjectsHelper.js"></s-part>
-        <!-- <s-part src="/js/Projects/ProjectList/ProjectCategoryMenu.js"></s-part> -->
-        <!-- <s-part src="/js/Projects/ProjectList/ProjectChoiceMenu.js"></s-part> -->
-        <!-- <s-part src="/js/Projects/ProjectList/ProjectList.js"></s-part> -->
-        <!-- <s-part src="/js/Projects/ProjectList/ProjectDetails.js"></s-part> -->
+        <s-part src="/js/Helper/ProjectsHelper.js"></s-part>
         <s-part first src="/js/Converter/DataStorage/C_Image.js"></s-part>
         <s-part first src="/js/Converter/DataStorage/C_Text.js"></s-part>
         <s-part first src="/js/Converter/DataStorage/DSImage.js"></s-part>
@@ -46,10 +43,8 @@
         <s-part src="/js/assets/functionsProduct.js"></s-part>
         <s-part src="/js/assets/product/productHelper.js"></s-part>
         <s-part src="/js/Projects/ProjectList/ProjectDetails.js"></s-part>
-        <s-part src="/js/Projects/ProjectList/Details/desktop/ProjectDetailsDesktop.js"></s-part>
-        <s-part src="/js/assets/product/drawProductInformation.js"></s-part>
-        <!-- <s-part src="/js/Converter/Upload.js"></s-part> -->
-        <!-- <s-part src="/js/Converter/renderer/ConverterRender"></s-part> -->
+        <s-part src="/js/Projects/ProjectList/Details/ProjectDetailsHelper.js"></s-part>
+        <s-part src="/js/Projects/ProjectList/Details/ProjectDetailsDesktop.js"></s-part>
         <s-part src="/js/Converter/Converter.js"></s-part>
         <s-part src="/js/Designs/"></s-part>
         <s-part src="/js/Converter/Converter_LeftBar.js"></s-part>
@@ -65,10 +60,6 @@
         
         <s-part src="/js/Converter/drawElements/drawDesktop.js"></s-part>
         <s-part src="/js/Converter/drawElements/drawMobile.js"></s-part>
-        <!-- <s-part src="/js/manager/manager.js"></s-part> -->
-        <!-- <s-part src="/js/Converter/ConverterDOM.js"></s-part> -->
-
-        <!-- <s-part src="/js/Designs/Hashtags/Hashtags.js"></s-part> -->
         <s-part src="/js/Designs/CategoryHelper.js"></s-part>
 
         

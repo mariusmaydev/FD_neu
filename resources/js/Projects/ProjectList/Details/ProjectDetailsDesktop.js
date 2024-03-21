@@ -1,12 +1,13 @@
 
 class ProjectDetails_Desktop {
-    constructor(data, index, parent, lighterParent = null){
+    constructor(data, parent, lighterParent = null){
         this.lighterParent = lighterParent;
         this.parent = parent;
         this.id = "ProjectDetails_" + "_";
         this.data = data;
         this.mainElement = null;
         this._onclose = function(){};
+        this.HELPER = new ProjectDetailsHelper(this);
     }
     set onclose(v){
         this._onclose = v;
@@ -39,9 +40,10 @@ class ProjectDetails_Desktop {
 
             this.headContainer = new SPLINT.DOMElement(this.id + "headContainer", "div", this.contentElement);
             this.headContainer.Class("headContainer")
-            console.log(this.productData)
                 let headContainerContent = new SPLINT.DOMElement.SpanDiv(this.headContainer, "headline", this.productData.viewName);
                     headContainerContent.Class("headline");
+
+
             this.mainContainer = new SPLINT.DOMElement(this.id + "mainContainer", "div", this.contentElement);
             this.mainContainer.Class("mainContainer");
 
@@ -49,74 +51,24 @@ class ProjectDetails_Desktop {
                 this.drawInformation();
                 if(drawButtons){
                     this.drawBuyBody();
-                    // this.drawButtons();
+                    this.drawButtons();
                 }
-                //     let slideshow = new SPLINT.DOMElement.SlideShow(buttonsContainer, "productImageSlideShow");
-                //         slideshow.Class("productImage")
-
-                //         let image1 = new SPLINT.DOMElement(slideshow.id + "_img1", "img", document.body);
-                //             image1.Class("img1");
-                //             slideshow.appendElement(image1);
 
                 let buttonDivLeft = new SPLINT.DOMElement(this.id + "-ButtonDivLeft", "div", this.contentElement);
                     buttonDivLeft.Class("buttonDivLeft");
-                    let buttonSize = new SPLINT.DOMElement.Button.Switch(buttonDivLeft, "size", "Maße anzeigen");
-                        buttonSize.Class("size");
-                        buttonSize.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_DEFAULT)
-                        buttonSize.onactive = function(){
-                            this.lighter.send("showDimensions", true);
-                            this.lighter.canvas.setAttribute("showDimensions", "true")
-                            this.lighter.div.setAttribute("showDimensions", "true")
-                        }.bind(this);
-                        buttonSize.onpassive = function(){
-                            this.lighter.send("showDimensions", false);
-                            this.lighter.canvas.setAttribute("showDimensions", "false")
-                            this.lighter.div.setAttribute("showDimensions", "false")
-                        }.bind(this);
-
-                    
-                    let buttonColor = new SPLINT.DOMElement.Button.Switch(buttonDivLeft, "color", "Farbe ändern");
-                        buttonColor.Class("color");
-                        buttonColor.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_DEFAULT)
-                        buttonColor.onactive = function(){
-                            this.lighter.send("changeColor", "green");
-                            this.lighter.canvas.setAttribute("changeColor", "green")
-                            this.lighter.div.setAttribute("changeColor", "green")
-                        }.bind(this);
-                        buttonColor.onpassive = function(){
-                            this.lighter.send("changeColor", "base");
-                            this.lighter.canvas.setAttribute("changeColor", "base")
-                            this.lighter.div.setAttribute("changeColor", "base")
-                        }.bind(this);
-
-                    let buttonEdit = new SPLINT.DOMElement.Button.Switch(buttonDivLeft, "edit", "bearbeiten");
-                        buttonEdit.Class("edit");
-                        buttonEdit.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_DEFAULT)
-                        // buttonEdit.bindIcon("edit");
-                        buttonEdit.onclick = async function(e){
-                            e.stopPropagation();
-                            if(this.data.State == ProjectHelper.STATE_NORMAL){
-                                ProjectHelper.CONVERTER_startProject(this.data.ProjectID, false);
-                            } else if(this.data.State == "ADMIN"){
-                                let projectID = await ProjectHelper.copy(this.data.ProjectID, "admin");
-                                ProjectHelper.CONVERTER_startProject(projectID, false);
-                            }
-                        }.bind(this);
-
-            
-            // listElement.lighter = lighter;
-            // listElement.setAttribute("state", data.State);
+                    // let buttonSize  = this.HELPER.drawButtonSize(buttonDivLeft);
+                    // let buttonColor = this.HELPER.drawButtonColor(buttonDivLeft);
+                    // let buttonEdit  = this.HELPER.drawButtonEdit(buttonDivLeft);
     }
     drawLeftPart(){
         let ImageContainerMain = new SPLINT.DOMElement(this.id + "ImageContainerMain", "div", this.mainContainer);
-        ImageContainerMain.Class("ImageContainerMain");
+            ImageContainerMain.Class("ImageContainerMain");
 
         let ImageContainerScroll = new SPLINT.DOMElement(this.id + "ImageContainerScroll", "div", ImageContainerMain);
             ImageContainerScroll.Class("ImageContainerScroll");
             let ImageContainerInner = new SPLINT.DOMElement(this.id + "ImageContainerInner", "div", ImageContainerScroll);
                 ImageContainerInner.Class("ImageContainerInner");
 
-                console.dir(this.data);
                 if(this.lighter != undefined) {
                     this.lighter.div.remove();
                     this.lighter = undefined;
@@ -128,17 +80,15 @@ class ProjectDetails_Desktop {
                 this.lighter.div.state().setActive();
 
                 this.lighter.promise.then(function(){
-                    let color = this.colorList[this.data.Color];//await productHelper.getColorForID(this.data.Color);
+                    let color = this.colorList[this.data.Color];
                     if(color == null || color == undefined){
                         color = "base";
                         return;
                     }
-                    // this.lighter.send("changeColor", color);
                     this.lighter.send("changeColor", color);
                 }.bind(this))
                 this.drawImageMain(ImageContainerInner);
-    // this.lighter.canvas.setAttribute("showDimensions", true);
-        
+
         let buttonsContainer = new SPLINT.DOMElement(this.id + "buttonsContainer", "div", ImageContainerMain);
             buttonsContainer.Class("buttonsContainer");
             
@@ -251,71 +201,6 @@ class ProjectDetails_Desktop {
             this.mainElement.close();
         }
     }
-    async drawEPTypeMenu(parent = document.getElementById(this.id + "EPTypeContainerContent")){
-        parent.clear();
-
-        for(const [key, value] of Object.entries(this.productDataFull)){
-            if(value.colorID == this.productData.colorID){
-                // let product = await productHelper.getProduct_ColorEPType(value.colorName, this.data.EPType);
-                let btContainer = new SPLINT.DOMElement("btEPTypeContainer_" + value.EPType, "div", parent);
-                    btContainer.setAttribute("value", value.EPType)
-
-                    if(value.EPType == this.productData.EPType){
-                        btContainer.state().setActive();
-                    }
-
-                    let text = "999er Feingold"
-                    if(value.EPType == "CHROME"){
-                        text = "Chrom hochglanz";
-                    }
-                    let btEPType = new SPLINT.DOMElement.Button(btContainer, "btEPType_" + value.EPType, text)
-                        btEPType.Class("btColor");
-                        btEPType.button.setAttribute("EPType", value.EPType);
-                        btEPType.onclick = function(){
-                            this.lighter.send("changeEPType", value.EPType);
-                            this.data.Product = key;
-                            this.data.EPType = value.EPType;
-                            this.productData = value;
-                            this.priceElement.setPrice(value.price);
-                            this.clearImages();
-                            this.drawImageList();
-                            this.drawImageMain();
-                            this.drawColorMenu();
-                            for(const ele of parent.children) {
-                                ele.state().unsetActive();
-                            }
-                            btContainer.state().setActive();
-                        }.bind(this);
-            }
-        }
-    }
-    async drawColorMenu(parent = document.getElementById(this.id + "colorContainerContent")){
-        parent.clear();
-        let colors = await productHelper.getColors();
-        for(const [key, value] of Object.entries(colors)){
-            let product = await productHelper.getProduct_ColorEPType(key, this.data.EPType);
-            
-            if(product == false){
-                continue;
-            }
-            let btColor = new SPLINT.DOMElement.Button(parent, "btColor_" + key)
-                btColor.Class("btColor");
-                btColor.button.style.backgroundColor = value.hex.replace('0x', '#');
-                btColor.onclick = function(){
-                    this.lighter.send("changeColor", value);
-                    this.data.Color = key;
-                    this.data.Product = product.name;
-                    ProjectHelper.edit(this.data);
-                    // this.data
-                    this.productData = product;
-                    this.priceElement.setPrice(product.price);
-                    this.clearImages();
-                    this.drawImageList();
-                    this.drawImageMain();
-                    this.drawEPTypeMenu();
-                }.bind(this);
-        }
-    }
     drawInformation(){ 
         this.informationDiv = new SPLINT.DOMElement(this.id + "informationDiv", "div", this.mainContainer);
         this.informationDiv.Class("informationDiv");
@@ -349,7 +234,7 @@ class ProjectDetails_Desktop {
                     let EPTypeContainerContent = new SPLINT.DOMElement(this.id + "EPTypeContainerContent", "div", EPTypeContainer);
                         EPTypeContainerContent.Class("contentElement");
                     
-                    this.drawEPTypeMenu(EPTypeContainerContent);
+                    this.HELPER.drawEPTypeMenu(EPTypeContainerContent);
 
                     let horizontalLine1 = new SPLINT.DOMElement.HorizontalLine(content);
                 let ColorContainer = new SPLINT.DOMElement(this.id + "colorContainer", "div", content);
@@ -358,7 +243,8 @@ class ProjectDetails_Desktop {
                         ColorContainerHeadline.Class("headline");
                     let ColorContainerContent = new SPLINT.DOMElement(this.id + "colorContainerContent", "div", ColorContainer);
                         ColorContainerContent.Class("contentElement");
-                    this.drawColorMenu(ColorContainerContent)
+
+                    this.HELPER.drawColorMenu(ColorContainerContent)
 
                     let horizontalLine2 = new SPLINT.DOMElement.HorizontalLine(content);
 
@@ -372,19 +258,17 @@ class ProjectDetails_Desktop {
                             informationTable.addRow(e.name + " ", e.value);
                         }
 
-
-
-                    // sizeBody.onmouseenter = function(){
-                    //     this.lighter.send("showDimensions", true);
-                    // }.bind(this);
-                    // sizeBody.onmouseleave = function(){
-                    //     this.lighter.send("showDimensions", false);
-                    // }.bind(this);
-
     }
     async drawButtons(){
-        let buttonDiv = new SPLINT.DOMElement(this.id + "_buttonDiv", "div", this.informationDiv);
+        let parent = this.informationDiv;
+        if(this.buyBody != undefined){
+            parent = this.buyBody;
+        }
+        let buttonDiv = new SPLINT.DOMElement(this.id + "_buttonDiv", "div", parent);
             buttonDiv.Class("buttonDiv");
+            if(this.buyBody != undefined){
+                buttonDiv.before(parent.children[0])
+            }
 
             if(this.data.Original != "true"){
                 let button_edit = new SPLINT.DOMElement.Button(buttonDiv, "_edit");
@@ -445,6 +329,23 @@ class ProjectDetails_Desktop {
                             }
                         }.bind(this);
                 }
+                  
+                // if(this.data.State == ProjectHelper.STATE_NORMAL){
+            let buttonSize = new SPLINT.DOMElement.Button.Switch(buttonDiv, "size", "Maße anzeigen");
+                buttonSize.Class("size");
+                buttonSize.bindIcon("straighten");
+                // buttonSize.setStyleTemplate(SPLINT.DOMElement.Button.STATE_NORMAL)
+                buttonSize.onactive = function(){
+                    this.lighter.send("showDimensions", true);
+                    this.lighter.canvas.setAttribute("showDimensions", "true")
+                    this.lighter.div.setAttribute("showDimensions", "true")
+                }.bind(this);
+                buttonSize.onpassive = function(){
+                    this.lighter.send("showDimensions", false);
+                    this.lighter.canvas.setAttribute("showDimensions", "false")
+                    this.lighter.div.setAttribute("showDimensions", "false")
+                }.bind(this);
+                // }
     }
     
     async drawBuyBody(){
@@ -482,7 +383,6 @@ class ProjectDetails_Desktop {
                 let buttonContainer_buy = new SPLINT.DOMElement("buttonContainer_buy", "div", container);
                     buttonContainer_buy.Class("buttonContainer_buy")
                     let button_Buy = new SPLINT.DOMElement.Button(buttonContainer_buy, "_Buy", "jetzt kaufen");
-                        // button_Buy.bindIcon("add_shopping_cart");
                         button_Buy.onclick = async function(e){
                             e.stopPropagation();
                             let projectID = this.data.ProjectID;

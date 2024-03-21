@@ -20,12 +20,6 @@
         <s-part src="/js/ADMIN/assets/"></s-part>
         <s-part src="/js/manager/manager.js"></s-part>
         <s-part src="/js/ADMIN/pages/ADMIN_login.js"></s-part>
-        <!-- <s-part src="/js/assets/product/"></s-part> -->
-        <!-- <s-part src="/js/ADMIN/order/"></s-part> -->
-        <!-- <s-part src="/js/Orders/Order.js"></s-part> -->
-        
-        <!-- <s-part src="/js/Projects/"></s-part> -->
-        <!-- <s-part src="/js/Converter/ConverterHelper.js"></s-part> -->
 
         <script type="text/javascript" src="../../../../Splint/js/Splint.js" onload="SPLINT.start()"></script>
     </body>

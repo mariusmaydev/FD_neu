@@ -6,21 +6,57 @@ use Splint\File\File_DeepScan;
     require_once $rootpath.'/fd/resources/php/CORE.php';
 
     class Product {
+        public static function getCurrentAmount($ProductName = null, $ProductID = null, bool $sendBack = true){
+            $dataSet = new DataSet();
+            if($ProductName != null){
+                $dataSet -> newKey(ProductDB::PRODUCT_NAME, $ProductName);
+                $dataSet -> newEntry(ProductDB::PRODUCT_AVAILABLE_AMOUNT);
+                $res = ProductDB::get($dataSet);
+                if($res != null){
+                    Communication::sendBack($res[ProductDB::PRODUCT_AVAILABLE_AMOUNT], false, $sendBack);
+                }
+            } else if($ProductID != null){
+                $dataSet -> newKey(ProductDB::PRODUCT_ID, $ProductID);
+                $dataSet -> newEntry(ProductDB::PRODUCT_AVAILABLE_AMOUNT);
+                $res = ProductDB::get($dataSet);
+                if($res != null){
+                    Communication::sendBack($res[ProductDB::PRODUCT_AVAILABLE_AMOUNT], false, $sendBack);
+                }
+            } else if(isset($_POST[ProductDB::PRODUCT_NAME])){
+                $dataSet -> newKey(ProductDB::PRODUCT_NAME, $_POST[ProductDB::PRODUCT_NAME]);
+                $dataSet -> newEntry(ProductDB::PRODUCT_AVAILABLE_AMOUNT);
+                $res = ProductDB::get($dataSet);
+                if($res != null){
+                    Communication::sendBack($res[ProductDB::PRODUCT_AVAILABLE_AMOUNT], false, $sendBack);
+                }
+            } else if(isset($_POST[ProductDB::PRODUCT_ID])){
+                $dataSet -> newKey(ProductDB::PRODUCT_ID, $_POST[ProductDB::PRODUCT_ID]);
+                $dataSet -> newEntry(ProductDB::PRODUCT_AVAILABLE_AMOUNT);
+                $res = ProductDB::get($dataSet);
+                if($res != null){
+                    Communication::sendBack($res[ProductDB::PRODUCT_AVAILABLE_AMOUNT], false, $sendBack);
+                }
+            }
+            Communication::sendBack(false, true, $sendBack);
+            return false;
+
+        }
         public static function new(bool $sendBack = true){
             $productList = self::get(false, true, null, $_POST[ProductDB::PRODUCT_NAME]);
             if($productList != null){
                 Communication::sendBack($productList, true, $sendBack);
                 return;
             }
-            $name           = $_POST[ProductDB::PRODUCT_NAME];
-            $viewName       = $_POST[ProductDB::PRODUCT_VIEW_NAME];
-            $ID             = StringTools::realUniqID();
-            $description    = $_POST[ProductDB::PRODUCT_DESCRIPTION];
-            $price          = $_POST[ProductDB::PRODUCT_PRICE]; 
-            $size           = json_encode($_POST[ProductDB::PRODUCT_SIZE]);
-            $attrs          = json_encode($_POST[ProductDB::PRODUCT_ATTRS]);
-            $colorName      = $_POST[ProductDB::PRODUCT_COLOR];
-            $EPType         = $_POST[ProductDB::PRODUCT_EPTYPE];
+            $name               = $_POST[ProductDB::PRODUCT_NAME];
+            $viewName           = $_POST[ProductDB::PRODUCT_VIEW_NAME];
+            $ID                 = StringTools::realUniqID();
+            $description        = $_POST[ProductDB::PRODUCT_DESCRIPTION];
+            $price              = $_POST[ProductDB::PRODUCT_PRICE]; 
+            $size               = json_encode($_POST[ProductDB::PRODUCT_SIZE]);
+            $attrs              = json_encode($_POST[ProductDB::PRODUCT_ATTRS]);
+            $colorName          = $_POST[ProductDB::PRODUCT_COLOR];
+            $EPType             = $_POST[ProductDB::PRODUCT_EPTYPE];
+            $AvailableAmount    = $_POST[ProductDB::PRODUCT_AVAILABLE_AMOUNT];
 
             $dataSet = new DataSet();
             $dataSet -> newEntry(ProductDB::PRODUCT_ID, $ID);
@@ -32,6 +68,7 @@ use Splint\File\File_DeepScan;
             $dataSet -> newEntry(ProductDB::PRODUCT_COLOR, $colorName);
             $dataSet -> newEntry(ProductDB::PRODUCT_EPTYPE, $EPType);
             $dataSet -> newEntry(ProductDB::PRODUCT_DESCRIPTION, $description);
+            $dataSet -> newEntry(ProductDB::PRODUCT_AVAILABLE_AMOUNT, $AvailableAmount);
             $dataSet -> newEntry(ProductDB::PRODUCT_SALES, 0);
             ProductDB::Add($dataSet);
             Communication::sendBack($ID, true, $sendBack);
@@ -52,15 +89,16 @@ use Splint\File\File_DeepScan;
             Communication::sendBack(true, true, $sendBack);
         }
         public static function edit(bool $sendBack = true){
-            $name           = $_POST[ProductDB::PRODUCT_NAME];
-            $viewName       = $_POST[ProductDB::PRODUCT_VIEW_NAME];
-            $ID             = $_POST[ProductDB::PRODUCT_ID];
-            $description    = $_POST[ProductDB::PRODUCT_DESCRIPTION];
-            $price          = $_POST[ProductDB::PRODUCT_PRICE]; 
-            $size           = json_encode($_POST[ProductDB::PRODUCT_SIZE]);
-            $attrs          = json_encode($_POST[ProductDB::PRODUCT_ATTRS]);
-            $colorName      = $_POST[ProductDB::PRODUCT_COLOR];
-            $EPType         = $_POST[ProductDB::PRODUCT_EPTYPE];
+            $name               = $_POST[ProductDB::PRODUCT_NAME];
+            $viewName           = $_POST[ProductDB::PRODUCT_VIEW_NAME];
+            $ID                 = $_POST[ProductDB::PRODUCT_ID];
+            $description        = $_POST[ProductDB::PRODUCT_DESCRIPTION];
+            $price              = $_POST[ProductDB::PRODUCT_PRICE]; 
+            $size               = json_encode($_POST[ProductDB::PRODUCT_SIZE]);
+            $attrs              = json_encode($_POST[ProductDB::PRODUCT_ATTRS]);
+            $colorName          = $_POST[ProductDB::PRODUCT_COLOR];
+            $EPType             = $_POST[ProductDB::PRODUCT_EPTYPE];
+            $AvailableAmount    = $_POST[ProductDB::PRODUCT_AVAILABLE_AMOUNT];
 
             $dataSet = new DataSet();
             $dataSet -> newKey(ProductDB::PRODUCT_ID, $ID);
@@ -72,6 +110,7 @@ use Splint\File\File_DeepScan;
             $dataSet -> newEntry(ProductDB::PRODUCT_COLOR, $colorName);
             $dataSet -> newEntry(ProductDB::PRODUCT_EPTYPE, $EPType);
             $dataSet -> newEntry(ProductDB::PRODUCT_DESCRIPTION, $description);
+            $dataSet -> newEntry(ProductDB::PRODUCT_AVAILABLE_AMOUNT, $AvailableAmount);
             $dataSet -> newEntry(ProductDB::PRODUCT_SALES, 0);
             ProductDB::Edit($dataSet);
             Communication::sendBack($ID, true, $sendBack);
@@ -165,17 +204,18 @@ use Splint\File\File_DeepScan;
         public static $DBName     = "products";
         public static $keyName;
         public static $key;
-        const PRODUCT_ID            = "ID";
-        const PRODUCT_NAME          = "name";
-        const PRODUCT_VIEW_NAME     = "viewName";
-        const PRODUCT_PRICE         = "price";
-        const PRODUCT_DESCRIPTION   = "description";
-        const CREATION_TIME         = "time";
-        const PRODUCT_SIZE          = "size";
-        const PRODUCT_ATTRS         = "attrs";
-        const PRODUCT_COLOR         = "colorID";
-        const PRODUCT_EPTYPE        = "EPType";
-        const PRODUCT_SALES         = "sales";
+        const PRODUCT_ID                = "ID";
+        const PRODUCT_NAME              = "name";
+        const PRODUCT_VIEW_NAME         = "viewName";
+        const PRODUCT_PRICE             = "price";
+        const PRODUCT_DESCRIPTION       = "description";
+        const CREATION_TIME             = "time";
+        const PRODUCT_SIZE              = "size";
+        const PRODUCT_ATTRS             = "attrs";
+        const PRODUCT_COLOR             = "colorID";
+        const PRODUCT_EPTYPE            = "EPType";
+        const PRODUCT_SALES             = "sales";
+        const PRODUCT_AVAILABLE_AMOUNT  = "AvailableAmount";
       
         public function __construct($key = null, $keyName = null){
             self::$key      = $key;
@@ -183,17 +223,18 @@ use Splint\File\File_DeepScan;
         }
         private static function getStructure($TBName){
           $dataset = new DataSet();
-          $dataset -> newEntry(self::PRODUCT_ID,            "VARCHAR(40)");
-          $dataset -> newEntry(self::PRODUCT_NAME,          "VARCHAR(40)");
-          $dataset -> newEntry(self::PRODUCT_VIEW_NAME,     "VARCHAR(40)");
-          $dataset -> newEntry(self::PRODUCT_PRICE,         "FLOAT(40)");
-          $dataset -> newEntry(self::PRODUCT_DESCRIPTION,   "TEXT");
-          $dataset -> newEntry(self::PRODUCT_SIZE,          "VARCHAR(255)");
-          $dataset -> newEntry(self::PRODUCT_ATTRS,         "VARCHAR(255)");
-          $dataset -> newEntry(self::PRODUCT_COLOR,         "VARCHAR(255)");
-          $dataset -> newEntry(self::PRODUCT_EPTYPE,        "VARCHAR(255)");
-          $dataset -> newEntry(self::PRODUCT_SALES,         "VARCHAR(255)");
-          $dataset -> newEntry(self::CREATION_TIME,         "DATETIME DEFAULT CURRENT_TIMESTAMP");
+          $dataset -> newEntry(self::PRODUCT_ID,                "VARCHAR(40)");
+          $dataset -> newEntry(self::PRODUCT_NAME,              "VARCHAR(40)");
+          $dataset -> newEntry(self::PRODUCT_VIEW_NAME,         "VARCHAR(40)");
+          $dataset -> newEntry(self::PRODUCT_PRICE,             "FLOAT(40)");
+          $dataset -> newEntry(self::PRODUCT_DESCRIPTION,       "TEXT");
+          $dataset -> newEntry(self::PRODUCT_SIZE,              "VARCHAR(255)");
+          $dataset -> newEntry(self::PRODUCT_ATTRS,             "VARCHAR(255)");
+          $dataset -> newEntry(self::PRODUCT_COLOR,             "VARCHAR(255)");
+          $dataset -> newEntry(self::PRODUCT_EPTYPE,            "VARCHAR(255)");
+          $dataset -> newEntry(self::PRODUCT_AVAILABLE_AMOUNT,  "INT(255)");
+          $dataset -> newEntry(self::PRODUCT_SALES,             "VARCHAR(255)");
+          $dataset -> newEntry(self::CREATION_TIME,             "DATETIME DEFAULT CURRENT_TIMESTAMP");
           $dataset -> primaryKey(self::PRODUCT_ID);
           $dataset -> TBName($TBName);
           return $dataset;

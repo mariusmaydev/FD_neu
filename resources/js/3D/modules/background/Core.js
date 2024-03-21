@@ -5,10 +5,8 @@ import LIGHT_Dark from './light_dark.js';
 import LIGHT_Bright from './light_bright.js';
 import LIGHT_Medium from './light_medium.js';
 import SETUP from '../lighter/setup.js';
-import { PerspectiveCamera } from "@THREE_ROOT_DIR/src/cameras/PerspectiveCamera.js";
-import { Scene } from "@THREE_ROOT_DIR/src/scenes/Scene.js";
-import { Color } from "@THREE_ROOT_DIR/src/math/Color.js";
-import * as THC from "@THREE_ROOT_DIR/src/constants.js";
+import * as THREE from "@THREE";
+
 
 export class draw {
     static get(canvas){
@@ -27,16 +25,16 @@ export class draw {
     }
     init(){
         this.setup.renderer(true);
-        this.scene      = new Scene();
+        this.scene      = new THREE.Scene();
         // this.scene.fog = new Fog(0xd7d7d7, 0.05, 20);
         this.setupCamera();
 
-        this.renderer.toneMapping = THC.LinearToneMapping;
+        this.renderer.toneMapping = THREE.LinearToneMapping;
         this.renderer.toneMappingExposure = 1;
         // this.setup.controls();
     }
     setupCamera(){
-        this.camera     = new PerspectiveCamera(10, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
+        this.camera     = new THREE.PerspectiveCamera(10, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
         this.camera.position.set(-0.15, 0.35, 3.5);
         this.camera.rotation.set(-0.05, 0, 0);
     }
@@ -51,9 +49,30 @@ export class draw {
             case "bright"   : LIGHT_Bright(this.scene); break;
             default         : LIGHT_Medium(this.scene); break;
         }
+        this.setupOffscreen()
         
     }
     
+    setupOffscreen(){
+        return
+        this.context = this.canvas.getContext("bitmaprenderer");
+        this.offscreencanvas = new OffscreenCanvas(this.canvas.width, this.canvas.height);
+        this.context_off = this.offscreencanvas.getContext("2d");
+
+    }
+    // async animate(){
+    //     this.render();
+    // }
+    // async render(){
+    //     this.context_off.clearRect(0, 0, this.canvas.parentNode.clientWidth*2, this.canvas.parentNode.clientHeight*2);
+    //     this.renderer.render(this.scene, this.camera);
+    //     let domE = this.renderer.domElement;
+    //     this.context_off.drawImage(domE, 0, 0, domE.width, domE.height, 0, 0, this.canvas.width, this.canvas.height);
+
+    //     this.bitmap = this.offscreencanvas.transferToImageBitmap();
+    //     this.context.transferFromImageBitmap(this.bitmap);
+    // }
+
     animate(){
         this.render();
     }
@@ -65,7 +84,7 @@ export class draw {
         this.context.drawImage(domE, 0, 0, domE.width, domE.height, 0, 0, this.canvas.width, this.canvas.height);
     }
     drawBackground(){
-        this.scene.background = new Color( 0x000000);
+        this.scene.background = new THREE.Color( 0x000000);
         let plane = SPLINT.object.Plane(1000, 1600, 1, 1);
         plane.get().geometry.translate(0, -799, 0);
         // plane.position(0, 0, -15);

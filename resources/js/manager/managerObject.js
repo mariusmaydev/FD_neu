@@ -7,8 +7,8 @@ class managerObject {
         this.init();
     }
     async init(){
-        await this.get();
-        await this.push();
+        await this.get.callFromIdle(1000, this);
+        await this.push.callFromIdle(1000, this);
         this.events();
     }
     events(){
@@ -18,26 +18,29 @@ class managerObject {
             await this.push();
             this.savePHP();
         }.bind(this));
-        window.addEventListener("beforeunload", function(e){
+        window.addEventListener("beforeunload", async function(e){
             this.STORAGE.Path[this.STORAGE.Path.length - 1].TimeEnd = S_DateTime.parseToMySqlDateTime((new Date()));
             this.STORAGE.TimeEnd = S_DateTime.parseToMySqlDateTime((new Date()));
-            // await this.push();
+            await this.push();
             this.savePHP();
         }.bind(this))
     }
     async savePHP(){
         let st = this.STORAGE;console.dir(st);
-        let f = managerCallPHP.editUser(st.UserID, JSON.stringify(st.IP), st.TimeStart, st.TimeEnd, JSON.stringify(st.Path));
+        return await managerCallPHP.editUser(st.UserID, JSON.stringify(st.IP), st.TimeStart, st.TimeEnd, JSON.stringify(st.Path));
     }
     async createPHP(){
         let st = this.STORAGE;console.dir(st);
-        let f = managerCallPHP.createUser(st.UserID, JSON.stringify(st.IP), st.TimeStart, st.TimeEnd, JSON.stringify(st.Path));
+        return managerCallPHP.createUser(st.UserID, JSON.stringify(st.IP), st.TimeStart, st.TimeEnd, JSON.stringify(st.Path));
     }
     async get(){
         return new Promise(async function(resolve){
-            let res = (await this.getPHP());
+            let res = await this.getPHP();
                 if(typeof res == "object" && res != null){
                     this.STORAGE = res;
+                    if(this.STORAGE.IP == null || this.STORAGE.IP == ""){
+                        this.STORAGE.IP = (await managerObject.getIP());
+                    }
                 } else {
                     this.STORAGE.TimeStart = S_DateTime.parseToMySqlDateTime((new Date()));
                     this.STORAGE.UserID = (await SPLINT.SessionsPHP.get("USER_ID", false));
@@ -66,12 +69,13 @@ class managerObject {
         });
     }
     async push(){
-        let obj = new managerPageObject();
+        let obj = new SPLINT.autoObject();
             obj.Page        = managerObject.getPage();
             obj.hashes      = (await SPLINT.Tools.Location.getHashes());
             obj.TimeStart   = S_DateTime.parseToMySqlDateTime((new Date()));
             obj.TimeEnd     = null;
         this.STORAGE.Path.push(obj)
+        return true;
     }
     static getPage(){
         let url = location.pathname;

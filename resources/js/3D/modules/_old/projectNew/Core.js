@@ -4,11 +4,11 @@ import { PerspectiveCamera } from "@THREE_ROOT_DIR/src/cameras/PerspectiveCamera
 import SPLINT from 'SPLINT';
 import * as MATERIALS from '../../assets/materials/materials.js';
 import LIGHT from './light.js';
-import LighterAnimations from '../animations.js';
-import SETUP from '../setup.js';
+import LighterAnimations from '../../lighter/animations.js';
+import SETUP from '../../lighter/setup.js';
 import MaterialsLighterGeneral from '../../assets/newMaterials/materialsLighterGeneral.js';
-import LighterThumbnail from "../model/LighterThumbnail.js";
-import LighterModel from "../model/LighterModel.js";
+import LighterThumbnail from "../../lighter/model/LighterThumbnail.js";
+import LighterModel from "../../lighter/model/LighterModel.js";
 
 export class draw {
     static get(canvas){

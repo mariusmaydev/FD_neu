@@ -1,5 +1,5 @@
 import  SPLINT  from 'SPLINT';
-import { Vector3 } from '@THREE_ROOT_DIR/src/math/Vector3.js';
+import * as THREE from "@THREE";
 
 export default class compressedIndexAnimations {
     constructor(inst){
@@ -38,7 +38,7 @@ export default class compressedIndexAnimations {
     }
     toggleLighterRotate(duration, delay, rot, offset = true){
         if(this.isOpen){
-            rot = new Vector3(rot.x * (-1), rot.y * (-1), rot.z * (-1));
+            rot = new THREE.Vector3(rot.x * (-1), rot.y * (-1), rot.z * (-1));
             this.lighterRotate(duration, delay, rot, offset);
         } else {
             this.lighterRotate(duration, delay, rot, offset);
@@ -54,7 +54,7 @@ export default class compressedIndexAnimations {
     }
     toggleCameraTo(duration, delay, trans, offset = true){
         if(this.isOpen){
-            trans = new Vector3(trans.x * (-1), trans.y * (-1), trans.z * (-1));
+            trans = new THREE.Vector3(trans.x * (-1), trans.y * (-1), trans.z * (-1));
             this.cameraTo(duration, delay, trans, offset);
         } else {
             this.cameraTo(duration, delay, trans, offset);
@@ -315,10 +315,10 @@ export default class compressedIndexAnimations {
                 //     resolve(this.isOpen);
                 // }.bind(this);
                     if(expanded && SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
-                        let translation = new Vector3(-0.08, +0.07, +0.3);
+                        let translation = new THREE.Vector3(-0.08, +0.07, +0.3);
                         this.inst.Animations.cameraTo.start(true, duration, undefined, false, translation, true);
                         // this.inst.Animations.cameraToFOV.start(true, duration, undefined, false, 40, true);
-                        let rot = new Vector3(0, 0, 10);
+                        let rot = new THREE.Vector3(0, 0, 10);
                         this.inst.Animations.lighterRotate.start(true, duration, undefined, false, rot, true);
                     }
                 this.inst.Animations.lighter_open.start(true, duration);
@@ -340,10 +340,10 @@ export default class compressedIndexAnimations {
                     this.flameEx()
                 // }.bind(this);
                     if(expanded && SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
-                        let translation = new Vector3(0.08, -0.07, -0.3);
+                        let translation = new THREE.Vector3(0.08, -0.07, -0.3);
                         this.inst.Animations.cameraTo.start(true, duration, undefined, false, translation, false);
                         // this.inst.Animations.cameraToFOV.start(true, duration, undefined, false, -40, false);
-                        let rot = new Vector3(0, 0, -10);
+                        let rot = new THREE.Vector3(0, 0, -10);
                         this.inst.Animations.lighterRotate.start(true, duration, undefined, false, rot, false);
                     }
                 this.inst.Animations.lighter_close.start(false, duration);
@@ -364,7 +364,7 @@ export default class compressedIndexAnimations {
     colors_doubleClose(callback = function(){}, duration){
         return new Promise(async function(resolve, reject){
             if(this.isDoubleColor){
-                let translation = new Vector3(-0.01, 0, -0.1);
+                let translation = new THREE.Vector3(-0.01, 0, -0.1);
                 this.inst.Animations.cameraTo.start(true, duration, undefined, false, translation, false);
                 this.inst.Animations.lighter_color_double_close.onStop = function(){
                     if(this.doubleColorWasOpen){
@@ -385,7 +385,7 @@ export default class compressedIndexAnimations {
     colors_doubleStart(callback = function(){}, duration){
         return new Promise(async function(resolve, reject){
             if(!this.isDoubleColor){
-                let translation = new Vector3(0.01, 0, 0.1);
+                let translation = new THREE.Vector3(0.01, 0, 0.1);
                 this.inst.Animations.cameraTo.start(true, duration, undefined, false, translation, true);
                 if(this.isOpen){
                     this.close();
@@ -414,7 +414,7 @@ export default class compressedIndexAnimations {
                     this.explosion_wasOpen = true;
                 }
                 if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
-                    let translation = new Vector3(0.01, 0.3, -0.1);
+                    let translation = new THREE.Vector3(0.01, 0.3, -0.1);
                     this.inst.Animations.cameraTo.start(true, 0.2, undefined, false, translation, true);
                     this.inst.Animations.lighter_explosion_turn_mobile.onStop = function(){
                         this.inst.Animations.lighter_explosion_split.onStop = function(){
@@ -447,7 +447,7 @@ export default class compressedIndexAnimations {
         return new Promise(async function(resolve, reject){
             if(this.isExploded){
                 if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
-                    let translation = new Vector3(0.01, 0.3, -0.1);
+                    let translation = new THREE.Vector3(0.01, 0.3, -0.1);
                     this.inst.Animations.cameraTo.start(true, 0.2, undefined, false, translation, false);
                     this.inst.Animations.lighter_explosion_split.onStop = function(){
                         this.inst.Animations.lighter_explosion_turn_mobile.onStop = function(){

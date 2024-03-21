@@ -1,0 +1,428 @@
+Date : 2024-03-16 00:50:01
+Directory : c:\xampp\htdocs\fd\resources\css
+Total : 267 files,  -4096 codes, -1410 comments, -691 blanks, all -6197 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| SCSS       |         89 |     13,843 |      2,282 |      1,004 |     17,129 |
+| JavaScript |        178 |    -17,939 |     -3,692 |     -1,695 |    -23,326 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                         | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                            |        267 |     -4,096 |     -1,410 |       -691 |     -6,197 |
+| ..                                                                                           |        178 |    -17,939 |     -3,692 |     -1,695 |    -23,326 |
+| ..\js                                                                                        |        178 |    -17,939 |     -3,692 |     -1,695 |    -23,326 |
+| ..\js (Files)                                                                                |          3 |       -295 |         -5 |        -15 |       -315 |
+| ..\js\3D                                                                                     |         39 |     -5,350 |     -2,058 |       -560 |     -7,968 |
+| ..\js\3D (Files)                                                                             |          1 |       -157 |        -13 |        -18 |       -188 |
+| ..\js\3D\commonJS                                                                            |          1 |        -40 |        -42 |        -12 |        -94 |
+| ..\js\3D\modules                                                                             |         37 |     -5,153 |     -2,003 |       -530 |     -7,686 |
+| ..\js\3D\modules (Files)                                                                     |          1 |        -75 |        -11 |        -10 |        -96 |
+| ..\js\3D\modules\_old                                                                        |          8 |       -930 |       -325 |       -105 |     -1,360 |
+| ..\js\3D\modules\_old (Files)                                                                |          2 |        -59 |        -79 |        -22 |       -160 |
+| ..\js\3D\modules\_old\NewProject                                                             |          4 |       -648 |       -186 |        -51 |       -885 |
+| ..\js\3D\modules\_old\projectNew                                                             |          2 |       -223 |        -60 |        -32 |       -315 |
+| ..\js\3D\modules\assets                                                                      |          6 |       -886 |       -748 |        -88 |     -1,722 |
+| ..\js\3D\modules\assets (Files)                                                              |          1 |        -49 |        -15 |         -2 |        -66 |
+| ..\js\3D\modules\assets\materials                                                            |          3 |       -494 |       -495 |        -52 |     -1,041 |
+| ..\js\3D\modules\assets\newMaterials                                                         |          2 |       -343 |       -238 |        -34 |       -615 |
+| ..\js\3D\modules\background                                                                  |          4 |       -267 |       -163 |        -62 |       -492 |
+| ..\js\3D\modules\lighter                                                                     |         18 |     -2,995 |       -756 |       -265 |     -4,016 |
+| ..\js\3D\modules\lighter (Files)                                                             |          2 |       -483 |        -75 |        -44 |       -602 |
+| ..\js\3D\modules\lighter\converter                                                           |          4 |       -686 |       -142 |        -51 |       -879 |
+| ..\js\3D\modules\lighter\index                                                               |          7 |     -1,102 |       -432 |        -91 |     -1,625 |
+| ..\js\3D\modules\lighter\index (Files)                                                       |          4 |       -845 |       -430 |        -88 |     -1,363 |
+| ..\js\3D\modules\lighter\index\communication_funcs                                           |          3 |       -257 |         -2 |         -3 |       -262 |
+| ..\js\3D\modules\lighter\model                                                               |          2 |       -259 |         -6 |        -20 |       -285 |
+| ..\js\3D\modules\lighter\project                                                             |          3 |       -465 |       -101 |        -59 |       -625 |
+| ..\js\ADMIN                                                                                  |         32 |     -2,394 |       -194 |       -197 |     -2,785 |
+| ..\js\ADMIN (Files)                                                                          |          1 |        -43 |         -4 |         -6 |        -53 |
+| ..\js\ADMIN\Designs                                                                          |          1 |       -440 |        -22 |        -19 |       -481 |
+| ..\js\ADMIN\assets                                                                           |          5 |       -202 |         -6 |        -17 |       -225 |
+| ..\js\ADMIN\order                                                                            |          2 |       -473 |        -37 |        -34 |       -544 |
+| ..\js\ADMIN\pages                                                                            |         12 |       -721 |        -51 |        -71 |       -843 |
+| ..\js\ADMIN\products                                                                         |          3 |       -241 |        -18 |        -23 |       -282 |
+| ..\js\ADMIN\statistics                                                                       |          1 |        -64 |          0 |         -1 |        -65 |
+| ..\js\ADMIN\testspace                                                                        |          7 |       -210 |        -56 |        -26 |       -292 |
+| ..\js\ADMIN\testspace (Files)                                                                |          6 |       -205 |        -56 |        -23 |       -284 |
+| ..\js\ADMIN\testspace\stripe                                                                 |          1 |         -5 |          0 |         -3 |         -8 |
+| ..\js\Checkout                                                                               |          7 |       -797 |       -131 |        -99 |     -1,027 |
+| ..\js\Checkout (Files)                                                                       |          3 |       -525 |       -115 |        -62 |       -702 |
+| ..\js\Checkout\elements                                                                      |          4 |       -272 |        -16 |        -37 |       -325 |
+| ..\js\Codes                                                                                  |          1 |        -46 |          0 |         -4 |        -50 |
+| ..\js\Converter                                                                              |         48 |     -5,032 |       -730 |       -432 |     -6,194 |
+| ..\js\Converter (Files)                                                                      |          5 |       -549 |        -78 |        -52 |       -679 |
+| ..\js\Converter\DataStorage                                                                  |          6 |       -452 |        -17 |        -15 |       -484 |
+| ..\js\Converter\drawElements                                                                 |          2 |        -40 |         -2 |        -12 |        -54 |
+| ..\js\Converter\renderer                                                                     |         12 |     -1,708 |       -188 |       -100 |     -1,996 |
+| ..\js\Converter\renderer (Files)                                                             |          4 |     -1,013 |        -87 |        -45 |     -1,145 |
+| ..\js\Converter\renderer\handler                                                             |          3 |       -138 |        -14 |         -5 |       -157 |
+| ..\js\Converter\renderer\helper                                                              |          5 |       -557 |        -87 |        -50 |       -694 |
+| ..\js\Converter\renderer\helper (Files)                                                      |          3 |       -468 |        -72 |        -41 |       -581 |
+| ..\js\Converter\renderer\helper\lines                                                        |          2 |        -89 |        -15 |         -9 |       -113 |
+| ..\js\Converter\toolBar                                                                      |         21 |     -2,176 |       -386 |       -233 |     -2,795 |
+| ..\js\Converter\toolBar (Files)                                                              |          2 |       -447 |        -11 |        -57 |       -515 |
+| ..\js\Converter\toolBar\bottom                                                               |          8 |       -662 |        -68 |        -65 |       -795 |
+| ..\js\Converter\toolBar\bottom (Files)                                                       |          2 |        -95 |        -10 |         -4 |       -109 |
+| ..\js\Converter\toolBar\bottom\draw                                                          |          6 |       -567 |        -58 |        -61 |       -686 |
+| ..\js\Converter\toolBar\drawParts                                                            |          2 |       -145 |        -14 |        -10 |       -169 |
+| ..\js\Converter\toolBar\side                                                                 |          7 |       -853 |       -290 |        -98 |     -1,241 |
+| ..\js\Converter\toolBar\side (Files)                                                         |          2 |       -197 |         -1 |        -15 |       -213 |
+| ..\js\Converter\toolBar\side\image                                                           |          2 |       -297 |        -13 |        -21 |       -331 |
+| ..\js\Converter\toolBar\side\text                                                            |          3 |       -359 |       -276 |        -62 |       -697 |
+| ..\js\Converter\toolBar\tools                                                                |          2 |        -69 |         -3 |         -3 |        -75 |
+| ..\js\Converter\worker                                                                       |          2 |       -107 |        -59 |        -20 |       -186 |
+| ..\js\Designs                                                                                |          6 |       -551 |        -43 |        -36 |       -630 |
+| ..\js\Designs (Files)                                                                        |          2 |       -106 |          0 |         -4 |       -110 |
+| ..\js\Designs\ImageMenu                                                                      |          4 |       -445 |        -43 |        -32 |       -520 |
+| ..\js\Email                                                                                  |          1 |        -17 |          0 |         -1 |        -18 |
+| ..\js\GLOBAL                                                                                 |          1 |        -95 |         -6 |        -33 |       -134 |
+| ..\js\Helper                                                                                 |          2 |       -188 |         -1 |         -5 |       -194 |
+| ..\js\Login                                                                                  |          1 |        -67 |        -25 |         -8 |       -100 |
+| ..\js\Orders                                                                                 |          1 |        -95 |          0 |         -6 |       -101 |
+| ..\js\Pages                                                                                  |          9 |       -650 |        -79 |        -63 |       -792 |
+| ..\js\Pages (Files)                                                                          |          3 |        -68 |         -6 |         -8 |        -82 |
+| ..\js\Pages\cart                                                                             |          3 |       -202 |        -43 |        -26 |       -271 |
+| ..\js\Pages\index                                                                            |          2 |       -350 |        -23 |        -25 |       -398 |
+| ..\js\Pages\paymentComplete                                                                  |          1 |        -30 |         -7 |         -4 |        -41 |
+| ..\js\Projects                                                                               |          8 |     -1,164 |       -169 |       -110 |     -1,443 |
+| ..\js\Projects (Files)                                                                       |          1 |        -14 |         -3 |         -2 |        -19 |
+| ..\js\Projects\ProjectList                                                                   |          7 |     -1,150 |       -166 |       -108 |     -1,424 |
+| ..\js\Projects\ProjectList (Files)                                                           |          4 |       -540 |        -84 |        -37 |       -661 |
+| ..\js\Projects\ProjectList\Details                                                           |          3 |       -610 |        -82 |        -71 |       -763 |
+| ..\js\_WebWorker                                                                             |          2 |       -110 |         -8 |        -16 |       -134 |
+| ..\js\assets                                                                                 |          6 |       -549 |         -2 |        -24 |       -575 |
+| ..\js\assets (Files)                                                                         |          5 |       -413 |         -2 |        -17 |       -432 |
+| ..\js\assets\product                                                                         |          1 |       -136 |          0 |         -7 |       -143 |
+| ..\js\lexOffice                                                                              |          3 |       -186 |       -109 |        -34 |       -329 |
+| ..\js\manager                                                                                |          6 |       -215 |       -117 |        -25 |       -357 |
+| ..\js\old                                                                                    |          2 |       -138 |        -15 |        -27 |       -180 |
+| ADMIN                                                                                        |         14 |      2,025 |        210 |        116 |      2,351 |
+| ADMIN (Files)                                                                                |          2 |        161 |         10 |         10 |        181 |
+| ADMIN\CouponCodes                                                                            |          2 |         93 |          2 |          7 |        102 |
+| ADMIN\database                                                                               |          1 |         28 |          2 |          1 |         31 |
+| ADMIN\designs                                                                                |          1 |        568 |         35 |         29 |        632 |
+| ADMIN\engraving                                                                              |          1 |          3 |          2 |          1 |          6 |
+| ADMIN\index                                                                                  |          1 |         44 |          2 |          6 |         52 |
+| ADMIN\login                                                                                  |          1 |         88 |          2 |         10 |        100 |
+| ADMIN\orders                                                                                 |          1 |        515 |         32 |         15 |        562 |
+| ADMIN\products                                                                               |          1 |        357 |        111 |         26 |        494 |
+| ADMIN\statistics                                                                             |          1 |         35 |          1 |          2 |         38 |
+| ADMIN\stripe                                                                                 |          1 |        120 |          0 |          5 |        125 |
+| ADMIN\testspace                                                                              |          1 |         13 |         11 |          4 |         28 |
+| PUBLIC                                                                                       |         47 |      7,941 |      1,447 |        442 |      9,830 |
+| PUBLIC (Files)                                                                               |          1 |         27 |          0 |          2 |         29 |
+| PUBLIC\cart                                                                                  |          3 |        712 |        109 |         26 |        847 |
+| PUBLIC\checkout                                                                              |          9 |      1,176 |        241 |         83 |      1,500 |
+| PUBLIC\checkout (Files)                                                                      |          5 |        899 |        121 |         48 |      1,068 |
+| PUBLIC\checkout\subPages                                                                     |          4 |        277 |        120 |         35 |        432 |
+| PUBLIC\converter                                                                             |         14 |      2,811 |        265 |        132 |      3,208 |
+| PUBLIC\converter (Files)                                                                     |          1 |        520 |         17 |         21 |        558 |
+| PUBLIC\converterStart                                                                        |          8 |      2,296 |        424 |        104 |      2,824 |
+| PUBLIC\converterStart (Files)                                                                |          2 |        546 |        153 |         28 |        727 |
+| PUBLIC\converterStart\desktop                                                                |          3 |        975 |        132 |         38 |      1,145 |
+| PUBLIC\converterStart\mobile                                                                 |          3 |        775 |        139 |         38 |        952 |
+| PUBLIC\converter\DOMConverter                                                                |          1 |         71 |          2 |          2 |         75 |
+| PUBLIC\converter\elements                                                                    |          4 |        516 |         32 |         30 |        578 |
+| PUBLIC\converter\toolBar                                                                     |          8 |      1,704 |        214 |         79 |      1,997 |
+| PUBLIC\converter\toolBar (Files)                                                             |          4 |        792 |        186 |         42 |      1,020 |
+| PUBLIC\converter\toolBar\bottomBar                                                           |          4 |        912 |         28 |         37 |        977 |
+| PUBLIC\imprint                                                                               |          1 |         79 |         12 |          7 |         98 |
+| PUBLIC\index                                                                                 |          2 |        486 |        104 |         26 |        616 |
+| PUBLIC\login                                                                                 |          1 |         86 |          1 |          8 |         95 |
+| PUBLIC\paymentComplete                                                                       |          1 |         80 |        129 |         21 |        230 |
+| PUBLIC\profile                                                                               |          7 |        188 |        162 |         33 |        383 |
+| PUBLIC\profile (Files)                                                                       |          1 |         34 |         82 |         22 |        138 |
+| PUBLIC\profile\subPages                                                                      |          6 |        154 |         80 |         11 |        245 |
+| designs                                                                                      |          1 |        318 |          8 |         38 |        364 |
+| general                                                                                      |         11 |      2,255 |        402 |        264 |      2,921 |
+| general (Files)                                                                              |          7 |      1,479 |        323 |        229 |      2,031 |
+| general\CookieBanner                                                                         |          1 |        270 |         20 |         13 |        303 |
+| general\Footer                                                                               |          2 |        116 |         13 |          4 |        133 |
+| general\NavigationBar                                                                        |          1 |        390 |         46 |         18 |        454 |
+| imageMenu                                                                                    |          3 |        647 |        111 |         39 |        797 |
+| other                                                                                        |          1 |         14 |          1 |          2 |         17 |
+| productInformation                                                                           |          1 |         56 |          1 |          6 |         63 |
+| themes                                                                                       |         11 |        587 |        102 |         97 |        786 |
+| themes\theme1                                                                                |          7 |        401 |         37 |         68 |        506 |
+| themes\theme2                                                                                |          4 |        186 |         65 |         29 |        280 |
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                     | language   | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\xampp\htdocs\fd\resources\css\ADMIN\CouponCodes\A_couponCodes.scss                        | SCSS       |         57 |          1 |          4 |         62 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\CouponCodes\_couponCodeList.scss                      | SCSS       |         36 |          1 |          3 |         40 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\_ADMIN.scss                                           | SCSS       |         93 |          8 |          6 |        107 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\_Navigation.scss                                      | SCSS       |         68 |          2 |          4 |         74 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\database\A_database.scss                              | SCSS       |         28 |          2 |          1 |         31 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\designs\A_designs.scss                                | SCSS       |        568 |         35 |         29 |        632 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\engraving\AD_engraving.scss                           | SCSS       |          3 |          2 |          1 |          6 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\index\A_index.scss                                    | SCSS       |         44 |          2 |          6 |         52 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\login\A_login.scss                                    | SCSS       |         88 |          2 |         10 |        100 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\orders\A_orders.scss                                  | SCSS       |        515 |         32 |         15 |        562 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\products\A_products.scss                              | SCSS       |        357 |        111 |         26 |        494 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\statistics\A_statistics.scss                          | SCSS       |         35 |          1 |          2 |         38 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\stripe\A_stripe.scss                                  | SCSS       |        120 |          0 |          5 |        125 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\testspace\A_testSpace.scss                            | SCSS       |         13 |         11 |          4 |         28 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\_publicMain.scss                                     | SCSS       |         27 |          0 |          2 |         29 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\cart\_cartList.scss                                  | SCSS       |        412 |         63 |          9 |        484 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\cart\_cartRight.scss                                 | SCSS       |        158 |          3 |          8 |        169 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\cart\cart.scss                                       | SCSS       |        142 |         43 |          9 |        194 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\checkout\_checkoutAddress.scss                       | SCSS       |         74 |         17 |          5 |         96 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\checkout\_mobileProductOverview.scss                 | SCSS       |        148 |         10 |          3 |        161 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\checkout\_mobileProductOverviewList.scss             | SCSS       |        176 |         59 |          9 |        244 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\checkout\_rightPart.scss                             | SCSS       |        196 |          6 |          8 |        210 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\checkout\checkout.scss                               | SCSS       |        305 |         29 |         23 |        357 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\checkout\subPages\_Address.scss                      | SCSS       |         31 |         73 |          6 |        110 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\checkout\subPages\_Overview.scss                     | SCSS       |         61 |         13 |          3 |         77 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\checkout\subPages\_Payment.scss                      | SCSS       |        134 |          6 |         20 |        160 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\checkout\subPages\_Sending.scss                      | SCSS       |         51 |         28 |          6 |         85 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converterStart\_projectDetails.scss                  | SCSS       |         43 |         60 |          7 |        110 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converterStart\converterStart.scss                   | SCSS       |        503 |         93 |         21 |        617 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converterStart\desktop\_Categories.scss              | SCSS       |        224 |          7 |          4 |        235 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converterStart\desktop\_projectDetails.scss          | SCSS       |        541 |         83 |         21 |        645 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converterStart\desktop\_projects.scss                | SCSS       |        210 |         42 |         13 |        265 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converterStart\mobile\_Categories.scss               | SCSS       |        245 |         43 |          8 |        296 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converterStart\mobile\_projectDetails.scss           | SCSS       |        363 |         35 |         17 |        415 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converterStart\mobile\_projectList.scss              | SCSS       |        167 |         61 |         13 |        241 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\DOMConverter\_DOMConverterMAIN.scss        | SCSS       |         71 |          2 |          2 |         75 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\converter.scss                             | SCSS       |        520 |         17 |         21 |        558 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\elements\_EditorFrame.scss                 | SCSS       |         61 |          0 |          3 |         64 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\elements\_EditorFrameMobile.scss           | SCSS       |         69 |          0 |          2 |         71 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\elements\_LeftBar.scss                     | SCSS       |        253 |         31 |         18 |        302 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\elements\_RightBar.scss                    | SCSS       |        133 |          1 |          7 |        141 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\toolBar\_converterToolBar.scss             | SCSS       |        257 |         14 |         17 |        288 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\toolBar\_converterToolBarHelper.scss       | SCSS       |        163 |         12 |          6 |        181 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\toolBar\_converterToolBar_Image.scss       | SCSS       |        211 |         32 |          8 |        251 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\toolBar\_converterToolBar_Text.scss        | SCSS       |        161 |        128 |         11 |        300 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\toolBar\bottomBar\_BottomBar.scss          | SCSS       |        321 |          9 |         17 |        347 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\toolBar\bottomBar\_floatingDiv.scss        | SCSS       |        449 |         17 |         14 |        480 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\toolBar\bottomBar\_image.scss              | SCSS       |         71 |          0 |          2 |         73 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\toolBar\bottomBar\_text.scss               | SCSS       |         71 |          2 |          4 |         77 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\imprint\imprint.scss                                 | SCSS       |         79 |         12 |          7 |         98 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\index\_overlay.scss                                  | SCSS       |        240 |          1 |          9 |        250 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\index\index.scss                                     | SCSS       |        246 |        103 |         17 |        366 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\login\login.scss                                     | SCSS       |         86 |          1 |          8 |         95 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\paymentComplete\paymentComplete.scss                 | SCSS       |         80 |        129 |         21 |        230 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\profile\profile.scss                                 | SCSS       |         34 |         82 |         22 |        138 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\profile\subPages\_AccountInformation.scss            | SCSS       |         64 |          6 |          3 |         73 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\profile\subPages\_Adresses.scss                      | SCSS       |          3 |         63 |          2 |         68 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\profile\subPages\_Designs.scss                       | SCSS       |         17 |          4 |          2 |         23 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\profile\subPages\_Images.scss                        | SCSS       |         56 |          7 |          2 |         65 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\profile\subPages\_Orders.scss                        | SCSS       |         13 |          0 |          2 |         15 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\profile\subPages\_Sparks.scss                        | SCSS       |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\fd\resources\css\designs\designs.scss                                        | SCSS       |        318 |          8 |         38 |        364 |
+| c:\xampp\htdocs\fd\resources\css\general\CookieBanner\_CookieBanner.scss                     | SCSS       |        270 |         20 |         13 |        303 |
+| c:\xampp\htdocs\fd\resources\css\general\Footer\FooterDesktop.scss                           | SCSS       |         53 |         12 |          2 |         67 |
+| c:\xampp\htdocs\fd\resources\css\general\Footer\FooterMobile.scss                            | SCSS       |         63 |          1 |          2 |         66 |
+| c:\xampp\htdocs\fd\resources\css\general\NavigationBar\_NavigationBar.scss                   | SCSS       |        390 |         46 |         18 |        454 |
+| c:\xampp\htdocs\fd\resources\css\general\_3D.scss                                            | SCSS       |         22 |          2 |          3 |         27 |
+| c:\xampp\htdocs\fd\resources\css\general\_buttons.scss                                       | SCSS       |         65 |         10 |          7 |         82 |
+| c:\xampp\htdocs\fd\resources\css\general\_cursor.scss                                        | SCSS       |         30 |          2 |          1 |         33 |
+| c:\xampp\htdocs\fd\resources\css\general\_main.scss                                          | SCSS       |        258 |         55 |         26 |        339 |
+| c:\xampp\htdocs\fd\resources\css\general\_mediaQueries.scss                                  | SCSS       |         21 |         49 |         29 |         99 |
+| c:\xampp\htdocs\fd\resources\css\general\fontfaces.scss                                      | SCSS       |         63 |         79 |         13 |        155 |
+| c:\xampp\htdocs\fd\resources\css\general\fonts.scss                                          | SCSS       |      1,020 |        126 |        150 |      1,296 |
+| c:\xampp\htdocs\fd\resources\css\imageMenu\_imageMenu.scss                                   | SCSS       |         12 |          2 |          4 |         18 |
+| c:\xampp\htdocs\fd\resources\css\imageMenu\_imageMenuDesktop.scss                            | SCSS       |        274 |         60 |         15 |        349 |
+| c:\xampp\htdocs\fd\resources\css\imageMenu\_imageMenuMobile.scss                             | SCSS       |        361 |         49 |         20 |        430 |
+| c:\xampp\htdocs\fd\resources\css\other\icons.scss                                            | SCSS       |         14 |          1 |          2 |         17 |
+| c:\xampp\htdocs\fd\resources\css\productInformation\_productInformation.scss                 | SCSS       |         56 |          1 |          6 |         63 |
+| c:\xampp\htdocs\fd\resources\css\themes\theme1\_buttonNew.scss                               | SCSS       |        140 |          6 |         15 |        161 |
+| c:\xampp\htdocs\fd\resources\css\themes\theme1\_buttons.scss                                 | SCSS       |         59 |          1 |          7 |         67 |
+| c:\xampp\htdocs\fd\resources\css\themes\theme1\_container.scss                               | SCSS       |         10 |          6 |          4 |         20 |
+| c:\xampp\htdocs\fd\resources\css\themes\theme1\_helper.scss                                  | SCSS       |         26 |          0 |         13 |         39 |
+| c:\xampp\htdocs\fd\resources\css\themes\theme1\_main.scss                                    | SCSS       |         91 |         15 |         10 |        116 |
+| c:\xampp\htdocs\fd\resources\css\themes\theme1\_scrollbar.scss                               | SCSS       |         19 |          4 |          3 |         26 |
+| c:\xampp\htdocs\fd\resources\css\themes\theme1\_vars.scss                                    | SCSS       |         56 |          5 |         16 |         77 |
+| c:\xampp\htdocs\fd\resources\css\themes\theme2\_buttons.scss                                 | SCSS       |         85 |         50 |          9 |        144 |
+| c:\xampp\htdocs\fd\resources\css\themes\theme2\_main.scss                                    | SCSS       |         58 |          9 |          8 |         75 |
+| c:\xampp\htdocs\fd\resources\css\themes\theme2\_scrollbar.scss                               | SCSS       |         14 |          4 |          3 |         21 |
+| c:\xampp\htdocs\fd\resources\css\themes\theme2\_vars.scss                                    | SCSS       |         29 |          2 |          9 |         40 |
+| c:\xampp\htdocs\fd\resources\js\3D\3DHelper.js                                               | JavaScript |       -157 |        -13 |        -18 |       -188 |
+| c:\xampp\htdocs\fd\resources\js\3D\commonJS\drawDOMElement_3D.js                             | JavaScript |        -40 |        -42 |        -12 |        -94 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\_old\NewProject\Core.js                           | JavaScript |       -171 |       -105 |         -9 |       -285 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\_old\NewProject\animations.js                     | JavaScript |       -247 |        -28 |         -6 |       -281 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\_old\NewProject\communication.js                  | JavaScript |       -163 |         -1 |        -18 |       -182 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\_old\NewProject\light.js                          | JavaScript |        -67 |        -52 |        -18 |       -137 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\_old\_index_light_copy.js                         | JavaScript |        -59 |        -53 |        -18 |       -130 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\_old\projectNew\Core.js                           | JavaScript |       -149 |         -7 |        -13 |       -169 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\_old\projectNew\light.js                          | JavaScript |        -74 |        -53 |        -19 |       -146 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\_old\textures.js                                  | JavaScript |          0 |        -26 |         -4 |        -30 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\assets\materials\lighter.js                       | JavaScript |       -204 |       -363 |        -28 |       -595 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\assets\materials\materials.js                     | JavaScript |       -143 |        -88 |        -14 |       -245 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\assets\materials\other.js                         | JavaScript |       -147 |        -44 |        -10 |       -201 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\assets\newMaterials\materialsEngraving.js         | JavaScript |       -119 |       -147 |        -14 |       -280 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\assets\newMaterials\materialsLighterGeneral.js    | JavaScript |       -224 |        -91 |        -20 |       -335 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\assets\workerInterface.js                         | JavaScript |        -49 |        -15 |         -2 |        -66 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\background\Core.js                                | JavaScript |        -93 |         -4 |         -8 |       -105 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\background\light_bright.js                        | JavaScript |        -58 |        -53 |        -18 |       -129 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\background\light_dark.js                          | JavaScript |        -58 |        -53 |        -18 |       -129 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\background\light_medium.js                        | JavaScript |        -58 |        -53 |        -18 |       -129 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\lighter\animations.js                             | JavaScript |       -388 |        -70 |        -38 |       -496 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\lighter\converter\Core.js                         | JavaScript |       -168 |        -38 |        -24 |       -230 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\lighter\converter\animations.js                   | JavaScript |       -302 |        -25 |         -5 |       -332 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\lighter\converter\communication.js                | JavaScript |       -152 |        -25 |         -5 |       -182 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\lighter\converter\light.js                        | JavaScript |        -64 |        -54 |        -17 |       -135 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\lighter\index\Core.js                             | JavaScript |       -253 |       -230 |        -58 |       -541 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\lighter\index\animations.js                       | JavaScript |       -441 |        -45 |         -7 |       -493 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\lighter\index\communication.js                    | JavaScript |        -70 |       -100 |         -5 |       -175 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\lighter\index\communication_funcs\core.js         | JavaScript |        -30 |          0 |         -1 |        -31 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\lighter\index\communication_funcs\desktop.js      | JavaScript |       -113 |         -1 |         -1 |       -115 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\lighter\index\communication_funcs\mobile.js       | JavaScript |       -114 |         -1 |         -1 |       -116 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\lighter\index\light.js                            | JavaScript |        -81 |        -55 |        -18 |       -154 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\lighter\model\LighterModel.js                     | JavaScript |       -164 |         -4 |         -5 |       -173 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\lighter\model\LighterThumbnail.js                 | JavaScript |        -95 |         -2 |        -15 |       -112 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\lighter\project\Core.js                           | JavaScript |       -221 |        -47 |        -21 |       -289 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\lighter\project\communication.js                  | JavaScript |       -171 |         -1 |        -20 |       -192 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\lighter\project\light.js                          | JavaScript |        -73 |        -53 |        -18 |       -144 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\lighter\setup.js                                  | JavaScript |        -95 |         -5 |         -6 |       -106 |
+| c:\xampp\htdocs\fd\resources\js\3D\modules\module_3D_init.js                                 | JavaScript |        -75 |        -11 |        -10 |        -96 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\Designs\AdminProjectList.js                            | JavaScript |       -440 |        -22 |        -19 |       -481 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\Eventhandler.js                                        | JavaScript |        -43 |         -4 |         -6 |        -53 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\assets\AdminChartTemplate.js                           | JavaScript |        -17 |         -5 |         -4 |        -26 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\assets\AdminLogin.js                                   | JavaScript |        -65 |          0 |         -2 |        -67 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\assets\AdminNavigation.js                              | JavaScript |        -66 |         -1 |         -3 |        -70 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\assets\AdminPaths.js                                   | JavaScript |        -18 |          0 |         -5 |        -23 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\assets\AdminTemplate.js                                | JavaScript |        -36 |          0 |         -3 |        -39 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\order\orderDetails.js                                  | JavaScript |       -224 |        -11 |        -26 |       -261 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\order\orderList.js                                     | JavaScript |       -249 |        -26 |         -8 |       -283 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\pages\ADMIN_couponCodes.js                             | JavaScript |        -75 |         -2 |         -9 |        -86 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\pages\ADMIN_designs.js                                 | JavaScript |        -26 |          0 |          0 |        -26 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\pages\ADMIN_engraving.js                               | JavaScript |        -19 |         -1 |         -3 |        -23 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\pages\ADMIN_index.js                                   | JavaScript |        -22 |          0 |         -3 |        -25 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\pages\ADMIN_login.js                                   | JavaScript |       -133 |         -2 |         -8 |       -143 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\pages\ADMIN_orders.js                                  | JavaScript |        -45 |         -1 |         -2 |        -48 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\pages\ADMIN_products.js                                | JavaScript |       -279 |         -7 |        -26 |       -312 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\pages\ADMIN_statistics.js                              | JavaScript |        -46 |         -6 |         -7 |        -59 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\pages\ADMIN_stripe.js                                  | JavaScript |         -7 |          0 |         -1 |         -8 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\pages\ADMIN_stripeSuccess.js                           | JavaScript |        -11 |        -25 |         -4 |        -40 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\pages\ADMIN_testSpace.js                               | JavaScript |        -53 |         -5 |         -7 |        -65 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\pages\ADMIN_userAccounts.js                            | JavaScript |         -5 |         -2 |         -1 |         -8 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\products\productColorMenu.js                           | JavaScript |        -74 |         -3 |         -8 |        -85 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\products\productEPTypeMenu.js                          | JavaScript |        -74 |         -3 |         -8 |        -85 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\products\productList.js                                | JavaScript |        -93 |        -12 |         -7 |       -112 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\statistics\statisticsHelper.js                         | JavaScript |        -64 |          0 |         -1 |        -65 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\testspace\c_test.js                                    | JavaScript |        -17 |          0 |         -1 |        -18 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\testspace\imap.js                                      | JavaScript |         -3 |          0 |         -1 |         -4 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\testspace\main.js                                      | JavaScript |        -52 |        -34 |         -7 |        -93 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\testspace\stripe\stripeMain.js                         | JavaScript |         -5 |          0 |         -3 |         -8 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\testspace\test_chartJS.js                              | JavaScript |        -49 |         -2 |         -2 |        -53 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\testspace\test_moonraker.js                            | JavaScript |          0 |          0 |         -1 |         -1 |
+| c:\xampp\htdocs\fd\resources\js\ADMIN\testspace\test_nesting.js                              | JavaScript |        -84 |        -20 |        -11 |       -115 |
+| c:\xampp\htdocs\fd\resources\js\Checkout\Checkout.js                                         | JavaScript |       -295 |         -3 |        -23 |       -321 |
+| c:\xampp\htdocs\fd\resources\js\Checkout\CheckoutHelper.js                                   | JavaScript |       -103 |       -102 |        -24 |       -229 |
+| c:\xampp\htdocs\fd\resources\js\Checkout\CheckoutRight.js                                    | JavaScript |       -127 |        -10 |        -15 |       -152 |
+| c:\xampp\htdocs\fd\resources\js\Checkout\elements\drawCheckoutHead.js                        | JavaScript |        -79 |         -2 |        -11 |        -92 |
+| c:\xampp\htdocs\fd\resources\js\Checkout\elements\drawFastCheckout.js                        | JavaScript |         -9 |          0 |          0 |         -9 |
+| c:\xampp\htdocs\fd\resources\js\Checkout\elements\drawMobileProductOverview.js               | JavaScript |        -46 |        -11 |         -5 |        -62 |
+| c:\xampp\htdocs\fd\resources\js\Checkout\elements\drawSavedInformation.js                    | JavaScript |       -138 |         -3 |        -21 |       -162 |
+| c:\xampp\htdocs\fd\resources\js\Codes\CouponCodes.js                                         | JavaScript |        -46 |          0 |         -4 |        -50 |
+| c:\xampp\htdocs\fd\resources\js\Converter\Converter.js                                       | JavaScript |       -139 |         -8 |        -18 |       -165 |
+| c:\xampp\htdocs\fd\resources\js\Converter\ConverterCloseButtons.js                           | JavaScript |       -198 |         -8 |        -11 |       -217 |
+| c:\xampp\htdocs\fd\resources\js\Converter\ConverterHelper.js                                 | JavaScript |       -121 |        -20 |         -8 |       -149 |
+| c:\xampp\htdocs\fd\resources\js\Converter\Converter_LeftBar.js                               | JavaScript |        -91 |         -4 |         -8 |       -103 |
+| c:\xampp\htdocs\fd\resources\js\Converter\DataStorage\C_Image.js                             | JavaScript |        -61 |         -5 |         -3 |        -69 |
+| c:\xampp\htdocs\fd\resources\js\Converter\DataStorage\C_Text.js                              | JavaScript |        -49 |          0 |         -2 |        -51 |
+| c:\xampp\htdocs\fd\resources\js\Converter\DataStorage\DSController.js                        | JavaScript |        -55 |         -1 |         -2 |        -58 |
+| c:\xampp\htdocs\fd\resources\js\Converter\DataStorage\DSImage.js                             | JavaScript |       -112 |          0 |         -1 |       -113 |
+| c:\xampp\htdocs\fd\resources\js\Converter\DataStorage\DSProject.js                           | JavaScript |        -80 |         -8 |         -4 |        -92 |
+| c:\xampp\htdocs\fd\resources\js\Converter\DataStorage\DSText.js                              | JavaScript |        -95 |         -3 |         -3 |       -101 |
+| c:\xampp\htdocs\fd\resources\js\Converter\DragAndDrop.js                                     | JavaScript |          0 |        -38 |         -7 |        -45 |
+| c:\xampp\htdocs\fd\resources\js\Converter\drawElements\drawDesktop.js                        | JavaScript |        -20 |         -2 |         -6 |        -28 |
+| c:\xampp\htdocs\fd\resources\js\Converter\drawElements\drawMobile.js                         | JavaScript |        -20 |          0 |         -6 |        -26 |
+| c:\xampp\htdocs\fd\resources\js\Converter\renderer\ConverterEvents.js                        | JavaScript |       -132 |        -17 |         -4 |       -153 |
+| c:\xampp\htdocs\fd\resources\js\Converter\renderer\ConverterRender.js                        | JavaScript |       -712 |        -42 |        -34 |       -788 |
+| c:\xampp\htdocs\fd\resources\js\Converter\renderer\ConverterRenderWorker.js                  | JavaScript |        -30 |         -4 |         -4 |        -38 |
+| c:\xampp\htdocs\fd\resources\js\Converter\renderer\ConverterTouchEvents.js                   | JavaScript |       -139 |        -24 |         -3 |       -166 |
+| c:\xampp\htdocs\fd\resources\js\Converter\renderer\handler\ConverterKeyHandler.js            | JavaScript |        -37 |          0 |         -1 |        -38 |
+| c:\xampp\htdocs\fd\resources\js\Converter\renderer\handler\ConverterMouseHandler.js          | JavaScript |        -31 |          0 |         -2 |        -33 |
+| c:\xampp\htdocs\fd\resources\js\Converter\renderer\handler\ConverterTouchHandler.js          | JavaScript |        -70 |        -14 |         -2 |        -86 |
+| c:\xampp\htdocs\fd\resources\js\Converter\renderer\helper\CanvasPaths.js                     | JavaScript |       -268 |        -28 |        -26 |       -322 |
+| c:\xampp\htdocs\fd\resources\js\Converter\renderer\helper\ConverterComputeEdges.js           | JavaScript |       -166 |        -14 |         -9 |       -189 |
+| c:\xampp\htdocs\fd\resources\js\Converter\renderer\helper\ConverterDrawHelper.js             | JavaScript |        -34 |        -30 |         -6 |        -70 |
+| c:\xampp\htdocs\fd\resources\js\Converter\renderer\helper\lines\ConverterLine.js             | JavaScript |        -60 |        -10 |         -7 |        -77 |
+| c:\xampp\htdocs\fd\resources\js\Converter\renderer\helper\lines\ConverterLinesHelper.js      | JavaScript |        -29 |         -5 |         -2 |        -36 |
+| c:\xampp\htdocs\fd\resources\js\Converter\toolBar\adminBar.js                                | JavaScript |       -408 |         -9 |        -53 |       -470 |
+| c:\xampp\htdocs\fd\resources\js\Converter\toolBar\bottom\bottomBar.js                        | JavaScript |        -59 |        -10 |         -1 |        -70 |
+| c:\xampp\htdocs\fd\resources\js\Converter\toolBar\bottom\bottomBarDraw.js                    | JavaScript |        -36 |          0 |         -3 |        -39 |
+| c:\xampp\htdocs\fd\resources\js\Converter\toolBar\bottom\draw\bottomBarImage.js              | JavaScript |       -115 |        -17 |        -12 |       -144 |
+| c:\xampp\htdocs\fd\resources\js\Converter\toolBar\bottom\draw\bottomBarStandard.js           | JavaScript |       -155 |         -9 |         -9 |       -173 |
+| c:\xampp\htdocs\fd\resources\js\Converter\toolBar\bottom\draw\bottomBarText.js               | JavaScript |        -91 |         -9 |        -13 |       -113 |
+| c:\xampp\htdocs\fd\resources\js\Converter\toolBar\bottom\draw\bottomBarTextButtons.js        | JavaScript |       -109 |          0 |        -13 |       -122 |
+| c:\xampp\htdocs\fd\resources\js\Converter\toolBar\bottom\draw\bottomBarTextFontFamilyMenu.js | JavaScript |        -44 |          0 |         -5 |        -49 |
+| c:\xampp\htdocs\fd\resources\js\Converter\toolBar\bottom\draw\helper.js                      | JavaScript |        -53 |        -23 |         -9 |        -85 |
+| c:\xampp\htdocs\fd\resources\js\Converter\toolBar\drawParts\ImageParts.js                    | JavaScript |        -68 |          0 |          0 |        -68 |
+| c:\xampp\htdocs\fd\resources\js\Converter\toolBar\drawParts\TextParts.js                     | JavaScript |        -77 |        -14 |        -10 |       -101 |
+| c:\xampp\htdocs\fd\resources\js\Converter\toolBar\side\LighterSettings.js                    | JavaScript |       -132 |         -1 |        -13 |       -146 |
+| c:\xampp\htdocs\fd\resources\js\Converter\toolBar\side\image\ImageElement_desktop.js         | JavaScript |       -200 |        -12 |        -17 |       -229 |
+| c:\xampp\htdocs\fd\resources\js\Converter\toolBar\side\image\toolBarImage.js                 | JavaScript |        -97 |         -1 |         -4 |       -102 |
+| c:\xampp\htdocs\fd\resources\js\Converter\toolBar\side\sideBar.js                            | JavaScript |        -65 |          0 |         -2 |        -67 |
+| c:\xampp\htdocs\fd\resources\js\Converter\toolBar\side\text\TextElement_desktop copy.js      | JavaScript |       -280 |        -10 |        -28 |       -318 |
+| c:\xampp\htdocs\fd\resources\js\Converter\toolBar\side\text\TextElement_desktop.js           | JavaScript |          0 |       -265 |        -30 |       -295 |
+| c:\xampp\htdocs\fd\resources\js\Converter\toolBar\side\text\toolBarText.js                   | JavaScript |        -79 |         -1 |         -4 |        -84 |
+| c:\xampp\htdocs\fd\resources\js\Converter\toolBar\toolBar.js                                 | JavaScript |        -39 |         -2 |         -4 |        -45 |
+| c:\xampp\htdocs\fd\resources\js\Converter\toolBar\tools\ImageTools.js                        | JavaScript |        -23 |          0 |         -2 |        -25 |
+| c:\xampp\htdocs\fd\resources\js\Converter\toolBar\tools\TextTools.js                         | JavaScript |        -46 |         -3 |         -1 |        -50 |
+| c:\xampp\htdocs\fd\resources\js\Converter\worker\_ConverterWorker.js                         | JavaScript |        -38 |        -48 |        -11 |        -97 |
+| c:\xampp\htdocs\fd\resources\js\Converter\worker\_ConverterWorkerHelper.js                   | JavaScript |        -69 |        -11 |         -9 |        -89 |
+| c:\xampp\htdocs\fd\resources\js\Designs\CategoryHelper.js                                    | JavaScript |        -24 |          0 |          0 |        -24 |
+| c:\xampp\htdocs\fd\resources\js\Designs\DesignHelper.js                                      | JavaScript |        -82 |          0 |         -4 |        -86 |
+| c:\xampp\htdocs\fd\resources\js\Designs\ImageMenu\ImageHelper.js                             | JavaScript |        -58 |         -1 |         -4 |        -63 |
+| c:\xampp\htdocs\fd\resources\js\Designs\ImageMenu\ImageMenu.js                               | JavaScript |       -208 |        -27 |        -20 |       -255 |
+| c:\xampp\htdocs\fd\resources\js\Designs\ImageMenu\ImageMenuFilter.js                         | JavaScript |        -37 |          0 |         -2 |        -39 |
+| c:\xampp\htdocs\fd\resources\js\Designs\ImageMenu\Unsplash.js                                | JavaScript |       -142 |        -15 |         -6 |       -163 |
+| c:\xampp\htdocs\fd\resources\js\Email\Email.js                                               | JavaScript |        -17 |          0 |         -1 |        -18 |
+| c:\xampp\htdocs\fd\resources\js\Eventhandler.js                                              | JavaScript |        -92 |         -2 |         -6 |       -100 |
+| c:\xampp\htdocs\fd\resources\js\Footer.js                                                    | JavaScript |        -80 |          0 |         -3 |        -83 |
+| c:\xampp\htdocs\fd\resources\js\GLOBAL\Paths.js                                              | JavaScript |        -95 |         -6 |        -33 |       -134 |
+| c:\xampp\htdocs\fd\resources\js\Helper\ProjectsHelper.js                                     | JavaScript |       -140 |         -1 |         -4 |       -145 |
+| c:\xampp\htdocs\fd\resources\js\Helper\ProjectsHelperDesign.js                               | JavaScript |        -48 |          0 |         -1 |        -49 |
+| c:\xampp\htdocs\fd\resources\js\Login\LoginHelper.js                                         | JavaScript |        -67 |        -25 |         -8 |       -100 |
+| c:\xampp\htdocs\fd\resources\js\NavigationBar.js                                             | JavaScript |       -123 |         -3 |         -6 |       -132 |
+| c:\xampp\htdocs\fd\resources\js\Orders\Order.js                                              | JavaScript |        -95 |          0 |         -6 |       -101 |
+| c:\xampp\htdocs\fd\resources\js\Pages\cart\cart.js                                           | JavaScript |        -21 |         -6 |         -4 |        -31 |
+| c:\xampp\htdocs\fd\resources\js\Pages\cart\cartList.js                                       | JavaScript |       -118 |        -33 |        -15 |       -166 |
+| c:\xampp\htdocs\fd\resources\js\Pages\cart\cartRight.js                                      | JavaScript |        -63 |         -4 |         -7 |        -74 |
+| c:\xampp\htdocs\fd\resources\js\Pages\converterStart.js                                      | JavaScript |        -19 |         -5 |         -1 |        -25 |
+| c:\xampp\htdocs\fd\resources\js\Pages\imprint.js                                             | JavaScript |        -36 |         -1 |         -6 |        -43 |
+| c:\xampp\htdocs\fd\resources\js\Pages\index\index.js                                         | JavaScript |        -58 |        -12 |        -14 |        -84 |
+| c:\xampp\htdocs\fd\resources\js\Pages\index\overlay.js                                       | JavaScript |       -292 |        -11 |        -11 |       -314 |
+| c:\xampp\htdocs\fd\resources\js\Pages\pagesTemplate.js                                       | JavaScript |        -13 |          0 |         -1 |        -14 |
+| c:\xampp\htdocs\fd\resources\js\Pages\paymentComplete\paymentComplete.js                     | JavaScript |        -30 |         -7 |         -4 |        -41 |
+| c:\xampp\htdocs\fd\resources\js\Projects\ProjectList\Details\ProjectDetailsDesktop.js        | JavaScript |       -332 |        -30 |        -40 |       -402 |
+| c:\xampp\htdocs\fd\resources\js\Projects\ProjectList\Details\ProjectDetailsHelper.js         | JavaScript |       -109 |         -3 |         -7 |       -119 |
+| c:\xampp\htdocs\fd\resources\js\Projects\ProjectList\Details\ProjectDetailsMobile.js         | JavaScript |       -169 |        -49 |        -24 |       -242 |
+| c:\xampp\htdocs\fd\resources\js\Projects\ProjectList\ProjectCategoryMenu.js                  | JavaScript |       -129 |        -46 |         -5 |       -180 |
+| c:\xampp\htdocs\fd\resources\js\Projects\ProjectList\ProjectChoiceMenu.js                    | JavaScript |       -259 |        -20 |        -21 |       -300 |
+| c:\xampp\htdocs\fd\resources\js\Projects\ProjectList\ProjectDetails.js                       | JavaScript |        -26 |          0 |         -1 |        -27 |
+| c:\xampp\htdocs\fd\resources\js\Projects\ProjectList\ProjectList.js                          | JavaScript |       -126 |        -18 |        -10 |       -154 |
+| c:\xampp\htdocs\fd\resources\js\Projects\Projects.js                                         | JavaScript |        -14 |         -3 |         -2 |        -19 |
+| c:\xampp\htdocs\fd\resources\js\_WebWorker\SVGGeneratorWorker.js                             | JavaScript |        -16 |         -4 |         -3 |        -23 |
+| c:\xampp\htdocs\fd\resources\js\_WebWorker\normalMapWorker.js                                | JavaScript |        -94 |         -4 |        -13 |       -111 |
+| c:\xampp\htdocs\fd\resources\js\assets\UserData.js                                           | JavaScript |        -81 |          0 |         -2 |        -83 |
+| c:\xampp\htdocs\fd\resources\js\assets\functionsCouponCode.js                                | JavaScript |        -83 |          0 |         -3 |        -86 |
+| c:\xampp\htdocs\fd\resources\js\assets\functionsHashtag.js                                   | JavaScript |        -37 |          0 |         -2 |        -39 |
+| c:\xampp\htdocs\fd\resources\js\assets\functionsProduct.js                                   | JavaScript |        -53 |         -2 |         -6 |        -61 |
+| c:\xampp\htdocs\fd\resources\js\assets\functionsShoppingCart.js                              | JavaScript |       -159 |          0 |         -4 |       -163 |
+| c:\xampp\htdocs\fd\resources\js\assets\product\productHelper.js                              | JavaScript |       -136 |          0 |         -7 |       -143 |
+| c:\xampp\htdocs\fd\resources\js\lexOffice\lexOffice.js                                       | JavaScript |        -19 |          0 |         -3 |        -22 |
+| c:\xampp\htdocs\fd\resources\js\lexOffice\lexOfficeGenerateData.js                           | JavaScript |       -150 |       -105 |        -30 |       -285 |
+| c:\xampp\htdocs\fd\resources\js\lexOffice\lexOfficeHelper.js                                 | JavaScript |        -17 |         -4 |         -1 |        -22 |
+| c:\xampp\htdocs\fd\resources\js\manager\manager.js                                           | JavaScript |        -28 |        -27 |         -5 |        -60 |
+| c:\xampp\htdocs\fd\resources\js\manager\managerCallPHP.js                                    | JavaScript |        -55 |        -18 |         -4 |        -77 |
+| c:\xampp\htdocs\fd\resources\js\manager\managerHelper.js                                     | JavaScript |        -36 |        -19 |         -9 |        -64 |
+| c:\xampp\htdocs\fd\resources\js\manager\managerListener.js                                   | JavaScript |          0 |        -51 |         -5 |        -56 |
+| c:\xampp\htdocs\fd\resources\js\manager\managerObject.js                                     | JavaScript |        -88 |         -1 |         -1 |        -90 |
+| c:\xampp\htdocs\fd\resources\js\manager\managerPageObject.js                                 | JavaScript |         -8 |         -1 |         -1 |        -10 |
+| c:\xampp\htdocs\fd\resources\js\old\SVG_anmiation_test.js                                    | JavaScript |       -138 |         -2 |        -25 |       -165 |
+| c:\xampp\htdocs\fd\resources\js\old\drawProductInformation.js                                | JavaScript |          0 |        -13 |         -2 |        -15 |
+| Total                                                                                        |            |     -4,096 |     -1,410 |       -691 |     -6,197 |
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

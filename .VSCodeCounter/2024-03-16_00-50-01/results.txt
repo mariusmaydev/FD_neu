@@ -1,0 +1,162 @@
+Date : 2024-03-16 00:50:01
+Directory : c:\xampp\htdocs\fd\resources\css
+Total : 89 files,  13843 codes, 2282 comments, 1004 blanks, all 17129 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| SCSS     |         89 |     13,843 |      2,282 |      1,004 |     17,129 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                   | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                      |         89 |     13,843 |      2,282 |      1,004 |     17,129 |
+| ADMIN                                                                                  |         14 |      2,025 |        210 |        116 |      2,351 |
+| ADMIN (Files)                                                                          |          2 |        161 |         10 |         10 |        181 |
+| ADMIN\CouponCodes                                                                      |          2 |         93 |          2 |          7 |        102 |
+| ADMIN\database                                                                         |          1 |         28 |          2 |          1 |         31 |
+| ADMIN\designs                                                                          |          1 |        568 |         35 |         29 |        632 |
+| ADMIN\engraving                                                                        |          1 |          3 |          2 |          1 |          6 |
+| ADMIN\index                                                                            |          1 |         44 |          2 |          6 |         52 |
+| ADMIN\login                                                                            |          1 |         88 |          2 |         10 |        100 |
+| ADMIN\orders                                                                           |          1 |        515 |         32 |         15 |        562 |
+| ADMIN\products                                                                         |          1 |        357 |        111 |         26 |        494 |
+| ADMIN\statistics                                                                       |          1 |         35 |          1 |          2 |         38 |
+| ADMIN\stripe                                                                           |          1 |        120 |          0 |          5 |        125 |
+| ADMIN\testspace                                                                        |          1 |         13 |         11 |          4 |         28 |
+| PUBLIC                                                                                 |         47 |      7,941 |      1,447 |        442 |      9,830 |
+| PUBLIC (Files)                                                                         |          1 |         27 |          0 |          2 |         29 |
+| PUBLIC\cart                                                                            |          3 |        712 |        109 |         26 |        847 |
+| PUBLIC\checkout                                                                        |          9 |      1,176 |        241 |         83 |      1,500 |
+| PUBLIC\checkout (Files)                                                                |          5 |        899 |        121 |         48 |      1,068 |
+| PUBLIC\checkout\subPages                                                               |          4 |        277 |        120 |         35 |        432 |
+| PUBLIC\converter                                                                       |         14 |      2,811 |        265 |        132 |      3,208 |
+| PUBLIC\converter (Files)                                                               |          1 |        520 |         17 |         21 |        558 |
+| PUBLIC\converterStart                                                                  |          8 |      2,296 |        424 |        104 |      2,824 |
+| PUBLIC\converterStart (Files)                                                          |          2 |        546 |        153 |         28 |        727 |
+| PUBLIC\converterStart\desktop                                                          |          3 |        975 |        132 |         38 |      1,145 |
+| PUBLIC\converterStart\mobile                                                           |          3 |        775 |        139 |         38 |        952 |
+| PUBLIC\converter\DOMConverter                                                          |          1 |         71 |          2 |          2 |         75 |
+| PUBLIC\converter\elements                                                              |          4 |        516 |         32 |         30 |        578 |
+| PUBLIC\converter\toolBar                                                               |          8 |      1,704 |        214 |         79 |      1,997 |
+| PUBLIC\converter\toolBar (Files)                                                       |          4 |        792 |        186 |         42 |      1,020 |
+| PUBLIC\converter\toolBar\bottomBar                                                     |          4 |        912 |         28 |         37 |        977 |
+| PUBLIC\imprint                                                                         |          1 |         79 |         12 |          7 |         98 |
+| PUBLIC\index                                                                           |          2 |        486 |        104 |         26 |        616 |
+| PUBLIC\login                                                                           |          1 |         86 |          1 |          8 |         95 |
+| PUBLIC\paymentComplete                                                                 |          1 |         80 |        129 |         21 |        230 |
+| PUBLIC\profile                                                                         |          7 |        188 |        162 |         33 |        383 |
+| PUBLIC\profile (Files)                                                                 |          1 |         34 |         82 |         22 |        138 |
+| PUBLIC\profile\subPages                                                                |          6 |        154 |         80 |         11 |        245 |
+| designs                                                                                |          1 |        318 |          8 |         38 |        364 |
+| general                                                                                |         11 |      2,255 |        402 |        264 |      2,921 |
+| general (Files)                                                                        |          7 |      1,479 |        323 |        229 |      2,031 |
+| general\CookieBanner                                                                   |          1 |        270 |         20 |         13 |        303 |
+| general\Footer                                                                         |          2 |        116 |         13 |          4 |        133 |
+| general\NavigationBar                                                                  |          1 |        390 |         46 |         18 |        454 |
+| imageMenu                                                                              |          3 |        647 |        111 |         39 |        797 |
+| other                                                                                  |          1 |         14 |          1 |          2 |         17 |
+| productInformation                                                                     |          1 |         56 |          1 |          6 |         63 |
+| themes                                                                                 |         11 |        587 |        102 |         97 |        786 |
+| themes\theme1                                                                          |          7 |        401 |         37 |         68 |        506 |
+| themes\theme2                                                                          |          4 |        186 |         65 |         29 |        280 |
++----------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                               | language | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\xampp\htdocs\fd\resources\css\ADMIN\CouponCodes\A_couponCodes.scss                  | SCSS     |         57 |          1 |          4 |         62 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\CouponCodes\_couponCodeList.scss                | SCSS     |         36 |          1 |          3 |         40 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\_ADMIN.scss                                     | SCSS     |         93 |          8 |          6 |        107 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\_Navigation.scss                                | SCSS     |         68 |          2 |          4 |         74 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\database\A_database.scss                        | SCSS     |         28 |          2 |          1 |         31 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\designs\A_designs.scss                          | SCSS     |        568 |         35 |         29 |        632 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\engraving\AD_engraving.scss                     | SCSS     |          3 |          2 |          1 |          6 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\index\A_index.scss                              | SCSS     |         44 |          2 |          6 |         52 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\login\A_login.scss                              | SCSS     |         88 |          2 |         10 |        100 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\orders\A_orders.scss                            | SCSS     |        515 |         32 |         15 |        562 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\products\A_products.scss                        | SCSS     |        357 |        111 |         26 |        494 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\statistics\A_statistics.scss                    | SCSS     |         35 |          1 |          2 |         38 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\stripe\A_stripe.scss                            | SCSS     |        120 |          0 |          5 |        125 |
+| c:\xampp\htdocs\fd\resources\css\ADMIN\testspace\A_testSpace.scss                      | SCSS     |         13 |         11 |          4 |         28 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\_publicMain.scss                               | SCSS     |         27 |          0 |          2 |         29 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\cart\_cartList.scss                            | SCSS     |        412 |         63 |          9 |        484 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\cart\_cartRight.scss                           | SCSS     |        158 |          3 |          8 |        169 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\cart\cart.scss                                 | SCSS     |        142 |         43 |          9 |        194 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\checkout\_checkoutAddress.scss                 | SCSS     |         74 |         17 |          5 |         96 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\checkout\_mobileProductOverview.scss           | SCSS     |        148 |         10 |          3 |        161 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\checkout\_mobileProductOverviewList.scss       | SCSS     |        176 |         59 |          9 |        244 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\checkout\_rightPart.scss                       | SCSS     |        196 |          6 |          8 |        210 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\checkout\checkout.scss                         | SCSS     |        305 |         29 |         23 |        357 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\checkout\subPages\_Address.scss                | SCSS     |         31 |         73 |          6 |        110 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\checkout\subPages\_Overview.scss               | SCSS     |         61 |         13 |          3 |         77 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\checkout\subPages\_Payment.scss                | SCSS     |        134 |          6 |         20 |        160 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\checkout\subPages\_Sending.scss                | SCSS     |         51 |         28 |          6 |         85 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converterStart\_projectDetails.scss            | SCSS     |         43 |         60 |          7 |        110 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converterStart\converterStart.scss             | SCSS     |        503 |         93 |         21 |        617 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converterStart\desktop\_Categories.scss        | SCSS     |        224 |          7 |          4 |        235 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converterStart\desktop\_projectDetails.scss    | SCSS     |        541 |         83 |         21 |        645 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converterStart\desktop\_projects.scss          | SCSS     |        210 |         42 |         13 |        265 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converterStart\mobile\_Categories.scss         | SCSS     |        245 |         43 |          8 |        296 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converterStart\mobile\_projectDetails.scss     | SCSS     |        363 |         35 |         17 |        415 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converterStart\mobile\_projectList.scss        | SCSS     |        167 |         61 |         13 |        241 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\DOMConverter\_DOMConverterMAIN.scss  | SCSS     |         71 |          2 |          2 |         75 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\converter.scss                       | SCSS     |        520 |         17 |         21 |        558 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\elements\_EditorFrame.scss           | SCSS     |         61 |          0 |          3 |         64 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\elements\_EditorFrameMobile.scss     | SCSS     |         69 |          0 |          2 |         71 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\elements\_LeftBar.scss               | SCSS     |        253 |         31 |         18 |        302 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\elements\_RightBar.scss              | SCSS     |        133 |          1 |          7 |        141 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\toolBar\_converterToolBar.scss       | SCSS     |        257 |         14 |         17 |        288 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\toolBar\_converterToolBarHelper.scss | SCSS     |        163 |         12 |          6 |        181 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\toolBar\_converterToolBar_Image.scss | SCSS     |        211 |         32 |          8 |        251 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\toolBar\_converterToolBar_Text.scss  | SCSS     |        161 |        128 |         11 |        300 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\toolBar\bottomBar\_BottomBar.scss    | SCSS     |        321 |          9 |         17 |        347 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\toolBar\bottomBar\_floatingDiv.scss  | SCSS     |        449 |         17 |         14 |        480 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\toolBar\bottomBar\_image.scss        | SCSS     |         71 |          0 |          2 |         73 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\converter\toolBar\bottomBar\_text.scss         | SCSS     |         71 |          2 |          4 |         77 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\imprint\imprint.scss                           | SCSS     |         79 |         12 |          7 |         98 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\index\_overlay.scss                            | SCSS     |        240 |          1 |          9 |        250 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\index\index.scss                               | SCSS     |        246 |        103 |         17 |        366 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\login\login.scss                               | SCSS     |         86 |          1 |          8 |         95 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\paymentComplete\paymentComplete.scss           | SCSS     |         80 |        129 |         21 |        230 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\profile\profile.scss                           | SCSS     |         34 |         82 |         22 |        138 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\profile\subPages\_AccountInformation.scss      | SCSS     |         64 |          6 |          3 |         73 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\profile\subPages\_Adresses.scss                | SCSS     |          3 |         63 |          2 |         68 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\profile\subPages\_Designs.scss                 | SCSS     |         17 |          4 |          2 |         23 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\profile\subPages\_Images.scss                  | SCSS     |         56 |          7 |          2 |         65 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\profile\subPages\_Orders.scss                  | SCSS     |         13 |          0 |          2 |         15 |
+| c:\xampp\htdocs\fd\resources\css\PUBLIC\profile\subPages\_Sparks.scss                  | SCSS     |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\fd\resources\css\designs\designs.scss                                  | SCSS     |        318 |          8 |         38 |        364 |
+| c:\xampp\htdocs\fd\resources\css\general\CookieBanner\_CookieBanner.scss               | SCSS     |        270 |         20 |         13 |        303 |
+| c:\xampp\htdocs\fd\resources\css\general\Footer\FooterDesktop.scss                     | SCSS     |         53 |         12 |          2 |         67 |
+| c:\xampp\htdocs\fd\resources\css\general\Footer\FooterMobile.scss                      | SCSS     |         63 |          1 |          2 |         66 |
+| c:\xampp\htdocs\fd\resources\css\general\NavigationBar\_NavigationBar.scss             | SCSS     |        390 |         46 |         18 |        454 |
+| c:\xampp\htdocs\fd\resources\css\general\_3D.scss                                      | SCSS     |         22 |          2 |          3 |         27 |
+| c:\xampp\htdocs\fd\resources\css\general\_buttons.scss                                 | SCSS     |         65 |         10 |          7 |         82 |
+| c:\xampp\htdocs\fd\resources\css\general\_cursor.scss                                  | SCSS     |         30 |          2 |          1 |         33 |
+| c:\xampp\htdocs\fd\resources\css\general\_main.scss                                    | SCSS     |        258 |         55 |         26 |        339 |
+| c:\xampp\htdocs\fd\resources\css\general\_mediaQueries.scss                            | SCSS     |         21 |         49 |         29 |         99 |
+| c:\xampp\htdocs\fd\resources\css\general\fontfaces.scss                                | SCSS     |         63 |         79 |         13 |        155 |
+| c:\xampp\htdocs\fd\resources\css\general\fonts.scss                                    | SCSS     |      1,020 |        126 |        150 |      1,296 |
+| c:\xampp\htdocs\fd\resources\css\imageMenu\_imageMenu.scss                             | SCSS     |         12 |          2 |          4 |         18 |
+| c:\xampp\htdocs\fd\resources\css\imageMenu\_imageMenuDesktop.scss                      | SCSS     |        274 |         60 |         15 |        349 |
+| c:\xampp\htdocs\fd\resources\css\imageMenu\_imageMenuMobile.scss                       | SCSS     |        361 |         49 |         20 |        430 |
+| c:\xampp\htdocs\fd\resources\css\other\icons.scss                                      | SCSS     |         14 |          1 |          2 |         17 |
+| c:\xampp\htdocs\fd\resources\css\productInformation\_productInformation.scss           | SCSS     |         56 |          1 |          6 |         63 |
+| c:\xampp\htdocs\fd\resources\css\themes\theme1\_buttonNew.scss                         | SCSS     |        140 |          6 |         15 |        161 |
+| c:\xampp\htdocs\fd\resources\css\themes\theme1\_buttons.scss                           | SCSS     |         59 |          1 |          7 |         67 |
+| c:\xampp\htdocs\fd\resources\css\themes\theme1\_container.scss                         | SCSS     |         10 |          6 |          4 |         20 |
+| c:\xampp\htdocs\fd\resources\css\themes\theme1\_helper.scss                            | SCSS     |         26 |          0 |         13 |         39 |
+| c:\xampp\htdocs\fd\resources\css\themes\theme1\_main.scss                              | SCSS     |         91 |         15 |         10 |        116 |
+| c:\xampp\htdocs\fd\resources\css\themes\theme1\_scrollbar.scss                         | SCSS     |         19 |          4 |          3 |         26 |
+| c:\xampp\htdocs\fd\resources\css\themes\theme1\_vars.scss                              | SCSS     |         56 |          5 |         16 |         77 |
+| c:\xampp\htdocs\fd\resources\css\themes\theme2\_buttons.scss                           | SCSS     |         85 |         50 |          9 |        144 |
+| c:\xampp\htdocs\fd\resources\css\themes\theme2\_main.scss                              | SCSS     |         58 |          9 |          8 |         75 |
+| c:\xampp\htdocs\fd\resources\css\themes\theme2\_scrollbar.scss                         | SCSS     |         14 |          4 |          3 |         21 |
+| c:\xampp\htdocs\fd\resources\css\themes\theme2\_vars.scss                              | SCSS     |         29 |          2 |          9 |         40 |
+| Total                                                                                  |          |     13,843 |      2,282 |      1,004 |     17,129 |
++----------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

@@ -11,6 +11,8 @@ class lexOffice {
         let call = new SPLINT.CallPHP(this.PATH, this.NEW_INVOICE);
             call.data.data = await lexOfficeObjectGenerator.newInvoiceData(orderData, orderID);
             call.data.OrderID = orderID;
+            console.dir(call);
+            debugger
         return call.send();
     }
     static async newDeliveryNote(orderData, orderID){

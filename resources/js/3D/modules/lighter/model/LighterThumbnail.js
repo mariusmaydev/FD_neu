@@ -93,20 +93,46 @@ export default class LighterThumbnail {
         thumbnail.lowerMesh.material.sheenColor = color;
         thumbnail.lowerMesh.material.emissive = color;
         thumbnail.lowerMesh.material.needsUpdate = true;
+        SPLINT.GUI.loadObj(thumbnail.upperMesh.material);
+        
+        console.log(thumbnail)
+    }
+    loadAlphaMap(texture){
+        let material = this.thumbnailObj.upperMesh.material;
+
+        MaterialsEngraving.loadAlphaMap(material, texture)
+        MaterialHelper.setMapOffset(material, 0, 1);
+        MaterialHelper.setMapRepeat(material, 1, 0.38401);
+
+        let material1 = this.thumbnailObj.lowerMesh.material;
+
+        MaterialsEngraving.loadAlphaMap(material1, texture)
+        MaterialHelper.setMapOffset(material1, 0, 0.38401);
+        MaterialHelper.setMapRepeat(material1, 1, 0.61599);
     }
     loadNormalMap(texture){
         let material = this.thumbnailObj.upperMesh.material;
+
         MaterialsEngraving.loadNormalMap(material, texture)
+        MaterialHelper.setMapOffset(material, 0, 1);
+        MaterialHelper.setMapRepeat(material, 1, 0.38401);
 
         let material1 = this.thumbnailObj.lowerMesh.material;
+        
         MaterialsEngraving.loadNormalMap(material1, texture)
+        MaterialHelper.setMapOffset(material1, 0, 0.38401);
+        MaterialHelper.setMapRepeat(material1, 1, 0.61599);
     }
     loadEnvMap(texture){
         let material = this.thumbnailObj.upperMesh.material;
         MaterialsEngraving.loadEnvMap(material, texture)
+        MaterialHelper.setMapOffset(material, 0, 1);
+        MaterialHelper.setMapRepeat(material, 1, 0.38401);
 
         let material1 = this.thumbnailObj.lowerMesh.material;
         MaterialsEngraving.loadEnvMap(material1, texture)
+        MaterialHelper.setMapOffset(material1, 0, 0.38401);
+        MaterialHelper.setMapRepeat(material1, 1, 0.61599);
     }
 
 }

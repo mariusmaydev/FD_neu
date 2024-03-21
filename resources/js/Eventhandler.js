@@ -4,11 +4,11 @@ var asyncProgress = false;
 
 let SVG_Loader = new SPLINT.SVG.Loader();
 
-const BufferStorage = new SPLINT.BufferStorage("FD", true);
 function reload(){
   location.reload();
 }
-
+// import("../../../Splint/lib/threeJS/build/three.js");
+console.dir(ShadowRoot)
 class Pages {
   static INDEX                = "IndexBODY";
   static CONVERTER_START      = "ConverterStartBODY";

@@ -5,8 +5,8 @@ import SPLINT from 'SPLINT';
 import CompressedAnimations from './animations.js';
 import * as MATERIALS from '../../assets/materials/materials.js';
 import LIGHT from './light.js';
-import LighterAnimations from '../animations.js';
-import SETUP from '../setup.js';
+import LighterAnimations from '../../lighter/animations.js';
+import SETUP from '../../lighter/setup.js';
 import MODEL from '../model.js';
 import Communication from './communication.js';
 

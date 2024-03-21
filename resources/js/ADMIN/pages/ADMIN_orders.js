@@ -3,7 +3,6 @@ class ADMIN_orders extends ADMIN_DrawTemplate {
     static VIEW = "view";
     constructor(){
         super("orders");
-        // this.draw();
         this.mainElement.Class("ADMIN_orderMain");
     }
     draw(){
@@ -22,7 +21,6 @@ class ADMIN_orders extends ADMIN_DrawTemplate {
             }.bind(this);
         this.choosePage();
         window.onhashchange = function(e){
-            console.log(arguments);
             this.choosePage();
         }.bind(this);
     }
@@ -39,7 +37,10 @@ class ADMIN_orders extends ADMIN_DrawTemplate {
             this.radioButtonType.setValue("Open");
         }
         switch(hashtag){
-            case 'view' : new ADMIN_order_view(this.mainElement, hashtags[1], hashtags[2]); this.radioButtonType.mainElement.style.display = "none"; break;
+            case 'view' : {
+                new ADMIN_order_view(this.mainElement, hashtags[1], hashtags[2]); 
+                this.radioButtonType.mainElement.style.display = "none"; 
+            } break;
             default : {
                 new ADMIN_order_list(this.mainElement, hashtags); /*this.radioButtonType.mainElement.style.display = "block"*/;
              } break;

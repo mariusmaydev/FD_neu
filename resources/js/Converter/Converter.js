@@ -23,7 +23,7 @@ const CONVERTER_STORAGE = new SPLINT.autoObject();
 
 class Converter {
     static {
-        this.workerManager = new SPLINT.Worker.WebWorker.Manager("js/converter/worker/_ConverterWorker.js");
+        this.workerManager = new SPLINT.Worker.WebWorker.Manager("js/_WebWorker/_common/_converterWorker/_ConverterWorker.js");
         this.workerCreateThumbnail;
         this.workerTextRendering;
     }
@@ -48,6 +48,7 @@ class Converter {
         squareCheck.height = LighterHeight * 16.4;
         squareCheck.heightMM = LighterHeight;
     }
+    
         this.draw();
         this.init();
         this.initEvents();
@@ -149,7 +150,7 @@ class Converter {
               
     CONVERTER_STORAGE.canvasNEW.setSize();
     if(SPLINT.Events.onLoadingComplete.dispatched == true){
-          DSController.saveAll();
+          DSController.saveAll.callFromIdle(1000, DSController);
           // DSProject.saveAsync();
     };
   }
@@ -157,6 +158,7 @@ class Converter {
 
 
     window.addEventListener("beforeunload", async function(){
+        ConverterRenderThumbnail.save()
         await DSController.createThumbnail();
         await DSController.saveAll();
     });

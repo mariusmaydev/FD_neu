@@ -36,35 +36,4 @@ class ConverterDrawHelper {
             }
         }
     }
-    // static get Image() {
-    //     return class {
-    //         static drawEdge(ctx) {
-
-    //             function obj(ctx){
-    //                 this.edge = function(element, flag = false, index){
-    //                   if(flag){
-              
-    //                     CanvasHelper.drawEdges(element, element.data.ImageWidth, element.data.ImageHeight, index);
-    //                   } else {
-    //                   //   element.ctx.save();
-    //                   //   element.ctx.beginPath();
-    //                   //   element.ctx.fillStyle = 'black';
-    //                   //   element.ctx.translate(element.data.ImagePosX, element.data.ImagePosY);
-    //                   //   element.ctx.rotate(element.data.ImageAlign * Math.PI / 180);
-              
-    //                     CanvasHelper.drawEdges(element, element.data.ImageWidth, element.data.ImageHeight);
-    //                   //   element.ctx.closePath();
-    //                   //   element.ctx.restore();
-    //                   }
-    //                 }
-    //                 this.draw = function(element, pointFlag = true, black = false){    
-    //                   if(pointFlag){
-    //                       canvasPaths.updatePointPath(element, element.data.ImageWidth, element.data.ImageHeight);
-    //                   }
-    //                   canvasPaths.updateImg(element, black);
-    //                 }
-    //               }
-    //         }
-    //     }
-    // }
 }

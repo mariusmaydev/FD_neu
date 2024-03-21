@@ -1,6 +1,6 @@
 
 class ProjectDetails_Mobile {
-    constructor(data, index, parent){
+    constructor(data, parent){
         this.parent = parent;
         this.id = "ProjectDetails_" + "_";
         this.data = data;

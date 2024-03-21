@@ -81,16 +81,16 @@ class DataStorageImage_C {
       return call.send();
     }
     parse(index = null){
-      let data = this.getClone();
-          data = data.Storage;
-          for(let i = 0; i < data.length; i++){
-            delete data[i].images;
-          }
-      if(index != null){
-        return data[index];
-      } else {
-        return data;
-      }
+        let data = this.getClone();
+            data = data.Storage;
+            for(let i = 0; i < data.length; i++){
+                delete data[i].images;
+            }
+        if(index != null){
+            return data[index];
+        } else {
+            return data;
+        }
     }
     length(){
       return this.Storage.length;

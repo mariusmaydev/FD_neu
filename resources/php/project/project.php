@@ -41,9 +41,9 @@
                 $DataSet -> TBName(Sessions::get(Sessions::USER_ID));
             }
             AccessDB::edit(ProjectDB::getStruct(), $DataSet);
-            if($editThumbnail && $Storage["Thumbnail"] != null){
-                self::editImages(Sessions::get(Sessions::USER_ID), $Storage[ProjectDB::PROJECT_ID], $Storage["Thumbnail"]);
-            }
+            // if($editThumbnail && $Storage["Thumbnail"] != null){
+            //     self::editImages(Sessions::get(Sessions::USER_ID), $Storage[ProjectDB::PROJECT_ID], $Storage["Thumbnail"]);
+            // }
             // Communication::sendBack(null);
         }
         static function removeFromDesign(array|null $hashtags, array|null $categories, $ProjectID = null, $UserID = null, $print = true) : void {
@@ -123,8 +123,8 @@
         }
         static function editImages($UserID, $ProjectID, $thumbnail = null, $FullNC = null, $SVG = null){
             $PATH = new PATH_Project($UserID, $ProjectID);
-            if($thumbnail != null){                
-                DataEdit($PATH -> get(PATH_Project::NONE), $PATH -> getFileName(PATH_Project::THUMBNAIL), Image::base64_to_png($thumbnail));
+            if($thumbnail != null){          
+                DataEdit($PATH -> get(PATH_Project::NONE), $PATH -> getFileName(PATH_Project::THUMBNAIL), $thumbnail);
               }
               if($FullNC != null){
                 DataEdit($PATH -> get(PATH_Project::NONE), $PATH -> getFileName(PATH_Project::NC), $FullNC);
@@ -329,7 +329,6 @@
 
             $PATH = new PATH_Project($UserID, $ProjectID);
             $response["Thumbnail"]   = Paths::parsePath($PATH -> get(PATH_Project::THUMBNAIL));
-
             Communication::sendBack($response, true, $print);
             return $response;
         }

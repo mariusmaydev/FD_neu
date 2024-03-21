@@ -16,7 +16,7 @@
         <s-part src="/js/manager/manager.js"></s-part>
         <s-module src="/js/3D/modules/module_3D_init.js"></s-module>
 
-        <s-part first src="/js/Pages/pagesHelper.js"></s-part>
+        <s-part first src="/js/Pages/pagesTemplate.js"></s-part>
         <s-part src="/js/assets/UserData.js"></s-part>
 
         <s-part src="/js/Login/LoginHelper.js"></s-part>
@@ -29,8 +29,9 @@
         <s-part src="/js/assets/product/"></s-part>
         <s-part src="/js/assets/functionsCouponCode.js"></s-part>
         <s-part src="/js/Projects/Projects.js"></s-part>
-        <s-part src="/js/Projects/ProjectsHelper.js"></s-part>
-        <s-part src="/js/Projects/ProjectList/Details/desktop/ProjectDetailsDesktop.js"></s-part>
+        <s-part src="/js/Helper/ProjectsHelper.js"></s-part>
+        <s-part src="/js/Projects/ProjectList/Details/ProjectDetailsHelper.js"></s-part>
+        <s-part src="/js/Projects/ProjectList/Details/ProjectDetailsDesktop.js"></s-part>
         <s-part src="/js/Projects/ProjectList/Details/ProjectDetailsMobile.js"></s-part>
         <s-part src="/js/Projects/ProjectList/ProjectDetails.js"></s-part>
 
