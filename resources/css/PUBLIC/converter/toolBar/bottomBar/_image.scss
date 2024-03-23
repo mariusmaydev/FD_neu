@@ -41,10 +41,10 @@
             > button {
                 box-sizing: border-box;
                 padding-inline: 0rem;
-                aspect-ratio: 0.8/1;
+                aspect-ratio: 1/1;
                 height: 100%;
                 > span {
-                    font-size: 7rem;  
+                    font-size: 2rem;  
                 }
                 &[state*='active']{
                     background-color: vars.$color-primary-complementary;
@@ -59,13 +59,13 @@
             margin-right: 0.3em;
             user-select: none;
             position: relative;
-            aspect-ratio: 0.8/1;
+            aspect-ratio: 1/1;
             height: 100%;
             top: 0;
             left: 0;
             padding-inline: 0;
             > span {
-                font-size: 6rem;
+                font-size: 2rem;
             }
         }
     }

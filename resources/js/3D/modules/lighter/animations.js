@@ -388,7 +388,6 @@ export default class LighterAnimations {
         this.lighter_flame.onStop = function(progress, name, groupe){
             if(groupe != null){
                 groupe.visible = false;
-                this.instance.render();
             }
         }.bind(this);
 

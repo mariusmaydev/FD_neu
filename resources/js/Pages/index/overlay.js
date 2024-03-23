@@ -36,8 +36,10 @@ class indexOverlay {
     drawPart1(){
 
         this.part1 = new indexOverlayPart(this.contentElement, "start");
-        
-        this.part1.addText("part1_1", "Ein Feuerzeug. Nur ganz anders.", null, "part1_1");
+        //412x828
+        //2048x991
+        this.part1.addText("part1_1", document.body.getBoundingClientRect().width, null, "part1_1");
+        // this.part1.addText("part1_2", JSON.stringify(window.devicePixelRatio), null, "part1_1");
     }
     drawPart2(){
         this.part2 = new indexOverlayPart(this.contentElement, "colors");

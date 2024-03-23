@@ -12,12 +12,12 @@ class ConverterMouseHandler {
         if(!this.CanvasActive){ 
             return; 
         }
-        if((Date.now() - ConverterMouseHandler.animationTime) > 16){
-            ConverterMouseHandler.animationTime = Date.now();
-            let a = window.requestAnimationFrame(function(){
+        // if((Date.now() - ConverterMouseHandler.animationTime) > 16){
+            // ConverterMouseHandler.animationTime = Date.now();
+            requestAnimationFrame(function(){
                 ConverterEvents.move.call(this, e)
             }.bind(this));
-        }
+        // }
     }
     static mouseUp(e){
         if(!this.CanvasActive){

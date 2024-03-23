@@ -1,20 +1,13 @@
 
-// import { Fog } from "@THREE_ROOT_DIR/src/scenes/Fog.js";
-// import { PerspectiveCamera } from "@THREE_ROOT_DIR/src/cameras/PerspectiveCamera.js";
+
 import SPLINT from 'SPLINT';
 import * as MATERIALS from '../../assets/materials/materials.js';
 import LIGHT from './light.js';
-// import { Texture } from "@THREE_SRC/textures/Texture.js";
-
 import LighterAnimations from '../animations.js';
 import SETUP from '../setup.js';
 import MaterialsLighterGeneral from '../../assets/newMaterials/materialsLighterGeneral.js';
 import Communication from './communication.js';
-// import * as THC from "@THREE_ROOT_DIR/src/constants.js";
 import * as THREE from "@THREE";
-// import { WebGLCubeRenderTarget } from "@THREE_ROOT_DIR/src/renderers/WebGLCubeRenderTarget.js";
-// import { CubeCamera } from "@THREE_ROOT_DIR/src/cameras/CubeCamera.js";
-// import { Color } from "@THREE_ROOT_DIR/src/math/Color.js";
 import MaterialHelper from "@SPLINT_MODULES_DIR/ThreeJS/materials/MaterialHelper.js";
 import LighterThumbnail from "../model/LighterThumbnail.js";
 import LighterModel from "../model/LighterModel.js";
@@ -39,20 +32,18 @@ export class draw {
         this.init();
         this.draw();
             
-            if(this.canvas.parentElement.getAttribute("mouseEvents") == 'true'){
-                this.mouseHandler.onMove = function(event){
-                    if(this.mouseHandler.mouseDown){
-                        this.render();
-                        this.lighterModel.rotate(0, 0, this.mouseHandler.dX);
-                        
-                    } else {
-                    }
-                }.bind(this);
+        if(this.canvas.parentElement.getAttribute("mouseEvents") == 'true'){
+            this.mouseHandler.onMove = function(event){
+            if(this.mouseHandler.mouseDown){
+                this.render();
+                this.lighterModel.rotate(0, 0, this.mouseHandler.dX);
             }
+        }.bind(this);
+    }
 
     }
     remove(){
-        this.onResize = function(){};
+        // this.onResize = function(){};
         this.AnimationMixer.stop();
     }
     getName(){
@@ -78,10 +69,19 @@ export class draw {
         }
         this.Animations = new LighterAnimations(this);
         this.setupCamera();
-        this.cubeRenderTarget = new THREE.WebGLCubeRenderTarget( 256 );
-        this.cubeRenderTarget.texture.type = THREE.HalfFloatType;
-        this.cubeCamera = new THREE.CubeCamera( 1, 1000, this.cubeRenderTarget );
-
+        // SPLINT.ResourceManager.dataTextures.indexBackground.then(async function(texture){
+        //     console.dir(texture)
+        //     // let t1 = (await SPLINT.ResourceManager.dataTextures.indexBackground);
+        //     // let clone = t1.SPLINT.ThreeClone();
+        //         // texture.mapping = THREE.EquirectangularReflectionMapping;
+        //         texture.mapping = THREE.EquirectangularReflectionMapping;
+        //     this.scene.background = texture;
+        //     this.scene.enviroment = texture;
+        // }.bind(this))
+        // this.cubeRenderTarget = new THREE.WebGLCubeRenderTarget( 256 );
+        // this.cubeRenderTarget.texture.type = THREE.HalfFloatType;
+        // this.cubeCamera = new THREE.CubeCamera( 1, 1000, this.cubeRenderTarget );
+        // this.scene.add( this.cubeCamera );
         this.materials.chrome = MaterialsLighterGeneral.chrome(this);
         this.materials.chrome.needsUpdate = true;
     }
@@ -110,18 +110,16 @@ export class draw {
         this.render();
     }
     async changeEngravingColor(color){
-        let group = this.setup.getLighterGroupe(this.scene, "lighter")
         let Gold = new THREE.Color(0xe8b000);
         let Chrome = new THREE.Color(0xc0c0c0);
         if(color == "GOLD"){
             this.thumbnail.setColor(Gold);
-
         } else {
             this.thumbnail.setColor(Chrome);
         }
         this.render();
     }
-    async loadThumbnail(name, GoldFlag){
+    async loadThumbnail(GoldFlag){
         this.getName();
         if(this.nameThumbnail.new != this.nameThumbnail.before){
             this.thumbnailReload = true;
@@ -131,60 +129,53 @@ export class draw {
         this.nameThumbnail.before = this.nameThumbnail.new;
         return new Promise(async function(resolve){
             if(this.scene != null){
-
-            let binaryImg = await this.StorageManager.get(this.drawID + "_thumbnail");
-            if(binaryImg == undefined){
-                binaryImg = await SPLINT.BinaryImage.fromURL(location.origin + (this.canvas.getAttribute("thumbsrc")));
-                
-                this.StorageManager.set(this.drawID + "_thumbnail", binaryImg);
-            }
-            let bb = await binaryImg.export_imageData();
-
-            let texture = new THREE.Texture(bb);
-            this.thumbnail = new LighterThumbnail(this, "lighter");
-            if(GoldFlag){
-                this.thumbnail.loadThumbnailMaterial(texture, 0xe8b000, false);  
-                this.thumbnail.loadNormalMap(texture);  
+                let binaryImg = await this.StorageManager.get(this.drawID + "_thumbnail");
+                if(binaryImg == undefined){
+                    binaryImg = await SPLINT.BinaryImage.fromURL(location.origin + (this.canvas.getAttribute("thumbsrc")));
+                    this.StorageManager.set(this.drawID + "_thumbnail", binaryImg);
+                }
+                let bb = await binaryImg.export_imageData();
+                let texture = new THREE.Texture(bb); 
+                this.thumbnail = new LighterThumbnail(this, "lighter");  
+                if(GoldFlag){
+                    this.thumbnail.loadThumbnailMaterial(texture, 0xe8b000, false);
+                } else {      
+                    this.thumbnail.loadThumbnailMaterial(texture, 0xc0c0c0, false);
+                }
                 this.thumbnail.loadAlphaMap(texture);
-            } else {
-                this.thumbnail.loadThumbnailMaterial(texture, 0xc0c0c0, false);  
-                this.thumbnail.loadAlphaMap(texture); 
-                this.thumbnail.loadNormalMap(texture); 
             }
             resolve(true) 
-            }
         }.bind(this));
     }
-    onResize(){
-        let a = this.canvas.parentNode.clientWidth;
-        let b = this.canvas.parentNode.clientHeight;
-        if(SPLINT.ViewPort.getSize() == "mobile-small"){
-            this.canvas.width = a * 2;
-            this.canvas.height = b * 2;
-        } else {
-            this.canvas.width = a * 2;
-            this.canvas.height = b * 2;
+    adjustSizes(){
+        const parentSize = {
+            width   : this.canvas.parentNode.clientWidth,
+            height  : this.canvas.parentNode.clientHeight
         }
-        this.canvas.style.width = a + "px";
-        this.canvas.style.height = b + "px";
-        if(SPLINT.ViewPort.getSize() == "mobile-small"){
-            // this.renderer.setPixelRatio( Math.min(2, window.devicePixelRatio));
-            this.renderer.setPixelRatio( window.devicePixelRatio);
+        if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
+            this.canvas.width   = parentSize.width * 2;
+            this.canvas.height  = parentSize.height * 2;
         } else {
-            this.renderer.setPixelRatio( window.devicePixelRatio * 1);
+            this.canvas.width   = parentSize.width * 2;
+            this.canvas.height  = parentSize.height * 2;
         }
-        this.camera.aspect = this.canvas.parentNode.clientWidth / this.canvas.parentNode.clientHeight;
-        this.camera.updateProjectionMatrix();
-        this.renderer.setSize( this.canvas.parentNode.clientWidth * 2, this.canvas.parentNode.clientHeight * 2, true);
+        this.canvas.style.width     = parentSize.width  + "px";
+        this.canvas.style.height    = parentSize.height + "px";
+
+        if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
+            this.renderer.setPixelRatio( window.devicePixelRatio * 1.5);
+            this.renderer.setSize( parentSize.width /2, parentSize.height /2, false);
+        } else {
+            this.renderer.setPixelRatio( window.devicePixelRatio * 2);
+            this.renderer.setSize( parentSize.width, parentSize.height, false);
+        }
         this.render();
     }
     async onFinishLoading(){
         this.changeColor("base");
         this.scene.traverse(function(object) {
             if(object.type === 'Mesh') {
-                if(object.material.name == "chrome"){
-                    // object.material = MaterialsLighterGeneral.chrome1(this);
-                } else if(object.material.name == "body"){
+                if(object.material.name == "body"){
                     object.material = MaterialsLighterGeneral.bodyColor(this, 0x006800);
                     object.material.needsUpdate = true
                 }
@@ -204,43 +195,64 @@ export class draw {
                 if(this.canvas.getAttribute("showDimensions") == 'true'){
                     this.communication.showDimensions();
                 }
-                this.onResize();
+                this.adjustSizes();
                 this.render();
             }.bind(this), 100);
 
             let normalMapData = await this.StorageManager.get(this.drawID + "_normalMap");
-            if(normalMapData == undefined || normalMapData.num != this.num){
+            
+            if(normalMapData == undefined){
                 let binaryImg = await this.StorageManager.get(this.drawID + "_thumbnail");
                 if(binaryImg == undefined){
                     binaryImg = await SPLINT.BinaryImage.fromURL(location.origin + (this.canvas.getAttribute("thumbsrc").slice(0,-3)));
-                    
                     this.StorageManager.set(this.drawID + "_thumbnail", binaryImg);
                 }
                 let d = await binaryImg.export_imageData();
-                
-                workerInterfaceNew.createNormalMap(this.drawID, d).then(async function(imageData){
-                    this.StorageManager.set(this.drawID + "_normalMap", {num: this.num, data: imageData});
+                workerInterfaceNew.createNormalMap(this.drawID + "_normalMap", d).then(async function(imageData){
+                    this.StorageManager.set(this.drawID + "_normalMap", imageData);
                     let texture = new THREE.Texture(imageData);
                         texture.needsUpdate = true;
+
+                    // this.thumbnail.loadEnvMap(this.cubeRenderTarget.texture);
+
                     this.thumbnail.loadNormalMap(texture);
+
+                    this.thumbnail.setColor(new THREE.Color(0xe8b000))
+
+                    let obj = {
+                        magFilter: THREE.LinearFilter,
+                        minFilter: THREE.LinearMipMapLinearFilter
+                    }
+                    this.thumbnail.setMaterialMapAttributes(obj);
                     this.render();
                 }.bind(this));
             } else {
-                let texture = new THREE.Texture(normalMapData.data);
+                let texture = new THREE.Texture(normalMapData);
                     texture.needsUpdate = true;
+
+                    // this.thumbnail.loadEnvMap(this.cubeRenderTarget.texture);
                 this.thumbnail.loadNormalMap(texture);
+
+                this.thumbnail.setColor(new THREE.Color(0xe8b000))
+
+                let obj = {
+                    magFilter: THREE.LinearFilter,
+                    minFilter: THREE.LinearMipMapLinearFilter
+                }
+
+                this.thumbnail.setMaterialMapAttributes(obj);
                 this.render();
+                // this.thumbnail.lighter1.loadEnvMap(this.cubeRenderTarget.texture);
+                // this.thumbnail.lighter2.loadEnvMap(this.cubeRenderTarget.texture);
+                // this.render();
             }
         }
     }
     setupCamera(){
-        this.camera     = new THREE.PerspectiveCamera(55, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 10);
+        this.camera = new THREE.PerspectiveCamera(65, this.canvas.parentNode.clientWidth / this.canvas.parentNode.clientHeight, 0.01, 10);
         this.camera.position.set(0, 0.15, 0.45);
         this.camera.rotation.set(0, 0, 0);
-        this.camera.filmGauge = 50;
-    }
-    async light(){
-        LIGHT(this.scene);
+        this.camera.filmGauge = 0;
     }
     async animate(){
         if(this.renderer == null || this.scene == null){
@@ -253,22 +265,19 @@ export class draw {
         if(this.renderer == null || this.scene == null){
             return;
         }
-        this.cubeCamera.update(this.renderer, this.scene);
-        this.context.clearRect(0, 0, this.canvas.parentNode.clientWidth*2, this.canvas.parentNode.clientHeight*2);
+        // this.cubeCamera.update(this.renderer, this.scene);
         this.renderer.render(this.scene, this.camera);
-        let domE = this.renderer.domElement;
-        this.context.drawImage(domE, 0, 0, domE.width, domE.height, 0, 0, this.canvas.width, this.canvas.height);
     }
     async draw(){
         this.drawBackground();
-        this.light();
+        LIGHT(this.scene);
         this.scene.add( this.camera );
         return new Promise(async function(resolve){
             await this.lighterModel.init();
             if(this.canvas.getAttribute("color") == "CHROME"){
-                await this.loadThumbnail("lighter", false);
+                await this.loadThumbnail(false);
             } else {
-                await this.loadThumbnail("lighter", true);
+                await this.loadThumbnail(true);
             }
             this.Animations.lighter_close.start(false, 0);
             this.Animations.lever_close.start(true, 0);
@@ -277,7 +286,6 @@ export class draw {
         }.bind(this));
     }
     async drawBackground(){
-
         let plane = SPLINT.object.Plane(180, 1600, 1, 1);
         plane.get().geometry.translate(0, 799, 0);
         // plane.position(0, 0, -15);
@@ -285,9 +293,5 @@ export class draw {
             plane.plane.material = MATERIALS.other.shadowCatcher();
             plane.plane.receiveShadow = true;
         this.scene.add(plane.plane);
-    }
-    events(){
-        SPLINT.Events.onLoadingComplete = function(){
-        }.bind(this);
     }
 }

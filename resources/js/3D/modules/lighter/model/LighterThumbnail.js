@@ -11,6 +11,24 @@ export default class LighterThumbnail {
         this.loadThumbnailPlanes()
         this.thumbnailObj = LighterThumbnail.getThumbnailObj(this.lighterGroup);
     }
+    get materialUpper(){
+        return this.thumbnailObj.upperMesh.material;
+    }
+    set materialUpper(v){
+        this.thumbnailObj.upperMesh.material = v;
+        this.thumbnailObj.upperMesh.needsUpdate = true;
+    }
+    get materialLower(){
+        return this.thumbnailObj.lowerMesh.material;
+    }
+    set materialLower(v){
+        this.thumbnailObj.lowerMesh.material = v;
+        this.thumbnailObj.lowerMesh.needsUpdate = true;
+    }
+    setMaterialMapAttributes(obj){
+        MaterialHelper.setMapAttributes(this.materialLower, obj);
+        MaterialHelper.setMapAttributes(this.materialUpper, obj);
+    }
     loadThumbnailPlanes(){
         let plane1 = SPLINT.object.Plane(3.4/1000, 1.976/1000, 1, 1);
             plane1.plane.castShadow = false;
@@ -93,9 +111,6 @@ export default class LighterThumbnail {
         thumbnail.lowerMesh.material.sheenColor = color;
         thumbnail.lowerMesh.material.emissive = color;
         thumbnail.lowerMesh.material.needsUpdate = true;
-        SPLINT.GUI.loadObj(thumbnail.upperMesh.material);
-        
-        console.log(thumbnail)
     }
     loadAlphaMap(texture){
         let material = this.thumbnailObj.upperMesh.material;

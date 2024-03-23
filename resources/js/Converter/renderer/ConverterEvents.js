@@ -36,30 +36,22 @@ class ConverterEvents {
               }
               if(isMouse){
                 if(edge == 0 || edge == 4){
-                //   cursorHandler.setCursor("doubleArrow", rotation + 90);
             SPLINT.Tools.CursorHandler.setCursor("doubleArrow", rotation + 90);
                 } else if(edge == 2 || edge == 6){
-                //   cursorHandler.setCursor("doubleArrow", rotation);
             SPLINT.Tools.CursorHandler.setCursor("doubleArrow", rotation);
                 } else if(edge == 1 || edge == 5){
-                //   cursorHandler.setCursor("doubleArrow", rotation - 45);
             SPLINT.Tools.CursorHandler.setCursor("doubleArrow", rotation - 45);
                 } else if(edge == 8){
-                //   cursorHandler.unsetCursor();
-                  //cursorHandler.setCursor("rotate", rotation);
             SPLINT.Tools.CursorHandler.setCursor("rotate", rotation );
                 } else {
-                //   cursorHandler.setCursor("doubleArrow", rotation + 45);
             SPLINT.Tools.CursorHandler.setCursor("doubleArrow", rotation + 45);
                 }
               }
             } else {
                 if(isMouse){
                     if(this.hoverElement.type == "img"){
-                    //   cursorHandler.setCursor("crossArrow", 0, "orange");
             SPLINT.Tools.CursorHandler.setCursor("crossArrow", 0);
                     } else if(this.hoverElement.type == "txt"){
-                    //   cursorHandler.setCursor("crossArrow", 0, "orange");
             SPLINT.Tools.CursorHandler.setCursor("crossArrow", 0);
                     }
                 }

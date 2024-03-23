@@ -141,6 +141,12 @@ export default class LighterModel {
         }
     }
     
+    static setTextureScale(element){
+        for(const index in element.children){
+            element.children[index].material.map.repeat.x *= this.textureScale;
+            element.children[index].material.map.repeat.y *= this.textureScale;
+        }
+    }
     static _rotate(obj, dX, dY, dZ){
         obj.rotation.y += dY / 100;
         obj.rotation.x += dX / 100;

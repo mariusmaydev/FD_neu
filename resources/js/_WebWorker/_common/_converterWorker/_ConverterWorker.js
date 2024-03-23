@@ -2,7 +2,7 @@
 importScripts(location.origin + "/Splint/js/DataManagement/indexedDB.js");
 SPLINT.require_now("@SPLINT_ROOT/Tools/fontObject.js");
 
-importScripts("http://localhost/fd/resources/js/_WebWorker/_common/_converterWorker/_ConverterWorkerHelper.js");
+importScripts(location.origin + "/fd/resources/js/_WebWorker/_common/_converterWorker/_ConverterWorkerHelper.js");
 
 importScripts(location.origin + "/Splint/js/dataTypes/BinaryImage/BinaryImage.js");
 
@@ -36,8 +36,8 @@ class ConverterWorker extends SPLINT.Worker.WorkerHelper.WebWorkerTemplate {
                 
 
                 await this.#loadFont(d);
-                console.log(self.fonts.entries());
-                    console.dir(element.data)
+                // console.log(self.fonts.entries());
+                //     console.dir(element.data)
                 element.ctx = ctx;
                 ConverterWorkerHelper.drawThumbnailTxt(element)
               }

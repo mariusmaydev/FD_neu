@@ -7,7 +7,6 @@ class ConverterKeyHandler {
         document.addEventListener("keydown", async function(event){
             let key = event.key
             let activeElement = CONVERTER_STORAGE.canvasNEW.activeElement;
-            console.log(key)
             switch(key) {
                 case "Delete" : {
                     if(activeElement == null){

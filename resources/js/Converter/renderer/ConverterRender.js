@@ -50,13 +50,14 @@ class CanvasElement_C {
   ThumbnailCreator = new ConverterRenderThumbnail(this);
   setListeners(){
     if(SPLINT.ViewPort.getSize() == "mobile-small"){
-        window.addEventListener("touchstart", ConverterTouchHandler.touchStart.bind(this));
+        window.addEventListener("touchstart", ConverterTouchHandler.touchStart.bind(this), false);
         window.addEventListener("touchmove", ConverterTouchHandler.touchMove.bind(this), false);
-        window.addEventListener("touchend", ConverterTouchHandler.touchEnd.bind(this));
+        window.addEventListener("touchend", ConverterTouchHandler.touchEnd.bind(this), false);
     } else {
         window.addEventListener("mousedown", ConverterMouseHandler.mouseDown.bind(this));
         window.addEventListener("mousemove", ConverterMouseHandler.mouseMove.bind(this));
         window.addEventListener("mouseup", ConverterMouseHandler.mouseUp.bind(this));
+
     }
 
 
@@ -230,7 +231,7 @@ class CanvasElement_C {
           o.canvas   = new SPLINT.DOMElement(obj.id + "_" + dataIn.ImageID + "_IMG", "canvas", obj.parent);
           o.canvas.width = obj.canvas.width;
           o.canvas.height = obj.canvas.height;
-          o.ctx      = o.canvas.getContext('2d', {desynchronized: true});
+          o.ctx      = o.canvas.getContext('2d', {desynchronized: false});
 
 
 

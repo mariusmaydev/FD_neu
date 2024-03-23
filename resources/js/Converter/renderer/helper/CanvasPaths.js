@@ -192,7 +192,6 @@ class canvasPaths {
                 element.paths.rect = path2;
                 element.ctx.fillStyle = 'transparent';
             element.ctx.fill(path2);
-            
     }
     static getColorFor(color){
         if(color == "CHROME"){

@@ -5,7 +5,8 @@
 body {
     position: relative !important;
     width: 100vw !important;
-    overflow: visible !important;
+    // overflow: visible !important;
+    overflow-y: scroll !important;
     box-sizing: border-box !important;
     @include mediaQueries.forMediaBreakpoint(mobile-small){
         top: 0 !important;

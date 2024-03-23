@@ -29,7 +29,7 @@ export default class MaterialsLighterGeneral {
             material.needsUpdate = true;
         // }
 
-        SPLINT.GUI.loadObj(material);
+        // SPLINT.GUI.loadObj(material);
         material.color.convertSRGBToLinear();
         material.needsUpdate = true;
         MaterialHelper.set(material);
@@ -69,7 +69,7 @@ export default class MaterialsLighterGeneral {
         material.normalMap.needsUpdate = true;
         material.needsUpdate = true;
 
-        SPLINT.GUI.loadObj(material);
+        // SPLINT.GUI.loadObj(material);
         material.color.convertSRGBToLinear();
         material.needsUpdate = true;
         MaterialHelper.set(material);
@@ -111,7 +111,7 @@ export default class MaterialsLighterGeneral {
             // material.envMap = instance.cubeRenderTarget.texture;
             // material.envMapIntensity= 1;
             // material.needsUpdate = true;
-        SPLINT.GUI.loadObj(material);
+        // SPLINT.GUI.loadObj(material);
         // stdmat.metalnessMap.needsUpdate = true;
         // stdmat.roughnessMap.needsUpdate = true;
         // stdmat.aoMap.needsUpdate = true;
@@ -138,7 +138,7 @@ export default class MaterialsLighterGeneral {
             data.mapping = THREE.CubeRefractionMapping;
             material.envMap = data;
             material.needsUpdate = true;
-            SPLINT.GUI.loadObj(material);
+            // SPLINT.GUI.loadObj(material);
         });
         material.color.convertSRGBToLinear();
         material.needsUpdate = true;
@@ -183,7 +183,7 @@ export default class MaterialsLighterGeneral {
             material.envMap = data;
             material.envMapIntensity = 0.2;
             material.needsUpdate = true;
-        SPLINT.GUI.loadObj(material);
+        // SPLINT.GUI.loadObj(material);
         });
         material.color.convertSRGBToLinear();
         material.needsUpdate = true;

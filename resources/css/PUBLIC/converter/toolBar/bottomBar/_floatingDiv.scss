@@ -120,7 +120,7 @@
                 // @include Tmain.TContainer_basic();
                 background-color: vars.$color-primary-complementary;
                 box-shadow: none;
-                padding: 1rem;
+                padding: 0.5rem;
                 margin-top: 0.4em;
                 margin-bottom: 0.4em;
                 height: 100%;
@@ -163,7 +163,7 @@
                     box-sizing: border-box;
                     text-align: center;
                     > span {
-                        font-size: 2rem;
+                        font-size: 1rem;
                     }
                 }
                 > .contentBody {
@@ -173,7 +173,7 @@
                     width: 100%;
                     align-items: center;
                     justify-content: center;
-                    font-size: 2rem;
+                    font-size: 1rem;
                     > .sliderBody {
                         flex-grow: 1;
                         order: 1;
@@ -242,7 +242,7 @@
                         flex-grow: 1;
                         position: relative;
                         order: 2;
-                        font-size: 1.1em;
+                        font-size: 0.8em;
                         height: 100%;
                         &[hidden='true']{
                             display: none;
@@ -352,12 +352,17 @@
                 }
             }
             > button {
-                background-color: vars.$color-primary-complementary;
+                @include Tmain.TButton_primary();
+                // background-color: vars.$color-primary-complementary;
                 margin-bottom: 0;
+                padding-top: 0.25rem;
+                padding-bottom: 0.25rem;
+                margin-inline: 0.2rem;
                 span {
-                    font-size: 7rem;
+                    margin: 0.5rem;
+                    font-size: 2.5rem;
                     &.text {
-                        font-size: 2rem;
+                        font-size: 0.75rem;
                     }
                 }
             }

@@ -179,6 +179,16 @@ class drawProjectChoiceMenu {
                 this.bt_private.button.setAttribute("hide", true);
             }
         }.bind(this);
+      
+        let div_create = this.buttonContentDiv.newDiv("div_create", "erstellen");
+            this.bt_create = new SPLINT.DOMElement.Button(div_create, "bt_create", "jetzt erstellen");
+            this.bt_create.setStyleTemplate(S_Button.STYLE_DEFAULT);
+            this.bt_create.button.state().unsetActive();
+            this.bt_create.onclick = async function(){
+                    await ProjectHelper.new("neues Projekt", "LIGHTER_BASE_GOLD_custom", false, false, false, "base");
+                    S_Location.goto(PATH.location.converter).call();
+                }.bind(this)
+  
 
         function changeViewPortSize(){
             let vp = SPLINT.ViewPort.getSize();

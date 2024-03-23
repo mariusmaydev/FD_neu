@@ -32,16 +32,15 @@ $color-project-hover         : rgba(64, 64, 64, 0.219);
             margin-inline: 0;
             box-sizing: border-box;
             >.ListMain {
-                box-sizing: content-box;
+                box-sizing: border-box;
                 width: 100%;
                 padding-top: vars.$NavBar-height-mobile-small;
                 position: relative;
                 display: grid;
                 grid-auto-flow: row dense;
-                grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
-                    justify-content: center;
-                    align-content: start;
-
+                grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+                justify-content: center;
+                align-content: start;
                 overflow: auto;
 
 

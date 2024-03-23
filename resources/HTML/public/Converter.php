@@ -4,6 +4,7 @@
     <head>
         <title>Enflame</title>
         <meta charset="ISO-8859-1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0" />
         <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
 <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"> -->
@@ -23,8 +24,8 @@
         </div>
         <div class="NavigationBar" id="NavigationBar"></div> 
 
-        <!-- <script src="../../../../Splint/lib/touchEmulator/touch-emulator.js"></script> -->
-        <!-- <script> TouchEmulator();</script> -->
+        <!-- <script src="https://cdn.rawgit.com/hammerjs/touchemulator/0.0.2/touch-emulator.js",a.body.appendChild(b)}(document);"></script> 
+        <script> TouchEmulator();</script> -->
         <s-part first src="/js/GLOBAL/Paths.js"></s-part>
 
         <s-part src="/js/manager/manager.js"></s-part>

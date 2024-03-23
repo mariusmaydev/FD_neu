@@ -14,9 +14,9 @@
     > .converter-bottom-bar {
         position: relative;
         flex: 1;
-        margin: 2rem;
+        margin: 1rem;
         margin-inline: 0rem;
-        width: calc(100% );
+        width: calc(100%);
         height: auto;
         max-height: 100%;
         overflow: visible;
@@ -32,18 +32,22 @@
             height: 100%;
             max-height: 10rem;
             > .conv_bottom_bar_std {
-                // @include Tmain.TContainer_basic();
-                background-color: vars.$color-T_container;
+                @include Tmain.TContainer_basic();
+                // @include TC
+                // background-color: vars.$color-T_container;
                 box-shadow: none;
 
                 width: calc(100%);
                 position: relative;
                 height: 100%;
                 display: flex;
-                padding: 0.25em;
-                gap: 1rem;
-                justify-content: stretch;
+                flex-direction: row;
+
+                padding: 0em;
+                gap: 0rem;
+                justify-content: space-around;
                 justify-items: stretch;
+                align-items: stretch;
                 box-sizing: border-box;
                 > input {
                     display: none;
@@ -51,24 +55,26 @@
                 > button {
                     overflow: visible;
                     box-sizing: border-box;
-                    padding: 0.5rem;
+                    padding: 0rem;
+                    padding-top: 0.3rem;
+                    padding-bottom: 0.3rem;
                     user-select: none;
-                    height: 100%;
-                    &:not(.button_NewText):not(.AddElement){
-                        aspect-ratio: 1/1;
-                    }
+                    width: 20% !important;
+                    // &:not(.button_NewText):not(.AddElement){
+                    //     aspect-ratio: 1/1;
+                    // }
                     background-color: transparent;
                     &[state*='active'] {
                         background-color: vars.$color-T_container;
                     }
                     > span {
-                        font-size: 6rem;
+                        font-size: 2.3rem;
                         margin: -0.05em;  
                         &.description {
                             margin: -0.05em;  
                             margin-bottom: -0.1em;  
                             margin-top: 0.1em;
-                            font-size: 1.8rem;
+                            font-size: 0.5rem;
                         }
                     }
                     &.buy {
@@ -77,22 +83,22 @@
                         cursor: pointer;
                         @include Tmain.TContainer_basic();
                         border: none;
-                        margin: 1em;
+                        margin: 0em;
                         user-select: auto;
                         pointer-events: auto;
                         > span {
                             user-select: auto;
                             pointer-events: auto;
-                            font-size: 2em;
+                            font-size: 1em;
                         }
                     }
                     display: block;
                     @include floatingDiv.conv_floatingDiv_aligned();
                     @include floatingDiv.conv_floatingDiv_block();
                     &.AddElement {
-                        flex: 1;
+                        // flex: 1;
                         > div {
-                            width: calc(100vw) !important;
+                            // width: calc(100vw) !important;
                             margin-bottom: 0.5em;
                             > div {
                                 width: 100%;
@@ -104,15 +110,15 @@
                                     display : none;
                                 }
                                 > button {
-                                    margin-inline: 0.5em;
-                                    padding: 0.5em;
+                                    margin-inline: 0.5rem;
+                                    padding: 0.5rem;
                                     
                                     text-decoration: none;
                                     > span {
                                         text-decoration: none;
                                         &.text {
                                             text-decoration: none;
-                                            font-size: 0.75em;
+                                            font-size: 1rem;
                                         }
                                     }
 
@@ -121,11 +127,11 @@
                         }
                     }
                     &.button_NewText {
-                        flex: 1;
+                        // flex: 1;
                     }
                     &.EPType {
                         > div {
-                            width: calc(100vw) !important;
+                            // width: calc(100vw) !important;
                             margin-bottom: 0.5em;
                             > div {
                                 width: 100%;
@@ -219,7 +225,7 @@
                                         justify-content: center;
                                         align-items: center;
                                         > span {
-                                            font-size: 4rem;
+                                            font-size: 2rem;
                                             opacity: 1;
         
                                         }
@@ -250,7 +256,7 @@
                                         @include Tmain.clipEdgesAll(5px);
                                         > button {
                                             > span {
-                                                font-size: 7rem;
+                                                font-size: 2rem;
                                             }
                                         }
                                     }
@@ -261,7 +267,7 @@
                                             display: flex;
                                             flex-direction: row;
                                             > span {
-                                                font-size: 6rem;
+                                                font-size: 2rem;
                                             }
                                         }
                                     }
@@ -297,7 +303,7 @@
 
                             height: 100%;
                             > span {
-                                font-size: 3em;  
+                                font-size: 2em;  
                             }
                             &.toCart {
                                 aspect-ratio: 1/1;

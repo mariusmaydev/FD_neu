@@ -358,15 +358,15 @@ body {
         > .MobileMenuButton {
             border-radius: 50%;
             padding: 1rem;
-            font-size: 5rem;
-            right: 2rem;
+            font-size: 1rem;
+            right: 1rem;
             bottom: 2rem;
             position: absolute;
             user-select: none;
             background-color: vars.$color-primary;
             transform: translateY(0rem);
             > span {
-                font-size: 5rem;
+                font-size: 2.5rem;
 
             }
             transition: transform 0.15s ease;
@@ -443,7 +443,7 @@ body {
                         // width: 40em !important;
                     }
                     > .MobileMenuBackground {
-                        width: 100vw;
+                        width: 50vw;
                     }
                 }
                 > .MobileMenuBackground {
@@ -457,7 +457,7 @@ body {
                 }
                 > .buttonsContent {
                     position: relative;
-                    width: 40rem;
+                    width: 80vw;
                     margin-top: calc(vars.$NavBar-height-mobile-small + 1vh + 0.5rem);
                     transform: translateX(-40rem);
                     overflow: hidden;
@@ -473,22 +473,27 @@ body {
                         // background-color: rgb(230, 230, 230);
                         // box-shadow: none;
                         padding: 0;
-                        padding-top: 0em;
-                        padding-bottom: 0.25em;
+                        padding-top: 0rem;
+                        padding-bottom: 0rem;
                         // border-top-right-radius: 0.5em;
                         border-radius: 0em;
                         // border-bottom-right-radius: 0.5em;
                         margin: 0;
                         padding-right: 0em;
-                        margin-bottom: 1rem;
+                        margin-bottom: 0rem;
                         padding-left: 0em;
                         border-bottom: 1px solid gray;
                         transition: padding-left 0.2s ease;
                         &:focus-within {
-                            padding-left: 1rem;
+                            padding-left: 0.2rem;
+                            > button {
+                                > span {
+                                    font-size: 1.1rem;
+                                }
+                            }
                         }
                         > button {
-                            font-size: 2rem;
+                            font-size: 1rem;
                             background-color: transparent;
                             // @include Gmain.box-shadow(0, black, 0.6);
                             // @include Tbuttons.T_button_Animated();
@@ -500,12 +505,13 @@ body {
                             width: 100%;
                             height: 100%;
                             padding-right: 1em;
-                            padding-left: 0.5em;
+                            padding-left: 1rem;
                             margin: 0;
                             // padding: 0;
                             margin-top: 0rem;
                             box-shadow: none;
                             text-align: left;
+                            transition: font-size 0.5s ease;
                             &[state*='active']{
                                 > span {
                                     color: vars.$color-primary-Dark;
@@ -513,7 +519,7 @@ body {
                             }
                             > span {
                                 color: vars.$color-primary-text;
-                                font-size: 1.5em;
+                                font-size: 1rem;
                             }
                         }
                         > .ProjectCategoryMenu {
@@ -525,11 +531,11 @@ body {
                             box-shadow: none;
                             padding: 0.4rem;
                             padding-right: 0.1em;
-                            font-size: 2em;
+                            font-size: 1rem;
                             // padding-top: 0;
                             // border-top: 1px solid rgb(63, 63, 63);
                             margin-top: 0rem;
-                            padding-left: 0.5rem;
+                            padding-left: 0.8rem;
                             // margin-left: 0.4rem;
                             width: 100%;
                             z-index: 4;
@@ -557,7 +563,7 @@ body {
                             justify-content: left;
                             align-items: center;
                             > span {
-                                font-size: 2.5rem;
+                                font-size: 1.2rem;
                             }
                         }
                         > .MobileMenuButtonClose {

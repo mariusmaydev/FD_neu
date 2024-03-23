@@ -1,19 +1,18 @@
 
-import * as MATERIALS from '../../assets/materials/materials.js';
+
 import MaterialsLighterGeneral from '../../assets/newMaterials/materialsLighterGeneral.js';
 import LIGHT from './light.js';
 import CompressedAnimations from './animations.js';
 import LighterAnimations from '../animations.js';
 import SETUP from '../setup.js';
 import LighterModel from "../model/LighterModel.js";
-// import { CubeCamera } from "@THREE_SRC/cameras/CubeCamera.js";
 import Communication from './communication.js';
-// import { WebGLCubeRenderTarget } from "@THREE_ROOT_DIR/src/renderers/WebGLCubeRenderTarget.js";
 import * as THREE from "@THREE";
 import LighterThumbnail from "../model/LighterThumbnail.js";
 import SPLINT from 'SPLINT';
 import MaterialHelper from '@SPLINT_MODULES_DIR/ThreeJS/materials/MaterialHelper.js';
 import workerInterfaceNew from "../../assets/workerInterfaceNew.js";
+import Stats from 'https://cdnjs.cloudflare.com/ajax/libs/stats.js/r17/Stats.min.js'
 
 SPLINT.BinaryImage
 
@@ -23,15 +22,6 @@ export class draw {
     }
     constructor(canvas){
         this.StorageManager = new SPLINT.IndexedDB.Manager("StaticData", true)
-        this.renderWorker = new Worker(location.origin + "/fd/resources/js/3D/modules/lighter/index/_indexRenderWorker.js");//SPLINT.Worker.WebWorker("/js/3D/modules/lighter/index/_indexRenderWorker.js", false, false);
-        // this.renderWorker.options = {
-        //     type: "module"
-        // }
-        this.renderWorker.onerror = function(){
-            console.dir(arguments)
-        }
-        // this.renderWorker.init();
-        console.dir(this.renderWorker)
         this.context = null;
         this.id = "Lighter3D_";
         this.canvas = canvas;
@@ -65,31 +55,54 @@ export class draw {
         }.bind(this);
 
     }
-    onResize(){
-        let a = this.canvas.parentNode.clientWidth;
-        let b = this.canvas.parentNode.clientHeight;
-        if(SPLINT.ViewPort.getSize() == "mobile-small"){
-            this.canvas.width = a *2;
-            this.canvas.height = b *2;
-        } else {
-            this.canvas.width = a * 2;
-            this.canvas.height = b * 2;
+    adjustSizes(){
+        const parentSize = {
+            width   : this.canvas.parentNode.clientWidth,
+            height  : this.canvas.parentNode.clientHeight
         }
-        this.canvas.style.width = a + "px";
-        this.canvas.style.height = b + "px";
-        if(SPLINT.ViewPort.getSize() == "mobile-small"){
-            this.renderer.setPixelRatio( window.devicePixelRatio * 0.6);
+        if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
+            this.canvas.width   = parentSize.width * 2;
+            this.canvas.height  = parentSize.height * 2;
+        } else {
+            this.canvas.width   = parentSize.width * 2;
+            this.canvas.height  = parentSize.height * 2;
+        }
+        this.canvas.style.width     = parentSize.width  + "px";
+        this.canvas.style.height    = parentSize.height + "px";
+
+        if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
+            this.renderer.setPixelRatio( window.devicePixelRatio * 1.5);
+            this.renderer.setSize( parentSize.width /2, parentSize.height /2, false);
         } else {
             this.renderer.setPixelRatio( window.devicePixelRatio * 2);
+            this.renderer.setSize( parentSize.width, parentSize.height, false);
         }
-        this.renderer.setSize( this.canvas.parentNode.clientWidth, this.canvas.parentNode.clientHeight, false);
-        this.camera.aspect = this.canvas.parentNode.clientWidth / this.canvas.parentNode.clientHeight;
-        this.camera.updateProjectionMatrix();
-        this.render();
+        // this.render();
     }
+    // onResize1(){
+    //     let a = this.canvas.parentNode.clientWidth;
+    //     let b = this.canvas.parentNode.clientHeight;
+    //     if(SPLINT.ViewPort.getSize() == "mobile-small"){
+    //         this.canvas.width = a *2;
+    //         this.canvas.height = b *2;
+    //     } else {
+    //         this.canvas.width = a * 2;
+    //         this.canvas.height = b * 2;
+    //     }
+    //     this.canvas.style.width = a + "px";
+    //     this.canvas.style.height = b + "px";
+    //     if(SPLINT.ViewPort.getSize() == "mobile-small"){
+    //         this.renderer.setPixelRatio( window.devicePixelRatio * 0.6);
+    //     } else {
+    //         this.renderer.setPixelRatio( window.devicePixelRatio * 2);
+    //     }
+    //     this.renderer.setSize( this.canvas.parentNode.clientWidth, this.canvas.parentNode.clientHeight, false);
+    //     this.camera.aspect = this.canvas.parentNode.clientWidth / this.canvas.parentNode.clientHeight;
+    //     this.camera.updateProjectionMatrix();
+    //     this.render();
+    // }
     init(){
         this.setup.renderer(true);
-        this.setupOffscreen();
         this.setup.scene();
         this.mouseHandler = SPLINT.MouseHandler( this.canvas );
         this.Animations = new LighterAnimations(this);
@@ -97,23 +110,26 @@ export class draw {
         this.setupCamera();
         this.raycaster = SPLINT.raycaster(this);
         this.raycaster2 = SPLINT.raycaster(this);
-        this.setupOffscreen();
+        this.stats = new Stats()
+        document.body.appendChild(this.stats.dom)
         // this.setup.controls();
     }
     setupCamera(){
         if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
-            this.camera     = new THREE.PerspectiveCamera(60, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
+            this.camera     = new THREE.PerspectiveCamera(60, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 2);
             this.camera.position.set(0, 0.18, 0.7);
         } else {
-            this.camera     = new THREE.PerspectiveCamera(45, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 200);
+            this.camera     = new THREE.PerspectiveCamera(45, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 5);
             this.camera.position.set(-0.15, 0.18, 1);
         }
         this.camera.name = "camera";
         this.camera.rotation.set(-0.05, 0, 0);
         this.camera.zoom = 1.2;
-        this.camera.filmGauge = 20;
-        // this.camera.focus = 1;
+        this.camera.filmGauge = 0;
+        this.camera.focus = 0.1;
         // this.camera.filmOffset = 122;
+        // this.camera.aspect = this.canvas.parentNode.clientWidth / this.canvas.parentNode.clientHeight;
+        // this.camera.updateProjectionMatrix();
         this.camera.positionBase = this.camera.position.clone();
         this.camera.FOVBase = this.camera.fov;
         this.camera.updateProjectionMatrix();
@@ -127,18 +143,19 @@ export class draw {
             }
             if(GoldFlag){
                 let bb = await binaryImg.export_imageData();
+                // let gg = await binaryImg.export_base64();
+                // console.dir(gg)
                 let texture = new THREE.Texture(bb);
                 this.thumbnail.lighter1 = new LighterThumbnail(this, "lighter");   
                 this.thumbnail.lighter1.loadThumbnailMaterial(texture, 0xe8b000, false);
                 this.thumbnail.lighter1.loadAlphaMap(texture);
             } else {      
-                // let binaryImg = await SPLINT.BinaryImage.fromURL(location.origin + "/fd/data/3Dmodels/Lighter/test/test.binImg");
                 let bb = await binaryImg.export_imageData();
                 
                 let texture = new THREE.Texture(bb);
                 this.thumbnail.lighter2 = new LighterThumbnail(this, "lighter2");   
                 this.thumbnail.lighter2.loadThumbnailMaterial(texture, 0xc0c0c0, false);
-                this.thumbnail.lighter1.loadAlphaMap(texture);
+                this.thumbnail.lighter2.loadAlphaMap(texture);
             }
         }
     }
@@ -151,11 +168,17 @@ export class draw {
                     object.material.needsUpdate = true;
                 } else if(object.material.name == "body"){
                     // object.material = MaterialsLighterGeneral.bodyColor(this, 0x006800);
-                    object.material.needsUpdate = true
+                    // object.material.needsUpdate = true
                 } else if(object.material.name == "wheelStd") {
                     object.material = MaterialsLighterGeneral.wheel(this, object.material);
                     object.material.needsUpdate = true
                 }
+                let obj = {
+                    magFilter: THREE.LinearFilter,
+                    minFilter: THREE.LinearMipMapLinearFilter
+                }
+                MaterialHelper.setMapAttributes(object.material, obj);
+                object.material.needsUpdate = true;
             };
         }.bind(this));
         this.startAnimationLoop();
@@ -171,7 +194,6 @@ export class draw {
                 this.compressedAnimations.flameIgnite(function(){}, 1000);
                 this.compressedAnimations.wheel(0.5, 500);
                 this.compressedAnimations.open();
-                // this.compressedAnimations.smoothTurnStart();
             }
             
             let normalMapData = await this.StorageManager.get("ThumbnailIndex_normalMap");
@@ -183,32 +205,50 @@ export class draw {
                     this.StorageManager.set("ThumbnailIndex", binaryImg);
                 }
                 let d = await binaryImg.export_imageData();
-                workerInterfaceNew.createNormalMap(this.drawID, d).then(async function(imageData){
+                workerInterfaceNew.createNormalMap("ThumbnailIndex", d).then(async function(imageData){
                     this.StorageManager.set("ThumbnailIndex_normalMap", imageData);
                     let texture = new THREE.Texture(imageData);
                         texture.needsUpdate = true;
 
-                    this.thumbnail.lighter1.loadEnvMap(this.cubeRenderTarget.texture);
-                    this.thumbnail.lighter2.loadEnvMap(this.cubeRenderTarget.texture);
+                    // this.thumbnail.lighter1.loadEnvMap(this.cubeRenderTarget.texture);
+                    // this.thumbnail.lighter2.loadEnvMap(this.cubeRenderTarget.texture);
+
                     this.thumbnail.lighter1.loadNormalMap(texture);
                     this.thumbnail.lighter2.loadNormalMap(texture);
+
                     this.thumbnail.lighter1.setColor(new THREE.Color(0xe8b000))
-                    this.render();
+                    this.thumbnail.lighter2.setColor(new THREE.Color(0xc0c0c0))
+
+                    let obj = {
+                        magFilter: THREE.LinearFilter,
+                        minFilter: THREE.LinearMipMapLinearFilter
+                    }
+                    this.thumbnail.lighter1.setMaterialMapAttributes(obj);
+                    this.thumbnail.lighter2.setMaterialMapAttributes(obj);
                 }.bind(this));
             } else {
                 let texture = new THREE.Texture(normalMapData);
                     texture.needsUpdate = true;
-                // console.dir("b")
-                this.thumbnail.lighter1.loadEnvMap(this.cubeRenderTarget.texture);
-                this.thumbnail.lighter2.loadEnvMap(this.cubeRenderTarget.texture);
 
                 this.thumbnail.lighter1.loadNormalMap(texture);
                 this.thumbnail.lighter2.loadNormalMap(texture);
+
                 this.thumbnail.lighter1.setColor(new THREE.Color(0xe8b000))
-                this.render();
+                this.thumbnail.lighter2.setColor(new THREE.Color(0xc0c0c0))
+
+                let obj = {
+                    magFilter: THREE.LinearFilter,
+                    minFilter: THREE.LinearMipMapLinearFilter
+                }
+
+                this.thumbnail.lighter1.setMaterialMapAttributes(obj);
+                this.thumbnail.lighter2.setMaterialMapAttributes(obj);
+
+                // this.thumbnail.lighter1.loadEnvMap(this.cubeRenderTarget.texture);
+                // this.thumbnail.lighter2.loadEnvMap(this.cubeRenderTarget.texture);
+                // this.render();
             }
             
-        // console.log(SPLINT.ResourceManager.textures.lighter_engraving_thumbnail_1024_data)
         }.bind(this));
     }
 
@@ -222,65 +262,51 @@ export class draw {
             this.context.transferFromImageBitmap(e.data.bitmap);
         }.bind(this)
     }
-    async animate(){
-        if(this.renderer.domElement.width > 0){
-            this.render();
-        } else {
-            requestAnimationFrame(this.animate.bind(this));
-        }
-    }
-    // async render(){
-    //     // this.context_off.clearRect(0, 0, this.canvas.parentNode.clientWidth * 2, this.canvas.parentNode.clientHeight * 2);
-    //     // this.renderer.render(this.scene, this.camera);
-    //     // this.cubeCamera.update(this.renderer, this.scene);
-    //     // let domE = this.renderer.domElement;
-    //     // this.context_off.drawImage(domE, 0, 0, domE.width, domE.height, 0, 0, this.canvas.width, this.canvas.height);
-
-    //     // this.context.transferFromImageBitmap(this.bitmap);
-    // }
-
-    // animate(){}
     startAnimationLoop(){
-        // this.renderWorker.postMessage({msg: "init", canvas : this.offscreencanvas}, [this.offscreencanvas]);
-        this.renderer.setAnimationLoop( async function(){
-            this.render();
-            this.AnimationMixer.tick();
-         }.bind(this));
+        const renderer = this.renderer;
+        const mixer = this.AnimationMixer;
+        const stats = this.stats;
+        const scene = this.scene;
+        const camera = this.camera;
+        async function loop(){
+            requestAnimationFrame(loop);
+            mixer.tick();
+            renderer.render(scene, camera);
+            stats.update();
+        }
+        loop();
     }
-    render(){
-        this.renderer.render(this.scene, this.camera);
-        this.cubeCamera.update(this.renderer, this.scene);
-        this.context.clearRect(0, 0, this.canvas.parentNode.clientWidth*2, this.canvas.parentNode.clientHeight*2);
-        let domE = this.renderer.domElement;
-        this.context.drawImage(domE, 0, 0, domE.width, domE.height, 0, 0, this.canvas.width, this.canvas.height);
-        // this.stats.update();
-    }
+    // render(){
+    //     // this.cubeCamera.update(this.renderer, this.scene);
+    //     this.renderer.render(this.scene, this.camera);
+    //     this.stats.update()
+    // }
     async drawBackground(){
         SPLINT.ResourceManager.dataTextures.indexBackground.then(async function(texture){
             console.dir(texture)
             // let t1 = (await SPLINT.ResourceManager.dataTextures.indexBackground);
             // let clone = t1.SPLINT.ThreeClone();
                 // texture.mapping = THREE.EquirectangularReflectionMapping;
-                texture.mapping = THREE.CubeReflectionMapping;
+                texture.mapping = THREE.EquirectangularReflectionMapping;
             this.scene.background = texture;
             this.scene.enviroment = texture;
         }.bind(this))
 
-        this.cubeRenderTarget = new THREE.WebGLCubeRenderTarget( 256,{ generateMipmaps: true, minFilter: THREE.LinearMipmapLinearFilter } );
-        this.cubeRenderTarget.texture.type = THREE.HalfFloatType;
-        this.cubeCamera = new THREE.CubeCamera( 1, 200, this.cubeRenderTarget );
-        this.scene.add( this.cubeCamera );
-        this.pmremGenerator = new THREE.PMREMGenerator(this.renderer);
-        this.envMap = this.pmremGenerator.fromScene(this.scene).texture;
+        // this.cubeRenderTarget = new THREE.WebGLCubeRenderTarget( 265,{ generateMipmaps: true, minFilter: THREE.LinearMipmapLinearFilter } );
+        // this.cubeRenderTarget.texture.type = THREE.HalfFloatType;
+        // this.cubeCamera = new THREE.CubeCamera( 10, 200, this.cubeRenderTarget );
+        // this.scene.add( this.cubeCamera );
+        // this.pmremGenerator = new THREE.PMREMGenerator(this.renderer);
+        // this.envMap = this.pmremGenerator.fromScene(this.scene).texture;
 
-        this.scene.enviroment = this.envMap;
-        this.scene.background = this.envMap;//new THREE.Color( 0xffffff);
+        // this.scene.enviroment = this.envMap;
+        // this.scene.background = this.envMap;//new THREE.Color( 0xffffff);
         let floor1         = await SPLINT.ResourceManager.textures.floor_1;
         let floor1Normal   = await SPLINT.ResourceManager.textures.floor_1_normalMap;
-        let plane = SPLINT.object.Plane(5, 5, 1, 1);
+        let plane = SPLINT.object.Plane(3, 3, 1, 1);
             plane.get().geometry.translate(0, -1, 0);
             plane.rotate(87, 0, 0);
-            plane.plane.material = await MATERIALS.other.indexBackground(floor1, floor1Normal);//, this.cubeRenderTarget.texture);
+            // plane.plane.material = await MATERIALS.other.indexBackground(floor1, floor1Normal);//, this.cubeRenderTarget.texture);
             plane.plane.receiveShadow = true;
         this.scene.add(plane.plane);
     }    

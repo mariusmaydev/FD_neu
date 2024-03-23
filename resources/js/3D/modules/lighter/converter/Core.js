@@ -19,7 +19,6 @@ export class draw {
     constructor(canvas){
         this.id = "Lighter3D_";
         this.canvas = canvas;
-        this.context = canvas.getContext("bitmaprenderer");
         this.setup = new SETUP(this);
         this.loaded = null;
         this.animationTime = 0;
@@ -34,9 +33,7 @@ export class draw {
         
         this.scene.traverse(function(object) {
             if(object.type === 'Mesh') {
-                if(object.material.name == "chrome"){
-                    // object.material = MaterialsLighterGeneral.chrome1(this);
-                } else if(object.material.name.includes("body")){
+                if(object.material.name.includes("body")){
                     if(name == "base"){
                         let mat = MaterialHelper.cloneMaterial(MaterialHelper.get("lighterBlackRough"));
                             mat.name = "bodyBase";
@@ -54,12 +51,6 @@ export class draw {
         }.bind(this));
         this.render();
     }
-    setupOffscreen(){
-        this.context = this.canvas.getContext("bitmaprenderer");
-        this.offscreencanvas = new OffscreenCanvas(this.canvas.width, this.canvas.height);
-        this.context_off = this.offscreencanvas.getContext("2d");
-
-    }
     async animate(){
         if(this.renderer.domElement.width > 0){
             this.render();
@@ -68,29 +59,20 @@ export class draw {
         }
     }
     async render(){
-        this.context_off.clearRect(0, 0, this.canvas.parentNode.clientWidth*2, this.canvas.parentNode.clientHeight*2);
+        if(this.renderer == null || this.scene == null){
+            return;
+        }
         this.renderer.render(this.scene, this.camera);
-        let domE = this.renderer.domElement;
-        this.context_off.drawImage(domE, 0, 0, domE.width, domE.height, 0, 0, this.canvas.width, this.canvas.height);
-
-        this.bitmap = this.offscreencanvas.transferToImageBitmap();
-        this.context.transferFromImageBitmap(this.bitmap);
     }
     init(){
-        
-        // SPLINT.GUI.hide();
         this.setup.renderer(true);
-        this.setup.scene();
+        this.setup.scene("scene");
         this.Animations = new LighterAnimations(this);
         this.compressedAnimations = new CompressedAnimations(this);
         this.setupCamera();
     }
     remove(){
-        // console.dir(window)
-        this.onResize = function(){};
         this.AnimationMixer.stop();
-        // this.clear();
-        // THREE.Object3D
         this.renderer.renderLists.dispose()
         this.renderer.forceContextLoss();
         this.scene = null;
@@ -99,18 +81,10 @@ export class draw {
     setupCamera(){
         this.camera     = new THREE.PerspectiveCamera(24, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.1, 100);
         this.camera.position.set(0, 0.135, 0.97);
-        // this.camera.zoom = 1.1;
+        this.camera.zoom = 1;
         this.camera.updateProjectionMatrix();
     }
-    drawThumbnail(){
-        // MODEL.getThumbnail(this.setup.getLighterGroupe(this.scene, name), this, SPLINT.resources.textures.lighter_engraving_thumbnail, "gold", 0xe8b000, !GoldFlag);
-    }
-    async loadThumbnail(name, GoldFlag){}
     async onFinishLoading(){
-        this.setupOffscreen();
-        // this.Animations.lever_close.start(true, 0);
-        // this.Animations.lighter_close.start(false, 0);
-        this.animate();
         SPLINT.Events.onLoadingComplete.dispatch()
         this.canvas.parentElement.parentElement.parentElement.setAttribute("loaded", true);
         this.canvas.setAttribute("loaded", true);
@@ -120,21 +94,9 @@ export class draw {
         this.canvas.Storage.value = "value";
 
         this.canvas.dispatchEvent(SPLINT_EVENTS.toCommonJS);
+        this.render();
     }
     async drawBackground(){
-        
-        // let t1 = await SPLINT.ResourceManager.dataTextures.indexBackground;
-        // t1.mapping = THC.EquirectangularReflectionMapping;
-        // console.log(t1);
-        
-        // this.scene.background = t1;
-        // this.scene.enviroment = t1;
-
-
-        // this.cubeRenderTarget = new WebGLCubeRenderTarget( 256 );
-        // this.cubeRenderTarget.texture.type = THC.HalfFloatType;
-        // this.cubeCamera = new CubeCamera( 1, 1000, this.cubeRenderTarget );
-
         this.materials.chrome = MaterialsLighterGeneral.chrome(this);
         this.materials.chrome.needsUpdate = true;
 
@@ -146,7 +108,6 @@ export class draw {
         this.scene.add(plane.plane);
     }    
     async draw(){
-
         this.drawBackground();
         LIGHT(this.scene);
         this.scene.add( this.camera );
@@ -162,50 +123,28 @@ export class draw {
     events(){
         this.communication = new Communication(this);
     }
-    // setupRaycaster(){
-    //     let groupe = this.setup.getLighterGroupe(this.scene, "Images");
+    adjustSizes(){
+        const parentSize = {
+            width   : this.canvas.parentNode.clientWidth,
+            height  : this.canvas.parentNode.clientHeight
+        }
+        if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
+            this.canvas.width   = parentSize.width * 2;
+            this.canvas.height  = parentSize.height * 2;
+        } else {
+            this.canvas.width   = parentSize.width * 2;
+            this.canvas.height  = parentSize.height * 2;
+        }
+        this.canvas.style.width     = parentSize.width  + "px";
+        this.canvas.style.height    = parentSize.height + "px";
 
-    //     this.raycaster.setScene(groupe);
-    //     this.raycaster.onMouseDown = function(element, name){
-    //         this.renderImages.focus(element.object.name);
-    //     }.bind(this);
-    //     this.raycaster.onMouseMove = function(element, name){
-    //         if(this.raycaster.mouseDownFlag){
-    //             let img = this.renderImages.getImage(element.object.name);
-    //                 // console.log(img)
-    //                 let meshWidth = this.renderImages.mesh.geometry.parameters.width;
-    //                 let a = (meshWidth) + this.raycaster.pointer.x
-    //                 img.ImagePosX = a * 1900;
-    //                 let meshHeight = this.renderImages.mesh.geometry.parameters.height;
-    //                 let b = (meshHeight) - this.raycaster.pointer.y
-    //                 img.ImagePosY = b * 2875;
-    //                 img.update();
-                
-    //         }
-    //     }.bind(this)
-    // }
-    onResize(){
-        let a = this.canvas.parentNode.clientWidth;
-        let b = this.canvas.parentNode.clientHeight;
-        if(SPLINT.ViewPort.getSize() == "mobile-small"){
-            this.canvas.width = a * 2;
-            this.canvas.height = b * 2;
-        } else {
-            this.canvas.width = a * 2;
-            this.canvas.height = b * 2;
-        }
-        this.canvas.style.width = a + "px";
-        this.canvas.style.height = b + "px";
-        if(SPLINT.ViewPort.getSize() == "mobile-small"){
-            // this.renderer.setPixelRatio( Math.min(2, window.devicePixelRatio));
+        if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
             this.renderer.setPixelRatio( window.devicePixelRatio * 2);
+            this.renderer.setSize( parentSize.width /2, parentSize.height /2, false);
         } else {
             this.renderer.setPixelRatio( window.devicePixelRatio * 2);
+            this.renderer.setSize( parentSize.width, parentSize.height, false);
         }
-        // this.renderer.setPixelRatio( window.devicePixelRatio * 1.5);
-        this.renderer.setSize( this.canvas.parentNode.clientWidth * 1, this.canvas.parentNode.clientHeight * 1, false);
-        this.camera.aspect = this.canvas.parentNode.clientWidth / this.canvas.parentNode.clientHeight;
-        this.camera.updateProjectionMatrix();
         this.render();
     }
     
