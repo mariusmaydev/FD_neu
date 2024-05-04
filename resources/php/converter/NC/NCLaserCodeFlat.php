@@ -60,6 +60,8 @@
         public $YMultiply   = 1;
         public $length      = 0;
         public $cfg         = null; 
+        public $fastTravel  = null; 
+        public $workTravel  = null; 
 
         use genNCCodeHelper;
 
@@ -71,6 +73,8 @@
                 $this -> cfg = ConverterConfig::get();
             }
             $this -> digits = $this -> cfg -> digits;
+            $this -> fastTravel = $this -> cfg -> laserFlat -> fastTravel;
+            $this -> workTravel = $this -> cfg -> laserFlat -> workTravel;
         }        
         public static function getGCode(PathObject3D $pathObject) : string {
             return (new self($pathObject)) -> get();
@@ -93,30 +97,36 @@
         private function newElement(PathElement3D &$pathElement){
             $steps = $pathElement -> getSteps();
             $lastStep = [];
+            $intensBefore = 0;
             foreach($steps as $key => $step){
                 $this -> scale($step);
                 if(count($lastStep) == 0){
                     $lastStep = $step;
                 }
+                $intens = intval($step['z']);
+                $x = $step['x'];
+                $y = $step['y'];
+                $speed = "";
                 if($key == 0){
-                    // $this -> CodeString .= "\r\nM220 S200\r\n";
-                    $this -> CodeString .= "M400\r\n";
-                    $this -> add_S(0);
-                    $this -> add_G(0, Coords::get($step['x'], $step['y'], 10), $this -> cfg -> laser -> fastTravel -> F);
-                    $this -> CodeString .= "M400\r\n";
-                    // $this -> add_S(1);
-                    $this -> add_G(1, Coords::get($step['x'], $step['y'], 10), $this -> cfg -> laser -> workTravel -> F);
-                    // $this -> CodeString .= "M220 S100\r\n";
-                    // $this -> add_G(1, null, 1500);
-                    // $this -> CodeString .= "M400\r\n";
-                    // $this -> CodeString .= "M220 S100\r\n";
+                    $this -> add_G(0, Coords::get($x, $y), $this -> fastTravel -> F, 0);
+                    $speed = $this -> workTravel -> F;
                 }
-                $this -> add_G(1, Coords::get($step['x'], $step['y']), "", intval($step['z']));
+                if($intens == 0){   
+                    $this -> add_G(0, Coords::get($x, $y), "");
+                } else {
+                    if($intens != $intensBefore){
+                        $this -> add_G(1, Coords::get($x, $y), $speed, $intens);
+                    } else {
+                        $this -> add_G(1, Coords::get($x, $y), $speed);
+                    }
+                }
+                $intensBefore = $intens;
             }                
             // $this -> length += sqrt(pow($step['x'] - $lastStep['x'], 2) + pow($step['y'] - $lastStep['y'], 2));
             $lastStep = $step;
             // $this -> CodeString .= "\r\nM220 S100";
             // $this -> CodeString .= "\r\nM400\r\n\r\n";
+            $this -> CodeString .= "\r\n";
         }
         private function scale(array &$step){            
             $step['x'] = round($this -> xNull + ($step['x']) * $this -> scale, $this -> digits) * $this -> XMultiply;
@@ -124,6 +134,7 @@
         }
         private function getStart(){
             $this -> CodeString .= "G00 G17 G40 G21 G54\r\nG90\r\nM4\r\nM8\r\n";// $this -> CodeString .= "M220 S500\r\n";
+            // $this -> CodeString .= "G0 F1500\r\nG1 F "
             // $this -> CodeString .= "\r\nM400\r\n";
             // $this -> CodeString .= "M220 S100\r\n\r\n";
             // $this -> add_G(1, Coords::get(70, 120, 75), 3000);

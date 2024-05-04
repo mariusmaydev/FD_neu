@@ -4,16 +4,16 @@ class canvasPaths {
         let ctx = element.ctx;
           ctx.save();
           ctx.translate(element.data.TextPosX, element.data.TextPosY);
-          ctx.scale(2, 2);
+          ctx.scale(4, 4);
           ctx.rotate(S_Math.toRadians(element.data.TextAlign));
           element.ctx.globalAlpha = 1;
           ctx.imageSmoothingEnabled = true;
           ctx.imageSmoothingQuality = "high";
           ctx.textBaseline = "middle";
-          ctx.lineWidth = 1;
+          ctx.lineWidth = parseInt(element.data.LineWidth / 2);
           ctx.strokeStyle = "#ffffff";
           ctx.fillStyle = "#ffffff";
-          ctx.font = element.data.FontWeight + " " + element.data.FontStyle + " " + element.data.FontSize + "px " + element.data.FontFamily;
+          ctx.font = element.data.FontWeight + " " + element.data.FontStyle + " " + parseInt(element.data.FontSize) + "px " + element.data.FontFamily;
           let metrics     = 0;
           let max_width   = 0;
           let height      = 0;
@@ -21,7 +21,7 @@ class canvasPaths {
           let lines = element.data.TextValue.split('\n');
           for(let i = 0; i < lines.length; i++){
             metrics = ctx.measureText(lines[i]);
-            height = metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent + parseInt(element.data.TextLineHeight);
+            height = metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent + parseInt(element.data.TextLineHeight)-parseInt(element.data.FontSize / 3);
             let width = metrics.width;
             if(width > max_width){
               max_width = width;
@@ -35,25 +35,28 @@ class canvasPaths {
           let C_width = max_width / 2;
           let C_height = -((lines.length-1) * max_height) / 2;
           
-          let drawFunc = function(){ctx.strokeText(...arguments)};
-          if(renderFlag){
-              drawFunc = function(){ctx.fillText(...arguments)};
-          }
+        //   let drawFunc = function(){ctx.strokeText(...arguments)};
+        //   if(renderFlag){
+              let drawFunc = function(){ctx.strokeText(...arguments)};
+        //   }
           for(let i = 0; i < lines.length; i++){
             if(element.data.TextOrientation == 'center'){
               drawFunc(lines[i], 0,  C_height + ((i ) * max_height) );
-              drawFunc(lines[i], 0,  C_height + ((i ) * max_height) );
+            //   drawFunc(lines[i], 0,  C_height + ((i ) * max_height) );
             } else if(element.data.TextOrientation == 'right'){
               drawFunc(lines[i], +C_width,  C_height + ((i ) * max_height) );
-              drawFunc(lines[i], +C_width,  C_height + ((i ) * max_height) );
+            //   drawFunc(lines[i], +C_width,  C_height + ((i ) * max_height) );
             } else {
               drawFunc(lines[i], -C_width,  C_height + ((i ) * max_height) );
-              drawFunc(lines[i], -C_width,  C_height + ((i ) * max_height) );
+            //   drawFunc(lines[i], -C_width,  C_height + ((i ) * max_height) );
             }
           }
+        //   ctx.globalAlpha = 0.5;
+        //   ctx.strokeStyle = "#000000";
           ctx.rect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
-          
-          element.data.FrameHeight     = ((lines.length) * (max_height));
+        //   ctx.fill()
+        
+          element.data.FrameHeight     = parseInt((lines.length) * (max_height));
           element.data.FrameWidth      = max_width;
   
           ctx.restore();
@@ -108,8 +111,8 @@ class canvasPaths {
           }
           ctx.rect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
           
-          element.data.FrameHeight     = ((lines.length) * (max_height));
-          element.data.FrameWidth      = max_width
+          element.data.FrameHeight     = parseInt((lines.length) * (max_height));
+          element.data.FrameWidth      = parseInt(max_width)
   
           ctx.restore();
           return true
@@ -181,7 +184,9 @@ class canvasPaths {
         }
     }
     static updateImgPath(element){
-        this.updatePointPath(element, element.data.ImageWidth, element.data.ImageHeight);
+        if(!SPLINT.ViewPort.isMobile()){
+            this.updatePointPath(element, element.data.ImageWidth, element.data.ImageHeight);
+        }
         let mat = new DOMMatrix().translate(element.data.ImagePosX, element.data.ImagePosY).rotate(element.data.ImageAlign );
         
         let path = new Path2D();
@@ -233,6 +238,11 @@ class canvasPaths {
             element.ctx.fill(path2);
             
     }
+    static im;
+    static {
+        this.im = new Image();
+        this.im.src = "https://www.pngall.com/wp-content/uploads/14/Pattern-PNG-HD-Image.png"
+    }
     static updateTxt(element, renderFlag = false){
         let ctx = element.ctx;
           ctx.save();
@@ -243,7 +253,7 @@ class canvasPaths {
           ctx.imageSmoothingEnabled = true;
           ctx.imageSmoothingQuality = "high";
           ctx.textBaseline = "middle";
-          ctx.lineWidth = 1;
+          ctx.lineWidth = element.data.LineWidth;
           ctx.strokeStyle = DSProject.getColorFor(DSProject.Storage.EPType);
           ctx.fillStyle = DSProject.getColorFor(DSProject.Storage.EPType);
           ctx.font = element.data.FontWeight + " " + element.data.FontStyle + " " + element.data.FontSize + "px " + element.data.FontFamily;
@@ -252,9 +262,10 @@ class canvasPaths {
           let height      = 0;
           let max_height  = 0;
           let lines = element.data.TextValue.split('\n');
+
           for(let i = 0; i < lines.length; i++){
             metrics = ctx.measureText(lines[i]);
-            height = metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent + parseInt(element.data.TextLineHeight);
+            height = metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent + parseInt(element.data.TextLineHeight)-(element.data.FontSize / 3);
             let width = metrics.width;
             if(width > max_width){
               max_width = width;
@@ -263,6 +274,7 @@ class canvasPaths {
               max_height = height;
             }
           }
+        //   ctx.beginPath();
           ctx.textAlign = element.data.TextOrientation;
           ctx.textRendering  = "optimizeSpeed";
           let C_width = max_width / 2;
@@ -270,17 +282,12 @@ class canvasPaths {
           
           let drawFunc = function(){ctx.strokeText(...arguments)};
           if(renderFlag){
-              drawFunc = function(){ctx.fillText(...arguments)};
+             drawFunc = function(){ctx.fillText(...arguments)};
           }
           for(let i = 0; i < lines.length; i++){
             if(element.data.TextOrientation == 'center'){
               drawFunc(lines[i], 0,  C_height + ((i ) * max_height) );
               drawFunc(lines[i], 0,  C_height + ((i ) * max_height) );
-              // ctx.filter = 'blur(0.5px)';
-              // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
-              // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
-              // // ctx.filter = 'blur(1px)';
-              // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
             } else if(element.data.TextOrientation == 'right'){
               drawFunc(lines[i], +C_width,  C_height + ((i ) * max_height) );
               drawFunc(lines[i], +C_width,  C_height + ((i ) * max_height) );
@@ -290,6 +297,36 @@ class canvasPaths {
             }
           }
           // ctx.strokeStyle = "red";
+                // this.im.onload = function(){
+                    // ctx.beginPath();
+                    
+            //         ctx.globalCompositeOperation="source-in";
+            //         ctx.filter = 'blur(1px) drop-shadow(0px 0px 1px ' + this.getColorFor(DSProject.Storage.EPType) + ')';
+            //         ctx.globalAlpha = 1;
+            //         ctx.drawImage(this.im, -C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height))
+            //         ctx.fillStyle = this.getColorFor(DSProject.Storage.EPType)
+            //         ctx.fillRect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height))
+            // ctx.globalCompositeOperation="source-over";
+            // ctx.closePath();
+            //     // }
+
+            //     for(let i = 0; i < lines.length; i++){
+            //         if(element.data.TextOrientation == 'center'){
+            //           drawFunc1(lines[i], 0,  C_height + ((i ) * max_height) );
+            //           drawFunc1(lines[i], 0,  C_height + ((i ) * max_height) );
+            //           // ctx.filter = 'blur(0.5px)';
+            //           // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
+            //           // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
+            //           // // ctx.filter = 'blur(1px)';
+            //           // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
+            //         } else if(element.data.TextOrientation == 'right'){
+            //           drawFunc1(lines[i], +C_width,  C_height + ((i ) * max_height) );
+            //           drawFunc1(lines[i], +C_width,  C_height + ((i ) * max_height) );
+            //         } else {
+            //           drawFunc1(lines[i], -C_width,  C_height + ((i ) * max_height) );
+            //           drawFunc1(lines[i], -C_width,  C_height + ((i ) * max_height) );
+            //         }
+            //       }
           ctx.rect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
         //   ctx.strokeRect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
           

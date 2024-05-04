@@ -16,6 +16,7 @@ class ProjectDetails_Desktop {
     async show(drawButtons = true){
         this.colorList = await productHelper.getColors();
         this.productDataFull = await productHelper.getProducts();
+        console.dir(this)
         // console.dir(this.data.Product)
         this.productData = this.productDataFull[this.data.Product]
         this.mainElement = new SPLINT.DOMElement.popupWindow(this.id, true)

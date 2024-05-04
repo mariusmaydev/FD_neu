@@ -183,7 +183,7 @@ class ToolBar_TextElement {
         this.sl_fontSize = new SPLINT.DOMElement.RangeSlider(this.toolsBody, "fontSize_" + this.TextID, "Schriftgröße");
         this.sl_fontSize.drawTickMarks = false;
         this.sl_fontSize.min            = 0.5;
-        this.sl_fontSize.max            = 20;
+        this.sl_fontSize.max            = 40;
         this.sl_fontSize.step           = 0.5; 
         this.sl_fontSize.value          = Math.round(MATH_convert.px2pt(S_Math.divide(this.data.FontSize, 10)) * 2) / 2;
         this.sl_fontSize.valueExtension = "";
@@ -192,6 +192,21 @@ class ToolBar_TextElement {
         }.bind(this);
         this.sl_fontSize.oninput = function(value){
             this.data.FontSize = Math.round(MATH_convert.pt2px(S_Math.multiply(value, 10)) * 2) / 2;
+            CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt");
+        }.bind(this);
+
+        //lineWidth
+        this.sl_lineWidth = new SPLINT.DOMElement.RangeSlider(this.toolsBody, "lineWidth_" + this.TextID, "Linienstärke");
+        this.sl_lineWidth.drawTickMarks = false;
+        this.sl_lineWidth.min    = 1;
+        this.sl_lineWidth.max    = 3;
+        this.sl_lineWidth.valueExtension = "";
+        this.sl_lineWidth.value  = this.data.LineWidth;
+        this.sl_lineWidth.onDrawSign = function(signContent){
+            signContent.value = this.sl_lineWidth.value;//SPLINT.Tools.Math.roundFX(this.sl_lineWidth.valuePercent, 0, true) + this.sl_lineWidth.valueExtension;
+        }.bind(this);
+        this.sl_lineWidth.oninputFinished = function(value){
+            this.data.LineWidth = value;
             CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt");
         }.bind(this);
         
@@ -252,10 +267,13 @@ class ToolBar_TextElement {
             this.sl_fontSize.hideSign();
             this.sl_fontWeight.hideSign();
             this.sl_rotation.hideSign();
+            this.sl_lineWidth.hideSign();
         }
     }
     focus(){
+        ToolBar_LighterSettings.blur();
         CONVERTER_STORAGE.toolBar.blurElement("txt");
+        CONVERTER_STORAGE.toolBar.blurElement("img");
         this.mainElement.state().setActive();
         this.expander.setActive();
         CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt");
@@ -276,6 +294,7 @@ class ToolBar_TextElement {
         this.sl_fontSize.updateSign();
         this.sl_rotation.updateSign();
         this.sl_fontWeight.updateSign();
+        this.sl_lineWidth.updateSign();
     }
 }
 

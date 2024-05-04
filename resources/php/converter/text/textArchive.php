@@ -22,6 +22,7 @@
         const FONT_WEIGHT           = "FontWeight";
         const FONT_STYLE            = "FontStyle";
         const FONT_ALIGN            = "FontAlign";
+        const LINE_WIDTH            = "LineWidth";
 
         const TEXT_IMG              = "TextImg";
         const TEXT_FRAME_WIDTH      = "FrameWidth";
@@ -44,11 +45,12 @@
           $dataset -> newEntry(self::TEXT_LINE_HEIGHT,  "INTEGER(255)");
 
           $dataset -> newEntry(self::FONT_FAMILY,       "VARCHAR(255)");
-          $dataset -> newEntry(self::FONT_SIZE,         "VARCHAR(255)");
-          $dataset -> newEntry(self::FONT_WEIGHT,       "VARCHAR(255)");
+          $dataset -> newEntry(self::FONT_SIZE,         "INTEGER(255)");
+          $dataset -> newEntry(self::FONT_WEIGHT,       "INTEGER(255)");
           $dataset -> newEntry(self::FONT_STYLE,        "VARCHAR(255)");
-          $dataset -> newEntry(self::FONT_ALIGN,        "VARCHAR(255)");
+          $dataset -> newEntry(self::FONT_ALIGN,        "INTEGER(255)");
           $dataset -> newEntry(self::TEXT_ORIENTATION,  "VARCHAR(255)");
+          $dataset -> newEntry(self::LINE_WIDTH,        "INTEGER(255)");
 
           $dataset -> primaryKey(self::TEXT_ID);
           $dataset -> TBName($TBName);

@@ -10,6 +10,7 @@ class BottomBar_Text_Button_FontSize {
     draw(){
         this.button = new SPLINT.DOMElement.Button.Switch(this.parent, "fontSize");
         this.button.bindIcon("format_size");
+        this.button.Description = "Schriftgröße";
         this.button.onactive = function(){
             this.drawSlider();
             this.floatingDiv.onRemoveFloatingDiv = function(){
@@ -43,6 +44,7 @@ class BottomBar_Text_Button_FontWeight {
     draw(){
         this.button = new SPLINT.DOMElement.Button.Switch(this.parent, "fontWeight");
         this.button.bindIcon("format_bold");
+        this.button.Description = "Schriftstärke";
         this.button.onactive = function(){
             this.drawSlider();
             this.floatingDiv.onRemoveFloatingDiv = function(){
@@ -77,6 +79,7 @@ class BottomBar_Text_Button_TextAlign {
     draw(){
         this.button = new SPLINT.DOMElement.Button.Switch(this.parent, "textAlign");
         this.button.bindIcon("format_align_center");
+        this.button.Description = "Ausrichtung";
         this.button.onactive = function(){
             this.drawSlider();
             this.floatingDiv.onRemoveFloatingDiv = function(){
@@ -89,6 +92,7 @@ class BottomBar_Text_Button_TextAlign {
 
             this.button_left = new SPLINT.DOMElement.Button.Switch(this.floatingDiv.content, "textAlign_left");
             this.button_left.bindIcon("format_align_left");
+            this.button_left.Description = "Linksbündig";
             this.button_left.onactive = function(){
                     this.TOOLS.align('left');
                     this.button_right.unsetActive();
@@ -97,6 +101,7 @@ class BottomBar_Text_Button_TextAlign {
 
             this.button_center = new SPLINT.DOMElement.Button.Switch(this.floatingDiv.content, "textAlign_center");
             this.button_center.bindIcon("format_align_center");
+            this.button_center.Description = "Zentriert";
             this.button_center.onactive = function(){
                     this.TOOLS.align('center');
                     this.button_left.unsetActive();
@@ -105,6 +110,7 @@ class BottomBar_Text_Button_TextAlign {
 
             this.button_right = new SPLINT.DOMElement.Button.Switch(this.floatingDiv.content, "textAlign_right");
             this.button_right.bindIcon("format_align_right");
+            this.button_right.Description = "Rechtsbündig";
             this.button_right.onactive = function(){
                     this.TOOLS.align('right');
                     this.button_left.unsetActive();

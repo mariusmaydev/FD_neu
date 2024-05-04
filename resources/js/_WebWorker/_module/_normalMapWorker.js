@@ -44,7 +44,8 @@ class WebWorker3D extends SPLINT.Worker.WorkerHelper.WebWorkerTemplate {
                 ctx_i.imageSmoothingEnabled = true;
                 ctx_i.imageSmoothingQuality = "high";
                 // ctx_i.fillStyle = "rgba(0, 0, 0, 255)";
-                ctx_i.filter = "invert(100) ";
+                // ctx_i.filter = "invert(100)";
+                ctx_i.filter = "blur(1px) invert(100)";
                 // ctx_i.filter = "invert(100)";
                 ctx_i.drawImage(source, 0, 0, width, height, 0, 0, w, h);
                 ctx_i.restore();

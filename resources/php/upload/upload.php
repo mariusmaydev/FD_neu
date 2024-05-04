@@ -11,6 +11,18 @@
     require_once '../project/project.php';
 
     class Upload {
+        public static function Text_img(){
+            $headers = getallheaders();
+
+            $data        = file_get_contents('php://input');
+            
+            $dataObj = json_decode($headers["X-SPLINT-DATA"]); 
+            $image = new Imagick();
+            $image -> readimageblob($data);
+            Text::saveTextImg($image, $dataObj -> TextID, Sessions::get(Sessions::PROJECT_ID), Sessions::get(Sessions::USER_ID));
+
+            Communication::sendBack(true);
+        }
         public static function Thumbnail(){
 
             $data        = file_get_contents('php://input');

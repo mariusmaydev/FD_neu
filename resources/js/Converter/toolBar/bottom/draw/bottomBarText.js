@@ -39,6 +39,7 @@ class BottomBar_Text {
             
             let button_edit = new SPLINT.DOMElement.Button(buttonsDiv, "edit");
                 button_edit.bindIcon("edit");
+                button_edit.Description = "ändern";
                 // button_edit.button.setTooltip("Bearbeiten", "top");
                 button_edit.onclick = function(){
                     let SubWindow = new SPLINT.DOMElement.popupWindow("editText", true);
@@ -67,6 +68,7 @@ class BottomBar_Text {
 
             let button_FontFamily = new SPLINT.DOMElement.Button(buttonsDiv, "fontFamily");
                 button_FontFamily.bindIcon("text_format");
+                button_FontFamily.Description = "Schriftart";
                 // button_FontFamily.span.style.fontFamily = this.data.FontFamily;
                 button_FontFamily.onclick = function(){
                     button_FontFamily.button.state().setActive();
@@ -83,6 +85,7 @@ class BottomBar_Text {
 
             let buttonItalic = new SPLINT.DOMElement.Button.Switch(buttonsDiv, "italic");
                 buttonItalic.bindIcon("format_italic");
+                buttonItalic.Description = "Kursiv";
                 buttonItalic.onactive = function(){
                         this.TOOLS.fontStyle('italic');
                     }.bind(this);
@@ -97,12 +100,14 @@ class BottomBar_Text {
 
             let button_copy = new SPLINT.DOMElement.Button(buttonsDiv, "copy");
                 button_copy.bindIcon("content_copy");
+                button_copy.Description = "duplizieren";
                 button_copy.onclick = function(){
                     this.TOOLS.copy();
                 }.bind(this);
 
             let button_remove = new SPLINT.DOMElement.Button(buttonsDiv, "remove");
                 button_remove.bindIcon("delete");
+                button_remove.Description = "entfernen";
                 button_remove.onclick = function(){
                     console.log(this.TOOLS);
                     this.TOOLS.remove();

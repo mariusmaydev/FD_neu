@@ -12,12 +12,12 @@ class ConverterWorker extends SPLINT.Worker.WorkerHelper.WebWorkerTemplate {
     static { new this() }
 
     async createThumbnail(data){
-        let canvas = data.canvas;
         let stack = data.stack;
         let size = data.size;
+        let canvas = new OffscreenCanvas(size.x, size.y);
 
-            canvas.width  = size.x;
-            canvas.height = size.y;
+            // canvas.width  = size.x;
+            // canvas.height = size.y;
         let ctx     = canvas.getContext('2d', { willReadFrequently: true });
             ctx.fillStyle = "transparent";
             ctx.fillRect(0, 0, canvas.width, canvas.height);

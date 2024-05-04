@@ -128,6 +128,7 @@ class ADMIN_order_view {
                                             console.log(this.data.UserID, project.ProjectID);
                                             let Args = new Object();
                                                 Args.type = "laser";
+                                                Args.CurrentConfig = "converterProcess";
                                                 console.log(project);
                                                 // Args.PointZero = new Object();
                                                 // Args.PointZero.X = DSProject.Storage[DSProject.SQUARE].PointZeroX;

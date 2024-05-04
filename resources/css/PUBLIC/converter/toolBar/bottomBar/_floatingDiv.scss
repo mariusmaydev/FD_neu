@@ -5,7 +5,7 @@
 @mixin conv_floatingDiv_aligned() {
     >.converter-bottomBar-floatingDiv.aligned {
         pointer-events: none;
-        bottom: 1em;
+        bottom: 0.25rem;
         left: 0;
         height: auto;
         width: 100%;
@@ -65,7 +65,7 @@
 @mixin conv_floatingDiv_block() {
     >.converter-bottomBar-floatingDiv.block {
         pointer-events: none;
-        bottom: calc(100% + 0.5rem);
+        bottom: calc(100% + 0rem);
         padding-inline: 0.5rem;
         left: 0;
         height: max-content;
@@ -334,11 +334,11 @@
                 user-select: none;
                 height: max-content;
                 width: 100%;
-                @include Gmain.box-shadow();
-                background-color: white;
-                margin-bottom: 2%;
+                // @include Gmain.box-shadow();
+                // background-color: white;
+                margin-bottom: 0;
                 box-sizing: border-box;
-                border-radius: vars.$border-radius;
+                // border-radius: vars.$border-radius;
                 > label {
                     font-size: 0.75em;
                 }
@@ -371,10 +371,23 @@
             > div {
                 flex-direction: row;
                 gap: 0.5rem;
+                > button {
+                    @include Tmain.TButton_primary(0.25);
+                    > span {
+                        font-size: 1.5rem;
+                        margin: -0.05rem;  
+                        &.description {
+                            margin: -0.05rem;  
+                            margin-bottom: -0.1rem;  
+                            margin-top: 0.1rem;
+                            font-size: 0.5rem;
+                        }
+                    }
+                }
             }
         }
         &[name*='fontFamilySlideShow']{
-            height: 7rem;
+            height: 3rem;
             overflow: visible;
             width: 100vw;
             padding-inline: 0rem;
@@ -385,10 +398,15 @@
                 background-color: transparent;
                 > .SlideShow_S {
                     box-shadow: none;
-                    padding: 0;
+                    padding: 0.5rem;
+                    padding-inline: 0.125rem;
                     scrollbar-width: 0;
                     height: 100%;
                     margin-bottom: 0;
+                    overflow: visible ;
+                    overflow-x: scroll;
+                    
+                    // overflow-y: visible !important;
                     
                     &::-webkit-scrollbar {
                         display: none;
@@ -403,34 +421,36 @@
                         width: 0;
                     }
                     > div {
-                        padding-inline: 0.5rem;
+                        padding-inline: 0.25rem;
                         height: 100%;
                         margin: 0;
-                        width: 100%;
+                        width: max-content;
                         box-sizing: border-box;
                         display: flex;
                         flex-direction: row;
                         justify-content: space-evenly;
                         align-items: stretch;
                         align-content: stretch;
+                        overflow: visible;
                         border-radius: 0;
-                        gap: 0.5rem;
+                        gap: 0.25rem;
                         aspect-ratio: auto;
                         > div {
-                            background-color: vars.$color-primary-complementary;
-                            box-shadow: none;
+                            @include Tmain.TContainer_basic();
+                            // background-color: vars.$color-primary-complementary;
+                            // box-shadow: none;
                             align-items: center;
-                            font-size: 4rem;
+                            font-size: 2rem;
                             margin: 0;
-                            border-radius: 0;
-                            overflow: hidden;
+                            // border-radius: 0;
+                            overflow: visible;
                             height: 100%;;
                             box-sizing: border-box;
                             min-width: max-content;
                             width: max-content;
                             cursor: pointer;
                             aspect-ratio: auto;
-                            padding: 0rem;
+                            padding: 1rem;
                             user-select: none;
                             &[state*='active']{
                                 background-color: vars.$color-primary;
@@ -442,11 +462,11 @@
                                 width: min-content;
                                 height: 100%;
                                 box-sizing: border-box;
-                                margin: 1rem;
+                                margin-inline: 0.5rem;
                                 aspect-ratio: auto;
                                 > span {
                                     box-sizing: border-box;
-                                    font-size: 4rem;
+                                    font-size: 1.5rem;
                                     &[id*='Arial']{
                                         font-family: Arial;
                                     }

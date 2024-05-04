@@ -13,6 +13,7 @@ class DataStorageText_C {
     static FONT_WEIGHT           = "FontWeight";
     static FONT_STYLE            = "FontStyle";
     static FONT_ALIGN            = "FontAlign";
+    static LINE_WIDTH            = "LineWidth";
     
     TEXT_ID          = DataStorageText_C.TEXT_ID;
     TEXT_NAME        = DataStorageText_C.TEXT_NAME;
@@ -27,12 +28,18 @@ class DataStorageText_C {
     FONT_WEIGHT      = DataStorageText_C.FONT_WEIGHT;
     FONT_STYLE       = DataStorageText_C.FONT_STYLE;
     FONT_ALIGN       = DataStorageText_C.FONT_ALIGN;
+    LINE_WIDTH       = DataStorageText_C.LINE_WIDTH;
 
     constructor(){
       this.Storage = [];
     }
     add(data){
       for(let i = 0; i < data.length; i++){
+        for(const [key, val] of Object.entries(data[i])){
+            if(!isNaN(val)){
+                data[i][key] = parseInt(val);
+            }
+        }
         this.Storage.push(data[i]);
       }
       return this;
@@ -94,6 +101,20 @@ class DataStorageText_C {
         return call.send();
     }
     async save(){
+        let projectID = await SPLINT.SessionsPHP.get("PROJECT_ID", false);
+        let UserID = await SPLINT.SessionsPHP.get("USER_ID", false);
+        
+        for(const e of this.Storage){
+            let args = new Object();
+                args.TextID = e.TextID;
+                args.ProjectID   = projectID;
+                args.UserID      = UserID;
+                let txtBlob = e.TextImg;
+                let fileUpload = SPLINT.FileUpload.simpleUpload("TEXT_IMG", txtBlob, args);
+                    fileUpload.then(function(){
+                        console.dir(arguments);
+                    })
+        }
       let call = new SPLINT.CallPHP(Text_C.PATH, Text_C.EDIT);
           call.data.Storage = this.parse();
         return call.sendInSequence();

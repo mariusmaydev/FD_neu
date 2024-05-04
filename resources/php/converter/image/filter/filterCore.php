@@ -283,16 +283,44 @@
             $sharpness      = $filterData[ImageDB::FILTER_SHARPNESS] + 1;
             $antialiasing   = $filterData[ImageDB::FILTER_ANTIALIASING]; // Stärke
             $contrast       = $filterData[ImageDB::FILTER_CONTRAST];
+            $lineWidth      = $filterData[ImageDB::FILTER_LINE_WIDTH];
             $d              = ($filterData[ImageDB::FILTER_D] / 100); 
             $edges          = $filterData[ImageDB::FILTER_EDGES]; 
             if($grayscale){
                 $edges = false;
-                $img->brightnessContrastImage(0, $contrast, Imagick::CHANNEL_ALL);
+                $img -> brightnessContrastImage(0, $contrast, Imagick::CHANNEL_ALL);
                 $img -> setImageColorspace(Imagick::COLORSPACE_GRAY);
             }
             if($edges){
+                $img -> autoGammaImage();
+                // $img -> gammaImage(3, Imagick::CHANNEL_ALL);
+                // $img -> sharpenImage(5, 12, Imagick::CHANNEL_ALL);
                 $img -> cannyEdgeImage(20 - ($sharpness * 2), $antialiasing, $d + 0.1, $d + 1.01 - ($contrast / 10));
             }
+            if($lineWidth != 1){
+                $kernel = \ImagickKernel::fromBuiltIn(\Imagick::KERNEL_DIAMOND, $lineWidth - 1);
+                $img->morphology(\Imagick::MORPHOLOGY_DILATE, 1, $kernel, Imagick::CHANNEL_ALL);
+            }
+            $img -> setImageFormat("png");
+        }
+        private static function filterImage1(Imagick &$img, $filterData, bool $grayscale = false) : void {
+            $sharpness      = $filterData[ImageDB::FILTER_SHARPNESS];
+            Debugger::log($filterData);
+            $antialiasing   = $filterData[ImageDB::FILTER_ANTIALIASING]; // Stärke
+            $contrast       = $filterData[ImageDB::FILTER_CONTRAST];
+            $d              = ($filterData[ImageDB::FILTER_D] / 100); 
+            $edges          = $filterData[ImageDB::FILTER_EDGES]; 
+            // if($grayscale){
+            //     $edges = false;
+            //     $img->brightnessContrastImage(0, $contrast, Imagick::CHANNEL_ALL);
+            //     $img -> setImageColorspace(Imagick::COLORSPACE_GRAY);
+            // }
+            // $img -> sharpenImage(15, 1, Imagick::CHANNEL_ALL);
+            $img->brightnessContrastImage($sharpness*10, $contrast*10, Imagick::CHANNEL_ALL);
+            // if($edges){
+
+            //     $img -> cannyEdgeImage(20 - ($sharpness * 2), $antialiasing, $d + 0.1, $d + 1.01 - ($contrast / 10));
+            // }
             $img -> setImageFormat("png");
         }
         public static function Filter(Imagick &$img, $filterData, bool $getFixedArray = true, bool $grayscale = false) {
@@ -301,9 +329,13 @@
                 ImagickHelper::setColorTransparent($img, 'white', !$grayscale);
                 return $img;
             } else {
+                // ImagickHelper::setColorTransparent($img, 'white', !$grayscale);
                 $fArray = new fixedArray($img -> getImageWidth(), $img -> getImageHeight());
                 $fArray -> fromArray($img -> exportImagePixels(0, 0, $img -> getImageWidth(), $img -> getImageHeight(), 'I', Imagick::PIXEL_CHAR), 1, true);
-                return $fArray;
+                
+                $g = new FilterHelper($fArray);
+                $g -> dilate();
+                return $g -> get(true);
             }
         }
         public static function getImageFromURL(string $url) : Imagick {

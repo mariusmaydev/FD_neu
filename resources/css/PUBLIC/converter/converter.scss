@@ -75,11 +75,12 @@
 } 
 body {
     position: absolute; 
+    touch-action: pan-x pan-y !important;
     margin: 0 !important;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100dvh !important;
     padding-top: 0;
     overflow: hidden;
     > .Background {
@@ -135,7 +136,7 @@ body {
                 height: auto !important;
                 width: auto !important;
                 > span {
-                    font-size: 8rem !important;
+                    font-size: 2rem !important;
                     color: white;
                 }
             }
@@ -147,7 +148,7 @@ body {
                 justify-content: center;
                 > span {
                     color: white;
-                    font-size: 5rem;
+                    font-size: 1.5rem;
                 }
             }
             > .TextInputDiv {
@@ -172,7 +173,7 @@ body {
                     pointer-events: all !important;
                     border: none;
                     text-align: center;
-                    font-size: 4rem;
+                    font-size: 2rem;
                     color: white;
                     caret-color: white!important;
                 }
@@ -252,7 +253,7 @@ body {
 
 @include mediaQueries.forMediaBreakpoint(mobile-small){
     body {
-        height: 100vh !important;
+        height: 100dvh !important;
         overflow:  hidden !important;
     }
     .Background3D {
@@ -280,7 +281,7 @@ body {
         margin-left: auto;
         margin-right: auto;
         top: 6%;
-        height: calc(100vh - calc(6vh + 3.5rem));
+        height: calc(100dvh - calc(6vh + 1rem));
         overflow: hidden !important;
         @include EditorFrameMobile.conv_EditorFrame_mobile();
         > .Conv_RightBar {
@@ -382,6 +383,29 @@ body {
             }
             > .inputContainer {
                 // padding-bottom: 0.25rem;
+            }
+        }
+        > .Intensity_Container {
+            
+            > .IntensityBtContainer {
+                position: relative;
+                overflow: hidden;
+                box-sizing: border-box;
+                width: 100%;
+                > button {
+                    position: relative;
+                    box-sizing: border-box;
+                    width: calc(100% - 1rem);
+                    @include Tmain.TButton_simple();
+                    background-color: vars.$color-T_container-Medium ;
+                    @include S_tools.SPLINT-border-inset(red, 4px, false, false, true, false);
+                    &[state*='active']{
+                        @include S_tools.SPLINT-border-inset(rgb(0, 178, 0), 4px, false, false, true, false);
+                    }
+                    > span {
+                        color: vars.$color-primary-text;
+                    }
+                }
             }
         }
         > .genFrameHeadContainer {

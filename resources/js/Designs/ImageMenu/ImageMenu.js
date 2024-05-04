@@ -35,7 +35,6 @@ class ImageMenu {
   async drawUnsplash(searchValue){
     unsplash.search(searchValue).callback = draw.bind(this);
     function draw(imageData, instance){
-        console.log(imageData);
         if(imageData.total == 0){
             let hintBody = new SPLINT.DOMElement("hintBody", "div", this.mainElement);
                 hintBody.Class("hintBody");
@@ -78,9 +77,14 @@ class ImageMenu {
 
                 if(SPLINT.ViewPort.getSize() == "mobile-small"){
                     imgElement.onclick = function(){
-                        this.drawPopupMobile(data)
+                        // this.drawPopupMobile(data)
+                        unsplash.download(data)
+                        // popup.close();
+                        this.close();
                             // let imgpopup.content
                     }.bind(this);
+                    imgElement.ontouchstart = function(){
+                    }
                     return;
                 }
                 let hoverDiv = new SPLINT.DOMElement("hoverDiv_" + index, "div", listElement);
@@ -108,9 +112,9 @@ class ImageMenu {
                             buttonUse.Class("use");
                             // buttonUse.bindIcon("add_photo_alternate");
                             // buttonUse.setTooltip("verwenden", "top");
-                            buttonUse.button.onclick = function(){
-                            unsplash.download(data);
-                            this.close();
+                            buttonUse.button.onclick = async function(){
+                                await unsplash.download(data);
+                                this.close();
                             }.bind(this);
 
                             

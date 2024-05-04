@@ -28,6 +28,7 @@ export class draw {
         this.setup = new SETUP(this);
         this.animationTime = 0;
         this.debuggMode = false;
+        this.drawStats = false;
         this.materials = new Object();
         this.thumbnail = new Object();
         this.startLoading();
@@ -74,7 +75,7 @@ export class draw {
             this.renderer.setPixelRatio( window.devicePixelRatio * 1.5);
             this.renderer.setSize( parentSize.width /2, parentSize.height /2, false);
         } else {
-            this.renderer.setPixelRatio( window.devicePixelRatio * 2);
+            this.renderer.setPixelRatio( window.devicePixelRatio * 1.2);
             this.renderer.setSize( parentSize.width, parentSize.height, false);
         }
         // this.render();
@@ -110,8 +111,13 @@ export class draw {
         this.setupCamera();
         this.raycaster = SPLINT.raycaster(this);
         this.raycaster2 = SPLINT.raycaster(this);
-        this.stats = new Stats()
+        if(this.drawStats == true){
+            this.stats = new Stats()
         document.body.appendChild(this.stats.dom)
+        } else {
+            this.stats = false;
+        }
+        
         // this.setup.controls();
     }
     setupCamera(){
@@ -229,12 +235,14 @@ export class draw {
             } else {
                 let texture = new THREE.Texture(normalMapData);
                     texture.needsUpdate = true;
+                    this.thumbnail.lighter1.loadEnvMap(this.scene.enviroment);
+                    this.thumbnail.lighter2.loadEnvMap(this.scene.enviroment);
 
                 this.thumbnail.lighter1.loadNormalMap(texture);
                 this.thumbnail.lighter2.loadNormalMap(texture);
 
                 this.thumbnail.lighter1.setColor(new THREE.Color(0xe8b000))
-                this.thumbnail.lighter2.setColor(new THREE.Color(0xc0c0c0))
+                this.thumbnail.lighter2.setColor(new THREE.Color(0xe8b000))
 
                 let obj = {
                     magFilter: THREE.LinearFilter,
@@ -246,10 +254,12 @@ export class draw {
 
                 // this.thumbnail.lighter1.loadEnvMap(this.cubeRenderTarget.texture);
                 // this.thumbnail.lighter2.loadEnvMap(this.cubeRenderTarget.texture);
+
                 // this.render();
             }
             
         }.bind(this));
+        this.changeColor('lighter2', 0xff0000)
     }
 
     setupOffscreen(){
@@ -268,11 +278,15 @@ export class draw {
         const stats = this.stats;
         const scene = this.scene;
         const camera = this.camera;
+        const cubeCamera = this.cubeCamera;
         async function loop(){
             requestAnimationFrame(loop);
             mixer.tick();
+            // this.cubeCamera.update(renderer, scene);
             renderer.render(scene, camera);
-            stats.update();
+            if(stats != false){
+                stats.update();
+            }
         }
         loop();
     }
@@ -281,6 +295,19 @@ export class draw {
     //     this.renderer.render(this.scene, this.camera);
     //     this.stats.update()
     // }
+    
+    async changeColor(name, value = 0xff0000){
+        
+        let lighterGroupe2 = this.setup.getLighterGroupe(this.scene, name);
+        lighterGroupe2.traverse(function(object) {
+            if(object.type === 'Mesh') {
+                if(object.material.name.includes("body")){
+                    object.material = MaterialsLighterGeneral.bodyColor(this, value);
+                    object.material.needsUpdate = true
+                }
+            };
+        }.bind(this));
+    }
     async drawBackground(){
         SPLINT.ResourceManager.dataTextures.indexBackground.then(async function(texture){
             console.dir(texture)
@@ -294,7 +321,7 @@ export class draw {
 
         // this.cubeRenderTarget = new THREE.WebGLCubeRenderTarget( 265,{ generateMipmaps: true, minFilter: THREE.LinearMipmapLinearFilter } );
         // this.cubeRenderTarget.texture.type = THREE.HalfFloatType;
-        // this.cubeCamera = new THREE.CubeCamera( 10, 200, this.cubeRenderTarget );
+        // this.cubeCamera = new THREE.CubeCamera( 0.1, 20, this.cubeRenderTarget );
         // this.scene.add( this.cubeCamera );
         // this.pmremGenerator = new THREE.PMREMGenerator(this.renderer);
         // this.envMap = this.pmremGenerator.fromScene(this.scene).texture;

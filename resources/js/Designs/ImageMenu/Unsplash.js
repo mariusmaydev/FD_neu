@@ -136,28 +136,30 @@ class unsplash {
     // return call.send(true);
 
   }
-  static download(data){
-    let url = data.urls.regular + '&client_id=' + unsplash.clientID;
-        //get    
+  static async download(data){
+    return new Promise(async function(resolve){
+        let url = data.urls.regular + '&client_id=' + unsplash.clientID;
+            //get    
         fetch(url, {
-          method: 'GET',
-        })
-        .then(async function(response) {
-            
+            method: 'GET',
+        }).then(async function(response) {
             let call = new SPLINT.CallPHP(PATH.php.upload, "UNSPLASH_IMG");
                 call.data.link = response.url;
             let res = (await call.send());
                 res = JSON.stringify(res);
-            DSImage.add(JSON.parse(res));
+            let pData = JSON.parse(res);
+            DSImage.add(pData);
             CONVERTER_STORAGE.canvasNEW.refreshData();
             CONVERTER_STORAGE.toolBar.update();
+            CONVERTER_STORAGE.toolBar.focusElement("img", pData[0].ImageID);
+            resolve(pData);
         });
-
+    
         //endpoint
-        url = data.links.download_location + '&client_id=' + unsplash.clientID;
-        fetch(url, {
-          method: 'GET',
-        })
-        .then(response => response.blob())
+        // url = data.links.download_location + '&client_id=' + unsplash.clientID;
+        // fetch(url, {
+        //     method: 'GET',
+        // }).then(response => response.blob())
+    });
   }
 }

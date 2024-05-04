@@ -28,7 +28,6 @@
         //     createThumbnail($StorageProject, $StorageImg, $StorageText);
         // }
         public static function genFrame($UserID, $ProjectID,bool $sendBack = true){
-
             $args = new stdClass();
             $args -> type = "laser";
             $args -> PointZero = new stdClass();
@@ -40,7 +39,8 @@
                 $args -> PointZero = new stdClass();
                 $args -> PointZero -> X = $_POST["Args"]["PointZero"]["X"] / 16.4;
                 $args -> PointZero -> Y = $_POST["Args"]["PointZero"]["Y"] / 16.4;
-                $args -> innerFrame = $_POST["Args"]["innerFrame"];
+                $args -> OffsetFrame = $_POST["Args"]["offsetFrame"];
+                $args -> CurrentConfig = $_POST["Args"]["CurrentConfig"];
                 Communication::sendBack($args);
             }
             
@@ -115,8 +115,13 @@
                 $args = new stdClass();
                 $args -> type = $_POST["Args"]["type"];
                 $args -> PointZero = new stdClass();
-                $args -> PointZero -> X = $_POST["Args"]["PointZero"]["X"] / 16.4;
-                $args -> PointZero -> Y = $_POST["Args"]["PointZero"]["Y"] / 16.4;
+                $args -> PointZero -> X = null;
+                $args -> PointZero -> Y = null;
+                if(isset($_POST["Args"]["PointZero"])){
+                    $args -> PointZero -> X = $_POST["Args"]["PointZero"]["X"] / 16.4;
+                    $args -> PointZero -> Y = $_POST["Args"]["PointZero"]["Y"] / 16.4;
+                }
+                $args -> CurrentConfig = $_POST["Args"]["CurrentConfig"];
                 Communication::sendBack($args);
             }
             
@@ -129,10 +134,14 @@
             $args -> lighterSize -> width = $ProjectData[ProjectDB::SQUARE] -> widthMM * 50;
             switch($args -> type){
                 case "laserFlat": {
-                    $cfg = ConverterConfig::get(false);
+                    $cfg = ConverterConfig::get($args -> CurrentConfig, false);
                     $args -> intensity = new stdClass();
                     $args -> intensity -> min = $cfg -> laserFlat -> intensity -> min;
                     $args -> intensity -> max = $cfg -> laserFlat -> intensity -> max;
+                    $args -> intensity -> binary = $cfg -> laserFlat -> intensity -> binary;
+                    $args -> rendering = new stdClass();
+                    $args -> rendering -> row = $cfg -> laserFlat -> rendering -> row;
+                    $args -> rendering -> col = $cfg -> laserFlat -> rendering -> col;
                     $args -> quality_PpMM = $cfg -> laserFlat -> quality_PpMM;
                     $pathObject = ConverterCreator::createPathObjectLaserFlat($ProjectData, $UserID, $args, $ImageData, $TextData);
                     ConverterCreator::createLaserFlatData($ProjectData, $UserID, $args, $pathObject);

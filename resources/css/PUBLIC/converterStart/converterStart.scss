@@ -32,6 +32,9 @@ $color-CS-divider : rgb(199, 199, 199);
 }
 body {
     // @include converterStart_projectDetails;
+        touch-action: pan-x pan-y !important;
+    height: 100dvh !important;
+    top: 0 !important;
     box-sizing: border-box;
     &::-webkit-scrollbar {
         display: none !important;

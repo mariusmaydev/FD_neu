@@ -50,9 +50,8 @@ class ConverterRenderThumbnail {
         }
         return ConverterRenderThumbnail.#PROMS.update;
     }
-
     async #update(){
-        let offscreen  = document.createElement("canvas").transferControlToOffscreen();
+        // let offscreen  = document.createElement("canvas").transferControlToOffscreen();
         let size = {
             x: this.inst.canvas.width,
             y: this.inst.canvas.height,
@@ -83,17 +82,19 @@ class ConverterRenderThumbnail {
             }
             stackOut.push(elem)
         }
-        let imageData = (await Converter.workerCreateThumbnail.sendInPromise("createThumbnail", { canvas: offscreen, stack: stackOut, size: size}, [offscreen])).data;
-        
-        // let canvasTxT = await this.#updateTXT(size);
-        // let canvasOut = document.createElement("canvas")
-        //     canvasOut.width = ConverterRenderThumbnail.SIZE;
-        //     canvasOut.height = ConverterRenderThumbnail.SIZE;
-        // let ctxOut = canvasOut.getContext("2d", {colorSpace: "srgb"});
-        //     ctxOut.putImageData(imageData, 0, 0)
-        //     ctxOut.drawImage(canvasTxT, 0, 0, canvasTxT.width, canvasTxT.height, 0, 0, ConverterRenderThumbnail.SIZE, ConverterRenderThumbnail.SIZE);
+            // let imageData = (await Converter.workerCreateThumbnail.sendInPromise("createThumbnail", { canvas: offscreen, stack: stackOut, size: size}, [offscreen])).data;
+            let imageData = (await Converter.workerCreateThumbnail.sendInPromise("createThumbnail", { stack: stackOut, size: size})).data;
+// 
 
-        //     let imh1 = ctxOut.getImageData(0, 0, ConverterRenderThumbnail.SIZE, ConverterRenderThumbnail.SIZE, {colorSpace: "srgb"})
+        // // let canvasTxT = await this.#updateTXT(size);
+        // // let canvasOut = document.createElement("canvas")
+        // //     canvasOut.width = ConverterRenderThumbnail.SIZE;
+        // //     canvasOut.height = ConverterRenderThumbnail.SIZE;
+        // // let ctxOut = canvasOut.getContext("2d", {colorSpace: "srgb"});
+        // //     ctxOut.putImageData(imageData, 0, 0)
+        // //     ctxOut.drawImage(canvasTxT, 0, 0, canvasTxT.width, canvasTxT.height, 0, 0, ConverterRenderThumbnail.SIZE, ConverterRenderThumbnail.SIZE);
+
+        // //     let imh1 = ctxOut.getImageData(0, 0, ConverterRenderThumbnail.SIZE, ConverterRenderThumbnail.SIZE, {colorSpace: "srgb"})
         
             let binImg = await SPLINT.BinaryImage.fromImageData(imageData);
         DSProject.Storage.Thumbnail = binImg;
@@ -122,6 +123,7 @@ class ConverterRenderThumbnail {
     async #save(){
         if(DSProject.Storage.Thumbnail instanceof SPLINT.BinaryImage) {
             SPLINT.IndexedDB.set(DSProject.Storage.ProjectID + "_thumbnail", DSProject.Storage.Thumbnail, "DynamicData")
+            console.log(DSProject)
             return DSProject.Storage.Thumbnail.saveToURL();
         } else {
             return false;

@@ -1,6 +1,7 @@
 import MaterialsEngraving from "../../assets/newMaterials/materialsEngraving.js";
 import SPLINT from 'SPLINT';
 import MaterialHelper from "@SPLINT_MODULES_DIR/ThreeJS/materials/MaterialHelper.js";
+import * as THREE from "@THREE";
 
 export default class LighterThumbnail {
 
@@ -100,6 +101,7 @@ export default class LighterThumbnail {
     }
     setColor(color){
         let thumbnail = this.thumbnailObj;
+        let bg = new THREE.Color(0x2c2c2c);
         // let Gold = new Color(0xe8b000);
         // let Chrome = new Color(0xc0c0c0);
         thumbnail.upperMesh.material.color = color;

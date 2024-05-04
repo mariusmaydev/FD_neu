@@ -96,40 +96,54 @@ class CanvasElement_C {
       this.checkEdge(this.activeElement);
     }
   }
-  async createTextData(scale = 1){
-    let size = {
-        x: this.canvas.width * scale,
-        y: this.canvas.height * scale,
-        scale: scale
-    }
-    for(const element of this.stack){
-        if(element.type == "txt"){
-
-            let postEle = JSON.parse(JSON.stringify( element));
-                postEle.data.TextAlign = 0;
-            let canvas = document.createElement("canvas");
-                canvas.width  = (postEle.data.FrameWidth * size.scale) + 10;
-                canvas.height = (postEle.data.FrameHeight * size.scale) + 10;
-
-            let ctx     = canvas.getContext('2d');
-                ctx.fillStyle = "transparent";
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.scale(size.scale / 2, size.scale / 2);
-
-            let a = postEle.data.TextPosX;
-            let b = postEle.data.TextPosY;
-
-                postEle.data.TextPosX = (canvas.width ) / (size.scale );
-                postEle.data.TextPosY = (canvas.height) / (size.scale );
-                postEle.ctx = ctx;
-
-            canvasPaths.drawTextForData(postEle, true);
-            
-            element.data.TextImg = await canvas.toDataURL("image/png", 1);
-            element.data.TextPosX = a;
-            element.data.TextPosY = b;
+  createTextData(scale = 1){
+    return new Promise(async function(resolve){
+        let proms = [];
+        let size = {
+            x: this.canvas.width * scale,
+            y: this.canvas.height * scale,
+            scale: scale
         }
-    }
+        for (const element of this.stack){
+            if(element.type == "txt"){
+    
+                let postEle = JSON.parse(JSON.stringify( element));
+                    postEle.data.TextAlign = 0;
+                let canvas = document.createElement("canvas");
+                    canvas.width  = (parseInt(postEle.data.FrameWidth) * size.scale *4) + 10;
+                    canvas.height = (parseInt(postEle.data.FrameHeight) * size.scale *4) + 10;
+    
+                let ctx     = canvas.getContext('2d');
+                    ctx.fillStyle = "transparent";
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.scale(size.scale , size.scale);
+                let a = postEle.data.TextPosX;
+                let b = postEle.data.TextPosY;
+    
+                    postEle.data.TextPosX = parseInt(canvas.width /2)
+                    postEle.data.TextPosY = parseInt(canvas.height /2);
+                    postEle.ctx = ctx;
+                    console.log(postEle, a, b);
+    
+                canvasPaths.drawTextForData(postEle, true);
+                element.data.TextPosX = a;
+                element.data.TextPosY = b;
+
+                proms.push(fetch(canvas.toDataURL("image/png", 1))
+                .then(res => res.blob())
+                .then(async function(res){
+                    element.data.TextImg = res;
+
+                    let r = this.#getElementByID_Type(element.ID, "txt")
+                    this.stack[r.index].data = element.data;
+                    return true;
+                }.bind(this)));
+            }
+        }
+        Promise.allSettled(proms).then(function(){
+            resolve(arguments);
+        })
+    }.bind(this));
   }
   getElementForCoords(){
     let ele = null;
@@ -422,6 +436,9 @@ class CanvasElement_C {
         if(this.mouse.down && this.dragElement == element && element.dragEdge == -1 && element.resize != true){
           element.data.TextPosX = this.mouse.X * this.ratio.X + element.offset.X;
           element.data.TextPosY = this.mouse.Y * this.ratio.Y + element.offset.Y;
+          let lineV = this.drawLine(element.data.TextPosX, element.data.TextPosY, element.data);
+          element.data.TextPosX = lineV[0];
+          element.data.TextPosY = lineV[1];
         }
         if(element.drawEdge){
           this.focusCanvas(element);
@@ -668,14 +685,14 @@ class CanvasHelper {
   static Image(ctx = null){
     function obj(ctx){
       this.edge = function(element, flag = false, index){
-        if(flag){
-            CanvasHelper.drawEdges(element, element.data.ImageWidth, element.data.ImageHeight, index);
-        } else {
-            CanvasHelper.drawEdges(element, element.data.ImageWidth, element.data.ImageHeight);
-        }
+        // if(flag){
+        //     CanvasHelper.drawEdges(element, element.data.ImageWidth, element.data.ImageHeight, index);
+        // } else {
+        //     CanvasHelper.drawEdges(element, element.data.ImageWidth, element.data.ImageHeight);
+        // }
       }
       this.draw = function(element, pointFlag = true, black = false){    
-        if(pointFlag){
+        if(pointFlag && !SPLINT.ViewPort.isMobile()){
             canvasPaths.updatePointPath(element, element.data.ImageWidth, element.data.ImageHeight);
         }
             canvasPaths.updateImg(element, black);

@@ -31,6 +31,7 @@ class BottomBar_Text_FontFamily_Menu {
         }.bind(this);
 
         this.slideShow.value = this.data.FontFamily;
+        // alert(JSON.stringify(this.floatingDiv.content.getBoundingClientRect()) + "    " + JSON.stringify(this.parent.getBoundingClientRect()));
 
     }
     genElement(){

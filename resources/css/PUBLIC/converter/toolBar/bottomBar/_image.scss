@@ -12,11 +12,12 @@
         box-sizing: border-box;
         > * {
             box-sizing: border-box;
-            padding: 0.5rem;
+            padding: 0rem;
         }
         > .buttonsDiv {
-            background-color: vars.$color-primary-complementary-light;
-            box-shadow: none;
+            @include Tmain.TContainer_basic();
+            // background-color: vars.$color-T_container;
+            // box-shadow: none;
             overflow: auto;
             overflow-y:visible;
             &::-webkit-scrollbar {
@@ -29,33 +30,45 @@
             width: 100%;
             height: 100%;
             padding: 0;
-            background-image: linear-gradient(to right, vars.$color-primary-complementary-light, vars.$color-primary-complementary-light),
-            linear-gradient(to right, vars.$color-primary-complementary-light, vars.$color-primary-complementary-light),
+            background-image: 
+            linear-gradient(to right, vars.$color-T_container, vars.$color-T_container),
+            linear-gradient(to right, vars.$color-T_container, vars.$color-T_container),
             linear-gradient(to right, rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0)),
             linear-gradient(to left, rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0));
             background-position: left center, right center, left center, right center;
             background-repeat: no-repeat;
-            background-color: vars.$color-primary-complementary-light;
-            background-size: 40px 100%, 40px 100%, 20px 100%, 20px 100%;
+            background-color: vars.$color-T_container;
+            background-size: 15px 100%, 15px 100%, 10px 100%, 10px 100%;
             background-attachment: local, local, scroll, scroll;
             > button {
+                @include Tmain.TButton_primary();
                 box-sizing: border-box;
                 padding-inline: 0rem;
                 aspect-ratio: 1/1;
                 height: 100%;
+                background-color: transparent;
                 > span {
-                    font-size: 2rem;  
+                    color: vars.$color-primary-text;
+                    font-size: 2.3rem;  
+                    margin: -0.05rem;  
+                    &.description {
+                        margin: -0.05rem;  
+                        margin-bottom: -0.1rem;  
+                        margin-top: 0.1rem;
+                        font-size: 0.5rem;
+                    }
                 }
                 &[state*='active']{
-                    background-color: vars.$color-primary-complementary;
+                    // background-color: vars.$color-primary;
                 }
                 
                 @include floatingDiv.conv_floatingDiv_aligned();
             }
         }
         > button {
-            background-color: vars.$color-primary-complementary-light;
-            box-shadow: none;
+            @include Tmain.TContainer_basic();
+            // background-color: vars.$color-T_container;
+            // box-shadow: none;
             margin-right: 0.3em;
             user-select: none;
             position: relative;
@@ -65,7 +78,7 @@
             left: 0;
             padding-inline: 0;
             > span {
-                font-size: 2rem;
+                font-size: 2.3rem;
             }
         }
     }

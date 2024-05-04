@@ -46,7 +46,7 @@ class ProjectHelper extends SPLINT.CallPHP.Manager {
           call.data.OrderID   = orderID;
       return call.send();
     }
-    static async new(ProjectName = 'unbenannt', Product = 'Test', isAdmin = false, isOriginal = false, isExperimental = false, color = "base"){
+    static async new(ProjectName = 'unbenannt', Product = 'LIGHTER_BASE_GOLD_custom', isAdmin = false, isOriginal = false, isExperimental = false, color = "base"){
       let call = this.callPHP(this.NEW);
           call.data.Experimental = isExperimental;
           call.data.Original     = isOriginal;

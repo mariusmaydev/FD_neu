@@ -56,6 +56,7 @@ class BottomBar_Image {
         
         let bt_rotation = new SPLINT.DOMElement.Button.Switch(buttonsDiv, "rotation", "bt1");
             bt_rotation.bindIcon("rotate_left");
+            bt_rotation.Description = "Drehung";
             bt_rotation.onactive = function(){
                 this.drawSliderRotate(bt_rotation);
                 

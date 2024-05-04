@@ -61,7 +61,7 @@ export class draw {
     }
     init(){
         SPLINT.Events.onLoadingComplete.dispatch();
-        this.setup.renderer();
+        this.setup.renderer(true);
         this.setup.scene("scene");
         this.scene.fog = new THREE.Fog(0xcccccc, 4, 10);
         if(this.canvas.parentElement.getAttribute("mouseEvents") == 'true'){
@@ -156,8 +156,8 @@ export class draw {
             this.canvas.width   = parentSize.width * 2;
             this.canvas.height  = parentSize.height * 2;
         } else {
-            this.canvas.width   = parentSize.width * 2;
-            this.canvas.height  = parentSize.height * 2;
+            this.canvas.width   = parentSize.width * 4;
+            this.canvas.height  = parentSize.height * 4;
         }
         this.canvas.style.width     = parentSize.width  + "px";
         this.canvas.style.height    = parentSize.height + "px";
@@ -166,8 +166,8 @@ export class draw {
             this.renderer.setPixelRatio( window.devicePixelRatio * 1.5);
             this.renderer.setSize( parentSize.width /2, parentSize.height /2, false);
         } else {
-            this.renderer.setPixelRatio( window.devicePixelRatio * 2);
-            this.renderer.setSize( parentSize.width, parentSize.height, false);
+            this.renderer.setPixelRatio( window.devicePixelRatio);
+            this.renderer.setSize( parentSize.width*1.5, parentSize.height*1.5, false);
         }
         this.render();
     }
@@ -279,8 +279,9 @@ export class draw {
             } else {
                 await this.loadThumbnail(true);
             }
-            this.Animations.lighter_close.start(false, 0);
-            this.Animations.lever_close.start(true, 0);
+            this.adjustModel();
+            // this.Animations.lighter_close.start(false, 0);
+            // this.Animations.lever_close.start(true, 0);
             this.onFinishLoading();
             resolve('resolved');
         }.bind(this));
@@ -293,5 +294,31 @@ export class draw {
             plane.plane.material = MATERIALS.other.shadowCatcher();
             plane.plane.receiveShadow = true;
         this.scene.add(plane.plane);
+    }
+    
+    async adjustModel(){
+        let scene = this.setup.getLighterGroupe(this.scene, "lighter");
+        for(let i = scene.children.length - 1; i >= 0; i--){
+            let element = scene.children[i];
+            switch(element.name){
+                case 'unteres_teil1'       : {
+                } break;
+                case 'oberes_teil1'        : {
+                    element.children[0].geometry.applyMatrix4( new THREE.Matrix4().makeTranslation( 0, 0.000, 0 ) );
+                    element.children[0].rotation.z = -2.33463
+                } break;
+                case 'stab1'               : {
+                }  break;
+                case 'verbindung_oben1'    : {
+                    element.children[0].rotation.x = 2.33463
+                } break;
+                case 'verbindung_unten1'   : {
+                } break;
+                default: {
+                    scene.remove(element);
+                }
+            }
+        }
+
     }
 }

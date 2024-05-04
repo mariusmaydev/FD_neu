@@ -57,14 +57,16 @@ class Converter_closeButtons {
             button_create.Class("create");
             button_create.setStyleTemplate(S_Button.STYLE_NONE);
             button_create.onclick = async function(){
-                await CONVERTER_STORAGE.canvasNEW.createTextData();
-                ProjectHelper.CONVERTER_closeProject();
+                let r = await CONVERTER_STORAGE.canvasNEW.createTextData();
+                console.dir(r)
+                await ProjectHelper.CONVERTER_closeProject();
                 let sp = new SPLINT.DOMElement.Spinner(button_create.button, "test");
                 let Args = new Object();
                     Args.type = switchBt.Value;
                     Args.PointZero = new Object();
                     Args.PointZero.X = DSProject.Storage[DSProject.SQUARE].PointZeroX;
                     Args.PointZero.Y = DSProject.Storage[DSProject.SQUARE].PointZeroY;
+                    Args.CurrentConfig = ConverterHelper.getCurrentConfig();
                 let res = (await ConverterHelper.createData((await SPLINT.SessionsPHP.get("USER_ID", false)), DSProject.Storage.ProjectID, Args));
                 sp.remove();
             }
@@ -131,10 +133,10 @@ class Converter_closeButtons {
                 if(SPLINT.Events.onLoadingComplete.dispatched){
                     button_toCart_Div.setAttribute("loaded", true);
                 }
-                if(!(await productHelper.isAvailable(DSProject.Storage.Product))){
-                    button_toCart.disabled = true;
-                    button_toCart.setTooltip("ausverkauft", "top")
-                }
+                // if(!(await productHelper.isAvailable(DSProject.Storage.Product))){
+                //     button_toCart.disabled = true;
+                //     button_toCart.setTooltip("ausverkauft", "top")
+                // }
     }
     async drawButtonBuy(){
         let button_finish_Div = new SPLINT.DOMElement("bt_finish_div", "div", this.contentElement);
@@ -157,10 +159,10 @@ class Converter_closeButtons {
                 if(SPLINT.Events.onLoadingComplete.dispatched){
                     button_finish_Div.setAttribute("loaded", true);
                 }
-                if(!(await productHelper.isAvailable(DSProject.Storage.Product))){
-                    button_finish.disabled = true;
-                    button_finish.setTooltip("ausverkauft", "top")
-                }
+                // if(!(await productHelper.isAvailable(DSProject.Storage.Product))){
+                //     button_finish.disabled = true;
+                //     button_finish.setTooltip("ausverkauft", "top")
+                // }
     }
     drawButtonSave_editCartItem(){
         let button_finish_Div = new SPLINT.DOMElement("bt_finish_div", "div", this.contentElement);

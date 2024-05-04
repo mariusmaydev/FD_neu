@@ -1,9 +1,9 @@
 {
 	"projectName": "fd",
 	"SSL": "http",
-    "host2": "localhost",
+    "host": "localhost",
 	"host3": "192.168.178.41",
-	"host": "192.168.178.88",
+	"host2": "192.168.178.123",
 	"host1": "192.168.178.67",
 	"port": "80",
 	"moonraker": {

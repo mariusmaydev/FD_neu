@@ -142,9 +142,14 @@ class BottomBar_Standard {
       buttonProductInformation(){
         this.button_ProductInformation = new SPLINT.DOMElement.Button(this.mainElement, "ProductInformation");
         this.button_ProductInformation.bindIcon("info");
-        this.button_ProductInformation.Description = "test";
-        this.button_ProductInformation.button.onclick = function(){
-          S_Location.goto(PATH.location.productInfo).setHash("ssadf").call();
+        this.button_ProductInformation.Description = "Informationen";
+        this.button_ProductInformation.button.onclick = async function(){
+            let data = await ProjectHelper.get();
+                data.Thumbnail = data.Thumbnail + "?" + Math.round(Math.random() * 1000);
+                
+            let projectDetails = new ProjectDetails(data, document.body);
+                projectDetails.show();
+        //   S_Location.goto(PATH.location.productInfo).setHash("ssadf").call();
         }
       }
       buttonFinish(){

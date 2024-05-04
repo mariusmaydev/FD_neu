@@ -5,7 +5,8 @@ export default function light(scene){
     let groupe = new THREE.Group();
     let c1 = 0xffd7af;
     const lights = new SPLINT.lights.lightCluster(groupe, false);
-          lights.helper.size = 0.1;
+            // lights.debugg = true;
+          lights.helper.size = 1;
 
     let atmo = lights.new.AmbientLight(0xffd8b2 , 3);
         // atmo.bind();
@@ -16,6 +17,7 @@ export default function light(scene){
         // hemi.bind();
 
     let spot = lights.new.SpotLight(0xffd8b2, 100, 2, 0.3, 0.4, 0);
+
         spot.position.set(-0.7,0.5, 0.7);
         spot.target.position.set(0, 0.1, 0);
         spot.castShadow = true;
@@ -77,6 +79,7 @@ export default function light(scene){
         directional2.shadow.camera.top = 1;
         directional2.shadow.camera.bottom = -1;
         directional2.bind();
+        console.dir(groupe)
         scene.add(groupe);
     // let directional1 = lights.new.DirectionalLight( 0xfff8e0, 2 );
     //     directional1.position.set( 0.3, 1.5, 0.3);

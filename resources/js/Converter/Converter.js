@@ -53,7 +53,6 @@ class Converter {
         this.init();
         this.initEvents();
         CONVERTER_STORAGE.canvasNEW.refreshData();
-        
         if(typeof CONVERTER_STORAGE.lighter3D.promise.then == 'function'){
             CONVERTER_STORAGE.lighter3D.promise.then(async function(){
                 let color = await productHelper.getColorForID(DSProject.Storage.Color);

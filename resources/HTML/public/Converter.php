@@ -4,7 +4,7 @@
     <head>
         <title>Enflame</title>
         <meta charset="ISO-8859-1" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
 <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"> -->
@@ -46,6 +46,7 @@
         <s-part src="/js/Projects/ProjectList/ProjectDetails.js"></s-part>
         <s-part src="/js/Projects/ProjectList/Details/ProjectDetailsHelper.js"></s-part>
         <s-part src="/js/Projects/ProjectList/Details/ProjectDetailsDesktop.js"></s-part>
+        <s-part src="/js/Projects/ProjectList/Details/ProjectDetailsMobile.js"></s-part>
         <s-part src="/js/Converter/Converter.js"></s-part>
         <s-part src="/js/Designs/"></s-part>
         <s-part src="/js/Converter/Converter_LeftBar.js"></s-part>

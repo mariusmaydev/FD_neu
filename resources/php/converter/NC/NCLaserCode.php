@@ -47,7 +47,7 @@
             return $this -> CodeString;
         }    
         private function newElement(PathElement2D &$pathElement){
-            $cfg = ConverterConfig::get() -> laser;
+            $cfg = $this -> cfg -> laser;
             $steps = $pathElement -> getSteps();
             $lastStep = [];
             foreach($steps as $key => $step){

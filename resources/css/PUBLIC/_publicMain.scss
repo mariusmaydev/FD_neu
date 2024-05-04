@@ -3,6 +3,7 @@
 @use '../general/mediaQueries';
 
 body {
+    touch-action: pan-x pan-y !important;
     position: relative !important;
     width: 100vw !important;
     // overflow: visible !important;

@@ -132,7 +132,7 @@
         display: grid;
     
         grid-template-areas: "Logo Design Original shoppingCart"; 
-        grid-template-columns: [Logo] 1fr [Design] minmax(min-content, max-content) [Original] minmax(min-content, max-content) [shoppingCart] minmax(min-content, max-content);
+        grid-template-columns: [Logo] minmax(1em, 1fr) [Design] minmax(min-content, max-content) [Original] minmax(min-content, max-content) [shoppingCart] minmax(min-content, max-content);
         grid-template-rows: 100%;
         grid-auto-flow: dense;
         align-content: stretch;

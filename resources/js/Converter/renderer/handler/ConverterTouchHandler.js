@@ -29,6 +29,9 @@ class ConverterTouchHandler {
         }
         let g = ConverterTouchHandler.calcRotation(e);
 
+        if(g != false) {
+            this.hoverElement.data.ImageAlign = this.hoverElement.alignBase + g
+        }
         ConverterTouchHandler.calcDistance(e);
         // if(e.touches.length > 1){
         //     let g = ConverterTouchHandler.calcRotation(e.touches);
@@ -74,19 +77,17 @@ class ConverterTouchHandler {
     static startRotation(event){
         this.rotation = new Object();
         if(event.touches.length >= 2){
-            // this.rotation.start = new Object();
-            // this.rotation.start.p1 = new Object();
-            // this.rotation.start.p1.x = event.touches[0].pageX 
-            // this.rotation.start.p1.y = event.touches[0].pageY
-            // this.rotation.start.p2 = new Object();
-            // this.rotation.start.p2.x = event.touches[1].pageX 
-            // this.rotation.start.p2.y = event.touches[1].pageY 
-            // this.rotation.start = Math.atan2(event.touches[0].pageY - event.touches[1].pageY, event.touches[0].pageX - event.touches[1].pageX) * 180 / Math.PI;
+            this.rotation.start = new Object();
+            this.rotation.start.p1 = new Object();
+            this.rotation.start.p1.x = event.touches[0].pageX 
+            this.rotation.start.p1.y = event.touches[0].pageY
+            this.rotation.start.p2 = new Object();
+            this.rotation.start.p2.x = event.touches[1].pageX 
+            this.rotation.start.p2.y = event.touches[1].pageY 
+            this.rotation.start = Math.atan2(event.touches[0].pageY - event.touches[1].pageY, event.touches[0].pageX - event.touches[1].pageX) * 180 / Math.PI;
         }
     }
     static endRotation(event){
-        console.dir(event)
-        console.dir(this.rotation)
         // this.rotation = new Object();
     }
     static calcRotation(event){

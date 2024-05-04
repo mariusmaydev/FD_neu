@@ -176,6 +176,13 @@
                             // height: calc(max-content - 0.5rem);
                             // max-height: calc(100% - 0.5rem);
                             aspect-ratio: 1/1;
+                            justify-content: center;
+                            align-items: center;
+                            // > span {
+                            //     &.description {
+                            //         font-size: 0.5rem;
+                            //     }
+                            // }
                             // background-color: vars.$color-T_container-Medium;
                             // box-shadow: none;
                             // box-shadow: 3px 3px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1),

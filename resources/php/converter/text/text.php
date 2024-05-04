@@ -40,6 +40,7 @@ use Shopify\Auth\Session;
             $DataSet -> newEntry(TextDB::FONT_WEIGHT,       $data[TextDB::FONT_WEIGHT]);
             $DataSet -> newEntry(TextDB::FONT_STYLE,        $data[TextDB::FONT_STYLE]);
             $DataSet -> newEntry(TextDB::FONT_ALIGN,        $data[TextDB::FONT_ALIGN]);
+            $DataSet -> newEntry(TextDB::LINE_WIDTH,        $data[TextDB::LINE_WIDTH]);
             $DataSet -> TBName(self::getCompressedID($UserID, $projectID));
             TextDB::add($DataSet);
             Communication::sendBack($TextID, false, $print);
@@ -87,6 +88,7 @@ use Shopify\Auth\Session;
             $DataSet -> newEntry(TextDB::FONT_WEIGHT,       100);
             $DataSet -> newEntry(TextDB::FONT_STYLE,        "normal");
             $DataSet -> newEntry(TextDB::FONT_ALIGN,        0);
+            $DataSet -> newEntry(TextDB::LINE_WIDTH,        1);
             $DataSet -> TBName(self::getCompressedID());
             TextDB::add($DataSet);
             Text::get($TextID);
@@ -133,9 +135,11 @@ use Shopify\Auth\Session;
                         if($TXT_DATA[TextDB::TEXT_POS_X] == -1){
                             continue;
                         }
-                        if(isset($TXT_DATA[TextDB::TEXT_IMG])){
-                            self::saveTextImg($TXT_DATA[TextDB::TEXT_IMG], $TXT_DATA[TextDB::TEXT_ID], Sessions::get(Sessions::PROJECT_ID), Sessions::get(Sessions::USER_ID));
-                        }
+                        // if(isset($TXT_DATA[TextDB::TEXT_IMG])){
+                        //     $image = new Imagick();
+                        //     $image->readimageblob($TXT_DATA[TextDB::TEXT_IMG]);
+                        //     self::saveTextImg($image, $TXT_DATA[TextDB::TEXT_ID], Sessions::get(Sessions::PROJECT_ID), Sessions::get(Sessions::USER_ID));
+                        // }
                         $DataSet -> newKey(TextDB::TEXT_ID,             $TXT_DATA[TextDB::TEXT_ID]);
                         $DataSet -> newEntry(TextDB::TEXT_NAME,         $TXT_DATA[TextDB::TEXT_NAME]);
                         $DataSet -> newEntry(TextDB::TEXT_VALUE,        $TXT_DATA[TextDB::TEXT_VALUE]);
@@ -152,6 +156,7 @@ use Shopify\Auth\Session;
                         $DataSet -> newEntry(TextDB::FONT_WEIGHT,       $TXT_DATA[TextDB::FONT_WEIGHT]);
                         $DataSet -> newEntry(TextDB::FONT_STYLE,        $TXT_DATA[TextDB::FONT_STYLE]);
                         $DataSet -> newEntry(TextDB::FONT_ALIGN,        $TXT_DATA[TextDB::FONT_ALIGN]);
+                        $DataSet -> newEntry(TextDB::LINE_WIDTH,        $TXT_DATA[TextDB::LINE_WIDTH]);
                         $DataSet -> TBName(self::getCompressedID());
                         TextDB::Edit($DataSet);
                     }
@@ -190,6 +195,7 @@ use Shopify\Auth\Session;
                 $DataSet -> newEntry(TextDB::FONT_WEIGHT,       $text[TextDB::FONT_WEIGHT]);
                 $DataSet -> newEntry(TextDB::FONT_STYLE,        $text[TextDB::FONT_STYLE]);
                 $DataSet -> newEntry(TextDB::FONT_ALIGN,        $text[TextDB::FONT_ALIGN]);
+                $DataSet -> newEntry(TextDB::LINE_WIDTH,        $text[TextDB::LINE_WIDTH]);
                 $DataSet -> TBName(self::getCompressedID(Sessions::get(Sessions::USER_ID), Sessions::get(Sessions::PROJECT_ID)));
                 TextDB::add($DataSet);
             
@@ -215,6 +221,7 @@ use Shopify\Auth\Session;
                 $DataSet -> newEntry(TextArchiveDB::FONT_WEIGHT,       $text[TextDB::FONT_WEIGHT]);
                 $DataSet -> newEntry(TextArchiveDB::FONT_STYLE,        $text[TextDB::FONT_STYLE]);
                 $DataSet -> newEntry(TextArchiveDB::FONT_ALIGN,        $text[TextDB::FONT_ALIGN]);
+                $DataSet -> newEntry(TextArchiveDB::LINE_WIDTH,        $text[TextDB::LINE_WIDTH]);
                 $DataSet -> TBName(self::getCompressedID($UserID, $ProjectID));
                 TextArchiveDB::add($DataSet);
             }
@@ -240,6 +247,7 @@ use Shopify\Auth\Session;
         const FONT_WEIGHT           = "FontWeight";
         const FONT_STYLE            = "FontStyle";
         const FONT_ALIGN            = "FontAlign";
+        const LINE_WIDTH            = "LineWidth";
 
         const TEXT_IMG              = "TextImg";
         const TEXT_FRAME_WIDTH      = "FrameWidth";
@@ -262,11 +270,12 @@ use Shopify\Auth\Session;
           $dataset -> newEntry(self::TEXT_LINE_HEIGHT,  "INTEGER(255)");
 
           $dataset -> newEntry(self::FONT_FAMILY,       "VARCHAR(255)");
-          $dataset -> newEntry(self::FONT_SIZE,         "VARCHAR(255)");
-          $dataset -> newEntry(self::FONT_WEIGHT,       "VARCHAR(255)");
+          $dataset -> newEntry(self::FONT_SIZE,         "INTEGER(255)");
+          $dataset -> newEntry(self::FONT_WEIGHT,       "INTEGER(255)");
           $dataset -> newEntry(self::FONT_STYLE,        "VARCHAR(255)");
-          $dataset -> newEntry(self::FONT_ALIGN,        "VARCHAR(255)");
+          $dataset -> newEntry(self::FONT_ALIGN,        "INTEGER(255)");
           $dataset -> newEntry(self::TEXT_ORIENTATION,  "VARCHAR(255)");
+          $dataset -> newEntry(self::LINE_WIDTH,        "INTEGER(255)");
 
           $dataset -> primaryKey(self::TEXT_ID);
           $dataset -> TBName($TBName);

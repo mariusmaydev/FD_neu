@@ -27,7 +27,7 @@ $general-skew           : 0deg;
 $header-skew            : 0deg; 
 $color-Footer           : rgb(222, 222, 222);
 $color-Footer-Border    : rgb(163, 163, 163);
-$color-Footer-Converter-mobile  : rgb(211, 211, 211);
+$color-Footer-Converter-mobile  : transparent;// rgb(211, 211, 211);
 
 $color-hover            : #c9c9c9;
 $color-primary-complementary : #3287ff;
@@ -61,7 +61,7 @@ $color-header-active    : white;//#cbcbcb;
 $color-T_container-Dark : rgba(0, 0, 0, 0.7);
 $color-T_container-Dark-M      : #858585;
 $color-T_container-Medium      : #c0c0c0;
-$color-T_container      : #e4e4e4;
+$color-T_container      : white;// #e4e4e4;
 
 //button
 $color-button-active    : $color-primary;

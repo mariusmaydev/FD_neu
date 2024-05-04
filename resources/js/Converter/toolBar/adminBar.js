@@ -8,7 +8,7 @@ class ConverterAdminBar {
         this.contentElement.Class("content");
         this.data = null;
         this.draw();
-    }    
+    }  
     draw(){
         let params = SPLINT.Tools.Location.getParams();
         let name = "";
@@ -53,7 +53,7 @@ class ConverterAdminBar {
 
             let inputXContainer = new SPLINT.DOMElement(id + "inputXContainer", "div", container);
                 inputXContainer.Class("inputContainer");
-                let inputX = new SPLINT.DOMElement.InputAmount(inputXContainer, "inputX", DSProject.Storage[DSProject.SQUARE].widthMM, "mm");
+                let inputX = new SPLINT.DOMElement.InputAmount(inputXContainer, "inputX", DSProject.Storage[DSProject.SQUARE].widthMM, "mm", 2);
                     inputX.oninput = function(amount){
                         LighterWidth = amount;
                         DSProject.Storage[DSProject.SQUARE].width = amount *16.4;
@@ -66,7 +66,7 @@ class ConverterAdminBar {
 
             let inputYContainer = new SPLINT.DOMElement(id + "inputYContainer", "div", container);
                 inputYContainer.Class("inputContainer");
-                let inputY = new SPLINT.DOMElement.InputAmount(inputYContainer, "inputY", DSProject.Storage[DSProject.SQUARE].heightMM, "mm");
+                let inputY = new SPLINT.DOMElement.InputAmount(inputYContainer, "inputY", DSProject.Storage[DSProject.SQUARE].heightMM, "mm", 2);
                     inputY.oninput = function(amount){
                         LighterHeight = amount;
                         DSProject.Storage[DSProject.SQUARE].height = amount *16.4;
@@ -92,7 +92,7 @@ class ConverterAdminBar {
 
             let inputXContainer = new SPLINT.DOMElement(id + "inputX0Container", "div", container);
                 inputXContainer.Class("inputContainer");
-                let inputX = new SPLINT.DOMElement.InputAmount(inputXContainer, "inputX0", this.data[type].zero.X, "mm");
+                let inputX = new SPLINT.DOMElement.InputAmount(inputXContainer, "inputX0", this.data[type].zero.X, "mm", 2);
                     inputX.min = 0;
                     inputX.oninput = function(amount){
                         this.data[type].zero.X = amount;
@@ -105,7 +105,7 @@ class ConverterAdminBar {
 
             let inputYContainer = new SPLINT.DOMElement(id + "inputY0Container", "div", container);
                 inputYContainer.Class("inputContainer");
-                let inputY = new SPLINT.DOMElement.InputAmount(inputYContainer, "inputY0", this.data[type].zero.Y, "mm");
+                let inputY = new SPLINT.DOMElement.InputAmount(inputYContainer, "inputY0", this.data[type].zero.Y, "mm", 2);
                     inputY.min = 0;
                     inputY.oninput = function(amount){
                         this.data[type].zero.Y = amount;
@@ -151,6 +151,55 @@ class ConverterAdminBar {
                     }.bind(this);
                 let labelInputIntensity_max = new SPLINT.DOMElement.Label(inputIntensity_maxContainer, inputIntensity_max.mainElement, "max" );
                     labelInputIntensity_max.before();
+
+            
+            let IntensityBtContainer = new SPLINT.DOMElement(id + "IntensityBtContainer", "div", container);
+                IntensityBtContainer.Class("IntensityBtContainer");
+                let btBinary = new SPLINT.DOMElement.Button.Switch(IntensityBtContainer, "BTBinary", "Binär");
+                    btBinary.onchange = function(state){
+                        if(state == "active"){
+                            this.data[type].intensity.binary = true;
+                        } else {
+                            this.data[type].intensity.binary = false;
+                        }
+                    }.bind(this);
+                    if(this.data[type].intensity.binary){
+                        btBinary.setActive();
+                        btBinary.onchange(btBinary.button.state().get());
+                    } else {
+                        btBinary.unsetActive();
+                        btBinary.onchange(btBinary.button.state().get());
+                    }
+                let btRenderRow = new SPLINT.DOMElement.Button.Switch(IntensityBtContainer, "BTRenderRow", "Reihen");
+                    btRenderRow.onchange = function(state){
+                        if(state == "active"){
+                            this.data[type].rendering.row = true;
+                        } else {
+                            this.data[type].rendering.row = false;
+                        }
+                    }.bind(this);
+                    if(this.data[type].rendering.row){
+                        btRenderRow.setActive();
+                        btRenderRow.onchange(btRenderRow.button.state().get());
+                    } else {
+                        btRenderRow.unsetActive();
+                        btRenderRow.onchange(btRenderRow.button.state().get());
+                    }
+                let btRenderCol = new SPLINT.DOMElement.Button.Switch(IntensityBtContainer, "BTRenderCol", "Spalten");
+                    btRenderCol.onchange = function(state){
+                        if(state == "active"){
+                            this.data[type].rendering.col = true;
+                        } else {
+                            this.data[type].rendering.col = false;
+                        }
+                    }.bind(this);
+                    if(this.data[type].rendering.col){
+                        btRenderCol.setActive();
+                        btRenderCol.onchange(btRenderCol.button.state().get());
+                    } else {
+                        btRenderCol.unsetActive();
+                        btRenderCol.onchange(btRenderCol.button.state().get());
+                    }
     }
     drawPower(parent = this.contentElement, name = ""){
         let id = this.id + "_" + name;
@@ -259,9 +308,9 @@ class ConverterAdminBar {
                             let sp = new SPLINT.DOMElement.SpanDiv(listElement, "sp" + index, data)
                             let btLoad = new SPLINT.DOMElement.Button(listElement, "load" + index, "laden");
                                 btLoad.onclick = async function(){
+                                    console.dir(data)
                                     SPLINT.Tools.Location.removeParams("name").setParams({"name": data}).call(true);
                                 }.bind(this);
-                            
                             if(data != "converterProcess"){
                                 let btRemove = new SPLINT.DOMElement.Button(listElement, "remove" + index);
                                     btRemove.bindIcon("delete");
@@ -269,6 +318,8 @@ class ConverterAdminBar {
                                         this.removeData(data);
                                         if(this.currentConfig == data){
                                             SPLINT.Tools.Location.removeParams("name").setParams({"name": "converterProcess"}).call(true);
+                                        } else {
+                                            window.location.reload();
                                         }
                                     }.bind(this);
                             }
@@ -294,7 +345,7 @@ class ConverterAdminBar {
                     labelOther.Class("label");
                 let inputDigitsContainer = new SPLINT.DOMElement(this.id + "inputDigitsContainer", "div", containerOther);
                     inputDigitsContainer.Class("inputContainer");
-                    let inputDigits = new SPLINT.DOMElement.InputAmount(inputDigitsContainer, "inputDigits", this.data.digits);
+                    let inputDigits = new SPLINT.DOMElement.InputAmount(inputDigitsContainer, "inputDigits", this.data.digits, "");
                         inputDigits.oninput = function(amount){
                             this.data.digits = amount;
                         }.bind(this);
@@ -346,7 +397,7 @@ class ConverterAdminBar {
 
                 let inputLeftContainer = new SPLINT.DOMElement(this.id + "inputLeftContainer", "div", OffsetFrameContainer);
                     inputLeftContainer.Class("inputContainer");
-                    let inputLeft = new SPLINT.DOMElement.InputAmount(inputLeftContainer, "inputLeft", this.data[type].offsetFrame.left, "mm");
+                    let inputLeft = new SPLINT.DOMElement.InputAmount(inputLeftContainer, "inputLeft", this.data[type].offsetFrame.left, "mm", 2);
                         inputLeft.min = 0;
                         inputLeft.oninput = function(amount){
                             this.data[type].offsetFrame.left = amount;
@@ -356,7 +407,7 @@ class ConverterAdminBar {
 
                 let inputRightContainer = new SPLINT.DOMElement(this.id + "inputRightContainer", "div", OffsetFrameContainer);
                     inputRightContainer.Class("inputContainer");
-                    let inputRight = new SPLINT.DOMElement.InputAmount(inputRightContainer, "inputRight", this.data[type].offsetFrame.right, "mm");
+                    let inputRight = new SPLINT.DOMElement.InputAmount(inputRightContainer, "inputRight", this.data[type].offsetFrame.right, "mm", 2);
                         inputRight.min = 0;
                         inputRight.oninput = function(amount){
                             this.data[type].offsetFrame.right = amount;
@@ -366,7 +417,7 @@ class ConverterAdminBar {
 
                 let inputTopContainer = new SPLINT.DOMElement(this.id + "inputTopContainer", "div", OffsetFrameContainer);
                     inputTopContainer.Class("inputContainer");
-                    let inputTop = new SPLINT.DOMElement.InputAmount(inputTopContainer, "inputTop", this.data[type].offsetFrame.top, "mm");
+                    let inputTop = new SPLINT.DOMElement.InputAmount(inputTopContainer, "inputTop", this.data[type].offsetFrame.top, "mm", 2);
                         inputTop.min = 0;
                         inputTop.oninput = function(amount){
                             this.data[type].offsetFrame.top = amount;
@@ -376,7 +427,7 @@ class ConverterAdminBar {
 
                 let inputBottomContainer = new SPLINT.DOMElement(this.id + "inputBottomContainer", "div", OffsetFrameContainer);
                     inputBottomContainer.Class("inputContainer");
-                    let inputBottom = new SPLINT.DOMElement.InputAmount(inputBottomContainer, "inputBottom", this.data[type].offsetFrame.bottom, "mm");
+                    let inputBottom = new SPLINT.DOMElement.InputAmount(inputBottomContainer, "inputBottom", this.data[type].offsetFrame.bottom, "mm", 2);
                         inputBottom.min = 0;
                         inputBottom.oninput = function(amount){
                             this.data[type].offsetFrame.bottom = amount;
@@ -413,8 +464,9 @@ class ConverterAdminBar {
             let btContainer = new SPLINT.DOMElement(this.id + "genFrameBTContainer", "div", popUp.content);
                 btContainer.Class("buttonsContainer");
                 let btSave = new SPLINT.DOMElement.Button(btContainer, "btSave", "speichern");
-                    btSave.onclick = function(){
-                        this.saveData(this.currentConfig, this.data)
+                    btSave.onclick = async function(){
+                        await this.saveData(this.currentConfig, this.data);
+                        window.location.reload();
                     }.bind(this);
                 let btSaveAs = new SPLINT.DOMElement.Button(btContainer, "btSaveAs", "speichern als");
                     btSaveAs.onclick = function(){
@@ -443,9 +495,10 @@ class ConverterAdminBar {
                             Args.PointZero = new Object();
                             Args.PointZero.X = DSProject.Storage[DSProject.SQUARE].PointZeroX;
                             Args.PointZero.Y = DSProject.Storage[DSProject.SQUARE].PointZeroY;
-                            Args.innerFrame = this.data[type].offsetFrame;
+                            Args.offsetFrame = this.data[type].offsetFrame;
                             Args.workTravel = this.data[type].workTravel;
                             Args.fastTravel = this.data[type].fastTravel;
+                            Args.CurrentConfig = ConverterHelper.getCurrentConfig();
                         let g = (await ConverterHelper.genFrame((await SPLINT.SessionsPHP.get("USER_ID", false)), DSProject.Storage.ProjectID, Args));
                         let projectPATH = ProjectHelper.getPath2AdminProject(DSProject.Storage.ProjectID);
                         download_S.download(projectPATH + "/Frame.nc", "LaserFrame__Xn" + Args.PointZero.X/ 16.4 + "_Yn" + Args.PointZero.Y/ 16.4 + "__X" + DSProject.Storage.Square.widthMM + "_Y" + DSProject.Storage.Square.heightMM +  ".nc");

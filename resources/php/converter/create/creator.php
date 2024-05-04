@@ -13,30 +13,31 @@
             $width = $square -> widthMM;
             $height = $square -> heightMM;
             $pathObject = new PathObject2D();
-            $pathElement = new PathElement2D();
 
-            $pathElement -> addStep(0, 0);
-            $pathElement -> addStep(0, $height);
-            $pathElement -> addStep($width, $height);
-            $pathElement -> addStep($width, 0);
-            $pathElement -> addStep(0, 0);
-            $pathObject -> addElement($pathElement);
-            if($args -> innerFrame["active"] == "true") {
-                $left = $args -> innerFrame["left"];
-                $right = $args -> innerFrame["right"];
-                $top = $args -> innerFrame["top"];
-                $bottom = $args -> innerFrame["bottom"];
+            $left = $args -> OffsetFrame["left"];
+            $right = $args -> OffsetFrame["right"];
+            $top = $args -> OffsetFrame["top"];
+            $bottom = $args -> OffsetFrame["bottom"];
 
                 $pathElement_inner = new PathElement2D();
-                $pathElement_inner -> addStep($left, $top);
-                $pathElement_inner -> addStep($left, $height - $bottom);
-                $pathElement_inner -> addStep($width - $right, $height - $bottom);
-                $pathElement_inner -> addStep($width - $right, $top);
-                $pathElement_inner -> addStep($left, $top);
+                $pathElement_inner -> addStep(0, 0);
+                $pathElement_inner -> addStep(0, $height);
+                $pathElement_inner -> addStep($width, $height);
+                $pathElement_inner -> addStep($width, 0);
+                $pathElement_inner -> addStep(0, 0);
                 $pathObject -> addElement($pathElement_inner);
+
+            if($args -> OffsetFrame["active"] == "true"){
+                $pathElement_frame = new PathElement2D();
+                $pathElement_frame -> addStep(-$left, -$bottom);
+                $pathElement_frame -> addStep(-$left, $height + $top);
+                $pathElement_frame -> addStep($width + $right, $height + $top);
+                $pathElement_frame -> addStep($width + $right, -$bottom);
+                $pathElement_frame -> addStep(-$left, -$bottom);
+                $pathObject -> addElement($pathElement_frame);
             }
 
-            $cfg = ConverterConfig::get();
+            $cfg = ConverterConfig::get($args -> CurrentConfig);
             if($args -> PointZero -> X === null){
                 $args -> PointZero -> X = $cfg -> laser -> zero -> X;
                 $args -> PointZero -> Y = $cfg -> laser -> zero -> Y;
@@ -49,7 +50,7 @@
             $model -> save($path);
         }
         public static function createLaserFlatData($ProjectData, $UserID, $args, PathObject3D $PathObject){
-            $cfg = ConverterConfig::get();
+            $cfg = ConverterConfig::get($args -> CurrentConfig);
             if($args -> PointZero -> X === null){
                 $args -> PointZero -> X = $cfg -> laserFlat -> zero -> X;
                 $args -> PointZero -> Y = $cfg -> laserFlat -> zero -> Y;
@@ -88,7 +89,7 @@
             $model -> save($path);
         }
         public static function createLaserData($ProjectData, $UserID, $args, PathObject2D $PathObject) {
-            $cfg = ConverterConfig::get();
+            $cfg = ConverterConfig::get($args -> CurrentConfig);
             if($args -> PointZero -> X === null){
                 $args -> PointZero -> X = $cfg -> laser -> zero -> X;
                 $args -> PointZero -> Y = $cfg -> laser -> zero -> Y;
@@ -183,7 +184,6 @@
                     // $img-> writeImage(fopen ("test_2.jpg", "wb")); //also works
                     // $imgGD = creatorHelper::fArray2img($fArray);
                     // imagepng($imgGD, "test_2.png");
-        
                     
                     ConverterCreator_doImage::work($PathObject, $fArray);
                     $PathObject = PathHelper::sortPath1($PathObject, true);
@@ -203,25 +203,24 @@
         }
         public static function createPathObjectLaserFlat($ProjectData, $UserID, $args, $ImgData = null, $TextData = null) : PathObject3D {
 
-            $min = $args -> intensity -> min;
-            $max = $args -> intensity -> max;
-            $dif = $max - $min;
+            $direction = "row";
+            // $renderRow = $args -> rendering -> row;
             //1900 x 2880
             $ProjectID = $ProjectData[ProjectDB::PROJECT_ID];
             $imgBase = new Imagick();
-            // $LIGHTER_WIDTH / 50 / 0.1;
             $quality = $args -> quality_PpMM / 1 / 50;
-            // $imgBase -> newimage(intval($LIGHTER_WIDTH * 16.4 / 0.9/5), intval($LIGHTER_HEIGHT * 16.4 / 0.9/2/5), "none", 'png');
+
             $imgBase -> newimage(intval($args -> lighterSize -> width * $quality), intval($args -> lighterSize -> height * $quality), "none", 'png');
 
             if($TextData != null){
                 foreach($TextData as $i => $data){
                     $img = Text::getTextImg($data[TextDB::TEXT_ID], $ProjectID, $UserID);
-                    $img -> brightnessContrastImage(0, 100, Imagick::CHANNEL_ALL);
+                    // $img -> brightnessContrastImage(0, 100, Imagick::CHANNEL_ALL);
                     // $img -> br(100, 0);
-                    $img -> edgeImage(1);
-                    $img -> modulateImage(100, 0, 0);
+                    // $img -> edgeImage(1);
+                    // $img -> modulateImage(100, 0, 0);
                     $img -> setImageFormat('png');
+                    // file_put_contents ("test_1.png", $img); // works, or:
 
                     $xAdd = $data[TextDB::TEXT_POS_X];
                     $yAdd = $data[TextDB::TEXT_POS_Y];
@@ -258,91 +257,235 @@
                     $width = $img -> getImageWidth();
                     $height = $img -> getImageHeight();
                     
-                    // ImagickHelper::setColorTransparent($img, 'white');
                     $img -> setImageMatte(TRUE);
                     $img -> setImageVirtualPixelMethod(Imagick::VIRTUALPIXELMETHOD_TRANSPARENT);
                     $imgBase -> compositeImage($img -> getImage(), Imagick::COMPOSITE_DEFAULT, intval(($xAdd * $quality) - ($width/2)), intval(($yAdd * $quality) - ($height/2)), Imagick::CHANNEL_ALL);
-                    // imagecopyresampled($imgBase, $img, $xAdd, $yAdd, 0, 0, $width, $height, $width, $height);
                     $img -> destroy();
                 }
             }
             
-            // $k = $imgBase -> getImagePixelColor(0, 0) -> getColor(true);
-            $pathObj = new PathObject3D();
-            $pathEle = null;
-            // $imgBase->resizeImage(950, 1440, imagick::FILTER_GAUSSIAN    , 0);
-            // file_put_contents ("test_1.png", $imgBase);
-
-            for($y = 0; $y < $args -> lighterSize -> height * $quality; $y++){
-                for($x = 0; $x < $args -> lighterSize -> width * $quality; $x++){
-                    $color = $imgBase -> getImagePixelColor($x, $y) -> getHSL();
-
-                    if($color['luminosity'] > 0 && $color['luminosity'] < 1){
-                        if($pathEle == null){
-                            $pathEle = new PathElement3D();
+            function iterateRows($args, $quality, $imgBase) : PathObject3D {
+                function checkFirst2(&$first, $yd, $xd, &$last, $quality, $y, PathObject3D &$pathObj){
+                    if($first){
+                        if($last['y'] >= $yd -(1 / $quality)){
+                            $offset = -(10 / $quality);
+                            if($y % 2 == 1){
+                                $offset = (10 / $quality);
+                                if($last['x'] < $xd){
+                                    $offset += $xd;
+                                } else {
+                                    $offset += $last['x'];
+                                }
+                            } else {
+                                if($last['x'] > $xd){
+                                    $offset += $xd;
+                                } else {
+                                    $offset += $last['x'];
+                                }
+                            }
+                            $pathEle1 = new PathElement3D();
+                            // $pathEle1 -> addStep($offset, $last['y'], 0);
+                            $pathEle1 -> addStep($offset, $last['y'] + (0.5 / $quality), 0);
+                            $pathObj -> addElement($pathEle1);
                         }
-
-                        $s = $min + ((1 - $color['luminosity']) * $dif);
-                        $pathEle -> addStep($x / $quality, $y / $quality, $s);
-                        // continue;
-                    } else {
-                        if($pathEle != null && $pathEle -> stepCount() > 0){
-                            $pathObj -> addElement($pathEle);
-                        }
-                        $pathEle = null;
+                        $first = false;
                     }
                 }
+                $min = $args -> intensity -> min;
+                $max = $args -> intensity -> max;
+                $dif = $max - $min;
+                $pathObj = new PathObject3D();
+                $pathEle = null;
+                $last = [];
+                $last['x'] = 0;
+                $last['y'] = 0;
+                for($y = 0; $y < $args -> lighterSize -> height * $quality; $y++){
+                    $first = true;
+                    for($xi = 0; $xi < $args -> lighterSize -> width * $quality; $xi++){
+                        $x = $xi;
+                        if($y % 2 == 1){
+                            $x = $args -> lighterSize -> width * $quality - $xi;
+                        }
+                        $color = $imgBase -> getImagePixelColor($x, $y) -> getHSL();
+                        if($color['luminosity'] > 0 && $color['luminosity'] < 1){
+                            if($pathEle == null){
+                                $pathEle = new PathElement3D();
+                            }
+                            $xd = $x / $quality;
+                            $yd = $y / $quality;
+                            checkFirst2($first, $yd, $xd, $last, $quality, $y, $pathObj);
+                            $last['x'] = $xd;
+                            $last['y'] = $yd;
+                            $s = $min + ((1 - $color['luminosity']) * $dif);
+                            $pathEle -> addStep($xd, $yd, $s);
+                        } else if($args -> intensity -> binary == "true" && $color['luminosity'] == 1){
+                            if($pathEle == null){
+                                $pathEle = new PathElement3D();
+                            }
+                            $s = $max;
+                            $xd = $x / $quality;
+                            $yd = $y / $quality;
+                            checkFirst2($first, $yd, $xd, $last, $quality, $y, $pathObj);
+                            $last['x'] = $xd;
+                            $last['y'] = $yd;
+                            $pathEle -> addStep($xd, $yd, $s);
+                        } else {
+                            if($pathEle != null && $pathEle -> stepCount() > 0){
+                                $pathObj -> addElement($pathEle);
+                            }
+                            $pathEle = null;
+                        }
+                    }
+                }
+                return $pathObj;
             }
-            function f1_k($last, $step, $lastDiv_in){
-                $lastDiv = new stdClass();
-                $lastDiv -> x = $last['x'] - $step['x'];
-                $lastDiv -> y = $last['y'] - $step['y'];
-
-                $res = new stdClass();
-                $res -> res = false;
-                $res -> div = $lastDiv;
-                if($lastDiv_in -> x === null || /*(abs($lastDiv -> x) > 0.05 && abs($lastDiv -> y) > 0.05) ||*/$lastDiv_in -> x == $lastDiv -> x && $lastDiv_in -> y == $lastDiv -> y && $last['z'] == $step['z']){
-                    $res -> res = true;
+            function iterateCols($args, $quality, $imgBase) : PathObject3D {
+                function checkFirst1(&$first, $yd, $xd, &$last, $quality, $x, PathObject3D &$pathObj){
+                    if($first){
+                        if($last['x'] >= $xd -(1 / $quality)){
+                            $offset = -(10 / $quality);
+                            if($x % 2 == 1){
+                                $offset = (10 / $quality);
+                                if($last['y'] < $yd){
+                                    $offset += $yd;
+                                } else {
+                                    $offset += $last['y'];
+                                }
+                            } else {
+                                if($last['y'] > $yd){
+                                    $offset += $yd;
+                                } else {
+                                    $offset += $last['y'];
+                                }
+                            }
+                            $pathEle1 = new PathElement3D();
+                            // $pathEle1 -> addStep($last['x'],$offset, 0);
+                            $pathEle1 -> addStep($last['x'] + (0.5 / $quality), $offset, 0);
+                            $pathObj -> addElement($pathEle1);
+                        }
+                        $first = false;
+                    }
+                }
+                $min = $args -> intensity -> min;
+                $max = $args -> intensity -> max;
+                $dif = $max - $min;
+                $pathObj = new PathObject3D();
+                $pathEle = null;
+                $last = [];
+                $last['x'] = 0;
+                $last['y'] = 0;
+                for($x = 0; $x < $args -> lighterSize -> width * $quality; $x++){
+                    $first = true;
+                    for($yi = 0; $yi < $args -> lighterSize -> height * $quality; $yi++){
+                        $y = $yi;
+                        if($x % 2 == 1){
+                            $y = $args -> lighterSize -> height * $quality - $yi;
+                        }
+                        $color = $imgBase -> getImagePixelColor($x, $y) -> getHSL();
+                        if($color['luminosity'] > 0 && $color['luminosity'] < 1){
+                            if($pathEle == null){
+                                $pathEle = new PathElement3D();
+                            }
+                            $xd = $x / $quality;
+                            $yd = $y / $quality;
+                            checkFirst1($first, $yd, $xd, $last, $quality, $x, $pathObj);
+                            $last['x'] = $xd;
+                            $last['y'] = $yd;
+                            $s = $min + ((1 - $color['luminosity']) * $dif);
+                            $pathEle -> addStep($xd, $yd, $s);
+                        } else if($args -> intensity -> binary == "true" && $color['luminosity'] == 1){
+                            if($pathEle == null){
+                                $pathEle = new PathElement3D();
+                            }
+                            $s = $max;
+                            $xd = $x / $quality;
+                            $yd = $y / $quality;
+                            checkFirst1($first, $yd, $xd, $last, $quality, $x, $pathObj);
+                            $last['x'] = $xd;
+                            $last['y'] = $yd;
+                            $pathEle -> addStep($xd, $yd, $s);
+                        } else {
+                            if($pathEle != null && $pathEle -> stepCount() > 0){
+                                $pathObj -> addElement($pathEle);
+                            }
+                            $pathEle = null;
+                        }
+                    }
+                }
+                return $pathObj;
+            }
+                function f1_k($last, $step, $lastDiv_in){
+                    $lastDiv = new stdClass();
+                    $lastDiv -> x = $last['x'] - $step['x'];
+                    $lastDiv -> y = $last['y'] - $step['y'];
+    
+                    $res = new stdClass();
+                    $res -> res = false;
+                    $res -> div = $lastDiv;
+                    if($lastDiv_in -> x === null || /*(abs($lastDiv -> x) > 0.05 && abs($lastDiv -> y) > 0.05) ||*/$lastDiv_in -> x == $lastDiv -> x && $lastDiv_in -> y == $lastDiv -> y && $last['z'] == $step['z']){
+                        $res -> res = true;
+                        return $res;
+                    }
                     return $res;
                 }
-                return $res;
-            }
-            $pathElements = $pathObj -> getElements();
-            $pathObjOut = new PathObject3D();
-            foreach($pathElements as $pathElement){
-                $pathElementOut = new PathElement3D();
-
-                $steps = $pathElement -> getSteps();
-                $last = $steps[0];
-                $lastDiv = new stdClass();
-                $lastDiv -> x = null;
-                $lastDiv -> y = null;
-                $lastDiv -> z = null;
-                foreach ($steps as $key => $step) {
-                    if($key == 0 || $key === count($steps) -1){
-                        $pathElementOut -> addStep($step['x'] , $step['y'], $step['z']);
-                        $last['x'] = $step['x'];
-                        $last['y'] = $step['y'];
-                        $last['z'] = $step['z'];
-                        continue;
-                    }
-                    $res = f1_k($last, $step, $lastDiv);
-                    if($res -> res == true){
-                        $last['x'] = $step['x'];
-                        $last['y'] = $step['y'];
-                        $last['z'] = $step['z'];
-                    } else {
-                        if($key != 0 && $key != count($steps) -1){
-                            $pathElementOut -> addStep($step['x'] , $step['y'], $step['z'] );
+            function computePathObject($pathObj) : PathObject3D {
+                $pathElements = $pathObj -> getElements();
+                $pathObjOut = new PathObject3D();
+                foreach($pathElements as $pathElement){
+                    $pathElementOut = new PathElement3D();
+                    $pathElementOut1 = new PathElement3D();
+                    
+                    $steps = $pathElement -> getSteps();
+                    $last = $steps[0];
+                    $lastDiv = new stdClass();
+                    $lastDiv -> x = null;
+                    $lastDiv -> y = null;
+                    $lastDiv -> z = null;
+                    foreach ($steps as $key => $step) {
+                        if($key == 0 || $key === count($steps) -1){
+                            $pathElementOut -> addStep($step['x'] , $step['y'], $step['z']);
+                            $last['x'] = $step['x'];
+                            $last['y'] = $step['y'];
+                            $last['z'] = $step['z'];
+                            continue;
                         }
-                        $last['x'] = $step['x'];
-                        $last['y'] = $step['y'];
-                        $last['z'] = $step['z'];
+                        $res = f1_k($last, $step, $lastDiv);
+                        if($res -> res == true){
+                            $last['x'] = $step['x'];
+                            $last['y'] = $step['y'];
+                            $last['z'] = $step['z'];
+                        } else {
+                            if($key != 0 && $key != count($steps) -1){
+                                $pathElementOut -> addStep($step['x'] , $step['y'], $step['z'] );
+                            }
+                            $last['x'] = $step['x'];
+                            $last['y'] = $step['y'];
+                            $last['z'] = $step['z'];
+                        }
+                        $lastDiv = $res -> div;
                     }
-                    $lastDiv = $res -> div;
+                    $pathObjOut -> addElement($pathElementOut);
                 }
-                $pathObjOut -> addElement($pathElementOut);
+                return $pathObjOut;
             }
-            return $pathObjOut;
+            $pR = null;
+            $pC = null;
+            if($args -> rendering -> row == "true"){
+                $pR = iterateRows($args, $quality, $imgBase);
+            }
+            if($args -> rendering -> col == "true"){
+                $pC= iterateCols($args, $quality, $imgBase);
+            }
+            if($pR != null && $pC != null){
+                $pR -> combinePathObject($pC);
+                $pG = computePathObject($pR);
+                return $pG;
+            } else {
+                if($pR != null){
+                    return computePathObject($pR);
+                } else {
+                    return computePathObject($pC);
+                }
+            }
         }
     }

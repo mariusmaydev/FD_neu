@@ -13,9 +13,11 @@
                 return self::$processData -> engraving;
             }
         }
-        public static function get(bool $print = false){
+        public static function get(string $CurrentConfig = "converterProcess", bool $print = false){
+            $processData = json_decode(DataStorage::get("/converterSettings/" . $CurrentConfig . ".json", false));
+            return $processData;
             if(self::isForceReload()){
-                $processData = DataStorage::get("/converterSettings/converterProcess.json", false);
+                $processData = DataStorage::get("/converterSettings/" . $CurrentConfig . ".json", false);
                 if($processData == false){
                     Debugger::error("converterProcess file not found");
                     Communication::sendBack("converterProcess file not found", true, $print);

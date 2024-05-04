@@ -59,6 +59,7 @@ class Image_C {
       data.contrast     = 0;
       data.sharpness    = 0;
       data.antialiasing = 0;
+      data.lineWidth    = 1;
       data.edges        = true;
       return JSON.stringify(data);
     }

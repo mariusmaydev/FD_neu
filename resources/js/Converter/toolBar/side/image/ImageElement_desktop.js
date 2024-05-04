@@ -130,6 +130,21 @@ class ToolBar_ImageElement {
             ConverterHelper.filter(DSImage.getIndex(this.ImageID));
         }.bind(this);
 
+        //lineWidth
+        this.sl_lineWidth = new SPLINT.DOMElement.RangeSlider(this.toolsBody, "lineWidth_" + this.ImageID, "Linienstärke");
+        this.sl_lineWidth.drawTickMarks = false;
+        this.sl_lineWidth.min    = 1;
+        this.sl_lineWidth.max    = 3;
+        this.sl_lineWidth.valueExtension = "";
+        this.sl_lineWidth.value  = this.data.ImageFilter.lineWidth;
+        this.sl_lineWidth.onDrawSign = function(signContent){
+            signContent.value = this.sl_lineWidth.value;//SPLINT.Tools.Math.roundFX(this.sl_lineWidth.valuePercent, 0, true) + this.sl_lineWidth.valueExtension;
+        }.bind(this);
+        this.sl_lineWidth.oninputFinished = function(value){
+            this.data.ImageFilter.lineWidth = value;
+            ConverterHelper.filter(DSImage.getIndex(this.ImageID));
+        }.bind(this);
+
         //Align
         this.sl_rotationBody = new SPLINT.DOMElement(this.ImageID + "_rotationDiv", "div", this.toolsBody);
         this.sl_rotationBody.Class("rotationBody");
@@ -188,12 +203,14 @@ class ToolBar_ImageElement {
             this.sl_antialiasing.hideSign();
             this.sl_rotation.hideSign();
             this.sl_sharpness.hideSign();
+            this.sl_lineWidth.hideSign();
         }
         // debugger
     }
     focus(){
         ToolBar_LighterSettings.blur();
         CONVERTER_STORAGE.toolBar.blurElement("img");
+        CONVERTER_STORAGE.toolBar.blurElement("txt");
         this.mainElement.state().setActive();
         this.expander.setActive();
         CONVERTER_STORAGE.canvasNEW.setActive(this.data, "img");
@@ -217,6 +234,7 @@ class ToolBar_ImageElement {
         this.sl_sharpness.updateSign();
         this.sl_rotation.updateSign();
         this.sl_antialiasing.updateSign();
+        this.sl_lineWidth.updateSign();
     }
     drawSpinner(){
         this.spinnerBody = new SPLINT.DOMElement(this.ImageID + "_Spinner", "div", this.imgEle);

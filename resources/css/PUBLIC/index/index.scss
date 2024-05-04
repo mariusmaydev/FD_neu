@@ -53,6 +53,7 @@
 @include mediaQueries.forMediaBreakpoint(mobile-small){
     @include FooterMobile.FooterMobile();
     body {
+        touch-action: pan-x pan-y !important;
         top: 0 !important;
         height: 100vh !important;
         overflow-y: hidden !important;

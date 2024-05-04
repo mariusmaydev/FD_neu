@@ -8,9 +8,9 @@
     Class Image {
         public static function getEmptyFilter() : array{
             $Filter = [];
-            $Filter[0] = self::newFilterDataSet(10, 0, 0, true);
-            $Filter[1] = self::newFilterDataSet(5, 0, 0, true);
-            $Filter[2] = self::newFilterDataSet(2, 0, 0, true);
+            $Filter[0] = self::newFilterDataSet(10, 0, 0, true, 1);
+            $Filter[1] = self::newFilterDataSet(5, 0, 0, true, 1);
+            $Filter[2] = self::newFilterDataSet(2, 0, 0, true, 1);
 
             return $Filter;
         }
@@ -22,12 +22,13 @@
                 return base64_decode( $data[ 0 ] ); 
             }
         }
-        public static function newFilterDataSet(float $a = 8, float $b = 10, float $c = 3, float $d = 0, bool $edges = true) : stdClass { 
+        public static function newFilterDataSet(float $a = 8, float $b = 10, float $c = 3, float $d = 0, bool $edges = true, int $lineWidth = 1) : stdClass { 
             $Filter = new stdClass();
             $Filter -> contrast     = $a;
             $Filter -> sharpness    = $b;
             $Filter -> antialiasing = $c;
             $Filter -> cannyEdge_d  = $d;
+            $Filter -> lineWidth    = $lineWidth;
             $Filter -> edges        = $edges;
             return $Filter;
 
@@ -282,6 +283,7 @@
         const IMAGE_VIEW_PATH       = "ImageViewPath";
         const IMAGE_SCALE_PATH      = "ImageScalePath";
 
+        const FILTER_LINE_WIDTH     = "lineWidth";
         const FILTER_CONTRAST       = "contrast";
         const FILTER_ANTIALIASING   = "antialiasing";
         const FILTER_SHARPNESS      = "sharpness";

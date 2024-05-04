@@ -24,7 +24,16 @@ class ConverterHelper {
   static ELE_LINE_MID_VERTICAL  = "midLineVertical";
   static ELE_LINE_MID_MAIN      = "midLineMain";
   static ELE_LINE_MID_HEAD      = "midlineHead";
-  static ELE_LINE_MID_BODY      = "midlineBody";
+  static ELE_LINE_MID_BODY      = "midlineBody";  
+  static getCurrentConfig(){
+      let params = SPLINT.Tools.Location.getParams();
+      if(typeof params == "object"){
+          if(params.name != undefined){
+              return params.name;
+          }
+      }
+      return "converterProcess";
+  }
 
   static getSquareBorder(){
     return document.getElementById(ConverterHelper.ELE_SQUARE_BORDER_DIV);
