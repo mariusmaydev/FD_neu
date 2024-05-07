@@ -11,6 +11,7 @@ class ImageTools {
     }
     async remove(){
       await DSImage.remove(this.index);
+
       CONVERTER_STORAGE.canvasNEW.refreshData();
       DSImage.saveAsync();
       CONVERTER_STORAGE.toolBar.update();

@@ -103,7 +103,7 @@ class DataStorageImage_C {
     async saveAsync(){
       let call = new SPLINT.CallPHP(Image_C.PATH, Image_C.EDIT);
           call.data.Storage = this.parse();
-          call.send();
+        return call.send();
     }
     async save(){
       let call = new SPLINT.CallPHP(Image_C.PATH, Image_C.EDIT);

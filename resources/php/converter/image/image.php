@@ -46,10 +46,13 @@
             $output = $UserID  . "_" . $ProjectID;
             return $output;
         }
-        public static function copy(){
-            $ImageID = StringTools::realUniqID();
+        public static function copy($ImageID_in = null){
+            if($ImageID_in == null){
+                $ImageID_in = $_POST[ImageDB::IMAGE_ID];
+            }
+            $ImageID_new = StringTools::realUniqID();
             $DataSet = new DataSet();
-            $DataSet -> newEntry(ImageDB::IMAGE_ID,     $ImageID);
+            $DataSet -> newEntry(ImageDB::IMAGE_ID,     $ImageID_new);
             $DataSet -> TBName(self::getCompressedID());
             ImageDB::add($DataSet);
 
@@ -58,11 +61,11 @@
             $DataSet -> TBName(self::getCompressedID());
 
             $response = [];
-            getProjectImages($response, Sessions::get(Sessions::USER_ID), Sessions::get(Sessions::PROJECT_ID), $_POST[ImageDB::IMAGE_ID]);
+            getProjectImages($response, Sessions::get(Sessions::USER_ID), Sessions::get(Sessions::PROJECT_ID), $ImageID_in);
             
-            $response[ImageDB::IMAGE_VIEW_PATH] = saveSingleProjectImage($ImageID, PATH_Project::IMG_VIEW, $response[ImageDB::IMAGE_VIEW]);
-            $response[ImageDB::IMAGE_SCALE_PATH] = saveSingleProjectImage($ImageID, PATH_Project::IMG_SCALE, $response[ImageDB::IMAGE_SCALE]);
-            $response[ImageDB::IMAGE_ID] = $ImageID;
+            $response[ImageDB::IMAGE_VIEW_PATH] = saveSingleProjectImage($ImageID_new, PATH_Project::IMG_VIEW, $response[ImageDB::IMAGE_VIEW]);
+            $response[ImageDB::IMAGE_SCALE_PATH] = saveSingleProjectImage($ImageID_new, PATH_Project::IMG_SCALE, $response[ImageDB::IMAGE_SCALE]);
+            $response[ImageDB::IMAGE_ID] = $ImageID_new;
             Communication::sendBack($response);
         }
         public static function add($data = null, $ImageID = null, $ProjectID = null, $UserID = null){

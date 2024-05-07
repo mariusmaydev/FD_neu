@@ -111,9 +111,6 @@ class DataStorageText_C {
                 args.UserID      = UserID;
                 let txtBlob = e.TextImg;
                 let fileUpload = SPLINT.FileUpload.simpleUpload("TEXT_IMG", txtBlob, args);
-                    fileUpload.then(function(){
-                        console.dir(arguments);
-                    })
         }
       let call = new SPLINT.CallPHP(Text_C.PATH, Text_C.EDIT);
           call.data.Storage = this.parse();

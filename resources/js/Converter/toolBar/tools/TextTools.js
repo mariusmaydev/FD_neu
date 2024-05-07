@@ -15,26 +15,27 @@ class TextTools {
         case 'center' : this.data.TextOrientation = 'center'; break;
         case 'right'  : this.data.TextOrientation = 'right'; break;
       }
-      CONVERTER_STORAGE.canvasNEW.refreshData();
+      CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt", true);
+    //   CONVERTER_STORAGE.canvasNEW.refreshData();
       // CONVERTER_STORAGE.toolBar.update();
     }
     setLineHeight(height){
       this.data.TextLineHeight = height;
-      CONVERTER_STORAGE.canvasNEW.refreshData();
+      CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt", true);
       // CONVERTER_STORAGE.toolBar.update();
     }
     fontFamily(type){
       this.data.FontFamily = type;
-      CONVERTER_STORAGE.canvasNEW.refreshData();
+      CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt", true);
     }
     fontStyle(type){
       this.data.FontStyle = type;
-      CONVERTER_STORAGE.canvasNEW.refreshData();
+      CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt", true);
       // CONVERTER_STORAGE.toolBar.update();
     }
     setValue(value){
       this.data.TextValue = value;
-      CONVERTER_STORAGE.canvasNEW.refreshData();
+      CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt", true);
       DSText.save();
     }
     async remove(){

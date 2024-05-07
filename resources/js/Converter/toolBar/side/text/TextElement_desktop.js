@@ -157,7 +157,7 @@ class ToolBar_TextElement {
         }.bind(this);
         this.sl_lineHeight.oninput = function(value){
             this.data.TextLineHeight = value;
-            CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt");
+            CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt", true);
         }.bind(this);
 
         //Font Weight
@@ -176,7 +176,7 @@ class ToolBar_TextElement {
         }.bind(this);
         this.sl_fontWeight.oninput = function(value){
             this.data.FontWeight = value;
-            CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt");
+            CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt", true);
         }.bind(this);
 
         //Font Size
@@ -192,7 +192,7 @@ class ToolBar_TextElement {
         }.bind(this);
         this.sl_fontSize.oninput = function(value){
             this.data.FontSize = Math.round(MATH_convert.pt2px(S_Math.multiply(value, 10)) * 2) / 2;
-            CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt");
+            CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt", true);
         }.bind(this);
 
         //lineWidth
@@ -207,7 +207,7 @@ class ToolBar_TextElement {
         }.bind(this);
         this.sl_lineWidth.oninputFinished = function(value){
             this.data.LineWidth = value;
-            CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt");
+            CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt", true);
         }.bind(this);
         
         //rotation
@@ -224,7 +224,8 @@ class ToolBar_TextElement {
             }.bind(this);
             this.sl_rotation.oninput = function(value){
                 this.data.TextAlign = value;
-                CONVERTER_STORAGE.canvasNEW.refreshData();
+                // CONVERTER_STORAGE.canvasNEW.refreshData();
+                CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt", false);
                 // ConverterHelper.filter(DSImage.getIndex(this.ImageID));
             }.bind(this);
             let rotationButtonsBody = new SPLINT.DOMElement(this.TextID + "_rotationButtonsBody", "div", this.sl_rotationBody);

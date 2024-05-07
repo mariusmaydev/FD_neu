@@ -8,19 +8,17 @@ class ToolBar_Image {
         this.mainElement.Class("ToolBar_ImageMain");
     }
     blockElement(ImageID){
-        for(const index in this.ELEMENTS){
-            let element = this.ELEMENTS[index];
-            if(ImageID == element.ImageID){
-                element.block = true;
+        for(const e of this.ELEMENTS){
+            if(ImageID == e.ImageID){
+                e.block = true;
                 break;
             }
         }
     }
     unBlockElement(ImageID){
-        for(const index in this.ELEMENTS){
-            let element = this.ELEMENTS[index];
-            if(ImageID == element.ImageID){
-                element.block = false;
+        for(const e of this.ELEMENTS){
+            if(ImageID == e.ImageID){
+                e.block = false;
                 break;
             }
         }

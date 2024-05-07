@@ -38,21 +38,22 @@ class Image_C {
           call.data.ImageCrop      = false;
           return call.send();
     }
-    static copy(index){
-      let clone = [DSImage.getClone().get(index)];
-      let data = SPLINT.Data.CallPHP_OLD.getCallObject(this.COPY);
-          data.ImageID = clone[0].ImageID;
-      let response = SPLINT.Data.CallPHP_OLD.call(this.PATH, data).toObject();
-      clone[0].ImageID          = response.ImageID;
-      clone[0].ImagePosX          = parseFloat(clone[0].ImagePosX) + 20;
-      clone[0].ImagePosY          = parseFloat(clone[0].ImagePosY) + 20;
-      clone[0].images.view      = response.ImageViewPath + "?v=" + SPLINT.Tools.DateTime.Helper.getTime();
-      DSImage.Storage.push(clone[0]);
-      DSImage.save();
-      CONVERTER_STORAGE.canvasNEW.refreshData();
-      CONVERTER_STORAGE.canvasNEW.setActive(DSImage.get(DSImage.length() -1), "img");
-      CONVERTER_STORAGE.toolBar.update();
-      CONVERTER_STORAGE.toolBar.focusElement("img", response.ImageID);
+    static async copy(index){
+        let data = DSImage.get(index);
+        let call = new SPLINT.CallPHP(this.PATH, this.COPY);
+            call.data.ImageID = data.ImageID;
+        let res = await call.send();
+        let clone = SPLINT.Tools.ObjectTools.deepClone(data);
+            clone.ImageID           = res.ImageID;
+            clone.ImagePosX          = parseInt(data.ImagePosX) + 20;
+            clone.ImagePosY          = parseInt(data.ImagePosY) + 20;
+            DSImage.Storage.push(clone);
+            DSImage.setImages(DSImage.length() -1, res)
+            await DSImage.saveAsync()
+              CONVERTER_STORAGE.canvasNEW.refreshData();
+              CONVERTER_STORAGE.toolBar.update();
+              CONVERTER_STORAGE.canvasNEW.setActive(DSImage.get(DSImage.length() -1), "img", false);
+              CONVERTER_STORAGE.toolBar.focusElement("img", res.ImageID);
     }
     static getFilterObj(){
       data = new Object();
@@ -62,9 +63,5 @@ class Image_C {
       data.lineWidth    = 1;
       data.edges        = true;
       return JSON.stringify(data);
-    }
-    static remove(){
-      data = SPLINT.Data.CallPHP_OLD.getCallObject(this.REMOVE);
-      console.log(SPLINT.Data.CallPHP_OLD.call(this.PATH, data).text);
     }
   }

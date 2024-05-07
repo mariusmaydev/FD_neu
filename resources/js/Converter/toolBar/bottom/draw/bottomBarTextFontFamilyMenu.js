@@ -27,7 +27,8 @@ class BottomBar_Text_FontFamily_Menu {
         this.genElement();
 
         this.slideShow.onClickElement = function(div, listElement){
-            this.TOOLS.fontFamily(div.getAttribute("value"));
+            this.data.FontFamily = div.getAttribute("value");
+            CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt", true);
         }.bind(this);
 
         this.slideShow.value = this.data.FontFamily;
