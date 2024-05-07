@@ -1,0 +1,116 @@
+@use '../main' as Gmain;
+@use '../../themes/theme1/vars';
+@use '../../themes/theme1/main' as Tmain;
+@use '../../../../../Splint/scss/tools/tools' as S_tools;
+@use 'sass:color';
+@use '../mediaQueries';
+
+@mixin NavBar_solid(){
+    > .content {
+        padding: 0;
+        margin-left: 0;
+        margin-top: 0.5rem;
+        margin-right: 0rem;
+        margin-bottom: 0;
+        width: 100%;//calc(100% - 1rem);
+        height: calc(3.5rem - 0.5rem);
+        
+        background-color: rgb(254, 254, 254);
+        border: none;
+        border-radius: none;
+        
+        // width: 100%;
+        // height: 7vh;
+        // box-shadow: 0px 5px 11px 0px rgba(0, 0, 0, 0.192);
+        box-shadow: 0px 2px 10px rgba(100,100,100,0.3);
+        // padding-top: 0rem;
+        // padding-bottom: 0rem;
+        // margin: 0;
+        gap: 0;
+
+        > div {
+            padding-inline: 0rem;
+            box-sizing: border-box;
+            position: relative;
+            display: flex;
+            border: none;
+            box-shadow: none;
+            background-color: transparent;
+            cursor: pointer;
+            &:hover{
+                background-color: vars.$color-secondary-text;
+            }
+            margin-top: 0rem;
+            &.Logo {
+                position: relative;
+                grid-area: Logo;
+                left: 0;
+                // top: -1%;
+                height: 100%;
+                width: auto;
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                background-color: transparent;
+                padding-top: 0.25rem;
+                padding-bottom: 0.25rem;
+                
+                > .content {
+                    > img {
+                        box-sizing: border-box;
+                        @include Tmain.preventSelect();
+                        position: relative;
+                        height: 100%;
+                        cursor: pointer;
+                    }
+                }
+            }
+            &.Design {
+                grid-area: Design;
+                position: relative;
+                height: 100%;
+                border: none;
+                box-shadow: none;
+                > button {
+                    height: 100%;
+                    width: 100%;
+                    margin: 0;
+                    padding: 0.75rem;
+                    padding-inline: 1.5rem;
+                    box-sizing: border-box;
+                }
+            }
+            &.Original {
+                grid-area: Original;
+                position: relative;
+                height: 100%;
+                border: none;
+                box-shadow: none;
+                > button {
+                    height: 100%;
+                    width: 100%;
+                    margin: 0;
+                    padding: 0.75rem;
+                    padding-inline: 1.5rem;
+                    box-sizing: border-box;
+                }
+            }
+            &.Cart {
+                padding-inline: 0.5rem;
+                // padding-inline: 0.25rem;
+            }
+            &.burgerMenu {
+                grid-area: burgerMenu;
+                
+                background-color: transparent;;
+                >button {
+                    margin: 0;
+                    padding: 0.5em;
+                    > span {
+                        font-size: 2rem;
+                    }
+                }
+            }
+        }
+    }
+}

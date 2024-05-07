@@ -15,10 +15,6 @@ class ConverterTouchHandler {
         this._ELEConverter = v;
     }
     static touchStart(e){
-        // if(!this.CanvasActive){
-        //   return;
-        // }
-        // console.dir(e);
         ConverterTouchHandler.startDistance(e);
         ConverterTouchHandler.startRotation(e);
         ConverterTouchEvents.start.call(this, e, false);
@@ -30,7 +26,8 @@ class ConverterTouchHandler {
         let g = ConverterTouchHandler.calcRotation(e);
 
         if(g != false) {
-            this.hoverElement.data.ImageAlign = this.hoverElement.alignBase + g
+            this.hoverElement.data.ImageAlign = this.hoverElement.alignBase + g;
+            this.hoverElement.data.TextAlign = this.hoverElement.alignBase + g;
         }
         ConverterTouchHandler.calcDistance(e);
         // if(e.touches.length > 1){

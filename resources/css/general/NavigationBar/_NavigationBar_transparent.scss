@@ -1,0 +1,94 @@
+@use '../main' as Gmain;
+@use '../../themes/theme1/vars';
+@use '../../themes/theme1/main' as Tmain;
+@use '../../../../../Splint/scss/tools/tools' as S_tools;
+@use 'sass:color';
+@use '../mediaQueries';
+
+@mixin NavBar_transparent(){
+    > .content {
+        margin: 0.5rem;
+        margin-bottom: 0;
+        width: calc(100% - 1rem);
+        height: calc(3.5rem - 0.5rem);
+        padding: 0;
+        // margin-top: 0.25rem;
+        // margin-bottom: 0.25rem;
+        > div {
+            box-sizing: border-box;
+            position: relative;
+            display: flex;
+            border: none;
+            box-shadow: none;
+            background-color: transparent;
+            cursor: pointer;
+            &.Logo {
+                position: relative;
+                grid-area: Logo;
+                left: 0;
+                // top: -1%;
+                height: 100%;
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                background-color: transparent;
+                
+                > .content {
+                    > img {
+                        box-sizing: border-box;
+                        @include Tmain.preventSelect();
+                        position: relative;
+                        height: 100%;
+                        // transform: scale(1.2);
+                        cursor: pointer;
+                    }
+                }
+            }
+            &.Design {
+                grid-area: Design;
+                position: relative;
+                height: 100%;
+                border: none;
+                box-shadow: none;
+                > button {
+                    height: 100%;
+                    width: 100%;
+                    margin: 0;
+                    padding: 0.75rem;
+                    padding-inline: 1rem;
+                    box-sizing: border-box;
+                }
+            }
+            &.Original {
+                grid-area: Original;
+                position: relative;
+                height: 100%;
+                border: none;
+                box-shadow: none;
+                > button {
+                    height: 100%;
+                    width: 100%;
+                    margin: 0;
+                    padding: 0.75rem;
+                    padding-inline: 1rem;
+                    box-sizing: border-box;
+                }
+            }
+            &.Cart {
+                margin-right: 0.5rem;
+            }
+            &.burgerMenu {
+                grid-area: burgerMenu;
+                
+                background-color: transparent;;
+                >button {
+                    margin: 0;
+                    padding: 0.5em;
+                    > span {
+                        font-size: 2rem;
+                    }
+                }
+            }
+        }
+    }
+}

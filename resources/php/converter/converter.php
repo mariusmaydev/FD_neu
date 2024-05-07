@@ -117,7 +117,7 @@
                 $args -> PointZero = new stdClass();
                 $args -> PointZero -> X = null;
                 $args -> PointZero -> Y = null;
-                if(isset($_POST["Args"]["PointZero"])){
+                if(isset($_POST["Args"]["PointZero"]) && isset($_POST["Args"]["PointZero"]["X"]) && $_POST["Args"]["PointZero"]["X"] != null){
                     $args -> PointZero -> X = $_POST["Args"]["PointZero"]["X"] / 16.4;
                     $args -> PointZero -> Y = $_POST["Args"]["PointZero"]["Y"] / 16.4;
                 }
@@ -142,6 +142,8 @@
                     $args -> rendering = new stdClass();
                     $args -> rendering -> row = $cfg -> laserFlat -> rendering -> row;
                     $args -> rendering -> col = $cfg -> laserFlat -> rendering -> col;
+                    $args -> PointZero -> X = $cfg -> laserFlat -> zero -> X;
+                    $args -> PointZero -> Y = $cfg -> laserFlat -> zero -> Y;
                     $args -> quality_PpMM = $cfg -> laserFlat -> quality_PpMM;
                     $pathObject = ConverterCreator::createPathObjectLaserFlat($ProjectData, $UserID, $args, $ImageData, $TextData);
                     ConverterCreator::createLaserFlatData($ProjectData, $UserID, $args, $pathObject);

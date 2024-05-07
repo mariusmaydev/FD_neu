@@ -6,11 +6,19 @@ class drawIndex extends Pages_template {
         this._draw();
     }
     _draw(){       
-
+        
+        if(SPLINT.ViewPort.getSize() == "mobile-small"){
+            NavBar.setInParts();
+            NavBar.burgerMenu.onOpen = function(){
+                this.Lighter.send("interaction", false);
+            }.bind(this);
+        } else {
+            NavBar.setTransparent();
+        }
         this.overlay = new indexOverlay(this);
         Footer.parent = this.overlay.contentElement;
         if(SPLINT.ViewPort.getSize() == "mobile-small"){
-            Footer.mobile();
+            Footer.remove();
         } else {
             Footer.desktop();
         }
@@ -27,6 +35,9 @@ class drawIndex extends Pages_template {
         }.bind(this)
         let touchStartPosX = 0;
         window.addEventListener('touchmove', function (evt){
+                if(NavBar.burgerMenu.isOpen){
+                    return;
+                }
                 var touch = evt.touches[0];  
                 var x = Number(touch.pageX); 
                 var y = Number(touch.pageY);  

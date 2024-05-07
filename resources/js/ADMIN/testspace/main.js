@@ -53,6 +53,12 @@ class ADMIN_testSpace {
             bt2.onclick = function(){
                 S_Location.goto(PATH.location.ADMIN.stripe).call();
             }
+        let bt3 = new SPLINT.DOMElement.Button(this.mainElement, "qrcode", "qr");
+            bt3.onclick = async function(){
+                let code = await SPLINT.API.QRCode.getBase64("http://enflame-lighters.de/c/123456", 0);
+                console.dir(code)
+                // SPLINT.API.Moonraker.uploadGCode(code, "test");
+            }
 
     }
     draw1(){

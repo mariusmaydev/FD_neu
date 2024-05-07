@@ -22,7 +22,6 @@
         <s-part src="/js/Login/LoginHelper.js"></s-part>
 
         <s-part src="/js/3D/3DHelper.js"></s-part>
-        <s-part src="/js/3D/commonJS/drawDOMElement_3D.js"></s-part>
         <s-part src="/js/Pages/cart/cart.js"></s-part>
         <s-part src="/js/Pages/cart/cartList.js"></s-part>
         <s-part src="/js/Pages/cart/cartRight.js"></s-part>
@@ -35,7 +34,8 @@
         <s-part src="/js/Projects/ProjectList/Details/ProjectDetailsMobile.js"></s-part>
         <s-part src="/js/Projects/ProjectList/ProjectDetails.js"></s-part>
 
-        <s-part src="/js/NavigationBar.js"></s-part>
+        <s-part src="/js/Pages/NavigationBar/NavigationBarHelper.js"></s-part>
+        <s-part src="/js/Pages/NavigationBar/NavigationBar.js"></s-part>
         <s-part src="/js/Footer.js"></s-part>
         <s-loader src="/js/Eventhandler.js"></s-loader>
 

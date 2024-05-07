@@ -4,16 +4,7 @@ class drawConverterStart extends Pages_template {
         super("converterStart");
     }
     draw(){
-        // console.dir(window)
-        // alert(JSON.stringify(document.body.getBoundingClientRect()))
-        this.background = new drawBackground3D(document.body, "back", "medium");
-        this.background.div.before(this.mainElement);
         this.choiceMenu     = new drawProjectChoiceMenu(this.mainElement);
-        // if(SPLINT.ViewPort.getSize() == "mobile-small"){
-        //     Footer.mobile();
-        // } else {
-        //     Footer.desktop();
-        // }
         setTimeout(async function(){
             console.dir(SPLINT.Events.onLoadingComplete);
         }, 10000)
@@ -23,5 +14,6 @@ class drawConverterStart extends Pages_template {
         if(SPLINT.Events.onLoadingComplete.dispatched == true){
             this.mainElement.setAttribute("loaded", true);
         }
+        NavBar.setInParts();
     }
 }

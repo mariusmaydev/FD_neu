@@ -1,1 +1,111 @@
-{"digits":4,"engraving":{"fastTravel":{"F":1200,"height":23,"S":null},"workTravel":{"F":60,"height":25.25,"S":null},"zero":{"X":50,"Y":50}},"laser":{"fastTravel":{"F":1300,"S":0},"M4orM3":"M4","offsetFrame":{"active":false,"bottom":1,"left":1,"right":1,"top":1},"workTravel":{"F":900,"S":150},"zero":{"X":30,"Y":50}},"laser_dose":{"fastTravel":{"F":3000,"S":0},"workTravel":{"F":1500,"S":1000},"zero":{"X":100,"Y":98}},"laserFlat":{"fastTravel":{"F":1500,"S":0},"intensity":{"binary":true,"max":1000,"min":0},"rendering":{"row":true,"col":true},"M4orM3":"M3","offsetFrame":{"active":false,"bottom":0,"left":0,"right":0,"top":0},"quality_PpMM":20,"workTravel":{"F":10,"S":500},"zero":{"X":0,"Y":0}},"SVG":{"fastTravel":{"F":1200,"height":23,"S":null},"offsetFrame":{"active":true,"bottom":1,"left":1,"right":1,"top":1},"workTravel":{"F":60,"height":25.25,"S":160},"zero":{"X":0,"Y":0}},"type":"laser"}
+{
+    "digits": 4,
+    "engraving": {
+        "fastTravel": {
+            "F": 1200,
+            "height": 23,
+            "S": null
+        },
+        "workTravel": {
+            "F": 60,
+            "height": 25.25,
+            "S": null
+        },
+        "zero": {
+            "X": 50,
+            "Y": 50
+        }
+    },
+    "laser": {
+        "fastTravel": {
+            "F": 1300,
+            "S": 0
+        },
+        "M4orM3": "M4",
+        "offsetFrame": {
+            "active": false,
+            "bottom": 1,
+            "left": 1,
+            "right": 1,
+            "top": 1
+        },
+        "workTravel": {
+            "F": 900,
+            "S": 150
+        },
+        "zero": {
+            "X": 30,
+            "Y": 50
+        }
+    },
+    "laser_dose": {
+        "fastTravel": {
+            "F": 3000,
+            "S": 0
+        },
+        "workTravel": {
+            "F": 1500,
+            "S": 1000
+        },
+        "zero": {
+            "X": 100,
+            "Y": 98
+        }
+    },
+    "laserFlat": {
+        "fastTravel": {
+            "F": 1500,
+            "S": 0
+        },
+        "intensity": {
+            "binary": true,
+            "max": 1000,
+            "min": 0
+        },
+        "M4orM3": "M3",
+        "offsetFrame": {
+            "active": false,
+            "bottom": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0
+        },
+        "quality_PpMM": 20,
+        "rendering": {
+            "col": true,
+            "row": true
+        },
+        "workTravel": {
+            "F": 10,
+            "S": 500
+        },
+        "zero": {
+            "X": 0,
+            "Y": 0
+        }
+    },
+    "SVG": {
+        "fastTravel": {
+            "F": 1200,
+            "height": 23,
+            "S": null
+        },
+        "offsetFrame": {
+            "active": true,
+            "bottom": 1,
+            "left": 1,
+            "right": 1,
+            "top": 1
+        },
+        "workTravel": {
+            "F": 60,
+            "height": 25.25,
+            "S": 160
+        },
+        "zero": {
+            "X": 0,
+            "Y": 0
+        }
+    },
+    "type": "laser"
+}

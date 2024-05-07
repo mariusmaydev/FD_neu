@@ -29,7 +29,8 @@
         <s-part src="/js/Projects/Projects.js"></s-part>
         <s-part src="/js/Projects/Helper/ProjectsHelper.js"></s-part>
 
-        <s-part src="/js/NavigationBar.js"></s-part>
+        <s-part src="/js/Pages/NavigationBar/NavigationBarHelper.js"></s-part>
+        <s-part src="/js/Pages/NavigationBar/NavigationBar.js"></s-part>
         <s-part src="/js/Footer.js"></s-part>
 
         <s-loader src="/js/Eventhandler.js"></s-loader>

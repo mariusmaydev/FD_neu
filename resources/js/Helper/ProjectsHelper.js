@@ -67,10 +67,11 @@ class ProjectHelper extends SPLINT.CallPHP.Manager {
           call.data.State = state;
       return call.send();
     }
-    static getAllAdmin(original = false){
+    static async getAllAdmin(original = false){
       let call = this.callPHP(this.GET_ALL_ADMIN);
           call.data.Original = original;
-      return call.send();
+        let res = await call.send();
+        return SPLINT.Tools.parse.castTypesRecursive(res);
     }
     static async edit(StorageIn){
         let Storage = Object.assign({}, StorageIn);
@@ -83,7 +84,7 @@ class ProjectHelper extends SPLINT.CallPHP.Manager {
         }
         let call = new SPLINT.CallPHP(ProjectHelper.PATH, ProjectHelper.EDIT);
             call.data.Storage = Storage;
-            call.keepalive = false;
+            call.keepalive = true;
         return call.send();
     }
     static async copy(ProjectID, FromUserID = null){

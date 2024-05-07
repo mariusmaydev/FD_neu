@@ -57,7 +57,15 @@ class WebWorker3D extends SPLINT.Worker.WorkerHelper.WebWorkerTemplate {
             source.close(); // free memory, we don't need it anymore
             const imageData = ctx_i.getImageData(0, 0, w, h);
             let imgDa = WebWorker3D.normalize(imageData);
+            
+            // let cv = new OffscreenCanvas(w, h);
+            // let cv_i = cv.getContext("2d");
+            //     cv_i.save();
+            //     cv_i.filter = "saturate(50%)";
+            //     cv_i.putImageData(imgDa, 0, 0);
+            //     cv_i.restore();
 
+            // let imgDa1 = cv_i.getImageData(0, 0, w, h);
             resolve(imgDa);
         }.bind(this));
     }

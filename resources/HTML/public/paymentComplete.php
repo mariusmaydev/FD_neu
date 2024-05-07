@@ -37,7 +37,8 @@
         <s-part src="/js/Checkout/"></s-part>
         <s-part src="/js/Footer.js"></s-part>
 
-        <s-part src="/js/NavigationBar.js"></s-part>
+        <s-part src="/js/Pages/NavigationBar/NavigationBarHelper.js"></s-part>
+        <s-part src="/js/Pages/NavigationBar/NavigationBar.js"></s-part>
         <s-loader src="/js/Eventhandler.js"></s-loader>
         <script async type="text/javascript" src="../../../../Splint/js/Splint.js" onload="SPLINT.start()"></script>
 

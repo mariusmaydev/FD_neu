@@ -101,11 +101,27 @@
                         margin: 0em;
                         padding: 0.25rem;
                         > button {
+                            display: block !important;
                             @include Tmain.TButton_secondary(1);
+                            box-sizing: border-box;
+                            aspect-ratio: 1/1;
+                            padding: 0.5rem;
+                            width: 48px;
+                            > span {
+                                font-size: 1.5rem;
+                            }
                         }
                     }
                     > button {
+                        display: block !important;
                         @include Tmain.TButton_secondary(1);
+                        box-sizing: border-box;
+                        aspect-ratio: 1/1;
+                        padding: 0.5rem;
+                        width: 48px;
+                        > span {
+                            font-size: 1.5rem;
+                        }
                     }
                 }
                 > .FontFamilyContainer {

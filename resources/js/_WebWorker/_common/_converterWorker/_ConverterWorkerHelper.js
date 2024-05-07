@@ -38,7 +38,7 @@ class ConverterWorkerHelper {
           let lines = element.data.TextValue.split('\n');
           for(let i = 0; i < lines.length; i++){
             metrics = ctx.measureText(lines[i]);
-            height = metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent + parseInt(element.data.TextLineHeight);
+            height = metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent + parseInt(element.data.TextLineHeight)-(element.data.FontSize/3);
             let width = metrics.width;
             if(width > max_width){
               max_width = width;

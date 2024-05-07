@@ -125,7 +125,7 @@ class drawProjectList_ADMIN {
                             let inputBody = new SPLINT.DOMElement(id + "inputBody", "div", windowTags.Element);
                                 inputBody.Class("inputBody");
 
-                                let input = new n_InputDiv(inputBody, "newTag", "Tag erstellen");
+                                let input = new SPLINT.DOMElement.InputDiv(inputBody, "newTag", "Tag erstellen");
                                     input.Class("newTag");
                                     let button_submit = new SPLINT.DOMElement.Button(input.inputBody, "submit_newTag");
                                         button_submit.bindIcon("done");
@@ -191,6 +191,31 @@ class drawProjectList_ADMIN {
                   }
                 }.bind(this);
 
+            let button_move = new SPLINT.DOMElement.Button(buttonDiv, index + "_move");
+                button_move.bindIcon("delete");
+                if(data.Original == false) {
+                    button_move.value = "zu Orginale verschieben";
+                    button_move.onclick = async function(){
+                      await SPLINT.SessionsPHP.set("USER_ID", "ADMIN", false);
+                      await SPLINT.SessionsPHP.set("USER_NAME", "ADMIN", false);
+                      await SPLINT.SessionsPHP.set("ADMIN", true, false);
+                      await SPLINT.SessionsPHP.set("GUEST", false, false);
+                      data.Original = true;
+                      await ProjectHelper.edit(data);
+                      contentBody.parentElement.remove();
+                    }.bind(this);
+                } else {
+                    button_move.value = "zu Vorlagen verschieben";
+                    button_move.onclick = async function(){
+                      await SPLINT.SessionsPHP.set("USER_ID", "ADMIN", false);
+                      await SPLINT.SessionsPHP.set("USER_NAME", "ADMIN", false);
+                      await SPLINT.SessionsPHP.set("ADMIN", true, false);
+                      await SPLINT.SessionsPHP.set("GUEST", false, false);
+                      data.Original = false;
+                      await ProjectHelper.edit(data);
+                      contentBody.parentElement.remove();
+                    }.bind(this);
+                }
     }
     async drawHashtagDiv(contentBody, data, index){
       let manager = new SPLINT.DOMElement.Manager("hashtags_" + index + "_");

@@ -25,12 +25,13 @@ class ConverterEvents {
             return;
           }
           this.getElementForCoords();
+          
           if(this.hoverElement != undefined){
             if(this.hoverElement.dragEdge != -1){
               let edge = this.hoverElement.dragEdge;
               let rotation = 0;
               if(this.hoverElement.type == "txt"){
-                rotation = 0;
+                rotation = this.hoverElement.data.TextAlign;
               } else {
                 rotation = this.hoverElement.data.ImageAlign;
               }

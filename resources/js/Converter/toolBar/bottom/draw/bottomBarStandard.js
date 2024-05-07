@@ -39,7 +39,7 @@ class BottomBar_Standard {
         this.button_NewText.Description = "Text hinzufügen";
         this.button_NewText.onclick = async function(){
             let res = await ConverterHelper.addText();
-            let SubWindow = new SPLINT.DOMElement.popupWindow("editText", true);
+            let SubWindow = new SPLINT.DOMElement.popupWindow("editText", true, true);
             SubWindow.buttonClose.bindIcon("check");
             SubWindow.Class("editText_mobile");
             SubWindow.onclose = function(){

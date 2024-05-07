@@ -1,0 +1,107 @@
+@use '../main' as Gmain;
+@use '../../themes/theme1/vars';
+@use '../../themes/theme1/main' as Tmain;
+@use '../../../../../Splint/scss/tools/tools' as S_tools;
+@use 'sass:color';
+@use '../mediaQueries';
+
+@mixin NavBar_inParts(){
+    > .content {
+        padding: 0;
+        margin-left: 1rem;
+        margin-top: 1rem;
+        margin-right: 1rem;
+        margin-bottom: 0;
+        width: calc(100% - 2rem);
+        height: calc(3.5rem - 0.5rem);
+        > div {
+            @include Tmain.TContainer_basic();
+            box-sizing: border-box;
+            position: relative;
+            display: flex;
+            border: none;
+            box-shadow: none;
+            background-color: transparent;
+            cursor: pointer;
+            &.Logo {
+                position: relative;
+                grid-area: Logo;
+                left: 0;
+                // top: -1%;
+                // height: 100%;
+                width: auto;
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                background-color: transparent;
+                
+                > .content {
+                    @include Tmain.TContainer_basic();
+                    > img {
+                        box-sizing: border-box;
+                        @include Tmain.preventSelect();
+                        position: relative;
+                        height: 100%;
+                        cursor: pointer;
+                    }
+                }
+            }
+            &.Design {
+                grid-area: Design;
+                position: relative;
+                height: 100%;
+                border: none;
+                box-shadow: none;
+                > button {
+                    @include Tmain.TContainer_basic();
+                    height: 100%;
+                    width: 100%;
+                    margin: 0;
+                    padding: 0.75rem;
+                    padding-inline: 1rem;
+                    box-sizing: border-box;
+                }
+            }
+            &.Original {
+                grid-area: Original;
+                position: relative;
+                height: 100%;
+                border: none;
+                box-shadow: none;
+                > button {
+                    @include Tmain.TContainer_basic();
+                    height: 100%;
+                    width: 100%;
+                    margin: 0;
+                    padding: 0.75rem;
+                    padding-inline: 1rem;
+                    box-sizing: border-box;
+                }
+            }
+            &.Cart {
+                aspect-ratio: 1/1;;
+                grid-area: shoppingCart;
+                > button {
+                    @include Tmain.TContainer_basic();
+                    // height: 100%;
+                    // width: 100%;
+                    margin: 0;
+                    padding: 0.5em;
+                }
+            }
+            &.burgerMenu {
+                grid-area: burgerMenu;
+                
+                background-color: transparent;;
+                >button {
+                    @include Tmain.TContainer_basic();
+                    margin: 0;
+                    padding: 0.5em;
+                    > span {
+                        font-size: 2rem;
+                    }
+                }
+            }
+        }
+    }
+}

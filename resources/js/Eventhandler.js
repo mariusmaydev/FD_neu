@@ -8,7 +8,7 @@ function reload(){
   location.reload();
 }
 // import("../../../Splint/lib/threeJS/build/three.js");
-console.dir(ShadowRoot)
+
 class Pages {
   static INDEX                = "IndexBODY";
   static CONVERTER_START      = "ConverterStartBODY";
@@ -84,7 +84,6 @@ class Pages {
     new drawPaymentComplete();
   }
   imprint(){
-    NavBar.draw();
     new drawImprint();
   }
   productInformation(){

@@ -62,6 +62,7 @@ class canvasPaths {
           ctx.restore();
     }
     static async drawThumbnailTxt(element){
+        debugger
         let ctx = element.ctx;
         ctx.save();
         ctx.translate(element.data.TextPosX, element.data.TextPosY);
@@ -135,21 +136,40 @@ class canvasPaths {
             }
             element.ctx.fill(path2);
     }
-    static updatePointPath(element, width, height, index){
+    static updatePointPath(element, width = null, height = null, index = null){
+        if(SPLINT.ViewPort.isMobile()){
+            return;
+        }
+        if(width == null || height == null){
+            if(element.type == "txt"){
+                width = element.data.FrameWidth;
+                height = element.data.FrameHeight;
+            } else {
+                width = element.data.ImageWidth;
+                height = element.data.ImageHeight;
+            }
+        }
+        if(element.type == "txt"){
+            index = 8;
+        }
         let rotPointFunc = function(element, size, width, height){
             element.ctx.fillStyle = 'transparent';
-            this.#getPointPath(element, 0 - size, -height /2 - (size*4), (size*2), (size*2), 8); 
-            element.ctx.save();
             
             if(element.type == "img"){
+                this.#getPointPath(element, 0 - size, -height /2 - (size*4), (size*2), (size*2), 8); 
+                element.ctx.save();
                 element.ctx.translate(element.data.ImagePosX, element.data.ImagePosY);
                 element.ctx.rotate(element.data.ImageAlign * Math.PI / 180);
+                element.ctx.fillStyle = 'transparent';
+                element.ctx.drawImage(SVG_Loader.SVG.turn.src,0 - size , -height / 2- (size*4) , size*2, size*2); 
             } else {
+                this.#getPointPath(element, 0 - size, -height  - (size*4), (size*2), (size*2), 8); 
+                element.ctx.save();
                 element.ctx.translate(element.data.TextPosX, element.data.TextPosY);
                 element.ctx.rotate(element.data.TextAlign * Math.PI / 180);
+                element.ctx.fillStyle = 'transparent';
+                element.ctx.drawImage(SVG_Loader.SVG.turn.src,0 - size , -height - (size*4) , size*2, size*2); 
             }
-            element.ctx.fillStyle = 'transparent';
-            element.ctx.drawImage(SVG_Loader.SVG.turn.src,0 - size , -height/2 - (size*4) , size*2, size*2); 
             element.ctx.restore();
         }.bind(this);
         let size = 48;
@@ -183,79 +203,87 @@ class canvasPaths {
           } break;
         }
     }
-    static updateImgPath(element){
-        if(!SPLINT.ViewPort.isMobile()){
-            this.updatePointPath(element, element.data.ImageWidth, element.data.ImageHeight);
-        }
-        let mat = new DOMMatrix().translate(element.data.ImagePosX, element.data.ImagePosY).rotate(element.data.ImageAlign );
-        
-        let path = new Path2D();
-            path.rect(-element.data.ImageWidth / 2, -element.data.ImageHeight / 2, element.data.ImageWidth, element.data.ImageHeight);
-
-        let path2 = new Path2D();
-            path2.addPath(path, mat);
-                element.paths.rect = path2;
-                element.ctx.fillStyle = 'transparent';
-            element.ctx.fill(path2);
-    }
     static getColorFor(color){
         if(color == "CHROME"){
           return "#eff8ff";
         }
-        return "#ffd700";
+        return "#e8b000"//"#ffd700";
       }
-    static updateImg(element){
-        let ctx = element.ctx;
-        let scale = 2;
+    static updateImageBuffer(element){
         let img = element.src;
+        element.canvasBuffer = new OffscreenCanvas(img.width, img.height);
+        let ctx = element.canvasBuffer.getContext("2d");
+
         let color = this.getColorFor(DSProject.Storage.EPType);
+
         ctx.save();
-        ctx.translate(element.data.ImagePosX, element.data.ImagePosY);
-        ctx.scale(1/scale, 1/scale);
-        ctx.rotate(element.data.ImageAlign * Math.PI/180);
-        ctx.filter = 'blur(1px) drop-shadow(0px 0px 1px ' + color + ')';
+        // ctx.scale(2,2)
+                //     ctx.imageSmoothingEnabled = true;
+                //     ctx.imageSmoothingQuality = "high";
+                //     ctx.drawImage(img, 0, 0, Math.abs(img.width), Math.abs(img.height));
+                //     ctx.globalCompositeOperation = "source-in";
+                // //     if(DSProject.Storage.grayscale != true){
+                //         ctx.fillStyle = color;
+                //         ctx.fillRect(0, 0, img.width, img.height);
+                // //     }
+                //     ctx.globalCompositeOperation = "source-over";
+        ctx.filter = 'blur(1px)drop-shadow(0px 0px 1px ' + color + ')';
         ctx.imageSmoothingEnabled = true;
         ctx.imageSmoothingQuality  = "high";
         ctx.globalAlpha = 1;
-        ctx.drawImage(img, 0, 0, parseInt(img.width), parseInt(img.height), -element.data.ImageWidth / (2/(scale)), -element.data.ImageHeight / (2/(scale)), element.data.ImageWidth * scale, element.data.ImageHeight * scale);
-        ctx.drawImage(img, 0, 0, parseInt(img.width), parseInt(img.height), -element.data.ImageWidth / (2/(scale)), -element.data.ImageHeight / (2/(scale)), element.data.ImageWidth * scale, element.data.ImageHeight * scale);
+        ctx.beginPath();
+        ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width, img.height);
+        ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width, img.height);
+        // ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width, img.height);
+        // ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width, img.height);
+
+        ctx.save();
+            ctx.globalCompositeOperation = "source-atop";
+            ctx.filter = 'opacity(80%) brightness(100%) ';
+            ctx.fillStyle = color;
+            ctx.fillRect(0, 0, img.width, img.height);
+        ctx.restore();
+        // ctx.drawImage(img, 0, 0, parseInt(img.width), parseInt(img.height), -element.data.ImageWidth / (2/(scale)), -element.data.ImageHeight / (2/(scale)), element.data.ImageWidth * scale, element.data.ImageHeight * scale);
         // ctx.drawImage(img, 0, 0, parseInt(img.width), parseInt(img.height), -element.data.ImageWidth / (2/(scale)), -element.data.ImageHeight / (2/(scale)), element.data.ImageWidth * scale, element.data.ImageHeight * scale);
 
+            ctx.globalCompositeOperation = "source-atop";
+            ctx.filter = 'opacity(40%) brightness(160%) '//blur(1px) drop-shadow(0px 0px 5px ' + this.getColorFor(DSProject.Storage.EPType) + ')';
+            ctx.globalAlpha = 0.5;
+            ctx.drawImage(this.im, 0, 0, img.width, img.height)
+            ctx.globalCompositeOperation="source-over";
+
+            ctx.closePath();
+            // ctx.fill();
+        ctx.restore();
+        // this.updateImgPath(element)
+        this.drawImageBuffer(element);
+    }
+    static drawImageBuffer(element){
+        let ctx = element.ctx;
+        let b = element.canvasBuffer; 
+        if(b == undefined || element.needsUpdate == true){
+            element.needsUpdate = false;
+            this.updateImageBuffer(element);
+            return;
+        }
+        ctx.save();
+            // ctx.scale(2, 2);
+        ctx.translate(element.data.ImagePosX, element.data.ImagePosY);
+            ctx.rotate(S_Math.toRadians(element.data.ImageAlign));
+            
+          ctx.beginPath();
+          ctx.fillStyle = 'transparent';
+          ctx.drawImage(b, 0, 0, b.width, b.height, -element.data.ImageWidth/2, -element.data.ImageHeight /2, element.data.ImageWidth, element.data.ImageHeight)
+          ctx.rect(-element.data.ImageWidth / 2, -element.data.ImageHeight / 2, element.data.ImageWidth, element.data.ImageHeight);
+          ctx.closePath();
+          ctx.fill();
         ctx.restore();
     }
-    static updateTxtPath(element){
-        this.updatePointPath(element, element.data.FrameWidth, element.data.FrameHeight, 8);
-        
-        let mat = new DOMMatrix().translate(element.data.TextPosX, element.data.TextPosY).rotate(element.data.TextAlign ).scale(2);
-        
-        let path = new Path2D();
-            path.rect(-element.data.FrameWidth / 2, -element.data.FrameHeight / 2, element.data.FrameWidth, element.data.FrameHeight);
-
-        let path2 = new Path2D();
-            path2.addPath(path, mat);
-                element.paths.rect = path2;
-                element.ctx.fillStyle = 'transparent';
-            element.ctx.fill(path2);
-            
-    }
-    static im;
-    static {
-        this.im = new Image();
-        this.im.src = "https://www.pngall.com/wp-content/uploads/14/Pattern-PNG-HD-Image.png"
-    }
-    static updateTxt(element, renderFlag = false){
-        let ctx = element.ctx;
-          ctx.save();
-          ctx.translate(element.data.TextPosX, element.data.TextPosY);
-          ctx.scale(2, 2);
-          ctx.rotate(S_Math.toRadians(element.data.TextAlign));
-          element.ctx.globalAlpha = 1;
-          ctx.imageSmoothingEnabled = true;
-          ctx.imageSmoothingQuality = "high";
+    static #measureText(element){
+        let c = new OffscreenCanvas(12, 12);
+        let ctx = c.getContext("2d");
           ctx.textBaseline = "middle";
           ctx.lineWidth = element.data.LineWidth;
-          ctx.strokeStyle = DSProject.getColorFor(DSProject.Storage.EPType);
-          ctx.fillStyle = DSProject.getColorFor(DSProject.Storage.EPType);
           ctx.font = element.data.FontWeight + " " + element.data.FontStyle + " " + element.data.FontSize + "px " + element.data.FontFamily;
           let metrics     = 0;
           let max_width   = 0;
@@ -265,7 +293,7 @@ class canvasPaths {
 
           for(let i = 0; i < lines.length; i++){
             metrics = ctx.measureText(lines[i]);
-            height = metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent + parseInt(element.data.TextLineHeight)-(element.data.FontSize / 3);
+            height = metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent + parseInt(element.data.TextLineHeight)-(element.data.FontSize/4);
             let width = metrics.width;
             if(width > max_width){
               max_width = width;
@@ -274,16 +302,42 @@ class canvasPaths {
               max_height = height;
             }
           }
-        //   ctx.beginPath();
+          element.data.FrameHeight     = ((lines.length) * (max_height));
+          element.data.FrameWidth      = max_width;
+
+        let res = new Object();
+            res.max_width = max_width;
+            res.max_height = max_height;
+            res.lines = lines;
+        return res;
+    }
+    static updateTextBuffer(element){
+        let measures = this.#measureText(element);
+        element.canvasBuffer = new OffscreenCanvas(element.data.FrameWidth*2, element.data.FrameHeight*2);
+        let ctx = element.canvasBuffer.getContext("2d");
+          
+          ctx.save();
+          ctx.translate(element.canvasBuffer.width / 2, element.canvasBuffer.height / 2);
+          ctx.scale(2, 2);
+          ctx.globalAlpha = 1;
+          ctx.textBaseline = "middle";
+          ctx.imageSmoothingEnabled = true;
+          ctx.imageSmoothingQuality = "high";
+          ctx.lineWidth = element.data.LineWidth;
+          let color = this.getColorFor(DSProject.Storage.EPType);
+          ctx.strokeStyle = color;
+          ctx.filter = 'blur(1px) drop-shadow(0px 0px 1px ' + color + ')';
+          ctx.font = element.data.FontWeight + " " + element.data.FontStyle + " " + element.data.FontSize + "px " + element.data.FontFamily;
+          let max_width   = measures.max_width;
+          let max_height  = measures.max_height;
+          let lines = measures.lines;
+
           ctx.textAlign = element.data.TextOrientation;
           ctx.textRendering  = "optimizeSpeed";
-          let C_width = max_width / 2;
-          let C_height = -((lines.length-1) * max_height) / 2;
+          let C_width = max_width /2;
+          let C_height = -((lines.length-1) * max_height) /2;
           
           let drawFunc = function(){ctx.strokeText(...arguments)};
-          if(renderFlag){
-             drawFunc = function(){ctx.fillText(...arguments)};
-          }
           for(let i = 0; i < lines.length; i++){
             if(element.data.TextOrientation == 'center'){
               drawFunc(lines[i], 0,  C_height + ((i ) * max_height) );
@@ -296,45 +350,74 @@ class canvasPaths {
               drawFunc(lines[i], -C_width,  C_height + ((i ) * max_height) );
             }
           }
-          // ctx.strokeStyle = "red";
-                // this.im.onload = function(){
-                    // ctx.beginPath();
-                    
-            //         ctx.globalCompositeOperation="source-in";
-            //         ctx.filter = 'blur(1px) drop-shadow(0px 0px 1px ' + this.getColorFor(DSProject.Storage.EPType) + ')';
-            //         ctx.globalAlpha = 1;
-            //         ctx.drawImage(this.im, -C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height))
-            //         ctx.fillStyle = this.getColorFor(DSProject.Storage.EPType)
-            //         ctx.fillRect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height))
-            // ctx.globalCompositeOperation="source-over";
-            // ctx.closePath();
-            //     // }
-
-            //     for(let i = 0; i < lines.length; i++){
-            //         if(element.data.TextOrientation == 'center'){
-            //           drawFunc1(lines[i], 0,  C_height + ((i ) * max_height) );
-            //           drawFunc1(lines[i], 0,  C_height + ((i ) * max_height) );
-            //           // ctx.filter = 'blur(0.5px)';
-            //           // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
-            //           // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
-            //           // // ctx.filter = 'blur(1px)';
-            //           // ctx.strokeText(lines[i], 0,  C_height + ((i + 1) * max_height) );
-            //         } else if(element.data.TextOrientation == 'right'){
-            //           drawFunc1(lines[i], +C_width,  C_height + ((i ) * max_height) );
-            //           drawFunc1(lines[i], +C_width,  C_height + ((i ) * max_height) );
-            //         } else {
-            //           drawFunc1(lines[i], -C_width,  C_height + ((i ) * max_height) );
-            //           drawFunc1(lines[i], -C_width,  C_height + ((i ) * max_height) );
-            //         }
-            //       }
-          ctx.rect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
-        //   ctx.strokeRect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
           
-          element.data.FrameHeight     = ((lines.length) * (max_height));
-          element.data.FrameWidth      = max_width;
-          // element.data.TextLineHeight  = max_height;
-  
-          ctx.restore();
+          ctx.globalCompositeOperation="source-atop";
+          ctx.filter = 'opacity(50%) brightness(160%) '//blur(1px) drop-shadow(0px 0px 5px ' + this.getColorFor(DSProject.Storage.EPType) + ')';
+          ctx.globalAlpha = 0.5;
+          ctx.drawImage(this.im, -C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height))
+          ctx.globalCompositeOperation="source-over";
+
+          ctx.rect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
+        // let mat = new DOMMatrix().translate(element.data.TextPosX, element.data.TextPosY).rotate(element.data.TextAlign ).scale(2);
+        
+        // let path = new Path2D();
+        //     path.rect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
+        //   ctx.strokeRect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
+
+        ctx.restore();  
+        this.drawTextBuffer(element);
+    }
+    static drawTextBuffer(element){
+        let ctx = element.ctx;
+        let b = element.canvasBuffer; 
+        if(b == undefined || element.needsUpdate == true){
+            element.needsUpdate = false;
+            this.updateTextBuffer(element);
+            return;
+        }
+        ctx.save();
+            ctx.translate(element.data.TextPosX, element.data.TextPosY);
+            ctx.scale(2, 2);
+            ctx.rotate(S_Math.toRadians(element.data.TextAlign));
+            
+            
+          ctx.beginPath();
+          ctx.fillStyle = 'transparent';
+          ctx.drawImage(b, 0, 0, b.width, b.height, -element.data.FrameWidth / 2, -element.data.FrameHeight / 2, element.data.FrameWidth, element.data.FrameHeight)
+          ctx.rect(-element.data.FrameWidth / 2, -element.data.FrameHeight / 2, element.data.FrameWidth, element.data.FrameHeight);
+          ctx.closePath();
+          ctx.fill();
+        ctx.restore();
+    }
+    static updateBuffer(element){
+        if(element.type == "txt"){
+            this.updateTextBuffer(element)
+        } else {
+            this.updateImageBuffer(element)
+        }
+        if(element.drawEdge){
+            this.updatePointPath(element)
+        }
+    }
+    static drawBuffer(element){
+        if(element.type == "txt"){
+            this.drawTextBuffer(element)
+        } else {
+            this.drawImageBuffer(element)
+        }
+        if(element.drawEdge){
+            this.updatePointPath(element)
+        }
+    }
+    static updatePoints(element){
+        this.updatePointPath(element)
+    }
+
+    static im;
+    static {
+        this.im = new Image();
+        this.im.src = "https://www.shutterstock.com/shutterstock/videos/1066111828/thumb/1.jpg?ip=x480"
+        this.im.setAttribute("crossOrigin", '')
     }
 
 }

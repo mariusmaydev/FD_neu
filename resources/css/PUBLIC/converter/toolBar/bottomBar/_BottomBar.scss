@@ -26,12 +26,13 @@
         flex-direction: column;
         justify-content: end;
         order: 2;
+        z-index: 1000;
         font-size: min(4vw, 1rem);
         > .conv_BottomBar_Main {
             width: 100%;
             box-sizing: content-box;
             height: 100%;
-            max-height: 10rem;
+            max-height: 5rem;
             background-color: transparent;
             border-radius: 0px;
             padding-inline: 0.25rem;
@@ -242,9 +243,12 @@
                     }
                     &.finish {
                         &[state*='active'] {
-                            background-color: red;
+                            background-color: vars.$NEW-color-primary-active;
                             > div {
                                 transform: translateX(0%);
+                                // height: 3rem;
+                                // padding: 0.5rem;
+                                padding: 0.5rem;
                             }
                         }
                         > div {
@@ -256,24 +260,30 @@
                                     box-shadow: none;
                                     justify-content: right;
                                     border-radius: 0;
-                                    gap: 2rem;
+                                    gap: 1rem;
                                     > .toCart {
-                                        @include Tmain.TContainer_basic();
-                                        @include Tmain.clipEdgesAll(5px);
                                         > button {
+                                            @include Tmain.TButton_secondary();
+                                            padding: 1rem;
                                             > span {
-                                                font-size: 2rem;
+                                                font-size: 1.5rem;
                                             }
                                         }
                                     }
                                     > .buy {
-                                        @include Tmain.TContainer_basic();
-                                        @include Tmain.clipEdgesAll(5px);
                                         > button {
+                                            @include Tmain.TButton_primary();
                                             display: flex;
                                             flex-direction: row;
+                                            justify-content: center;
+                                            align-items: center;
+                                            flex-wrap: nowrap;
+                                            padding: 1rem;
                                             > span {
-                                                font-size: 2rem;
+                                                font-size: 1.2rem;
+                                                &:first-of-type {
+                                                    margin-right: 0.2em;
+                                                }
                                             }
                                         }
                                     }

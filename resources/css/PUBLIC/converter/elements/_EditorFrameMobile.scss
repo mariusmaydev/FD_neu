@@ -5,11 +5,11 @@
         border: none;
         flex-grow: 1;
         order: 1;
-        width: 90%;
+        width: 80%;
         height: auto;
         aspect-ratio: 1/1.513;
         top: 0;
-        left: 5%;
+        left: 10%;
         margin: 2%;
         margin: 0;
         box-sizing: border-box;
@@ -28,7 +28,7 @@
                 overflow: visible;
                 > canvas {
                     
-                background-color: transparent !important;
+                    background-color: transparent !important;
                 }
             } 
             top: 0%;  

@@ -31,6 +31,9 @@
             if($Storage[ProjectDB::COLOR] != null){
                 $DataSet -> newEntry(ProjectDB::COLOR, $Storage[ProjectDB::COLOR]);
             } 
+            if($Storage[ProjectDB::ORIGINAL] != null){
+                $DataSet -> newEntry(ProjectDB::ORIGINAL, $Storage[ProjectDB::ORIGINAL]);
+            } 
             $DataSet -> newEntry(ProjectDB::EPTYPE, $Storage[ProjectDB::EPTYPE]);
             $DataSet -> newEntry(ProjectDB::PRODUCT, $Storage[ProjectDB::PRODUCT]);
             $DataSet -> newEntry(ProjectDB::SQUARE, json_encode($Storage[ProjectDB::SQUARE]));
@@ -281,14 +284,13 @@
         static function getAllAdmin($isOriginal = false, bool $print = true){
             $UserID = "ADMIN";
             $DataSet = new DataSet();
-            if($isOriginal == 'true'){
+            if($isOriginal == true){
                 $DataSet -> newKey(ProjectDB::ORIGINAL, $isOriginal);
-            } else if($isOriginal == 'false'){
+            } else if($isOriginal == false){
                 $DataSet -> newKey(ProjectDB::ORIGINAL, $isOriginal);
             }
             $DataSet -> TBName(strtolower($UserID));
             $ProjectData = AccessDB::get(ProjectDB::getStruct(), $DataSet, DataBase::FORCE_ORDERED);
-            
             if($ProjectData != null){
                 foreach($ProjectData as $key => $project){
                     $ProjectData[$key][ProjectDB::SQUARE] = json_decode($project[ProjectDB::SQUARE]);

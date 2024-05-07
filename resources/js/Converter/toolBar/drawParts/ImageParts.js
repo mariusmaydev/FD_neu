@@ -6,7 +6,7 @@ class ToolBar_ImageElement_parts {
     BT_remove(parent = this.parent){
         let bt_remove = new SPLINT.DOMElement.Button(parent, "bt_remove");
             bt_remove.bindIcon("delete");
-            // bt_remove.Description = "entfernen";
+            bt_remove.Description = "entfernen";
             bt_remove.button.onclick = function(){
                 this.TOOLS.remove();
             }.bind(this);
@@ -15,7 +15,7 @@ class ToolBar_ImageElement_parts {
     BT_copy(parent = this.parent){
         let button = new SPLINT.DOMElement.Button(parent, "bt_copy");
             button.bindIcon("content_copy");
-            // button.Description = "duplizieren";
+            button.Description = "duplizieren";
             button.button.onclick = function(){
                 this.TOOLS.copy();
             }.bind(this);
@@ -25,11 +25,11 @@ class ToolBar_ImageElement_parts {
         let button = new SPLINT.DOMElement.Button(parent, "bt_flip_" + type);
             button.bindIcon("flip");
             if(type == "HORIZONTAL") {
-                // button.Description = "horizontal spiegeln";
+                button.Description = "horizontal spiegeln";
             } 
             if(type == "VERTICAL"){
                 button.span.classList.add("rotate90");
-                // button.Description = "vertikal spiegeln";
+                button.Description = "vertikal spiegeln";
             }
             button.button.onclick = function(){
                 this.TOOLS.flip(type);

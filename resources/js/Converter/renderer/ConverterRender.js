@@ -49,14 +49,49 @@ class CanvasElement_C {
   }
   ThumbnailCreator = new ConverterRenderThumbnail(this);
   setListeners(){
+    let listenersOptions = {
+        passive: true
+    }
     if(SPLINT.ViewPort.getSize() == "mobile-small"){
-        window.addEventListener("touchstart", ConverterTouchHandler.touchStart.bind(this), false);
-        window.addEventListener("touchmove", ConverterTouchHandler.touchMove.bind(this), false);
-        window.addEventListener("touchend", ConverterTouchHandler.touchEnd.bind(this), false);
+        window.addEventListener("touchstart", function(ev){
+            let elementsCoords = document.elementsFromPoint(ev.targetTouches[0].clientX, ev.targetTouches[0].clientY);
+            let flag = false;
+            for(const e of elementsCoords){
+                if(e.classList.contains("square-border-div")){
+                    flag = true;
+                    break;
+                }
+            }
+            let hasParent = ev.target.hasParentWithClass("converter-bottomBar-floatingDiv") || ev.target.hasParentWithClass("conv_BottomBar_Main");
+            
+            if(!flag){
+                if(!hasParent){
+                    this.activeElement = null;
+                    CONVERTER_STORAGE.toolBar.blurAll();
+                    this.removeEdges();
+                }
+                return;
+            }
+            if(flag){
+                if(hasParent){
+                    return;
+                } else {
+                    ConverterTouchHandler.touchStart.call(this, ev)
+                }
+            }
+        }.bind(this), listenersOptions);
+        window.addEventListener("touchmove", function(ev){
+            ev.stopPropagation();
+            ConverterTouchHandler.touchMove.call(this, ev)//bind(this)
+        }.bind(this), listenersOptions);
+        window.addEventListener("touchend", ConverterTouchHandler.touchEnd.bind(this), listenersOptions);
     } else {
-        window.addEventListener("mousedown", ConverterMouseHandler.mouseDown.bind(this));
-        window.addEventListener("mousemove", ConverterMouseHandler.mouseMove.bind(this));
-        window.addEventListener("mouseup", ConverterMouseHandler.mouseUp.bind(this));
+        window.addEventListener("mousedown", ConverterMouseHandler.mouseDown.bind(this), listenersOptions);
+        window.addEventListener("mousemove", function(ev){
+            ev.stopPropagation();
+            ConverterMouseHandler.mouseMove.call(this, ev)
+        }.bind(this), listenersOptions);
+        window.addEventListener("mouseup", ConverterMouseHandler.mouseUp.bind(this), listenersOptions);
 
     }
 
@@ -82,7 +117,8 @@ class CanvasElement_C {
     
     // this.initLines();
   }
-  setActive(data, type){
+
+  setActive(data, type, needsUpdate = false){
     if(data == undefined){
       return;
     }
@@ -92,8 +128,12 @@ class CanvasElement_C {
       this.activeElement = this.#getElementByID_Type(data.TextID, "txt").element;
     }
     if(this.activeElement != undefined){
+        this.activeElement.needsUpdate = needsUpdate;
       this.setFirstInStack(this.activeElement);
       this.checkEdge(this.activeElement);
+      if(this.activeElement.needsUpdate){
+        canvasPaths.updateBuffer(this.activeElement);
+      }
     }
   }
   createTextData(scale = 1){
@@ -152,23 +192,23 @@ class CanvasElement_C {
         if(this.#check(element.ctx, element.paths.rect)){
           ele = element;
           ele.dragEdge = -1;
-        }
-        for(let i = 0; i <= 8; i++){
-          if(this.#check(element.ctx, element.paths.edges[i])){
-            ele = element;
-            ele.dragEdge = i;
-          }
+        } else if(element.drawEdge){
+            for(let i = 0; i <= 8; i++){
+                if(this.#check(element.ctx, element.paths.edges[i])){
+                    ele = element;
+                    ele.dragEdge = i;
+                }
+            }
         }
       } else if(element.type == "txt"){
         if(this.#check(element.ctx, element.paths.rect)){
           ele = element;
           ele.dragEdge = -1;
-        }
-        
-        CanvasHelper.Text().edge(element, true, 8);
-        if(this.#check(element.ctx, element.paths.edges[8])){
-          ele = element;
-          ele.dragEdge = 8;
+        } else if(element.drawEdge){
+            if(this.#check(element.ctx, element.paths.edges[8])){
+              ele = element;
+              ele.dragEdge = 8;
+            }
         }
       }
     });
@@ -228,9 +268,10 @@ class CanvasElement_C {
           o.data = dataIn;
           o.paths       = new Object();
           o.paths.edges = [];
+          o.needsUpdate = true;
           obj.#update();
           obj.draw(o);
-          canvasPaths.updateTxtPath(o);
+        //   canvasPaths.updateTxtPath(o);
           DSText.saveAsync();
       return o;
     }
@@ -247,24 +288,6 @@ class CanvasElement_C {
           o.canvas.height = obj.canvas.height;
           o.ctx      = o.canvas.getContext('2d', {desynchronized: false});
 
-
-
-        //   o.canvas_off1 = new SPLINT.DOMElement(obj.id + "_" + dataIn.ImageID + "_IMG_OFF", "canvas", obj.parent);
-        //   o.canvas_off1.width = o.canvas.width;
-        //   o.canvas_off1.height = o.canvas.height;
-        //   o.ctx_off = o.canvas_off1.getContext("bitmaprenderer");
-        //   o.canvas_off2 = new OffscreenCanvas(o.canvas_off1.width, o.canvas_off1.height);
-        //   o.WORKER = new SPLINT.Worker.WebWorker("/js/_WebWorker/_common/_converterWorker/_ConverterRenderWorker.js", false, false);
-        //   o.WORKER.init().then(function(){
-        //     o.WORKER.send("init", {canvas: o.canvas_off2}, [o.canvas_off2]);
-        //     o.WORKER.onReceive = function(e){
-        //       if(e.data.msg == "render"){
-        //           o.ctx_off.transferFromImageBitmap(e.data.bitmap);
-        //       }
-        //     }
-        //   })
-
-
           o.paths       = new Object();
           o.paths.edges = [];
           o.src = new Image();
@@ -278,42 +301,15 @@ class CanvasElement_C {
             dataIn.ImageWidth   = obj.canvas.width / 4;
             dataIn.ImageHeight  = dataIn.ImageWidth / ratio;
           }
-        //   console.log(dataIn)
-        //   debugger
-          let img = new Image();
-              img.src = dataIn.images.view;
-              img.onload = function(){
-                let canvas = document.createElement("canvas");
-                    canvas.width  = Math.abs(img.width);
-                    canvas.height = Math.abs(img.height);
-                let ctx = canvas.getContext('2d');
-                    ctx.imageSmoothingEnabled = true;
-                    ctx.imageSmoothingQuality = "high";
-                    ctx.drawImage(img, 0, 0, Math.abs(img.width), Math.abs(img.height));
-                    ctx.globalCompositeOperation = "source-in";
-                    if(DSProject.Storage.grayscale != true){
-                        ctx.fillStyle = DSProject.getColorFor(DSProject.Storage.EPType);
-                        ctx.fillRect(0, 0, canvas.width, canvas.height);
-                    }
-                    ctx.globalCompositeOperation = "source-over";
-                let imgData = canvas.toDataURL('image/png', 1);
-
-                canvas.remove();
-                o.src.src   = imgData;
-                o.src.width = Math.abs(img.width);
-                o.src.height = Math.abs(img.height);
+                o.src.src   = dataIn.images.view;
+                o.needsUpdate = true;
                 o.src.onload = function(){
-                  obj.#update();
-                    canvasPaths.updateImgPath(o);
-                //   canvasPaths.updatePointPath(element, x, y, width, height, index)
-                  obj.draw(o);
+                  canvasPaths.updateImageBuffer(o);
                 }.bind(obj, o);
-              }.bind(obj, o);
 
           o.data      = dataIn;
           o.reload = function(){
-            o.src.src = "";
-            img.src = dataIn.images.view;
+            o.src.src = dataIn.images.view;
             o.time     = SPLINT.Tools.DateTime.Helper.getTimeFromURL(dataIn.images.view);
           }
           DSImage.saveAsync();
@@ -328,7 +324,7 @@ class CanvasElement_C {
         output = new Object();
         output.element  = element;
         output.index    = index;
-        return;
+        return output;
       }
       index++;
     });
@@ -341,6 +337,12 @@ class CanvasElement_C {
     return ctx.isPointInPath(this.mouse.X * this.ratio.X, this.mouse.Y * this.ratio.Y);
   }
   refreshData(){
+    // for(const ele of DSImage.Storage){
+    //     let stackEle = this.#getElementByID_Type(ele.ImageID, "img");
+    //     if(stackEle != false) {
+
+    //     }
+    // }
     this.#update();
     for(let i = 0; i < DSImage.length(); i++){
       let data = DSImage.get(i);
@@ -352,15 +354,7 @@ class CanvasElement_C {
         if(SPLINT.Tools.DateTime.Helper.getTimeFromURL(data.images.view) != response.element.time){
           response.element.data = data;
           this.stack[response.index] = response.element;
-          if(this.activeElement != null){
-            this.activeElement.reload();
-          }
-          if(this.dragElement != null){
-            this.dragElement.reload();
-          }
-          if(this.hoverElement != null){
-            this.hoverElement.reload();
-          }
+          response.element.reload();
         }
       } else {
         this.stack.push(this.#newStackObj("img", data));
@@ -369,6 +363,7 @@ class CanvasElement_C {
     for(let i = 0; i < DSText.length(); i++){
       let data = DSText.get(i);
       let response = this.#getElementByID_Type(data.TextID, "txt");
+      console.dir(response)
       if(response != false){
           response.element.data = data;
           this.stack[response.index] = response.element;
@@ -410,7 +405,7 @@ class CanvasElement_C {
     // window.requestAnimationFrame(function(){
       element.ctx.clearRect(0, 0, element.canvas.width, element.canvas.height);
       if(element.type == "img" && element.src.naturalHeight != 0){
-        if(this.mouse.down && this.dragElement == element && element.dragEdge == -1 && element.resize != true){
+        if(this.mouse.down && this.dragElement == element && element.dragEdge == -1){
           let data = element.data;
           data.ImagePosX = this.mouse.X * this.ratio.X + element.offset.X;
           data.ImagePosY = this.mouse.Y * this.ratio.Y + element.offset.Y; 
@@ -427,11 +422,16 @@ class CanvasElement_C {
           let lineV = this.drawLine(data.ImagePosX, data.ImagePosY, data);
               data.ImagePosX = lineV[0];
               data.ImagePosY = lineV[1];
+              this.focusCanvas(element);
+              canvasPaths.drawBuffer(element);
+              return;
         }
         if(element.drawEdge){
-          this.focusCanvas(element);
+            this.focusCanvas(element);
+            canvasPaths.drawBuffer(element);
+            return
         }
-        CanvasHelper.Image().draw(element, element.drawEdge);
+        canvasPaths.updateBuffer(element);
       } else if(element.type == "txt"){
         if(this.mouse.down && this.dragElement == element && element.dragEdge == -1 && element.resize != true){
           element.data.TextPosX = this.mouse.X * this.ratio.X + element.offset.X;
@@ -439,11 +439,16 @@ class CanvasElement_C {
           let lineV = this.drawLine(element.data.TextPosX, element.data.TextPosY, element.data);
           element.data.TextPosX = lineV[0];
           element.data.TextPosY = lineV[1];
+          this.focusCanvas(element);
+          canvasPaths.drawBuffer(element);
+          return
         }
         if(element.drawEdge){
           this.focusCanvas(element);
+          canvasPaths.drawBuffer(element);
+          return
         }
-        CanvasHelper.Text().draw(element, element.drawEdge);
+        canvasPaths.updateBuffer(element);
       }
   }
   focusCanvas(element = null){
@@ -462,11 +467,11 @@ class CanvasElement_C {
     if(element.type == "img"){
         ConverterComputeEdges.compute(element, element.dragEdge, this.mouse, this.ratio);
     } else {
-      CanvasHelper.Text().edge(element, false, 8);
-      if(element.dragEdge == 2){
-        element.data.TextPosX = this.mouse.X * this.ratio.X + element.offset.X;
-        element.data.TextPosY = this.mouse.Y * this.ratio.Y + element.offset.Y;
-      } else {
+    //   CanvasHelper.Text().edge(element, false, 8);
+    //   if(element.dragEdge == 2){
+    //     element.data.TextPosX = this.mouse.X * this.ratio.X + element.offset.X;
+    //     element.data.TextPosY = this.mouse.Y * this.ratio.Y + element.offset.Y;
+    //   } else {
         let a = element.data.TextPosX - (this.mouse.X * this.ratio.X);
         let b = element.data.TextPosY - (this.mouse.Y * this.ratio.Y);
         let c = S_Math.pytagoras(a, b);
@@ -482,12 +487,12 @@ class CanvasElement_C {
                   }
             }
         }
-      }
+    //   }
     }
 
     this.draw(element);
   }
-  checkEdge(element){    
+  checkEdge(element){   
     this.stack.forEach(ele => {
       if(ele.ID != element.ID || ele.type != element.type){
         ele.drawEdge = false;
@@ -502,6 +507,9 @@ class CanvasElement_C {
   removeEdges(){
     this.stack.forEach(element => {
       element.drawEdge = false;
+    //   element.paths.edges = [];
+    // console.dir(element)
+    // debugger
       this.draw(element);
     });
     this.focusCanvas();
@@ -511,10 +519,10 @@ class CanvasElement_C {
     if(this.activeElement != null){
         if(this.activeElement.type == "img"){
             this.activeElement.calcEdgeFlag = false;
-            canvasPaths.updateImgPath(this.activeElement);
+            // canvasPaths.updateImgPath(this.activeElement);
         } else {
             this.activeElement.calcEdgeFlag = false;
-            canvasPaths.updateTxtPath(this.activeElement);
+            // canvasPaths.updateTxtPath(this.activeElement);
         }
     }
     this.dragElement = null;
@@ -660,46 +668,54 @@ class CanvasHelper {
   static drawEdges(element, width, height, index = -1){
     return element.ctx;
   }
-  static drawEdgesInteractive(element, width, height, index = -1){
-    canvasPaths.updatePointPath(element, width, height, index)
-    return element.ctx;
-  }
+//   static drawEdgesInteractive(element, width, height, index = -1){
+//     canvasPaths.updatePointPath(element, width, height, index)
+//     return element.ctx;
+//   }
   static Text(ctx = null){
     function obj(ctx){
       this.edge = function(element, flag = false, index){
-        if(flag){
-          CanvasHelper.drawEdges(element, element.data.FrameWidth, element.data.FrameHeight, index);
-        } else {
-          CanvasHelper.drawEdges(element, element.data.FrameWidth, element.data.FrameHeight, index);
-        }
-      }
-      this.draw = function(element, pointFlag = true, thumbnailFlag = false, renderFlag = false){
-        if(pointFlag){
-            canvasPaths.updatePointPath(element, element.data.FrameWidth, element.data.FrameHeight, 8);
-        }
-        canvasPaths.updateTxt(element, renderFlag, thumbnailFlag);    
-      }
-    }
-    return new obj(ctx);
-  }
-  static Image(ctx = null){
-    function obj(ctx){
-      this.edge = function(element, flag = false, index){
         // if(flag){
-        //     CanvasHelper.drawEdges(element, element.data.ImageWidth, element.data.ImageHeight, index);
+        //   CanvasHelper.drawEdges(element, element.data.FrameWidth, element.data.FrameHeight, index);
         // } else {
-        //     CanvasHelper.drawEdges(element, element.data.ImageWidth, element.data.ImageHeight);
+        //   CanvasHelper.drawEdges(element, element.data.FrameWidth, element.data.FrameHeight, index);
         // }
       }
-      this.draw = function(element, pointFlag = true, black = false){    
+      this.draw = function(element, pointFlag = true, thumbnailFlag = false, renderFlag = false){
         if(pointFlag && !SPLINT.ViewPort.isMobile()){
-            canvasPaths.updatePointPath(element, element.data.ImageWidth, element.data.ImageHeight);
+            // canvasPaths.updatePointPath(element, element.data.FrameWidth, element.data.FrameHeight, 8);
+            // return
         }
-            canvasPaths.updateImg(element, black);
+        if(thumbnailFlag){
+            canvasPaths.drawTextBuffer(element);    
+        } else {
+            canvasPaths.updateTextBuffer(element);   
+        } 
       }
     }
     return new obj(ctx);
   }
+//     function obj(ctx){
+//       this.edge = function(element, flag = false, index){
+//         // if(flag){
+//         //     CanvasHelper.drawEdges(element, element.data.ImageWidth, element.data.ImageHeight, index);
+//         // } else {
+//         //     CanvasHelper.drawEdges(element, element.data.ImageWidth, element.data.ImageHeight);
+//         // }
+//       }
+//       this.draw = function(element, pointFlag = true, updateBuffer = false){    
+//         if(pointFlag && !SPLINT.ViewPort.isMobile()){
+//             canvasPaths.updatePointPath(element, element.data.ImageWidth, element.data.ImageHeight);
+//         }
+//         if(updateBuffer){
+//             canvasPaths.updateImageBuffer(element);
+//         } else {
+//             canvasPaths.drawImageBuffer(element);
+//         }
+//       }
+//     }
+//     return new obj(ctx);
+//   }
   static fillTextWithSpacing(context, text, x, y, spacing){
       let wAll = context.measureText(text).width;
       let change = 0;

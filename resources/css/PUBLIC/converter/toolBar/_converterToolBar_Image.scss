@@ -80,7 +80,7 @@
             > .topDiv {
                 position: relative;
                 display: flex;
-                height: 8em !important;
+                height: 6em !important;
                 max-height: 8em !important;
                 width: 100%;
                 flex-grow: 1;
@@ -133,7 +133,7 @@
                 }
                 > .buttonsDiv {
                     display: grid;
-                    height: 8rem;
+                    height: 6rem;
                     grid-template-columns: repeat(auto-fit, minmax(50%, 7rem));
                     grid-auto-flow: row dense;
                     justify-content: center;
@@ -168,21 +168,23 @@
                         > button {
                             flex: 1;
                             display: block !important;
-                            @include Tmain.TButton_primary(1);
-                            // padding: 0;
+                            @include Tmain.TButton_secondary(1);
                             position: relative;
                             box-sizing: border-box;
                             max-width: min(calc(50% - 5%), 48px);
+                            padding: 0.5rem;
                             // height: calc(max-content - 0.5rem);
                             // max-height: calc(100% - 0.5rem);
                             aspect-ratio: 1/1;
                             justify-content: center;
                             align-items: center;
-                            // > span {
-                            //     &.description {
-                            //         font-size: 0.5rem;
-                            //     }
-                            // }
+                            > span {
+                                font-size: 1.5rem;
+                                &.description {
+                                    display: none;
+                                    // font-size: 0.5rem;
+                                }
+                            }
                             // background-color: vars.$color-T_container-Medium;
                             // box-shadow: none;
                             // box-shadow: 3px 3px 0px 0px color.adjust(vars.$color-header-Dark, $alpha: -0.1),

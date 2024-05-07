@@ -302,13 +302,11 @@ class ConverterAdminBar {
                     
             let paths = this.getPaths();
                 paths.then(function(path){
-                    console.log(path);
                     let tableConfigs = new SPLINT.DOMElement.Table.List(ContainerManagement, "configs", Object.keys(path));
                         tableConfigs.func_drawListElement = function(data, index, listElement) {
                             let sp = new SPLINT.DOMElement.SpanDiv(listElement, "sp" + index, data)
                             let btLoad = new SPLINT.DOMElement.Button(listElement, "load" + index, "laden");
                                 btLoad.onclick = async function(){
-                                    console.dir(data)
                                     SPLINT.Tools.Location.removeParams("name").setParams({"name": data}).call(true);
                                 }.bind(this);
                             if(data != "converterProcess"){

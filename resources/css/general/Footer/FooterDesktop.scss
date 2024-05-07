@@ -10,7 +10,7 @@
         overflow: hidden !important;
     }
     body {
-        overflow-y: scroll!important;
+        overflow-y: hidden!important;
         overflow-x: hidden!important;
         scroll-snap-type: y mandatory !important;
         // scroll-snap-points-y: repeat(300px);

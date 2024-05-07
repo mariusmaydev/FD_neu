@@ -6,11 +6,11 @@ class n_ADMIN_testSpace extends ADMIN_DrawTemplate {
         this.draw();
     }
     draw(){
-        let g = new S_ChoiceButton(this.mainElement, "test");
-            g.add(1, "value")
-            g.add(2, "value2")
-            g.add(3, "value3")
-            g.add(4, "value4")
+        // let g = new S_ChoiceButton(this.mainElement, "test");
+        //     g.add(1, "value")
+        //     g.add(2, "value2")
+        //     g.add(3, "value3")
+        //     g.add(4, "value4")
     }
     draw1(){
       let button = new SPLINT.DOMElement.Button(this.mainElement, "lithophane");

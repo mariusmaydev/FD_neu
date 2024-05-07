@@ -4,16 +4,14 @@ class drawCart extends Pages_template {
         super("cart");
     }
     draw(){
-        let background = new drawBackground3D(document.body, "back3D", "medium");
-            background.div.before(this.mainElement);
         this.right = new drawCartRight(this.mainElement);
         this.list = new drawCartList(this.mainElement);
         
         // Footer.parent = this.mainElement;
         if(SPLINT.ViewPort.getSize() == "mobile-small"){
-            Footer.mobile();
-            NavBar.grow();
+            NavBar.setInParts();
         } else {
+            NavBar.setTransparent();
             Footer.desktop();
         }
         SPLINT.Events.onLoadingComplete = function(){

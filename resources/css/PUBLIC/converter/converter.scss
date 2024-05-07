@@ -115,51 +115,78 @@ body {
             z-index: 1001 !important;
         }
         > .content {
-            margin-top: -10vh !important;
-            margin-bottom: 20vh !important;
+            // margin: 0.5rem;
+            top: calc(3.5rem);
+            transform: translateX(-50%);
+            // margin-top: -10vh !important;
+            // margin-bottom: 20vh !important;
             background-color: transparent;
             box-shadow: none;
             display: flex;
-            width: 100%!important;
+            width: calc(100%);
             max-width: 100%!important;
             flex-direction: column;
-            min-height: 30% !important;
-            max-height: 70% !important;
-            height: fit-content !important;
+            // min-height: 30% !important;
+            // max-height: 70% !important;
+            height: 100%;
+            // height: fit-content !important;
             flex-wrap: nowrap;
             align-items: start;
             box-sizing: border-box;
-            padding: 0;
-            > button {
-                top: 80% !important;
-                left: 85% !important;
-                height: auto !important;
-                width: auto !important;
-                > span {
-                    font-size: 2rem !important;
-                    color: white;
-                }
-            }
-            > .headline {
-                width: 100%;
-                background-color: transparent;
+            gap: 0.5rem;
+            // padding: 0;
+            > .buttonsContainer {
+                position: relative;
+                // padding-inline: 1rem;
                 display: flex;
                 flex-direction: row;
-                justify-content: center;
-                > span {
-                    color: white;
-                    font-size: 1.5rem;
+                background-color: transparent;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                height: max-content;
+                box-sizing: border-box;
+                gap: 0.5rem;
+                > button {
+                    @include Tmain.TButton_primary();
+                    // top: 80% !important;
+                    // left: 85% !important;
+                    // height: auto !important;
+                    // width: auto !important;
+                    height: 100%;
+                    padding:0.5rem;
+                    > span {
+                        font-size: 2rem;
+                        // color: white;
+                    }
+                }
+                > .headline {
+                    flex-grow: 1;
+                    width: 100%;
+                    background-color: transparent;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    @include Tmain.TContainer_basic();
+                    height: max-content;
+                    > span {
+                        padding: 0.5rem;
+                        height: 100%;
+                        color: vars.$color-primary-text;
+                        font-size: 1.5rem;
+                        // color: white;
+                    }
                 }
             }
             > .TextInputDiv {
+                @include Tmain.TContainer_basic();
                 box-sizing: border-box;
                 width: 100% !important;
-                height: max-content;
+                height: calc(100% - 7.5rem);
                 margin: 0;
-                margin-top: 10vh;
-                margin-bottom: 10vh;
-                background-color: transparent;
-                caret-color: white !important;
+                overflow: auto !important;
+                // background-color: transparent;
                 > label {
                     display: none;
                 }
@@ -171,11 +198,12 @@ body {
                     overflow: auto;
                     user-select: text !important;
                     pointer-events: all !important;
-                    border: none;
+                    // border: none;
                     text-align: center;
                     font-size: 2rem;
-                    color: white;
-                    caret-color: white!important;
+                    height: 100% !important;
+                    // color: white;
+                    // caret-color: white!important;
                 }
                 hr {
                     display: none;
@@ -270,7 +298,7 @@ body {
         }
     }
     .Conv_MAIN {
-        scroll-margin-top: calc(7vh);
+        scroll-margin-top: calc(3.5rem);
         scroll-snap-align: start;
         position: relative;
         width: 100vw;
@@ -280,8 +308,8 @@ body {
         flex-direction: column;
         margin-left: auto;
         margin-right: auto;
-        top: 6%;
-        height: calc(100dvh - calc(6vh + 1rem));
+        top: 3.5rem;
+        height: calc(100dvh - calc(3.5rem));
         overflow: hidden !important;
         @include EditorFrameMobile.conv_EditorFrame_mobile();
         > .Conv_RightBar {

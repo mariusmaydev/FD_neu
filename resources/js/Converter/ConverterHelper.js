@@ -66,6 +66,7 @@ class ConverterHelper {
     let output = await call.send();
         DSImage.setImages(index, output);
         CONVERTER_STORAGE.canvasNEW.refreshData();
+        CONVERTER_STORAGE.canvasNEW.setActive(DSImage.get(index), "img", true);
   }
   static async genFrame(UserID, ProjectID, Args = null){
     let call = new SPLINT.CallPHP(ConverterHelper.PATH, ConverterHelper.GEN_FRAME);
@@ -88,14 +89,16 @@ class ConverterHelper {
         call.data.Storage.grayscale = grayscale;
         call.onBeforeSend = function(){
             if(CONVERTER_STORAGE.toolBar.imageBar == undefined){
-                // CONVERTER_STORAGE.toolBar.drawBar.blockElement(imgID);
+                CONVERTER_STORAGE.toolBar.block(imgID);
             } else {
                 CONVERTER_STORAGE.toolBar.imageBar.blockElement(imgID);
             }
         }
         call.onFinish = function(data){
-              DSImage.get(index).images.view = data.ImageViewPath + "?v=" + SPLINT.Tools.DateTime.Helper.getTime();
+            DSImage.setImages(index, data);
+            //   DSImage.get(index).images.view = data.ImageViewPath + "?v=" + SPLINT.Tools.DateTime.Helper.getTime();
               CONVERTER_STORAGE.canvasNEW.refreshData();
+              CONVERTER_STORAGE.canvasNEW.setActive(DSImage.get(index), "img", true);
               
                 if(CONVERTER_STORAGE.toolBar.imageBar != undefined){
                     CONVERTER_STORAGE.toolBar.imageBar.unBlockElement(imgID);
@@ -114,10 +117,10 @@ class ConverterHelper {
   }
   static openImageMenu(){
     CONVERTER_STORAGE.canvasNEW.ListenersActive(false);
-    NavBar.grow();
+    NavBar.setSolid();
     let imageMenu = new ImageMenu(document.body);
         imageMenu.onClose = function(){
-            NavBar.shrink();
+            NavBar.setInParts();
           CONVERTER_STORAGE.canvasNEW.ListenersActive(true);
         }.bind(this);
         let background = imageMenu.drawBackground();

@@ -58,8 +58,9 @@
             "S": 0
         },
         "intensity": {
+            "binary": true,
             "max": 1000,
-            "min": 1000
+            "min": 0
         },
         "M4orM3": "M3",
         "offsetFrame": {
@@ -70,6 +71,10 @@
             "top": 0
         },
         "quality_PpMM": 10,
+        "rendering": {
+            "col": true,
+            "row": true
+        },
         "workTravel": {
             "F": 1000,
             "S": 500

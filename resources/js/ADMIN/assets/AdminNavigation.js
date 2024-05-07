@@ -36,7 +36,7 @@ class ADMIN_NavigationMenu {
             await SPLINT.SessionsPHP.set("USER_NAME", "ADMIN", false);
             await SPLINT.SessionsPHP.set("ADMIN", true, false);
             await SPLINT.SessionsPHP.set("GUEST", false, false);
-            ProjectHelper.new('ADMIN', "Lighter_Gold_custom", true, false, true).then(S_Location.goto(PATH.location.converter).setHash("ADMINPLUS").call());
+            ProjectHelper.new('ADMIN', "LIGHTER_BASE_GOLD_custom", true, false, true).then(S_Location.goto(PATH.location.converter).setHash("ADMINPLUS").call());
         });
       // this.createSubElement("management", "Verwaltung");
     }

@@ -121,15 +121,17 @@ export class draw {
     }
     async loadThumbnail(GoldFlag){
         this.getName();
-        if(this.nameThumbnail.new != this.nameThumbnail.before){
+        if(true||this.nameThumbnail.new != this.nameThumbnail.before){
             this.thumbnailReload = true;
         } else {
             this.thumbnailReload = false;
         }
+        
         this.nameThumbnail.before = this.nameThumbnail.new;
         return new Promise(async function(resolve){
             if(this.scene != null){
                 let binaryImg = await this.StorageManager.get(this.drawID + "_thumbnail");
+
                 if(binaryImg == undefined){
                     binaryImg = await SPLINT.BinaryImage.fromURL(location.origin + (this.canvas.getAttribute("thumbsrc")));
                     this.StorageManager.set(this.drawID + "_thumbnail", binaryImg);
@@ -156,18 +158,18 @@ export class draw {
             this.canvas.width   = parentSize.width * 2;
             this.canvas.height  = parentSize.height * 2;
         } else {
-            this.canvas.width   = parentSize.width * 4;
-            this.canvas.height  = parentSize.height * 4;
+            this.canvas.width   = parentSize.width * 2;
+            this.canvas.height  = parentSize.height * 2;
         }
         this.canvas.style.width     = parentSize.width  + "px";
         this.canvas.style.height    = parentSize.height + "px";
 
         if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
             this.renderer.setPixelRatio( window.devicePixelRatio * 1.5);
-            this.renderer.setSize( parentSize.width /2, parentSize.height /2, false);
+            this.renderer.setSize( parentSize.width, parentSize.height, false);
         } else {
             this.renderer.setPixelRatio( window.devicePixelRatio);
-            this.renderer.setSize( parentSize.width*1.5, parentSize.height*1.5, false);
+            this.renderer.setSize( parentSize.width*2, parentSize.height*2, false);
         }
         this.render();
     }
@@ -199,9 +201,9 @@ export class draw {
                 this.render();
             }.bind(this), 100);
 
-            let normalMapData = await this.StorageManager.get(this.drawID + "_normalMap");
-            
-            if(normalMapData == undefined){
+            // let normalMapData = await this.StorageManager.get(this.drawID + "_normalMap");
+            // console.dir(normalMapData)
+            if(true||normalMapData == undefined){
                 let binaryImg = await this.StorageManager.get(this.drawID + "_thumbnail");
                 if(binaryImg == undefined){
                     binaryImg = await SPLINT.BinaryImage.fromURL(location.origin + (this.canvas.getAttribute("thumbsrc").slice(0,-3)));
@@ -209,6 +211,7 @@ export class draw {
                 }
                 let d = await binaryImg.export_imageData();
                 workerInterfaceNew.createNormalMap(this.drawID + "_normalMap", d).then(async function(imageData){
+
                     this.StorageManager.set(this.drawID + "_normalMap", imageData);
                     let texture = new THREE.Texture(imageData);
                         texture.needsUpdate = true;

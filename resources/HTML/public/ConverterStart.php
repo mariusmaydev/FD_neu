@@ -44,7 +44,9 @@
         <s-part src="/js/Pages/converterStart.js"></s-part>
         <s-part src="/js/assets/functionsProduct.js"></s-part>
         <s-part src="/js/manager/manager.js"></s-part>
-        <s-part src="/js/NavigationBar.js"></s-part>
+
+        <s-part src="/js/Pages/NavigationBar/NavigationBarHelper.js"></s-part>
+        <s-part src="/js/Pages/NavigationBar/NavigationBar.js"></s-part>
         <s-part src="/js/Footer.js"></s-part>
 
     </body>

@@ -7,33 +7,14 @@ class ConverterTouchEvents {
                 this.computeEdges(this.dragElement)
             } else {
                 if(ConverterTouchHandler.distance.ratio > 0){
-                    this.dragElement.data.ImageWidth = this.dragElement.widthBase * ConverterTouchHandler.distance.ratio;
-                    this.dragElement.data.ImageHeight = this.dragElement.heightBase * ConverterTouchHandler.distance.ratio;
+                    if(this.dragElement.type == "img"){
+                        this.dragElement.data.ImageWidth = this.dragElement.widthBase * ConverterTouchHandler.distance.ratio;
+                        this.dragElement.data.ImageHeight = this.dragElement.heightBase * ConverterTouchHandler.distance.ratio;
+                    }
                 }
             }
             this.draw(this.dragElement);
         } else {
-        //     console.log(this.hoverElement, this.dragElement);
-        //   if(e.target.offsetParent == null || e.target.offsetParent.id != ConverterHelper.ELE_SQUARE_BORDER_DIV){
-        //     // cursorHandler.unsetCursor();
-        //     SPLINT.Tools.CursorHandler.unsetCursor();
-        //     return;
-        //   }
-        //   this.getElementForCoords();
-        //   if(this.hoverElement != undefined){
-        //     if(this.hoverElement.dragEdge != -1){
-        //       let edge = this.hoverElement.dragEdge;
-        //       let rotation = 0;
-        //       if(this.hoverElement.type == "txt"){
-        //         rotation = 0;
-        //       } else {
-        //         rotation = this.hoverElement.data.ImageAlign;
-        //       }
-        //     } else {
-        //     }
-        //   } else {
-        //     // cursorHandler.unsetCursor();
-        //   }
         }
     }
     static start(e){
@@ -64,7 +45,11 @@ class ConverterTouchEvents {
                 CONVERTER_STORAGE.toolBar.focusElement(Converter_ToolBar.TYPE_TXT, this.hoverElement.ID);
             }
             if(ConverterTouchHandler.rotation.now != false){
-                this.hoverElement.alignBase = parseFloat(this.hoverElement.data.ImageAlign);
+                if(this.hoverElement.type == "img"){
+                    this.hoverElement.alignBase = parseFloat(this.hoverElement.data.ImageAlign);
+                } else {
+                    this.hoverElement.alignBase = parseFloat(this.hoverElement.data.TextAlign);
+                }
             }
             this.Offset(this.hoverElement).get();
             this.dragElement = this.hoverElement;
@@ -87,9 +72,9 @@ class ConverterTouchEvents {
               }
             }
             if(flag){
-              this.activeElement = null;
-              CONVERTER_STORAGE.toolBar.blurAll();
-              this.removeEdges();
+            //   this.activeElement = null;
+            //   CONVERTER_STORAGE.toolBar.blurAll();
+            //   this.removeEdges();
             }
           }
           return;

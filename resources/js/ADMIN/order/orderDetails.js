@@ -127,13 +127,22 @@ class ADMIN_order_view {
                                                 // sp.
                                             console.log(this.data.UserID, project.ProjectID);
                                             let Args = new Object();
-                                                Args.type = "laser";
+                                                Args.type = "laserFlat";
                                                 Args.CurrentConfig = "converterProcess";
                                                 console.log(project);
                                                 // Args.PointZero = new Object();
                                                 // Args.PointZero.X = DSProject.Storage[DSProject.SQUARE].PointZeroX;
                                                 // Args.PointZero.Y = DSProject.Storage[DSProject.SQUARE].PointZeroY;
-                                            let res = (await ConverterHelper.createData(this.data.UserID, project.ProjectID, Args));
+                                                
+                                                // let Args = new Object();
+                                                // Args.type = switchBt.Value;
+                                                // Args.PointZero = new Object();
+                                                // Args.PointZero.X = DSProject.Storage[DSProject.SQUARE].PointZeroX;
+                                                // Args.PointZero.Y = DSProject.Storage[DSProject.SQUARE].PointZeroY;
+                                                // Args.CurrentConfig = ConverterHelper.getCurrentConfig();
+            let res = (await ConverterHelper.createData(this.data.UserID, project.ProjectID, Args));
+            console.dir(res);
+                                            // let res = (await ConverterHelper.createData(this.data.UserID, project.ProjectID, Args));
                                             sp.remove();
                                             button_download_NC.button.disabled = false;
                                             button_startEngraving.button.disabled = false;

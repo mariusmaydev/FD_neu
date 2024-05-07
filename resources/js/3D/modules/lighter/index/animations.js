@@ -322,9 +322,11 @@ export default class compressedIndexAnimations {
                         this.inst.Animations.lighterRotate.start(true, duration, undefined, false, rot, true);
                     }
                 this.inst.Animations.lighter_open.start(true, duration);
+                this.inst.Animations.lever_open.onStop = function(){
+                    resolve();
+                }
                 this.inst.Animations.lever_open.start(false, duration);
             
-                resolve();
             } else {
                 resolve(this.isOpen);
             }
@@ -414,8 +416,9 @@ export default class compressedIndexAnimations {
                     this.explosion_wasOpen = true;
                 }
                 if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
-                    let translation = new THREE.Vector3(0.01, 0.3, -0.1);
+                    let translation = new THREE.Vector3(0.01, 0.2, 2);
                     this.inst.Animations.cameraTo.start(true, 0.2, undefined, false, translation, true);
+                    this.inst.Animations.cameraToFOV.start(true, 0.2, undefined, false, -35, true);
                     this.inst.Animations.lighter_explosion_turn_mobile.onStop = function(){
                         this.inst.Animations.lighter_explosion_split.onStop = function(){
                             this.isExploded = true;
@@ -447,8 +450,9 @@ export default class compressedIndexAnimations {
         return new Promise(async function(resolve, reject){
             if(this.isExploded){
                 if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
-                    let translation = new THREE.Vector3(0.01, 0.3, -0.1);
-                    this.inst.Animations.cameraTo.start(true, 0.2, undefined, false, translation, false);
+                    let translation = new THREE.Vector3(0, 0.38, 0.7);//-0.1);
+                    this.inst.Animations.cameraTo.start(true, 0.4, undefined, false, translation, false);
+                    this.inst.Animations.cameraToFOV.start(true, 0.4, undefined, false, 60, false);
                     this.inst.Animations.lighter_explosion_split.onStop = function(){
                         this.inst.Animations.lighter_explosion_turn_mobile.onStop = function(){
                             this.isExploded = false;

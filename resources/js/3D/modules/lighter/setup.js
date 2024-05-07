@@ -114,9 +114,9 @@ export default class setup {
 class events {
     static {
         window.addEventListener('resize', function(){
-            let scenes = window.SPLINT.threeJS.scenes;
+            let scenes = SPLINT.threeJS.scenes;
             for(const sc of scenes){
-                sc.onResize();
+                sc.setup.onResize();
             }
         }, false);
     }

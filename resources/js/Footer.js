@@ -18,6 +18,14 @@ class drawFooter {
     get type(){
         return this._type;
     }
+    remove(){
+        let box = document.getElementById("FooterBTContainer");
+        if(this.mainElement != null){
+            this.mainElement.remove();
+        } else if(box != null){
+            box.remove();
+        }
+    }
     update(){
         if(this.mainElement != null){
             this.mainElement.remove();

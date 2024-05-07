@@ -4,6 +4,9 @@
 @use '../../../../../Splint/scss/tools/tools' as S_tools;
 @use 'sass:color';
 @use '../mediaQueries';
+@use './NavigationBar_inParts' as NavBar_inParts; 
+@use './NavigationBar_transparent' as NavBar_transparent; 
+@use './NavigationBar_solid' as NavBar_solid; 
 
 
 @mixin shadowHelper($dark, $darkColor, $light, $lightColor, $trans: null, $skew: 0deg){
@@ -32,423 +35,868 @@
     $color-primary              : vars.$color-primary;
     $skew                       : vars.$header-skew;
 
-    &[state*='active']{
-        background-color: vars.$NEW-color-container-background;//(255, 255, 255, 0.648);
-        margin-top: 0;
-        > .content {
-            margin-top: 0.250rem;
-            margin-bottom: 0.250rem;
-            > .Logo {
-                >.inner {
-                    width: max-content !important;
-                    > .inner1 {
-                        width: max-content !important;
-                    }
-                }
-            }
-        }
-        // $color-main: red;
-        // > .content {
-        //     > .Logo {
-        //         > .inner {
-        //             background-color: $color-main-active !important;
-        //             > .inner1 {
-        //                 // background-color: $color-main-active !important;
-        //             }
-        //         }
-        //     }
-        //     > .Cart {
-        //         background-color: $color-main-active !important;
-        //     }
-        //     > .Original {
-        //         background-color: $color-main-active !important;
-        //     }
-        //     > .Design {
-        //         background-color: $color-main-active !important;
-        //     }
-        // }
-    }
-
-    // $shadow-size-base           : 3px;
-    // $shadow-size-base_inner     : -2px;
-    // $shadow-size-large          : 5px;
-    // $shadow-size-large_inner    : -3px;
-    // $shadow-size-large_translate: -2px;
-
-    $shadow-size-base           : 0px;
-    $shadow-size-base_inner     : -0px;
-    $shadow-size-large          : 0px;
-    $shadow-size-large_inner    : -3px;
-    $shadow-size-large_translate: -0px;
-
-    $top                        : false;
-    $left                       : false;
-    $bottom                     : true;
-    $right                      : false;
-
-    $duration                   : 50ms;
-
-
-    transform: translateY(0px);
-    &:not([loaded*='true']){
-        visibility: hidden;
-        transform: translateY(-10rem);
-    }
-    transition: transform 0.2s ease-out;
-    visibility: visible;
-
     position: fixed;
     z-index: 1002;
-    // background-color: $color-header;
     background-color: transparent;
     top: 0;
     left: 0;
-    height: 7vh;
+    height: 3.5rem;
     padding: 0%;
-    margin-top: 0.5vh;
+    margin-top: 0vh;
     box-sizing: border-box;
     width: 100vw;
-    @include mediaQueries.forMediaBreakpoint(mobile-small){
-        height: vars.$NavBar-height-mobile-small;
-        margin-top: 0.5vh;
-    }
-    @include mediaQueries.forMediaBreakpoint(mobile){
-        height: vars.$NavBar-height-mobile;
-        margin-top: 0.5vh;
-    }
-    @include mediaQueries.forMediaBreakpoint(desktop){
-        height: vars.$NavBar-height-desktop;
-        margin-top: 0.5vh;
-    }
+        &:not([loaded*='true']){
+            visibility: hidden;
+            transform: translateY(-10rem);
+        }
     >.content {
         background-color: transparent;
         position: relative;
-        margin: 0.5rem;
-        margin-inline: calc(0.5rem + 0.5vh);
-        margin-bottom: 0;
-        width: calc(100% - calc(1rem + 1vh));
-        height: calc(7vh - 0.5rem);
         box-sizing: border-box;
         display: grid;
-    
-        grid-template-areas: "Logo Design Original shoppingCart"; 
-        grid-template-columns: [Logo] minmax(1em, 1fr) [Design] minmax(min-content, max-content) [Original] minmax(min-content, max-content) [shoppingCart] minmax(min-content, max-content);
         grid-template-rows: 100%;
         grid-auto-flow: dense;
         align-content: stretch;
-        gap: 0.2rem;
+        // gap: 0.2rem;
         // justify-items: center;
         // justify-content: safe;
         align-items: stretch;
-        padding: 0;
-        transition: margin 0.2s ease-in ;
-        @include mediaQueries.forMediaBreakpoint(mobile-small){
-            height: calc(vars.$NavBar-height-mobile-small - 0.5rem);
-        }
-        @include mediaQueries.forMediaBreakpoint(mobile){
-            height: calc(vars.$NavBar-height-mobile - 0.5rem);
-        }
-        @include mediaQueries.forMediaBreakpoint(desktop){
-            height: calc(vars.$NavBar-height-desktop - 0.5rem);
-        }
-        div {
-            @include Tmain.TContainer_basic();
-            border-radius: 0;
-            box-sizing: border-box;
-            position: relative;
-            padding: 0;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            // justify-content: ;
-                border: none;
-                box-shadow: none;
-            > button {
-                position: relative;
-                // top: 0.4em;
+        max-height: 100%;
+        // transition: margin 0.0.1s ease-in ;
+        // transition: gap 0.1s ease-out, margin 0.1s ease-out, padding 0.1s ease-out, width 0.1s ease-out, height 0.1s ease-out;
+    }
+    @include mediaQueries.forMediaBreakpoint(mobile-small){
+        >.BurgerMenuContainer {
+            position: absolute;
+            z-index: 0;
+            top: 0;
+            right: 0;
+            width: 0vw;
+            height: 0vh;
+            @include Tmain.preventSelect();
+            // pointer-events: none;
+            // user-select: none;
+            background-color: rgba(0, 0, 0, 0.909);
+            transition: width 0.1s ease-in-out, height 0.1s ease-in-out;
+            &[state*='active']{
+                width: 100vw;
+                height: 100vh;
             }
-            &.Logo {
+            > .BurgerMenuContent {
                 position: relative;
-                grid-area: Logo;
-                left: 0;
-                // top: -1%;
-                height: 100%;
-                width: auto;
-                box-shadow: none;
-                border: none;
-                border-radius: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                margin-left: 1.5rem;
+                max-width: 90%;
                 background-color: transparent;
-                > .inner {
-                    cursor: pointer;
-                    // box-sizing: border-box;
-                    width: 1%;
-                    overflow: visible;
-                    -ms-transform: skewX(-($skew)); /* IE 9 */
-                    -webkit-transform: skewX(-($skew)); /* Safari */
-                    transform: skewX(-($skew));
-                    @include shadowHelper($shadow-size-base, $color-box-shadow-dark, $shadow-size-base_inner, $color-primary);
-                    transition: width 0.15s ease-in-out, box-shadow $duration ease, transform $duration ease;
-                    &[state*='active']{
-                        width: 100%;
-                        &:hover {
-                            @include shadowHelper($shadow-size-large, $color-box-shadow-light, $shadow-size-large_inner, $color-primary, $shadow-size-large_translate, -($skew));
-                            color: $color-text ;
-                        }
-                        > .inner1 {
-                            @include shadowHelper(0px, $color-box-shadow-dark, 0px, $color-primary);
-                            background-color: transparent;
-                            transition: box-shadow 50ms linear, transform $duration ease, background-color 0.15s ease-in-out;
-                                        // box-shadow: none;
+                height: max-content;
+                display: flex;
+                flex-direction: column;
+    
+                > button {
+                    @include Tmain.TButton_secondary(2);
+                    border: none;
+                    padding: 1rem;
+                    padding-inline: 0.75rem;
+                    width: max-content;
+                    > span {
+                        font-weight: 300;
+                        text-align: left;
+                        color: rgb(254, 254, 254);
+                        font-size: 2.5rem;
+                    }
+                }
+                >.BurgerMenuFooter {
+                    background-color: transparent;
+                    > button {
+                        @include Tmain.TButton_secondary(1);
+                        border: none;
+                        padding: 0.75rem;
+                        > span {
+                            text-align: left;
+                            color: rgb(254, 254, 254);
+                            font-size: 1rem;
                         }
                     }
-                    &:not([state*='active']){
-                        @include shadowHelper(0px, $color-box-shadow-dark, 0px, $color-primary);
-                        > .inner1 {
-                            &:hover {
-                                @include shadowHelper($shadow-size-large, $color-box-shadow-light, $shadow-size-large_inner, $color-primary, $shadow-size-large_translate);
-                                color: $color-text ;
-                            }
-                        }
-                    }
-                    background-color: $color-main;
-                    > .inner1 {
-                        cursor: pointer;
-                        width: calc(max-content + 23rem);
-                        padding-inline: 0.5em;
-                        padding-right: 2em;
-                        background-color: $color-main;
-                        @include shadowHelper($shadow-size-base, $color-box-shadow-dark, $shadow-size-base_inner, $color-primary);
-                        transition: box-shadow $duration ease, transform $duration ease, background-color 0.15s ease-in-out;
-                        
-                        // &:hover {
-                        //     @include S_tools.SPLINT-border-inset($color-primary, 3px, false, false, true, true);
-                        //     > span {
-                        //         color: $color-primary-text;
-                        //     }
-                        // }
-                        background-color: $color-main;
-                        > .content {
-                            box-shadow: none;
+                }
+            }
+        }
+        > .content {
+            grid-template-areas: "Logo Space shoppingCart burgerMenu"; 
+            grid-template-columns: [Logo] minmax(min-content, max-content) [Space] minmax(0, 1fr) [burgerMenu] minmax(min-content, max-content) [shoppingCart] minmax(min-content, max-content);
+            gap: 1rem;
+            > div {
+                border-radius: 0;
+                box-sizing: border-box;
+                position: relative;
+                padding: 0;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                border: none;
+                box-shadow: none;
+                background-color: transparent;
+                cursor: pointer;
+                &.Logo {
+                    grid-area: Logo;
+                    position: relative;
+                    left: 0;
+                    height: 100%;
+                    box-shadow: none;
+                    border: none;
+                    border-radius: 0;
+                    background-color: transparent;
+                    width: max-content;
+                    box-sizing: border-box;
+                    > .content {
+                        box-shadow: none;
+                        height: 100%;
+                        box-sizing: border-box;
+                        width: max-content;
+                        padding: 0.2rem;
+                        padding-inline: 0.75rem;
+                        > img {
+                            box-sizing: border-box;
+                            @include Tmain.preventSelect();
+                            position: relative;
                             height: 100%;
-                            @include mediaQueries.forMediaBreakpoint(mobile-small){
-                                height: 90%;
-                                margin-bottom: 2.5%;
-                            }
-                            width: max-content;
-                            left: 0.75rem;
-                            padding: 0.6rem;
-                            padding-bottom: 0.7rem;
-                            padding-top: 0.5rem;
-                            background-color: transparent;
-                            -ms-transform: skewX($skew); /* IE 9 */
-                            -webkit-transform: skewX($skew); /* Safari */
-                            transform: skewX($skew);
-                            img {
-                                @include Tmain.preventSelect();
-                                position: relative;
-                                height: 100%;
-                                transform: scale(1.2);
-                                cursor: pointer;
-                            }
+                            // transform: scale(1.2);
+                            cursor: pointer;
                         }
                     }
                 }
-            }
-            &.Cart {
-                position: relative;
-                grid-area: shoppingCart;
-                height: 100%;
-                padding: 0rem;  
-                @include mediaQueries.forMediaBreakpoint(mobile desktop){
-                    aspect-ratio: 1/1;
-                }
-                @include mediaQueries.forMediaBreakpoint(mobile-small){
-                    padding-inline: 0.5rem;
-                }
-                // width: max-content;  
-                -ms-transform: skewX(-($skew)); /* IE 9 */
-                -webkit-transform: skewX(-($skew)); /* Safari */
-                transform: skewX(-($skew));
-                border: none;
-                box-shadow: none;
-                background-color: $color-main;
-                @include shadowHelper_basic($shadow-size-base, $color-box-shadow-dark);
-                transition: box-shadow $duration ease, transform $duration ease;
-                &:hover {
-                    @include shadowHelper_basic($shadow-size-large, $color-box-shadow-light, $shadow-size-large_translate, -($skew));
-                    color: $color-text ;
-                }
-                > button {
-                    width: 100%;
-                    height: 100%;
-
-                    border-radius: 0;
+                &.Cart {
+                    grid-area: shoppingCart;
+                    position: relative;
+                    // height: 100%;
+                    // aspect-ratio: 1/1;  
                     border: none;
                     box-shadow: none;
-                    box-shadow: none;
-                    @include S_tools.SPLINT-border-inset($color-primary, -($shadow-size-base_inner), $top, $left, $bottom, $right);
-                    transition: box-shadow $duration ease;
-                    > span {
-                        animation: none;
-                        &:hover {
-                            color: $color-text ;
-                        }
-                    -ms-transform: skewX($skew); /* IE 9 */
-                    -webkit-transform: skewX($skew); /* Safari */
-                    transform: skewX($skew);
-                        font-size: 1.6rem;
-                        @include mediaQueries.forMediaBreakpoint(mobile-small){
-                            font-size: 1rem;
-                        }
-                    }
-                    &:hover {
-                        @include S_tools.SPLINT-border-inset($color-primary, -($shadow-size-large_inner), $top, $left, $bottom, $right);
+                    > button {
+                        // height: 100%;
+                        width: 100%;
+                        margin: 0;
+                        padding: 0.5em;
                         > span {
-                            color: $color-text ;
+                            font-size: 2rem;
                         }
                     }
-                }
-                > .cartPoint {
-                    @include Tmain.preventSelect();
-                    -ms-transform: skewX($skew); /* IE 9 */
-                    -webkit-transform: skewX($skew); /* Safari */
-                    transform: skewX($skew);
-                    cursor: pointer;
-                    position: absolute;
-                    z-index: 1;
-                    left: 60%;
-                    top: 60%;
-                    background-color: $color-primary;
-                    border-radius: 50%;
-                    width: 0.8rem;
-                    height: 0.8rem;
-                    aspect-ratio: 1/1;
-                    display: flex;
-                    justify-content: center;
-                    > span {
-                        font-size: 0.8rem;
-                    }
-                    @include mediaQueries.forMediaBreakpoint(mobile-small){
-                        width: 1.5rem;
-                        height: 1.5rem;
+                    > .cartPoint {
+                        @include Tmain.preventSelect();
+                        cursor: pointer;
+                        position: absolute;
+                        z-index: 1;
+                        left: 60%;
+                        top: 60%;
+                        border-radius: 50%;
+                        width: 0.8rem;
+                        height: 0.8rem;
+                        aspect-ratio: 1/1;
+                        display: flex;
+                        justify-content: center;
                         > span {
-                            font-size: 1.5rem;
+                            font-size: 0.8rem;
                         }
                     }
                 }
-            }
-            &.Original {
-                // @include T_container();
-                // @include box-shadow(1, rgb(26, 26, 26), 0.52);
-                position: relative;
-                grid-area: Original;
-                box-sizing: border-box;
-                height: 100%;
-                width: max-content;
-                background-color: $color-main;
-                // margin-right: 1em;
-                margin: 0;
-                padding: 0rem;
-                -ms-transform: skewX(-($skew)); /* IE 9 */
-                -webkit-transform: skewX(-($skew)); /* Safari */
-                transform: skewX(-($skew));
-                border: none;
-                box-shadow: none;
-                @include shadowHelper_basic($shadow-size-base, $color-box-shadow-dark);
-                transition: box-shadow $duration ease, transform $duration ease;
-                &:hover {
-                    @include shadowHelper_basic($shadow-size-large, $color-box-shadow-light, $shadow-size-large_translate, -($skew));
-                }
-                > button {
-                    margin: 0;
-                    width: 100%;
-                    height: 100%;
-                    padding: 0;
-                    padding-inline: 1.5rem;
-                    @include mediaQueries.forMediaBreakpoint(mobile-small){
-                        padding-inline: 0.5rem;
-                    }
-                    background-color: $color-main;
-                    border-radius: 0;
-                    border: none;
-                    box-shadow: none;
-                    @include S_tools.SPLINT-border-inset($color-primary, -($shadow-size-base_inner), $top, $left, $bottom, $right);
-                    transition: box-shadow $duration ease;
-                    > span {
-                        -ms-transform: skewX($skew); /* IE 9 */
-                        -webkit-transform: skewX($skew); /* Safari */
-                        transform: skewX($skew);
-                        color: $color-text;
-                        font-size: 1.25rem;
-
-                        @include mediaQueries.forMediaBreakpoint(mobile-small){
-                            font-size: 1rem;
+                &.burgerMenu {
+                    position: relative;
+                    grid-area: burgerMenu;
+                    background-color: transparent;
+                    user-select: none;
+                    pointer-events: none;
+                    >button {
+                        user-select: auto;
+                        pointer-events: auto;
+                        margin: 0;
+                        padding: 0.5em;
+                        -webkit-tap-highlight-color: transparent; /* for removing the highlight */
+                        > span {
+                            font-size: 2rem;
                         }
                     }
-                    &:hover {
-                        @include S_tools.SPLINT-border-inset($color-primary, -($shadow-size-large_inner), $top, $left, $bottom, $right);
-                    }
                 }
-            }
-            &.Design {
-                // @include T_container();
-                // @include box-shadow(1, rgb(26, 26, 26), 0.52);
-                position: relative;
-                grid-area: Design;
-                box-sizing: border-box;
-                height: 100%;
-                width: max-content;
-                background-color: $color-main;
-                margin: 0;
-                padding: 0rem;
-                -ms-transform: skewX(-($skew)); /* IE 9 */
-                -webkit-transform: skewX(-($skew)); /* Safari */
-                transform: skewX(-($skew));
-                border: none;
-                box-shadow: none;
-                @include shadowHelper_basic($shadow-size-base, $color-box-shadow-dark);
-                transition: box-shadow $duration ease, transform $duration ease;
-                &:hover {
-                    @include shadowHelper_basic($shadow-size-large, $color-box-shadow-light, $shadow-size-large_translate, -($skew));
-                }
-                > button {
-                    margin: 0;
-                    width: 100%;
-                    height: 100%;
-                    padding: 0;
-                    padding-inline: 1.5rem;
-                    @include mediaQueries.forMediaBreakpoint(mobile-small){
-                        padding-inline: 0.5rem;
-                    }
-                    background-color: $color-main;
-                    // transition: background-color 0.05s linear;
-                    border-radius: 0;
-                    border: none;
-                    box-shadow: none;
-                    @include S_tools.SPLINT-border-inset($color-primary, -($shadow-size-base_inner), $top, $left, $bottom, $right);
-                    transition: box-shadow $duration ease;
-                    > span {
-                        -ms-transform: skewX($skew); /* IE 9 */
-                        -webkit-transform: skewX($skew); /* Safari */
-                        transform: skewX($skew);
-                        color: black;
-                        font-size: 1.25rem;
-                        @include mediaQueries.forMediaBreakpoint(mobile-small){
-                            font-size: 1rem;
-                        }
-
-                    }
-                    &:hover {
-                        @include S_tools.SPLINT-border-inset($color-primary, -($shadow-size-large_inner), $top, $left, $bottom, $right);
-                    }
-                }
-            }
-            &.Profile {
-                display: none;
-            }
-            &.Sparks {
-                display: none;
             }
         }
     }
+    @include mediaQueries.forMediaBreakpoint(mobile desktop){
+        > .content {
+            grid-template-areas: "Logo Space Design Original shoppingCart"; 
+            grid-template-columns: [Logo] minmax(min-content, max-content) [Space] minmax(0, 1fr) [Design] minmax(min-content, max-content) [Original] minmax(min-content, max-content) [shoppingCart] minmax(min-content, max-content);
+            gap: 1rem;
+            > div {
+                border-radius: 0;
+                box-sizing: border-box;
+                position: relative;
+                padding: 0;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                border: none;
+                box-shadow: none;
+                background-color: transparent;
+                cursor: pointer;
+                &.Logo {
+                    grid-area: Logo;
+                    position: relative;
+                    left: 0;
+                    height: 100%;
+                    box-shadow: none;
+                    border: none;
+                    border-radius: 0;
+                    background-color: transparent;
+                    width: max-content;
+                    box-sizing: border-box;
+                    > .content {
+                        box-shadow: none;
+                        height: 100%;
+                        box-sizing: border-box;
+                        width: max-content;
+                        padding: 0.2rem;
+                        padding-inline: 0.75rem;
+                        > img {
+                            box-sizing: border-box;
+                            @include Tmain.preventSelect();
+                            position: relative;
+                            height: 100%;
+                            // transform: scale(1.2);
+                            cursor: pointer;
+                        }
+                    }
+                }
+                &.Cart {
+                    grid-area: shoppingCart;
+                    position: relative;
+                    height: 100%;
+                    // aspect-ratio: 1/1;  
+                    border: none;
+                    box-shadow: none;
+                    > button {
+                        height: 100%;
+                        aspect-ratio: 1/1;  
+                        // width: 100%;
+                        margin: 0;
+                        padding: 0.5em;
+                        > span {
+                            font-size: 1.8rem;
+                        }
+                    }
+                    > .cartPoint {
+                        @include Tmain.preventSelect();
+                        cursor: pointer;
+                        position: absolute;
+                        z-index: 1;
+                        left: 55%;
+                        top: 55%;
+                        border-radius: 50%;
+                        background-color: vars.$NEW-color-primary-active;
+                        width: 1.1rem;
+                        height: 1.1rem;
+                        aspect-ratio: 1/1;
+                        display: flex;
+                        justify-content: center;
+                        > span {
+                            font-size: 0.8rem;
+                        }
+                    }
+                }
+                &.Design {
+                    grid-area: Design;
+                    position: relative;
+                    height: 100%;
+                    border: none;
+                    box-shadow: none;
+                    > button {
+                        height: 100%;
+                        width: 100%;
+                        margin: 0;
+                        padding: 0.75rem;
+                        padding-inline: 1rem;
+                        box-sizing: border-box;
+                        > span {
+                            font-size: 1.2rem;
+                        }
+                    }
+                }
+                &.Original {
+                    grid-area: Original;
+                    position: relative;
+                    height: 100%;
+                    border: none;
+                    box-shadow: none;
+                    > button {
+                        height: 100%;
+                        width: 100%;
+                        margin: 0;
+                        padding: 0.75rem;
+                        padding-inline: 1rem;
+                        box-sizing: border-box;
+                        > span {
+                            font-size: 1.2rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &[status*='inparts']{
+        @include NavBar_inParts.NavBar_inParts();
+        transition: all 0.1s ease-out;//, margin 0.1s ease-out, padding 0.1s ease-out, width 0.1s ease-out, height 0.1s ease-out;
+        * {
+            transition: all 0.1s ease-out;
+        }
+    }
+    &[status*='transparent']{
+        @include NavBar_transparent.NavBar_transparent();
+        // transition: gap 0.1s ease-out, margin 0.1s ease-out, padding 0.1s ease-out, width 0.1s ease-out, height 0.1s ease-out;
+        transition: all 0.1s ease-out;//, margin 0.1s ease-out, padding 0.1s ease-out, width 0.1s ease-out, height 0.1s ease-out;
+        * {
+            transition: all 0.1s ease-out;
+        }
+    }
+    &[status*='solid']{
+        padding-inline: 0.5rem;
+        @include NavBar_solid.NavBar_solid();
+        // transition: gap 0.1s ease-out, margin 0.1s ease-out, padding 0.1s ease-out, width 0.1s ease-out, height 0.1s ease-out;
+        transition: all 0.1s ease-out;//, margin 0.1s ease-out, padding 0.1s ease-out, width 0.1s ease-out, height 0.1s ease-out;
+        * {
+            transition: all 0.1s ease-out;
+        }
+    }
 }
+//     &[state*='active']{
+//         background-color: vars.$NEW-color-container-background;//(255, 255, 255, 0.648);
+//         margin-top: 0;
+//         > .content {
+//             margin-top: 0.250rem;
+//             margin-bottom: 0.250rem;
+//             > .Logo {
+//                 >.inner {
+//                     width: max-content !important;
+//                     > .inner1 {
+//                         width: max-content !important;
+//                     }
+//                 }
+//             }
+//         }
+//         // $color-main: red;
+//         // > .content {
+//         //     > .Logo {
+//         //         > .inner {
+//         //             background-color: $color-main-active !important;
+//         //             > .inner1 {
+//         //                 // background-color: $color-main-active !important;
+//         //             }
+//         //         }
+//         //     }
+//         //     > .Cart {
+//         //         background-color: $color-main-active !important;
+//         //     }
+//         //     > .Original {
+//         //         background-color: $color-main-active !important;
+//         //     }
+//         //     > .Design {
+//         //         background-color: $color-main-active !important;
+//         //     }
+//         // }
+//     }
+
+//     // $shadow-size-base           : 3px;
+//     // $shadow-size-base_inner     : -2px;
+//     // $shadow-size-large          : 5px;
+//     // $shadow-size-large_inner    : -3px;
+//     // $shadow-size-large_translate: -2px;
+
+//     $shadow-size-base           : 0px;
+//     $shadow-size-base_inner     : -0px;
+//     $shadow-size-large          : 0px;
+//     $shadow-size-large_inner    : -3px;
+//     $shadow-size-large_translate: -0px;
+
+//     $top                        : false;
+//     $left                       : false;
+//     $bottom                     : true;
+//     $right                      : false;
+
+//     $duration                   : 50ms;
+
+
+//     transform: translateY(0px);
+//     &:not([loaded*='true']){
+//         visibility: hidden;
+//         transform: translateY(-10rem);
+//     }
+//     transition: transform 0.0.1s ease-out;
+//     visibility: visible;
+
+//     position: fixed;
+//     z-index: 1002;
+//     // background-color: $color-header;
+//     background-color: transparent;
+//     top: 0;
+//     left: 0;
+//     height: 7vh;
+//     padding: 0%;
+//     margin-top: 0.5vh;
+//     box-sizing: border-box;
+//     width: 100vw;
+//     @include mediaQueries.forMediaBreakpoint(mobile-small){
+//         height: vars.$NavBar-height-mobile-small;
+//         margin-top: 0vh;
+//     }
+//     @include mediaQueries.forMediaBreakpoint(mobile){
+//         height: vars.$NavBar-height-mobile;
+//         margin-top: 0.5vh;
+//     }
+//     @include mediaQueries.forMediaBreakpoint(desktop){
+//         height: vars.$NavBar-height-desktop;
+//         margin-top: 0.5vh;
+//     }
+//     >.BurgerMenuContainer {
+//         position: absolute;
+//         z-index: 0;
+//         top: 0;
+//         right: 0;
+//         width: 0vw;
+//         height: 0vh;
+//         background-color: rgba(0, 0, 0, 0.909);
+//         transition: width 0.1s ease-out, height 0.1s ease-out;
+//         &[state*='active']{
+//             width: 100vw;
+//             height: 100vh;
+//         }
+//         > .BurgerMenuContent {
+//             position: relative;
+//             top: 50%;
+//             transform: translateY(-50%);
+//             margin-left: 1.5rem;
+//             max-width: 90%;
+//             background-color: transparent;
+//             height: max-content;
+//             display: flex;
+//             flex-direction: column;
+
+//             > button {
+//                 @include Tmain.TButton_secondary(2);
+//                 border: none;
+//                 padding: 1rem;
+//                 padding-inline: 0.75rem;
+//                 > span {
+//                     font-weight: 300;
+//                     text-align: left;
+//                     color: rgb(254, 254, 254);
+//                     font-size: 2.5rem;
+//                 }
+//             }
+//             >.BurgerMenuFooter {
+//                 background-color: transparent;
+//                 > button {
+//                     @include Tmain.TButton_secondary(1);
+//                     border: none;
+//                     padding: 0.75rem;
+//                     > span {
+//                         text-align: left;
+//                         color: rgb(254, 254, 254);
+//                         font-size: 1rem;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     >.content {
+//         background-color: transparent;
+//         position: relative;
+//         margin: 0.5rem;
+//         margin-inline: calc(0.5rem + 0.5vh);
+//         margin-bottom: 0;
+//         width: calc(100% - calc(1rem + 1vh));
+//         height: calc(7vh - 0.5rem);
+//         box-sizing: border-box;
+//         display: grid;
+    
+//         @include mediaQueries.forMediaBreakpoint(mobile-small){
+//             grid-template-areas: "Logo shoppingCart burgerMenu"; 
+//             grid-template-columns: [Logo] minmax(1em, 1fr) [burgerMenu] minmax(min-content, max-content) [shoppingCart] minmax(min-content, max-content);
+//         }
+//         @include mediaQueries.forMediaBreakpoint(mobile desktop){
+//             grid-template-areas: "Logo Design Original shoppingCart"; 
+//             grid-template-columns: [Logo] minmax(1em, 1fr) [Design] minmax(min-content, max-content) [Original] minmax(min-content, max-content) [shoppingCart] minmax(min-content, max-content);
+//         }
+//         grid-template-rows: 100%;
+//         grid-auto-flow: dense;
+//         align-content: stretch;
+//         gap: 0.2rem;
+//         // justify-items: center;
+//         // justify-content: safe;
+//         align-items: stretch;
+//         padding: 0;
+//         transition: margin 0.0.1s ease-in ;
+//         @include mediaQueries.forMediaBreakpoint(mobile-small){
+//             height: calc(vars.$NavBar-height-mobile-small - 0.5rem);
+//         }
+//         @include mediaQueries.forMediaBreakpoint(mobile){
+//             height: calc(vars.$NavBar-height-mobile - 0.5rem);
+//         }
+//         @include mediaQueries.forMediaBreakpoint(desktop){
+//             height: calc(vars.$NavBar-height-desktop - 0.5rem);
+//         }
+//         div {
+//             @include Tmain.TContainer_basic();
+//             border-radius: 0;
+//             box-sizing: border-box;
+//             position: relative;
+//             padding: 0;
+//             height: 100%;
+//             display: flex;
+//             align-items: center;
+//             // justify-content: ;
+//                 border: none;
+//                 box-shadow: none;
+//             > button {
+//                 position: relative;
+//                 // top: 0.4em;
+//             }
+//             &.Logo {
+//                 position: relative;
+//                 grid-area: Logo;
+//                 left: 0;
+//                 // top: -1%;
+//                 height: 100%;
+//                 width: auto;
+//                 box-shadow: none;
+//                 border: none;
+//                 border-radius: 0;
+//                 background-color: transparent;
+//                 @include mediaQueries.forMediaBreakpoint(mobile-small){
+//                     > .inner {
+//                         width: 1%;
+//                         background-color: transparent;
+//                         > .inner1 {
+//                             background-color: transparent;
+//                             cursor: pointer;
+//                             > .content {
+//                                 box-shadow: none;
+//                                 height: 100%;
+//                                 // @include mediaQueries.forMediaBreakpoint(mobile-small){
+//                                     // height: 90%;
+//                                     // margin-bottom: 2.5%;
+//                                 // }
+//                                 width: max-content;
+//                                 // left: 0.75rem;
+//                                 // padding: 0.6rem;
+//                                 // padding-bottom: 0.7rem;
+//                                 // padding-top: 0.5rem;
+//                                 // background-color: transparent;
+//                                 // -ms-transform: skewX($skew); /* IE 9 */
+//                                 // -webkit-transform: skewX($skew); /* Safari */
+//                                 // transform: skewX($skew);
+//                                 @include Tmain.TContainer_basic();
+//                                 padding: 0.5rem;
+//                                 padding-inline: 0.75rem;
+//                                 img {
+//                                     @include Tmain.preventSelect();
+//                                     position: relative;
+//                                     height: 100%;
+//                                     transform: scale(1.2);
+//                                     cursor: pointer;
+//                                 }
+//                             }
+//                         }
+//                     }
+//                 }
+//                 @include mediaQueries.forMediaBreakpoint(mobile desktop){
+//                     > .inner {
+//                         cursor: pointer;
+//                         // box-sizing: border-box;
+//                         width: 1%;
+//                         overflow: visible;
+//                         -ms-transform: skewX(-($skew)); /* IE 9 */
+//                         -webkit-transform: skewX(-($skew)); /* Safari */
+//                         transform: skewX(-($skew));
+//                         @include shadowHelper($shadow-size-base, $color-box-shadow-dark, $shadow-size-base_inner, $color-primary);
+//                         transition: width 0.1s ease-in-out, box-shadow $duration ease, transform $duration ease;
+//                         &[state*='active']{
+//                             width: 100%;
+//                             &:hover {
+//                                 @include shadowHelper($shadow-size-large, $color-box-shadow-light, $shadow-size-large_inner, $color-primary, $shadow-size-large_translate, -($skew));
+//                                 color: $color-text ;
+//                             }
+//                             > .inner1 {
+//                                 @include shadowHelper(0px, $color-box-shadow-dark, 0px, $color-primary);
+//                                 background-color: transparent;
+//                                 transition: box-shadow 50ms linear, transform $duration ease, background-color 0.1s ease-in-out;
+//                                             // box-shadow: none;
+//                             }
+//                         }
+//                         &:not([state*='active']){
+//                             @include shadowHelper(0px, $color-box-shadow-dark, 0px, $color-primary);
+//                             > .inner1 {
+//                                 &:hover {
+//                                     @include shadowHelper($shadow-size-large, $color-box-shadow-light, $shadow-size-large_inner, $color-primary, $shadow-size-large_translate);
+//                                     color: $color-text ;
+//                                 }
+//                             }
+//                         }
+//                         background-color: $color-main;
+//                         > .inner1 {
+//                             cursor: pointer;
+//                             width: calc(max-content + 23rem);
+//                             padding-inline: 0.5em;
+//                             padding-right: 2em;
+//                             background-color: $color-main;
+//                             @include shadowHelper($shadow-size-base, $color-box-shadow-dark, $shadow-size-base_inner, $color-primary);
+//                             transition: box-shadow $duration ease, transform $duration ease, background-color 0.1s ease-in-out;
+                            
+//                             // &:hover {
+//                             //     @include S_tools.SPLINT-border-inset($color-primary, 3px, false, false, true, true);
+//                             //     > span {
+//                             //         color: $color-primary-text;
+//                             //     }
+//                             // }
+//                             background-color: $color-main;
+//                             > .content {
+//                                 box-shadow: none;
+//                                 height: 100%;
+//                                 @include mediaQueries.forMediaBreakpoint(mobile-small){
+//                                     height: 90%;
+//                                     margin-bottom: 2.5%;
+//                                 }
+//                                 width: max-content;
+//                                 left: 0.75rem;
+//                                 padding: 0.6rem;
+//                                 padding-bottom: 0.7rem;
+//                                 padding-top: 0.5rem;
+//                                 background-color: transparent;
+//                                 -ms-transform: skewX($skew); /* IE 9 */
+//                                 -webkit-transform: skewX($skew); /* Safari */
+//                                 transform: skewX($skew);
+//                                 img {
+//                                     @include Tmain.preventSelect();
+//                                     position: relative;
+//                                     height: 100%;
+//                                     transform: scale(1.2);
+//                                     cursor: pointer;
+//                                 }
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//             &.burgerMenu {
+//                 background-color: transparent;;
+//                 >button {
+//                     @include Tmain.TContainer_basic();
+//                     margin: 0;
+//                     padding: 0.5em;
+//                     > span {
+//                         font-size: 2rem;
+//                     }
+//                 }
+//             }
+//             &.Cart {
+//                 position: relative;
+//                 grid-area: shoppingCart;
+//                 height: 100%;
+//                 padding: 0rem;  
+//                 @include mediaQueries.forMediaBreakpoint(mobile desktop){
+//                     aspect-ratio: 1/1;
+//                 }
+//                 @include mediaQueries.forMediaBreakpoint(mobile-small){
+//                     padding-inline: 0.5rem;
+//                 }
+//                 // width: max-content;  
+//                 -ms-transform: skewX(-($skew)); /* IE 9 */
+//                 -webkit-transform: skewX(-($skew)); /* Safari */
+//                 transform: skewX(-($skew));
+//                 border: none;
+//                 box-shadow: none;
+//                 background-color: $color-main;
+//                 @include shadowHelper_basic($shadow-size-base, $color-box-shadow-dark);
+//                 transition: box-shadow $duration ease, transform $duration ease;
+//                 &:hover {
+//                     @include shadowHelper_basic($shadow-size-large, $color-box-shadow-light, $shadow-size-large_translate, -($skew));
+//                     color: $color-text ;
+//                 }
+//                 > button {
+//                     @include Tmain.TContainer_basic();
+//                     margin: 0;
+//                     padding: 0.5em;
+//                     > span {
+//                         font-size: 2rem;
+//                     }
+//                 }
+//                 // > button {
+//                 //     width: 100%;
+//                 //     height: 100%;
+
+//                 //     border-radius: 0;
+//                 //     border: none;
+//                 //     box-shadow: none;
+//                 //     box-shadow: none;
+//                 //     @include S_tools.SPLINT-border-inset($color-primary, -($shadow-size-base_inner), $top, $left, $bottom, $right);
+//                 //     transition: box-shadow $duration ease;
+//                 //     > span {
+//                 //         animation: none;
+//                 //         &:hover {
+//                 //             color: $color-text ;
+//                 //         }
+//                 //     -ms-transform: skewX($skew); /* IE 9 */
+//                 //     -webkit-transform: skewX($skew); /* Safari */
+//                 //     transform: skewX($skew);
+//                 //         font-size: 1.6rem;
+//                 //         @include mediaQueries.forMediaBreakpoint(mobile-small){
+//                 //             font-size: 1rem;
+//                 //         }
+//                 //     }
+//                 //     &:hover {
+//                 //         @include S_tools.SPLINT-border-inset($color-primary, -($shadow-size-large_inner), $top, $left, $bottom, $right);
+//                 //         > span {
+//                 //             color: $color-text ;
+//                 //         }
+//                 //     }
+//                 // }
+//                 > .cartPoint {
+//                     @include Tmain.preventSelect();
+//                     -ms-transform: skewX($skew); /* IE 9 */
+//                     -webkit-transform: skewX($skew); /* Safari */
+//                     transform: skewX($skew);
+//                     cursor: pointer;
+//                     position: absolute;
+//                     z-index: 1;
+//                     left: 60%;
+//                     top: 60%;
+//                     background-color: $color-primary;
+//                     border-radius: 50%;
+//                     width: 0.8rem;
+//                     height: 0.8rem;
+//                     aspect-ratio: 1/1;
+//                     display: flex;
+//                     justify-content: center;
+//                     > span {
+//                         font-size: 0.8rem;
+//                     }
+//                     @include mediaQueries.forMediaBreakpoint(mobile-small){
+//                         width: 1.5rem;
+//                         height: 1.5rem;
+//                         > span {
+//                             font-size: 1.5rem;
+//                         }
+//                     }
+//                 }
+//             }
+//             &.Original {
+//                 // @include T_container();
+//                 // @include box-shadow(1, rgb(26, 26, 26), 0.52);
+//                 position: relative;
+//                 grid-area: Original;
+//                 box-sizing: border-box;
+//                 height: 100%;
+//                 width: max-content;
+//                 background-color: $color-main;
+//                 // margin-right: 1em;
+//                 margin: 0;
+//                 padding: 0rem;
+//                 -ms-transform: skewX(-($skew)); /* IE 9 */
+//                 -webkit-transform: skewX(-($skew)); /* Safari */
+//                 transform: skewX(-($skew));
+//                 border: none;
+//                 box-shadow: none;
+//                 @include shadowHelper_basic($shadow-size-base, $color-box-shadow-dark);
+//                 transition: box-shadow $duration ease, transform $duration ease;
+//                 &:hover {
+//                     @include shadowHelper_basic($shadow-size-large, $color-box-shadow-light, $shadow-size-large_translate, -($skew));
+//                 }
+//                 > button {
+//                     margin: 0;
+//                     width: 100%;
+//                     height: 100%;
+//                     padding: 0;
+//                     padding-inline: 1.5rem;
+//                     @include mediaQueries.forMediaBreakpoint(mobile-small){
+//                         padding-inline: 0.5rem;
+//                     }
+//                     background-color: $color-main;
+//                     border-radius: 0;
+//                     border: none;
+//                     box-shadow: none;
+//                     @include S_tools.SPLINT-border-inset($color-primary, -($shadow-size-base_inner), $top, $left, $bottom, $right);
+//                     transition: box-shadow $duration ease;
+//                     > span {
+//                         -ms-transform: skewX($skew); /* IE 9 */
+//                         -webkit-transform: skewX($skew); /* Safari */
+//                         transform: skewX($skew);
+//                         color: $color-text;
+//                         font-size: 1.25rem;
+
+//                         @include mediaQueries.forMediaBreakpoint(mobile-small){
+//                             font-size: 1rem;
+//                         }
+//                     }
+//                     &:hover {
+//                         @include S_tools.SPLINT-border-inset($color-primary, -($shadow-size-large_inner), $top, $left, $bottom, $right);
+//                     }
+//                 }
+//             }
+//             &.Design {
+//                 // @include T_container();
+//                 // @include box-shadow(1, rgb(26, 26, 26), 0.52);
+//                 position: relative;
+//                 grid-area: Design;
+//                 box-sizing: border-box;
+//                 height: 100%;
+//                 width: max-content;
+//                 background-color: $color-main;
+//                 margin: 0;
+//                 padding: 0rem;
+//                 -ms-transform: skewX(-($skew)); /* IE 9 */
+//                 -webkit-transform: skewX(-($skew)); /* Safari */
+//                 transform: skewX(-($skew));
+//                 border: none;
+//                 box-shadow: none;
+//                 @include shadowHelper_basic($shadow-size-base, $color-box-shadow-dark);
+//                 transition: box-shadow $duration ease, transform $duration ease;
+//                 &:hover {
+//                     @include shadowHelper_basic($shadow-size-large, $color-box-shadow-light, $shadow-size-large_translate, -($skew));
+//                 }
+//                 > button {
+//                     margin: 0;
+//                     width: 100%;
+//                     height: 100%;
+//                     padding: 0;
+//                     padding-inline: 1.5rem;
+//                     @include mediaQueries.forMediaBreakpoint(mobile-small){
+//                         padding-inline: 0.5rem;
+//                     }
+//                     background-color: $color-main;
+//                     // transition: background-color 0.05s linear;
+//                     border-radius: 0;
+//                     border: none;
+//                     box-shadow: none;
+//                     @include S_tools.SPLINT-border-inset($color-primary, -($shadow-size-base_inner), $top, $left, $bottom, $right);
+//                     transition: box-shadow $duration ease;
+//                     > span {
+//                         -ms-transform: skewX($skew); /* IE 9 */
+//                         -webkit-transform: skewX($skew); /* Safari */
+//                         transform: skewX($skew);
+//                         color: black;
+//                         font-size: 1.25rem;
+//                         @include mediaQueries.forMediaBreakpoint(mobile-small){
+//                             font-size: 1rem;
+//                         }
+
+//                     }
+//                     &:hover {
+//                         @include S_tools.SPLINT-border-inset($color-primary, -($shadow-size-large_inner), $top, $left, $bottom, $right);
+//                     }
+//                 }
+//             }
+//             &.Profile {
+//                 display: none;
+//             }
+//             &.Sparks {
+//                 display: none;
+//             }
+//         }
+//     }
+
+// }

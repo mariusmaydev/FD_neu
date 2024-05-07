@@ -5,6 +5,29 @@ import MaterialHelper from '@SPLINT_MODULES_DIR/ThreeJS/materials/MaterialHelper
 
 
 export class other {
+    static indexFloor(){
+        let material = new THREE.MeshPhongMaterial({
+            fog: true,
+            // map:
+            alphaToCoverage: true,
+            // alphaTest
+            opacity: 1,
+            dithering: false,
+            side: THREE.DoubleSide,
+            transparent: false,
+            color: 0xffffff,
+            emissive: 0x000000,
+            emissiveIntensity: 1,
+            reflectivity: 1,
+            refractionRatio: 0.98,
+            shininess: 30,
+            specular: 0x111111,
+
+        });
+        return material;
+    }
+    static indexBackgroundNEW(){
+    }
     static converterBackground(){
         return new THREE.MeshStandardMaterial( {
             color: 0xe6e6e6,
@@ -30,6 +53,7 @@ export class other {
             opacity: 1
           } );
     }
+
     static async indexBackground(map = null, normalMap = null, envMap = null){
         let material = null;
         if(map != null && normalMap != null){

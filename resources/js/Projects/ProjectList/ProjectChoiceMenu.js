@@ -56,14 +56,16 @@ class drawProjectChoiceMenu {
       let headlineDiv = new SPLINT.DOMElement.SpanDiv(this.mainElement, "headline", "Entwürfe");
           headlineDiv.div.Class("headline");
           
-        let buttonCreateContainer = new SPLINT.DOMElement("ContainerButtonCreate", "div", headlineDiv.div);
-            buttonCreateContainer.Class("buttonCreateContainer");
-            let buttonCreate = new SPLINT.DOMElement.Button(buttonCreateContainer, "create", "erstellen");
-                buttonCreate.Class("buttonCreate");
-                buttonCreate.onclick = async function(){
-                    await ProjectHelper.new("neues Projekt", "LIGHTER_BASE_GOLD_custom", false, false, false, "base");
-                    S_Location.goto(PATH.location.converter).call();
-            }.bind(this);
+          if(false && SPLINT.ViewPort.getSize() != "mobile-small"){
+            let buttonCreateContainer = new SPLINT.DOMElement("ContainerButtonCreate", "div", headlineDiv.div);
+                buttonCreateContainer.Class("buttonCreateContainer");
+                let buttonCreate = new SPLINT.DOMElement.Button(buttonCreateContainer, "create", "erstellen");
+                    buttonCreate.Class("buttonCreate");
+                    buttonCreate.onclick = async function(){
+                        await ProjectHelper.new("neues Projekt", "LIGHTER_BASE_GOLD_custom", false, false, false, "base");
+                        S_Location.goto(PATH.location.converter).call();
+                }.bind(this);
+          }
           
         this.buttonDiv = new SPLINT.DOMElement(this.id + "buttonDiv", "div", this.mainElement);
         this.buttonDiv.Class("buttons");
@@ -71,8 +73,7 @@ class drawProjectChoiceMenu {
             this.buttonContentDiv.Class("buttonsContent");
             let buttonsCategoryMenuDiv = new SPLINT.DOMElement(this.id + "buttonsCategoryMenuDiv", "div", this.buttonDiv);
                 buttonsCategoryMenuDiv.Class("buttonsCategoryContainer");
-
-            Footer.drawFooterAsBox(this.buttonDiv);
+        
                 // buttonsCategoryMenuDiv.
       let div_originals = this.buttonContentDiv.newDiv("div_originals", "originals");
         this.bt_originals = new SPLINT.DOMElement.Button(div_originals, "project_originals", "Orginale");
@@ -180,34 +181,31 @@ class drawProjectChoiceMenu {
             }
         }.bind(this);
       
-        let div_create = this.buttonContentDiv.newDiv("div_create", "erstellen");
-            this.bt_create = new SPLINT.DOMElement.Button(div_create, "bt_create", "jetzt erstellen");
-            this.bt_create.setStyleTemplate(S_Button.STYLE_DEFAULT);
-            this.bt_create.button.state().unsetActive();
-            this.bt_create.onclick = async function(){
-                    await ProjectHelper.new("neues Projekt", "LIGHTER_BASE_GOLD_custom", false, false, false, "base");
-                    S_Location.goto(PATH.location.converter).call();
-                }.bind(this)
-  
+        // if(SPLINT.ViewPort.getSize() != "mobile-small"){
+            let div_create = this.buttonContentDiv.newDiv("div_create", "erstellen");
+                this.bt_create = new SPLINT.DOMElement.Button(div_create, "bt_create", "jetzt erstellen");
+                this.bt_create.setStyleTemplate(S_Button.STYLE_DEFAULT);
+                this.bt_create.button.state().unsetActive();
+                this.bt_create.onclick = async function(){
+                        await ProjectHelper.new("neues Projekt", "LIGHTER_BASE_GOLD_custom", false, false, false, "base");
+                        S_Location.goto(PATH.location.converter).call();
+                    }.bind(this)
 
-        function changeViewPortSize(){
-            let vp = SPLINT.ViewPort.getSize();
-            if(vp == "mobile-small"){
-                this.drawMobileMenuButton();
-                    NavBar.grow();
-            //     console.dir(this.CategoryMenu_originals.mainElement.S.state.setActive());
-            //     this.CategoryMenu_originals.move(buttonsCategoryMenuDiv);
-            //     this.CategoryMenu_public.move(buttonsCategoryMenuDiv);
-            } else {
-                this.removeMobileMenuButton();
-                NavBar.shrink();
-                this.CategoryMenu_originals.move(div_originals);
-                this.CategoryMenu_public.move(div_public);
-            }
-        };
-        changeViewPortSize.call(this);
-        SPLINT.ViewPort.onViewPortChanged = changeViewPortSize.bind(this);
+        this.#changeViewPortSize(this);
+        SPLINT.ViewPort.onViewPortChanged = this.#changeViewPortSize.bind(this);
     }
+    #changeViewPortSize(){
+        let vp = SPLINT.ViewPort.getSize();
+        if(vp == "mobile-small"){
+            this.drawMobileMenuButton();
+            Footer.remove();
+        } else {
+            Footer.drawFooterAsBox(this.buttonDiv);
+            this.removeMobileMenuButton();
+            this.CategoryMenu_originals.move(div_originals);
+            this.CategoryMenu_public.move(div_public);
+        }
+    };
     #chooseType(){
       // if(this.CategoryMenu != null){
       //   this.CategoryMenu.remove();

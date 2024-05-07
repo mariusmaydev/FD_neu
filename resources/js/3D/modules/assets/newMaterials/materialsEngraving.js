@@ -91,7 +91,7 @@ export default class MaterialsEngraving {
             alphaMap: AlphaTexture,
             // alphaTest: 0.8,
             transparent: true,
-            alphaToCoverage: false,
+            alphaToCoverage: true,
         });
         material.color.convertSRGBToLinear();
         material.needsUpdate = true;
@@ -125,7 +125,7 @@ export default class MaterialsEngraving {
                 normalScale: new THREE.Vector2(100, 100),
                 normalMapType: THREE.TangentSpaceNormalMap ,
                 side: THREE.BackSide,
-                // blending: 1,
+                blending: THREE.NormalBlending,
                 opacity: 50,
                 metalness: 1,  
                 roughness: 1.5, 
@@ -138,15 +138,15 @@ export default class MaterialsEngraving {
                 reflectivity: 10,
                 clearcoat: 0,
                 clearcoatRoughness: 0,
-                specularColor: color,
-                specularIntensity: 1,
-                thickness: 10,
+                specularColor: 0xe8b000,
+                specularIntensity: 0,
+                thickness: 120,
                 sheenColor: color,
                 sheenRoughness: 0,
                 sheen: 0.5,
-                ior: 1.5,
-                fog: true,
-                transmission: 1,
+                // ior: 1.5,
+                fog: false,
+                // transmission: 1,
                 dithering: false,
             });
         // material.setValues( {

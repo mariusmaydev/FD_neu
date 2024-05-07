@@ -42,9 +42,8 @@ class BottomBar_Text {
                 button_edit.Description = "ändern";
                 // button_edit.button.setTooltip("Bearbeiten", "top");
                 button_edit.onclick = function(){
-                    let SubWindow = new SPLINT.DOMElement.popupWindow("editText", true);
+                    let SubWindow = new SPLINT.DOMElement.popupWindow("editText", true, false);
                         SubWindow.Class("editText_mobile");
-                        SubWindow.buttonClose.bindIcon("check");
                         SubWindow.onclose = function(){
                             // console.log(this.data);
                             CONVERTER_STORAGE.toolBar.focusElement("txt", this.data.TextID);
@@ -54,29 +53,64 @@ class BottomBar_Text {
                                 SubWindow.close();
                             }
                         }
-                        let headline = new SPLINT.DOMElement.SpanDiv(SubWindow.content, "headline", "Verfasse einen Text.");
-                            headline.Class("headline");
+                        let buttonDiv = new SPLINT.DOMElement(SubWindow.id + "_buttonsContainer", "div", SubWindow.content);
+                            buttonDiv.Class("buttonsContainer");
+                            let buttonClose = new SPLINT.DOMElement.Button(buttonDiv, "close");
+                                buttonClose.Class("btClose");
+                                buttonClose.bindIcon("close");
+                                buttonClose.onclick = function(){
+                                    SubWindow.close();
+                                }
+
+                            let headline = new SPLINT.DOMElement.SpanDiv(buttonDiv, "headline", "Verfasse einen Text.");
+                                headline.Class("headline");
+
+                            let buttonSave = new SPLINT.DOMElement.Button(buttonDiv, "save");
+                                buttonSave.Class("btSave");
+                                buttonSave.bindIcon("check");
+                                buttonSave.onclick = function(){
+                                    this.TOOLS.setValue(textInput.Value);
+                                    SubWindow.close();
+                                }.bind(this);
                         let textInput = new SPLINT.DOMElement.InputText(SubWindow.content, "editTextInputDiv", "test");
-                            // console.log(this.data)    
+                            // console.log(this.data)   
                             textInput.textarea.focus();
-                            textInput.setValue(this.data.TextValue);
-                            textInput.oninput = function(){
-                                this.TOOLS.setValue(textInput.Value);
-                            }.bind(this);
+                            textInput.setValue(window.screen.height)//this.data.TextValue);
+                            window.addEventListener('resize', () => {
+                                // For the rare legacy browsers that don't support it
+                                if (!window.visualViewport) {
+                                  return
+                                }
+                                console.dir(arguments)
+                                textInput.setValue(window.visualViewport.height);
+                                // SubWindow.content.style.height = window.visualViewport.height + "px";
+                                // console.log(window.visualViewport.height)
+                              })
+                            // textInput.onFocus = function(){
+                            //     console.dir(arguments)
+                            //     setTimeout(function(){
+                            //         textInput.setValue(window.innerHeight);
+                            //     }, 1000)
+                            //     // alert(window.innerHeight)
+                            // } 
+                            // textInput.oninput = function(){
+                            //     this.TOOLS.setValue(textInput.Value);
+                            // }.bind(this);
                     // this.TOOLS.copy();
                 }.bind(this);
 
-            let button_FontFamily = new SPLINT.DOMElement.Button(buttonsDiv, "fontFamily");
+            let button_FontFamily = new SPLINT.DOMElement.Button.Switch(buttonsDiv, "fontFamily");
                 button_FontFamily.bindIcon("text_format");
                 button_FontFamily.Description = "Schriftart";
-                // button_FontFamily.span.style.fontFamily = this.data.FontFamily;
-                button_FontFamily.onclick = function(){
-                    button_FontFamily.button.state().setActive();
+                button_FontFamily.onactive = function(){
                     let ele = new BottomBar_Text_FontFamily_Menu(buttonsDiv, this.TOOLS, this.data);
                         ele.onRemoveFloatingDiv = function(){
-                            button_FontFamily.button.state().unsetActive();
                         }.bind(this);
                 }.bind(this);
+                button_FontFamily.button.onclick = function(e){
+                    button_FontFamily.toggle();
+                }.bind(this);
+                
 
             this.button_textAlign = new BottomBar_Text_Button_TextAlign(buttonsDiv, this.TOOLS, this.data);
             this.button_fontWeight = new BottomBar_Text_Button_FontWeight(buttonsDiv, this.TOOLS, this.data);

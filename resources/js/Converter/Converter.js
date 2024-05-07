@@ -7,9 +7,16 @@ SPLINT.require_now('@PROJECT_ROOT/Converter/DataStorage/DSProject.js');
 // SPLINT.require_now('@PROJECT_ROOT/Converter/renderer/ConverterRender.js');
   //Feuerzeugdaten
  //      Champ Xentai
- var LighterWidth  = 38;    //in mm 38,5  38,3
- var LighterHeight = 57.5;    //in mm 57,8  57,8
- var LighterMid    = S_Math.multiply(23.5, 0.94);    //in mm 22,4  23,4
+//  var LighterWidth  = 38;    //in mm 38,5  38,3
+//  var LighterHeight = 57.5;    //in mm 57,8  57,8
+//  var LighterMid    = S_Math.multiply(23.5, 0.94);    //in mm 22,4  23,4
+
+ 
+ var LighterWidth  = 33;    //in mm 38,5  38,3
+ var LighterHeight = 54;    //in mm 57,8  57,8
+ var LighterMid    = 20.75;//S_Math.multiply(23.5, 0.94);    //in mm 22,4  23,4
+
+
  var Box = new Object();
      Box.X = 0;
      Box.Y = 0;
@@ -102,6 +109,12 @@ class Converter {
     } else if(hashes == "ADMINPLUS"){
         // SPLINT.DataStorage.get("/converterSettings/" + name + ".json");
       NavBar.clear();
+    } else {
+        if(SPLINT.ViewPort.getSize() == "mobile-small"){
+            NavBar.setSolid();
+        } else {
+            NavBar.setInParts();
+        }
     }
       Converter_ToolBar.init(rightElement);
       Converter_closeButtons.draw(rightElement);
@@ -150,6 +163,7 @@ class Converter {
     CONVERTER_STORAGE.canvasNEW.setSize();
     if(SPLINT.Events.onLoadingComplete.dispatched == true){
           DSController.saveAll.callFromIdle(1000, DSController);
+      
           // DSProject.saveAsync();
     };
   }

@@ -14,23 +14,48 @@ class BottomBar_Text_Button_FontSize {
         this.button.onactive = function(){
             this.drawSlider();
             this.floatingDiv.onRemoveFloatingDiv = function(){
-                this.button.unsetActive();
             }.bind(this);
+        }.bind(this);
+        this.button.button.onclick = function(){
+            this.button.toggle();
         }.bind(this);
     }
     drawSlider(){
         this.floatingDiv = new Converter_BottomBar_floatingDiv_block("fontSizeSlider");
         
-            let sl = new SPLINT.DOMElement.Slider(this.floatingDiv.content, "sl_fontSize_" + this.floatingDiv.content.id, "Schriftgröße");
-                sl.min    = 100;
-                sl.max    = 1000;
-                sl.step   = 100;
-                sl.value  = this.data.FontSize;
+            this.sl = new SPLINT.DOMElement.RangeSlider(this.floatingDiv.content, "contrast_" + this.floatingDiv.content.id, "Schriftgröße");
+            this.sl.drawTickMarks = false;
+            this.sl.min    = 0.5;
+            this.sl.max    = 40;
+            this.sl.step   = 0.5;
+            this.sl.value          = Math.round(MATH_convert.px2pt(S_Math.divide(this.data.FontSize, 10)) * 2) / 2;
+            this.sl.valueExtension = "";
+            this.sl.onDrawSign = function(signContent){
+                signContent.value = this.sl.value + this.sl.valueExtension;
+            }.bind(this);
+            this.sl.oninput = function(value){
+                this.data.FontSize = Math.round(MATH_convert.pt2px(S_Math.multiply(value, 10)) * 2) / 2;
+                CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt", true);
+            }.bind(this);
+            // this.sl_contrast.drawValueOutput = false;
+            // this.sl.value  = parseInt(this.data.ImageFilter.contrast);
+            // this.sl.onDrawSign = function(signContent){
+            //     signContent.value = SPLINT.Tools.Math.roundFX(this.sl_contrast.valuePercent, 0, true) + this.sl_contrast.valueExtension;
+            // }.bind(this);
+            // this.sl_contrast.oninputFinished = function(value){
+            //     this.data.ImageFilter.contrast = value;
+            //     ConverterHelper.filter(DSImage.getIndex(this.data.ImageID));
+            // }.bind(this);
+            // let sl = new SPLINT.DOMElement.Slider(this.floatingDiv.content, "sl_fontSize_" + this.floatingDiv.content.id, "Schriftgröße");
+            //     sl.min    = 100;
+            //     sl.max    = 1000;
+            //     sl.step   = 100;
+            //     sl.value  = this.data.FontSize;
                 
-                sl.oninput = function(e){
-                    this.data.FontSize = sl.value;
-                    CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt");
-                }.bind(this);
+            //     sl.oninput = function(e){
+            //         this.data.FontSize = sl.value;
+            //         CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt");
+            //     }.bind(this);
     }
 }
 
@@ -42,20 +67,23 @@ class BottomBar_Text_Button_FontWeight {
         this.draw();
     }
     draw(){
+        
         this.button = new SPLINT.DOMElement.Button.Switch(this.parent, "fontWeight");
         this.button.bindIcon("format_bold");
         this.button.Description = "Schriftstärke";
         this.button.onactive = function(){
             this.drawSlider();
             this.floatingDiv.onRemoveFloatingDiv = function(){
-                this.button.unsetActive();
             }.bind(this);
+        }.bind(this);
+        this.button.button.onclick = function(e){
+            this.button.toggle();
         }.bind(this);
     }
     drawSlider(){
         this.floatingDiv = new Converter_BottomBar_floatingDiv_block("fontWeightSlider");
 
-        let sl_fontWeight = new Slider(this.floatingDiv.content, "sl_fontWeight_" + this.floatingDiv.content.id, "Schriftstärke");
+        let sl_fontWeight = new SPLINT.DOMElement.Slider(this.floatingDiv.content, "sl_fontWeight_" + this.floatingDiv.content.id, "Schriftstärke");
             sl_fontWeight.min    = 100;
             sl_fontWeight.max    = 1000;
             sl_fontWeight.step   = 100;
@@ -63,7 +91,7 @@ class BottomBar_Text_Button_FontWeight {
             
             sl_fontWeight.oninput = function(e){
                 this.data.FontWeight = sl_fontWeight.value;
-                CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt");
+                CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt", true);
             }.bind(this);
 
     }

@@ -68,10 +68,10 @@ class ConverterRenderThumbnail {
                 elem.data = ele.data;
                 elem.type = ele.type;
         
-                if(!SPLINT.CacheStorage.has(ele.ID)){
-                    let src = SPLINT.Tools.CanvasTools.base64ToSrc(ele.src.currentSrc);
+                if(true || !SPLINT.CacheStorage.has(ele.ID)){
+                    // let src = SPLINT.Tools.CanvasTools.base64ToSrc(ele.src.currentSrc);
                     let ob = new Object();
-                        ob.blob = await SPLINT.Tools.CanvasTools.base64toBlob(src);
+                        ob.blob = await ele.canvasBuffer.convertToBlob();//await SPLINT.Tools.CanvasTools.base64toBlob(src);
                         ob.time = ele.time
         
                     SPLINT.CacheStorage.add(ele.ID, ob);
@@ -108,7 +108,6 @@ class ConverterRenderThumbnail {
         let ctxTxT     = canvasTxT.getContext('2d', { willReadFrequently: true });
             ctxTxT.fillStyle = "transparent";
             ctxTxT.fillRect(0, 0, canvasTxT.width, canvasTxT.height);
-            // ctxTxT.scale(size.scale, size.scale);
             for(const ele of this.inst.stack) {
                 if(ele.type == "txt"){
                 let elem = new Object();
@@ -123,7 +122,6 @@ class ConverterRenderThumbnail {
     async #save(){
         if(DSProject.Storage.Thumbnail instanceof SPLINT.BinaryImage) {
             SPLINT.IndexedDB.set(DSProject.Storage.ProjectID + "_thumbnail", DSProject.Storage.Thumbnail, "DynamicData")
-            console.log(DSProject)
             return DSProject.Storage.Thumbnail.saveToURL();
         } else {
             return false;

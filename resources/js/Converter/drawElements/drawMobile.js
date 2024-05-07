@@ -2,11 +2,12 @@
 class converter_drawMobile {
     static draw(parent = document.body){    
         
-        this.background = new drawBackground3D(parent, "back");
+        // this.background = new drawBackground3D(parent, "back");
         
         this.mainElement = new SPLINT.DOMElement("ConverterMainElement", "div", parent);
         this.mainElement.Class("Conv_MAIN");
-        Footer.mobile();
+        Footer.remove();
+        // Footer.mobile();
         
         this.EditorFrameElement = new SPLINT.DOMElement("ConverterEditorFrame", "div", this.mainElement);
         this.EditorFrameElement.Class("EditorFrame");
