@@ -18,6 +18,8 @@ class Pages {
   static PAYMENT_COMPLETE     = "PaymentCompleteBODY";
   static IMPRINT              = "ImprintBODY";
   static PRODUCT_INFORMATION  = "ProductInformationBODY";
+  static AGBs                 = "AGBsBODY";
+  static DATA_PROTECTION      = "DataProtectionBODY";
 
   constructor(){
     this.getActualPage();
@@ -44,6 +46,8 @@ class Pages {
       case Pages.PAYMENT_COMPLETE     : this.paymentComplete(); break;
       case Pages.IMPRINT              : this.imprint(); break;
       case Pages.PRODUCT_INFORMATION  : this.productInformation(); break;
+      case Pages.AGBs                 : this.AGBs(); break;
+      case Pages.DATA_PROTECTION      : this.dataProtection(); break;
     }
   }
   converter(){
@@ -80,15 +84,20 @@ class Pages {
     new Checkout();
   }
   paymentComplete(){
-    NavBar.draw();
     new drawPaymentComplete();
   }
   imprint(){
     new drawImprint();
   }
-  productInformation(){
-    new drawProductInformation();
+  AGBs(){
+    new drawAGBs();
   }
+  dataProtection(){
+    new drawDataProtection();
+  }
+//   productInformation(){
+//     new drawProductInformation();
+//   }
 }
 SPLINT.Events.onInitComplete = function(){
     new Pages();

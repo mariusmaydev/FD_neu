@@ -31,6 +31,7 @@
             $DataSet -> newEntry(UserDataDB::SHOPPINGCART_FROM_GUEST);
             $DataSet -> newKey(UserDataDB::USER_ID, $UserID);
             $shoppingCart = UserDataDB::get($DataSet);
+            
             if($print){
                 Communication::sendBack($shoppingCart);
             } else {
@@ -274,6 +275,7 @@
         const SHOPPINGCART_FROM_GUEST   = "ShoppingCartFromGuest";
         const IMAGES                    = "Images";
         const USER_INFORMATION          = "userInformation";
+
       
         public function __construct($key = null, $keyName = null){
             self::$key      = $key;

@@ -1,8 +1,12 @@
 
 importScripts(location.origin + "/Splint/js/Tools/math.js");
+importScripts(location.origin + "/fd/resources/js/Converter/renderer/helper/CanvasPaths.js");
 
 class ConverterWorkerHelper {
     static drawThumbnailImg(element){
+        element.needsUpdate = true;
+        canvasPaths.drawImageBuffer(element, true);
+        return;
         let ctx = element.ctx;
         let scale = 1;
         let img = element.src;
@@ -18,6 +22,11 @@ class ConverterWorkerHelper {
     }
     
     static drawThumbnailTxt(element){
+        element.needsUpdate = true;
+        canvasPaths.drawTextBuffer(element, true);
+        // element.ctx.save();
+        // element.ctx.drawImage(element.canvasBuffer)
+        return;
         let ctx = element.ctx;
         ctx.save();
         ctx.translate(element.data.TextPosX, element.data.TextPosY);

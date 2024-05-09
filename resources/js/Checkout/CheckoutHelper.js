@@ -52,10 +52,9 @@ class CheckoutHelper {
       (await CheckoutHelper.progress()).add();
       window.location.hash = site;
     }
-      static async finishCheckout(data){
+      static async finishCheckout(data = null){
             let sessions = await SPLINT.SessionsPHP.getAll();
-            console.log(sessions)
-          if(data.data.purchase_units[0].shipping != undefined) {
+          if(data != null && data.data.purchase_units[0].shipping != undefined) {
               let address = data.data.purchase_units[0].shipping.address;
               let fullName = data.data.purchase_units[0].shipping.name.full_name;
   

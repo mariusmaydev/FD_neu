@@ -131,9 +131,13 @@ export class draw {
         return new Promise(async function(resolve){
             if(this.scene != null){
                 let binaryImg = await this.StorageManager.get(this.drawID + "_thumbnail");
-
                 if(binaryImg == undefined){
                     binaryImg = await SPLINT.BinaryImage.fromURL(location.origin + (this.canvas.getAttribute("thumbsrc")));
+                    if(!(binaryImg instanceof SPLINT.BinaryImage)){
+                        await this.StorageManager.remove(this.drawID + "_thumbnail");
+                        resolve(false);
+                        return;
+                    }
                     this.StorageManager.set(this.drawID + "_thumbnail", binaryImg);
                 }
                 let bb = await binaryImg.export_imageData();
@@ -201,12 +205,17 @@ export class draw {
                 this.render();
             }.bind(this), 100);
 
-            // let normalMapData = await this.StorageManager.get(this.drawID + "_normalMap");
+            let normalMapData = await this.StorageManager.get(this.drawID + "_normalMap");
             // console.dir(normalMapData)
             if(true||normalMapData == undefined){
                 let binaryImg = await this.StorageManager.get(this.drawID + "_thumbnail");
                 if(binaryImg == undefined){
-                    binaryImg = await SPLINT.BinaryImage.fromURL(location.origin + (this.canvas.getAttribute("thumbsrc").slice(0,-3)));
+                    return;
+                    binaryImg = await SPLINT.BinaryImage.fromURL(location.origin + (this.canvas.getAttribute("thumbsrc")));
+                    if(!(binaryImg instanceof SPLINT.BinaryImage)){
+                        await this.StorageManager.remove(this.drawID + "_thumbnail");
+                        return;
+                    }
                     this.StorageManager.set(this.drawID + "_thumbnail", binaryImg);
                 }
                 let d = await binaryImg.export_imageData();

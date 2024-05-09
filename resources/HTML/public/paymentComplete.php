@@ -5,6 +5,7 @@
         <meta charset="ISO-8859-1" />
         <s-style style src="paymentComplete.css"></s-style>
 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     </head>
     
     <body id="PaymentCompleteBODY">
@@ -23,7 +24,6 @@
         <s-part src="/js/Login/LoginHelper.js"></s-part>
         <s-part src="/js/assets/functionsShoppingCart.js"></s-part>
         <s-part src="/js/3D/3DHelper.js"></s-part>
-        <s-part src="/js/3D/commonJS/drawDOMElement_3D.js"></s-part>
         <s-part src="/js/Pages/cart/"></s-part>
         <s-part src="/js/assets/functionsProduct.js"></s-part>
         <s-part src="/js/assets/functionsCouponCode.js"></s-part>
@@ -37,7 +37,7 @@
         <s-part src="/js/Checkout/"></s-part>
         <s-part src="/js/Footer.js"></s-part>
 
-        <s-part src="/js/Pages/NavigationBar/NavigationBarHelper.js"></s-part>
+        <s-part first src="/js/Pages/NavigationBar/NavigationBarHelper.js"></s-part>
         <s-part src="/js/Pages/NavigationBar/NavigationBar.js"></s-part>
         <s-loader src="/js/Eventhandler.js"></s-loader>
         <script async type="text/javascript" src="../../../../Splint/js/Splint.js" onload="SPLINT.start()"></script>

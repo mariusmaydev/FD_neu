@@ -1,0 +1,109 @@
+@use '../publicMain.scss';
+@use '../../themes/theme1/main' as Tmain;
+@use '../../general/3D.scss' as Drd;
+@use '../../general/NavigationBar/NavigationBar.scss';
+@use '../../general/Footer/FooterMobile.scss';
+@use '../../general/Footer/FooterDesktop.scss';
+@use '../../general/mediaQueries';
+@use '../../themes/theme1/vars';
+
+body {
+    box-sizing: border-box;
+    overflow: hidden;
+    height: 100%;
+    >.Pages_MAIN {
+        ::-webkit-scrollbar {
+            display: none !important;
+        }
+        scroll-snap-type: none;
+        scroll-behavior: auto;
+        scroll-snap-align: start;
+        
+        display: flex;
+        overflow: auto;
+        position: relative;
+        left: 0;
+        width: 100%;
+        // height: 50%;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        pointer-events: all;
+        min-height: 100%;;
+        height: max-content;
+        padding: 1rem;
+        padding-top: 5.5rem;
+        > .containerMain {
+            // @include Tmain.TContainer_basic();
+            top: 0;
+            padding-top: 0;
+            // min-width: 52rem;
+            height: max-content;
+            width: 100%;
+
+            max-width: 80rem;
+            overflow: visible;
+            > div {
+                overflow: visible;
+                padding: 1rem;
+                box-sizing: border-box;
+                &.headline {
+                    @include Tmain.TContainer_basic();
+                    width: max-content;
+                    > span {
+                        font-size: 1.5rem;
+                        font-weight: 500;
+                    }
+                }
+                &.containerText {
+                    margin-top: 1.5rem;
+                    @include Tmain.TContainer_basic();
+                    > hr {
+                        width: calc(100% + 1rem);
+                        margin: 1rem;
+                        margin-inline: 0;
+                        left: -0.5rem;
+                    }
+                    >.textContainer {
+                        > .headline {
+                            margin-bottom: 0.5rem;
+                            > span {
+                                font-size: 1.2rem;
+                            }
+                        }
+                        > p {
+                            padding-left: 0.1rem;
+                            font-size: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include mediaQueries.forMediaBreakpoint(desktop mobile){
+    @include FooterDesktop.FooterDesktop();
+    body {
+        height : 100vh!important;
+        top: 0!important;
+        overflow-y: auto !important;
+        ::-webkit-scrollbar {
+            display: none !important;
+        }
+    }
+}
+
+@include mediaQueries.forMediaBreakpoint(mobile-small){
+    body {
+            overflow-y: auto !important;
+        scroll-snap-type: none !important;
+        scroll-behavior: auto !important;
+        scroll-snap-align: start !important;
+        scroll-padding: 3.5rem;
+    }
+}
+

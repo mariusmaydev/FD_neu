@@ -1,6 +1,15 @@
+@use '../themes/theme1/_scrollbar.scss';
 @use '../general/main' as Gmain;
 @use '../general/buttons' as Gbuttons;
 @use '../general/mediaQueries';
+
+
+// @include mediaQueries.forMediaBreakpoint(mobile-small){
+//     @include scrollbar.mobile();
+// }
+// @include mediaQueries.forMediaBreakpoint(mobile desktop){
+//     @include scrollbar.desktop();
+// }
 
 body {
     touch-action: pan-x pan-y !important;

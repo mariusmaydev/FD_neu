@@ -97,10 +97,14 @@ class ShoppingCart {
         ShoppingCart.set(JSON.stringify(cart));
     return cart;
   }
-  static async setAmount(index, value){
+  static async setAmount(projectID, value){
     return new Promise(async function(resolve){
         let cart = (await ShoppingCart.get()).shoppingCart;
-            cart[index].amount = value;
+            for(const e of cart){
+                if(e.ProjectID == projectID){
+                    e.amount = value;
+                }
+            }
             await ShoppingCart.set(JSON.stringify(cart));
         resolve(cart);
     });

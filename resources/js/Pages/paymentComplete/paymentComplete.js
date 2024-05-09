@@ -7,7 +7,7 @@ class drawPaymentComplete extends Pages_template {
     }
     async draw1(){
         if(SPLINT.ViewPort.getSize() == "mobile-small"){
-            Footer.mobile();
+            NavBar.setInParts();
         } else {
             Footer.desktop();
         }
@@ -18,6 +18,12 @@ class drawPaymentComplete extends Pages_template {
             let BTSymbol = new SPLINT.DOMElement.Button(this.contentDiv, "BTSymbol");
                 BTSymbol.bindIcon("done")
 
+
+            let codeh = new SPLINT.DOMElement.SpanDiv(this.contentDiv, "codeH", "Dein Bestellcode:");
+                codeh.Class("codeH");
+            let orderID = SPLINT.Tools.Location.getParams().orderID;
+            let code = new SPLINT.DOMElement.SpanDiv(this.contentDiv, "code", orderID);
+                code.Class("code");
                 
             this.#removeSessions();
             // let spinner = new SPLINT.DOMElement.Spinner(this.contentDiv, "spinner");

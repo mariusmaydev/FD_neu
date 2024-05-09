@@ -153,7 +153,7 @@ class productHelper {
         return SPLINT.DataStorage.edit("/productData/EPtype.json", JSON.stringify(data));
     }
     static async getEPTypeForID(EPTypeID){
-        let r = await productHelper.getEPType();
+        let r = await productHelper.getEPTypes();
         return r[EPTypeID];
     }
 }

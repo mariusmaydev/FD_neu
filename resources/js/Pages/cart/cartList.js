@@ -5,10 +5,17 @@ class drawCartList {
         this.id = "cartList_";
         this.mainElement = parent.newDiv(this.id + "main", "cartListMain");
         this.listBody = this.mainElement.newDiv("/ID/listBody", "ListBody");
+        this.ProjectList = new Object();
         this.draw();
     }
     async draw(){
         this.data = (await ShoppingCart.get()).shoppingCart;
+        let fullProjectDataRes = (await ProjectHelper.getAll());
+        for(const e of fullProjectDataRes) {
+            this.ProjectList[e.ProjectID] = e;
+        }
+        this.fullProductData = (await productHelper.getProducts());
+
         this.emptyBody = new SPLINT.DOMElement(this.id + "emptyBody", "div", this.mainElement);
         this.emptyBody.Class("emptyBody");
             let bt_emptyBody = new SPLINT.DOMElement.Button(this.emptyBody, "BT_EmptyBody");
@@ -40,8 +47,13 @@ class drawCartList {
                 header.Class("headline_cart");
         }
         this.list.func_drawListElement = function(item, index, listElement){
-            let projectData     = ProjectHelper.get(item.ProjectID);
-            let productData     = productHelper.getByName(item.ProductName);
+            let projectData     = this.ProjectList[item.ProjectID];
+            if(projectData == undefined){
+                ShoppingCart.removeItem(item.ProjectID);
+                listElement.remove();
+                return;
+            }
+            let productData     = this.fullProductData[item.ProductName];// productHelper.getByName(item.ProductName);
             let lighterEle      = listElement.newDiv(null, "lighter");
             let rightDiv        = listElement.newDiv(null, "right");
             let infoEle         = rightDiv.newDiv(null, "info");
@@ -50,11 +62,12 @@ class drawCartList {
             let priceEle        = rightDiv.newDiv(null, "price");
             let buttonsEle      = rightDiv.newDiv(null, "buttons");
             
-            projectData.then(function(data){
-                let lighter = new drawLighter3D(lighterEle, lighterEle.id, "PROJECT", data.Thumbnail, false, false, data.EPType);
+            console.dir(productData)
+            console.dir(item)
+                let lighter = new drawLighter3D(lighterEle, lighterEle.id, "PROJECT", projectData.Thumbnail, false, false, projectData.EPType);
                 
                     lighter.promise.then(async function(){
-                        let color = await productHelper.getColorForID(data.Color);
+                        let color = await productHelper.getColorForID(projectData.Color);
                         if(color == null || color == undefined){
                             color = "base";
                             return;
@@ -62,7 +75,6 @@ class drawCartList {
                         lighter.send("changeColor", color);
                     })
                 lighter.saveContext = true;
-            })
 
             let infoDivInner = infoEle.newDiv("/ID/info_inner", "inner");
                 let infoText = new SPLINT.DOMElement.SpanDiv(infoDivInner, "text", "vergoldetes Feuerzeug");
@@ -74,36 +86,42 @@ class drawCartList {
                     //     informationTableHeadline.Class("headline");
                     let informationTable = new SPLINT.DOMElement.Table.TextTable(informationTableBody, infoDivInner.id + "information");
                         informationTable.Class("informationTable");
-                        // informationTable.addRow("erstellt", this.data.First_Time);
+                        let EPType = productHelper.getEPTypeForID(productData.EPType);
+                            EPType.then(function(d){
+                                console.log(d)
+                                informationTable.addRow("Beschichtung", d.name);
+
+                            })
+                        let Color = productHelper.getColorForID(productData.colorID);
+                            Color.then(function(d){
+                                console.log(d)
+                                informationTable.addRow("Farbe", d.name);
+
+                            })
                         // informationTable.addRow("zuletzt bearbeitet", this.data.Last_Time);
 
-                        productData.then(function(data){
-                            for(const e of data.attrs){
+                        // productData.then(function(data){
+                            for(const e of productData.attrs){
                                 informationTable.addRow(e.name + " ", e.value);
                             }
-                        });
+                        // });
 
             let itemPriceDivInner = itemPriceDiv.newDiv("/ID/item_price_inner", "inner");
-            productData.then(function(data){
-                infoText.value = data.viewName;
+            // productData.then(function(data){
+                infoText.value = productData.viewName;
                 // let priceDivItem = new PriceDiv_S(itemPriceDivInner, index, "25.55");
-            });
+            // });
             let priceDiv
             let amountDivInner = amountEle.newDiv("/ID/amount_inner", "inner");
             let amountDiv = new SPLINT.DOMElement.InputAmount(amountDivInner, amountDivInner.id, item.amount, "");
-            productData.then(function(data){
                 amountDiv.oninput = async function(amount){
-                    priceDiv.setPrice(S_Math.multiply(data.price, amount));
-                    await ShoppingCart.setAmount(index, amount);
+                    priceDiv.setPrice(S_Math.multiply(productData.price, amount));
+                    await ShoppingCart.setAmount(projectData.ProjectID, amount);
                     ShoppingCart.drawPrices();
                 }.bind(this);
-            }.bind(this));
-
                 
             let PriceDivInner = priceEle.newDiv("/ID/full_price_inner", "inner");
-            productData.then(function(data){
-                priceDiv = new PriceDiv_S(PriceDivInner, index, S_Math.multiply(data.price, item.amount));
-            });
+                priceDiv = new PriceDiv_S(PriceDivInner, index, S_Math.multiply(productData.price, item.amount));
 
             let ButtonsInner = buttonsEle.newDiv("/ID/buttons_inner", "inner");
                     
@@ -111,16 +129,11 @@ class drawCartList {
                     bt_info.bindIcon("info");
                     bt_info.Class("info");
                     bt_info.onclick = function(){
-                        projectData.then(async function(data){
-                            NavBar.grow();
-                            let p = new ProjectDetails(data, document.body);
-                            p.onclose = function(){
-                                console.log("ok")
-                                NavBar.shrink();
-                            }
-                                p.show(true);
-                        });
-                        // Project.CONVERTER_startProject(projectData.ProjectID, true);
+                        let p = new ProjectDetails(projectData, document.body);
+                        p.onclose = function(){
+                            NavBar.setInParts();
+                        }
+                        p.show(true);
                     }
                     bt_info.button.setTooltip("details", "top");
                 let buttonEdit = new SPLINT.DOMElement.Button(ButtonsInner, "edit");

@@ -57,6 +57,7 @@ class ConverterRenderThumbnail {
             y: this.inst.canvas.height,
             dimensions: ConverterRenderThumbnail.SIZE
         }
+        console.dir(this)
         let stackOut = [];
         for(const ele of this.inst.stack){
             let elem = new Object();
@@ -69,9 +70,11 @@ class ConverterRenderThumbnail {
                 elem.type = ele.type;
         
                 if(true || !SPLINT.CacheStorage.has(ele.ID)){
+                    let blob = SPLINT.Tools.CanvasTools.loadImageAsBlob(ele.src.currentSrc);
                     // let src = SPLINT.Tools.CanvasTools.base64ToSrc(ele.src.currentSrc);
+                    console.dir(blob)
                     let ob = new Object();
-                        ob.blob = await ele.canvasBuffer.convertToBlob();//await SPLINT.Tools.CanvasTools.base64toBlob(src);
+                        ob.blob = await blob;//SPLINT.Tools.CanvasTools.base64toBlob(src);
                         ob.time = ele.time
         
                     SPLINT.CacheStorage.add(ele.ID, ob);
@@ -101,6 +104,76 @@ class ConverterRenderThumbnail {
 
         return binImg;
     }
+    // async #update(){
+    //     // let offscreen  = document.createElement("canvas").transferControlToOffscreen();
+    //     let canvas = document.createElement("canvas");
+    //         canvas.width = this.inst.canvas.width;
+    //         canvas.height = this.inst.canvas.height;
+    //     let ctx = canvas.getContext("2d");
+    //     let size = {
+    //         x: this.inst.canvas.width,
+    //         y: this.inst.canvas.height,
+    //         dimensions: ConverterRenderThumbnail.SIZE
+    //     }
+    //     let stackOut = [];
+    //     let transfers = [];
+    //     console.log(this)
+    //     for(const ele of this.inst.stack){
+    //         // console.dir(ele.canvas.toDataURL("image/png", 1));
+    //         // ctx.save();
+    //         // ctx.drawImage(ele.canvas, 0, 0, ele.canvas.width, ele.canvas.height, 0, 0, canvas.width, canvas.height)
+    //         // ctx.restore();
+    //         let elem = new Object();
+        
+    //         if(ele.type == "txt"){
+    //             elem.data = ele.data;
+    //             elem.type = ele.type;
+    //             elem.canvas = canvas;
+    //             elem.ctx = ctx;
+    //             elem.needsUpdate = false;
+    //             canvasPaths.drawTextBuffer(elem, false);
+    //         } else {
+    //             elem.data = ele.data;
+    //             elem.type = ele.type;
+    //             elem.src  = ele.src;
+    //             elem.canvas = canvas;
+    //             elem.ctx = ctx;
+    //             elem.needsUpdate = false;
+    //             canvasPaths.drawImageBuffer(elem, false);
+        
+    //             if(true || !SPLINT.CacheStorage.has(ele.ID)){
+    //                 // let src = SPLINT.Tools.CanvasTools.base64ToSrc(ele.src.currentSrc);
+    //                 let ob = new Object();
+    //                     ob.blob = await ele.canvasBuffer.convertToBlob();//await SPLINT.Tools.CanvasTools.base64toBlob(src);
+    //                     ob.time = ele.time
+        
+    //                 SPLINT.CacheStorage.add(ele.ID, ob);
+    //                 elem.blob = ob.blob;
+    //             } else {
+    //                 elem.blob = SPLINT.CacheStorage.get(ele.ID).blob;
+    //             }
+    //         }
+    //         stackOut.push(elem)
+    //     }
+    //     // console.dir(canvas.toDataURL("image/png", 1))
+    //         let imageData = (await Converter.workerCreateThumbnail.sendInPromise("createThumbnail", { canvas: offscreen, stack: stackOut, size: size}, [offscreen])).data;
+    //         // let imageData = (await Converter.workerCreateThumbnail.sendInPromise("createThumbnail", { stack: stackOut, size: size})).data;
+
+            
+    //     // console.dir(imageData)
+    //     let cv = document.createElement("canvas");
+    //         cv.width = size.dimensions;
+    //         cv.height = size.dimensions;
+    //         let ctx1 = cv.getContext("2d");
+    //         ctx1.save()
+    //         ctx1.drawImage(canvas, 0, 0, canvas.width, canvas.height, 0, 0, size.dimensions, size.dimensions)
+    //         ctx1.restore()
+
+    //         let binImg = await SPLINT.BinaryImage.fromImageData(ctx1.getImageData(0, 0, size.dimensions, size.dimensions));
+    //     DSProject.Storage.Thumbnail = binImg;
+
+    //     return binImg;
+    // }
     async #updateTXT(size){
         let canvasTxT = document.createElement("canvas");
             canvasTxT.width = size.x;

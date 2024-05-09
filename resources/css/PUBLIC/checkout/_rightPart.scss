@@ -18,6 +18,16 @@
         flex-direction: column;
         overflow: visible;
         justify-content: start;
+        > .FooterBTContainer {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+            bottom: 0;
+            left: 0;
+        }
         >.backgroundFiller {
             position: absolute;
             background-color: rgb(236, 236, 236);

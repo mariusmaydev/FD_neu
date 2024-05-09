@@ -1,15 +1,15 @@
 
 class manager extends SPLINT.autoObject {
     static {
-        this.initWorker();
-        this.fullyLoaded = Promise.allSettled([
-            SPLINT.require('@PROJECT_ROOT/manager/managerHelper.js'),
-            SPLINT.require('@PROJECT_ROOT/manager/managerCallPHP.js'),
-            SPLINT.require('@PROJECT_ROOT/manager/managerObject.js')
-        ]);
-        this.fullyLoaded.then(async function(){
-            this.managerObject = new managerObject();
-        }.bind(this))
+        // this.initWorker();
+        // this.fullyLoaded = Promise.allSettled([
+        //     SPLINT.require('@PROJECT_ROOT/manager/managerHelper.js'),
+        //     SPLINT.require('@PROJECT_ROOT/manager/managerCallPHP.js'),
+        //     SPLINT.require('@PROJECT_ROOT/manager/managerObject.js')
+        // ]);
+        // this.fullyLoaded.then(async function(){
+        //     this.managerObject = new managerObject();
+        // }.bind(this))
     }
     static initWorker(){
         // let a = SPLINT.API.WebWorkerAPI.defineWorker({

@@ -282,7 +282,10 @@ class ADMIN_products extends ADMIN_DrawTemplate {
                             sizeDeep.invalid();
                             flag = false;
                         }
-                        let nameOUT = "LIGHTER_" + colorID.toUpperCase() + "_" + EPType.toUpperCase() + "_" + name;
+                        let nameOUT = name;
+                        if(editProductData == null){
+                            nameOUT = "LIGHTER_" + colorID.toUpperCase() + "_" + EPType.toUpperCase() + "_" + name;
+                        }
                         if(flag){
                             if(editProductData != null){
                                 // console.log(editProductData.ID, price, nameOUT, description, size, viewName, colorID, EPType, AvailableAmount, attrs)

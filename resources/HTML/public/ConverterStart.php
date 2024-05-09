@@ -6,7 +6,7 @@
         <title>Enflame</title>
         <meta charset="ISO-8859-1" />
         <s-style src="converterStart.css"></s-style>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
         <!-- <meta name="viewport" content="width=device-width, initial-scale=0.5, minimum-scale=0.1, maximum-scale=5.0, user-scalable=no"> -->
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> -->
@@ -45,7 +45,7 @@
         <s-part src="/js/assets/functionsProduct.js"></s-part>
         <s-part src="/js/manager/manager.js"></s-part>
 
-        <s-part src="/js/Pages/NavigationBar/NavigationBarHelper.js"></s-part>
+        <s-part first src="/js/Pages/NavigationBar/NavigationBarHelper.js"></s-part>
         <s-part src="/js/Pages/NavigationBar/NavigationBar.js"></s-part>
         <s-part src="/js/Footer.js"></s-part>
 

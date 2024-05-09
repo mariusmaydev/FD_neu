@@ -3,8 +3,9 @@
     <head>
         <title>Enflame</title>
         <meta charset="ISO-8859-1"/>
-        <s-style src="cart.css"></s-style>
+        <s-style style src="cart.css"></s-style>
 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     </head>
     <body id="CartBODY">
         <div class="NavigationBar" id="NavigationBar"></div>
@@ -34,7 +35,7 @@
         <s-part src="/js/Projects/ProjectList/Details/ProjectDetailsMobile.js"></s-part>
         <s-part src="/js/Projects/ProjectList/ProjectDetails.js"></s-part>
 
-        <s-part src="/js/Pages/NavigationBar/NavigationBarHelper.js"></s-part>
+        <s-part first src="/js/Pages/NavigationBar/NavigationBarHelper.js"></s-part>
         <s-part src="/js/Pages/NavigationBar/NavigationBar.js"></s-part>
         <s-part src="/js/Footer.js"></s-part>
         <s-loader src="/js/Eventhandler.js"></s-loader>

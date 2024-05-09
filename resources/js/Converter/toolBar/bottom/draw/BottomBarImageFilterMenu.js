@@ -95,6 +95,7 @@ class BottomBarImageFilterMenu {
                 this.data.ImageFilter.contrast = value;
                 ConverterHelper.filter(DSImage.getIndex(this.data.ImageID));
             }.bind(this);
+            sl.updateSign();
     }
     drawSliderSharpness(){
         this.floatingDiv.remove();
@@ -114,6 +115,7 @@ class BottomBarImageFilterMenu {
                 this.data.ImageFilter.sharpness = value;
                 ConverterHelper.filter(DSImage.getIndex(this.data.ImageID));
             }.bind(this);
+            sl.updateSign();
     }
     drawSliderAntialias(){
         this.floatingDiv.remove();
@@ -133,6 +135,7 @@ class BottomBarImageFilterMenu {
                 this.data.ImageFilter.antialiasing = value;
                 ConverterHelper.filter(DSImage.getIndex(this.data.ImageID));
             }.bind(this);
+            sl.updateSign();
     }
     drawSliderLineWidth(){
         this.floatingDiv.remove();
@@ -143,14 +146,15 @@ class BottomBarImageFilterMenu {
             sl.drawTickMarks = false;
             sl.min    = 1;
             sl.max    = 3;
-            sl.valueExtension = "%";
-            sl.value  = this.data.ImageFilter.TextLineWidth;
+            sl.valueExtension = "";
+            sl.value  = this.data.ImageFilter.lineWidth;
             sl.onDrawSign = function(signContent){
-                signContent.value = SPLINT.Tools.Math.roundFX(sl.valuePercent, 0, true) + sl.valueExtension;
+                signContent.value = sl.value;
             }.bind(this);
             sl.oninputFinished = function(value){
-                this.data.ImageFilter.TextLineWidth = value;
+                this.data.ImageFilter.lineWidth = value;
                 ConverterHelper.filter(DSImage.getIndex(this.data.ImageID));
             }.bind(this);
+            sl.updateSign();
     }
 }

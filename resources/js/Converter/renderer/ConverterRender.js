@@ -136,52 +136,20 @@ class CanvasElement_C {
       }
     }
   }
-  createTextData(scale = 1){
+  createTextData(){
     return new Promise(async function(resolve){
         let proms = [];
-        let size = {
-            x: this.canvas.width * scale,
-            y: this.canvas.height * scale,
-            scale: scale
-        }
         for (const element of this.stack){
             if(element.type == "txt"){
-    
-                let postEle = JSON.parse(JSON.stringify( element));
-                    postEle.data.TextAlign = 0;
-                let canvas = document.createElement("canvas");
-                    canvas.width  = (parseInt(postEle.data.FrameWidth) * size.scale *4) + 10;
-                    canvas.height = (parseInt(postEle.data.FrameHeight) * size.scale *4) + 10;
-    
-                let ctx     = canvas.getContext('2d');
-                    ctx.fillStyle = "transparent";
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
-                    ctx.scale(size.scale , size.scale);
-                let a = postEle.data.TextPosX;
-                let b = postEle.data.TextPosY;
-    
-                    postEle.data.TextPosX = parseInt(canvas.width /2)
-                    postEle.data.TextPosY = parseInt(canvas.height /2);
-                    postEle.ctx = ctx;
-                    console.log(postEle, a, b);
-    
-                canvasPaths.drawTextForData(postEle, true);
-                element.data.TextPosX = a;
-                element.data.TextPosY = b;
-
-                proms.push(fetch(canvas.toDataURL("image/png", 1))
-                .then(res => res.blob())
-                .then(async function(res){
-                    element.data.TextImg = res;
-
-                    let r = this.#getElementByID_Type(element.ID, "txt")
-                    this.stack[r.index].data = element.data;
-                    return true;
+                proms.push(new Promise(async function(resolve){
+                    let blob = await element.canvasBuffer.convertToBlob();
+                    element.data.TextImg = blob;
+                    resolve(blob);
                 }.bind(this)));
             }
         }
-        Promise.allSettled(proms).then(function(){
-            resolve(arguments);
+        Promise.allSettled(proms).then(function(res){
+            resolve(...res);
         })
     }.bind(this));
   }

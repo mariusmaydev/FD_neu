@@ -97,6 +97,20 @@ class NavigationBarHelper {
                         let btData = new SPLINT.DOMElement.Button(containerFooter, "BTData", "Datenschutz");
                             btData.Class("btData");
                             btData.onclick = function(){
+                                S_Location.goto(PATH.location.dataProtection).call();
+                                this.close();
+                            }.bind(this);
+                            
+                        let btAGB = new SPLINT.DOMElement.Button(containerFooter, "BT_AGB", "AGBs");
+                            btAGB.Class("btAGB");
+                            btAGB.onclick = function(){
+                                S_Location.goto(PATH.location.AGB).call();
+                                this.close();
+                            }.bind(this);
+                            
+                        let btVersand = new SPLINT.DOMElement.Button(containerFooter, "BTSending", "Versand");
+                            btVersand.Class("btSending");
+                            btVersand.onclick = function(){
 
                                 this.close();
                             }.bind(this);

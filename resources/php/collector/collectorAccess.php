@@ -1,6 +1,8 @@
 <?php namespace collector;
     use Communication;
     use Debugg;
+    
+    // header("Access-Control-Allow-Origin: " . $_SERVER['HTTP_ORIGIN']);
     require_once 'collector.php';
     require_once 'collectorPageViews.php';
     require_once 'collectorUserData.php';

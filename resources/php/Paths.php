@@ -1,8 +1,11 @@
 <?php
     $folder = "fd";
-    $SSL    = $_SERVER["REQUEST_SCHEME"];
+    $SSL = "HTTPS";
+    if(isset($_SERVER["REQUEST_SCHEME"])){
+        $SSL = $_SERVER["REQUEST_SCHEME"];
+    }
     $SSL1   = "";
-    $GLOBALS["SSL"]     = $_SERVER["REQUEST_SCHEME"];
+    $GLOBALS["SSL"]     = $SSL;
     $GLOBALS["SSL1"]    = "";
     $GLOBALS["folder"]  = "fd";
     // $GLOBALS = array(

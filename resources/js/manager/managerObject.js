@@ -53,6 +53,8 @@ class managerObject {
     async getPHP(){
         return new Promise(async function(resolve){
             let res = (await managerCallPHP.getUserData((await SPLINT.SessionsPHP.get("USER_ID", false))));
+            console.dir(res);
+            debugger
                 if(res == "null" || res == null){
                     resolve(res);
                     return res;

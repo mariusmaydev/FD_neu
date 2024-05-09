@@ -27,7 +27,6 @@
         <!-- <script src="../../../../Splint/js/Utils/TouchEmulator.js"></script> -->
             <!-- <script defer src = "projects_test.js"></script> -->
 
-            <s-part src="/js/Pages/NavigationBar/NavigationBarHelper.js"></s-part>
         <s-part first src="/js/GLOBAL/Paths.js"></s-part>
         <s-part src="/js/assets/functionsShoppingCart.js"></s-part>
 
@@ -43,6 +42,7 @@
         <s-part src="/js/Projects/Projects.js"></s-part>
         <s-part src="/js/Helper/ProjectsHelper.js"></s-part>
 
+        <s-part first src="/js/Pages/NavigationBar/NavigationBarHelper.js"></s-part>
         <s-part src="/js/Pages/NavigationBar/NavigationBar.js"></s-part>
         <s-part src="/js/Footer.js"></s-part>
         <s-part src="/js/manager/manager.js"></s-part>

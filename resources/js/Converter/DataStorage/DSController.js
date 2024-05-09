@@ -29,6 +29,7 @@ class DSController {
                 call.keepalive = true;
                 
                 let res = await call.send();
+                // await DSText.save();
                 this.saveAll_promise = null;
                 resolve(res);    
         }.bind(this));

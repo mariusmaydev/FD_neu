@@ -8,6 +8,7 @@
         <s-style src="checkout.css"></s-style>
 
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
 
     </head>
@@ -35,8 +36,9 @@
         <s-part src="/js/Orders/Order.js"></s-part>
         <s-part src="/js/Checkout/"></s-part>
 
-        <s-part src="/js/Pages/NavigationBar/NavigationBarHelper.js"></s-part>
+        <s-part first src="/js/Pages/NavigationBar/NavigationBarHelper.js"></s-part>
         <s-part src="/js/Pages/NavigationBar/NavigationBar.js"></s-part>
+        <s-part src="/js/Footer.js"></s-part>
         <s-loader src="/js/Eventhandler.js"></s-loader>
         <script async type="text/javascript" src="../../../../Splint/js/Splint.js" onload="SPLINT.start()"></script>
     </body>

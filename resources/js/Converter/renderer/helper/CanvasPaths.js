@@ -1,66 +1,5 @@
 
 class canvasPaths {
-    static drawTextForData(element, renderFlag = false){
-        let ctx = element.ctx;
-          ctx.save();
-          ctx.translate(element.data.TextPosX, element.data.TextPosY);
-          ctx.scale(4, 4);
-          ctx.rotate(S_Math.toRadians(element.data.TextAlign));
-          element.ctx.globalAlpha = 1;
-          ctx.imageSmoothingEnabled = true;
-          ctx.imageSmoothingQuality = "high";
-          ctx.textBaseline = "middle";
-          ctx.lineWidth = parseInt(element.data.LineWidth / 2);
-          ctx.strokeStyle = "#ffffff";
-          ctx.fillStyle = "#ffffff";
-          ctx.font = element.data.FontWeight + " " + element.data.FontStyle + " " + parseInt(element.data.FontSize) + "px " + element.data.FontFamily;
-          let metrics     = 0;
-          let max_width   = 0;
-          let height      = 0;
-          let max_height  = 0;
-          let lines = element.data.TextValue.split('\n');
-          for(let i = 0; i < lines.length; i++){
-            metrics = ctx.measureText(lines[i]);
-            height = metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent + parseInt(element.data.TextLineHeight)-parseInt(element.data.FontSize / 3);
-            let width = metrics.width;
-            if(width > max_width){
-              max_width = width;
-            }
-            if(height > max_height){
-              max_height = height;
-            }
-          }
-          ctx.textAlign = element.data.TextOrientation;
-          ctx.textRendering  = "optimizeSpeed";
-          let C_width = max_width / 2;
-          let C_height = -((lines.length-1) * max_height) / 2;
-          
-        //   let drawFunc = function(){ctx.strokeText(...arguments)};
-        //   if(renderFlag){
-              let drawFunc = function(){ctx.strokeText(...arguments)};
-        //   }
-          for(let i = 0; i < lines.length; i++){
-            if(element.data.TextOrientation == 'center'){
-              drawFunc(lines[i], 0,  C_height + ((i ) * max_height) );
-            //   drawFunc(lines[i], 0,  C_height + ((i ) * max_height) );
-            } else if(element.data.TextOrientation == 'right'){
-              drawFunc(lines[i], +C_width,  C_height + ((i ) * max_height) );
-            //   drawFunc(lines[i], +C_width,  C_height + ((i ) * max_height) );
-            } else {
-              drawFunc(lines[i], -C_width,  C_height + ((i ) * max_height) );
-            //   drawFunc(lines[i], -C_width,  C_height + ((i ) * max_height) );
-            }
-          }
-        //   ctx.globalAlpha = 0.5;
-        //   ctx.strokeStyle = "#000000";
-          ctx.rect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
-        //   ctx.fill()
-        
-          element.data.FrameHeight     = parseInt((lines.length) * (max_height));
-          element.data.FrameWidth      = max_width;
-  
-          ctx.restore();
-    }
     static async drawThumbnailTxt(element){
         debugger
         let ctx = element.ctx;
@@ -209,12 +148,11 @@ class canvasPaths {
         }
         return "#e8b000"//"#ffd700";
       }
-    static updateImageBuffer(element){
+    static updateImageBuffer(element, renderMode = false){
         let img = element.src;
         element.canvasBuffer = new OffscreenCanvas(img.width, img.height);
         let ctx = element.canvasBuffer.getContext("2d");
 
-        let color = this.getColorFor(DSProject.Storage.EPType);
 
         ctx.save();
         // ctx.scale(2,2)
@@ -227,44 +165,42 @@ class canvasPaths {
                 //         ctx.fillRect(0, 0, img.width, img.height);
                 // //     }
                 //     ctx.globalCompositeOperation = "source-over";
-        ctx.filter = 'blur(1px)drop-shadow(0px 0px 1px ' + color + ')';
-        ctx.imageSmoothingEnabled = true;
-        ctx.imageSmoothingQuality  = "high";
+        let color = "white";
+        if(!renderMode){
+            color = this.getColorFor(DSProject.Storage.EPType);
+            ctx.filter = 'blur(1px)drop-shadow(0px 0px 1px ' + color + ')';
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality  = "high";
+        }
         ctx.globalAlpha = 1;
         ctx.beginPath();
         ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width, img.height);
         ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width, img.height);
-        // ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width, img.height);
-        // ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width, img.height);
 
-        ctx.save();
-            ctx.globalCompositeOperation = "source-atop";
-            ctx.filter = 'opacity(80%) brightness(100%) ';
-            ctx.fillStyle = color;
-            ctx.fillRect(0, 0, img.width, img.height);
-        ctx.restore();
-        // ctx.drawImage(img, 0, 0, parseInt(img.width), parseInt(img.height), -element.data.ImageWidth / (2/(scale)), -element.data.ImageHeight / (2/(scale)), element.data.ImageWidth * scale, element.data.ImageHeight * scale);
-        // ctx.drawImage(img, 0, 0, parseInt(img.width), parseInt(img.height), -element.data.ImageWidth / (2/(scale)), -element.data.ImageHeight / (2/(scale)), element.data.ImageWidth * scale, element.data.ImageHeight * scale);
-
-            ctx.globalCompositeOperation = "source-atop";
-            ctx.filter = 'opacity(40%) brightness(160%) '//blur(1px) drop-shadow(0px 0px 5px ' + this.getColorFor(DSProject.Storage.EPType) + ')';
-            ctx.globalAlpha = 0.5;
-            ctx.drawImage(this.im, 0, 0, img.width, img.height)
-            ctx.globalCompositeOperation="source-over";
+        if(!renderMode){
+            ctx.save();
+                ctx.globalCompositeOperation = "source-atop";
+                ctx.filter = 'opacity(80%) brightness(100%) ';
+                ctx.fillStyle = color;
+                ctx.fillRect(0, 0, img.width, img.height);
+            ctx.restore();
+                ctx.globalCompositeOperation = "source-atop";
+                ctx.filter = 'opacity(40%) brightness(160%) '
+                ctx.globalAlpha = 0.5;
+                ctx.drawImage(this.im, 0, 0, img.width, img.height)
+                ctx.globalCompositeOperation="source-over";
+        }
 
             ctx.closePath();
-            // ctx.fill();
         ctx.restore();
-        // this.updateImgPath(element)
-        this.drawImageBuffer(element);
+        return this.drawImageBuffer(element, renderMode);
     }
-    static drawImageBuffer(element){
+    static drawImageBuffer(element, renderMode = false){
         let ctx = element.ctx;
         let b = element.canvasBuffer; 
         if(b == undefined || element.needsUpdate == true){
             element.needsUpdate = false;
-            this.updateImageBuffer(element);
-            return;
+            return this.updateImageBuffer(element, renderMode);
         }
         ctx.save();
             // ctx.scale(2, 2);
@@ -278,6 +214,7 @@ class canvasPaths {
           ctx.closePath();
           ctx.fill();
         ctx.restore();
+        return element;
     }
     static #measureText(element){
         let c = new OffscreenCanvas(12, 12);
@@ -311,7 +248,7 @@ class canvasPaths {
             res.lines = lines;
         return res;
     }
-    static updateTextBuffer(element){
+    static updateTextBuffer(element, renderMode = false){
         let measures = this.#measureText(element);
         element.canvasBuffer = new OffscreenCanvas(element.data.FrameWidth*2, element.data.FrameHeight*2);
         let ctx = element.canvasBuffer.getContext("2d");
@@ -324,9 +261,12 @@ class canvasPaths {
           ctx.imageSmoothingEnabled = true;
           ctx.imageSmoothingQuality = "high";
           ctx.lineWidth = element.data.LineWidth;
-          let color = this.getColorFor(DSProject.Storage.EPType);
+          let color = "white";
+          if(!renderMode) {
+                color = this.getColorFor(DSProject.Storage.EPType);
+                ctx.filter = 'blur(1px) drop-shadow(0px 0px 1px ' + color + ')';
+          }
           ctx.strokeStyle = color;
-          ctx.filter = 'blur(1px) drop-shadow(0px 0px 1px ' + color + ')';
           ctx.font = element.data.FontWeight + " " + element.data.FontStyle + " " + element.data.FontSize + "px " + element.data.FontFamily;
           let max_width   = measures.max_width;
           let max_height  = measures.max_height;
@@ -350,12 +290,13 @@ class canvasPaths {
               drawFunc(lines[i], -C_width,  C_height + ((i ) * max_height) );
             }
           }
-          
-          ctx.globalCompositeOperation="source-atop";
-          ctx.filter = 'opacity(50%) brightness(160%) '//blur(1px) drop-shadow(0px 0px 5px ' + this.getColorFor(DSProject.Storage.EPType) + ')';
-          ctx.globalAlpha = 0.5;
-          ctx.drawImage(this.im, -C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height))
-          ctx.globalCompositeOperation="source-over";
+          if(!renderMode){
+            ctx.globalCompositeOperation="source-atop";
+            ctx.filter = 'opacity(50%) brightness(160%) '//blur(1px) drop-shadow(0px 0px 5px ' + this.getColorFor(DSProject.Storage.EPType) + ')';
+            ctx.globalAlpha = 0.5;
+            ctx.drawImage(this.im, -C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height))
+            ctx.globalCompositeOperation="source-over";
+          }
 
           ctx.rect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
         // let mat = new DOMMatrix().translate(element.data.TextPosX, element.data.TextPosY).rotate(element.data.TextAlign ).scale(2);
@@ -365,15 +306,14 @@ class canvasPaths {
         //   ctx.strokeRect(-C_width, -((lines.length ) * max_height) / 2, max_width, (lines.length * max_height));
 
         ctx.restore();  
-        this.drawTextBuffer(element);
+        return this.drawTextBuffer(element, renderMode);
     }
-    static drawTextBuffer(element){
+    static drawTextBuffer(element, renderMode = false) { 
         let ctx = element.ctx;
         let b = element.canvasBuffer; 
-        if(b == undefined || element.needsUpdate == true){
+        if(b == undefined || element.needsUpdate == true) {
             element.needsUpdate = false;
-            this.updateTextBuffer(element);
-            return;
+            return this.updateTextBuffer(element, renderMode);
         }
         ctx.save();
             ctx.translate(element.data.TextPosX, element.data.TextPosY);
@@ -388,6 +328,7 @@ class canvasPaths {
           ctx.closePath();
           ctx.fill();
         ctx.restore();
+        return element;
     }
     static updateBuffer(element){
         if(element.type == "txt"){
@@ -415,9 +356,11 @@ class canvasPaths {
 
     static im;
     static {
-        this.im = new Image();
-        this.im.src = "https://www.shutterstock.com/shutterstock/videos/1066111828/thumb/1.jpg?ip=x480"
-        this.im.setAttribute("crossOrigin", '')
+        if(self["Image"] != undefined){
+            this.im = new Image();
+            this.im.src = "https://www.shutterstock.com/shutterstock/videos/1066111828/thumb/1.jpg?ip=x480"
+            this.im.setAttribute("crossOrigin", '')
+        }
     }
 
 }

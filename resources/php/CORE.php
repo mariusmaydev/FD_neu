@@ -2,7 +2,6 @@
     $rootpath = realpath($_SERVER["DOCUMENT_ROOT"]);
     require_once $rootpath.'/Splint/php/CORE.php';
     require_once 'Paths.php';
-    require_once 'CORE_dataBase.php';
     require_once $rootpath.'/fd/resources/php/FolderSyS/FolderSySCore.php';
     require_once $rootpath.'/fd/resources/php/security/security.php';
     //PHP Core
@@ -187,53 +186,4 @@
         }
         fclose($fp);
     }
-
-    // class DataSet {
-    //     public $dataSet     = [];
-    //     public $keySet      = [];
-    //     public $PrimaryKey  = "";
-    //     public $TBName      = "";
-    //     public function newEntry($EntryName, $value = null){
-    //         $array = [$EntryName, $value];
-    //         array_push($this -> dataSet, $array);
-    //     }
-    //     public function removeEntry($EntryName){
-    //         $i = 0;
-    //         foreach ($this -> dataSet as $data) {
-    //             if($data[0] == $EntryName){
-    //                 array_splice($this -> dataSet, $i);
-    //             }
-    //             $i++;
-    //         }
-    //     }
-    //     public function primaryKey($PrimaryKey = null){
-    //         if ($PrimaryKey != null) {
-    //             $this -> PrimaryKey = $PrimaryKey;
-    //         }
-    //         return $this -> PrimaryKey;
-    //     }
-    //     public function newKey($KeyName, $Key = null){
-    //         if($Key == null){
-    //             // $array = [$KeyName, $Key];
-    //             array_push($this -> keySet, $KeyName);
-    //         } else {
-    //             $array = [$KeyName, $Key];
-    //             array_push($this -> keySet, $array);
-    //         }
-    //     }
-    //     public function getKeyNames_Keys(){
-    //         return $this -> keySet;
-    //     }
-    //     public function TBName($TBName = null){
-    //         if ($TBName != null) {
-    //             $this -> TBName = $TBName;
-    //         }
-    //         return $this -> TBName;
-    //     }
-    //     public function getEntrys_Names(){
-    //         return $this -> dataSet;
-    //     }
-    // }
-
-
 ?>

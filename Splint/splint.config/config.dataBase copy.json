@@ -1,0 +1,57 @@
+{
+    "server" : {
+        "hostname"          : "127.0.0.1",
+        "password"          : "",
+        "userNameGeneral"   : "root"
+    },
+    "dataBases" : {
+        "userdata" : {
+            "userName" : "",
+            "tables" : ["userdata", "logins_admin", "logins"]
+        },
+        "transactions" : {
+            "userName" : "",
+            "tables" : ["transactions"]
+        },
+        "projects" : {
+            "userName" : "",
+            "tables" : []
+        },
+        "projects_archive" : {
+            "userName" : "",
+            "tables" : []
+        },
+        "products" : {
+            "userName" : "",
+            "tables" : ["products"]
+        },
+        "orders" : {
+            "userName" : "",
+            "tables" : ["orders", "orders_archive"]
+        },
+        "designs" : {
+            "userName" : "",
+            "tables" : ["tags"]
+        },
+        "converter_images" : {
+            "userName" : "",
+            "tables" : []
+        },
+        "converter_images_archive" : {
+            "userName" : "",
+            "tables" : []
+        },
+        "converter_texts" : {
+            "userName" : "",
+            "tables" : []
+        },
+        "converter_texts_archive" : {
+            "userName" : "",
+            "tables" : []
+        },
+        "collector_userdata" : {
+            "userName" : "dbs12605904",
+            "tables" : ["paths"]
+        }
+    }
+}

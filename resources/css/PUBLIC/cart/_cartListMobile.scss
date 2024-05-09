@@ -1,0 +1,364 @@
+@use '../../general/main' as Gmain;
+@use '../../general/mediaQueries';
+@use '../../themes/theme1/vars';
+@use '../../themes/theme1/main' as Tmain;
+@use '../../themes/theme1/buttons' as Tbuttons;
+@use '../../../../../Splint/scss/tools/tools' as S_tools;
+// @import 'list/desktop-small';
+// @import 'list/desktop';
+// @import 'list/mobile';
+// @import '../../general/buttons.scss';
+// @import '../../general/NavigationBar.scss';
+
+@mixin drawCardListMobile {
+    > .cartListMain {
+        position: relative;
+        width: 100%;
+        overflow: visible;
+        margin-top: 0;
+        height: max-content;
+        padding-bottom: 0;
+        > .emptyBody {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            display: none;
+            &[state*='active']{
+                display: flex;
+            }
+            > button {
+                user-select: none;
+                pointer-events: none;
+                background-color: transparent;
+                padding: 1rem;
+                margin-top: 20vh;
+                > span {
+                    font-size: 6rem;
+                    &.description {
+                        padding-top: 2rem;
+                        font-size: 3rem;
+
+                    }
+                }
+            }
+        }
+        @include mediaQueries.forMediaBreakpoint(mobile-small){
+            width: 98% !important;
+        }
+        >.ListBody {
+            position: relative;
+            width: 100%;
+            height: max-content;
+            // box
+            // display: flex;
+            // flex-direction: column;
+            // justify-content: stretch;
+            // gap: 1vh;
+            box-sizing: content-box;
+            // overflow: hidden;
+            > .TableMain {
+                position: relative;
+                width: 100%;
+                @include mediaQueries.forMediaBreakpoint(desktop){
+                    height: max-content;
+                }
+                @include mediaQueries.forMediaBreakpoint(mobile){
+                    height: 100%;
+                }
+                bottom: 0;
+                box-sizing: border-box;
+                margin: 0;
+                justify-content: start;
+                ::-webkit-scrollbar {
+                    display: none;
+                }
+                > .ListMain {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: nowrap;
+                    gap: 0.5rem;
+                    padding-top: 5rem;
+                    padding-bottom: 0;
+                    height: max-content;
+                    justify-content: start;
+                    box-sizing: border-box;
+                    overflow: hidden;
+                    > .ListElement {
+                        height: 15rem;
+                        margin: 0.5rem;
+                        // margin-bottom: 0.1rem;
+                        @include Tmain.TContainer_basic();
+                        padding: 0.25rem;
+                        padding-bottom: 0.75rem;
+                        display: flex;
+                        width: calc(100% - 1rem);
+                        // margin: 0;
+                        overflow: hidden;
+                        justify-content: stretch;
+                        gap: 0.5rem;
+                        box-sizing: border-box;
+                        transform: translateX(-80rem);
+                        transition: transform 0.3s ease ;
+                        &[loaded='true']{
+                            transform: translateX(0rem);
+                        }
+                        &.First {
+                            position: relative;
+                            margin: 0;
+                            padding: 0;
+                            width: calc(100% - 1rem);
+                            height: 100%;
+                            display: block;
+                            transform: none;
+                            // margin: 0rem;
+                            // margin-bottom: 0;
+                            margin-left: 0.5rem;
+                            border-radius: 0;
+                            background-color: transparent;
+                            box-shadow: none;
+                                @include Tmain.TContainer_basic();
+                            > div {
+                                border-radius: 0;
+                                // box-shadow: none;
+                                padding: 0.5rem;
+                                padding-inline: 1rem;
+                                > span {
+                                    font-size: 2rem;
+                                    // font-weight: 500;
+                                }
+                            }
+                        }
+                        &:not(.First){
+                            > div {
+                                position: relative;
+                                height: 100%;
+                                // width: ;
+                                display: flex;
+                                box-sizing: border-box;
+                                &.lighter {
+                                    height: 85%;
+                                    aspect-ratio: vars.$LIGHTER-ratio;
+                                    > div {
+                                        position: absolute;
+                                        transform: translateY(15%) scale(1.5);
+                                        width: 100%;
+                                        height: 100%;
+                                        > canvas {
+    
+                                        }
+                                    }
+                                }
+                                &.right {
+                                    position: relative;
+                                    box-sizing: border-box;
+                                    width: 100%;
+
+                                    justify-content: stretch;
+                                    display: grid;
+                                    grid-template-columns: auto auto auto auto;
+                                    column-gap: 0.5rem;
+                                    grid-template-rows: minmax(1fr, max-content) min-content;
+                                    grid-template-areas: 
+                                        "info info info price"
+                                        // "space space space space"
+                                        "buttons buttons amount amount";
+                                    // > div {
+                                    //     &.info {
+                                    //         > .inner {
+                                    //             padding-top: 0 !important;
+                                    //         }
+                                    //         // border-bottom:1px solid vars.$color-devider;
+                                    //     }
+                                    //     &.price {
+                                    //         > .inner {
+                                    //             padding: 0 !important;
+                                    //             align-items: center;
+                                    //         }
+                                    //     }
+                                    // }
+                                    > div {
+                                        width: 100%;
+                                        &.info {
+                                            grid-area: info;
+                                            > .inner {
+                                                padding-top: 0rem;
+                                                padding-right: 0.5rem;
+                                                display: flex;
+                                                flex-direction: column;
+                                                > .text {
+                                                    flex-grow: 1;
+                                                    padding: 0.5rem;
+                                                    padding-right: 0;
+                                                    font-size: 1.2rem;
+                                                    > span {
+                                                        position: absolute;
+                                                        left: -7.5rem;
+                                                        font-weight: 400;
+                                                    }
+                                                }
+                                                > hr {
+                                                    display: none;
+                                                }
+                                                > .informationTableBody {
+                                                    flex-grow: 1;
+                                                    padding: 0.5rem;
+                                                    padding-inline: 0;
+                                                    padding-top: 2rem;
+                                                    > div {
+                                                        width: 150%;
+                                                        > table {
+                                                            font-size: 0.75rem;
+                                                            > tr {
+                                                                // &:first-of-type {
+                                                                //     display: none;
+                                                                // }
+                                                                > td {
+                                                                    padding-bottom: 0.25rem;
+                                                                    &[col*='1']{
+                                                                        padding-left: 1rem;
+                                                                    }
+
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                > .buttons {
+                                                    height: max-content;
+                                                    padding: 0.5rem;
+                                                    overflow: visible;
+                                                    display: flex;
+                                                    flex-direction: row;
+                                                    justify-content: right;
+                                                    > button {
+                                                        margin-inline: 5%;
+                                                        span {
+                                                            font-size: 2rem;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        &.amount {
+                                            grid-area: amount;
+                                            // display: flex;
+                                            // flex-direction: column;
+                                            // justify-content: right;
+                                            // align-items: center;
+                                            padding-right: 0.5rem;
+                                            > .inner {
+                                                width: 100%;
+                                                height: 100%;
+                                                display: flex;
+                                                flex-direction: column;
+                                                align-items: center;
+                                                font-size: 1rem;
+                                                padding-top: 0 !important;
+                                                justify-content: end!important;
+                                                > div {
+                                                    
+                                                    border-radius: vars.$NEW-border-radius-main;
+                                                    background-color: transparent;
+                                                    border: calc(1px) solid vars.$NEW-color-text-secondary;
+                                                    padding: 0rem;
+                                                    width: max-content;
+                                                    max-width: 100%;
+                                                    height: max-content;
+                                                    box-sizing: border-box;
+                                                    > button {
+                                                        @include Tmain.TButton_secondary(0.75);
+                                                        border: none;
+                                                        > span {
+                                                            font-size: 1rem;
+                                                        }
+                                                        &:first-of-type{
+                                                            padding-right: 0;
+                                                        }
+                                                        &:last-of-type{
+                                                            padding-left: 0;
+                                                        }
+                                                    }
+                                                    > div {
+                                                        > input {
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        &.price {
+                                            grid-area: price;
+                                            display: flex;
+                                            flex-direction: column;
+                                            justify-content: right;
+                                            align-items: center;
+                                            > .inner {
+                                                width: 100%;
+                                                height: 100%;
+                                                display: flex;
+                                                flex-direction: row;
+                                                justify-content: center;
+                                                padding: 0.5rem;
+                                                align-items: left;
+                                                font-size: 1.5rem;
+                                                > div {
+                                                    height: 100%;
+                                                    width: fit-content;
+                                                }
+                                            }
+                                        }
+                                        &.buttons {
+                                            grid-area: buttons;
+                                            height: 100%;
+                                            justify-content: space-around;
+                                            > .inner {
+                                                padding-left: 0rem;
+                                                width: calc(100%);
+                                                height: 100%;
+                                                display: flex;
+                                                // justify-content: right;
+                                                align-items: end;
+                                                display: flex;
+                                                flex-direction: row;
+                                                justify-content: space-around;
+                                                gap: 0.5rem;
+                                                > button {
+                                                    
+                                                    @include Tmain.TButton_secondary(0.75);
+                                                    // @include Tmain.TButton_simple();
+                                                    &.remove {
+                                                    }
+                                                    > span {
+                                                        font-size: 1rem;
+                                                    }
+                                                }
+                                                // @include mediaQueries.forMediaBreakpoint(mobile-small){
+                                                //     justify-content: space-around;
+                                                //     > button {
+                                                //         aspect-ratio: 1/1;
+                                                //         @include Tmain.TButton_simple();
+                                                //         &.remove {
+                                                //         }
+                                                //         > span {
+                                                //             font-size: 4rem;
+                                                //         }
+                                                //     }
+                                                // }
+                                            }
+                                        }
+                                    }
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

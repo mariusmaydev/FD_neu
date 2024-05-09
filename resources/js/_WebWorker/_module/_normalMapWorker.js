@@ -70,7 +70,6 @@ class WebWorker3D extends SPLINT.Worker.WorkerHelper.WebWorkerTemplate {
         }.bind(this));
     }
     static normalize(imgData){
-        console.log(imgData)
         let w = imgData.width;
         let h = imgData.height;
         var pixel, x_vector, y_vector, coords;

@@ -1,10 +1,11 @@
 @use "buttons";
-@use "scrollbar";
+// @forward "scrollbar" show mobile, desktop;
 @use "vars";
 @forward "helper";
 @use "../../../../../Splint/scss/tools/tools" as S_tools;
 @forward "container" show TContainer_basic;
 @forward "buttonNew" show TButton_primary, TButton_secondary, TButton_basic, TButton_simple, TButton_Animated;
+
 
 * {
     // transition: .1s ease;

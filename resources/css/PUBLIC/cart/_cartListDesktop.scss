@@ -1,0 +1,479 @@
+@use '../../general/main' as Gmain;
+@use '../../general/mediaQueries';
+@use '../../themes/theme1/vars';
+@use '../../themes/theme1/main' as Tmain;
+@use '../../themes/theme1/buttons' as Tbuttons;
+@use '../../../../../Splint/scss/tools/tools' as S_tools;
+
+@mixin drawCartListDesktop {
+    > .cartListMain {
+        // @include border();
+        position: relative;
+        width: 100%;
+        overflow: visible;
+        margin-top: 0;
+        height: max-content;
+        // @include mediaQueries.forMediaBreakpoint(desktop){
+        //     height: calc(100vh - 4rem);
+        // }
+        // box-sizing: border-box;
+        // padding: 0.5rem;
+        // padding-top: 1vh;
+        padding-bottom: 0;
+        > .emptyBody {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            display: none;
+            &[state*='active']{
+                display: flex;
+            }
+            > button {
+                user-select: none;
+                pointer-events: none;
+                background-color: transparent;
+                padding: 1rem;
+                margin-top: 20vh;
+                > span {
+                    font-size: 6rem;
+                    &.description {
+                        padding-top: 2rem;
+                        font-size: 3rem;
+
+                    }
+                }
+            }
+        }
+        @include mediaQueries.forMediaBreakpoint(mobile-small){
+            width: 98% !important;
+        }
+        >.ListBody {
+            position: relative;
+            width: 100%;
+            height: max-content;
+            // box
+            // display: flex;
+            // flex-direction: column;
+            // justify-content: stretch;
+            // gap: 1vh;
+            box-sizing: content-box;
+            // overflow: hidden;
+            > .TableMain {
+                position: relative;
+                width: 100%;
+                @include mediaQueries.forMediaBreakpoint(desktop){
+                    height: max-content;
+                }
+                @include mediaQueries.forMediaBreakpoint(mobile){
+                    height: 100%;
+                }
+                bottom: 0;
+                box-sizing: border-box;
+                margin: 0;
+                justify-content: start;
+                ::-webkit-scrollbar {
+                    display: none;
+                }
+                > .ListMain {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: nowrap;
+                    gap: 0.5rem;
+                    // padding-top: 0.5rem;
+                    @include mediaQueries.forMediaBreakpoint(desktop){
+                        padding-top: calc(8vh + 0.5rem);
+                        padding-bottom: 2vh;
+                    }
+                    @include mediaQueries.forMediaBreakpoint(mobile){
+                        padding-top: calc(8vh + 0.5rem);
+                        padding-bottom: 2vh;
+                    }
+                    @include mediaQueries.forMediaBreakpoint(mobile-small){
+                        padding-top: calc(7vh + 0.5rem);
+                        padding-bottom: 0;
+                    }
+                    height: max-content;
+                    justify-content: start;
+                    box-sizing: border-box;
+                    overflow: hidden;
+                    overflow-x: hidden;
+                    > .ListElement {
+                        height: 15rem;
+                        @include mediaQueries.forMediaBreakpoint(mobile-small){
+                            font-size: 2rem;
+                            height: 30rem;
+                        }
+                        margin: 0.5rem;
+                        margin-bottom: 0.1rem;
+                        @include Tmain.TContainer_basic();
+                        padding: 0.5rem;
+                        display: flex;
+                        // width: 100%;
+                        // margin: 0;
+                        justify-content: stretch;
+                        gap: 1rem;
+                        box-sizing: border-box;
+                        transform: translateX(-100rem);
+                        transition: transform 0.5s ease 0.2s;
+                        &[loaded='true']{
+                            transform: translateX(0rem);
+                        }
+                        &.First {
+                            position: relative;
+                            margin: 0;
+                            padding: 0;
+                            width: calc(100% - 1rem);
+                            height: 100%;
+                            display: block;
+                            transform: none;
+                            margin: 0rem;
+                            margin-bottom: 0;
+                            margin-left: 0.5rem;
+                            border-radius: 0;
+                            background-color: transparent;
+                            box-shadow: none;
+                            > div {
+                                border-radius: 0;
+                                @include Tmain.TContainer_basic();
+                                // box-shadow: none;
+                                padding: 0.5rem;
+                                padding-inline: 1rem;
+                                > span {
+                                    font-size: 2rem;
+                                    font-weight: 500;
+                                }
+                            }
+                        }
+                        &:not(.First){
+                            > div {
+                                height: 100%;
+                                // width: ;
+                                display: flex;
+                                box-sizing: border-box;
+                                &.lighter {
+                                    height: 100%;
+                                    aspect-ratio: vars.$LIGHTER-ratio;
+                                    > div {
+                                        transform: translateY(-5%) scale(1.3);
+                                        width: 100%;
+                                        height: 100%;
+                                        > canvas {
+    
+                                        }
+                                    }
+                                }
+                                &.right {
+                                    position: relative;
+                                    box-sizing: border-box;
+                                    width: 100%;
+                                    @include mediaQueries.forMediaBreakpoint(mobile-small){
+
+                                        justify-content: stretch;
+                                        display: grid;
+                                        grid-template-columns: auto auto auto;
+                                        column-gap: 1rem;
+                                        grid-template-rows: 50% minmax(1fr, max-content) max-content;
+                                        grid-template-areas: 
+                                            "info info info"
+                                            "buttons amount price";
+
+                                        > div {
+                                            &.info {
+                                                > .inner {
+                                                    padding-top: 0 !important;
+                                                }
+                                                border-bottom:1px solid vars.$color-devider;
+                                            }
+                                            &.price {
+                                                > .inner {
+                                                    padding: 0 !important;
+                                                    align-items: center;
+                                                }
+                                            }
+                                            &.amount {
+                                                > .inner {
+                                                    height: 100%;
+                                                    padding-top: 0 !important;
+                                                    // align-items: start!important;
+                                                    // padding-left: 0.5em;
+                                                    justify-content: center!important;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    @include mediaQueries.forMediaBreakpoint(mobile desktop){
+                                        justify-content: stretch;
+                                        display: grid;
+                                        grid-template-columns: auto 10em 9em;
+                                        column-gap: 0rem;
+                                        grid-template-rows: repeat(auto-fill, minmax(min-content, 1fr));
+                                        grid-template-areas: 
+                                            "info amount price"
+                                            "buttons buttons buttons";
+                                    }
+                                    > div {
+                                        // background-color: gray;
+                                        width: 100%;
+                                        &.info {
+                                            grid-area: info;
+                                            > .inner {
+                                                padding-top: 0rem;
+                                                padding-right: 0.5rem;
+                                                display: flex;
+                                                flex-direction: column;
+                                                > .text {
+                                                    flex-grow: 1;
+                                                    padding: 0.5rem;
+                                                    padding-right: 0;
+                                                    font-size: 1.6rem;
+                                                    @include mediaQueries.forMediaBreakpoint(mobile-small){
+                                                        font-size: 2.5rem;
+                                                    }
+                                                }
+                                                > .informationTableBody {
+                                                    flex-grow: 1;
+                                                    padding: 0.5rem;
+                                                    padding-right: 0;
+                                                    padding-top: 0;
+                                                    > div {
+                                                        > table {
+                                                            > tr {
+                                                                // &:first-of-type {
+                                                                //     display: none;
+                                                                // }
+                                                                > td {
+                                                                    padding-bottom: 0.25rem;
+                                                                    &[col*='1']{
+                                                                        padding-left: 1rem;
+                                                                    }
+
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                > .buttons {
+                                                    height: max-content;
+                                                    padding: 0.5rem;
+                                                    overflow: visible;
+                                                    display: flex;
+                                                    flex-direction: row;
+                                                    justify-content: right;
+                                                    > button {
+                                                        margin-inline: 5%;
+                                                        span {
+                                                            font-size: 3rem;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        &.itemPrice {
+                                            // grid-area: info;
+                                            min-width: 1%;
+                                            max-width: 20%;
+                                            display: none;
+                                            // width: auto;
+                                            // justify-content: right;
+                                            > .inner {
+                                                width: 100%;
+                                                height: 100%;
+                                                display: flex;
+                                                flex-direction: row;
+                                                // justify-content: space-around;
+                                                padding-top: 2rem;
+                                                justify-content: right;
+                                                align-items: right;
+                                                > div {
+                                                    height: 100%;
+                                                    width: fit-content;
+                                                    // margin-top: 4rem;
+                                                    font-size: 2rem;
+                                                }
+                                            }
+                                        }
+                                        &.amount {
+                                            grid-area: amount;
+                                            // display: flex;
+                                            // flex-direction: column;
+                                            // justify-content: right;
+                                            // align-items: center;
+                                            > .inner {
+                                                width: 100%;
+                                                height: 100%;
+                                                display: flex;
+                                                flex-direction: column;
+                                                padding-top: 1.5rem;
+                                                align-items: center;
+                                                font-size: 1.25rem;
+                                                > div {
+                                                    width: max-content;
+                                                    max-width: 100%;
+                                                    height: max-content;
+                                                    box-sizing: border-box;
+                                                }
+                                            }
+                                        }
+                                        &.price {
+                                            grid-area: price;
+                                            display: flex;
+                                            flex-direction: column;
+                                            justify-content: right;
+                                            align-items: center;
+                                            > .inner {
+                                                width: 100%;
+                                                height: 100%;
+                                                display: flex;
+                                                flex-direction: row;
+                                                justify-content: center;
+                                                padding-top: 1rem;
+                                                align-items: left;
+                                                font-size: 2.5em;
+                                                > div {
+                                                    height: 100%;
+                                                    width: fit-content;
+                                                }
+                                            }
+                                        }
+                                        &.buttons {
+                                            grid-area: buttons;
+                                            height: 100%;
+                                            justify-content: flex-end;
+                                            > .inner {
+                                                padding-left: 0.75rem;
+                                                width: calc(100% - 1.5rem);
+                                                height: 100%;
+                                                display: flex;
+                                                // justify-content: right;
+                                                align-items: center;
+                                                display: flex;
+                                                flex-direction: row;
+                                                justify-content: right;
+                                                gap: 0.5rem;
+                                                > button {
+                                                    
+                                                    @include Tmain.TButton_secondary(1);
+                                                    // @include Tmain.TButton_simple();
+                                                    &.remove {
+                                                    }
+                                                    > span {
+                                                        font-size: 1.8rem;
+                                                    }
+                                                }
+                                                @include mediaQueries.forMediaBreakpoint(mobile-small){
+                                                    justify-content: space-around;
+                                                    > button {
+                                                        aspect-ratio: 1/1;
+                                                        @include Tmain.TButton_simple();
+                                                        &.remove {
+                                                        }
+                                                        > span {
+                                                            font-size: 4rem;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        // &:not(:last-child)::after  {
+                                        //     box-sizing: border-box;
+                                        //     content: "";
+                                        //     position: relative;
+                                        //     height: 92%;
+                                        //     width: 0px;
+                                        //     // margin-left: 0.5rem;
+                                        //     right: -0.5rem;
+                                        //     top: 4%;
+                                        //     border-right:1px solid $color-devider;
+                                        // }
+                                    }
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
+            > .itemListHead {
+                transform: translateX(-100rem);
+                transition: transform 0.5s ease 0.2s;
+                &[loaded='true']{
+                    transform: translateX(0rem);
+                }
+                position: relative;
+                @include Tmain.TContainer_basic();
+                padding-top: 0;
+                padding-bottom: 0;
+                display: flex;
+                width: calc(100% - 1rem);
+                margin: 0;
+                margin-inline: 0.5rem;
+                // margin-top: 0.5rem;
+                justify-content: stretch;
+                gap: 1rem;
+                box-sizing: border-box;
+                user-select: none;
+                height: 2em;
+                box-sizing: border-box;
+                display: none;
+                @include S_tools.SPLINT-border-inset(vars.$color-T_container-Medium, 1px, true, true, true, true);
+                @include Tmain.clipEdgesAll(5px);
+                @include mediaQueries.forMediaBreakpoint(mobile desktop){
+                    display: flex;
+                }
+                // @include forMediaBreakpoint(mobile){
+                //     position: static;
+                //     padding: 0;
+                //     margin: 0;
+                //     width: calc(100% - 3rem);
+                //     z-index: 10;
+                //     padding-inline: 0;
+                //     left: 2.5%;
+                // }
+                > .description {
+                    flex-grow: 1;
+                }
+                > .itemPrice {
+                    display: none;
+                    width: 10%;
+                }
+                > .amount {
+                    width: 10em;
+                }
+                > .price {
+                    width: 9em;
+                }
+                > div {
+                    // padding-inline: 0.5em;
+                    box-sizing: border-box;
+                    display: flex;
+                    justify-content: space-between;
+                    > div {
+                        padding: 0.5em;
+                        margin-left: auto;
+                        margin-right: auto;
+                        overflow: hidden;
+                    }
+
+                    &:not(:last-child)::after  {
+                        box-sizing: border-box;
+                        margin-top: 0.4rem;
+                        margin-bottom: 0.4rem;
+                        content: "";
+                        position: relative;
+                        height: calc(100% - 0.8rem);
+                        width: 0px;
+                        right: -0.5rem;
+                        // top: 4%;
+                        border-right:1px solid vars.$color-devider;
+                    }
+                }
+            }
+        }
+    }
+}

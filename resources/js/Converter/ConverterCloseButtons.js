@@ -57,8 +57,7 @@ class Converter_closeButtons {
             button_create.Class("create");
             button_create.setStyleTemplate(S_Button.STYLE_NONE);
             button_create.onclick = async function(){
-                let r = await CONVERTER_STORAGE.canvasNEW.createTextData();
-                console.dir(r)
+                await CONVERTER_STORAGE.canvasNEW.createTextData();
                 await ProjectHelper.CONVERTER_closeProject();
                 let sp = new SPLINT.DOMElement.Spinner(button_create.button, "test");
                 let Args = new Object();
@@ -189,8 +188,9 @@ class Converter_CloseOperations {
     }
     static async toCart(){
         let projectID = DSProject.Storage.ProjectID;
-        DSController.saveAll();
         await CONVERTER_STORAGE.canvasNEW.createTextData();
+        await DSText.save();
+        DSController.saveAll();
         if(DSProject.get().State != ProjectHelper.STATE_CART){
             projectID = await ProjectHelper.copy(DSProject.Storage.ProjectID);
             await ProjectHelper.changeState(projectID, ProjectHelper.STATE_CART);
@@ -200,7 +200,8 @@ class Converter_CloseOperations {
     static async Buy(){
         let projectID = DSProject.Storage.ProjectID;
         await CONVERTER_STORAGE.canvasNEW.createTextData();
-        DSController.saveAll();
+        await DSText.save();
+        await DSController.saveAll();
         if(DSProject.get().State != ProjectHelper.STATE_CART){
             projectID = (await ProjectHelper.copy(DSProject.Storage.ProjectID));
             await ProjectHelper.changeState(projectID, ProjectHelper.STATE_CART);

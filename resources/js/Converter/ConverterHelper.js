@@ -107,6 +107,7 @@ class ConverterHelper {
     return call.send();
   }
   static uploadImage(data){
+    console.dir(data)
     let pData = JSON.parse(data);
     DSImage.add(pData);
     // DOM_CONVERTER_STORAGE.renderer.update();

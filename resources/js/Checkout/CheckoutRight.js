@@ -6,6 +6,7 @@ class CheckoutRightBar {
     this.id     = "CheckoutRight_";
     this.mainElement = new SPLINT.DOMElement(this.id + "mainRight", "div", this.parent);
     this.mainElement.Class("CheckoutRightMain");
+    Footer.drawFooterAsBox(this.mainElement)
     this.backgroundFiller = new SPLINT.DOMElement(this.id + "mainRight_backgroundFiller", "div", this.mainElement);
     this.backgroundFiller.Class("backgroundFiller");
     this.price = 0;

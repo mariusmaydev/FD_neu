@@ -12,6 +12,7 @@ class ProjectDetails_Mobile {
         this.mainElement.onclose = v;
     }
     async show(drawButtons = true){
+        NavBar.setSolid();
         this.productData = await productHelper.getProductData(this.data.Product);
         this.mainElement = new SPLINT.DOMElement.popupWindow(this.id, true)
         this.mainElement.onclose = this._onclose;
@@ -25,23 +26,40 @@ class ProjectDetails_Mobile {
         this.contentElement = this.mainElement.content;
         this.contentElement.classList.add("converterStart");
         if(drawButtons){
-            this.drawButtons();
+            // this.drawButtons();
 
         }
             let container = new SPLINT.DOMElement(this.id + "container", "div", this.contentElement);
                 container.Class("container");
-
-                // let buttonPrevImg = new SPLINT.DOMElement.Button(container, "PrevImg", "P");
-                // buttonPrevImg.Class("PrevImg");
                 let data = new SPLINT.Types.autoObject();
-            this.lighter = new drawLighter3D(container, this.id, drawLighter3D.PROJECT, this.data.Thumbnail, true, true);
-            this.lighter.canvas.setAttribute("showDimensions", false);
-            this.lighter.saveContext = false;
+            let g = new SPLINT.DOMElement.ImageSlideMenu(container, "test");
+
+            g.addSrcWithCallback("t", null, function(instance, obj, parent){
+                console.dir(arguments);
+                parent.classList.add("L3D");
+                this.lighter = new drawLighter3D(parent, this.id, drawLighter3D.PROJECT, this.data.Thumbnail, true, true);
+                this.lighter.canvas.setAttribute("showDimensions", false);
+                this.lighter.saveContext = false;
+                this.lighter.promise.then(function(){
+                    obj.src = this.lighter.canvas;
+                    obj.elementPrev.click();
+                }.bind(this));
+                
+            }.bind(this));
+            // g.addCanvas("cv", this.lighter.promise.then(function(){
+            //     return this.lighter.canvas;
+            // }.bind(this)));
+                for(const [key, val] of Object.entries(this.productData.ImgPath)){
+                    g.addImage(key, val);
+                }
+            
+                g.draw();
+
             
             // let buttonNextImg = new SPLINT.DOMElement.Button(container, "NextImg", "N");
             //     buttonNextImg.Class("NextImg");
             // this.lighter.canvas.setAttribute("showDimensions", true);
-                this.drawInformation();
+                // this.drawInformation();
             
             // listElement.lighter = lighter;
             // listElement.setAttribute("state", data.State);

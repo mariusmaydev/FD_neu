@@ -83,12 +83,7 @@
         public static $key;
         const USER_ID   = "UserID";
         const USER_NAME = "UserName";
-        // const EMAIL     = "Email";
         const PASSWORD  = "Password";
-        // const TIME_JOIN = "JoinTime";
-        // const TIME_LAST = "lastLogin";
-        // const CODE      = "code";
-        // const SAVE_CODE = "saveCode";
     
         public function __construct($key = null, $keyName = null){
             self::$key      = $key;
@@ -98,12 +93,7 @@
           $dataset = new DataSet();
           $dataset -> newEntry(self::USER_ID,   "VARCHAR(10) UNIQUE");
           $dataset -> newEntry(self::USER_NAME, "VARCHAR(40) UNIQUE");
-        //   $dataset -> newEntry(self::EMAIL,     "VARCHAR(255)");
           $dataset -> newEntry(self::PASSWORD,  "VARCHAR(255)");
-        //   $dataset -> newEntry(self::TIME_JOIN, "INT(10) UNSIGNED");
-        //   $dataset -> newEntry(self::TIME_LAST, "INT(10) UNSIGNED");  
-        //   $dataset -> newEntry(self::CODE,      "VARCHAR(255)");  
-        //   $dataset -> newEntry(self::SAVE_CODE, "VARCHAR(255)");
           $dataset -> primaryKey(self::USER_ID);
           $dataset -> TBName(self::$TBName);
           return $dataset;

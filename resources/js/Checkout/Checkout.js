@@ -300,8 +300,9 @@ class Checkout {
             } else if(paymentType == "PAYPAL") {
                 payment = await SPLINT.API.Paypal.draw.Buttons.drawButtons(this.overviewMenuMainElement, paymentType);
             }
-        
+            
             payment.onPaymentComplete = async function (data) {
+                console.dir(data);
                 await CheckoutHelper.finishCheckout(data);
             };
 
@@ -311,9 +312,14 @@ class Checkout {
                 buttonBuy.button.Class("button_submit");
                 buttonBuy.setStyleTemplate(S_Button.STYLE_NONE);
                 buttonBuy.button.onclick = async function(){
-                    payment.button.click();
-                }
-                if(paymentType != "CREDITCARD") {
+                    console.dir(this)
+
+                    await CheckoutHelper.finishCheckout();
+                    // await CheckoutHelper.finishCheckout(data);
+                    // payment.button.click();
+                }.bind(this)
+                //371449635398431 – American Express
+                if(false && paymentType != "CREDITCARD") {
                     buttonDiv.style.display = "none";
                 }
   }

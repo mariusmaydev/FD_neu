@@ -118,11 +118,19 @@ class ProjectDetails_Desktop {
                             ele.state().setActive();
                             imgEleBody.state().setActive();
                     }.bind(this)
-                    let canvasEleImage = new SPLINT.DOMElement(this.id + "PrevimgEle_3D", "img", imgEleBody);
-
+                    let canvasEleImage = new SPLINT.DOMElement(this.id + "PrevimgEle_3D", "canvas", imgEleBody);
                         this.lighter.promise.then(async function(){
-                            let data = this.lighter.canvas.toDataURL("image/png", 1);
-                            canvasEleImage.src = data;
+                        canvasEleImage.width = this.lighter.canvas.width ;
+                        canvasEleImage.height = this.lighter.canvas.height;
+                            let ctx = canvasEleImage.getContext("2d");
+                            ctx.save();
+                            // ctx.scale(2, 2)
+                            ctx.drawImage(this.lighter.canvas, 0, 0);
+                            ctx.restore();
+                            // canvasEleImage.style.width = imgEleBody.clientWidth + "px";
+                            // canvasEleImage.style.height = imgEleBody.clientHeight + "px";
+                            // let data = this.lighter.canvas.toDataURL("image/png", 1);
+                            // canvasEleImage.src = data;
                         }.bind(this))
 
                         this.drawImageList(ImagePreviewContainer);

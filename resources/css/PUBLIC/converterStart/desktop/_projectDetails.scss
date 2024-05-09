@@ -223,7 +223,7 @@
                                     }
                                 }
                                 &.L3D {
-                                    > img {
+                                    > canvas {
                                         height: 100%;
                                         aspect-ratio: vars.$LIGHTER-ratio;
                                         transform: scale(1.5) translateY(-1%);
@@ -238,7 +238,7 @@
                                         transform: scale(1.1);
                                     }
                                     &.L3D {
-                                        > img {
+                                        > canvas {
                                             transform: scale(1.6) translateY(-1%);
                                         }
                                     }

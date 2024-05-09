@@ -140,7 +140,7 @@ class NavigationBar {
                 this.cart.point.div.style.visibility = "hidden";
             }
             this.cart.button = new SPLINT.DOMElement.Button(this.cart.div, "shoppingCart");
-            this.cart.button.bindIcon("shopping_cart");
+            this.cart.button.bindIcon("shopping_basket");
             this.cart.button.button.onclick = function(){
                 // SPLINT.Tools.Location.addHash("test", "test2");
                 S_Location.goto(PATH.location.cart).call();

@@ -147,6 +147,11 @@ class drawProjectList {
             }
             let projectDetails = new ProjectDetails(data, listElement, lighter);
               listElement.onclick = function(){
+                if(SPLINT.ViewPort.isMobile()){
+                    projectDetails.onclose = function(){
+                        NavBar.setInParts();
+                    }
+                }
                 projectDetails.show();
               }
           }.bind(this);

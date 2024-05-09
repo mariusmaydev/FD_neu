@@ -10,19 +10,22 @@
             animation: translateProjectDetailsBackground 0.3s ease ;
         }
         > .content.converterStart{
-            font-size: 1.5rem;
-            margin-top: 3.5vh;
-            height: calc(97vh - vars.$NavBar-height-mobile-small);
+            top: calc(50% + 1.75rem);
+            font-size: 1rem;
+            margin-top: 0rem;
+            height: calc(100% - 4.5rem);
             animation: translateProjectDetails 0.3s ease;
             // left: 0.5rem;
-            max-width: 95vw;
-            max-height: 95vh;
-            width: 100%;
+            // max-width: 95vw;
+            // max-height: 95vh;
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
             overflow-y: auto;
-            box-sizing: content-box;
+            box-sizing: border-box;
+            max-width: 100%;
+            max-height: 100%;
+            width: calc(100% - 1rem);
             @include Tmain.TContainer_basic();
             > .button_close {
                 // display: none;
@@ -33,7 +36,7 @@
                 left: calc(100% - 3rem);
                 top: 0;
                 > span {
-                    font-size: 3rem;
+                    font-size: 2rem;
 
                 }
             }
@@ -43,31 +46,216 @@
                 // flex-grow: 1;
                 position: relative;
                 // width: 100%;
-                margin-top: 2rem;
-                height: 70%;
-                min-height: 60rem !important;
-                // transform: translateY(-10%);
-                aspect-ratio: vars.$LIGHTER-ratio;
-                box-sizing: content-box !important;
-                >.Lighter3D {
-                    // box-sizing: border-box;
-                    position: relative;
-                    // width: 100%;
-                    height: 90%;
-                    overflow: visible;
-                    // transform: translateY(10%);
-                    box-sizing: content-box !important;
-                    > canvas {
-                        transform: scale(1.35);
-                        box-sizing: content-box !important;
-                    }
-                }
-                > button {
-                    &.PrevImg {
+                margin-top: 0rem;
+                height: max-content;
+                > .ImageSlideMenuMain {
+                    width: 100%;
+                    // height: 20rem;
+                    overflow:hidden;
 
-                    }
-                    &.NextImg {
-
+                    > .content {
+                        margin-bottom: 0;
+                        position: relative;
+                        height: min-content;
+                        // aspect-ratio: vars.$LIGHTER-ratio; 
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.5rem;
+                        // background-color: red;
+                        align-items: center;
+                        max-width: 100%;
+                        width: 100%;
+                        box-sizing: border-box !important;
+                        overflow: hidden;
+                        padding: 0.5rem;
+                        > .ViewContainer {
+                            position: relative;
+                            width: 100%;
+                            aspect-ratio: vars.$LIGHTER-ratio; 
+                            height: auto;
+                            // padding-top: 5%;
+                            // padding-bottom: 5%;
+                            box-sizing: border-box !important;
+                            overflow: hidden;
+                            > .ViewContainerInner {
+                                position: relative;
+                                height: 100%;
+                                scroll-snap-type: x mandatory;
+                                // scroll-snap-points-x: repeat(20%);
+                                box-sizing: border-box !important;
+                                width: 100%;
+                                justify-content: center;
+                                overflow: hidden;
+                                // overflow-x: auto;
+                                display: flex;
+                                flex-direction: row;
+                                > div {
+                                    padding: 0rem;
+                                    scroll-snap-stop: always;
+                                    scroll-behavior: smooth;
+                                    scroll-snap-align: center;
+                                    visibility: hidden;
+                                    &[state*='active']{
+                                        visibility: visible;
+                                    }
+                                }
+                                > .imgEleBody {
+                                    overflow: visible;
+                                    user-select: none;
+                                    position: absolute;
+                                    height: 100%;
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: center;
+                                    align-items: center;
+                                    // aspect-ratio: vars.$LIGHTER-ratio;
+                                    min-width: min-content;
+                                    width: fit-content;
+                                    // overflow: hidden;
+                                    box-sizing: border-box !important;
+                                    padding: 0rem;
+                                    >.Lighter3D {
+                                        user-select: none;
+                                        aspect-ratio: vars.$LIGHTER-ratio;
+                                        position: absolute;
+                                        // width: auto;
+                                        height: 130%;
+                                        box-sizing: content-box !important;
+                                        // transform: translateY(-5%);
+                                        z-index: 2005;
+                                        > canvas {
+                                            transform: scale(1);
+                                            -ms-transform: scale(1);
+                                            -webkit-transform: scale(1);
+                                            &[showdimensions*='true']{
+                                                transform: scale(1.1);
+                                                -ms-transform: scale(1.1);
+                                                -webkit-transform: scale(1.1);
+                                            }
+                                            transition: transform 0.2s ease-in-out;
+                                            box-sizing: content-box !important;
+                                        }
+                                    }
+                                    &.stdImgContainer {
+                                        overflow: hidden;
+                                        > canvas {
+                                            display: block;
+                                            max-width:100%;
+                                            max-height:100%;
+                                            width: auto;
+                                            height: auto;
+                                            object-fit: scale-down;
+                                            overflow: hidden;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        > .PreviewContainer {
+                            position: relative;
+                            bottom: 0;
+                            border-radius: 0;
+                            box-shadow: none;
+                            width: calc(100%);
+                            height: 4rem;
+                            margin: 0;
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-evenly;
+                            gap: 0.25rem;
+                            > button {
+                                // flex: 1;
+                                width: fit-content;
+                                position: relative;
+                                bottom: 0;
+                                border-radius: 0;
+                                padding: 0rem;
+                                box-shadow: none;
+                                overflow: hidden;
+                                // aspect-ratio: 1/1;
+                                // width: 7%;
+                                background-color: transparent;
+                                border: none;
+                                transition: transform 0.1s ease-in;
+                                cursor: pointer;
+                                // @include Tmain.TButton_Animated(false, false);
+                                // width: calc(100% - 1rem);
+                                margin: 0;
+                                // background-color: green;
+                                > span {
+                                    font-size: 3rem;
+                                }
+                                &:hover {
+                                    transform: scale(1.1);
+                                }
+                                &.btLeft {
+                                    > span {
+    
+                                    }
+                                }
+                                &.btRight {
+                                    > span {
+    
+                                    }
+                                }
+                            }
+                            > .PreviewImageBody {
+                                position: relative;
+                                width: calc(86% - 1rem);
+                                // height: 3rem;
+                                height: 100%;
+                                max-width: 100%;
+                                overflow-y: hidden;
+                                overflow-x: auto !important;
+                                // min-width: fit-content;
+                                scroll-snap-type: x mandatory;
+                                display: flex;
+                                flex-direction: row;
+                                flex-wrap: nowrap;
+                                align-items: center;
+                                > .imgEleBody {
+                                    height: 100%;
+                                    width: max-content;
+                                    // aspect-ratio: 1/1;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    cursor: pointer;
+                                    // transform: scale(2);
+                                    > canvas {
+                                        position: relative;
+                                        height: 100%;
+                                        transform: scale(1);
+                                        // transition: transform 0.1s ease-in;;
+                                        // &:hover {
+                                        //     transform: scale(1.1);
+                                        // }
+                                    }
+                                    // &.L3D {
+                                    //     > canvas {
+                                    //         height: 100%;
+                                    //         aspect-ratio: vars.$LIGHTER-ratio;
+                                    //         transform: scale(1.5) translateY(-1%);
+                                    //         transition: transform 0.1s ease-in;;
+                                    //         &:hover {
+                                    //             transform: scale(1.6) translateY(-1%);
+                                    //         }
+                                    //     }
+                                    // }
+                                    &[state*='active'] {
+                                        > canvas {
+                                            height: 100%;
+                                            // transform: scale(0.5);
+                                        }
+                                        // &.L3D {
+                                        //     > canvas {
+                                        //         transform: scale(1.6) translateY(-1%);
+                                        //     }
+                                        // }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             } 

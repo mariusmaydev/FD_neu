@@ -49,6 +49,17 @@ class drawFooter {
                     BTImprint.onclick = function(){
                         S_Location.goto(PATH.location.imprint).call();
                     }
+                let BTData = new SPLINT.DOMElement.Button(BTContainer, "BTData", "Datenschutzerklärung");
+                    BTData.Class("BTData");
+                    BTData.onclick = function(){
+                        S_Location.goto(PATH.location.dataProtection).call();
+                    }
+                let BT_AGB = new SPLINT.DOMElement.Button(BTContainer, "BT_AGB", "AGBs");
+                    BT_AGB.Class("BT_AGB");
+                    BT_AGB.onclick = function(){
+                        S_Location.goto(PATH.location.AGB).call();
+                    }
+    
 
                     new SPLINT.DOMElement.HorizontalLine(this.mainElement);
             let PayingMethodsContainer = new SPLINT.DOMElement("PayingMethodsContainer", "div", this.mainElement);
@@ -69,6 +80,17 @@ class drawFooter {
                     BTImprint.onclick = function(){
                         S_Location.goto(PATH.location.imprint).call();
                     }
+                let BTData = new SPLINT.DOMElement.Button(BTContainer, "BTData", "Datenschutzerklärung");
+                    BTData.Class("BTData");
+                    BTData.onclick = function(){
+                        S_Location.goto(PATH.location.dataProtection).call();
+                    }
+                let BT_AGB = new SPLINT.DOMElement.Button(BTContainer, "BT_AGB", "AGBs");
+                    BT_AGB.Class("BT_AGB");
+                    BT_AGB.onclick = function(){
+                        S_Location.goto(PATH.location.AGB).call();
+                    }
+    
 
                     new SPLINT.DOMElement.HorizontalLine(this.mainElement);
             let PayingMethodsContainer = new SPLINT.DOMElement("PayingMethodsContainer", "div", this.mainElement);
@@ -85,6 +107,16 @@ class drawFooter {
                 BTImprint.Class("BTImprint");
                 BTImprint.onclick = function(){
                     S_Location.goto(PATH.location.imprint).call();
+                }
+            let BTData = new SPLINT.DOMElement.Button(BTContainer, "BTData", "Datenschutzerklärung");
+                BTData.Class("BTData");
+                BTData.onclick = function(){
+                    S_Location.goto(PATH.location.dataProtection).call();
+                }
+            let BT_AGB = new SPLINT.DOMElement.Button(BTContainer, "BT_AGB", "AGBs");
+                BT_AGB.Class("BT_AGB");
+                BT_AGB.onclick = function(){
+                    S_Location.goto(PATH.location.AGB).call();
                 }
     }
 }

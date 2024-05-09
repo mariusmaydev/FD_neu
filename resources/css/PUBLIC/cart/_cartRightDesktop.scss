@@ -1,0 +1,169 @@
+@use '../../themes/theme1/main' as Tmain;
+@use '../../themes/theme1/buttons' as Tbuttons;
+@use '../../../../../Splint/scss/tools/tools' as S_tools;
+@use '../../themes/theme1/vars';
+@use '../../general/mediaQueries';
+@use '../../general/NavigationBar/NavigationBar';
+@use '../publicMain';
+@use 'sass:color';
+
+@mixin drawCartRightDesktop {
+    > .cartRightMain {
+        box-sizing: border-box;
+
+        @include mediaQueries.forMediaBreakpoint(desktop mobile){
+            height: 50%;
+            position: sticky;
+            // top: calc(11vh + 0.8rem);
+            top: calc(8vh);
+            margin-top: 0 !important;
+        }
+        @include mediaQueries.forMediaBreakpoint(mobile-small){
+            padding-top: 1rem;
+            bottom: 0;
+            width: 98% !important;
+        }
+        > .RightBody {
+            width: 100%;
+            height: max-content;
+            box-sizing: border-box;
+            > div {
+                margin: 0.5rem;
+                > div {
+
+                }
+            }
+            > .conclusion {
+                @include Tmain.TContainer_basic();
+                padding: 0.5rem;
+                visibility: visible;
+                margin-top: 0;
+                @include mediaQueries.forMediaBreakpoint(mobile-small){
+
+                }
+                @include mediaQueries.forMediaBreakpoint(mobile desktop){
+                    transform: translateX(0px);
+                    transition: transform 0.3s ease-out;
+                    &:not([loaded*='true']){
+                        visibility: hidden;
+                        transform: translateX(30rem);
+                    }
+                    margin-top: 0.5rem;
+                }
+                > .sumBody {
+                    > .headline {
+                        padding: 0.25rem;
+                        padding-inline: 0;
+                        text-align: center;
+                        > span {
+                            text-align: center;
+                            font-size: 1.5rem;
+                            font-weight: 500;
+                        }
+                    }
+                    > hr {
+                        width: 100%;
+                        left: 0;
+                    }
+                    > .Table2D {
+                        > table {
+                            width: 100%;
+                            border-spacing: 0px 0.75rem;
+                            > tr {
+                                height: 1.5rem;
+                                width: 100%;
+                                > td {
+                                    &[col*='0']{
+                                        > div {
+                                            margin-left: 0.5rem;
+                                            > span {
+                                                font-size: 1rem;
+                                            }
+                                        }
+                                    }
+                                    &[col*='1']{
+                                        text-align: right;
+                                        > div {
+                                            margin-right: 1rem;
+                                            > span {
+                                                font-size: 1.2rem;
+                                            }
+                                        }
+                                    }
+                                }
+                                &[row='1']{
+                                    > td {
+                                        &[col*='0']{
+                                            > div {
+                                                > span {
+                                                    font-size: 1rem;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                > .buttonBody {
+                    box-sizing: border-box;
+                    width: 100%;
+                    > button {
+                        @include Tmain.TButton_primary();
+                        width: 100%;
+                        height: 100%;
+                        margin: 0;
+                        box-sizing: border-box;
+                    }
+
+                }
+                > .mwstBody {
+                    margin-top: -0.3rem;
+                    margin-bottom: 1rem;
+                    > span {
+                        margin-top: -10px;
+                        margin-left: auto;
+                        margin-right: 1rem;
+                        float: right;
+                        font-size: 0.7em;
+                        vertical-align: top;
+                    }
+                }
+            }
+            > .code {
+                transform: translateX(0px);
+                &:not([loaded*='true']){
+                    visibility: hidden;
+                    transform: translateX(30rem);
+                }
+                transition: transform 0.3s ease-out 0.15s;
+                visibility: visible;
+
+                @include Tmain.TContainer_basic();
+                padding: 0.5rem;
+                box-sizing: border-box;
+                padding-top: 0;
+                > s-input {
+                    margin: 0;
+                    margin-bottom: 0.5rem;
+                    // &.n_inputDiv {
+                        font-size: 1em;
+                    // }
+                }
+                > button {
+                    @include Tmain.TButton_simple();
+                    
+                    box-sizing: content-box;
+                    width: 100%;
+                    padding-inline: 0;
+                    margin: 0;
+                    > span {
+                        
+                    box-sizing: content-box;
+                    }
+                }
+            }
+        }
+    }
+}
