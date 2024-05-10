@@ -205,15 +205,19 @@
         $response[ImageDB::IMAGE_VIEW_PATH] = str_replace($GLOBALS['SSL1'].($_SERVER["DOCUMENT_ROOT"]), "", PATH_Project::get(PATH_Project::IMG_VIEW, $ProjectID, $UserID, $imgID, ".png"));
     }
 
-    function getSingleProjectImage($UserID, $ProjectID, $imgID, $imgType) : Imagick | false {
-        return new \Imagick(PATH_Project::get($imgType, $ProjectID, $UserID, $imgID, ".png"));
+    function getSingleProjectImage($UserID, $ProjectID, $imgID, $imgType) : Imagick | GdImage | false {
+        if(!Converter::isGD()){
+            return new \Imagick(PATH_Project::get($imgType, $ProjectID, $UserID, $imgID, ".png"));
+        } else {
+            return imagecreatefrompng(PATH_Project::get($imgType, $ProjectID, $UserID, $imgID, ".png"));
+        }
     }
     function getSingleProjectImage_std($UserID, $ProjectID, $imgID, $imgType) : GdImage | false {
         $im = imagecreatefrompng(PATH_Project::get($imgType, $ProjectID, $UserID, $imgID, ".png"));
         return $im;
     }
 
-    function saveSingleProjectImage($imgID, $imgType, Imagick $ImageData, $UserID = null, $ProjectID = null){
+    function saveSingleProjectImage($imgID, $imgType, Imagick|GdImage $ImageData, $UserID = null, $ProjectID = null){
         if($UserID == null){
             $UserID = Sessions::get(Sessions::USER_ID);
         }
@@ -223,8 +227,12 @@
         $path = PATH_Project::get(null, $ProjectID, $UserID, $imgID);
         DataCreatePath($path);
         $path .= PATH_Project::getFileName($imgType, $imgID, ".png");
-        // file_put_contents($path, $ImageData);
-        $ImageData -> writeImage($path);
+        if(Converter::isGD()){
+            // ob_start();
+            imagepng($ImageData, $path);
+        } else {
+            $ImageData -> writeImage($path);
+        }
         return str_replace($GLOBALS['SSL1'].($_SERVER["DOCUMENT_ROOT"]), "", $path);
     }
 

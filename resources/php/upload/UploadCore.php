@@ -1,26 +1,41 @@
 <?php
     $rootpath = realpath($_SERVER["DOCUMENT_ROOT"]);
     require_once $rootpath.'/fd/resources/php/Paths.php';
+    require_once $rootpath.'/fd/resources/php/converter/image/filter/filterGD.php';
     require_once $rootpath.'/fd/resources/php/converter/image/filter/filterCore.php';
+    require_once $rootpath.'/fd/resources/php/converter/converter.php';
 
-    function UploadImage(Imagick|string $img, int $BoxX, array $filterData) : array {
-        if(gettype($img) == 'string') {
-            $content = file_get_contents($img);
-            $img = new Imagick();
-            $img -> readImageBlob($content);
-        }
-        $width  = $BoxX;
-        $height = $img -> getImageHeight() / ($img -> getImageWidth() / $BoxX);
-    
-        $img -> resizeImage(intval($width), intval($height), Imagick::FILTER_GAUSSIAN, 0);
-        $img -> setImageFormat("png");
-
+    function UploadImage(Imagick|GdImage|string $img, int $BoxX, array $filterData) : array {
         $response = array();
-        $response[ImageDB::IMAGE_SCALE] = clone $img;
-        $response[ImageDB::IMAGE_VIEW]  = Filter::createImage(($img), $filterData);
-        $response['width']  = $width;
-        $response['height'] = $height;
-
+        if(Converter::isGD()){
+            if(gettype($img) == 'string') {
+                $img = imagecreatefromstring(file_get_contents($img));
+            }
+            $width  = $BoxX;
+            $height = imagesy($img) / (imagesx($img) / $BoxX);
+            FilterGD::resize_image($img, $width, $height);
+            $response[ImageDB::IMAGE_SCALE] = $img;
+            ob_start(); 
+                imagepng($img);
+                $originalImage = imagecreatefromstring(ob_get_contents()); 
+            ob_end_clean(); 
+            $response[ImageDB::IMAGE_VIEW]  = FilterGD::createImage($originalImage, $filterData);
+            $response['width']  = $width;
+            $response['height'] = $height;
+        } else {
+            if(gettype($img) == 'string') {
+                $img = new Imagick();
+                $img -> readImageBlob(file_get_contents($img));
+            }
+            $width  = $BoxX;
+            $height = $img -> getImageHeight() / ($img -> getImageWidth() / $BoxX);
+            $img -> resizeImage(intval($width), intval($height), Imagick::FILTER_GAUSSIAN, 0);
+            $img -> setImageFormat("png");
+            $response[ImageDB::IMAGE_SCALE] = clone $img;
+            $response[ImageDB::IMAGE_VIEW]  = Filter::createImage(($img), $filterData);
+            $response['width']  = $width;
+            $response['height'] = $height;
+        }
         return $response;
     }
     /**
@@ -61,13 +76,6 @@
     //     // return $response;
     // }
 
-    function resize_image($img, $w, $h, $crop=FALSE) {
-        $width  = imagesx($img);
-        $height = imagesy($img); 
-        $dst = imagecreatetruecolor($w, $h);
-        imagecopyresampled($dst, $img, 0, 0, 0, 0, $w, $h, $width, $height);
-        return $dst;
-    }
     
     function is_image($path){
         $a = getimagesize($path);

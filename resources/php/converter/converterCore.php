@@ -9,23 +9,6 @@
         }
     }
 
-    function GDImageToBase64($img){
-        ob_start(); 
-            imagepng($img);
-            $imgBlob = base64_encode(ob_get_contents()); 
-        ob_end_clean(); 
-        return $imgBlob;
-    }
-
-    function URLToBase64($path){
-        $img = imagecreatefrompng($path);
-        ob_start(); 
-            imagepng($img);
-            $imgBlob = base64_encode(ob_get_contents()); 
-        ob_end_clean(); 
-        return $imgBlob;
-    }
-
     // function QueryImage($img){
     //     $black = imagecolorsforindex($img, imagecolorallocate($img, 0, 0, 0))["red"];
     //     $img_out = imagecreatetruecolor(imagesx($img), imagesy($img));

@@ -57,7 +57,6 @@ PATH.php.codes.coupon                   = SPLINT.projectRootPath + php + "/coupo
 
 
 PATH.php.paypal                         = SPLINT.projectRootPath + php + "/paypal/paypalAccess.php";
-PATH.php.session                        = SPLINT.projectRootPath + php + "/security/sessionAccess.php";
 
 //LexOffice
 PATH.php.lexOffice                      = SPLINT.projectRootPath + php + "/lexOffice/lexOfficeAccess.php";

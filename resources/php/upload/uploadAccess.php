@@ -8,6 +8,6 @@
         case "PRODUCT_IMG"      : Upload::Product_img(); break;
         case "TEXT_IMG"         : Upload::Text_img(); break;
         case "THUMBNAIL"        : Upload::Thumbnail(); break;
-        default: print_r("METHOD_ERROR"); exit;
+        default: Communication::sendBack("METHOD_ERROR"); exit;
     }
 ?>

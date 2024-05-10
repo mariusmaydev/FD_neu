@@ -11,7 +11,7 @@ class CheckoutHelper {
     static SENDING          = "sending";
     static PAYMENT          = "payment";
     static CHECKORDER       = "checkOrder";
-  
+   
     static async progress(name = null){
       if(name != null){
         return  (await(new obj()).get()).includes(name);

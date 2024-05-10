@@ -6,7 +6,6 @@
     $rootpath = realpath($_SERVER["DOCUMENT_ROOT"]);
     require_once $rootpath.'/fd/resources/php/CORE.php';
     require_once $rootpath.'/fd/resources/php/userdata/userdata.php';
-    require_once $rootpath.'/fd/resources/php/security/security.php';
 
     class login_C {
         public static function nloginGuest(){

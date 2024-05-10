@@ -270,12 +270,6 @@
             $img -> setImageFormat("png");
             return $img;
         }
-        // private function transparent(Array $color, GdImage $img) : GdImage {
-        //     $this -> color = $color;
-        //     $color = imagecolorexact($img, $color[0], $color[1], $color[2]);
-        //     imagecolortransparent($img, $color);
-        //     return $img;
-        // }
     }
 
     class ImagickHelper {

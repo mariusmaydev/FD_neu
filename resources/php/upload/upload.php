@@ -16,9 +16,15 @@
 
             $data        = file_get_contents('php://input');
             
-            $dataObj = json_decode($headers["X-SPLINT-DATA"]); 
-            $image = new Imagick();
-            $image -> readimageblob($data);
+            $dataObj = json_decode($headers["Splint-Data"]); 
+            $image = 0;
+            if(Converter::isGD()){
+                $image = imagecreatefromstring($dataObj);
+            } else {
+                $image = new Imagick();
+                $image -> readimageblob($data);
+
+            }
             Text::saveTextImg($image, $dataObj -> TextID, Sessions::get(Sessions::PROJECT_ID), Sessions::get(Sessions::USER_ID));
 
             Communication::sendBack(true);
@@ -29,7 +35,7 @@
             
             $PATH = new PATH_Project(Sessions::get(Sessions::USER_ID), Sessions::get(Sessions::PROJECT_ID));    
                 DataEdit($PATH -> get(PATH_Project::NONE), $PATH -> getFileName(PATH_Project::THUMBNAIL), $data);
-                $h = file_get_contents($PATH -> get(PATH_Project::NONE) . $PATH -> getFileName(PATH_Project::THUMBNAIL), 'r+');
+                // $h = file_get_contents($PATH -> get(PATH_Project::NONE) . $PATH -> getFileName(PATH_Project::THUMBNAIL), 'r+');
                 // new BinaryImage($h);
                 // DataEdit(realpath($_SERVER["DOCUMENT_ROOT"]) . "/fd/data/3Dmodels/Lighter/test", "test.blob", $data);
 
@@ -59,7 +65,12 @@
             $url = str_replace("blob:", "",$_POST["link"]);
             $imgID = Image::newID();
 
-            $img = ImagickHelper::getImageFromURL($url);
+            $img = 0 ;
+            if(Converter::isGD()){
+                $img = FilterGD::GDImageFromURL($url);
+            } else {
+                $img = ImagickHelper::getImageFromURL($url);
+            }
 
             $BoxX = ProjectDB::LIGHTER_WIDTH * ProjectDB::SCALE;
            
@@ -70,7 +81,7 @@
             $response[0][ImageDB::IMAGE_SCALE_PATH]     = saveSingleProjectImage($imgID, PATH_Project::IMG_SCALE, $response[0][ImageDB::IMAGE_SCALE]);
             $response[0][ImageDB::IMAGE_VIEW_PATH]      = saveSingleProjectImage($imgID, PATH_Project::IMG_VIEW, $response[0][ImageDB::IMAGE_VIEW]);
         
-            userdata_functions::addImage($response[0]);
+            // userdata_functions::addImage($response[0]);
             // userdata_functions::removeImage("632614ae523c3");
         
         

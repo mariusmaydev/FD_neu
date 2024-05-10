@@ -4,6 +4,7 @@ use Shopify\Auth\Session;
 
     $rootpath = realpath($_SERVER["DOCUMENT_ROOT"]);
     require_once $rootpath.'/fd/resources/php/CORE.php';
+    require_once $rootpath.'/fd/resources/php/converter/converter.php';
     require_once 'textArchive.php';
 
     Class Text {
@@ -93,7 +94,7 @@ use Shopify\Auth\Session;
             TextDB::add($DataSet);
             Text::get($TextID);
         }
-        public static function saveTextImg(string|Imagick $img, $TextID, $ProjectID, $UserID){
+        public static function saveTextImg(string|Imagick|GdImage $img, $TextID, $ProjectID, $UserID){
             $path = PATH_Project::get(PATH_Project::TEXT_N, $ProjectID, $UserID, $TextID);
             DataCreatePath($path);
             $path .= PATH_Project::getFileName(PATH_Project::TEXT, $TextID, ".png");
@@ -101,7 +102,11 @@ use Shopify\Auth\Session;
                 file_put_contents($path, file_get_contents($img));
             } else {
                 // file_put_contents($path, $img);
-                $img -> writeImage($path);
+                if(Converter::isGD()){
+                    imagepng($img, $path);
+                } else {
+                    $img -> writeImage($path);
+                }
             }
             return str_replace($GLOBALS['SSL1'].($_SERVER["DOCUMENT_ROOT"]), "", $path);
         }

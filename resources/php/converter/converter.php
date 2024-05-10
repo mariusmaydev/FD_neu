@@ -2,6 +2,7 @@
     $rootpath = realpath($_SERVER["DOCUMENT_ROOT"]);
     require_once $rootpath.'/fd/resources/php/CORE.php';
     require_once $rootpath.'/fd/resources/php/converter/image/filter/filterCore.php';
+    require_once $rootpath.'/fd/resources/php/converter/image/filter/filterGD.php';
     require_once $rootpath.'/fd/resources/php/converter/image/image.php'; 
     require_once $rootpath.'/fd/resources/php/converter/converterConfig.php'; 
     require_once $rootpath.'/fd/resources/php/converter/create/creator.php';
@@ -14,6 +15,15 @@
         const FLIP_TYPE     = "FLIP_TYPE";
         const USER_ID       = "UserID";
         const PROJECT_ID    = "ProjectID";
+
+        public static function isGD(){
+            return true;
+            if(class_exists("Imagick")){
+                return false;
+            } else {
+                return true;
+            }
+        }
         // public static function createThumbnail(){
         //     $StorageProject = $_POST["StorageProject"];
 
@@ -57,13 +67,22 @@
             $Sessions = $SessionObj -> save();
             $imgScale = getSingleProjectImage($Sessions[Sessions::USER_ID], $Sessions[Sessions::PROJECT_ID], $ImageData[ImageDB::IMAGE_ID], PATH_Project::IMG_SCALE);
             
+            $ImageData["grayscale"] = false;
             if($ImageData["grayscale"] == "true"){
                 $ImageData["grayscale"] = true;
             } else {
                 $ImageData["grayscale"] = false;
             }
-            Filter::createImage($imgScale, $Filter, $ImageData["grayscale"]);
-            $response[ImageDB::IMAGE_VIEW_PATH] = saveSingleProjectImage($ImageData[ImageDB::IMAGE_ID], PATH_Project::IMG_VIEW, $imgScale, $Sessions[Sessions::USER_ID], $Sessions[Sessions::PROJECT_ID]);
+
+            if(!Converter::isGD()){
+                Filter::createImage($imgScale, $Filter, $ImageData["grayscale"]);            
+                $response[ImageDB::IMAGE_VIEW_PATH] = saveSingleProjectImage($ImageData[ImageDB::IMAGE_ID], PATH_Project::IMG_VIEW, $imgScale, $Sessions[Sessions::USER_ID], $Sessions[Sessions::PROJECT_ID]);
+
+            } else {
+                $imgout = FilterGD::createImage($imgScale, $Filter, $ImageData["grayscale"]);            
+                $response[ImageDB::IMAGE_VIEW_PATH] = saveSingleProjectImage($ImageData[ImageDB::IMAGE_ID], PATH_Project::IMG_VIEW, $imgout, $Sessions[Sessions::USER_ID], $Sessions[Sessions::PROJECT_ID]);
+
+            }
             
             // file_put_contents ("test_1.png", $imgScale); // works, or:
             $SessionObj -> unsave();

@@ -3,9 +3,7 @@
     require_once $rootpath.'/Splint/php/CORE.php';
     require_once 'Paths.php';
     require_once $rootpath.'/fd/resources/php/FolderSyS/FolderSySCore.php';
-    require_once $rootpath.'/fd/resources/php/security/security.php';
     //PHP Core
-
 
     function mergeObject(&$dst, $obj) : object {
         $dst = (object) array_merge((array) $dst, (array) $obj);
