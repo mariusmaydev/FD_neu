@@ -43,7 +43,7 @@ class drawProjectList {
             //     this.table.func_drawFirstListElement = async function(listElement){
             //     listElement.onclick = async function(){
             //         await ProjectHelper.new("neues Projekt", "LIGHTER_BASE_GOLD_custom", false, false, false, "base");
-            //         S_Location.goto(PATH.location.converter).call();
+            //        SPLINT.Tools.Location_old.goto(PATH.location.converter).call();
             //     }
             //     let container = new SPLINT.DOMElement("new_" + this.name + "container", "div", listElement);
             //         container.Class("container");

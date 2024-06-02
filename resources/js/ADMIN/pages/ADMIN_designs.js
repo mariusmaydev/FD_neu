@@ -10,7 +10,7 @@ class ADMIN_designs extends ADMIN_DrawTemplate {
         this.drawDesigns();
     }
     choosePage(){
-        let hashtags = S_Location.getHashes();
+        let hashtags = SPLINT.Tools.Location_old.getHashes();
             console.log(hashtags);
         let hashtag = hashtags;
         if(typeof hashtags == 'object'){

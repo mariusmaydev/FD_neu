@@ -499,7 +499,7 @@ class ConverterAdminBar {
                             Args.CurrentConfig = ConverterHelper.getCurrentConfig();
                         let g = (await ConverterHelper.genFrame((await SPLINT.SessionsPHP.get("USER_ID", false)), DSProject.Storage.ProjectID, Args));
                         let projectPATH = ProjectHelper.getPath2AdminProject(DSProject.Storage.ProjectID);
-                        download_S.download(projectPATH + "/Frame.nc", "LaserFrame__Xn" + Args.PointZero.X/ 16.4 + "_Yn" + Args.PointZero.Y/ 16.4 + "__X" + DSProject.Storage.Square.widthMM + "_Y" + DSProject.Storage.Square.heightMM +  ".nc");
+                        SPLINT.Tools.download.download(projectPATH + "/Frame.nc", "LaserFrame__Xn" + Args.PointZero.X/ 16.4 + "_Yn" + Args.PointZero.Y/ 16.4 + "__X" + DSProject.Storage.Square.widthMM + "_Y" + DSProject.Storage.Square.heightMM +  ".nc");
                     }.bind(this);
     }
     drawgenFrameButton(){

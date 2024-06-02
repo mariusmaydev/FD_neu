@@ -16,6 +16,7 @@ PATH_A.location.management       = SSL + "//" + domain + "/" + folder + "/resour
 PATH_A.location.engraving        = SSL + "//" + domain + "/" + folder + "/resources/HTML/Admin/engraving.php";
 PATH_A.location.login            = SSL + "//" + domain + "/" + folder + "/resources/HTML/Admin/login.php";
 PATH_A.location.multiConverter   = SSL + "//" + domain + "/" + folder + "/resources/HTML/Admin/login.php";
+PATH_A.location.userAccounts     = SSL + "//" + domain + "/" + folder + "/resources/HTML/Admin/userAccounts.php";
 
 
 PATH_A.php = new Object();

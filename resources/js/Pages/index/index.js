@@ -64,7 +64,7 @@ class drawIndex extends Pages_template {
         // this.linkImprint.Class("linkImprint");
         // this.linkImprint.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_DEFAULT);
         // this.linkImprint.onclick = function(){
-        //     S_Location.goto(PATH.location.imprint).call();
+        //    SPLINT.Tools.Location_old.goto(PATH.location.imprint).call();
         // }
     }
     drawButtonDiv(){

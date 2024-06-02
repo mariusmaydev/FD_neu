@@ -21,6 +21,7 @@ class ADMIN_NavigationMenu {
             }
         }
         f();
+        this.createSubElement("userAccounts", "Nutzerkonten");
         
         
         this.createSubElement("statistics", "Statistiken");
@@ -30,13 +31,13 @@ class ADMIN_NavigationMenu {
         this.createSubElement("testSpace", "TestSpace");
         this.createSubElement("couponCodes", "Rabattcodes");
         this.createSubElement("login", "Administratorkonten");
-        this.createSubElement("userAccounts", "Nutzerkonten");
+        // this.createSubElement("userAccounts", "Nutzerkonten");
         this.createSubElement("MultiConverter", "MultiConverter", async function(){
             await SPLINT.SessionsPHP.set("USER_ID", "ADMIN", false);
             await SPLINT.SessionsPHP.set("USER_NAME", "ADMIN", false);
             await SPLINT.SessionsPHP.set("ADMIN", true, false);
-            await SPLINT.SessionsPHP.set("GUEST", false, false);
-            ProjectHelper.new('ADMIN', "LIGHTER_BASE_GOLD_custom", true, false, true).then(S_Location.goto(PATH.location.converter).setHash("ADMINPLUS").call());
+            // await SPLINT.SessionsPHP.set("GUEST", false, false);
+            ProjectHelper.new('ADMIN', "LIGHTER_BASE_GOLD_custom", true, false, true).then(SPLINT.Tools.Location_old.goto(PATH.location.converter).setHash("ADMINPLUS").call());
         });
       // this.createSubElement("management", "Verwaltung");
     }
@@ -56,7 +57,7 @@ class ADMIN_NavigationMenu {
                 func();
                 return;
             }
-            S_Location.goto(PATH_A.location[name]).call();
+            SPLINT.Tools.Location_old.goto(PATH_A.location[name]).call();
           }
       this.list.push(this.elements[name]);
       return this.elements[name];

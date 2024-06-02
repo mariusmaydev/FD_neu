@@ -1,167 +1,102 @@
 
 
 class ShoppingCart {
-  static SET          = "SHOPPINGCART_SET";
-  static GET          = "SHOPPINGCART_GET";
-  static COPY_PROJECT = "SHOPPINGCART_COPY_PROJECT";
-  static REMOVE       = "REMOVE";
-  static PATH           = PATH.php.userData;
+  static SET                    = "SHOPPINGCART_SET";
+  static ADD                    = "CART_ADD";
+  static GET                    = "CART_GET";
+  static COPY_PROJECT           = "SHOPPINGCART_COPY_PROJECT";
+  static CLEAR                  = "SHOPPINGCART_CLEAR";
+  static REMOVE_ITEM            = "SHOPPINGCART_REMOVE_ITEM";
+  static CHANGE_AMOUNT          = "SHOPPINGCART_CHANGE_AMOUNT";
+  static REMOVE                 = "REMOVE";
+  static PATH                   = PATH.php.userData;
   static MANAGER;
 
   static {
     this.MANAGER = new SPLINT.CallPHP.Manager(this.PATH);
   }
-  static async set(obj){
+  static async set(obj, UserID = null){
     let call = this.MANAGER.call(ShoppingCart.SET);
         call.data.ShoppingCart = obj;
+        call.data.UserID = UserID;
         call.keepalive = true;
     return call.send();
   }
   static {
     SPLINT.CallPHP.Manager.bind2class(this.PATH, this);
   }
-  static async clear(){
-    async function f(cart){
-        for(const e of cart){
-            await ProjectHelper.remove(e.ProjectID);
-        }
-    }
-    return new Promise(async function(resolve){
-        let cart = (await this.get()).shoppingCart;
-            f(cart);
-        await ShoppingCart.set(JSON.stringify([]));
-        NavBar.updateCart([]);
-        resolve(true);
-    }.bind(this));
+  static async clear(UserID = null){
+    let call = new SPLINT.CallPHP(this.PATH, this.CLEAR);
+        call.data.UserID = UserID;
+    return call.send();
   }
-  static get(){
-    return new Promise(async function(resolve){
+  static async get(UserID = null){
+    let call = new SPLINT.CallPHP(this.PATH, this.GET);
+        call.data.UserID = UserID;
 
-      let call = this.callPHP(ShoppingCart.GET);
-      let cart = await call.send();
-      let obj = new Object();
-      if(typeof cart == 'object' && cart != null){
-        if(cart.ShoppingCartFromGuest != ""){
-          obj.shoppingCart_GUEST = JSON.parse(cart.ShoppingCartFromGuest);
-        } else {
-            obj.shoppingCart_GUEST = [];
-        }
-        if(cart.ShoppingCart != ""){
-            obj.shoppingCart = JSON.parse(cart.ShoppingCart);
-        } else {
-            obj.shoppingCart = [];
-        }
-        resolve(obj);
-      }
-      resolve("null");
-    }.bind(this));
+        let res = await call.send();
+
+        return res;
   }
-  static copyProject(projectID){
-    let data = CallPHP_S.getCallObject(ShoppingCart.COPY_PROJECT);
-        data.ProjectID = projectID;
-    CallPHP_S.call(ShoppingCart.PATH, data);
+  static async copyProject(projectID){
+    let call = new SPLINT.CallPHP(this.PATH, ShoppingCart.COPY_PROJECT);
+        call.data.ProjectID = projectID;
+        return call.send();
+    // CallPHP_S.call(ShoppingCart.PATH, data);
   }
   static callLocation(){
-    S_Location.goto(PATH.location.cart).call();
+    SPLINT.Tools.Location_old.goto(PATH.location.cart).call();
   }  
-  static async addItem(projectID, productName, amount){
-    return new Promise(async function(resolve){
-        let cartData = (await ShoppingCart.get()).shoppingCart;
-        if(cartData == null){
-        cartData = [];
+  static async addItem(projectID, productName, amount, UserID = null){
+        let call = new SPLINT.CallPHP(this.PATH, this.ADD);
+            call.data.ProjectID = projectID;
+            call.data.ProductName = productName;
+            call.data.amount = amount;
+            call.data.UserID = UserID;
+
+        let res = await call.send();
+        if(typeof NavBar !== 'undefined') {
+            NavBar.updateCart(res);
         }
-        let flag = true;
-        for(const index in cartData){
-        let item = cartData[index];
-        if(item.ProjectID == projectID){
-                cartData[index].amount += amount;
-            flag = false;
-        }
-        }
-        if(flag){
-        let itemObj = new Object();
-            itemObj.ProjectID   = projectID;
-            itemObj.ProductName = productName;
-            itemObj.amount      = amount;
-        cartData.push(itemObj);
-        }
-        NavBar.updateCart(cartData);
-        resolve(cartData);
-    }).then(async function(cartData){
-        return ShoppingCart.set(JSON.stringify(cartData));
-    });
+        return res;
   }
-  static async changeAmount(index, value){
-    let cart = (await ShoppingCart.get()).shoppingCart;
-        cart[index].amount += value;
-        ShoppingCart.set(JSON.stringify(cart));
-    return cart;
+  static async N_changeAmount(ProjectID, value, UserID = null){
+    let call = new SPLINT.CallPHP(this.PATH, this.CHANGE_AMOUNT);
+        call.data.ProjectID = ProjectID;
+        call.data.UserID = UserID;
+        call.data.amount = value;
+        return call.send();
   }
-  static async setAmount(projectID, value){
-    return new Promise(async function(resolve){
-        let cart = (await ShoppingCart.get()).shoppingCart;
-            for(const e of cart){
-                if(e.ProjectID == projectID){
-                    e.amount = value;
-                }
-            }
-            await ShoppingCart.set(JSON.stringify(cart));
-        resolve(cart);
-    });
-  }
-  static async editItem(projectID, productName, amount = null){
-    let cartData = (await ShoppingCart.get()).shoppingCart;
-    if(cartData == null){
-      cartData = [];
+  static async removeItem(projectID, UserID = null){
+    let call = new SPLINT.CallPHP(this.PATH, this.REMOVE_ITEM);
+        call.data.ProjectID = projectID;
+        call.data.UserID = UserID;
+        let res = await call.send(); 
+    if(typeof NavBar !== 'undefined') {
+        NavBar.updateCart(res);
     }
-    for(const index in cartData){
-      let item = cartData[index];
-      if(item.ProjectID == projectID){
-        if(amount != null){
-        	cartData[index].amount = amount;
-        }
-        cartData[index].ProductName = productName;
-      }
-    }
-    await NavBar.updateCart(cartData);
-    await ShoppingCart.set(JSON.stringify(cartData));
-    return cartData;
-  }
-  static async removeItem(projectID){
-    let cartData = (await ShoppingCart.get()).shoppingCart;
-    if(cartData == null){
-      cartData = [];
-    }
-    for(const index in cartData){
-      let item = cartData[index];
-      if(item.ProjectID == projectID){
-        cartData.splice(index, 1);
-      }
-    }
-    NavBar.updateCart(cartData);
-    await ShoppingCart.set(JSON.stringify(cartData));
-    await ProjectHelper.remove(projectID);
+    return res;
   }
   static async getFullPrice(cartObject){
     let fullPrice = 0;
     if(cartObject != null){
         for(const item of cartObject){
-        let productData     = await productHelper.getByName(item.ProductName);
-        fullPrice = S_Math.add(S_Math.multiply(productData.price, item.amount), fullPrice);
+            let productData     = await productHelper.getByName(item.ProductName);
+            fullPrice = SPLINT.Math.add(SPLINT.Math.multiply(productData.price, item.amount), fullPrice);
         }
     }
     return fullPrice;
   }
     static async drawPrices(cartData = null){
         if(cartData == null){
-            cartData = (await ShoppingCart.get()).shoppingCart;
+            cartData = (await ShoppingCart.get());
         }
         let fullPrice   = await ShoppingCart.getFullPrice(cartData);
-        let endPrice    = functionsCouponCodes.calcPrice(fullPrice);
-        let priceCoupon = S_Math.add(fullPrice, -endPrice);
-        PriceDiv_S.setValue("fullPrice", fullPrice);
-        PriceDiv_S.setValue("fullPrice_coupon", -priceCoupon);
-        PriceDiv_S.setValue("fullPrice_end", endPrice);
+        let endPrice    = await functionsCouponCodes.calcPrice(fullPrice);
+        let priceCoupon = SPLINT.Math.add(fullPrice, -endPrice);
+        SPLINT.DOMElement.PriceDiv.setValue("fullPrice", fullPrice);
+        SPLINT.DOMElement.PriceDiv.setValue("fullPrice_coupon", -priceCoupon);
+        SPLINT.DOMElement.PriceDiv.setValue("fullPrice_end", endPrice);
         return true;
     }
 }

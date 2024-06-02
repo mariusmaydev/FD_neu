@@ -135,7 +135,8 @@ body {
             box-sizing: border-box;
             gap: 0.5rem;
             // padding: 0;
-            > .buttonsContainer {
+
+            > .buttonsContainerTextEdit {
                 position: relative;
                 // padding-inline: 1rem;
                 display: flex;
@@ -144,7 +145,7 @@ body {
                 justify-content: space-between;
                 align-items: center;
                 width: 100%;
-                height: max-content;
+                // height: max-content;
                 box-sizing: border-box;
                 gap: 0.5rem;
                 > button {

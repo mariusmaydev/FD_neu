@@ -28,13 +28,13 @@ class BottomBar_Text_Button_FontSize {
             this.sl.min    = 0.5;
             this.sl.max    = 40;
             this.sl.step   = 0.5;
-            this.sl.value          = Math.round(MATH_convert.px2pt(S_Math.divide(this.data.FontSize, 10)) * 2) / 2;
+            this.sl.value          = Math.round(SPLINT.Math.convert.px2pt(SPLINT.Math.divide(this.data.FontSize, 10)) * 2) / 2;
             this.sl.valueExtension = "";
             this.sl.onDrawSign = function(signContent){
                 signContent.value = this.sl.value + this.sl.valueExtension;
             }.bind(this);
             this.sl.oninput = function(value){
-                this.data.FontSize = Math.round(MATH_convert.pt2px(S_Math.multiply(value, 10)) * 2) / 2;
+                this.data.FontSize = Math.round(SPLINT.Math.convert.pt2px(SPLINT.Math.multiply(value, 10)) * 2) / 2;
                 CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt", true);
             }.bind(this);
             // this.sl_contrast.drawValueOutput = false;

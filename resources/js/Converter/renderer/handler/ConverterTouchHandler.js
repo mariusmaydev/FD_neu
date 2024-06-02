@@ -111,7 +111,7 @@ class ConverterTouchHandler {
         if(event.touches.length >= 2){
             let x = Math.abs(event.touches[0].pageX - event.touches[1].pageX);
             let y = Math.abs(event.touches[0].pageY - event.touches[1].pageY);
-            let dist = S_Math.pytagoras(x, y);
+            let dist = SPLINT.Math.pytagoras(x, y);
             ConverterTouchHandler.distance.now = dist;
             ConverterTouchHandler.distance.ratio = 1 / ConverterTouchHandler.distance.start *dist;
             return dist;

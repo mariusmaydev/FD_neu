@@ -213,13 +213,13 @@
 //         this.sl_fontSize.min            = 0.5;
 //         this.sl_fontSize.max            = 20;
 //         this.sl_fontSize.step           = 0.5; 
-//         this.sl_fontSize.value          = Math.round(MATH_convert.px2pt(S_Math.divide(this.data.FontSize, 10)) * 2) / 2;
+//         this.sl_fontSize.value          = Math.round(SPLINT.Math.convert.px2pt(SPLINT.Math.divide(this.data.FontSize, 10)) * 2) / 2;
 //         this.sl_fontSize.valueExtension = "";
 //         this.sl_fontSize.onDrawSign = function(signContent){
 //             signContent.value = this.sl_fontSize.value + this.sl_fontSize.valueExtension;
 //         }.bind(this);
 //         this.sl_fontSize.oninput = function(value){
-//             this.data.FontSize = Math.round(MATH_convert.pt2px(S_Math.multiply(value, 10)) * 2) / 2;
+//             this.data.FontSize = Math.round(SPLINT.Math.convert.pt2px(SPLINT.Math.multiply(value, 10)) * 2) / 2;
 //             CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt");
 //         }.bind(this);
         

@@ -19,6 +19,7 @@ class ADMIN_order_list {
             if(this.orderData != null){
                 for(const e of this.orderData){
                     e.uTime = SPLINT.Tools.DateTime.Helper.convertDateTimeToFormatedUnix(e.Time);
+
                 }
                 SArray.assortInt(this.orderData, "uTime", true);
                 resolve(true);
@@ -132,7 +133,7 @@ class ADMIN_order_list {
                 project = await ProjectHelper.get(projectID, data.UserID);
             }
             let productData = await productHelper.getByName(project.Product);
-                fullPrice = S_Math.add(fullPrice, S_Math.multiply(productData.price, item.amount));
+                fullPrice = SPLINT.Math.add(fullPrice, SPLINT.Math.multiply(productData.price, item.amount));
             fullAmount += parseInt(item.amount);
         }
         let main = new SPLINT.DOMElement(parent.id + "_information", "div", parent);
@@ -147,12 +148,12 @@ class ADMIN_order_list {
         return true;
     }
     drawAddressDiv(parent, data, index){
-        let main = new drawAddressElement(parent, data.Address.sending, index);
+        let main = new SPLINT.DOMComponents.AddressElement(parent, data.Address.sending, index);
     }
     drawTimeDiv(parent, data){
         let main = new SPLINT.DOMElement(parent.id + "_time", "div", parent);
             main.Class("timeDiv");
-            let time = new formatUnix_S(data.uTime * 1000);
+            let time = new SPLINT.Tools.Time.Helper.formatUnix(data.uTime * 1000);
             let inner = new SPLINT.DOMElement.SpanDiv(main, "inner", time.date() + " " + time.time());
     }
     drawButtonsDiv(parent, data){
@@ -162,7 +163,7 @@ class ADMIN_order_list {
                 button_View.bindIcon("search");
                 button_View.button.setTooltip("öffnen", "bottom");
                 button_View.button.onclick = function(){
-                    S_Location.setHash(ADMIN_orders.VIEW, data.OrderID, this.fromArchive);
+                    SPLINT.Tools.Location_old.setHash(ADMIN_orders.VIEW, data.OrderID, this.fromArchive);
                     // let newMain = new ADMIN_orders();
                         // newMain.locationBack = PATH_A.location.orders;
                 }.bind(this);
@@ -180,7 +181,7 @@ class ADMIN_order_list {
                                 buttonEnter.onclick = async function(){
                                     let r = await order.finish(data);
 
-                                    console.dir(r);
+                                    // console.dir(r);
                                     confirmWindow.close();
                                     parent.remove();
                                 }
@@ -208,7 +209,7 @@ class ADMIN_order_list {
                 gen(tableElement.getData2Head(3), "", "beschichtet");
                 gen(tableElement.getData2Head(4), "", "Modell");
                 //tableElement.addRow("Galvanik", "Preis", "Laser");
-                    console.dir(items)
+                    // console.dir(items)
             for(const index in items){
                 let item = items[index];
                 let projectID = item.ProjectID;
@@ -223,7 +224,6 @@ class ADMIN_order_list {
                 }
                 new SPLINT.DOMElement.SpanDiv(tableElement.getData(index, 0), "", project.EPType);
                 // LIGHTER_GOLD
-                // console.log(project)
                 let productData = await productHelper.getByName(project.Product);
                 // if(project.EPType == "GOLD"){
                     new SPLINT.DOMElement.SpanDiv(tableElement.getData(index, 1), "", productData.price);

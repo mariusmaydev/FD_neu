@@ -38,7 +38,7 @@ class drawCartRight {
                     buttonBuy.onclick = function(){
                         SPLINT.Tools.Location.URL = PATH.location.checkout;
                         SPLINT.Tools.Location.addHash("address").call();
-                        // S_Location.goto(PATH.location.checkout).call();
+                        //SPLINT.Tools.Location_old.goto(PATH.location.checkout).call();
                     }
 
         let codeDiv = this.rightBody.newDiv("code", "code");

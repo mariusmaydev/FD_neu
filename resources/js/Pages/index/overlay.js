@@ -24,7 +24,7 @@ class indexOverlay {
         this.calls = indexOverlay.calls;
         this.lastCall = null;
         this.waiters = [];
-        this.wait = new PromiseTimeout("test", 10, false);
+        this.wait = new SPLINT.Tools.Time.PromiseTimeout("test", 10, false);
         this.base = 0;
     }
     draw(){
@@ -68,13 +68,13 @@ class indexOverlay {
             footer_imprint.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_STANDARD);
             footer_imprint.Class("imprint");
             footer_imprint.onclick = function(){
-                S_Location.goto(PATH.location.imprint).call();
+                SPLINT.Tools.Location_old.goto(PATH.location.imprint).call();
             }
         let footer_Contact = new SPLINT.DOMElement.Button(footer_body, "footer_contact", "Kontakt");
             footer_Contact.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_STANDARD);
             footer_Contact.Class("contact");
             footer_Contact.onclick = function(){
-                S_Location.goto(PATH.location.imprint).call();
+                SPLINT.Tools.Location_old.goto(PATH.location.imprint).call();
             }
         // this.part4.drawNavigatorButtons();
 
@@ -122,7 +122,7 @@ class indexOverlay {
         this.lastCall = call;
     }
     animateScroll(indexBefore, index){
-        timeTools.sleep(400).then(function(){
+        SPLINT.Tools.Time.Helper.sleep(400).then(function(){
             if(index == this.activePart){
 
                 switch(index) {
@@ -161,24 +161,27 @@ class indexOverlay {
             }
         }.bind(this));
         let height = this.contentElement.clientHeight;
-        if(index == 5 || (index == 4 && this.scrollFlag == "up")){
-            this.scrollDelta = parseInt(S_Math.divide(parseInt(Footer.mainElement.clientHeight), 10));
+        if(index == 5 || (index == 4 && this.scrollFlag == "up")){        
+            this.scrollDelta = parseInt(SPLINT.Math.divide(parseInt(0), 10));
+
+            // this.scrollDelta = parseInt(SPLINT.Math.divide(parseInt(Footer.mainElement.clientHeight), 10));
             if(this.scrollFlag == "up"){
-                this.scrollAim = parseInt(S_Math.multiply((index - 1), height));
+                this.scrollAim = parseInt(SPLINT.Math.multiply((index - 1), height));
             } else {
-                this.scrollAim = parseInt(S_Math.multiply((index - 2), height)) + parseInt(Footer.mainElement.clientHeight);
+                // this.scrollAim = parseInt(SPLINT.Math.multiply((index - 2), height)) + parseInt(Footer.mainElement.clientHeight);
+                this.scrollAim = parseInt(SPLINT.Math.multiply((index - 2), height)) + 0;
 
             }
         } else {
-            this.scrollDelta = parseInt(S_Math.divide(height, 20));
-            this.scrollAim = parseInt(S_Math.multiply((index - 1), height));
+            this.scrollDelta = parseInt(SPLINT.Math.divide(height, 20));
+            this.scrollAim = parseInt(SPLINT.Math.multiply((index - 1), height));
         }
         this.animate();
     }
     animate(){
         if(this.scrollFlag == 'up'){
             if(this.contentElement.scrollTop > this.scrollAim){
-                this.contentElement.scrollTop = S_Math.add(this.contentElement.scrollTop, - this.scrollDelta);
+                this.contentElement.scrollTop = SPLINT.Math.add(this.contentElement.scrollTop, - this.scrollDelta);
                 if(this.contentElement.scrollTop < this.scrollAim){
                     this.contentElement.scrollTop = this.scrollAim;
                     return;
@@ -188,7 +191,7 @@ class indexOverlay {
             }
         } else if(this.scrollFlag == 'down'){
             if(this.contentElement.scrollTop < this.scrollAim){
-                this.contentElement.scrollTop = S_Math.add(this.contentElement.scrollTop, this.scrollDelta);
+                this.contentElement.scrollTop = SPLINT.Math.add(this.contentElement.scrollTop, this.scrollDelta);
                 if(this.contentElement.scrollTop > this.scrollAim){
                     this.contentElement.scrollTop = this.scrollAim;
                     return;

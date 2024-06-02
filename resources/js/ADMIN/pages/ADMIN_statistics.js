@@ -24,7 +24,7 @@ class ADMIN_statistics extends ADMIN_DrawTemplate {
         let orderAmountObj = new Object();
             for(const key in orderData){
                 let t = SPLINT.Tools.DateTime.Helper.convertDateTimeToFormatedUnix(orderData[key].Time);
-                let ji = new formatUnix_S(t * 1000);
+                let ji = new SPLINT.Tools.Time.Helper.formatUnix(t * 1000);
                 let da = ji.date();
                 if(orderAmountObj[da] != undefined){
                     orderAmountObj[da] += 1;

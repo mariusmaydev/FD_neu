@@ -51,7 +51,7 @@ class ADMIN_testSpace {
 
         let bt2 = new SPLINT.DOMElement.Button(this.mainElement, "stripe", "stripe");
             bt2.onclick = function(){
-                S_Location.goto(PATH.location.ADMIN.stripe).call();
+               SPLINT.Tools.Location_old.goto(PATH.location.ADMIN.stripe).call();
             }
         let bt3 = new SPLINT.DOMElement.Button(this.mainElement, "qrcode", "qr");
             bt3.onclick = async function(){

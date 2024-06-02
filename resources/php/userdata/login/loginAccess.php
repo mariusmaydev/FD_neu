@@ -5,6 +5,7 @@
     switch(Communication::getAccess()){
         case "REMOVE_ACCOUNT"           : user_account::remove($_POST[login::USER_ID]); break;
         case "GET_DATA"                 : login_C::getData($_POST[login::USER_ID]); break;
+        case "GET_ALL_DATA"             : login_C::getAllData(); break;
         case "LOGIN"                    : login_C::nloginGuest(); break;
         case "ADMIN.LOGIN.CREATE"       : login_admin::create(); break;
         case "ADMIN.LOGIN.CHECK"        : login_admin::check($_POST[login_adminDB::USER_NAME], $_POST[login_adminDB::PASSWORD]); break;

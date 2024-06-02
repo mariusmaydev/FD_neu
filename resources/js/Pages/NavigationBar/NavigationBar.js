@@ -13,8 +13,8 @@ class NavigationBar {
         this.#checkViewport();
         SPLINT.Events.onLoadingComplete = async function(){
             // this.mainElement.setAttribute("loaded", true);
-            this.drawCart();
         }.bind(this);
+        this.drawCart();
         // SPLINT.Events.onLoadingComplete.dispatch();
         SPLINT.ViewPort.onViewPortChanged = this.#checkViewport.bind(this);
         // this.#checkViewport();
@@ -91,7 +91,7 @@ class NavigationBar {
         this.original.div.Class("Original");
             this.original.button = new SPLINT.DOMElement.Button(this.original.div, "original", "Originale");
             this.original.button.button.onclick = function() {
-                S_Location.goto(PATH.location.converterStart).setHash("originals").call();
+                SPLINT.Tools.Location_old.goto(PATH.location.converterStart).setHash("originals").call();
             }
 
     }
@@ -105,7 +105,7 @@ class NavigationBar {
             this.design.button = new SPLINT.DOMElement.Button(this.design.div, "design", "jetzt entwerfen");
             // this.design.button.bindIcon("Add");
             this.design.button.button.onclick = function() {
-                S_Location.goto(PATH.location.converterStart).call();
+                SPLINT.Tools.Location_old.goto(PATH.location.converterStart).call();
                 // openConverter();
             }
     }
@@ -116,7 +116,7 @@ class NavigationBar {
             // this.logo.inner = new SPLINT.DOMElement("NavBar_LogoInner", "div", this.logo.div);
             // this.logo.inner.Class("inner");
             // this.logo.inner.onclick = function(){
-            //     S_Location.goto(PATH.location.index).call();
+            //    SPLINT.Tools.Location_old.goto(PATH.location.index).call();
             // }
                 // this.logo.inner1 = new SPLINT.DOMElement("NavBar_LogoInner1", "div", this.logo.inner);
                 // this.logo.inner1.Class("inner1");
@@ -125,7 +125,7 @@ class NavigationBar {
                         this.logo.img = new SPLINT.DOMElement("NavBar_LogoImg", "img", this.logo.content);
                         this.logo.img.src = PATH.images.logo;
                         this.logo.img.onclick = function(){
-                            S_Location.goto(PATH.location.index).call();
+                            SPLINT.Tools.Location_old.goto(PATH.location.index).call();
                         }
     }
     async drawCart(){
@@ -133,7 +133,7 @@ class NavigationBar {
         this.cart.div = new SPLINT.DOMElement("NavBar_CartDiv", "div", this.contentElement);
         this.cart.div.Class("Cart");
         return new Promise(async function(resolve){
-            let cartData = (await ShoppingCart.get()).shoppingCart;
+            let cartData = (await ShoppingCart.get());
             if(cartData != null && cartData.length > 0){
                 this.drawCartPoint(cartData.length);
             } else if(this.cart.point != undefined){
@@ -143,7 +143,7 @@ class NavigationBar {
             this.cart.button.bindIcon("shopping_basket");
             this.cart.button.button.onclick = function(){
                 // SPLINT.Tools.Location.addHash("test", "test2");
-                S_Location.goto(PATH.location.cart).call();
+                SPLINT.Tools.Location_old.goto(PATH.location.cart).call();
             }
             resolve();
         }.bind(this));
@@ -159,7 +159,7 @@ class NavigationBar {
     }
     async updateCart(cartData = null){
         if(cartData == null){
-            cartData = (await ShoppingCart.get()).shoppingCart;
+            cartData = (await ShoppingCart.get());
         }
         if(cartData.length == 0){
             this.cart.point.div.remove();

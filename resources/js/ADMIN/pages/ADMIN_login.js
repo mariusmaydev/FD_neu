@@ -34,7 +34,7 @@ class ADMIN_login extends ADMIN_DrawTemplate {
 
             let bt = new SPLINT.DOMElement.Button(this.container, "submit", "anmelden");
                 bt.Class("submit");
-                bt.basicStyling = S_constants.BUTTON_STYLES.DEFAULT;
+                bt.basicStyling = SPLINT.CONSTANTS.BUTTON_STYLES.DEFAULT;
                 bt.onclick = async function(){
                     let name    = input_name.value;
                     let pw      = input_pw.value;
@@ -114,7 +114,7 @@ class ADMIN_login extends ADMIN_DrawTemplate {
 
             let bt = new SPLINT.DOMElement.Button(container, "submit", "speichern");
                 bt.Class("submit");
-                bt.basicStyling = S_constants.BUTTON_STYLES.DEFAULT;
+                bt.basicStyling = SPLINT.CONSTANTS.BUTTON_STYLES.DEFAULT;
 
                 bt.onclick = async function(){
                     let name    = input_name.value;

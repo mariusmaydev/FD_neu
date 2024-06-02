@@ -31,7 +31,7 @@ class ConverterWorkerHelper {
         ctx.save();
         ctx.translate(element.data.TextPosX, element.data.TextPosY);
         ctx.scale(2, 2);
-        ctx.rotate(S_Math.toRadians(element.data.TextAlign));
+        ctx.rotate(SPLINT.Math.toRadians(element.data.TextAlign));
         element.ctx.globalAlpha = 1;
         ctx.imageSmoothingEnabled = true;
         ctx.imageSmoothingQuality = "high";

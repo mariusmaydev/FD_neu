@@ -66,14 +66,14 @@ class functionsCouponCodes {
             }
         return code;
     }
-    static calcPrice(priceIn){
-        let code = functionsCouponCodes.getActive(); 
+    static async calcPrice(priceIn){
+        let code = await functionsCouponCodes.getActive(); 
         if(code != null && code.code != null){ 
             code = code.code;
             if(code.type == "percent"){
-                return S_Math.add(priceIn, -S_Math.multiply(priceIn, S_Math.divide(code.value, 100)));
+                return SPLINT.Math.add(priceIn, -SPLINT.Math.multiply(priceIn, SPLINT.Math.divide(code.value, 100)));
             } else {
-                let val = S_Math.add(priceIn, -code.value);
+                let val = SPLINT.Math.add(priceIn, -code.value);
                     if(val < 0){
                         val = 0;
                     }

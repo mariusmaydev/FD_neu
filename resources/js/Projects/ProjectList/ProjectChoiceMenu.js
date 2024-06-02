@@ -63,7 +63,7 @@ class drawProjectChoiceMenu {
                     buttonCreate.Class("buttonCreate");
                     buttonCreate.onclick = async function(){
                         await ProjectHelper.new("neues Projekt", "LIGHTER_BASE_GOLD_custom", false, false, false, "base");
-                        S_Location.goto(PATH.location.converter).call();
+                        SPLINT.Tools.Location_old.goto(PATH.location.converter).call();
                 }.bind(this);
           }
           
@@ -96,7 +96,7 @@ class drawProjectChoiceMenu {
             //   this.bt_public.button.state().unsetActive();
             //   this.bt_private.button.state().unsetActive();
               setTimeout(async function(){
-                  S_Location.setHash("originals");
+                  SPLINT.Tools.Location_old.setHash("originals");
               }, 500);
             }.bind(this);
 
@@ -134,7 +134,7 @@ class drawProjectChoiceMenu {
                 this.CategoryMenu_public.hide = false;
             }
             setTimeout(async function(){
-                S_Location.setHash("public");
+                SPLINT.Tools.Location_old.setHash("public");
             }, 500);
         }.bind(this);
 
@@ -167,7 +167,7 @@ class drawProjectChoiceMenu {
                     this.bt_private.button.setAttribute("hide", false);
                 }
                 setTimeout(async function(){
-                    S_Location.setHash("private_storage");
+                    SPLINT.Tools.Location_old.setHash("private_storage");
                 }, 500);
               }.bind(this);
 
@@ -188,7 +188,7 @@ class drawProjectChoiceMenu {
                 this.bt_create.button.state().unsetActive();
                 this.bt_create.onclick = async function(){
                         await ProjectHelper.new("neues Projekt", "LIGHTER_BASE_GOLD_custom", false, false, false, "base");
-                        S_Location.goto(PATH.location.converter).call();
+                        SPLINT.Tools.Location_old.goto(PATH.location.converter).call();
                     }.bind(this)
 
         this.#changeViewPortSize(this);

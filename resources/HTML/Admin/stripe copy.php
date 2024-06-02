@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,3 +78,5 @@
 <?php 
 // $rootpath = realpath($_SERVER["DOCUMENT_ROOT"]);
 // require_once $rootpath.'/fd/resources/php/Stripe/StripeMain.php';
+
+?>

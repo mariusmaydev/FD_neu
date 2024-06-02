@@ -24,15 +24,15 @@
             $response['height'] = $height;
         } else {
             if(gettype($img) == 'string') {
-                $img = new Imagick();
-                $img -> readImageBlob(file_get_contents($img));
+                $img1 = new Imagick();
+                $img1 -> readImageBlob(file_get_contents($img));
             }
             $width  = $BoxX;
-            $height = $img -> getImageHeight() / ($img -> getImageWidth() / $BoxX);
-            $img -> resizeImage(intval($width), intval($height), Imagick::FILTER_GAUSSIAN, 0);
-            $img -> setImageFormat("png");
-            $response[ImageDB::IMAGE_SCALE] = clone $img;
-            $response[ImageDB::IMAGE_VIEW]  = Filter::createImage(($img), $filterData);
+            $height = $img1 -> getImageHeight() / ($img1 -> getImageWidth() / $BoxX);
+            $img1 -> resizeImage(intval($width), intval($height), Imagick::FILTER_GAUSSIAN, 0);
+            $img1 -> setImageFormat("png");
+            $response[ImageDB::IMAGE_SCALE] = clone $img1;
+            $response[ImageDB::IMAGE_VIEW]  = Filter::createImage(($img1), $filterData);
             $response['width']  = $width;
             $response['height'] = $height;
         }

@@ -15,7 +15,7 @@ class converter_drawMobile {
         this.SquareBorder = new SPLINT.DOMElement(ConverterHelper.ELE_SQUARE_BORDER_DIV, "div", this.EditorFrameElement);
         this.SquareBorder.Class("square-border-div");
     
-        let hashes = S_Location.getHashes();
+        let hashes = SPLINT.Tools.Location_old.getHashes();
         if(hashes == "ADMINPLUS"){
             this.SquareBorder.classList.add("ADMINPLUS");
             SPLINT.Events.onLoadingComplete.dispatch();

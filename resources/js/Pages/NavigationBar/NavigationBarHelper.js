@@ -52,7 +52,7 @@ class NavigationBarHelper {
                     let btHome = new SPLINT.DOMElement.Button(this.contentElement, "BTHome", "Home");
                         btHome.Class("btHome");
                         btHome.onclick = function(){
-                            S_Location.goto(PATH.location.index).call();
+                           SPLINT.Tools.Location_old.goto(PATH.location.index).call();
                             this.close();
                         }.bind(this);
 
@@ -61,20 +61,20 @@ class NavigationBarHelper {
                         btCreate.onclick = async function(){
                             this.close();
                             await ProjectHelper.new("neues Projekt", "LIGHTER_BASE_GOLD_custom", false, false, false, "base");
-                            S_Location.goto(PATH.location.converter).call();
+                           SPLINT.Tools.Location_old.goto(PATH.location.converter).call();
                         }.bind(this);
 
                     let btOriginals = new SPLINT.DOMElement.Button(this.contentElement, "BTOriginals", "Kollektionen");
                         btOriginals.Class("btOriginals");
                         btOriginals.onclick = function(){
-                            S_Location.goto(PATH.location.converterStart).setHash("originals").call();
+                           SPLINT.Tools.Location_old.goto(PATH.location.converterStart).setHash("originals").call();
                             this.close();
                         }.bind(this);
 
                     let btExamples = new SPLINT.DOMElement.Button(this.contentElement, "BTExamples", "Vorlagen");
                         btExamples.Class("btExamples");
                         btExamples.onclick = function(){
-                            S_Location.goto(PATH.location.converterStart).setHash("public").call();
+                           SPLINT.Tools.Location_old.goto(PATH.location.converterStart).setHash("public").call();
                             this.close();
                         }.bind(this);
                             
@@ -90,21 +90,21 @@ class NavigationBarHelper {
                         let btImprint = new SPLINT.DOMElement.Button(containerFooter, "BTImprint", "Impressum");
                             btImprint.Class("btImprint");
                             btImprint.onclick = function(){
-                                S_Location.goto(PATH.location.imprint).call();
+                               SPLINT.Tools.Location_old.goto(PATH.location.imprint).call();
                                 this.close();
                             }.bind(this);
                             
                         let btData = new SPLINT.DOMElement.Button(containerFooter, "BTData", "Datenschutz");
                             btData.Class("btData");
                             btData.onclick = function(){
-                                S_Location.goto(PATH.location.dataProtection).call();
+                               SPLINT.Tools.Location_old.goto(PATH.location.dataProtection).call();
                                 this.close();
                             }.bind(this);
                             
                         let btAGB = new SPLINT.DOMElement.Button(containerFooter, "BT_AGB", "AGBs");
                             btAGB.Class("btAGB");
                             btAGB.onclick = function(){
-                                S_Location.goto(PATH.location.AGB).call();
+                               SPLINT.Tools.Location_old.goto(PATH.location.AGB).call();
                                 this.close();
                             }.bind(this);
                             

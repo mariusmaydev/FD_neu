@@ -2,7 +2,7 @@
 	"projectName": "fd",
 	"SSL": "http",
     "host3": "localhost",
-	"host": "192.168.178.125",
+	"host": "192.168.178.88",
 	"port": "80",
 	"moonraker": {
 		"host": "192.168.178.82",
@@ -26,17 +26,17 @@
 	},
 	"settings": {
 		"cacheResources": {
-			"cdn": false,
+			"cdn": true,
 			"splint": {
-				"js": false,
-				"css": false,
-				"fileTree": false
+				"js": true,
+				"css": true,
+				"fileTree": true
 			},
 			"project": {
-				"js": false,
-				"css": false,
-				"fileTree": false,
-                "converterProcessing": false
+				"js": true,
+				"css": true,
+				"fileTree": true,
+                "converterProcessing": true
 			},
             "indexdDB" : true
 		},

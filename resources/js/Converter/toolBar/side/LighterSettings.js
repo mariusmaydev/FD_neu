@@ -38,7 +38,7 @@ class ToolBar_LighterSettings {
             this.expander.unsetActive();
             this.blur();
 
-            let headline = new SPLINT.DOMElement.SpanDiv(this.expanderBody, "headline", "Feuerzeug einstellungen");
+            let headline = new SPLINT.DOMElement.SpanDiv(this.expanderBody, "headline", "Farbe ändern");
                 headline.Class("headline");
                 headline.div.onclick = function(){
                     this.expander.button.click();
@@ -63,14 +63,14 @@ class ToolBar_LighterSettings {
         this.contentElement = new SPLINT.DOMElement(this.id + "Content", "div", this.mainElement);
         this.contentElement.Class("content");
         await this.getProductDataFull();
-        let EPTypeContainer = new SPLINT.DOMElement(this.id + "EPTypeContainer", "div", this.contentElement);
-            EPTypeContainer.Class("EPTypeContainer");
-            let EPTypeContainerHeadline = new SPLINT.DOMElement.SpanDiv(EPTypeContainer, "headline", "Beschichtung");
-                EPTypeContainerHeadline.Class("headline");
-            let EPTypeContainerContent = new SPLINT.DOMElement(this.id + "EPTypeContainerContent", "div", EPTypeContainer);
-                EPTypeContainerContent.Class("contentElement");
+        // let EPTypeContainer = new SPLINT.DOMElement(this.id + "EPTypeContainer", "div", this.contentElement);
+        //     EPTypeContainer.Class("EPTypeContainer");
+        //     let EPTypeContainerHeadline = new SPLINT.DOMElement.SpanDiv(EPTypeContainer, "headline", "Beschichtung");
+        //         EPTypeContainerHeadline.Class("headline");
+        //     let EPTypeContainerContent = new SPLINT.DOMElement(this.id + "EPTypeContainerContent", "div", EPTypeContainer);
+        //         EPTypeContainerContent.Class("contentElement");
 
-            this.drawEPTypeMenu(EPTypeContainerContent);
+        //     this.drawEPTypeMenu(EPTypeContainerContent);
         
         let ColorContainer = new SPLINT.DOMElement(this.id + "colorContainer", "div", this.contentElement);
             ColorContainer.Class("colorContainer");

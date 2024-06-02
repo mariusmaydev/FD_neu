@@ -29,7 +29,7 @@ class drawPaymentComplete extends Pages_template {
             // let spinner = new SPLINT.DOMElement.Spinner(this.contentDiv, "spinner");
             //     spinner.show();
         // setTimeout(()=> {
-        //     let a = Paypal.capturePayment(S_Location.getParams().token);
+        //     let a = Paypal.capturePayment(.getParams().token);
         //     console.log(a);
         //     SPLINT.Events.onLoadingComplete.dispatch();
 

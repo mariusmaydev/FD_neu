@@ -9,12 +9,12 @@ SPLINT.require_now('@PROJECT_ROOT/Converter/DataStorage/DSProject.js');
  //      Champ Xentai
 //  var LighterWidth  = 38;    //in mm 38,5  38,3
 //  var LighterHeight = 57.5;    //in mm 57,8  57,8
-//  var LighterMid    = S_Math.multiply(23.5, 0.94);    //in mm 22,4  23,4
+//  var LighterMid    = SPLINT.Math.multiply(23.5, 0.94);    //in mm 22,4  23,4
 
  
- var LighterWidth  = 33;    //in mm 38,5  38,3
- var LighterHeight = 54;    //in mm 57,8  57,8
- var LighterMid    = 20.75;//S_Math.multiply(23.5, 0.94);    //in mm 22,4  23,4
+ var LighterWidth  = 34;    //in mm 38,5  38,3
+ var LighterHeight = 52;    //in mm 57,8  57,8
+ var LighterMid    = 20;//SPLINT.Math.multiply(23.5, 0.94);    //in mm 22,4  23,4
 
 
  var Box = new Object();
@@ -103,7 +103,7 @@ class Converter {
     new Converter_LeftBar();
     let rightElement = new SPLINT.DOMElement("Converter_rightBar", "div", ConverterHelper.ELE_MAIN);
         rightElement.Class("Conv_RightBar");
-    let hashes = S_Location.getHashes();
+    let hashes = SPLINT.Tools.Location_old.getHashes();
     if(hashes == "ADMIN"){
       NavBar.hide();
     } else if(hashes == "ADMINPLUS"){
@@ -151,10 +151,10 @@ class Converter {
         // WindowHeight = $(window).height();
         if(EditorMainFrame.offsetHeight / EditorMainFrame.offsetWidth > LighterHeight / LighterWidth){
           SQ.width = EditorMainFrame.offsetWidth; 
-          SQ.height  = S_Math.multiply(S_Math.divide(EditorMainFrame.offsetWidth, LighterWidth), LighterHeight);
+          SQ.height  = SPLINT.Math.multiply(SPLINT.Math.divide(EditorMainFrame.offsetWidth, LighterWidth), LighterHeight);
         } else {
           SQ.height = EditorMainFrame.offsetHeight; 
-          SQ.width  = S_Math.multiply(S_Math.divide(EditorMainFrame.offsetHeight, LighterHeight), LighterWidth);
+          SQ.width  = SPLINT.Math.multiply(SPLINT.Math.divide(EditorMainFrame.offsetHeight, LighterHeight), LighterWidth);
         }
   
         SquareBorder.style.width    = (SQ.width * 0.9)  + "px";

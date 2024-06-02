@@ -42,7 +42,7 @@ use Splint\File\File_DeepScan;
 
         }
         public static function new(bool $sendBack = true){
-            $productList = self::get(false, true, null, $_POST[ProductDB::PRODUCT_NAME]);
+            $productList = self::get(false, true, true, null, $_POST[ProductDB::PRODUCT_NAME]);
             if($productList != null){
                 Communication::sendBack($productList, true, $sendBack);
                 return;
@@ -86,6 +86,19 @@ use Splint\File\File_DeepScan;
             $pathBase = PATHS::parsePath( PATH_Product::get($ProductID));
             $pathFull = $_SERVER["DOCUMENT_ROOT"] . $pathBase . $imageID . ".png";
             DataRemove($pathFull);
+            Communication::sendBack(true, true, $sendBack);
+        }
+        public static function changeAmount($ProductName, $amount, $sendBack = false) {
+            $dataset = new DataSet();
+            $dataset -> newKey(ProductDB::PRODUCT_NAME, $ProductName);
+            $dataset -> newEntry(ProductDB::PRODUCT_AVAILABLE_AMOUNT);
+            $res = ProductDB::get($dataset);
+            $newAmount = $res[ProductDB::PRODUCT_AVAILABLE_AMOUNT] + $amount;
+            
+            $dataset1 = new DataSet();
+            $dataset1 -> newKey(ProductDB::PRODUCT_NAME, $ProductName);
+            $dataset1 -> newEntry(ProductDB::PRODUCT_AVAILABLE_AMOUNT, $newAmount);
+            ProductDB::Edit($dataset1);
             Communication::sendBack(true, true, $sendBack);
         }
         public static function edit(bool $sendBack = true){
@@ -138,7 +151,7 @@ use Splint\File\File_DeepScan;
             }
             Communication::sendBack($res);
         }
-        public static function get(bool $sendBack = true, bool $useParameters = false, string $viewName = null, string $name = null, float $price = null, string $productID = null, $color = null, $EPType = null){
+        public static function get(bool $sendBack = true, bool $useParameters = false, bool $withImages = true, string $viewName = null, string $name = null, float $price = null, string $productID = null, $color = null, $EPType = null){
             $dataSet = new DataSet();
             if($useParameters){
                 if($viewName != null){
@@ -180,7 +193,7 @@ use Splint\File\File_DeepScan;
                 }
             }
             $response = ProductDB::get($dataSet, DataBase::FORCE_ORDERED);
-            if($response != null){
+            if($response != null && $withImages){
                 foreach($response as $key => $product){
                     $pathBase = PATHS::parsePath(PATH_Product::get($product[ProductDB::PRODUCT_ID]));
                     $response[$key]["ImgPath"] = [];

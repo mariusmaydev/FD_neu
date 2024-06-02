@@ -9,7 +9,7 @@ class drawCartList {
         this.draw();
     }
     async draw(){
-        this.data = (await ShoppingCart.get()).shoppingCart;
+        this.data = (await ShoppingCart.get());
         let fullProjectDataRes = (await ProjectHelper.getAll());
         for(const e of fullProjectDataRes) {
             this.ProjectList[e.ProjectID] = e;
@@ -62,8 +62,6 @@ class drawCartList {
             let priceEle        = rightDiv.newDiv(null, "price");
             let buttonsEle      = rightDiv.newDiv(null, "buttons");
             
-            console.dir(productData)
-            console.dir(item)
                 let lighter = new drawLighter3D(lighterEle, lighterEle.id, "PROJECT", projectData.Thumbnail, false, false, projectData.EPType);
                 
                     lighter.promise.then(async function(){
@@ -88,15 +86,11 @@ class drawCartList {
                         informationTable.Class("informationTable");
                         let EPType = productHelper.getEPTypeForID(productData.EPType);
                             EPType.then(function(d){
-                                console.log(d)
                                 informationTable.addRow("Beschichtung", d.name);
-
                             })
                         let Color = productHelper.getColorForID(productData.colorID);
                             Color.then(function(d){
-                                console.log(d)
                                 informationTable.addRow("Farbe", d.name);
-
                             })
                         // informationTable.addRow("zuletzt bearbeitet", this.data.Last_Time);
 
@@ -106,7 +100,7 @@ class drawCartList {
                             }
                         // });
 
-            let itemPriceDivInner = itemPriceDiv.newDiv("/ID/item_price_inner", "inner");
+            // let itemPriceDivInner = itemPriceDiv.newDiv("/ID/item_price_inner", "inner");
             // productData.then(function(data){
                 infoText.value = productData.viewName;
                 // let priceDivItem = new PriceDiv_S(itemPriceDivInner, index, "25.55");
@@ -114,14 +108,14 @@ class drawCartList {
             let priceDiv
             let amountDivInner = amountEle.newDiv("/ID/amount_inner", "inner");
             let amountDiv = new SPLINT.DOMElement.InputAmount(amountDivInner, amountDivInner.id, item.amount, "");
-                amountDiv.oninput = async function(amount){
-                    priceDiv.setPrice(S_Math.multiply(productData.price, amount));
-                    await ShoppingCart.setAmount(projectData.ProjectID, amount);
-                    ShoppingCart.drawPrices();
+                amountDiv.oninput = async function(amount, amountBefore){
+                    priceDiv.setPrice(SPLINT.Math.multiply(productData.price, amount));
+                    let res = await ShoppingCart.N_changeAmount(projectData.ProjectID, amount- amountBefore)
+                    await ShoppingCart.drawPrices(res);
                 }.bind(this);
                 
             let PriceDivInner = priceEle.newDiv("/ID/full_price_inner", "inner");
-                priceDiv = new PriceDiv_S(PriceDivInner, index, S_Math.multiply(productData.price, item.amount));
+                priceDiv = new SPLINT.DOMElement.PriceDiv(PriceDivInner, index, SPLINT.Math.multiply(productData.price, item.amount));
 
             let ButtonsInner = buttonsEle.newDiv("/ID/buttons_inner", "inner");
                     
@@ -148,9 +142,10 @@ class drawCartList {
                 buttonRemove.button.Class("remove");
                 buttonRemove.onclick = async function(){
                     await ShoppingCart.removeItem(item.ProjectID);
-                    ShoppingCart.drawPrices();
                     let cart = await ShoppingCart.get()
-                    if(cart.shoppingCart.length == 0){
+                    console.dir(cart)
+                    ShoppingCart.drawPrices(cart);
+                    if(cart.length == 0){
                         this.emptyBody.state().setActive();
                     }
                     listElement.remove();

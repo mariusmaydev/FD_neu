@@ -12,8 +12,9 @@ class login {
     static CHECK_CODE               = "CHECK_CODE";
     static VERIFY_ACCOUNT           = "VERIFY_ACCOUNT";
     static GET_DATA                 = "GET_DATA";
+    static GET_ALL_DATA             = "GET_ALL_DATA";
     static LOGIN_GUEST              = "LOGIN_GUEST";
-    static nLOGIN_GUEST              = "LOGIN";
+    static nLOGIN_GUEST             = "LOGIN";
 
     static NEW_GUEST                = "NEW_GUEST";
 
@@ -29,6 +30,11 @@ class login {
     static call(data){
         return SPLINT.Data.CallPHP.call(login.PATH, data);
     }
+    static async remove(UserID){
+        let call = this.callPHP(login.REMOVE_ACCOUNT);
+            call.data.UserID = UserID;
+        return call.send();
+    }
 
     // static newAccount_ADMIN(email, userName, password){
     //     let call = this.callPHP(login.NEW_USER_ADMIN);
@@ -37,6 +43,10 @@ class login {
     //         call.data.Password   = password;
     //     return call.send();
     // }
+    static async getAllData(){
+        let call = this.callPHP(login.GET_ALL_DATA);
+        return call.send();
+    }
     static async getData(UserID = null){
         let call = this.callPHP(login.GET_DATA);
             call.data.UserID = UserID;
@@ -44,7 +54,7 @@ class login {
     }
     static async Login(){
         return new Promise(async function(resolve){
-            if(S_Location.getHashes().includes("ADMIN")){
+            if(SPLINT.Tools.Location_old.getHashes().includes("ADMIN")){
                 resolve("ADMIN");
                 return "ADMIN";
             } else {
@@ -67,7 +77,7 @@ class login {
     }
     // static async init(){
     //     return new Promise(async function(resolve){
-    //         if(S_Location.getHashes().includes("ADMIN") && BufferStorage.get("USER_ID") == "ADMIN"){
+    //         if(SPLINT.Tools.Location_old.getHashes().includes("ADMIN") && BufferStorage.get("USER_ID") == "ADMIN"){
     //         } else {
     //             if((await login.loginGuest()) == false){
     //                 let UserID = await login.newAccount_Guest();

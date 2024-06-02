@@ -13,12 +13,12 @@
             $DataSet = new DataSet();
             $DataSet -> newEntry(OrderDB::ORDER_ID, $orderID);
             $DataSet -> newEntry(OrderDB::USER_ID,  $userID);
-            $DataSet -> newEntry(OrderDB::ITEMS,    json_encode($data));
-            $DataSet -> newEntry(OrderDB::ADDRESS,  json_encode($address));
+            $DataSet -> newEntry(OrderDB::ITEMS,    FileTools::JSON_encode_save($data));
+            $DataSet -> newEntry(OrderDB::ADDRESS,  FileTools::JSON_encode_save($address));
             $DataSet -> newEntry(OrderDB::STATE,    OrderDB::STATE_OPEN);
             OrderDB::Add($DataSet);
             // lexOffice::newInvoice($data, $address, $orderID, $userID);
-            Communication::sendBack($orderID, false);
+            Communication::sendBack($orderID, true);
             return $orderID;
         }
         public static function setState(string $OrderID, $state){

@@ -72,6 +72,12 @@
                 return $response;
             }
         }
+        public static function getAllData($print = true){
+            $DataSet = new DataSet();
+            $response = login::get($DataSet, DataBase::FORCE_ORDERED);
+            Communication::sendBack($response, true, $print);
+            return $response;
+        }
         public static function isLoggedIn(){
             if(Sessions::get(Sessions::LOGGEDIN) != null){
                 Communication::sendBack(true);
@@ -119,10 +125,10 @@
           $dataset -> TBName(self::$TBName);
           return $dataset;
         }
-        public static function get(DataSet $DataSet){
+        public static function get(DataSet $DataSet, $param = null){
             $con = self::accessDB(self::$DBName, self::generateSQL(self::getStructure()));
             $DataSet -> TBName(self::$TBName);
-            return self::getData($DataSet, $con);
+            return self::getData($DataSet, $con, $param);
         }
         public static function Edit(DataSet $DataSet){
             $con = self::accessDB(self::$DBName, self::generateSQL(self::getStructure()));

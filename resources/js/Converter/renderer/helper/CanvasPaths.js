@@ -6,7 +6,7 @@ class canvasPaths {
         ctx.save();
         ctx.translate(element.data.TextPosX, element.data.TextPosY);
         ctx.scale(2, 2);
-        ctx.rotate(S_Math.toRadians(element.data.TextAlign));
+        ctx.rotate(SPLINT.Math.toRadians(element.data.TextAlign));
         element.ctx.globalAlpha = 1;
         ctx.imageSmoothingEnabled = true;
         ctx.imageSmoothingQuality = "high";
@@ -205,7 +205,7 @@ class canvasPaths {
         ctx.save();
             // ctx.scale(2, 2);
         ctx.translate(element.data.ImagePosX, element.data.ImagePosY);
-            ctx.rotate(S_Math.toRadians(element.data.ImageAlign));
+            ctx.rotate(SPLINT.Math.toRadians(element.data.ImageAlign));
             
           ctx.beginPath();
           ctx.fillStyle = 'transparent';
@@ -318,7 +318,7 @@ class canvasPaths {
         ctx.save();
             ctx.translate(element.data.TextPosX, element.data.TextPosY);
             ctx.scale(2, 2);
-            ctx.rotate(S_Math.toRadians(element.data.TextAlign));
+            ctx.rotate(SPLINT.Math.toRadians(element.data.TextAlign));
             
             
           ctx.beginPath();

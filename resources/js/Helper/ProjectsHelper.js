@@ -62,9 +62,10 @@ class ProjectHelper extends SPLINT.CallPHP.Manager {
           call.data.UserID    = UserID;
       return call.send();
     }
-    static async getAll(state = null){
+    static async getAll(state = null, UserID = null){
       let call = this.callPHP(this.GET_ALL);
           call.data.State = state;
+          call.data.UserID = UserID;
       return call.send();
     }
     static async getAllAdmin(original = false){
@@ -76,7 +77,6 @@ class ProjectHelper extends SPLINT.CallPHP.Manager {
     static async edit(StorageIn){
         let Storage = Object.assign({}, StorageIn);
         Storage.Thumbnail = null;
-        console.log(Storage)
         if(StorageIn.Thumbnail instanceof Blob){
             Storage.Thumbnail = null;
         } else if(Storage.Thumbnail != null && Storage.Thumbnail.substring(0, 4) != "data"){
@@ -99,9 +99,10 @@ class ProjectHelper extends SPLINT.CallPHP.Manager {
           call.data.State     = State;
       return call.send();
     }
-    static async remove(projectID){
+    static async remove(projectID, UserID = null){
       let call = this.callPHP(ProjectHelper.REMOVE);
           call.data.ProjectID = projectID;
+          call.data.UserID = UserID;
       return call.send();
     }
     static async addToDesign(designObject, projectID = null, userID = null){
@@ -128,7 +129,7 @@ class ProjectHelper extends SPLINT.CallPHP.Manager {
       } else {
         SPLINT.Tools.Location.addParams({"mode": "edit_project"}).call();
       }
-    //   S_Location.goto(PATH.location.converter).call();
+    //  SPLINT.Tools.Location_old.goto(PATH.location.converter).call();
     }
     static async CONVERTER_closeProject(){
         await DSController.createThumbnail();

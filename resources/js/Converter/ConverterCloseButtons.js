@@ -71,31 +71,31 @@ class Converter_closeButtons {
             }
 
             let button_download_NC = new SPLINT.DOMElement.Button(this.contentElement, "downloadNC", "Model herunterladen");
-                button_download_NC.setStyleTemplate(S_Button.STYLE_NONE);
+                button_download_NC.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_NONE);
                 let projectPATH = ProjectHelper.getPath2AdminProject(DSProject.Storage.ProjectID);
                 button_download_NC.button.onclick = async function(){
                     if(await SPLINT.Utils.Files.doesExist(projectPATH + "/Full.nc", false)){
                         if(switchBt.Value == "SVG"){
-                            download_S.download(projectPATH + "/Full.nc", "SVG_" + nameInput.value + "_Model.svg");
+                            SPLINT.Tools.download.download(projectPATH + "/Full.nc", "SVG_" + nameInput.value + "_Model.svg");
                         } else if(switchBt.Value == "laser"){
-                            download_S.download(projectPATH + "/Full.nc", "Laser_" + nameInput.value + "_Model.nc");
+                            SPLINT.Tools.download.download(projectPATH + "/Full.nc", "Laser_" + nameInput.value + "_Model.nc");
                         } else if(switchBt.Value == "laserFlat"){
-                            download_S.download(projectPATH + "/Full.nc", "LaserFlat_" + nameInput.value + "_Model.nc");
+                            SPLINT.Tools.download.download(projectPATH + "/Full.nc", "LaserFlat_" + nameInput.value + "_Model.nc");
                         } else if(switchBt.Value == "engraving"){
-                            download_S.download(projectPATH + "/Full.nc", "Gravur_" + nameInput.value + "_Model.nc");
+                            SPLINT.Tools.download.download(projectPATH + "/Full.nc", "Gravur_" + nameInput.value + "_Model.nc");
                         }
                     } else {
                         let Args = new Object();
                             Args.type = switchBt.Value;
                         await ConverterHelper.createData((await SPLINT.SessionsPHP.get("USER_ID", false)), DSProject.Storage.ProjectID, Args);
                         if(switchBt.Value == "SVG"){
-                            download_S.download(projectPATH + "/Full.nc", "SVG_" + nameInput.value + "_Model.svg");
+                            SPLINT.Tools.download.download(projectPATH + "/Full.nc", "SVG_" + nameInput.value + "_Model.svg");
                         } else if(switchBt.Value == "laser"){
-                            download_S.download(projectPATH + "/Full.nc", "Laser_" + nameInput.value + "_Model.nc");
+                            SPLINT.Tools.download.download(projectPATH + "/Full.nc", "Laser_" + nameInput.value + "_Model.nc");
                         } else if(switchBt.Value == "laserFlat"){
-                            download_S.download(projectPATH + "/Full.nc", "LaserFlat_" + nameInput.value + "_Model.nc");
+                            SPLINT.Tools.download.download(projectPATH + "/Full.nc", "LaserFlat_" + nameInput.value + "_Model.nc");
                         } else if(switchBt.Value == "engraving"){
-                            download_S.download(projectPATH + "/Full.nc", "Gravur_" + nameInput.value + "_Model.nc");
+                            SPLINT.Tools.download.download(projectPATH + "/Full.nc", "Gravur_" + nameInput.value + "_Model.nc");
                         }
                     }
                 }.bind(this);
@@ -112,7 +112,7 @@ class Converter_closeButtons {
             button_save.onclick = async function(){
                 await CONVERTER_STORAGE.canvasNEW.createTextData();
                 ProjectHelper.CONVERTER_closeProject();
-                S_Location.back();
+               SPLINT.Tools.Location_old.back();
             }
     }
     async drawButtonToCart(){
@@ -193,6 +193,7 @@ class Converter_CloseOperations {
         DSController.saveAll();
         if(DSProject.get().State != ProjectHelper.STATE_CART){
             projectID = await ProjectHelper.copy(DSProject.Storage.ProjectID);
+            console.log(projectID);
             await ProjectHelper.changeState(projectID, ProjectHelper.STATE_CART);
         }
         await ShoppingCart.addItem(projectID, DSProject.Storage.Product, 1);
@@ -215,7 +216,7 @@ class Converter_CloseOperations {
         let projectID = DSProject.Storage.ProjectID;
         await CONVERTER_STORAGE.canvasNEW.createTextData();
         await ProjectHelper.CONVERTER_closeProject();
-        await ShoppingCart.editItem(projectID, DSProject.Storage.Product);
+        // await ShoppingCart.editItem(projectID, DSProject.Storage.Product);
         ShoppingCart.callLocation();
   
     }

@@ -30,8 +30,8 @@ class ConverterComputeEdges {
         let size = {width: wb, height: hb};
         switch(id){
             case 0: {
-                let x = Math.cos(S_Math.toRadians(this.align))*(-this.imgSize.base.X/2)-Math.sin(S_Math.toRadians(this.align))*(-this.imgSize.base.Y/2)
-                let y = Math.sin(S_Math.toRadians(this.align))*(-this.imgSize.base.X/2)+Math.cos(S_Math.toRadians(this.align))*(-this.imgSize.base.Y/2)
+                let x = Math.cos(SPLINT.Math.toRadians(this.align))*(-this.imgSize.base.X/2)-Math.sin(SPLINT.Math.toRadians(this.align))*(-this.imgSize.base.Y/2)
+                let y = Math.sin(SPLINT.Math.toRadians(this.align))*(-this.imgSize.base.X/2)+Math.cos(SPLINT.Math.toRadians(this.align))*(-this.imgSize.base.Y/2)
                 let vec = this.#calculate(x, y);
                 let width = Math.abs(this.imgSize.base.X / x * vec.X);
                 let height = Math.abs(this.imgSize.base.Y / y * vec.Y);
@@ -39,16 +39,16 @@ class ConverterComputeEdges {
                 size = this.#checkSize(size, true);
             };break;
             case 1: {
-                let x = -Math.sin(S_Math.toRadians(this.align))*(this.imgSize.base.Y/2)
-                let y = Math.cos(S_Math.toRadians(this.align))*(this.imgSize.base.Y/2)
+                let x = -Math.sin(SPLINT.Math.toRadians(this.align))*(this.imgSize.base.Y/2)
+                let y = Math.cos(SPLINT.Math.toRadians(this.align))*(this.imgSize.base.Y/2)
                 let vec = this.#calculate(x, y);
                 let height = Math.abs(this.imgSize.base.Y / y * vec.Y);
                 size = {width: wb, height: height};
                 size = this.#checkSize(size);
             };break;
             case 2: {
-                let x = Math.cos(S_Math.toRadians(this.align))*(this.imgSize.base.X/2)-Math.sin(S_Math.toRadians(this.align))*(-this.imgSize.base.Y/2)
-                let y = Math.sin(S_Math.toRadians(this.align))*(this.imgSize.base.X/2)+Math.cos(S_Math.toRadians(this.align))*(-this.imgSize.base.Y/2)
+                let x = Math.cos(SPLINT.Math.toRadians(this.align))*(this.imgSize.base.X/2)-Math.sin(SPLINT.Math.toRadians(this.align))*(-this.imgSize.base.Y/2)
+                let y = Math.sin(SPLINT.Math.toRadians(this.align))*(this.imgSize.base.X/2)+Math.cos(SPLINT.Math.toRadians(this.align))*(-this.imgSize.base.Y/2)
                 let vec = this.#calculate(x, y);
                 let width = Math.abs(this.imgSize.base.X / x * vec.X);
                 let height = Math.abs(this.imgSize.base.Y / y * vec.Y);
@@ -56,8 +56,8 @@ class ConverterComputeEdges {
                 size = this.#checkSize(size, true);
             };break;
             case 3: {
-                let x = Math.cos(S_Math.toRadians(this.align))*(this.imgSize.base.X/2)
-                let y = Math.sin(S_Math.toRadians(this.align))*(this.imgSize.base.X/2)
+                let x = Math.cos(SPLINT.Math.toRadians(this.align))*(this.imgSize.base.X/2)
+                let y = Math.sin(SPLINT.Math.toRadians(this.align))*(this.imgSize.base.X/2)
                 
                 let vec = this.#calculate(x, y);
                 let width = Math.abs(this.imgSize.base.X / x * vec.X);
@@ -65,8 +65,8 @@ class ConverterComputeEdges {
                 size = this.#checkSize(size);
             };break;
             case 4: {
-                let x = Math.cos(S_Math.toRadians(this.align))*(this.imgSize.base.X/2)-Math.sin(S_Math.toRadians(this.align))*(this.imgSize.base.Y/2)
-                let y = Math.sin(S_Math.toRadians(this.align))*(this.imgSize.base.X/2)+Math.cos(S_Math.toRadians(this.align))*(this.imgSize.base.Y/2)
+                let x = Math.cos(SPLINT.Math.toRadians(this.align))*(this.imgSize.base.X/2)-Math.sin(SPLINT.Math.toRadians(this.align))*(this.imgSize.base.Y/2)
+                let y = Math.sin(SPLINT.Math.toRadians(this.align))*(this.imgSize.base.X/2)+Math.cos(SPLINT.Math.toRadians(this.align))*(this.imgSize.base.Y/2)
                 let vec = this.#calculate(x, y);
                 let width = Math.abs(this.imgSize.base.X / x * vec.X);
                 let height = Math.abs(this.imgSize.base.Y / y * vec.Y);
@@ -74,16 +74,16 @@ class ConverterComputeEdges {
                 size = this.#checkSize(size, true);
             };break;
             case 5: {
-                let x = -Math.sin(S_Math.toRadians(this.align))*(-this.imgSize.base.Y/2)
-                let y = Math.cos(S_Math.toRadians(this.align))*(-this.imgSize.base.Y/2)
+                let x = -Math.sin(SPLINT.Math.toRadians(this.align))*(-this.imgSize.base.Y/2)
+                let y = Math.cos(SPLINT.Math.toRadians(this.align))*(-this.imgSize.base.Y/2)
                 let vec = this.#calculate(x, y);
                 let height = Math.abs(this.imgSize.base.Y / y * vec.Y);
                 size = {width: wb, height: height};
                 size = this.#checkSize(size);
             };break;
             case 6: {
-                let x = Math.cos(S_Math.toRadians(this.align))*(-this.imgSize.base.X/2)-Math.sin(S_Math.toRadians(this.align))*(this.imgSize.base.Y/2)
-                let y = Math.sin(S_Math.toRadians(this.align))*(-this.imgSize.base.X/2)+Math.cos(S_Math.toRadians(this.align))*(this.imgSize.base.Y/2)
+                let x = Math.cos(SPLINT.Math.toRadians(this.align))*(-this.imgSize.base.X/2)-Math.sin(SPLINT.Math.toRadians(this.align))*(this.imgSize.base.Y/2)
+                let y = Math.sin(SPLINT.Math.toRadians(this.align))*(-this.imgSize.base.X/2)+Math.cos(SPLINT.Math.toRadians(this.align))*(this.imgSize.base.Y/2)
                 let vec = this.#calculate(x, y);
                 let width = Math.abs(this.imgSize.base.X / x * vec.X);
                 let height = Math.abs(this.imgSize.base.Y / y * vec.Y);
@@ -91,8 +91,8 @@ class ConverterComputeEdges {
                 size = this.#checkSize(size, true);
             };break;
             case 7:{
-                let x = Math.cos(S_Math.toRadians(this.align))*(-this.imgSize.base.X/2)
-                let y = Math.sin(S_Math.toRadians(this.align))*(-this.imgSize.base.X/2)
+                let x = Math.cos(SPLINT.Math.toRadians(this.align))*(-this.imgSize.base.X/2)
+                let y = Math.sin(SPLINT.Math.toRadians(this.align))*(-this.imgSize.base.X/2)
                 
                 let vec = this.#calculate(x, y);
                 let width = Math.abs(this.imgSize.base.X / x * vec.X);
@@ -102,11 +102,11 @@ class ConverterComputeEdges {
             case 8: {
               let a = element.data.ImagePosX - this.mouse.X;
               let b = element.data.ImagePosY - this.mouse.Y;
-              let c = S_Math.pytagoras(a, b);
+              let c = SPLINT.Math.pytagoras(a, b);
               if(a < 0 ){
-                element.data.ImageAlign = Math.round(S_Math.toDegrees(Math.acos(b / c))) ;
+                element.data.ImageAlign = Math.round(SPLINT.Math.toDegrees(Math.acos(b / c))) ;
               } else {
-                element.data.ImageAlign = Math.round(-S_Math.toDegrees(Math.acos(b / c)));
+                element.data.ImageAlign = Math.round(-SPLINT.Math.toDegrees(Math.acos(b / c)));
               }
               if(CONVERTER_STORAGE.toolBar.imageBar != undefined){
                 for(const ele of CONVERTER_STORAGE.toolBar.imageBar.ELEMENTS){

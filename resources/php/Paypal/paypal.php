@@ -14,7 +14,7 @@
             $shoppingCart = [];
             foreach($Storage["shoppingCart"] as $item){
                 // $r = Project::get($item -> ProjectID, null, false);
-                $r = Product::get(false, true, null, $item['ProductName'], null, null);
+                $r = Product::get(false, true, false, null, $item['ProductName'], null, null);
                 $obj = new stdClass();
                 $obj -> amount  = $item["amount"];
                 $obj -> price   = $r[0]["price"];

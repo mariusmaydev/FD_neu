@@ -150,9 +150,9 @@
             if($FromUserID == null){
                 $FromUserID = $UserID;
             }
-            
             $ProjectData = self::get($projectID, $FromUserID, false);
             $NewProjectID = self::new($ProjectData[ProjectDB::PROJECT_NAME], $ProjectData[ProjectDB::PRODUCT], $ProjectData[ProjectDB::COLOR], $UserID, $NewProjectID, false);
+           
             $ProjectData[ProjectDB::PROJECT_ID] = $NewProjectID;
             $ProjectData[ProjectDB::STATE] = ProjectDB::STATE_NORMAL;
             self::edit($ProjectData, false);
@@ -178,7 +178,7 @@
                 $textImg = Text::getTextImg($text[TextDB::TEXT_ID], $projectID, $FromUserID);
                 Text::saveTextImg($textImg, $text[TextDB::TEXT_ID], $NewProjectID, $UserID);
             }
-            Communication::sendBack($NewProjectID, false, $print);
+            Communication::sendBack($NewProjectID, true, $print);
             return $NewProjectID;
         }
         static function new($projectName, $Product, $Color = null, $UserID = null, $NewProjectID = null, $setSessions = true, $Original = false){
@@ -223,23 +223,30 @@
             }
             return $ProjectID;
         }
-        static function remove($ProjectID){
-            $project = self::get($ProjectID);
-            // Communication::sendBack($ProjectID);
-            // return;
+        static function remove($ProjectID, $UserID = null, bool $print = true){
+            if($UserID == null){
+                $UserID = Sessions::get(Sessions::USER_ID);
+                if(isset($_POST[Sessions::USER_ID]) && $_POST[Sessions::USER_ID] != null){
+                    $UserID = $_POST[Sessions::USER_ID];
+                }
+            }
+            $project = self::get($ProjectID, $UserID, $print);
+            if($project == false){
+                return;
+            }
             if($project[ProjectDB::STATE] != "ADMIN"){
                 $DataSet = new DataSet();
                 $DataSet -> newEntry(ProjectDB::PROJECT_ID, $ProjectID);
-                $DataSet -> TBName(Sessions::get(Sessions::USER_ID));
+                $DataSet -> TBName($UserID);
                 AccessDB::remove(ProjectDB::getStruct(), $DataSet);
-                DataRemove(PATH_Project::get(PATH_Project::NONE, $ProjectID, Sessions::get(Sessions::USER_ID)));
+                DataRemove(PATH_Project::get(PATH_Project::NONE, $ProjectID, $UserID));
 
                 $DataSet = new DataSet();
-                $DataSet -> TBName(Text::getCompressedID(Sessions::get(Sessions::USER_ID), $ProjectID));
+                $DataSet -> TBName(Text::getCompressedID($UserID, $ProjectID));
                 TextDB::removeTable($DataSet);
 
                 $DataSet = new DataSet();
-                $DataSet -> TBName(Text::getCompressedID(Sessions::get(Sessions::USER_ID), $ProjectID));
+                $DataSet -> TBName(Text::getCompressedID($UserID, $ProjectID));
                 ImageDB::removeTable($DataSet);
             } else {
                 $DataSet = new DataSet();
@@ -405,6 +412,12 @@
             $DS2 -> DBName("projects");
             return $DS2;
         }
+        // public static function removeTable(DataSet $DataSet){
+        //     $TBName = self::$TBName . $DataSet -> TBName();
+        //     $con = self::accessDB(self::$DBName, self::generateSQL(self::getStruct($TBName)));
+        //     $DataSet -> TBName($TBName);
+        //     self::dropTable($DataSet, $con);
+        // }
       }
 
 

@@ -6,7 +6,7 @@
         case "REMOVE"           : Project::remove($_POST[ProjectDB::PROJECT_ID]); break;
         case "EDIT"             : Project::edit($_POST["Storage"]); break;
         case "GET"              : Project::get($_POST[ProjectDB::PROJECT_ID], $_POST[Converter::USER_ID]); break;
-        case "GET_ALL"          : Project::getAll(null, $_POST["State"]); break;
+        case "GET_ALL"          : Project::getAll($_POST["UserID"], $_POST["State"]); break;
         case "GET_ALL_ADMIN"    : Project::getAllAdmin($_POST[ProjectDB::ORIGINAL]); break;
         case "CHANGE_STATE"     : Project::changeState(); break;
         case "COPY"             : Project::copy($_POST[ProjectDB::PROJECT_ID], null, null, $_POST["FromUserID"]); break;

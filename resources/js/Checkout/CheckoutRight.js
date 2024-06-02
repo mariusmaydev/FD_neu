@@ -25,7 +25,7 @@ class CheckoutRightBar {
     this.listMain = new SPLINT.DOMElement(this.id + "listMain", "div", this.mainElement);
     this.listMain.Class("listMain");
 
-    this.cartData = (await ShoppingCart.get()).shoppingCart;
+    this.cartData = (await ShoppingCart.get());
     for(const index in this.cartData){
       let item = this.cartData[index];
       let projectData = (await ProjectHelper.get(item.ProjectID));
@@ -80,7 +80,7 @@ class CheckoutRightBar {
     if(!couponCode){
       SPLINT.SessionsPHP.set(Checkout.sessions.couponCode, null);
     }
-    this.cartData = (await ShoppingCart.get()).shoppingCart;
+    this.cartData = (await ShoppingCart.get());
     let fullPrice = 0;
     for(const e of this.cartData){
         let productPrice = (await productHelper.getByName(e.ProductName)).price;
@@ -136,12 +136,12 @@ class CheckoutRightBar {
                     }
                 
                     gen(table.getData(3, 0), "", "Summe");
-                    this.price = S_Math.roundFX(displayPrice, 2, true);
+                    this.price = SPLINT.Math.roundFX(displayPrice, 2, true);
                     let pD2 = new PriceDiv_S(table.getData(3, 1), "", this.price)
                 } else {
                 
                     gen(table.getData(2, 0), "", "Summe");
-                    this.price = S_Math.roundFX(fullPrice, 2, true);
+                    this.price = SPLINT.Math.roundFX(fullPrice, 2, true);
                     let pD2 = new PriceDiv_S(table.getData(2, 1), "", this.price);
                 }
                 if(this.instance != null){

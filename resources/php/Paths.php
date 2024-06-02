@@ -184,6 +184,10 @@
             self::$FileName = self::returnIf($type . ".png", $type != null);
             return self::buildPath(self::$base, $GLOBALS['folder'], "data", "Users",  $userID, "images", $imgID) . self::returnIf(self::$FileName, self::$UserID == null);
         }
+        public static function getBaseFile($UserID){
+            self::init();
+            return self::buildPath(self::$base, $GLOBALS['folder'], "data", "Users",  $UserID);
+        }
     }
 
     class PATH_Design_Image extends PATHS {

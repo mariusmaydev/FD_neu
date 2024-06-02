@@ -442,11 +442,11 @@ class CanvasElement_C {
     //   } else {
         let a = element.data.TextPosX - (this.mouse.X * this.ratio.X);
         let b = element.data.TextPosY - (this.mouse.Y * this.ratio.Y);
-        let c = S_Math.pytagoras(a, b);
+        let c = SPLINT.Math.pytagoras(a, b);
         if(a < 0 ){
-          element.data.TextAlign = Math.round(S_Math.toDegrees(Math.acos(b / c)));
+          element.data.TextAlign = Math.round(SPLINT.Math.toDegrees(Math.acos(b / c)));
         } else {
-          element.data.TextAlign = Math.round(-S_Math.toDegrees(Math.acos(b / c)));
+          element.data.TextAlign = Math.round(-SPLINT.Math.toDegrees(Math.acos(b / c)));
         }
         if(CONVERTER_STORAGE.toolBar.textBar != undefined){
             for(const ele of CONVERTER_STORAGE.toolBar.textBar.ELEMENTS){

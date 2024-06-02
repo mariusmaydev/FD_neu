@@ -20,7 +20,7 @@ class Checkout {
         this.linkImprint.Class("linkImprint");
         this.linkImprint.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_DEFAULT);
         this.linkImprint.onclick = function(){
-            S_Location.goto(PATH.location.imprint).call();
+           SPLINT.Tools.Location_old.goto(PATH.location.imprint).call();
         }
     if(SPLINT.ViewPort.getSize() != "mobile-small" && SPLINT.ViewPort.getSize() != "mobile"){
         this.rightBar = new CheckoutRightBar(this.mainElement);
@@ -34,7 +34,7 @@ class Checkout {
   #checkHashes(){
     this.mainElementLeft.innerHTML = "";
     new CheckoutHead(this.mainElementLeft);
-    switch(S_Location.getHashes()){
+    switch(SPLINT.Tools.Location_old.getHashes()){
       case CheckoutHelper.ADDRESS     : this.drawAddressMenu(); break;
       case CheckoutHelper.SENDING     : CheckoutHead.refresh(0); this.drawSendingMenu(); break;
       case CheckoutHelper.PAYMENT     : CheckoutHead.refresh(1); this.drawPaymentMenu(); break;

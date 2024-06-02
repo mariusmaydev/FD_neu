@@ -1,4 +1,4 @@
-@use '../general/main' as Gmain;
+// @use '../general/main' as Gmain;
 @use '../themes/theme1/vars';
 @use '../themes/theme1/main' as Tmain;
 @use '../themes/theme1/buttons' as Tbuttons;
@@ -21,46 +21,56 @@ body {
     > .head {
         position: fixed;
         display: flex;
-        background-color: vars.$color-primary-Dark ;
+        @include Tmain.TContainer_basic();
+        background-color: rgb(254, 254, 254);
+        
         top: 0;
         height: 3rem;
         width: 100%;
         overflow: hidden;
         z-index: 20;
-        margin: 0.2rem;
+        margin: 0rem;
         margin-bottom: 0;
-        padding: 0;
-        width: calc(100% - 0.4rem);
-        @include Gmain.box-shadow();
+        padding: 0.2rem;
+        width: calc(100% - 0rem);
+        box-sizing: border-box;
+        border-radius: 0;
+        // @include Gmain.box-shadow();
         > button {
             margin: 0.2rem;
-            @include Tmain.TButton_simple();
-            @include Tmain.TButton_primary();
+            // @include Tmain.TButton_simple();
+            // @include Tmain.TButton_primary();
+            @include Tmain.TContainer_basic();
         }
         > .back {
-            // @include Tmain.TContainer_basic();
+            @include Tmain.TContainer_basic();
             margin: 0.2rem;
-            @include Tmain.TButton_simple();
-            @include Tmain.TButton_primary();
+            padding: 0.2rem;
+            // @include Tmain.TButton_simple();
+            // @include Tmain.TButton_primary();
             margin-right: 1rem;
             // border-radius: 50%;
         }
-        > .loginContainer {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-left: auto;
-            height: 100%;
-            > button {
-                @include Tmain.TContainer_basic();
-                margin: 0.2rem;
-                > span {
+        // > .loginContainer {
+        //     display: flex;
+        //     justify-content: center;
+        //     align-items: center;
+        //     margin-left: auto;
+        //     height: 100%;
+        //     > button {
+        //         @include Tmain.TContainer_basic();
+        //         margin: 0.2rem;
+        //         > span {
 
-                }
-            }
-        }
+        //         }
+        //     }
+        // }
         > .n_RadioButton {
             > .inner {
+                gap: 0.4rem;
+                margin: 0rem;
+                padding: 0.1rem;
+                box-sizing: border-box;
                 > hr {
                     
                 }
@@ -72,8 +82,12 @@ body {
                     }
                     padding: 0;
                     height: max-content;
+                    width: max-content;
+                    max-height: 100%;
                     box-sizing: border-box;
+                    overflow: hidden;
                     > .labelDiv {
+                        width: max-content;
                         margin: 0;
                         padding: 0.8rem;
                         box-sizing: border-box;
@@ -82,9 +96,9 @@ body {
                         }
                         &[state*='active']{
                             background-color: vars.$color-primary !important;
-                            @include Gmain.box-shadow(0, black, 0.5);
+                            // @include Gmain.box-shadow(0, black, 0.5);
                             > div {
-                                transform: scale(1.1);
+                                // transform: scale(1.1);
                                 > span {
                                     // font-size: 1.1em;
                                     // font-weight: bold;

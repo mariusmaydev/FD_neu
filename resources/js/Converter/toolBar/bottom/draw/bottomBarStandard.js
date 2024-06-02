@@ -9,7 +9,7 @@ class BottomBar_Standard {
         this.parent.setAttribute("name", "std");
         this.buttonAddElement();
         this.buttonNewText();
-        this.buttonEPType();
+        this.buttonColor();
         this.buttonProductInformation();
         this.buttonFinish();
     } 
@@ -100,43 +100,71 @@ class BottomBar_Standard {
             }.bind(this);
         }.bind(this);
     }
-    buttonEPType(){
-      this.button_EPType = new SPLINT.DOMElement.Button(this.mainElement, "ChangeEPtype_button");
-      this.button_EPType.bindIcon("auto_awesome");
-      this.button_EPType.Class("EPType");
-      this.button_EPType.Description = "Farbe";
-      this.button_EPType.onclick = function(){
-        let floatingDiv = new Converter_BottomBar_floatingDiv_block("buttons_EP");
-            floatingDiv.body.before(this.button_EPType.span);
-            let div_Gold = new SPLINT.DOMElement(floatingDiv.content.id + "_BodyGold", "div", floatingDiv.content);
-                div_Gold.setAttribute("value", "GOLD");
-                let bt_Gold     = new SPLINT.DOMElement.Button.Switch(div_Gold, 'gold', "Gold");
-                    bt_Gold.onactive = function(){
-                        ConverterHelper.setEPType("GOLD");
-                        div_Chrome.state().unsetActive();
-                        bt_Chrome.unsetActive();
-                    }.bind(this);
-                    bt_Gold.onchange = function(state, e){
-                        e.stopPropagation();
-                    }
+    buttonColor(){
+      this.button_Color = new SPLINT.DOMElement.Button(this.mainElement, "ChangeColor_button");
+      this.button_Color.bindIcon("auto_awesome");
+      this.button_Color.Class("Color");
+      this.button_Color.Description = "Farbe";
+      this.button_Color.onclick = async function(){
+        let floatingDiv = new Converter_BottomBar_floatingDiv_block("buttons_Color");
+            floatingDiv.body.before(this.button_Color.span);
 
-            let div_Chrome = new SPLINT.DOMElement(floatingDiv.content.id + "_BodyChrome", "div", floatingDiv.content);
-                div_Chrome.setAttribute("value", "CHROME");
-                let bt_Chrome   = new SPLINT.DOMElement.Button.Switch(div_Chrome, 'chrome', "Chrome");
-                    bt_Chrome.onactive = function(){
-                        ConverterHelper.setEPType("CHROME");
-                        div_Gold.state().unsetActive();
-                        bt_Gold.unsetActive();
-                    }.bind(this);
-                    bt_Chrome.onchange = function(state, e){
-                        e.stopPropagation();
-                    }
+            let colors = await productHelper.getColors();
+            for(const [key, value] of Object.entries(colors)){
+                let product = await productHelper.getProduct_ColorEPType(key, DSProject.Storage.EPType);
 
-            if(DSProject.Storage.EPType == "CHROME"){
-                bt_Chrome.setActive();
-            } else {
-                bt_Gold.setActive();
+                if(product == false){
+                   continue;
+                }
+                let btColor = new SPLINT.DOMElement.Button(floatingDiv.content, "btColor_" + key, value.name )
+                    btColor.Class("btColor");
+                    btColor.setAttribute("colorid", key);
+                    btColor.span.style.color = key;
+                    btColor.button.style.backgroundColor = value.hex.replace('0x', '#');
+                    if(key == "base"){
+                        btColor.button.style.backgroundImage = "url(" + SPLINT.projectRootPath + "../data/images/LighterBaseColor.png)";
+                        btColor.span.style.color = "gray";
+                    }
+                    btColor.button.ontouchend = async function(event){
+                        // event.preventDefault();
+                        event.stopPropagation();
+                        CONVERTER_STORAGE.lighter3D.send("changeColor", value);
+                        DSProject.Storage.Product = product.name;
+                        DSProject.Storage.Color = key;
+                        await DSProject.saveAsync();
+                        // this.drawEPTypeMenu();
+                    }.bind(this);
             }
+
+            // let div_Gold = new SPLINT.DOMElement(floatingDiv.content.id + "_BodyGold", "div", floatingDiv.content);
+            //     div_Gold.setAttribute("value", "GOLD");
+            //     let bt_Gold     = new SPLINT.DOMElement.Button.Switch(div_Gold, 'gold', "Gold");
+            //         bt_Gold.onactive = function(){
+            //             ConverterHelper.setEPType("GOLD");
+            //             div_Chrome.state().unsetActive();
+            //             bt_Chrome.unsetActive();
+            //         }.bind(this);
+            //         bt_Gold.onchange = function(state, e){
+            //             e.stopPropagation();
+            //         }
+
+            // let div_Chrome = new SPLINT.DOMElement(floatingDiv.content.id + "_BodyChrome", "div", floatingDiv.content);
+            //     div_Chrome.setAttribute("value", "CHROME");
+            //     let bt_Chrome   = new SPLINT.DOMElement.Button.Switch(div_Chrome, 'chrome', "Chrome");
+            //         bt_Chrome.onactive = function(){
+            //             ConverterHelper.setEPType("CHROME");
+            //             div_Gold.state().unsetActive();
+            //             bt_Gold.unsetActive();
+            //         }.bind(this);
+            //         bt_Chrome.onchange = function(state, e){
+            //             e.stopPropagation();
+            //         }
+
+            // if(DSProject.Storage.EPType == "CHROME"){
+            //     bt_Chrome.setActive();
+            // } else {
+            //     bt_Gold.setActive();
+            // }
         }.bind(this);
       }
       buttonProductInformation(){
@@ -149,7 +177,7 @@ class BottomBar_Standard {
                 
             let projectDetails = new ProjectDetails(data, document.body);
                 projectDetails.show();
-        //   S_Location.goto(PATH.location.productInfo).setHash("ssadf").call();
+        //  SPLINT.Tools.Location_old.goto(PATH.location.productInfo).setHash("ssadf").call();
         }
       }
       buttonFinish(){
@@ -162,7 +190,7 @@ class BottomBar_Standard {
             let floatingDiv = new Converter_BottomBar_floatingDiv_block("buttons_finish");
                 floatingDiv.body.before(this.button_finish.span);
                 Converter_closeButtons.draw(floatingDiv.content, "bottomBar", false);
-        //   S_Location.goto(PATH.location.productInfo).setHash("ssadf").call();
+        //  SPLINT.Tools.Location_old.goto(PATH.location.productInfo).setHash("ssadf").call();
         }.bind(this);
 
       }
@@ -171,7 +199,7 @@ class BottomBar_Standard {
     //     this.button_ListElements.bindIcon("info");
     //     this.button_ListElements.Description = "Elemente";
     //     this.button_ListElements.button.onclick = function(){
-    //       S_Location.goto(PATH.location.productInfo).setHash("ssadf").call();
+    //      SPLINT.Tools.Location_old.goto(PATH.location.productInfo).setHash("ssadf").call();
     //     }
 
     //   }

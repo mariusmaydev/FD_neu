@@ -14,9 +14,9 @@ class ADMIN_orders extends ADMIN_DrawTemplate {
         this.radioButtonType.drawRadio();
         this.radioButtonType.onChange = function(){
                 if(this.radioButtonType.Value == "Archive"){
-                    S_Location.setHash(true);
+                    SPLINT.Tools.Location_old.setHash(true);
                 } else {
-                    S_Location.setHash(false);
+                    SPLINT.Tools.Location_old.setHash(false);
                 }
             }.bind(this);
         this.choosePage();
@@ -26,7 +26,7 @@ class ADMIN_orders extends ADMIN_DrawTemplate {
     }
     choosePage(){
         this.mainElement.innerHTML = "";
-        let hashtags = S_Location.getHashes();
+        let hashtags = SPLINT.Tools.Location_old.getHashes();
         let hashtag = hashtags;
         if(typeof hashtags == 'object'){
             hashtag = hashtags[0];

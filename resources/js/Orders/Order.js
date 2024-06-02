@@ -21,7 +21,6 @@ class order {
     }
     static call(data){
         
-        console.log(login.PATH, data)
         return SPLINT.Data.CallPHP_OLD.call(order.PATH, data);
     }
     static async getFromArchive(orderID = null, UserID = null){
@@ -31,14 +30,14 @@ class order {
             return order.parse(await call.send());
     }
     static edit(orderObj){
-        console.log(orderObj);
-        orderObj.METHOD = order.EDIT;
-        return order.call(orderObj).text;
+        let call = this.callPHP(order.EDIT);
+            call.data = orderObj;
+            return call.send();
     }
-    static new(orderObj){
-        console.log(orderObj);
-        orderObj.METHOD = order.NEW;
-        return order.call(orderObj).text;
+    static async new(orderObj){
+        let call = this.callPHP(order.NEW);
+            call.data = orderObj;
+            return call.send();
     }
     static remove(orderID){
         let data = CallPHP_S.getCallObject(order.REMOVE);
@@ -52,10 +51,10 @@ class order {
         order.call(data);
     }
     static createAddressCSV(orderID, address){
-        let data = CallPHP_S.getCallObject(order.CREATE_ZIP);
-            data.OrderID = orderID;
-            data.Address = address;
-        return order.call(data).text;
+        let call = this.callPHP(order.CREATE_ZIP);
+            call.data.OrderID = orderID;
+            call.data.Address = address;
+            return call.send();
     }
     static async get(orderID = null, UserID = null){
         let call = this.callPHP(order.GET);
@@ -72,6 +71,7 @@ class order {
         return data;
     }
     static async finish(orderObj){
+
         let call = this.callPHP(order.FINISH);
             call.data = orderObj;
         return call.send();

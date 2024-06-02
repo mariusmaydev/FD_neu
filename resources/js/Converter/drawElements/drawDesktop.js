@@ -27,7 +27,7 @@ class converter_drawDesktop {
 
             }
             }
-        let hashes = S_Location.getHashes();
+        let hashes = SPLINT.Tools.Location_old.getHashes();
         if(hashes == "ADMINPLUS"){
                 this.SquareBorder.classList.add("ADMINPLUS");
                 SPLINT.Events.onLoadingComplete.dispatch();

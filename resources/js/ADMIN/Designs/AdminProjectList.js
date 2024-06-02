@@ -14,7 +14,7 @@ class drawProjectList_ADMIN {
     }
     async #chooseType(){
       let data = await ProjectHelper.getAllAdmin(this.getOriginal);
-      switch(S_Location.getHashes()){
+      switch(SPLINT.Tools.Location_old.getHashes()){
         case "public" : this.draw(data, true); break;
         case "private" : this.draw(ProjectHelper.getAll(), false); break;
         default : this.draw(data, true); break;
@@ -43,8 +43,8 @@ class drawProjectList_ADMIN {
                       await SPLINT.SessionsPHP.set("USER_ID", "ADMIN", false);
                       await SPLINT.SessionsPHP.set("USER_NAME", "ADMIN", false);
                       await SPLINT.SessionsPHP.set("ADMIN", true, false);
-                      await SPLINT.SessionsPHP.set("GUEST", false, false);
-                      ProjectHelper.new('ADMIN', "Lighter_Gold_custom", true, false).then(S_Location.goto(PATH.location.converter).setHash("ADMIN").call());
+                    //   await SPLINT.SessionsPHP.set("GUEST", false, false);
+                      ProjectHelper.new('ADMIN', "Lighter_Gold_custom", true, false).then(SPLINT.Tools.Location_old.goto(PATH.location.converter).setHash("ADMIN").call());
                   };
               let button_new_original = new SPLINT.DOMElement.Button(listElement, "addProject_original", "orginal erstellen");
                   button_new_original.onclick = async function(){
@@ -68,8 +68,8 @@ class drawProjectList_ADMIN {
                                         await SPLINT.SessionsPHP.set("USER_ID", "ADMIN", false);
                                         await SPLINT.SessionsPHP.set("USER_NAME", "ADMIN", false);
                                         await SPLINT.SessionsPHP.set("ADMIN", true, false);
-                                        await SPLINT.SessionsPHP.set("GUEST", false, false);
-                                        ProjectHelper.new('ADMIN', value, true, true).then(S_Location.goto(PATH.location.converter).setHash("ADMIN").call());                    
+                                        // await SPLINT.SessionsPHP.set("GUEST", false, false);
+                                        ProjectHelper.new('ADMIN', value, true, true).then(SPLINT.Tools.Location_old.goto(PATH.location.converter).setHash("ADMIN").call());                    
                                     }
                     };
                 let typeSwitchButton = new SPLINT.DOMElement.Button.Radio(listElement, "typeSwitch");
@@ -170,7 +170,7 @@ class drawProjectList_ADMIN {
                   await SPLINT.SessionsPHP.set("USER_ID", "ADMIN", false);
                   await SPLINT.SessionsPHP.set("USER_NAME", "ADMIN", false);
                   await SPLINT.SessionsPHP.set("ADMIN", true, false);
-                  await SPLINT.SessionsPHP.set("GUEST", false, false);
+                //   await SPLINT.SessionsPHP.set("GUEST", false, false);
                   SPLINT.Tools.Location.URL = PATH.location.converter;
                 //   console.dir(SPLINT.Tools.Location.addParams({"mode": "edit_project"}))
                   SPLINT.Tools.Location.addParams({"mode": "edit_project"}).addHash("ADMIN").call();
@@ -181,7 +181,7 @@ class drawProjectList_ADMIN {
                   await SPLINT.SessionsPHP.set("USER_ID", "ADMIN", false);
                   await SPLINT.SessionsPHP.set("USER_NAME", "ADMIN", false);
                   await SPLINT.SessionsPHP.set("ADMIN", true, false);
-                  await SPLINT.SessionsPHP.set("GUEST", false, false);
+                //   await SPLINT.SessionsPHP.set("GUEST", false, false);
                   let j = contentBody.querySelectorAll("[connected*='true']");
                   if(j.length == 0) {
                       let f = await ProjectHelper.remove(data.ProjectID);
@@ -199,7 +199,7 @@ class drawProjectList_ADMIN {
                       await SPLINT.SessionsPHP.set("USER_ID", "ADMIN", false);
                       await SPLINT.SessionsPHP.set("USER_NAME", "ADMIN", false);
                       await SPLINT.SessionsPHP.set("ADMIN", true, false);
-                      await SPLINT.SessionsPHP.set("GUEST", false, false);
+                    //   await SPLINT.SessionsPHP.set("GUEST", false, false);
                       data.Original = true;
                       await ProjectHelper.edit(data);
                       contentBody.parentElement.remove();
@@ -210,7 +210,7 @@ class drawProjectList_ADMIN {
                       await SPLINT.SessionsPHP.set("USER_ID", "ADMIN", false);
                       await SPLINT.SessionsPHP.set("USER_NAME", "ADMIN", false);
                       await SPLINT.SessionsPHP.set("ADMIN", true, false);
-                      await SPLINT.SessionsPHP.set("GUEST", false, false);
+                    //   await SPLINT.SessionsPHP.set("GUEST", false, false);
                       data.Original = false;
                       await ProjectHelper.edit(data);
                       contentBody.parentElement.remove();

@@ -75,11 +75,11 @@ class Pages {
     new drawCart();
   }
   async checkout(){
-    let cart = (await ShoppingCart.get());
-    console.log(cart)
-    if(cart.shoppingCart.length == 0){
-        SPLINT.Tools.Location.Direct(PATH.location.cart);
-    }
+    // let cart = (await ShoppingCart.get());
+    // console.log(cart)
+    // if(cart.shoppingCart.length == 0){
+    //     SPLINT.Tools.Location.Direct(PATH.location.cart);
+    // }
     NavBar.hide();
     new Checkout();
   }

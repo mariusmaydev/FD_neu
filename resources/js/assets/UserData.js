@@ -2,16 +2,18 @@ class UserData {
     static GET              = "GET";
     static ADD              = "ADD";
     static EDIT             = "EDIT";
+    static REMOVE_IMAGE     = "REMOVE_IMAGE";
     static REMOVE           = "REMOVE";
     static GET_IMAGE        = "GET_IMAGE";
     static GET_FROM_SESSION = "GET_FROM_SESSION";
+    static GET_ALL_USERIDATA= "GET_ALL_USERIDATA";
 
     static PATH = PATH.php.userData;
     static data = new Object();
     
     static call(data){
         console.log("call");
-        return CallPHP_S.call(this.PATH, data);
+        return SPLINT.Data.CallPHP_OLD.call(this.PATH, data);
     }
     static getFromSession(){
         this.data.METHOD    = this.GET_FROM_SESSION;
@@ -23,6 +25,14 @@ class UserData {
         this.data.ImageID    = ImageID;
         return this.call(this.data).toObject(true);
     }
+    static async getAllUserData(){
+        let call = new SPLINT.CallPHP(this.PATH, this.GET_ALL_USERIDATA);
+        return call.send();
+        // this.data.METHOD    = this.GET_ALL_USERIDATA;
+        // // this.data.mode       = mode;
+        // // this.data.ImageID    = ImageID;
+        // return this.call(this.data).toObject(true);
+    }
     static parse(data){
         let dataOut = data;
             dataOut.ShoppingCart    = S_JSON.parseIf(data.ShoppingCart);
@@ -30,12 +40,25 @@ class UserData {
             dataOut.userInformation = S_JSON.parseIf(data.userInformation);
         return dataOut;
     }
-    static removeImage(ImageID){
+    static remove(UserID){
         this.data.METHOD    = this.REMOVE;
+        this.data.UserID   = UserID;
+        return this.call(this.data);
+    }
+    static removeImage(ImageID){
+        this.data.METHOD    = this.REMOVE_IMAGE;
         this.data.ImageID   = ImageID;
         return this.call(this.data);
     }
-    static getImages(ImageID, mode, hashtags){
+    static async getImages(ImageID, mode, hashtags){
+        let call = new SPLINT.CallPHP(this.PATH, this.GET_IMAGE)
+            call.data.mode = mode;
+            call.data.ImageID = ImageID;
+            call.data.hashtags = hashtags;
+
+            let res = await call.send();
+            console.dir(res);
+            return res;
         this.data.METHOD    = this.GET_IMAGE;
         this.data.mode      = mode;
         this.data.ImageID   = ImageID;

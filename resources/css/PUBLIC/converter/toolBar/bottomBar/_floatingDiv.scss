@@ -75,6 +75,27 @@
         box-sizing: border-box;
         position: absolute;
         z-index: 1000;
+        &[name='buttons']{
+            padding-inline: 0.25rem;
+            > div {
+                gap: 0.5rem;
+                > button {
+                    @include Tmain.TContainer_basic();
+                    // background-color: vars.$color-primary-complementary;
+                    margin-bottom: 0;
+                    padding-top: 0.25rem;
+                    padding-bottom: 0.25rem;
+                    margin-inline: 0rem;
+                    span {
+                        margin: 0.5rem;
+                        font-size: 2.5rem;
+                        &.text {
+                            font-size: 0.75rem;
+                        }
+                    }
+                }
+            }
+        }
         > div {            
             position: relative;
             height: max-content;
@@ -372,7 +393,7 @@
                 }
             }
             > button {
-                @include Tmain.TButton_primary();
+                @include Tmain.TContainer_basic();
                 // background-color: vars.$color-primary-complementary;
                 margin-bottom: 0;
                 padding-top: 0.25rem;
@@ -388,19 +409,21 @@
             }
         }
         &[name*='textAlignSlider']{
+            margin-bottom: 0.75rem;
+            padding-inline: 0.35rem;
             > div {
                 flex-direction: row;
                 gap: 0.5rem;
                 > button {
-                    @include Tmain.TButton_primary(0.25);
+                    @include Tmain.TContainer_basic();
                     > span {
-                        font-size: 1.5rem;
-                        margin: -0.05rem;  
+                        font-size: 2rem;
+                        margin: 0.25rem;  
                         &.description {
                             margin: -0.05rem;  
                             margin-bottom: -0.1rem;  
                             margin-top: 0.1rem;
-                            font-size: 0.5rem;
+                            font-size: 0.75rem;
                         }
                     }
                 }

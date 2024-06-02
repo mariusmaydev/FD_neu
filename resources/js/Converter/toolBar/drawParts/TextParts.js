@@ -89,11 +89,11 @@ class ToolBar_TextElement_parts {
         this.sl_fontSize.min    = 0.5;
         this.sl_fontSize.max    = 20;
         this.sl_fontSize.step   = 0.5;
-        this.sl_fontSize.value  = MATH_convert.px2pt(S_Math.divide(this.data.FontSize, 10));
+        this.sl_fontSize.value  = SPLINT.Math.convert.px2pt(SPLINT.Math.divide(this.data.FontSize, 10));
         this.sl_fontSize.draw();
 
         this.sl_fontSize.oninput = function(e){
-            this.data.FontSize = MATH_convert.pt2px(S_Math.multiply(this.sl_fontSize.value, 10));
+            this.data.FontSize = SPLINT.Math.convert.pt2px(SPLINT.Math.multiply(this.sl_fontSize.value, 10));
             CONVERTER_STORAGE.canvasNEW.setActive(this.data, "txt");
         }.bind(this);
         this.sl_fontSize.setLabel("Schriftgröße");

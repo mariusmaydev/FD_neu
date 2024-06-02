@@ -12,7 +12,7 @@ import LighterThumbnail from "../model/LighterThumbnail.js";
 import SPLINT from 'SPLINT';
 import MaterialHelper from '@SPLINT_MODULES_DIR/ThreeJS/materials/MaterialHelper.js';
 import workerInterfaceNew from "../../assets/workerInterfaceNew.js";
-import Stats from 'https://cdnjs.cloudflare.com/ajax/libs/stats.js/r17/Stats.min.js';
+// import Stats from 'https://cdnjs.cloudflare.com/ajax/libs/stats.js/r17/Stats.min.js';
 import { other as MATERIALS_other } from './../../assets/materials/other.js';
 
 SPLINT.BinaryImage
@@ -95,8 +95,15 @@ export class draw {
         this.raycaster = SPLINT.raycaster(this);
         this.raycaster2 = SPLINT.raycaster(this);
         if(this.drawStats == true){
-            this.stats = new Stats()
-        document.body.appendChild(this.stats.dom)
+            this.stats = new Promise(async function(resolve){
+                await import('https://cdnjs.cloudflare.com/ajax/libs/stats.js/r17/Stats.min.js').then(function(r){
+                    let res = new r.default();
+                    document.body.appendChild(res.dom);
+                    resolve(res);
+                    return res;
+                });
+            })//new Stats()
+        // document.body.appendChild(this.stats.dom)
         } else {
             this.stats = false;
         }
@@ -250,6 +257,7 @@ export class draw {
     startAnimationLoop(){
         const renderer = this.renderer;
         const mixer = this.AnimationMixer;
+
         const stats = this.stats;
         const scene = this.scene;
         const camera = this.camera;
@@ -259,7 +267,9 @@ export class draw {
             renderer.render(scene, camera);
             requestAnimationFrame(loop);
             if(stats != false){
-                stats.update();
+                stats.then(async function(r){
+                    r.update();
+                })
             }
         }
         loop();

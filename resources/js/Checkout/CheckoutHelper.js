@@ -22,7 +22,7 @@ class CheckoutHelper {
         }
         this.add = async function(name){
           if(name == undefined){
-            name = S_Location.getHashes();
+            name = SPLINT.Tools.Location_old.getHashes();
           }
           let data = await SPLINT.SessionsPHP.get(Checkout.sessions.progress);
           if(typeof data == 'object'){
@@ -86,7 +86,7 @@ class CheckoutHelper {
                   sessions.jsGen_invoiceAddress = sessions.jsGen_address;
               }
           }
-          let Items = (await ShoppingCart.get()).shoppingCart;
+          let Items = (await ShoppingCart.get());
           for(const index in Items){
               let newProjectID = (await ProjectHelper.copy(Items[index].ProjectID));
               Items[index].ProjectID = newProjectID;
@@ -102,12 +102,14 @@ class CheckoutHelper {
               orderObj.couponCode     = sessions.jsGen_couponCode;
               let orderObjExec = orderObj.get();
               let orderID = order.new(orderObjExec);
-              await lexOffice.newInvoice(orderObjExec, orderID);
-              await lexOffice.newDeliveryNote(orderObjExec, orderID);
-              await ShoppingCart.clear();
-              
-              SPLINT.Tools.Location.URL = PATH.location.paymentComplete;
-              SPLINT.Tools.Location.setParams({"orderID": orderID}).call();
+            //   await lexOffice.newInvoice(orderObjExec, orderID);
+            //   await lexOffice.newDeliveryNote(orderObjExec, orderID);
+            //   await ShoppingCart.clear();
+              console.dir(orderObj)
+              console.dir(orderID)
+
+            //   SPLINT.Tools.Location.URL = PATH.location.paymentComplete;
+            //   SPLINT.Tools.Location.setParams({"orderID": orderID}).call();
       }
   }
   

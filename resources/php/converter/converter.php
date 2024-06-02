@@ -17,7 +17,7 @@
         const PROJECT_ID    = "ProjectID";
 
         public static function isGD(){
-            return true;
+            return false;
             if(class_exists("Imagick")){
                 return false;
             } else {

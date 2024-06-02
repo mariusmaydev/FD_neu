@@ -57,7 +57,6 @@ class ConverterRenderThumbnail {
             y: this.inst.canvas.height,
             dimensions: ConverterRenderThumbnail.SIZE
         }
-        console.dir(this)
         let stackOut = [];
         for(const ele of this.inst.stack){
             let elem = new Object();
@@ -72,7 +71,6 @@ class ConverterRenderThumbnail {
                 if(true || !SPLINT.CacheStorage.has(ele.ID)){
                     let blob = SPLINT.Tools.CanvasTools.loadImageAsBlob(ele.src.currentSrc);
                     // let src = SPLINT.Tools.CanvasTools.base64ToSrc(ele.src.currentSrc);
-                    console.dir(blob)
                     let ob = new Object();
                         ob.blob = await blob;//SPLINT.Tools.CanvasTools.base64toBlob(src);
                         ob.time = ele.time

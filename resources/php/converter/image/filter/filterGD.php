@@ -2,7 +2,7 @@
 <?php
 
     $rootpath = realpath($_SERVER["DOCUMENT_ROOT"]);
-    require_once $rootpath . '/fd/resources/php/converter/converterCore.php';
+    require_once $rootpath . '/fd/resources/php/converter/converter.php';
     require_once $rootpath . '/fd/resources/php/converter/image/image.php';
 
     class FilterGD {
