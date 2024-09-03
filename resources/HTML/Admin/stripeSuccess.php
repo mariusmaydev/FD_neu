@@ -23,7 +23,7 @@
         <s-part first src="/js/ADMIN/assets/AdminTemplate.js"></s-part>
         <s-part src="/js/GLOBAL/Paths.js"></s-part>
         <s-part src="/js/3D/3DHelper.js"></s-part>
-        <s-part src="/js/manager/"></s-part>
+        <!-- <s-part src="/js/manager/"></s-part> -->
         <s-part src="/js/Orders/"></s-part>
         <s-module src="/js/3D/modules/module_3D_init.js"></s-module>
 

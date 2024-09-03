@@ -2,12 +2,12 @@
 class drawPaymentComplete extends Pages_template {
     constructor(){
         super("paymentComplete");
-        SPLINT.Events.onLoadingComplete.dispatch();
         this.draw1();
     }
     async draw1(){
+        NavBar.show();
         if(SPLINT.ViewPort.getSize() == "mobile-small"){
-            NavBar.setInParts();
+            NavBar.setSolid();
         } else {
             Footer.desktop();
         }
@@ -25,7 +25,9 @@ class drawPaymentComplete extends Pages_template {
             let code = new SPLINT.DOMElement.SpanDiv(this.contentDiv, "code", orderID);
                 code.Class("code");
                 
-            this.#removeSessions();
+            await this.#removeSessions();
+            
+        // SPLINT.Events.onLoadingComplete.dispatch();#
             // let spinner = new SPLINT.DOMElement.Spinner(this.contentDiv, "spinner");
             //     spinner.show();
         // setTimeout(()=> {

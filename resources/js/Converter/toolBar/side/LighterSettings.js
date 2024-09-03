@@ -139,7 +139,7 @@ class ToolBar_LighterSettings {
                     DSProject.Storage.Product = product.name;
                     DSProject.Storage.Color = key;
                     await DSProject.saveAsync();
-                    this.drawEPTypeMenu();
+                    // this.drawEPTypeMenu();
                 }.bind(this);
         }
     }

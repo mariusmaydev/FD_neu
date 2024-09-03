@@ -7,7 +7,7 @@ class ProjectCategoryMenu {
         this.mainElement = new SPLINT.DOMElement(this.id + "main", "div", this.parent)
         this.mainElement.Class("ProjectCategoryMenu");
         this.hide = hide;
-        this.callBack = function(data){};
+        this.callBack = function(data, inst){};
         this.draw();
     }
     move(newParent){
@@ -89,7 +89,7 @@ class ProjectCategoryMenu {
                             // }));
                         }
                     }
-                    this.callBack(stack);
+                    this.callBack(stack, this);
                     // let stack = [];
                     // Promise.all(promises).then(async function(r){
                     //     for(const e of r){

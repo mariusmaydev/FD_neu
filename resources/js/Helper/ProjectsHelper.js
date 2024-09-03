@@ -70,9 +70,21 @@ class ProjectHelper extends SPLINT.CallPHP.Manager {
     }
     static async getAllAdmin(original = false){
       let call = this.callPHP(this.GET_ALL_ADMIN);
-          call.data.Original = original;
+          call.data.Original = null;
         let res = await call.send();
-        return SPLINT.Tools.parse.castTypesRecursive(res);
+        let res2 = [];
+        if(res != null) {
+            if(original != null) {
+                for(const e of res){
+                    if(SPLINT.Tools.parse.stringToBool(e.Original, true) == original) {
+                        res2.push(e);
+                    }
+                }
+            } else {
+                res2 = res;
+            }
+        }
+        return SPLINT.Tools.parse.castTypesRecursive(res2);
     }
     static async edit(StorageIn){
         let Storage = Object.assign({}, StorageIn);
@@ -123,12 +135,13 @@ class ProjectHelper extends SPLINT.CallPHP.Manager {
     }
     static async CONVERTER_startProject(projectID, editCart = false){
       await SPLINT.SessionsPHP.set(SPLINT.SessionsPHP.PROJECT_ID, projectID, false);
-      SPLINT.Tools.Location.URL = PATH.location.converter;
+    //   SPLINT.Tools.Location.URL = PATH.location.converter;
       if(editCart){
-        SPLINT.Tools.Location.addParams({"mode": "edit_cart"}).call();
+        SPLINT.Tools.Location.addParams({"mode": "edit_cart"});
       } else {
-        SPLINT.Tools.Location.addParams({"mode": "edit_project"}).call();
+        SPLINT.Tools.Location.addParams({"mode": "edit_project"});
       }
+      LoaderMain.goto("converter");
     //  SPLINT.Tools.Location_old.goto(PATH.location.converter).call();
     }
     static async CONVERTER_closeProject(){
@@ -137,6 +150,9 @@ class ProjectHelper extends SPLINT.CallPHP.Manager {
         await DSText.save();
         await DSProject.save();
         await SPLINT.SessionsPHP.remove(SPLINT.SessionsPHP.PROJECT_NAME, false);
+        await SPLINT.SessionsPHP.remove(SPLINT.SessionsPHP.PROJECT_ID, false);
+        return ;
+        // DSImage.remove(index)
     }
     static getDesignObj(){
       let obj = new Object();

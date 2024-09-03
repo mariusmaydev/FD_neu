@@ -51,6 +51,9 @@ export class draw {
         }.bind(this));
         this.render();
     }
+    stopAnimationLoop(){
+        this.AnimationLoopActive = false;
+    }
     async animate(){
         if(this.renderer.domElement.width > 0){
             this.render();
@@ -65,7 +68,7 @@ export class draw {
         this.renderer.render(this.scene, this.camera);
     }
     init(){
-        this.setup.renderer(true);
+        this.setup.renderer(true, this.canvas);
         this.setup.scene("scene");
         this.Animations = new LighterAnimations(this);
         this.compressedAnimations = new CompressedAnimations(this);

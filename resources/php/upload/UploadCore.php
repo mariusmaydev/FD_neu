@@ -23,6 +23,7 @@
             $response['width']  = $width;
             $response['height'] = $height;
         } else {
+            $img1 = $img;
             if(gettype($img) == 'string') {
                 $img1 = new Imagick();
                 $img1 -> readImageBlob(file_get_contents($img));

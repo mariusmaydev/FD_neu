@@ -68,13 +68,13 @@ class indexOverlay {
             footer_imprint.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_STANDARD);
             footer_imprint.Class("imprint");
             footer_imprint.onclick = function(){
-                SPLINT.Tools.Location_old.goto(PATH.location.imprint).call();
+                LoaderMain.goto("imprint");
             }
         let footer_Contact = new SPLINT.DOMElement.Button(footer_body, "footer_contact", "Kontakt");
             footer_Contact.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_STANDARD);
             footer_Contact.Class("contact");
             footer_Contact.onclick = function(){
-                SPLINT.Tools.Location_old.goto(PATH.location.imprint).call();
+                LoaderMain.goto("imprint");
             }
         // this.part4.drawNavigatorButtons();
 

@@ -8,7 +8,7 @@ class drawIndex extends Pages_template {
     _draw(){       
         
         if(SPLINT.ViewPort.getSize() == "mobile-small"){
-            NavBar.setInParts();
+            NavBar.setSolid();
             NavBar.burgerMenu.onOpen = function(){
                 this.Lighter.send("interaction", false);
             }.bind(this);
@@ -22,7 +22,8 @@ class drawIndex extends Pages_template {
         } else {
             Footer.desktop();
         }
-        this.Lighter = new drawLighter3D(this.mainElement, "test", drawLighter3D.INDEX);
+        this.Lighter = new drawLighter3D(this.mainElement, "test", drawLighter3D.INDEX, null, false, false);
+        this.Lighter.saveContext = false;
 
 
         let offsetStart = 0;
@@ -34,7 +35,7 @@ class drawIndex extends Pages_template {
             this.overlay.dynamicScrollEnd();
         }.bind(this)
         let touchStartPosX = 0;
-        window.addEventListener('touchmove', function (evt){
+        let listener = window.SEvent.addListener('touchmove', function (evt){
                 if(NavBar.burgerMenu.isOpen){
                     return;
                 }
@@ -51,6 +52,10 @@ class drawIndex extends Pages_template {
                         offsetStart = y;
                     };
         }.bind(this));
+        SPLINT.Events.onPopStateChange = function(){
+            listener.remove();
+            // console.dir(window.SEvent);
+        }
         this.Lighter.canvas.onwheel = function(e){
             let deltaY = e.deltaY;
             // console.log(e);

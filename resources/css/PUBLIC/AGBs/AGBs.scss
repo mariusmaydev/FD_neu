@@ -35,7 +35,7 @@ body {
         min-height: 100%;;
         height: max-content;
         padding: 1rem;
-        padding-top: 5.5rem;
+        padding-top: 4.5rem;
         > .containerMain {
             // @include Tmain.TContainer_basic();
             top: 0;
@@ -53,6 +53,7 @@ body {
                 &.headline {
                     @include Tmain.TContainer_basic();
                     width: max-content;
+                    width: 100%;;
                     > span {
                         font-size: 1.5rem;
                         font-weight: 500;
@@ -99,7 +100,12 @@ body {
 
 @include mediaQueries.forMediaBreakpoint(mobile-small){
     body {
+            // height : 100vh!important;
+            // top: 0!important;
             overflow-y: auto !important;
+            // ::-webkit-scrollbar {
+            //     display: none !important;
+            // }
         scroll-snap-type: none !important;
         scroll-behavior: auto !important;
         scroll-snap-align: start !important;

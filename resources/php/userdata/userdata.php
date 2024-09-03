@@ -309,6 +309,7 @@
 
         }
         public static function addImage($imgArray){
+            Debugger::log($imgArray);
             $UserID     = Sessions::get(Sessions::USER_ID);
             $imgID = StringTools::realUniqID();
             $path = new PATH_Userdata($UserID, $imgID);
@@ -318,6 +319,7 @@
             $dataset = new DataSet();
             $dataset -> newKey(UserDataDB::USER_ID, Sessions::get(Sessions::USER_ID));
             $dataset -> newEntry(UserDataDB::IMAGES);
+            Debugger::log(UserDataDB::get($dataset, DataBase::DENY_ORDERED));
             $Images = json_decode(UserDataDB::get($dataset, DataBase::DENY_ORDERED)["Images"]);
 
             $newData = [];

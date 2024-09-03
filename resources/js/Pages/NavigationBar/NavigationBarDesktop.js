@@ -15,7 +15,7 @@ class NavigationBarDesktop {
             this.logo.inner = new SPLINT.DOMElement("NavBar_LogoInner", "div", this.logo.div);
             this.logo.inner.Class("inner");
             this.logo.inner.onclick = function(){
-               SPLINT.Tools.Location_old.goto(PATH.location.index).call();
+                // LoaderMain.goto("index");
             }
                 this.logo.inner1 = new SPLINT.DOMElement("NavBar_LogoInner1", "div", this.logo.inner);
                 this.logo.inner1.Class("inner1");
@@ -24,7 +24,7 @@ class NavigationBarDesktop {
                         this.logo.img = new SPLINT.DOMElement("NavBar_LogoImg", "img", this.logo.content);
                         this.logo.img.src = PATH.images.logo;
                         this.logo.img.onclick = function(){
-                           SPLINT.Tools.Location_old.goto(PATH.location.index).call();
+                            LoaderMain.goto("index");
                         }
     }
     drawCreateNow(){
@@ -34,7 +34,8 @@ class NavigationBarDesktop {
             this.createNow.button = new SPLINT.DOMElement.Button(this.createNow.div, "design", "jetzt entwerfen");
             this.createNow.button.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_DEFAULT);
             this.createNow.button.button.onclick = function() {
-               SPLINT.Tools.Location_old.goto(PATH.location.converterStart).call();
+                
+               LoaderMain.goto("converterStart");
             }
     }
     drawOriginal(){
@@ -44,7 +45,7 @@ class NavigationBarDesktop {
             this.original.button = new SPLINT.DOMElement.Button(this.original.div, "original", "Originale");
             this.original.button.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_DEFAULT);
             this.original.button.button.onclick = function() {
-               SPLINT.Tools.Location_old.goto(PATH.location.converterStart).setHash("originals").call();
+                LoaderMain.goto("converterStart", "originals");
             }
     }
 }

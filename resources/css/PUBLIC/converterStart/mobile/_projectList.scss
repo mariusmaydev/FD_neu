@@ -9,7 +9,7 @@ $color-project-hover         : rgba(64, 64, 64, 0.219);
     > .ProjectListMain {     
         position: relative;
         width: 100%;
-        height: 100%;
+        height: max-content;
         display: flex;
         // z-index: 1;   
         flex-direction: column;
@@ -24,24 +24,131 @@ $color-project-hover         : rgba(64, 64, 64, 0.219);
                 }
             }
         }
+        > .TopMain{
+            position: relative;
+            width: 100%;
+            height: max-content;
+            background-color: vars.$color-background;
+            > .headline_TopMain {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                padding-top: 0.75rem;
+                padding-bottom: 0.5rem;
+                > span {
+                    font-size: 1.75rem;
+                    font-weight: 500;
+                }
+            }
+            > .expander_container {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                min-height: 5rem;
+                max-height: max-content;
+                display: flex;
+                flex-direction: column;
+
+                > .expander_content {
+                    position: relative;
+                    width: 100%;
+                    height: max-content;
+                    min-height: 1rem;
+                    max-height: 4rem;
+                    overflow: hidden;
+                    transition: max-height 0.4s ease-in-out;
+
+                    padding: 0.5rem;
+                    padding-bottom: 0;
+                    box-sizing: border-box;
+                    > p {
+                        
+                        text-align: center
+                    }
+                }
+                > .ShadowDiv {
+                    position: relative; 
+                    background: linear-gradient(0deg, vars.$color-background 40%, rgba(255, 255, 255, 0) 100%);
+                    // background-color: rgba(255, 0, 0, 0.395);
+                    transform: scaleY(2) translateY(-25%);
+                    > button {
+                        @include Tmain.TButton_secondary();
+                        transform: scaleY(0.5) translateY(50%);
+                        position: relative;
+                        height: max-content;
+                        width: 100%;
+                        border: none;
+                        border-radius: 0px;
+                        // background-color: red;
+                        > span {
+                            &:after {
+                                font-size: 0.7rem;
+                                content: '\25bc';
+                                padding-left: 1rem;
+                            }
+                            &:before {
+                                font-size: 0.7rem;
+                                content: '\25bc';
+                                padding-right: 1rem;
+                            }
+                            // @include Tmain.PseudoArrow-left();
+                            // @include Tmain.PseudoArrow-left();
+                            color: vars.$NEW-color-text-secondary !important;
+    
+                        }
+                    }
+                }
+                &[state*='active']{
+                    > .ShadowDiv {
+                        background: transparent;
+                        > button {
+                            > span {
+                                &:after {
+                                    font-size: 0.7rem;
+                                    content: '\25b2';
+                                    padding-left: 1rem;
+                                }
+                                &:before {
+                                    font-size: 0.7rem;
+                                    content: '\25b2';
+                                    padding-right: 1rem;
+                                }
+                            }
+                        }
+                    }
+                    > .expander_content {
+                        max-height: 50rem;
+                        transition: max-height 0.4s ease-in;
+
+                    }
+                }
+            }
+        }
+        > hr {
+            width: 96%;
+            margin-inline: 2%;
+            left: 0;
+        }
         > .TableMain {
             position: relative;
             width: 100%;
+            height: max-content;
             // height: 100%;
-            overflow: visible;
+            overflow: hidden;
             margin-inline: 0;
             box-sizing: border-box;
+            // border: 1px solid red;
             >.ListMain {
-                box-sizing: border-box;
                 width: 100%;
-                padding-top: vars.$NavBar-height-mobile-small;
+                box-sizing: border-box;
                 position: relative;
                 display: grid;
                 grid-auto-flow: row dense;
                 grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
                 justify-content: center;
                 align-content: start;
-                overflow: auto;
+                overflow: visible;
 
 
                 @include ProjectListElement();
@@ -133,8 +240,8 @@ $color-project-hover         : rgba(64, 64, 64, 0.219);
         // min-width: 8em;
         // flex: 1 1 20%;
         @include Tmain.TContainer_basic();
-        padding:    0.5em;
-        margin:     1em;
+        padding:    0em;
+        margin:     0em;
         height: max-content;
         background-color: transparent;
         box-shadow: none;
@@ -182,7 +289,7 @@ $color-project-hover         : rgba(64, 64, 64, 0.219);
                     position: relative;
                     user-select: none;
                     pointer-events: none;
-                    transform: scale(1.1);
+                    // transform: scale(1.1);
                     cursor: pointer;
                     box-sizing: content-box !important;
                     overflow: visible;

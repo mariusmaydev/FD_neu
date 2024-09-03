@@ -139,7 +139,6 @@ class unsplash {
   static async download(data){
     return new Promise(async function(resolve){
         let url = data.urls.regular + '&client_id=' + unsplash.clientID;
-            //get    
         fetch(url, {
             method: 'GET',
         }).then(async function(response) {

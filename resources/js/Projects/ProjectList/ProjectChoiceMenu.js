@@ -74,6 +74,8 @@ class drawProjectChoiceMenu {
             let buttonsCategoryMenuDiv = new SPLINT.DOMElement(this.id + "buttonsCategoryMenuDiv", "div", this.buttonDiv);
                 buttonsCategoryMenuDiv.Class("buttonsCategoryContainer");
         
+                
+            // NavBar.logo.div.style.position= "relative";
                 // buttonsCategoryMenuDiv.
       let div_originals = this.buttonContentDiv.newDiv("div_originals", "originals");
         this.bt_originals = new SPLINT.DOMElement.Button(div_originals, "project_originals", "Orginale");
@@ -151,8 +153,8 @@ class drawProjectChoiceMenu {
                 this.bt_public.button.setAttribute("hide", true);
             }
         }.bind(this);
-          this.CategoryMenu_public.callBack = function(data){
-            this.public(false, data);
+          this.CategoryMenu_public.callBack = function(data, inst){
+            this.public(false, data, inst);
           }.bind(this);
         // }
       
@@ -187,8 +189,11 @@ class drawProjectChoiceMenu {
                 this.bt_create.setStyleTemplate(S_Button.STYLE_DEFAULT);
                 this.bt_create.button.state().unsetActive();
                 this.bt_create.onclick = async function(){
-                        await ProjectHelper.new("neues Projekt", "LIGHTER_BASE_GOLD_custom", false, false, false, "base");
-                        SPLINT.Tools.Location_old.goto(PATH.location.converter).call();
+                        let res = await ProjectHelper.new("neues Projekt", "LIGHTER_BASE_GOLD_custom", false, false, false, "base");
+                    console.dir(res);
+                        SPLINT.SessionsPHP.showAll();
+                        LoaderMain.goto("converter");
+                        // SPLINT.Tools.Location_old.goto(PATH.location.converter).call();
                     }.bind(this)
 
         this.#changeViewPortSize(this);
@@ -234,70 +239,146 @@ class drawProjectChoiceMenu {
       this.bt_private.button.state().setActive();
       if(this.list_public != undefined){
         this.list_public.remove();
+        this.list_public = undefined;
       }
       if(isCart){
         if(this.list_private_NORMAL != undefined){
           this.list_private_NORMAL.remove();
+          this.list_private_NORMAL = undefined;
+          this.list_private_NORMAL = undefined;
         }
         let data = await ProjectHelper.getAll("CART");
         this.list_private_CART = new drawProjectList(this.listBody, "CART", data, false);
-            let head_c = new SPLINT.DOMElement("CART_head", "div", this.list_private_CART.mainElement);
-                head_c.before(this.list_private_CART.table.mainElement);
-                let text_c = new SPLINT.DOMElement.SpanDiv(head_c, "CART_head_span", "im Einkaufswagen");
-                let hr_c = new SPLINT.DOMElement.HorizontalLine(head_c);
+            // let head_c = new SPLINT.DOMElement("CART_head", "div", this.list_private_CART.mainElement);
+            //     head_c.before(this.list_private_CART.table.mainElement);
+            //     let text_c = new SPLINT.DOMElement.SpanDiv(head_c, "CART_head_span", "im Einkaufswagen");
+            //     let hr_c = new SPLINT.DOMElement.HorizontalLine(head_c);
       } else {
         if(this.list_private_CART != undefined){
           this.list_private_CART.remove();
+          this.list_private_CART = undefined;
         }
         if(this.list_original != undefined){
           this.list_original.remove();
+          this.list_original = undefined;
         }
             let data = await ProjectHelper.getAll("NORMAL");
-            this.list_private_NORMAL = new drawProjectList(this.listBody, "NORMAL", data, false, true);
-                let head_N = new SPLINT.DOMElement("NORMAL_head", "div", this.list_private_NORMAL.mainElement);
-                    head_N.before(this.list_private_NORMAL.table.mainElement);
-                    let text_N = new SPLINT.DOMElement.SpanDiv(head_N, "NORMAL_head_span", "deine Designs");
-                    let hr_N = new SPLINT.DOMElement.HorizontalLine(head_N);
+            let res = null;
+            if(data != null){
+                res = [];
+                res.push({
+                    path: "n.n",
+                    value: data,
+                    ID: "private"
+                })
+            }
+            this.list_private_NORMAL = new drawProjectList(this.listBody, "NORMAL", res, false, true);
+                // let head_N = new SPLINT.DOMElement("NORMAL_head", "div", this.list_private_NORMAL.mainElement);
+                //     head_N.before(this.list_private_NORMAL.table.mainElement);
+                //     let text_N = new SPLINT.DOMElement.SpanDiv(head_N, "NORMAL_head_span", "deine Designs");
+                //     let hr_N = new SPLINT.DOMElement.HorizontalLine(head_N);
 
       }
       
     }
-    async public(isOriginal = false, data = null){
+    async public(isOriginal = false, data = null, inst = null, reload = false) {
+        let categories = await new Promise(async function(resolve){
+            if(inst != null) {
+                resolve(inst.data);
+            } else {
+                let res;
+                if(isOriginal){
+                    res = await CategoryHelper.get_Originals();
+                } else {
+                    res = await CategoryHelper.get_Examples();
+                }
+                resolve(res);
+            }
+        });
       this.bt_private.button.state().unsetActive();
       if(this.list_private_NORMAL != undefined){
         this.list_private_NORMAL.remove();
+        this.list_private_NORMAL = undefined;
       }
       if(this.list_private_CART != undefined){
         this.list_private_CART.remove();
+        this.list_private_CART = undefined;
       }
       if(isOriginal){
-        this.CategoryMenu_originals.hide = false;
-        this.CategoryMenu_public.hide = true;
-        this.bt_public.button.state().unsetActive();
-        this.bt_originals.button.state().setActive();
-        if(this.list_public != undefined){
-          this.list_public.remove();
-        }
-        if(data == null){
-          data = await ProjectHelper.getAllAdmin(true);
-        }
-        this.list_original = new drawProjectList(this.listBody, "ORIGINAL", data, true);
-        //   let head = new SPLINT.DOMElement("ORIGINAL_head", "div", this.list_original.mainElement);
-        //       head.before(this.list_original.table.mainElement);
-        //       let text = new SPLINT.DOMElement.SpanDiv(head, "ORIGINAL_head_span", "Orginale");
-        //       let hr = new SPLINT.DOMElement.HorizontalLine(head);
+            this.CategoryMenu_originals.hide = false;
+            this.CategoryMenu_public.hide = true;
+            this.bt_public.button.state().unsetActive();
+            this.bt_originals.button.state().setActive();
+            if(this.list_public != undefined){
+                this.list_public.remove();
+                this.list_public = undefined;
+            }
+        
+            if(reload || this.list_original == undefined){
+
+                if(data == null){
+                    data = await ProjectHelper.getAllAdmin(true);
+                }
+                let result1 = getAllPaths(categories, 'data');
+                for(const i in result1) {
+                    let e = result1[i];
+                    e.ID = e.path.replace(".attr.data", "");
+                    if(!e.ID.includes(".")){
+                    result1.splice(i,1);
+                    continue; 
+                    }
+                    for(const [key, val] of Object.entries(e.value)){
+                        for(const k of data) {
+                            if(val == k.ProjectID){
+                                e.value[key] = k;
+                            }
+                        }
+                    }
+                }
+
+                this.list_original = new drawProjectList(this.listBody, "ORIGINAL", result1, true);
+            } else if(this.list_original != undefined){
+                let ID = (this.CategoryMenu_originals.activeCategory.replace("start.", ""))
+                this.list_original.focusSection(ID)
+            }
       } else {
-        this.CategoryMenu_public.hide = false;
-        this.CategoryMenu_originals.hide = true;
-        this.bt_public.button.state().setActive();
-        this.bt_originals.button.state().unsetActive();
-        if(this.list_original != undefined){
-          this.list_original.remove();
-        }
-        if(data == null){
-          data = await ProjectHelper.getAllAdmin(false);
-        }
-        this.list_public = new drawProjectList(this.listBody, "PUBLIC", data, true);
+            this.CategoryMenu_public.hide = false;
+            this.CategoryMenu_originals.hide = true;
+            this.bt_public.button.state().setActive();
+            this.bt_originals.button.state().unsetActive();
+            if(this.list_original != undefined){
+                this.list_original.remove();
+                this.list_original = undefined;
+            }
+            if(reload || this.list_public == undefined){
+                if(data == null){
+                    data = await ProjectHelper.getAllAdmin(false);
+                }
+                let result1 = getAllPaths(categories, 'data');
+                for(const i in result1) {
+                    let e = result1[i];
+                    e.ID = e.path.replace(".attr.data", "");
+                    if(!e.ID.includes(".")){
+                       result1.splice(i,1);
+                       continue; 
+                    }
+                    for(const [key, val] of Object.entries(e.value)){
+                        for(const k of data) {
+                            if(val == k.ProjectID){
+                                e.value[key] = k;
+                            }
+                        }
+                    }
+                }
+
+                this.list_public = new drawProjectList(this.listBody, "PUBLIC", result1, true);
+            } else if(this.list_public != undefined){
+                let ID = (this.CategoryMenu_public.activeCategory.replace("start.", ""))
+                this.list_public.focusSection(ID)
+            }
+
+        
+        // this.list_public = new drawProjectList(this.listBody, "PUBLIC", data, true);
         //   let head = new SPLINT.DOMElement("PUBLIC_head", "div", this.list_public.mainElement);
         //       head.before(this.list_public.table.mainElement);
         //       let text = new SPLINT.DOMElement.SpanDiv(head, "PUBLIC_head_span", "Vorlagen");
@@ -305,3 +386,20 @@ class drawProjectChoiceMenu {
       }
     }
   }
+
+  function getAllPaths(obj, key, prev = '') {
+    const result = []
+  
+    for (let k in obj) {
+      let path = prev + (prev ? '.' : '') + k;
+  
+      if (k == key) {
+        result.push({ path: path, value: obj[k] })
+      } else if (typeof obj[k] == 'object') {
+        result.push(...getAllPaths(obj[k], key, path))
+      }
+    }
+  
+    return result
+  }
+  

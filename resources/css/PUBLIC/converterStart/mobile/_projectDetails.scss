@@ -13,7 +13,7 @@
             top: calc(50% + 1.75rem);
             font-size: 1rem;
             margin-top: 0rem;
-            height: calc(100% - 4.5rem);
+            height: calc(100% - 4rem);
             animation: translateProjectDetails 0.3s ease;
             // left: 0.5rem;
             // max-width: 95vw;
@@ -25,7 +25,7 @@
             box-sizing: border-box;
             max-width: 100%;
             max-height: 100%;
-            width: calc(100% - 1rem);
+            width: calc(100% - 0.5rem);
             @include Tmain.TContainer_basic();
             > .button_close {
                 // display: none;
@@ -41,15 +41,17 @@
                 }
             }
             > .container {
-                // display: flex;
-                // flex-direction: row;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
                 // flex-grow: 1;
                 position: relative;
                 // width: 100%;
                 margin-top: 0rem;
                 height: max-content;
                 > .ImageSlideMenuMain {
-                    width: 100%;
+                    width: 80%;
                     // height: 20rem;
                     overflow:hidden;
 

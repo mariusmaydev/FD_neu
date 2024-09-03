@@ -7,13 +7,13 @@
 
 @mixin NavBar_inParts(){
     > .content {
-        padding: 0;
-        margin-left: 1rem;
-        margin-top: 1rem;
-        margin-right: 1rem;
-        margin-bottom: 0;
-        width: calc(100% - 2rem);
-        height: calc(3.5rem - 0.5rem);
+        // padding: 0;
+        // margin-left: 1rem;
+        // margin-top: 1rem;
+        // margin-right: 1rem;
+        // margin-bottom: 0;
+        // width: calc(100% - 2rem);
+        // height: calc(3.5rem - 0.5rem);
         > div {
             @include Tmain.TContainer_basic();
             box-sizing: border-box;
@@ -37,6 +37,8 @@
                 
                 > .content {
                     @include Tmain.TContainer_basic();
+                    padding-top: 0.25rem;
+                    padding-bottom: 0.25rem;
                     > img {
                         box-sizing: border-box;
                         @include Tmain.preventSelect();
@@ -87,6 +89,12 @@
                     // width: 100%;
                     margin: 0;
                     padding: 0.5em;
+                    // filter: brightness(100%);
+                    // &:focus, &:hover {
+                    //     filter: brightness(10%);
+                    //     // background-color: darken();
+                    //     // color.adjust($color-shadow-dark, $alpha: -0.1)
+                    // }
                 }
             }
             &.burgerMenu {

@@ -49,35 +49,44 @@ class NavigationBarHelper {
                 this.contentElement = new SPLINT.DOMElement("NavBar_BurgerMenuContent", "div", this.mainElement);
                 this.contentElement.Class("BurgerMenuContent");
 
-                    let btHome = new SPLINT.DOMElement.Button(this.contentElement, "BTHome", "Home");
-                        btHome.Class("btHome");
-                        btHome.onclick = function(){
-                           SPLINT.Tools.Location_old.goto(PATH.location.index).call();
-                            this.close();
-                        }.bind(this);
+                    // let btHome = new SPLINT.DOMElement.Button(this.contentElement, "BTHome", "Home");
+                    //     btHome.Class("btHome");
+                    //     btHome.onclick = function(){
+                    //         this.close();
+                    //         LoaderMain.goto("index");
+                    //     }.bind(this);
 
                     let btCreate = new SPLINT.DOMElement.Button(this.contentElement, "BTCreate", "Jetzt erstellen");
                         btCreate.Class("btCreate");
                         btCreate.onclick = async function(){
                             this.close();
                             await ProjectHelper.new("neues Projekt", "LIGHTER_BASE_GOLD_custom", false, false, false, "base");
-                           SPLINT.Tools.Location_old.goto(PATH.location.converter).call();
+                            LoaderMain.goto("converter");
                         }.bind(this);
 
                     let btOriginals = new SPLINT.DOMElement.Button(this.contentElement, "BTOriginals", "Kollektionen");
                         btOriginals.Class("btOriginals");
                         btOriginals.onclick = function(){
-                           SPLINT.Tools.Location_old.goto(PATH.location.converterStart).setHash("originals").call();
+                            // SPLINT.Tools.Location.addHash("originals");
+                            LoaderMain.goto("converterStart", "originals");
+                        //    SPLINT.Tools.Location_old.goto(PATH.location.converterStart).setHash("originals").call();
                             this.close();
                         }.bind(this);
 
                     let btExamples = new SPLINT.DOMElement.Button(this.contentElement, "BTExamples", "Vorlagen");
                         btExamples.Class("btExamples");
                         btExamples.onclick = function(){
-                           SPLINT.Tools.Location_old.goto(PATH.location.converterStart).setHash("public").call();
+                            LoaderMain.goto("converterStart", "public");
                             this.close();
                         }.bind(this);
                             
+                    let btPrivate = new SPLINT.DOMElement.Button(this.contentElement, "BTPrivate", "Deine Designs");
+                        btPrivate.Class("btPrivate");
+                        btPrivate.onclick = function(){
+                            this.close();
+                            LoaderMain.goto("converterStart", "private_storage");
+                        }.bind(this);
+
                     let btContact = new SPLINT.DOMElement.Button(this.contentElement, "BTContact", "Kontakt");
                         btContact.Class("btContact");
                         btContact.onclick = function(){
@@ -90,21 +99,22 @@ class NavigationBarHelper {
                         let btImprint = new SPLINT.DOMElement.Button(containerFooter, "BTImprint", "Impressum");
                             btImprint.Class("btImprint");
                             btImprint.onclick = function(){
-                               SPLINT.Tools.Location_old.goto(PATH.location.imprint).call();
+                                LoaderMain.goto("imprint");
+                            //    SPLINT.Tools.Location_old.goto(PATH.location.imprint).call();
                                 this.close();
                             }.bind(this);
                             
                         let btData = new SPLINT.DOMElement.Button(containerFooter, "BTData", "Datenschutz");
                             btData.Class("btData");
                             btData.onclick = function(){
-                               SPLINT.Tools.Location_old.goto(PATH.location.dataProtection).call();
+                                LoaderMain.goto("dataProtection");
                                 this.close();
                             }.bind(this);
                             
                         let btAGB = new SPLINT.DOMElement.Button(containerFooter, "BT_AGB", "AGBs");
                             btAGB.Class("btAGB");
                             btAGB.onclick = function(){
-                               SPLINT.Tools.Location_old.goto(PATH.location.AGB).call();
+                                LoaderMain.goto("AGB");
                                 this.close();
                             }.bind(this);
                             
@@ -114,7 +124,11 @@ class NavigationBarHelper {
 
                                 this.close();
                             }.bind(this);
-
+                SPLINT.Events.onPopStateChange = function(){
+                    if(this.isOpen){
+                        this.close();
+                    }
+                }.bind(this)
                 this.mainElement.state().onStateChange = function(state){
                     // if(state == "active"){
                     //     this.#drawContent();
@@ -135,15 +149,21 @@ class NavigationBarHelper {
                 if(!this.isDrawn){
                     return false;
                 }
+                NavBar.setTransparent()
+                this.menuParent.state().setActive();
                 this.isOpen = true;
                 this.mainElement.state().setActive();
+                this.button.bindIcon("close")
             }
             close(){
                 if(!this.isDrawn){
                     return false;
                 }
+                NavBar.setSolid();
+                this.menuParent.state().unsetActive();
                 this.isOpen = false;
                 this.mainElement.state().unsetActive();
+                this.button.bindIcon("menu")
             }
 
         }

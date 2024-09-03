@@ -7,11 +7,11 @@
 
 @mixin NavBar_transparent(){
     > .content {
-        margin: 0.5rem;
-        margin-bottom: 0;
-        width: calc(100% - 1rem);
-        height: calc(3.5rem - 0.5rem);
-        padding: 0;
+        // margin: 0.5rem;
+        // margin-bottom: 0;
+        // width: calc(100% - 1rem);
+        // height: calc(3.5rem - 0.5rem);
+        // padding: 0;
         // margin-top: 0.25rem;
         // margin-bottom: 0.25rem;
         > div {
@@ -34,6 +34,8 @@
                 background-color: transparent;
                 
                 > .content {
+                    padding-top: 0.25rem;
+                    padding-bottom: 0.25rem;
                     > img {
                         box-sizing: border-box;
                         @include Tmain.preventSelect();

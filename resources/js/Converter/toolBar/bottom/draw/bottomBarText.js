@@ -54,7 +54,7 @@ class BottomBar_Text {
                             }
                         }
                         let buttonDiv = new SPLINT.DOMElement(SubWindow.id + "_buttonsContainer", "div", SubWindow.content);
-                            buttonDiv.Class("buttonsContainer");
+                            buttonDiv.Class("buttonsContainerTextEdit");
                             let buttonClose = new SPLINT.DOMElement.Button(buttonDiv, "close");
                                 buttonClose.Class("btClose");
                                 buttonClose.bindIcon("close");

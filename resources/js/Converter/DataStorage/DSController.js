@@ -16,7 +16,7 @@ class DSController {
             return this.saveAll_promise;
         }
         this.saveAll_promise = new Promise(async function(resolve){
-            await ConverterRenderThumbnail.save(true)//.callFromIdle(1000, ConverterRenderThumbnail);
+            // await ConverterRenderThumbnail.save(true)//.callFromIdle(1000, ConverterRenderThumbnail);
             let imgData = DSImage.parse();
             let textData = DSText.parse();
             let projectData = Object.assign({}, DSProject.get());
@@ -30,9 +30,11 @@ class DSController {
                 
                 let res = await call.send();
                 // await DSText.save();
-                this.saveAll_promise = null;
+                // this.saveAll_promise = null;
                 resolve(res);    
-        }.bind(this));
+        }.bind(this)).then(function(){
+            DSController.saveAll_promise = null;
+        });
         return this.saveAll_promise;
     }
     static async getAll(){

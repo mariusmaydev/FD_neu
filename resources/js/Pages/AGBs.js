@@ -9,7 +9,7 @@ class drawAGBs extends Pages_template{
         
         // Footer.parent = this.overlay.contentElement;
         if(SPLINT.ViewPort.getSize() == "mobile-small"){
-            NavBar.setInParts();
+            NavBar.setSolid();
         } else {
             NavBar.setTransparent();
             Footer.desktop();

@@ -9,7 +9,7 @@ class drawCart extends Pages_template {
         
         // Footer.parent = this.mainElement;
         if(SPLINT.ViewPort.getSize() == "mobile-small"){
-            NavBar.setInParts();
+            NavBar.setSolid();
         } else {
             NavBar.setTransparent();
             Footer.desktop();

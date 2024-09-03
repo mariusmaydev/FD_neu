@@ -40,11 +40,32 @@ class drawProjectList_ADMIN {
               let button_new = new SPLINT.DOMElement.Button(listElement, "addProject", "vorlage erstellen");
                   // button_new.bindIcon("add");
                   button_new.onclick = async function(){
-                      await SPLINT.SessionsPHP.set("USER_ID", "ADMIN", false);
-                      await SPLINT.SessionsPHP.set("USER_NAME", "ADMIN", false);
-                      await SPLINT.SessionsPHP.set("ADMIN", true, false);
-                    //   await SPLINT.SessionsPHP.set("GUEST", false, false);
-                      ProjectHelper.new('ADMIN', "Lighter_Gold_custom", true, false).then(SPLINT.Tools.Location_old.goto(PATH.location.converter).setHash("ADMIN").call());
+                    let ele = new SPLINT.DOMElement.popupWindow("newExample", true);
+                        let products = await productHelper.getProducts();
+                            let value = null;
+                            let radio = new SPLINT.DOMElement.Button.Radio(ele.content, "radioProducts");
+                                radio.Class("radioProducts");
+                                for(const product of Object.entries(products)){
+                                    radio.dataObj.add(product[0], product[1].viewName, product[0]);
+                                }
+                                radio.preventLines = true;
+                                radio.drawRadio();
+                                radio.onChange = function(e){
+                                    value = e.target.value;
+                                }
+
+                            let btSubmit = new SPLINT.DOMElement.Button(ele.content, "btSumbit", "auswählen");
+                                btSubmit.Class("BTsubmit");
+                                btSubmit.onclick = async function(){
+                                    await SPLINT.SessionsPHP.set("USER_ID", "ADMIN", false);
+                                    await SPLINT.SessionsPHP.set("USER_NAME", "ADMIN", false);
+                                    await SPLINT.SessionsPHP.set("ADMIN", true, false);
+                                    // await SPLINT.SessionsPHP.set("GUEST", false, false);
+                                    ProjectHelper.new('ADMIN', value, true, false).then(function(){
+                                        SPLINT.Tools.Location.Direct(PATH.location.converter + "#ADMIN");
+                                      }   
+                                    )           
+                                }
                   };
               let button_new_original = new SPLINT.DOMElement.Button(listElement, "addProject_original", "orginal erstellen");
                   button_new_original.onclick = async function(){
@@ -69,7 +90,10 @@ class drawProjectList_ADMIN {
                                         await SPLINT.SessionsPHP.set("USER_NAME", "ADMIN", false);
                                         await SPLINT.SessionsPHP.set("ADMIN", true, false);
                                         // await SPLINT.SessionsPHP.set("GUEST", false, false);
-                                        ProjectHelper.new('ADMIN', value, true, true).then(SPLINT.Tools.Location_old.goto(PATH.location.converter).setHash("ADMIN").call());                    
+                                        ProjectHelper.new('ADMIN', value, true, true).then(function(){
+                                            SPLINT.Tools.Location.Direct(PATH.location.converter + "#ADMIN");
+                                          }   
+                                        )           
                                     }
                     };
                 let typeSwitchButton = new SPLINT.DOMElement.Button.Radio(listElement, "typeSwitch");
@@ -173,7 +197,8 @@ class drawProjectList_ADMIN {
                 //   await SPLINT.SessionsPHP.set("GUEST", false, false);
                   SPLINT.Tools.Location.URL = PATH.location.converter;
                 //   console.dir(SPLINT.Tools.Location.addParams({"mode": "edit_project"}))
-                  SPLINT.Tools.Location.addParams({"mode": "edit_project"}).addHash("ADMIN").call();
+                                            SPLINT.Tools.Location.Direct(PATH.location.converter + "&mode=edit_project#ADMIN");
+                //   SPLINT.Tools.Location.addParams({"mode": "edit_project"}).addHash("ADMIN").call();
               }
             let button_remove = new SPLINT.DOMElement.Button(buttonDiv, index + "_remove");
                 button_remove.bindIcon("delete");
@@ -313,6 +338,7 @@ class drawProjectList_ADMIN {
                 this.#chooseType();
             }.bind(this);
             nestingElement.callBack = function(ele, path, key, index, id, obj){
+                console.dir(nestingElement)
                 if(typeof obj[key].attr == 'object' && typeof obj[key].attr.data == 'object'){
                     // console.log(obj[key])
                     if(obj[key].attr.data.includes(data.ProjectID)){
@@ -504,3 +530,36 @@ class drawProjectList_ADMIN {
             }
     }
   }
+
+//   let testOBJ = new SPLINT.autoObject("OBJ", true);
+// testOBJ.b.attr.name = "test";
+// testOBJ.b.b.attr.name = "o";
+// testOBJ.a.f.h.d.attr.name = "ok";
+// testOBJ.a.f.h.f.attr.name = "ok";
+// console.dir(testOBJ.a.f.h.f.attr.stack);
+// testOBJ.toDOMStructure(document.body, function(element, entry, key, index){
+//   console.log(index);
+//   if(key != "attr"){
+//     let ele = new SPLINT.DOMElement("/UID()/", "div", element);
+//         let headBody = new SPLINT.DOMElement(ele.id + "_headBody", "div", ele);
+//             headBody.Class("I_headBody");
+
+//           if(entry.attr != undefined){
+//             let head = new SPLINT.DOMElement.SpanDiv(headBody, "head", entry.attr.name);
+//                 head.Class("I_header");
+//           } else {
+//             let head = new SPLINT.DOMElement.SpanDiv(headBody, "head", key);
+//                 head.Class("I_header");
+//           }
+
+//           if(index == 0){
+//             let ele1 = new SPLINT.DOMElement("/UID()/_inputBody", "div", headBody);
+//                 ele1.Class("I_inputBody");
+//                 let input = new SPLINT.DOMElement.InputDiv(ele1, "I_input", "test", 0);
+//                     input.disableAnimation();
+//           }
+//         ele.Class("I_expander");
+//     return ele;
+//   }
+//   return false;
+// });

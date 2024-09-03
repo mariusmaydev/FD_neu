@@ -35,7 +35,7 @@ body {
         min-height: 100%;;
         height: max-content;
         padding: 1rem;
-        padding-top: 5.5rem;
+        padding-top: 4.5rem;
         > .containerMain {
             // @include Tmain.TContainer_basic();
             top: 0;
@@ -53,6 +53,7 @@ body {
                 &.headline {
                     @include Tmain.TContainer_basic();
                     width: max-content;
+                    width: 100%;;
                     > span {
                         font-size: 1.5rem;
                         font-weight: 500;

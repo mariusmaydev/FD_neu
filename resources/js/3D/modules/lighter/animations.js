@@ -1,9 +1,5 @@
 import SPLINT from 'SPLINT';
 import * as THREE from '@THREE';
-// THREE.THREE.Vector3
-// import { THREE.Vector3 } from "@THREE_ROOT_DIR/src/math/THREE.Vector3.js";
-// import { THREE.Vector3 } from "three";
-
 
 export default class LighterAnimations {
     constructor(instance) {

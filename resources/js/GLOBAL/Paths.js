@@ -63,15 +63,19 @@ PATH.php.lexOffice                      = SPLINT.projectRootPath + php + "/lexOf
 
 //location
 PATH.location = new Object();
-PATH.location.index                     = SPLINT.projectRootPath + "HTML/public/index.php";
+PATH.location.index                     = SPLINT.projectRootPath + "HTML/public/index.php?PAGE=index";
+PATH.location.converterStart            = SPLINT.projectRootPath + "HTML/public/index.php?PAGE=converterStart";
+PATH.location.converter                 = SPLINT.projectRootPath + "HTML/public/index.php?PAGE=converter";
+PATH.location.cart                      = SPLINT.projectRootPath + "HTML/public/index.php?PAGE=cart";
+
 PATH.location.imprint                   = SPLINT.projectRootPath + "HTML/public/imprint.php";
 PATH.location.AGB                       = SPLINT.projectRootPath + "HTML/public/AGB.php";
 PATH.location.dataProtection            = SPLINT.projectRootPath + "HTML/public/DataProtection.php";
 PATH.location.sending                   = SPLINT.projectRootPath + "HTML/public/sending.php";
-PATH.location.converter                 = SPLINT.projectRootPath + "HTML/public/Converter.php";
-PATH.location.converterStart            = SPLINT.projectRootPath + "HTML/public/ConverterStart.php";               
+// PATH.location.converter                 = SPLINT.projectRootPath + "HTML/public/Converter.php";
+// PATH.location.converterStart            = SPLINT.projectRootPath + "HTML/public/ConverterStart.php";               
 PATH.location.payment                   = SPLINT.projectRootPath + "HTML/public/Payment.php";
-PATH.location.cart                      = SPLINT.projectRootPath + "HTML/public/Cart.php";
+// PATH.location.cart                      = SPLINT.projectRootPath + "HTML/public/Cart.php";
 PATH.location.checkout                  = SPLINT.projectRootPath + "HTML/public/Checkout.php";
 PATH.location.productInfo               = SPLINT.projectRootPath + "HTML/public/ProductInformation.php";
 PATH.location.paymentComplete           = SPLINT.projectRootPath + "HTML/public/paymentComplete.php";

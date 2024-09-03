@@ -10,6 +10,7 @@
     >.subWindow_MAIN {
         > .background {
             background-color: rgba(vars.$color-background-subWindow, 0.6);
+            backdrop-filter: blur(4px);
             animation: translateProjectDetailsBackground 0.3s ease ;
         }
         > .content.converterStart {

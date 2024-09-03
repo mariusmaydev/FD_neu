@@ -101,15 +101,15 @@ class CheckoutHelper {
               orderObj.UserID         = sessions.USER_ID;
               orderObj.couponCode     = sessions.jsGen_couponCode;
               let orderObjExec = orderObj.get();
-              let orderID = order.new(orderObjExec);
+              let orderID = await order.new(orderObjExec);
             //   await lexOffice.newInvoice(orderObjExec, orderID);
             //   await lexOffice.newDeliveryNote(orderObjExec, orderID);
             //   await ShoppingCart.clear();
               console.dir(orderObj)
               console.dir(orderID)
-
             //   SPLINT.Tools.Location.URL = PATH.location.paymentComplete;
-            //   SPLINT.Tools.Location.setParams({"orderID": orderID}).call();
+              SPLINT.Tools.Location.setParams({"orderID": orderID}).call(false);
+              LoaderMain.goto("paymentComplete")
       }
   }
   

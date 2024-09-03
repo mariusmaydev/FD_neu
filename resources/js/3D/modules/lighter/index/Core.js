@@ -32,6 +32,7 @@ export class draw {
         this.drawStats = false;
         this.materials = new Object();
         this.thumbnail = new Object();
+        this.AnimationLoopActive = true;
         this.startLoading();
     }
     async startLoading(){
@@ -62,6 +63,7 @@ export class draw {
             width   : this.canvas.parentNode.clientWidth,
             height  : this.canvas.parentNode.clientHeight
         }
+        let drp = window.devicePixelRatio;
         if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
             this.canvas.width   = parentSize.width * 2;
             this.canvas.height  = parentSize.height * 2;
@@ -73,8 +75,8 @@ export class draw {
         this.canvas.style.height    = parentSize.height + "px";
 
         if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
-            this.renderer.setPixelRatio( window.devicePixelRatio *0.8);
-            this.renderer.setSize( parentSize.width *0.8, parentSize.height * 0.8, false);
+            this.renderer.setPixelRatio( window.devicePixelRatio * 1.2);
+            this.renderer.setSize( this.canvas.clientWidth , this.canvas.clientHeight , false);
         } else {
             this.renderer.setPixelRatio( window.devicePixelRatio * 1.2);
             this.renderer.setSize( parentSize.width, parentSize.height, false);
@@ -82,8 +84,11 @@ export class draw {
         this.setup.adjustCamera();
         // this.render();
     }
-    init(){
-        this.setup.renderer(true);
+    init(){ 
+        this.setup.renderer(true, this.canvas);
+        this.renderer.domElement.style.position = "absolute";
+        this.renderer.domElement.style.left = "0px";
+        this.renderer.domElement.style.top = "0px";
         this.setup.scene();
         this.scene.receiveShadow = false;
         this.mouseHandler = SPLINT.MouseHandler( this.canvas );
@@ -113,7 +118,7 @@ export class draw {
     setupCamera(){
         if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
             this.camera     = new THREE.PerspectiveCamera(60, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.01, 10);
-            this.camera.position.set(0, 0.18, 0.7);//0.3);//-0.7);
+            this.camera.position.set(0, 0.18, 0.7);
         } else {
             this.camera     = new THREE.PerspectiveCamera(45, this.canvas.parentNode.clientWidth/this.canvas.parentNode.clientHeight, 0.1, 115);
             this.camera.position.set(-0.15, 0.18, 1);
@@ -240,6 +245,7 @@ export class draw {
                 // this.render();
             }
             
+            SPLINT.Events.onLoadingComplete.dispatch();
         SPLINT.Utils.sleep(1000).then(async function() {
                 if(SPLINT.ViewPort.getSize() == "mobile-small" || SPLINT.ViewPort.getSize() == "mobile"){
     
@@ -248,37 +254,48 @@ export class draw {
                     this.compressedAnimations.wheel(0.5, 500);
                     this.compressedAnimations.open().then(function(){
                         
-            SPLINT.Events.onLoadingComplete.dispatch();
                     });
                 }
         }.bind(this));
         this.changeColor('lighter2', 0xff0000)
+        // setTimeout(function(){
+        //   this.stopAnimationLoop()
+        //   setTimeout(function(){
+        //     this.AnimationLoopActive = true;
+        //     this.startAnimationLoop();
+        //   }.bind(this), 8000);
+        // }.bind(this), 2000);
+    }
+    stopAnimationLoop(){
+        this.raycaster.remove();
+        this.raycaster2.remove();
+        this.AnimationLoopActive = false;
     }
     startAnimationLoop(){
+        console.log("d")
         const renderer = this.renderer;
         const mixer = this.AnimationMixer;
 
         const stats = this.stats;
         const scene = this.scene;
         const camera = this.camera;
+        console.dir(scene);
         async function loop(){
+            // if(!this.AnimationLoopActive){
+            //     return;
+            // }
             mixer.tick();
-            // this.cubeCamera.update(renderer, scene);
+            // debugger
             renderer.render(scene, camera);
-            requestAnimationFrame(loop);
+            window.requestAnimationFrame(loop);
             if(stats != false){
                 stats.then(async function(r){
                     r.update();
                 })
             }
         }
-        loop();
+            loop();
     }
-    // render(){
-    //     // this.cubeCamera.update(this.renderer, this.scene);
-    //     this.renderer.render(this.scene, this.camera);
-    //     this.stats.update()
-    // }
     
     async changeColor(name, value = 0xff0000){
         

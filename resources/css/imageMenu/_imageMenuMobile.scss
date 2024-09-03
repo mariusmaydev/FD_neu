@@ -17,8 +17,9 @@ $color-image-hover         : rgba(64, 64, 64, 0.553);
         width: 100%;
         height: 100%;
         z-index: 1001 !important;
-        background-color: rgba(0, 0, 0, 0.963) !important;
-        filter: blur(3px);
+        background-color: rgba(vars.$color-background-subWindow, 0.6);
+        // background-color: rgba(0, 0, 0, 0.776) !important;
+        backdrop-filter: blur(4px);
         // background-color: red!important;
     }
     .ImageMenu_MAIN {

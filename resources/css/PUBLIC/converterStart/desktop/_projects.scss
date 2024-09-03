@@ -7,10 +7,13 @@ $color-project-hover         : rgba(64, 64, 64, 0.219);
 
 @mixin ProjectList(){
     > .ProjectListMain {        
-        position: absolute;
+        position: relative;
         bottom: 0;
         width: 100%;
-        height: 100vh;
+        // padding-top: vars.$NavBar-height-desktop;
+        // padding-bottom: vars.$NavBar-height-desktop;
+        min-height: calc(100%);
+        height: max-content;
         display: flex;
         flex-direction: column;
         // box-sizing: co-box;
@@ -27,13 +30,14 @@ $color-project-hover         : rgba(64, 64, 64, 0.219);
         > .TableMain {
             position: relative;
             width: 100%;
+            height: max-content;
             // height: 100%;
             overflow: hidden;
             margin-inline: 0;
             box-sizing: border-box;
+            border: 1px solid red;
             >.ListMain {
-                padding-top: vars.$NavBar-height-desktop;
-                padding-bottom: vars.$NavBar-height-desktop;
+                padding: 0;
                 box-sizing: content-box;
                 width: 100%;
                 position: relative;
@@ -43,8 +47,6 @@ $color-project-hover         : rgba(64, 64, 64, 0.219);
                     justify-content: center;
                     align-content: start;
 
-                overflow: auto;
-                height: 94%;
 
 
                 @include ProjectListElement();

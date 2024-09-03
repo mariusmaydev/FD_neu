@@ -20,6 +20,13 @@ $color-CS-divider : rgb(199, 199, 199);
         body {
             top: 0 !important;
             height: 100vh !important;
+            >.NavigationBar {
+                >.content {
+                    > .Logo {
+                        > div{}
+                    }
+                }
+            }
         }
 }
 @include mediaQueries.forMediaBreakpoint(mobile-small){
@@ -172,10 +179,14 @@ body {
                     }
                 }
                 > .buttonsContent {
-                    position: relative;
-                    width: 100%;
+                    position: absolute;
+                    right: 0;
+                    width: calc(100% + calc(calc(100vw - 100rem)/2));
+                    min-width: 100%;//rem;
                     height: 100% - 15%;
-                    padding-top: 15%;
+                    padding-top: 5rem;
+                    top: 0;
+                    background-color: white;
                     > div {
                         position: relative;
                         box-sizing: border-box;
@@ -331,14 +342,19 @@ body {
                 width: 100%;
                 max-width: 100%;
                 margin: 0;
-                padding: 0;
+                padding-top: vars.$NavBar-height-desktop;
+                padding-bottom: vars.$NavBar-height-desktop;
+                // min-height: calc(100% - calc(vars.$NavBar-height-desktop * 2));
                 height: 100%;
+                height: 94%;
                 // max-width: 90%;
                 justify-self: center;
-                overflow: visible;
+                // overflow: hidden;
+                overflow: auto;
                 position: relative;
                 grid-column: 2;
                 @include projects.ProjectList(); 
+                
             }
             >.headline {
                 position: relative;
@@ -638,14 +654,29 @@ body {
                 // max-width: 100%;
 
                 margin: 0;
-                padding: 0;
-                height: 100%;
+                padding: 0; 
+                height: 94%;
                 // max-width: 90%;
                 justify-self: center;
-                overflow: visible;
+                overflow: auto;
                 position: relative;
+                padding-top: vars.$NavBar-height-mobile-small;
                 // grid-column: 2;
                 @include mobileProjectList.ProjectList-mobile(); 
+                // box-sizing: content-box;
+                // margin: 0;
+                // padding-top: vars.$NavBar-height-desktop;
+                // padding-bottom: vars.$NavBar-height-desktop;
+                // // min-height: calc(100% - calc(vars.$NavBar-height-desktop * 2));
+                // height: 100%;
+                // height: 94%;
+                // // max-width: 90%;
+                // justify-self: center;
+                // // overflow: hidden;
+                // overflow: auto;
+                // position: relative;
+                // grid-column: 2;
+                // @include projects.ProjectList(); 
             }
             >.headline {
                 position: absolute;

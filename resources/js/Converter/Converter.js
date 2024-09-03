@@ -4,6 +4,7 @@ SPLINT.require_now('@PROJECT_ROOT/Converter/DataStorage/C_Image.js');
 SPLINT.require_now('@PROJECT_ROOT/Converter/DataStorage/DSText.js');
 SPLINT.require_now('@PROJECT_ROOT/Converter/DataStorage/C_Text.js');
 SPLINT.require_now('@PROJECT_ROOT/Converter/DataStorage/DSProject.js');
+let SVG_Loader = new SPLINT.SVG.Loader();
 // SPLINT.require_now('@PROJECT_ROOT/Converter/renderer/ConverterRender.js');
   //Feuerzeugdaten
  //      Champ Xentai
@@ -26,7 +27,7 @@ var DSImage     = new DataStorageImage_C();
 var DSText      = new DataStorageText_C();
 var DSProject   = new DataStorageProject_C();
 
-const CONVERTER_STORAGE = new SPLINT.autoObject();
+var CONVERTER_STORAGE = new SPLINT.autoObject();
 
 class Converter {
     static {
@@ -40,9 +41,15 @@ class Converter {
     this.start();
   }
   async start(){
+    SPLINT.SessionsPHP.showAll(true)
+    let sessions = await SPLINT.SessionsPHP.getAll(true);
+    console.log(sessions.PROJECT_ID);
+    if(sessions.PROJECT_ID == undefined) {
+        SPLINT.Tools.Location.goBack();
+        return;
+    }
     Converter.workerCreateThumbnail  = await Converter.workerManager.connect("createThumbnail", true, false);
     Converter.workerTextRendering    = await Converter.workerManager.connect("textRendering", true, false);
-
     await DSController.getAll();
     console.dir(DSImage)
     console.dir(DSText)
@@ -99,6 +106,28 @@ class Converter {
     }
   }
   init(){
+    SPLINT.Events.onPopStateChange = async function(){
+        console.dir(arguments);
+        let params = SPLINT.Tools.Location.getParams();
+            if(typeof params == 'object'){
+                if(params.PAGE != "converter"){
+
+                    if(LoaderMain.LASTPAGE == "converter"){
+                    await CONVERTER_STORAGE.canvasNEW.createTextData();
+                    await ProjectHelper.CONVERTER_closeProject();
+
+                    CONVERTER_STORAGE = new SPLINT.autoObject();
+                    DSImage     = new DataStorageImage_C();
+                    DSText      = new DataStorageText_C();
+                    DSProject   = new DataStorageProject_C();
+                        return
+                    }
+                }
+            }
+        // ConverterRenderThumbnail.save()
+        // await DSController.createThumbnail();
+        // await DSController.saveAll();
+    }
     CONVERTER_STORAGE.canvasNEW = new CanvasElement_C(ConverterHelper.ELE_SQUARE_BORDER, ConverterHelper.ELE_SQUARE_BORDER_DIV);
     new Converter_LeftBar();
     let rightElement = new SPLINT.DOMElement("Converter_rightBar", "div", ConverterHelper.ELE_MAIN);
@@ -123,6 +152,9 @@ class Converter {
   }
   initEvents(){
     ViewPort.onViewPortChanged = function(size, lastSize){
+        if(LoaderMain.getActualPage() != "converter"){
+            return;
+        }
       if(size != 'mobile-small'){
         converter_drawDesktop.draw();
       } else {
@@ -131,7 +163,9 @@ class Converter {
       Converter_ToolBar.update();
     }.bind(this);
     window.onresize       = function(){
-      Converter.AdjustSquareBorder();
+        if(LoaderMain.getActualPage() == "converter"){
+            Converter.AdjustSquareBorder();
+        }
     }.bind(this);
     window.onbeforeunload = function(){
       ProjectHelper.CONVERTER_closeProject();

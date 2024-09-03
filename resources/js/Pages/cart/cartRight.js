@@ -36,8 +36,9 @@ class drawCartRight {
                 let buttonBuy = new SPLINT.DOMElement.Button(buttonBody, "buy", "jetzt kaufen");
                     buttonBuy.setStyleTemplate(SPLINT.DOMElement.Button.STYLE_DEFAULT);
                     buttonBuy.onclick = function(){
-                        SPLINT.Tools.Location.URL = PATH.location.checkout;
-                        SPLINT.Tools.Location.addHash("address").call();
+                        // SPLINT.Tools.Location.URL = PATH.location.checkout;
+                        // SPLINT.Tools.Location.addHash("address").call();
+                        LoaderMain.goto("checkout", "address");
                         //SPLINT.Tools.Location_old.goto(PATH.location.checkout).call();
                     }
 

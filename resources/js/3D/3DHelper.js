@@ -48,6 +48,10 @@ class drawLighter3D {
 
       }
       drawLighter3D.STORAGE.push(this);
+    //   setTimeout(function(){
+    //     this.div.setAttribute("loaded1", true);
+    //     // this.div.parentElement.setAttribute("loaded1", true);
+    //   }.bind(this), 1000);
     }
     onLoad(){
         // return new Promise(async function(resolve){
@@ -107,82 +111,82 @@ class drawLighter3D {
   }
 
   
-class drawBackground3D {
-    constructor(parent, name = "", brightness = "bright"){
-      this.parent = parent;
-      this.brightness = brightness;
-      this.id = "drawBackground3D_" + name + "_";
-      if(document.getElementById(this.id + "main") != null){
-        return;
-      }
+// class drawBackground3D {
+//     constructor(parent, name = "", brightness = "bright"){
+//       this.parent = parent;
+//       this.brightness = brightness;
+//       this.id = "drawBackground3D_" + name + "_";
+//       if(document.getElementById(this.id + "main") != null){
+//         return;
+//       }
 
-      this.div    = document.createElement("div");
-      this.div.id = this.id + "main";
-      this.div.setAttribute("render", "3D_Background");
-      this.div.Class("Background3D");
+//       this.div    = document.createElement("div");
+//       this.div.id = this.id + "main";
+//       this.div.setAttribute("render", "3D_Background");
+//       this.div.Class("Background3D");
 
-      this.parent.appendChild(this.div);
+//       this.parent.appendChild(this.div);
 
-      this.canvas = new SPLINT.DOMElement(this.id + "canvas", "canvas", this.div);
-      this.canvas.setAttribute("brightness", this.brightness);
-      this.getFromRenderer();
-    }
-    sendToRenderer(data){
-      if(typeof data == "object"){
-        this.canvas.setAttribute("LighterData", JSON.stringify(data));
-      } else {
-        this.canvas.setAttribute("LighterData", data);
-      }
-      this.canvas.dispatchEvent(SPLINT_EVENTS.toModule);
-    }
-    getFromRenderer(){
-      this.canvas.S_toCommonJS = function(e, b, c){
-        let data = JSON.parse(c);
-        if(data.type == "loaded"){
-          let obj = new Object();
-              obj.type = "addImage";
-              obj.data = DSImage.Storage;
-          this.sendToRenderer(obj)
-        }
-      }.bind(this);
-    }
-  }
+//       this.canvas = new SPLINT.DOMElement(this.id + "canvas", "canvas", this.div);
+//       this.canvas.setAttribute("brightness", this.brightness);
+//       this.getFromRenderer();
+//     }
+//     sendToRenderer(data){
+//       if(typeof data == "object"){
+//         this.canvas.setAttribute("LighterData", JSON.stringify(data));
+//       } else {
+//         this.canvas.setAttribute("LighterData", data);
+//       }
+//       this.canvas.dispatchEvent(SPLINT_EVENTS.toModule);
+//     }
+//     getFromRenderer(){
+//       this.canvas.S_toCommonJS = function(e, b, c){
+//         let data = JSON.parse(c);
+//         if(data.type == "loaded"){
+//           let obj = new Object();
+//               obj.type = "addImage";
+//               obj.data = DSImage.Storage;
+//           this.sendToRenderer(obj)
+//         }
+//       }.bind(this);
+//     }
+//   }
 
-  class drawConverter3D {
-      constructor(parent, name = ""){
-        this.parent = parent;
-        this.id = "drawConverter3D_" + name + "_";
+//   class drawConverter3D {
+//       constructor(parent, name = ""){
+//         this.parent = parent;
+//         this.id = "drawConverter3D_" + name + "_";
   
-        this.div    = document.createElement("div");
-        this.div.id = this.id + "main";
-        this.div.setAttribute("FD_width", DSProject.Storage.Square.width);
-        this.div.setAttribute("FD_height", DSProject.Storage.Square.height);
-        this.div.setAttribute("render", "3D_Converter");
-        this.div.Class("Converter3D");
+//         this.div    = document.createElement("div");
+//         this.div.id = this.id + "main";
+//         this.div.setAttribute("FD_width", DSProject.Storage.Square.width);
+//         this.div.setAttribute("FD_height", DSProject.Storage.Square.height);
+//         this.div.setAttribute("render", "3D_Converter");
+//         this.div.Class("Converter3D");
   
-        this.parent.appendChild(this.div);
+//         this.parent.appendChild(this.div);
         	
-        this.canvas = new SPLINT.DOMElement(this.id + "canvas", "canvas", this.div);
-        this.communication();
-      }
-      communication(){
-        this.event_askDOM       = new CustomEvent("Converter3D_askDOM");
-        this.event_toConverter  = new CustomEvent("Converter3D_toConverter", {detail: {DSImage, DSText, DSProject}});
+//         this.canvas = new SPLINT.DOMElement(this.id + "canvas", "canvas", this.div);
+//         this.communication();
+//       }
+//       communication(){
+//         this.event_askDOM       = new CustomEvent("Converter3D_askDOM");
+//         this.event_toConverter  = new CustomEvent("Converter3D_toConverter", {detail: {DSImage, DSText, DSProject}});
 
-        this.canvas.addEventListener("Converter3D_askConverter", function(){
-          this.toConverter();
-        }.bind(this))
+//         this.canvas.addEventListener("Converter3D_askConverter", function(){
+//           this.toConverter();
+//         }.bind(this))
 
-        this.canvas.addEventListener("Converter3D_toDOM", function(e){
-          DSImage = e.detail.DSImage;
-          DSProject = e.detail.DSProject;
-          DSText = e.detail.DSText;
-        })
-      }
-      askFromDOM(){
-        this.canvas.dispatchEvent(this.event_askDOM);
-      }
-      toConverter(){
-        this.canvas.dispatchEvent(this.event_toConverter);
-      }
-    }
+//         this.canvas.addEventListener("Converter3D_toDOM", function(e){
+//           DSImage = e.detail.DSImage;
+//           DSProject = e.detail.DSProject;
+//           DSText = e.detail.DSText;
+//         })
+//       }
+//       askFromDOM(){
+//         this.canvas.dispatchEvent(this.event_askDOM);
+//       }
+//       toConverter(){
+//         this.canvas.dispatchEvent(this.event_toConverter);
+//       }
+//     }

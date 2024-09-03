@@ -213,7 +213,7 @@ s-exinput {
         //     }
         // }
     // }
-}
+} 
 .Pages_MAIN {
     display: flex;
     overflow: visible;
@@ -265,6 +265,7 @@ s-exinput {
         }
     }
     .Lighter3D {
+        // transform: translateX(-100%);
         position: fixed;
         left: 0;
         top: 0;
@@ -272,7 +273,11 @@ s-exinput {
         height: 100%; 
         pointer-events: all;
         background-color: transparent;
+        // transition: transform 20s;
+        // &[loaded1*='true'] {
+        //     transform: translateX(0%);
 
+        // }
         > canvas { 
             background-color: transparent;
         }

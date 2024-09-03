@@ -19,7 +19,7 @@
 
         <s-part first src="/js/ADMIN/assets/AdminTemplate.js"></s-part>
         <s-part src="/js/ADMIN/assets/"></s-part>
-        <s-part src="/js/manager/manager.js"></s-part>
+        <!-- <s-part src="/js/manager/manager.js"></s-part> -->
         <s-part src="/js/ADMIN/pages/ADMIN_login.js"></s-part>
 
         <script type="text/javascript" src="../../../../Splint/js/Splint.js" onload="SPLINT.start()"></script>

@@ -7,7 +7,7 @@ class drawDataProtection extends Pages_template {
     }
     _draw(){
         if(SPLINT.ViewPort.getSize() == "mobile-small"){
-            NavBar.setInParts();
+            NavBar.setSolid();
         } else {
             NavBar.setTransparent();
             Footer.desktop();

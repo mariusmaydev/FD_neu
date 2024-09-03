@@ -208,7 +208,8 @@ class Converter_CloseOperations {
             await ProjectHelper.changeState(projectID, ProjectHelper.STATE_CART);
         }
         await ShoppingCart.addItem(projectID, DSProject.Storage.Product, 1);
-        ShoppingCart.callLocation();
+        LoaderMain.goto('cart');
+        // ShoppingCart.callLocation();
 
   
     }
@@ -217,7 +218,8 @@ class Converter_CloseOperations {
         await CONVERTER_STORAGE.canvasNEW.createTextData();
         await ProjectHelper.CONVERTER_closeProject();
         // await ShoppingCart.editItem(projectID, DSProject.Storage.Product);
-        ShoppingCart.callLocation();
+        SPLINT.Tools.Location.removeParams("mode");
+        LoaderMain.goto('cart');
   
     }
   }

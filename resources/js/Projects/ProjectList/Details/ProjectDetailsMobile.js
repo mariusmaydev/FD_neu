@@ -13,7 +13,8 @@ class ProjectDetails_Mobile {
     }
     async show(drawButtons = true){
         NavBar.setSolid();
-        this.productData = await productHelper.getProductData(this.data.Product);
+        this.productDataFull = await productHelper.getProducts();
+        this.productData = this.productDataFull[this.data.Product];
         this.mainElement = new SPLINT.DOMElement.popupWindow(this.id, true)
         this.mainElement.onclose = this._onclose;
         this.mainElement.close = function(){
@@ -35,7 +36,6 @@ class ProjectDetails_Mobile {
             let g = new SPLINT.DOMElement.ImageSlideMenu(container, "test");
 
             g.addSrcWithCallback("t", null, function(instance, obj, parent){
-                console.dir(arguments);
                 parent.classList.add("L3D");
                 this.lighter = new drawLighter3D(parent, this.id, drawLighter3D.PROJECT, this.data.Thumbnail, true, true);
                 this.lighter.canvas.setAttribute("showDimensions", false);
@@ -49,6 +49,7 @@ class ProjectDetails_Mobile {
             // g.addCanvas("cv", this.lighter.promise.then(function(){
             //     return this.lighter.canvas;
             // }.bind(this)));
+            console.dir(this)
                 for(const [key, val] of Object.entries(this.productData.ImgPath)){
                     g.addImage(key, val);
                 }

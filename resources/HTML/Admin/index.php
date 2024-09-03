@@ -11,7 +11,7 @@
     <body id="Body_ADMIN_index">
         <s-part first src="/js/GLOBAL/Paths.js"></s-part>
         <s-part src="/js/ADMIN/assets/"></s-part>
-        <s-part src="/js/manager/manager.js"></s-part>
+        <!-- <s-part src="/js/manager/manager.js"></s-part> -->
         <s-part src="/js/ADMIN/pages/ADMIN_index.js"></s-part>
         <s-part src="/js/Helper/ProjectsHelper.js"></s-part>
         <s-part src="/js/Orders/Order.js"></s-part>

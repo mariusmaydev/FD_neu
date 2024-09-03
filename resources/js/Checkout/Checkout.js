@@ -9,6 +9,7 @@ class Checkout {
                       invoiceType     : 'invoiceType'
                     };
   constructor(parent = document.body){
+    NavBar.hide();
     // SPLINT.API.Paypal.load();
     this.parent = parent;
     this.id = "checkout_";

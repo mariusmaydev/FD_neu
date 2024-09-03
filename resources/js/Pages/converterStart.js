@@ -1,19 +1,26 @@
 
 class drawConverterStart extends Pages_template {
-    constructor() {
-        super("converterStart");
+    constructor(pre = false) {
+        super("converterStart", pre);
     }
     draw(){
+        // this.mainElement.setAttribute("loaded", true);
+        // SPLINT.Events.onLoadingComplete.dispatch();
+        // SPLINT.Events.onLoadingComplete = function(){
+        // }.bind(this);
+        // if(SPLINT.Events.onLoadingComplete.dispatched == true){
+        //     this.mainElement.setAttribute("loaded", true);
+        // }
+            SPLINT.SessionsPHP.remove("PROJECT_ID", false);
+            SPLINT.SessionsPHP.remove("PROJECT_NAME", false);
         this.choiceMenu     = new drawProjectChoiceMenu(this.mainElement);
-        setTimeout(async function(){
-            console.dir(SPLINT.Events.onLoadingComplete);
-        }, 10000)
-        SPLINT.Events.onLoadingComplete = function(){
             this.mainElement.setAttribute("loaded", true);
-        }.bind(this);
-        if(SPLINT.Events.onLoadingComplete.dispatched == true){
-            this.mainElement.setAttribute("loaded", true);
+        if(SPLINT.ViewPort.getSize() == "mobile-small"){
+            NavBar.setSolid();
+        } else {
+            NavBar.setInParts();
+            // NavBar.setSolid();
         }
-        NavBar.setInParts();
+
     }
 }

@@ -27,7 +27,7 @@
 
         <s-part pre src="/js/ADMIN/assets/AdminTemplate.js"></s-part>
         <s-part src="/js/ADMIN/assets/"></s-part>
-        <s-part src="/js/manager/manager.js"></s-part>
+        <!-- <s-part src="/js/manager/manager.js"></s-part> -->
         <s-part src="/js/ADMIN/pages/ADMIN_userAccounts.js"></s-part>
         <s-part src="/js/ADMIN/order/"></s-part>
         

@@ -21,7 +21,7 @@ class converter_drawMobile {
             SPLINT.Events.onLoadingComplete.dispatch();
         } else {
             CONVERTER_STORAGE.lighter3D = new drawLighter3D(this.SquareBorder, "ConverterLighter", drawLighter3D.CONVERTER);
-            CONVERTER_STORAGE.lighter3D.saveContext = true;
+            CONVERTER_STORAGE.lighter3D.saveContext = false;
         }
     }
 }

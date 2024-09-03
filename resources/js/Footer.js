@@ -116,7 +116,8 @@ class drawFooter {
             let BT_AGB = new SPLINT.DOMElement.Button(BTContainer, "BT_AGB", "AGBs");
                 BT_AGB.Class("BT_AGB");
                 BT_AGB.onclick = function(){
-                    SPLINT.Tools.Location_old.goto(PATH.location.AGB).call();
+                    LoaderMain.goto("AGB");
+                    // SPLINT.Tools.Location_old.goto(PATH.location.AGB).call();
                 }
     }
 }

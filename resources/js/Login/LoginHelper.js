@@ -26,6 +26,7 @@ class login {
 
     static {
         SPLINT.CallPHP.Manager.bind2class(PATH.php.login, this);
+        this.Login();
     }
     static call(data){
         return SPLINT.Data.CallPHP.call(login.PATH, data);

@@ -16,7 +16,6 @@ class ProjectDetails_Desktop {
     async show(drawButtons = true){
         this.colorList = await productHelper.getColors();
         this.productDataFull = await productHelper.getProducts();
-        console.dir(this)
         // console.dir(this.data.Product)
         this.productData = this.productDataFull[this.data.Product]
         this.mainElement = new SPLINT.DOMElement.popupWindow(this.id, true)
@@ -78,6 +77,7 @@ class ProjectDetails_Desktop {
                 this.lighter.canvas.setAttribute("showDimensions", false);
                 this.lighter.canvas.setAttribute("changeColor", "base");
                 this.lighter.saveContext = false;
+                this.lighter.canvas.setAttribute("mouseevents", true);
                 this.lighter.div.state().setActive();
 
                 this.lighter.promise.then(function(){

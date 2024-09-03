@@ -11,8 +11,10 @@ class drawCartList {
     async draw(){
         this.data = (await ShoppingCart.get());
         let fullProjectDataRes = (await ProjectHelper.getAll());
-        for(const e of fullProjectDataRes) {
-            this.ProjectList[e.ProjectID] = e;
+        if(fullProjectDataRes != null){
+            for(const e of fullProjectDataRes) {
+                this.ProjectList[e.ProjectID] = e;
+            }
         }
         this.fullProductData = (await productHelper.getProducts());
 
@@ -72,7 +74,7 @@ class drawCartList {
                         }
                         lighter.send("changeColor", color);
                     })
-                lighter.saveContext = true;
+                lighter.saveContext = false;
 
             let infoDivInner = infoEle.newDiv("/ID/info_inner", "inner");
                 let infoText = new SPLINT.DOMElement.SpanDiv(infoDivInner, "text", "vergoldetes Feuerzeug");
@@ -125,7 +127,7 @@ class drawCartList {
                     bt_info.onclick = function(){
                         let p = new ProjectDetails(projectData, document.body);
                         p.onclose = function(){
-                            NavBar.setInParts();
+                            // NavBar.setInParts();
                         }
                         p.show(true);
                     }

@@ -31,6 +31,7 @@ export default class projectCommunication {
                     this.hideDimensions();
                 }
             } else if(data.type == 'zoom'){
+                return;
                 if(data.value){
                     this.inst.Animations.lighter_zoom.start();
                 } else {

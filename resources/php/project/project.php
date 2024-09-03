@@ -151,7 +151,7 @@
                 $FromUserID = $UserID;
             }
             $ProjectData = self::get($projectID, $FromUserID, false);
-            $NewProjectID = self::new($ProjectData[ProjectDB::PROJECT_NAME], $ProjectData[ProjectDB::PRODUCT], $ProjectData[ProjectDB::COLOR], $UserID, $NewProjectID, false);
+            $NewProjectID = self::new($ProjectData[ProjectDB::PROJECT_NAME], $ProjectData[ProjectDB::PRODUCT], $ProjectData[ProjectDB::COLOR], $UserID, $NewProjectID, false, false, false);
            
             $ProjectData[ProjectDB::PROJECT_ID] = $NewProjectID;
             $ProjectData[ProjectDB::STATE] = ProjectDB::STATE_NORMAL;
@@ -181,7 +181,7 @@
             Communication::sendBack($NewProjectID, true, $print);
             return $NewProjectID;
         }
-        static function new($projectName, $Product, $Color = null, $UserID = null, $NewProjectID = null, $setSessions = true, $Original = false){
+        static function new($projectName, $Product, $Color = null, $UserID = null, $NewProjectID = null, $setSessions = true, $Original = false, $print = true){
             $Design = new stdClass();
             $Design -> Tags = [];
             $Design -> Categories = [];
@@ -221,6 +221,7 @@
                 Sessions::set(Sessions::PROJECT_ID, $ProjectID);
                 Sessions::set(Sessions::PROJECT_NAME, $projectName);
             }
+            Communication::sendBack([$ProjectID, $projectName], true, $print);
             return $ProjectID;
         }
         static function remove($ProjectID, $UserID = null, bool $print = true){
@@ -291,7 +292,9 @@
         static function getAllAdmin($isOriginal = false, bool $print = true){
             $UserID = "ADMIN";
             $DataSet = new DataSet();
-            if($isOriginal == true){
+            if($isOriginal == null) {
+                
+            } else if($isOriginal == true){
                 $DataSet -> newKey(ProjectDB::ORIGINAL, $isOriginal);
             } else if($isOriginal == false){
                 $DataSet -> newKey(ProjectDB::ORIGINAL, $isOriginal);

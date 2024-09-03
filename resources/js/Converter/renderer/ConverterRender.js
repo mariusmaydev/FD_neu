@@ -53,7 +53,8 @@ class CanvasElement_C {
         passive: true
     }
     if(SPLINT.ViewPort.getSize() == "mobile-small"){
-        window.addEventListener("touchstart", function(ev){
+        function touchStart(ev){
+            ev.stopPropagation();
             let elementsCoords = document.elementsFromPoint(ev.targetTouches[0].clientX, ev.targetTouches[0].clientY);
             let flag = false;
             for(const e of elementsCoords){
@@ -66,9 +67,9 @@ class CanvasElement_C {
             
             if(!flag){
                 if(!hasParent){
-                    this.activeElement = null;
+                    CONVERTER_STORAGE.canvasNEW.activeElement = null;
                     CONVERTER_STORAGE.toolBar.blurAll();
-                    this.removeEdges();
+                    CONVERTER_STORAGE.canvasNEW.removeEdges();
                 }
                 return;
             }
@@ -76,23 +77,53 @@ class CanvasElement_C {
                 if(hasParent){
                     return;
                 } else {
-                    ConverterTouchHandler.touchStart.call(this, ev)
+                    ConverterTouchHandler.touchStart.call(CONVERTER_STORAGE.canvasNEW, ev)
                 }
             }
-        }.bind(this), listenersOptions);
-        window.addEventListener("touchmove", function(ev){
+        }
+        let e0 = window.SEvent.addListener("touchstart", touchStart, listenersOptions);
+        
+        function touchMove(ev){
             ev.stopPropagation();
-            ConverterTouchHandler.touchMove.call(this, ev)//bind(this)
-        }.bind(this), listenersOptions);
-        window.addEventListener("touchend", ConverterTouchHandler.touchEnd.bind(this), listenersOptions);
-    } else {
-        window.addEventListener("mousedown", ConverterMouseHandler.mouseDown.bind(this), listenersOptions);
-        window.addEventListener("mousemove", function(ev){
-            ev.stopPropagation();
-            ConverterMouseHandler.mouseMove.call(this, ev)
-        }.bind(this), listenersOptions);
-        window.addEventListener("mouseup", ConverterMouseHandler.mouseUp.bind(this), listenersOptions);
+            ConverterTouchHandler.touchMove.call(CONVERTER_STORAGE.canvasNEW, ev);
+        }
+        let e1 = window.SEvent.addListener("touchmove", touchMove, listenersOptions);
 
+        function touchEnd(ev){
+            ev.stopPropagation();
+            ConverterTouchHandler.touchEnd.call(CONVERTER_STORAGE.canvasNEW, ev);
+        }
+        let e2 = window.SEvent.addListener("touchend", touchEnd, listenersOptions);
+
+        SPLINT.Events.onPopStateChange = function(){
+            e1.remove();
+            e2.remove();
+            e0.remove();
+        }
+    } else {
+        function mouseMove(ev){
+            ev.stopPropagation();
+            ConverterMouseHandler.mouseMove.call(CONVERTER_STORAGE.canvasNEW, ev)
+        }
+        let e0 = window.SEvent.addListener("mousemove", mouseMove, listenersOptions);
+
+        function mouseDown(ev){
+            ev.stopPropagation();
+            ConverterMouseHandler.mouseDown.call(CONVERTER_STORAGE.canvasNEW, ev)
+        }
+        let e1 = window.SEvent.addListener("mousedown", mouseDown, listenersOptions);
+
+        function mouseUp(ev){
+            ev.stopPropagation();
+            ConverterMouseHandler.mouseUp.call(CONVERTER_STORAGE.canvasNEW, ev)
+        }
+        let e2 = window.SEvent.addListener("mouseup", mouseUp, listenersOptions);
+
+        SPLINT.Events.onPopStateChange = function(){
+            e1.remove();
+            e2.remove();
+            e0.remove();
+        }
     }
 
 
@@ -494,7 +525,7 @@ class CanvasElement_C {
         }
     }
     this.dragElement = null;
-    DSController.saveAll.callFromIdle(1000, DSController);
+    DSController.saveAll()//.callFromIdle(1000, DSController);
   }
   clearLine(full = false){
     this.lines.ctx.clearRect(0, 0, this.lines.canvas.width, this.lines.canvas.height);

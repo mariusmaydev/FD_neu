@@ -120,7 +120,7 @@ class ConverterHelper {
     NavBar.setSolid();
     let imageMenu = new ImageMenu(document.body);
         imageMenu.onClose = function(){
-            NavBar.setInParts();
+            NavBar.setSolid();
           CONVERTER_STORAGE.canvasNEW.ListenersActive(true);
         }.bind(this);
         let background = imageMenu.drawBackground();

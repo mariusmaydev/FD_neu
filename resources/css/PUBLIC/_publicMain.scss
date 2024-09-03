@@ -37,4 +37,22 @@ body {
     margin-inline: 0%;
     height: 100%;
     overflow: visible;
+    // &#Page_converterStart_main {
+    //     transform: translateX(100%);
+    //     transition: transform 20s;
+    //     &[loaded1*='true'] {
+    //         transform: translateX(0%);
+
+    //     }
+
+    // }
+    // &#Page_index_main{
+    //     transform: translateX(0%);
+    //     transition: transform 20s;
+    //     &[loaded1*='true'] {
+    //         transform: translateX(-100%);
+
+    //     }
+
+    // }
 }

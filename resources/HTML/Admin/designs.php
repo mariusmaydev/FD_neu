@@ -18,7 +18,7 @@ session_start();
         <s-part first src="/js/GLOBAL/Paths.js"></s-part>
         <s-part src="/js/ADMIN/assets/"></s-part>
         <s-part src="/js/ADMIN/Designs/"></s-part>
-        <s-part src="/js/manager/manager.js"></s-part>
+        <!-- <s-part src="/js/manager/manager.js"></s-part> -->
         <s-part src="/js/ADMIN/pages/ADMIN_designs.js"></s-part>
         <s-part src="/js/Projects/Projects.js"></s-part>
         <s-part src="/js/Helper/ProjectsHelper.js"></s-part>
@@ -28,6 +28,7 @@ session_start();
         <s-module src="/js/3D/modules/module_3D_init.js"></s-module>
         <s-loader src="/js/ADMIN/Eventhandler.js"></s-loader>
         <s-part src="/js/assets/product/"></s-part>
+        <!-- <s-part first src="/js/_Loader/LoaderMain.js"></s-part> -->
 
         <s-part first src="/js/ADMIN/assets/AdminTemplate.js"></s-part>
         <script type="text/javascript" src="../../../../Splint/js/Splint.js" onload="SPLINT.start()"></script>

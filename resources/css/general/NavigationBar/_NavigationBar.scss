@@ -35,12 +35,15 @@
     $color-primary              : vars.$color-primary;
     $skew                       : vars.$header-skew;
 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     position: fixed;
     z-index: 1002;
     background-color: transparent;
     top: 0;
     left: 0;
-    height: 3.5rem;
+    height: 4rem;
     padding: 0%;
     margin-top: 0vh;
     box-sizing: border-box;
@@ -49,6 +52,7 @@
         //     visibility: hidden;
         //     transform: translateY(-10rem);
         // }
+
     >.content {
         background-color: transparent;
         position: relative;
@@ -62,6 +66,7 @@
         // justify-items: center;
         // justify-content: safe;
         align-items: stretch;
+        max-width: min(100rem, 100%);
         // transition: margin 0.0.1s ease-in ;
         // transition: gap 0.1s ease-out, margin 0.1s ease-out, padding 0.1s ease-out, width 0.1s ease-out, height 0.1s ease-out;
     }
@@ -76,8 +81,10 @@
             @include Tmain.preventSelect();
             // pointer-events: none;
             // user-select: none;
-            background-color: rgba(0, 0, 0, 0.909);
-            transition: width 0.1s ease-in-out, height 0.1s ease-in-out;
+            background-color: rgba(0, 0, 0, 0.749);
+            // background-color: rgba(vars.$color-background-subWindow, 0.6);
+            backdrop-filter: blur(4px);
+            transition: width 0.1s ease-out, height 0.1s ease-out;
             &[state*='active']{
                 width: 100vw;
                 height: 100vh;
@@ -125,7 +132,14 @@
             // height: 100% !important;
             grid-template-areas: "Logo Space shoppingCart burgerMenu"; 
             grid-template-columns: [Logo] minmax(min-content, max-content) [Space] minmax(0, 1fr) [burgerMenu] minmax(min-content, max-content) [shoppingCart] minmax(min-content, max-content);
-            gap: 1rem;
+            gap: 0rem;
+            padding: 0;
+            margin-left: 0.25rem;
+            margin-top: 0.25rem;
+            margin-right: 0.25rem;
+            margin-bottom: 0;
+            width: calc(100% - 0.5rem);
+            height: calc(3.5rem - 0.25rem);
             > div {
                 border-radius: 0;
                 box-sizing: border-box;
@@ -149,13 +163,14 @@
                     background-color: transparent;
                     width: max-content;
                     box-sizing: border-box;
+                    @include Tmain.preventSelect();
                     > .content {
                         box-shadow: none;
                         height: 100%;
                         box-sizing: border-box;
                         width: max-content;
                         padding: 0.2rem;
-                        padding-inline: 0.75rem;
+                        padding-inline: 0.5rem;
                         > img {
                             box-sizing: border-box;
                             @include Tmain.preventSelect();
@@ -174,6 +189,7 @@
                     aspect-ratio: 1/1;  
                     border: none;
                     box-shadow: none;
+                    @include Tmain.preventSelect();
                     > button {
                         height: 100%;
                         // width: 100%;
@@ -217,11 +233,17 @@
                     background-color: transparent;
                     user-select: none;
                     pointer-events: none;
+                    @include Tmain.preventSelect();
+                    height: 100%;
+                    // overflow: hidden;
+                    aspect-ratio: 1/1;  
                     >button {
+                        height: 100%;
                         user-select: auto;
                         pointer-events: auto;
                         margin: 0;
                         padding: 0.5em;
+                        aspect-ratio: 1/1;  
                         -webkit-tap-highlight-color: transparent; /* for removing the highlight */
                         > span {
                             font-size: 2rem;
@@ -236,7 +258,14 @@
             grid-template-areas: "Logo Space Design Original shoppingCart"; 
             grid-template-columns: [Logo] minmax(min-content, max-content) [Space] minmax(0, 1fr) [Design] minmax(min-content, max-content) [Original] minmax(min-content, max-content) [shoppingCart] minmax(min-content, max-content);
             gap: 1rem;
-            > div {
+            padding: 0;
+            margin-left: 0.5rem;
+            margin-top: 0.5rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0;
+            width: calc(100% - 1rem);
+            height: calc(4rem - 0.5rem);
+            > div { 
                 border-radius: 0;
                 box-sizing: border-box;
                 position: relative;
@@ -259,6 +288,7 @@
                     background-color: transparent;
                     width: max-content;
                     box-sizing: border-box;
+                    @include Tmain.preventSelect();
                     > .content {
                         box-shadow: none;
                         height: 100%;
@@ -283,6 +313,7 @@
                     // aspect-ratio: 1/1;  
                     border: none;
                     box-shadow: none;
+                    @include Tmain.preventSelect();
                     > button {
                         height: 100%;
                         aspect-ratio: 1/1;  
@@ -326,6 +357,7 @@
                     height: 100%;
                     border: none;
                     box-shadow: none;
+                    @include Tmain.preventSelect();
                     > button {
                         height: 100%;
                         width: 100%;
@@ -344,6 +376,7 @@
                     height: 100%;
                     border: none;
                     box-shadow: none;
+                    @include Tmain.preventSelect();
                     > button {
                         height: 100%;
                         width: 100%;
@@ -367,6 +400,13 @@
         }
     }
     &[status*='transparent']{
+        @include mediaQueries.forMediaBreakpoint(mobile-small){
+            &[state*='active']{
+                * {
+                    color: white !important;
+                }
+            }
+        }
         @include NavBar_transparent.NavBar_transparent();
         // transition: gap 0.1s ease-out, margin 0.1s ease-out, padding 0.1s ease-out, width 0.1s ease-out, height 0.1s ease-out;
         transition: all 0.1s ease-out;//, margin 0.1s ease-out, padding 0.1s ease-out, width 0.1s ease-out, height 0.1s ease-out;
@@ -375,7 +415,8 @@
         }
     }
     &[status*='solid']{
-        padding-inline: 0.5rem;
+        // padding-inline: 0.5rem;
+        // background-color: white;
         @include NavBar_solid.NavBar_solid();
         // transition: gap 0.1s ease-out, margin 0.1s ease-out, padding 0.1s ease-out, width 0.1s ease-out, height 0.1s ease-out;
         transition: all 0.1s ease-out;//, margin 0.1s ease-out, padding 0.1s ease-out, width 0.1s ease-out, height 0.1s ease-out;

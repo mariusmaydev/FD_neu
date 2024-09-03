@@ -30,7 +30,7 @@ $skew               : vars.$general-skew;
         font-size: calc(1rem * $size-offset);
         color: $color-text;
     }
-    &:hover {
+    &:hover, &:active {
         background-color: $color-hover;
     }
     &[state*='active']{
@@ -53,7 +53,7 @@ $skew               : vars.$general-skew;
         font-size: calc(1rem * $size-offset);
         color: $color-text;
     }
-    &:hover {
+    &:hover, &:active{
         border-color: $color-hover;
         > span {
             color: $color-hover;

@@ -40,12 +40,19 @@ class productHelper {
             call.data.ID            = ID;
         return call.send();
     }
+    static RES = null;
     static async isAvailable(name = null, ID = null){
-        let res = await this.getCurrentAmount(name, ID)
-            if(res > 0){
-                return true;
-            }
-            return false;
+        if(this.RES == null){
+            this.RES = new Promise(async function(resolve){
+                let res = await this.getProducts()
+                resolve(res);
+            }.bind(this));
+        }
+        await this.RES;
+        if(this.LIST[name] != undefined && this.LIST[name].AvailableAmount > 0) {
+            return true;
+        }
+        return false
     }
     static async newProduct(price, name, description, size, viewName, colorID, EPType, AvailableAmount, attrs = []){
         let call = this.MANAGER.call(productHelper.NEW);
